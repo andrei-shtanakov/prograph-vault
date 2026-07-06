@@ -1,0 +1,124 @@
+<svg viewBox="0 0 1080 560" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif" role="img">
+  <title>Петля жизненного цикла AI-агента в экосистеме</title>
+  <desc>Замкнутый контур из девяти стадий: каталог, discovery, авторинг задачи, маршрутизация, допуск, исполнение, offline-оценка, обратная связь/пере-ранжирование и online/drift (пробел). Внутренний контур «тест-результаты → маршрут» замкнут; внешняя петля через online/drift разомкнута. Наблюдаемость и стоимость — сквозные.</desc>
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#6a7280"/>
+    </marker>
+    <marker id="ahA" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+      <path d="M0,0 L6.5,3 L0,6 Z" fill="#3b6ea5"/>
+    </marker>
+  </defs>
+  <style>
+    .ink{fill:#1f2328;}
+    .sub{fill:#6a7280;}
+    .card{fill:#f6f7f8;stroke:#d6d9dd;stroke-width:1;}
+    .ok{fill:#3f9b6d;}
+    .warn{fill:#d29236;}
+    .gap{fill:#c15a5a;}
+    .hd{fill:#fff;font-weight:600;}
+    .lbl{font-size:13px;font-weight:600;}
+    .small{font-size:10.5px;}
+    .tiny{font-size:9.5px;}
+    .flow{stroke:#6a7280;stroke-width:1.4;fill:none;}
+  </style>
+
+  <text x="20" y="28" class="ink" font-size="18" font-weight="700">Петля жизненного цикла агента: где контур замкнут, где разорван</text>
+
+  <g transform="translate(715,14)">
+    <rect x="0" y="0" width="12" height="12" rx="2" class="ok"/><text x="17" y="10" class="sub small">покрыто</text>
+    <rect x="92" y="0" width="12" height="12" rx="2" class="warn"/><text x="109" y="10" class="sub small">частично</text>
+    <rect x="197" y="0" width="12" height="12" rx="2" class="gap"/><text x="214" y="10" class="sub small">пробел</text>
+  </g>
+
+  <rect x="20" y="248" width="1040" height="44" rx="7" fill="#f6f7f8" stroke="#3b6ea5" stroke-width="1.1" stroke-dasharray="5 3" opacity="0.9"/>
+  <text x="34" y="266" class="ink" font-size="11.5" font-weight="600">Сквозные слои: Наблюдаемость + Стоимость — dispatcher · cost_tracker</text>
+  <text x="34" y="281" class="sub tiny">покрыто по обзору; cost-честность частична — opencode=0 «бесплатно» для роутера (риск сегодняшнего ревью)</text>
+
+  <path d="M965,134 L965,428" class="flow" marker-end="url(#ah)"/>
+  <text x="972" y="290" class="sub tiny">допуск → запуск</text>
+
+  <path d="M232,462 C120,470 60,470 60,300 C60,150 60,120 116,104" fill="none" stroke="#c15a5a" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#ahA)" opacity="0.85"/>
+  <text x="66" y="392" class="gap tiny" transform="rotate(-90 66,392)">внешняя петля разомкнута (нет online→каталог)</text>
+
+  <path d="M540,428 L752,134" stroke="#3b6ea5" stroke-width="1.8" fill="none" marker-end="url(#ahA)"/>
+  <text x="600" y="300" class="ink tiny" font-weight="600" transform="rotate(-54 600,300)">тест-результаты → маршрут (R-06b/R-07)</text>
+
+  <g transform="translate(20,72)">
+    <rect width="190" height="62" rx="7" class="card"/>
+    <rect width="190" height="20" rx="7" class="ok"/><rect y="12" width="190" height="8" class="ok"/>
+    <text x="95" y="14" text-anchor="middle" class="hd" font-size="11">1 · Catalog / SSOT</text>
+    <text x="95" y="40" text-anchor="middle" class="ink lbl">atp-platform · arbiter</text>
+    <text x="95" y="54" text-anchor="middle" class="sub tiny">agents-catalog.toml</text>
+  </g>
+  <g transform="translate(232.5,72)">
+    <rect width="190" height="62" rx="7" class="card"/>
+    <rect width="190" height="20" rx="7" class="warn"/><rect y="12" width="190" height="8" class="warn"/>
+    <text x="95" y="14" text-anchor="middle" class="hd" font-size="11">2 · Discovery / Adoption</text>
+    <text x="95" y="40" text-anchor="middle" class="ink lbl">devtools · ATP bench</text>
+    <text x="95" y="54" text-anchor="middle" class="sub tiny">benchmark-gated (ADR-003a)</text>
+  </g>
+  <g transform="translate(445,72)">
+    <rect width="190" height="62" rx="7" class="card"/>
+    <rect width="190" height="20" rx="7" class="ok"/><rect y="12" width="190" height="8" class="ok"/>
+    <text x="95" y="14" text-anchor="middle" class="hd" font-size="11">3 · Task authoring</text>
+    <text x="95" y="40" text-anchor="middle" class="ink lbl">Maestro · spec-runner</text>
+    <text x="95" y="54" text-anchor="middle" class="sub tiny">Workstreams · спеки</text>
+  </g>
+  <g transform="translate(657.5,72)">
+    <rect width="190" height="62" rx="7" class="card"/>
+    <rect width="190" height="20" rx="7" class="ok"/><rect y="12" width="190" height="8" class="ok"/>
+    <text x="95" y="14" text-anchor="middle" class="hd" font-size="11">4 · Routing / Select</text>
+    <text x="95" y="40" text-anchor="middle" class="ink lbl">arbiter</text>
+    <text x="95" y="54" text-anchor="middle" class="sub tiny">22-dim → agent@model</text>
+  </g>
+  <g transform="translate(870,72)">
+    <rect width="190" height="62" rx="7" class="card"/>
+    <rect width="190" height="20" rx="7" class="warn"/><rect y="12" width="190" height="8" class="warn"/>
+    <text x="95" y="14" text-anchor="middle" class="hd" font-size="11">5 · Admission / Safety</text>
+    <text x="95" y="40" text-anchor="middle" class="ink lbl">proctor-a</text>
+    <text x="95" y="54" text-anchor="middle" class="sub tiny">TaskRouter M4 (draft)</text>
+  </g>
+
+  <g>
+    <path d="M210,103 L232,103" class="flow" marker-end="url(#ah)"/>
+    <path d="M422.5,103 L445,103" class="flow" marker-end="url(#ah)"/>
+    <path d="M635,103 L657.5,103" class="flow" marker-end="url(#ah)"/>
+    <path d="M847.5,103 L870,103" class="flow" marker-end="url(#ah)"/>
+  </g>
+
+  <g transform="translate(870,430)">
+    <rect width="190" height="62" rx="7" class="card"/>
+    <rect width="190" height="20" rx="7" class="ok"/><rect y="12" width="190" height="8" class="ok"/>
+    <text x="95" y="14" text-anchor="middle" class="hd" font-size="11">6 · Execution / Spawn</text>
+    <text x="95" y="40" text-anchor="middle" class="ink lbl">Maestro · proctor-a</text>
+    <text x="95" y="54" text-anchor="middle" class="sub tiny">spawners · worktrees</text>
+  </g>
+  <g transform="translate(657.5,430)">
+    <rect width="190" height="62" rx="7" class="card"/>
+    <rect width="190" height="20" rx="7" class="ok"/><rect y="12" width="190" height="8" class="ok"/>
+    <text x="95" y="14" text-anchor="middle" class="hd" font-size="11">7 · Offline eval</text>
+    <text x="95" y="40" text-anchor="middle" class="ink lbl">atp-platform</text>
+    <text x="95" y="54" text-anchor="middle" class="sub tiny">13+ оценщиков · турниры</text>
+  </g>
+  <g transform="translate(445,430)">
+    <rect width="190" height="62" rx="7" class="card"/>
+    <rect width="190" height="20" rx="7" class="warn"/><rect y="12" width="190" height="8" class="warn"/>
+    <text x="95" y="14" text-anchor="middle" class="hd" font-size="11">8 · Feedback / Re-rank</text>
+    <text x="95" y="40" text-anchor="middle" class="ink lbl">arbiter</text>
+    <text x="95" y="54" text-anchor="middle" class="sub tiny">benchmark_runs → вес</text>
+  </g>
+  <g transform="translate(232.5,430)">
+    <rect width="190" height="62" rx="7" class="card"/>
+    <rect width="190" height="20" rx="7" class="gap"/><rect y="12" width="190" height="8" class="gap"/>
+    <text x="95" y="14" text-anchor="middle" class="hd" font-size="11">9 · Online / Drift / Retrain</text>
+    <text x="95" y="40" text-anchor="middle" class="sub lbl">— пробел</text>
+    <text x="95" y="54" text-anchor="middle" class="sub tiny">online-контур отсутствует</text>
+  </g>
+
+  <g>
+    <path d="M870,461 L847.5,461" class="flow" marker-end="url(#ah)"/>
+    <path d="M657.5,461 L635,461" class="flow" marker-end="url(#ah)"/>
+    <path d="M445,461 L422.5,461" class="flow" marker-end="url(#ah)"/>
+  </g>
+</svg>
