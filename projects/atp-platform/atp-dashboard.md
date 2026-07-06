@@ -1,0 +1,971 @@
+<!-- prograph:generated -->
+
+---
+indexed_at: "2026-05-27T12:45:37Z"
+kind: python
+name: atp-dashboard
+parent: atp-platform
+prograph: project
+root: ./atp-platform/packages/atp-dashboard
+snapshot: 48
+---
+
+# atp-dashboard
+
+## Manifest
+
+- declared package: `atp-dashboard` version `1.0.0`
+
+## Public surface
+
+### MCP tools exposed
+
+- `_join_tournament_mcp` — `atp/dashboard/mcp/tools.py:184`
+- `get_current_state` — `atp/dashboard/mcp/tools.py:237`
+- `make_move` — `atp/dashboard/mcp/tools.py:284`
+- `mcp_cancel_tournament` — `atp/dashboard/mcp/tools.py:558`
+- `mcp_get_history` — `atp/dashboard/mcp/tools.py:489`
+- `mcp_get_tournament` — `atp/dashboard/mcp/tools.py:539`
+- `mcp_leave_tournament` — `atp/dashboard/mcp/tools.py:464`
+- `mcp_list_tournaments` — `atp/dashboard/mcp/tools.py:513`
+- `ping` — `atp/dashboard/mcp/tools.py:261`
+
+### Contracts declared
+
+_None._
+
+### Public symbols
+
+- `ExperimentStatus` (class) — `atp/analytics/ab_testing.py:154`
+- `VariantType` (class) — `atp/analytics/ab_testing.py:164`
+- `WinnerDecision` (class) — `atp/analytics/ab_testing.py:171`
+- `MetricType` (class) — `atp/analytics/ab_testing.py:180`
+- `Variant` (class) — `atp/analytics/ab_testing.py:193`
+- `MetricConfig` (class) — `atp/analytics/ab_testing.py:208`
+- `VariantMetrics` (class) — `atp/analytics/ab_testing.py:227`
+- `StatisticalResult` (class) — `atp/analytics/ab_testing.py:240`
+- `RollbackConfig` (class) — `atp/analytics/ab_testing.py:264`
+- `ExperimentConfig` (class) — `atp/analytics/ab_testing.py:286`
+- `ExperimentObservation` (class) — `atp/analytics/ab_testing.py:326`
+- `Experiment` (class) — `atp/analytics/ab_testing.py:344`
+- `ExperimentReport` (class) — `atp/analytics/ab_testing.py:426`
+- `TrafficRouter` (class) — `atp/analytics/ab_testing.py:445`
+- `ExperimentAnalyzer` (class) — `atp/analytics/ab_testing.py:552`
+- `ExperimentManager` (class) — `atp/analytics/ab_testing.py:832`
+- `get_experiment_manager` (function) — `atp/analytics/ab_testing.py:1233`
+- `reset_experiment_manager` (function) — `atp/analytics/ab_testing.py:1245`
+- `stats_mean` (const) — `atp/analytics/advanced.py:57`
+- `stats_stdev` (const) — `atp/analytics/advanced.py:58`
+- `TrendDirection` (class) — `atp/analytics/advanced.py:61`
+- `AnomalyType` (class) — `atp/analytics/advanced.py:70`
+- `CorrelationStrength` (class) — `atp/analytics/advanced.py:80`
+- `TrendDataPoint` (class) — `atp/analytics/advanced.py:95`
+- `TrendAnalysisResult` (class) — `atp/analytics/advanced.py:105`
+- `AnomalyResult` (class) — `atp/analytics/advanced.py:122`
+- `CorrelationResult` (class) — `atp/analytics/advanced.py:140`
+- `ScoreTrendResponse` (class) — `atp/analytics/advanced.py:154`
+- `AnomalyDetectionResponse` (class) — `atp/analytics/advanced.py:166`
+- `CorrelationAnalysisResponse` (class) — `atp/analytics/advanced.py:178`
+- `ExportFormat` (class) — `atp/analytics/advanced.py:188`
+- `ScheduledReportFrequency` (class) — `atp/analytics/advanced.py:195`
+- `ScheduledReportConfig` (class) — `atp/analytics/advanced.py:203`
+- `AdvancedAnalyticsService` (class) — `atp/analytics/advanced.py:237`
+- `ScheduledReportsRepository` (class) — `atp/analytics/advanced.py:1067`
+- `logger` (const) — `atp/analytics/budgets.py:55`
+- `BudgetPeriod` (class) — `atp/analytics/budgets.py:58`
+- `AlertChannel` (class) — `atp/analytics/budgets.py:215`
+- `LogAlertChannel` (class) — `atp/analytics/budgets.py:245`
+- `WebhookAlertChannel` (class) — `atp/analytics/budgets.py:270`
+- `EmailAlertChannel` (class) — `atp/analytics/budgets.py:354`
+- `AlertChannelRegistry` (class) — `atp/analytics/budgets.py:468`
+- `BudgetManager` (class) — `atp/analytics/budgets.py:551`
+- `get_budget_manager` (function) — `atp/analytics/budgets.py:926`
+- `set_budget_manager` (function) — `atp/analytics/budgets.py:940`
+- `check_budget_for_cost` (function) — `atp/analytics/budgets.py:952`
+- `logger` (const) — `atp/analytics/cost.py:21`
+- `AnalyticsCostBackend` (class) — `atp/analytics/cost.py:24`
+- `get_cost_tracker_with_db` (function) — `atp/analytics/cost.py:67`
+- `AnalyticsDatabase` (class) — `atp/analytics/database.py:17`
+- `get_analytics_database` (function) — `atp/analytics/database.py:133`
+- `set_analytics_database` (function) — `atp/analytics/database.py:141`
+- `init_analytics_database` (function) — `atp/analytics/database.py:147`
+- `logger` (const) — `atp/analytics/estimator.py:25`
+- `CHARS_PER_TOKEN` (const) — `atp/analytics/estimator.py:28`
+- `OUTPUT_TOKENS_MIN` (const) — `atp/analytics/estimator.py:32`
+- `OUTPUT_TOKENS_MAX` (const) — `atp/analytics/estimator.py:33`
+- `SYSTEM_PROMPT_OVERHEAD` (const) — `atp/analytics/estimator.py:36`
+- `CostEstimator` (class) — `atp/analytics/estimator.py:97`
+- `AnalyticsBase` (class) — `atp/analytics/models.py:27`
+- `CostRecord` (class) — `atp/analytics/models.py:33`
+- `CostBudget` (class) — `atp/analytics/models.py:103`
+- `ScheduledReport` (class) — `atp/analytics/models.py:167`
+- `ABExperiment` (class) — `atp/analytics/models.py:233`
+- `ABExperimentObservation` (class) — `atp/analytics/models.py:338`
+- `CostRepository` (class) — `atp/analytics/repository.py:13`
+- `logger` (const) — `atp/analytics/trend.py:18`
+- `analyze_trend` (function) — `atp/analytics/trend.py:71`
+- `create_app` (function) — `atp/dashboard/__init__.py:59`
+- `app` (const) — `atp/dashboard/__init__.py:95`
+- `run_server` (function) — `atp/dashboard/__init__.py:98`
+- `main` (function) — `atp/dashboard/__main__.py:10`
+- `T` (const) — `atp/dashboard/audit.py:39`
+- `AuditCategory` (class) — `atp/dashboard/audit.py:42`
+- `AuditAction` (class) — `atp/dashboard/audit.py:54`
+- `AuditSeverity` (class) — `atp/dashboard/audit.py:121`
+- `AuditLog` (class) — `atp/dashboard/audit.py:131`
+- `compute_entry_hash` (function) — `atp/dashboard/audit.py:220`
+- `get_previous_hash` (function) — `atp/dashboard/audit.py:261`
+- `audit_log` (function) — `atp/dashboard/audit.py:282`
+- `verify_audit_chain` (function) — `atp/dashboard/audit.py:391`
+- `RetentionPolicy` (class) — `atp/dashboard/audit.py:454`
+- `DEFAULT_RETENTION_POLICY` (const) — `atp/dashboard/audit.py:486`
+- `apply_retention_policy` (function) — `atp/dashboard/audit.py:489`
+- `AuditLogResponse` (class) — `atp/dashboard/audit.py:571`
+- `AuditLogList` (class) — `atp/dashboard/audit.py:623`
+- `AuditLogFilter` (class) — `atp/dashboard/audit.py:632`
+- `AuditChainVerificationResponse` (class) — `atp/dashboard/audit.py:648`
+- `RetentionPolicyResponse` (class) — `atp/dashboard/audit.py:657`
+- `RetentionExecutionResponse` (class) — `atp/dashboard/audit.py:666`
+- `AuditExportRequest` (class) — `atp/dashboard/audit.py:673`
+- `AuditStatistics` (class) — `atp/dashboard/audit.py:683`
+- `query_audit_logs` (function) — `atp/dashboard/audit.py:697`
+- `get_audit_statistics` (function) — `atp/dashboard/audit.py:788`
+- `create_audit_context` (function) — `atp/dashboard/audit.py:884`
+- `audit_endpoint` (function) — `atp/dashboard/audit.py:919`
+- `logger` (const) — `atp/dashboard/audit_middleware.py:34`
+- `RESOURCE_PATTERNS` (const) — `atp/dashboard/audit_middleware.py:37`
+- `EXEMPT_PATHS` (const) — `atp/dashboard/audit_middleware.py:54`
+- `AUTH_PATHS` (const) — `atp/dashboard/audit_middleware.py:69`
+- `extract_resource_info` (function) — `atp/dashboard/audit_middleware.py:85`
+- `get_action_for_method` (function) — `atp/dashboard/audit_middleware.py:102`
+- `should_audit_request` (function) — `atp/dashboard/audit_middleware.py:255`
+- `AuditMiddleware` (class) — `atp/dashboard/audit_middleware.py:297`
+- `get_audit_middleware` (function) — `atp/dashboard/audit_middleware.py:479`
+- `SECRET_KEY` (const) — `atp/dashboard/auth/__init__.py:31`
+- `ALGORITHM` (const) — `atp/dashboard/auth/__init__.py:40`
+- `ACCESS_TOKEN_EXPIRE_MINUTES` (const) — `atp/dashboard/auth/__init__.py:41`
+- `access_token_ttl` (function) — `atp/dashboard/auth/__init__.py:56`
+- `oauth2_scheme` (const) — `atp/dashboard/auth/__init__.py:67`
+- `verify_password` (function) — `atp/dashboard/auth/__init__.py:70`
+- `get_password_hash` (function) — `atp/dashboard/auth/__init__.py:85`
+- `create_access_token` (function) — `atp/dashboard/auth/__init__.py:98`
+- `get_user_by_username` (function) — `atp/dashboard/auth/__init__.py:127`
+- `get_user_by_email` (function) — `atp/dashboard/auth/__init__.py:142`
+- `authenticate_user` (function) — `atp/dashboard/auth/__init__.py:157`
+- `create_user` (function) — `atp/dashboard/auth/__init__.py:178`
+- `get_current_user` (function) — `atp/dashboard/auth/__init__.py:224`
+- `get_current_active_user` (function) — `atp/dashboard/auth/__init__.py:283`
+- `get_current_admin_user` (function) — `atp/dashboard/auth/__init__.py:306`
+- `require_user_level_token` (function) — `atp/dashboard/auth/__init__.py:328`
+- `GITHUB_DEVICE_VERIFY_URI` (const) — `atp/dashboard/auth/device_flow.py:15`
+- `GITHUB_DEVICE_AUTH_URL` (const) — `atp/dashboard/auth/device_flow.py:16`
+- `GITHUB_TOKEN_URL` (const) — `atp/dashboard/auth/device_flow.py:17`
+- `GITHUB_USER_API` (const) — `atp/dashboard/auth/device_flow.py:18`
+- `GITHUB_USER_EMAILS_API` (const) — `atp/dashboard/auth/device_flow.py:19`
+- `DEFAULT_EXPIRES_IN` (const) — `atp/dashboard/auth/device_flow.py:21`
+- `DEFAULT_INTERVAL` (const) — `atp/dashboard/auth/device_flow.py:22`
+- `DeviceFlowError` (class) — `atp/dashboard/auth/device_flow.py:28`
+- `DeviceCodePendingError` (class) — `atp/dashboard/auth/device_flow.py:32`
+- `DeviceCodeExpiredError` (class) — `atp/dashboard/auth/device_flow.py:36`
+- `DeviceCodeNotFoundError` (class) — `atp/dashboard/auth/device_flow.py:40`
+- `DeviceFlowManager` (class) — `atp/dashboard/auth/device_flow.py:44`
+- `PostAuthError` (class) — `atp/dashboard/auth/post_auth.py:19`
+- `complete_auth` (function) — `atp/dashboard/auth/post_auth.py:23`
+- `OIDCProvider` (class) — `atp/dashboard/auth/sso/oidc.py:28`
+- `GroupRoleMapping` (class) — `atp/dashboard/auth/sso/oidc.py:39`
+- `SSOConfig` (class) — `atp/dashboard/auth/sso/oidc.py:51`
+- `SSOUserInfo` (class) — `atp/dashboard/auth/sso/oidc.py:124`
+- `ProviderPresets` (class) — `atp/dashboard/auth/sso/oidc.py:155`
+- `OIDCDiscoveryDocument` (class) — `atp/dashboard/auth/sso/oidc.py:316`
+- `TokenResponse` (class) — `atp/dashboard/auth/sso/oidc.py:331`
+- `SSOError` (class) — `atp/dashboard/auth/sso/oidc.py:344`
+- `ConfigurationError` (class) — `atp/dashboard/auth/sso/oidc.py:350`
+- `TokenValidationError` (class) — `atp/dashboard/auth/sso/oidc.py:356`
+- `UserProvisioningError` (class) — `atp/dashboard/auth/sso/oidc.py:362`
+- `SSOManager` (class) — `atp/dashboard/auth/sso/oidc.py:368`
+- `SAMLProvider` (class) — `atp/dashboard/auth/sso/saml.py:25`
+- `SAMLGroupRoleMapping` (class) — `atp/dashboard/auth/sso/saml.py:37`
+- `SAMLAttributeMapping` (class) — `atp/dashboard/auth/sso/saml.py:51`
+- `SAMLNameIDFormat` (class) — `atp/dashboard/auth/sso/saml.py:86`
+- `SAMLConfig` (class) — `atp/dashboard/auth/sso/saml.py:95`
+- `SAMLUserInfo` (class) — `atp/dashboard/auth/sso/saml.py:200`
+- `SAMLProviderPresets` (class) — `atp/dashboard/auth/sso/saml.py:230`
+- `SAMLError` (class) — `atp/dashboard/auth/sso/saml.py:325`
+- `SAMLConfigurationError` (class) — `atp/dashboard/auth/sso/saml.py:331`
+- `SAMLValidationError` (class) — `atp/dashboard/auth/sso/saml.py:337`
+- `SAMLUserProvisioningError` (class) — `atp/dashboard/auth/sso/saml.py:343`
+- `SAMLManager` (class) — `atp/dashboard/auth/sso/saml.py:382`
+- `parse_idp_metadata` (function) — `atp/dashboard/auth/sso/saml.py:799`
+- `parse_idp_metadata_url` (function) — `atp/dashboard/auth/sso/saml.py:818`
+- `AuthStateStore` (class) — `atp/dashboard/auth/state_store.py:17`
+- `InMemoryAuthStateStore` (class) — `atp/dashboard/auth/state_store.py:37`
+- `get_auth_state_store` (function) — `atp/dashboard/auth/state_store.py:78`
+- `reset_auth_state_store` (function) — `atp/dashboard/auth/state_store.py:90`
+- `RunStatus` (class) — `atp/dashboard/benchmark/models.py:24`
+- `Benchmark` (class) — `atp/dashboard/benchmark/models.py:35`
+- `Run` (class) — `atp/dashboard/benchmark/models.py:97`
+- `TaskResult` (class) — `atp/dashboard/benchmark/models.py:156`
+- `BenchmarkCreate` (class) — `atp/dashboard/benchmark/schemas.py:8`
+- `BenchmarkResponse` (class) — `atp/dashboard/benchmark/schemas.py:21`
+- `RunResponse` (class) — `atp/dashboard/benchmark/schemas.py:34`
+- `SubmitRequest` (class) — `atp/dashboard/benchmark/schemas.py:48`
+- `TaskResultResponse` (class) — `atp/dashboard/benchmark/schemas.py:59`
+- `LeaderboardEntry` (class) — `atp/dashboard/benchmark/schemas.py:67`
+- `RunStatusResponse` (class) — `atp/dashboard/benchmark/schemas.py:76`
+- `BenchmarkService` (class) — `atp/dashboard/benchmark/service.py:21`
+- `main` (function) — `atp/dashboard/cli/admin.py:207`
+- `logger` (const) — `atp/dashboard/database.py:20`
+- `Database` (class) — `atp/dashboard/database.py:23`
+- `get_database` (function) — `atp/dashboard/database.py:143`
+- `set_database` (function) — `atp/dashboard/database.py:151`
+- `init_database` (function) — `atp/dashboard/database.py:157`
+- `mcp_server` (const) — `atp/dashboard/mcp/__init__.py:12`
+- `tournament_event_bus` (const) — `atp/dashboard/mcp/__init__.py:13`
+- `MCPAuthMiddleware` (class) — `atp/dashboard/mcp/auth.py:34`
+- `logger` (const) — `atp/dashboard/mcp/notifications.py:32`
+- `resolve_user_from_ctx` (function) — `atp/dashboard/mcp/notifications.py:43`
+- `resolve_agent_id_from_ctx` (function) — `atp/dashboard/mcp/notifications.py:66`
+- `forward_events_to_session` (function) — `atp/dashboard/mcp/notifications.py:173`
+- `logger` (const) — `atp/dashboard/mcp/observability.py:28`
+- `MCP_HANDSHAKE_STARTED` (const) — `atp/dashboard/mcp/observability.py:37`
+- `MCP_HANDSHAKE_AUTHORIZED` (const) — `atp/dashboard/mcp/observability.py:42`
+- `MCP_HANDSHAKE_REJECTED` (const) — `atp/dashboard/mcp/observability.py:48`
+- `MCP_FIRST_TOOL_CALL` (const) — `atp/dashboard/mcp/observability.py:57`
+- `new_request_id` (function) — `atp/dashboard/mcp/observability.py:80`
+- `now_monotonic_ms` (function) — `atp/dashboard/mcp/observability.py:86`
+- `emit_event` (function) — `atp/dashboard/mcp/observability.py:92`
+- `maybe_emit_first_tool_call` (function) — `atp/dashboard/mcp/observability.py:100`
+- `reset_state` (function) — `atp/dashboard/mcp/observability.py:120`
+- `emit_tool_call` (function) — `atp/dashboard/mcp/observability.py:126`
+- `logger` (const) — `atp/dashboard/mcp/tools.py:25`
+- `join_tournament` (function) — `atp/dashboard/mcp/tools.py:56`
+- `leave_tournament` (function) — `atp/dashboard/mcp/tools.py:346`
+- `get_history` (function) — `atp/dashboard/mcp/tools.py:367`
+- `list_tournaments` (function) — `atp/dashboard/mcp/tools.py:390`
+- `get_tournament` (function) — `atp/dashboard/mcp/tools.py:424`
+- `cancel_tournament` (function) — `atp/dashboard/mcp/tools.py:442`
+- `check_tournament_schema_ready` (function) — `atp/dashboard/migrations/probes/check_tournament_invariants.py:34`
+- `as_sync_url` (function) — `atp/dashboard/migrations/url_helpers.py:13`
+- `DEFAULT_TENANT_ID` (const) — `atp/dashboard/models.py:28`
+- `Base` (class) — `atp/dashboard/models.py:31`
+- `User` (class) — `atp/dashboard/models.py:37`
+- `Agent` (class) — `atp/dashboard/models.py:67`
+- `SuiteExecution` (class) — `atp/dashboard/models.py:139`
+- `TestExecution` (class) — `atp/dashboard/models.py:204`
+- `RunResult` (class) — `atp/dashboard/models.py:264`
+- `Artifact` (class) — `atp/dashboard/models.py:325`
+- `EvaluationResult` (class) — `atp/dashboard/models.py:358`
+- `ScoreComponent` (class) — `atp/dashboard/models.py:393`
+- `PublishedResult` (class) — `atp/dashboard/models.py:436`
+- `AgentProfile` (class) — `atp/dashboard/models.py:510`
+- `BenchmarkCategory` (class) — `atp/dashboard/models.py:583`
+- `SuiteDefinition` (class) — `atp/dashboard/models.py:633`
+- `MarketplaceSuite` (class) — `atp/dashboard/models.py:691`
+- `MarketplaceSuiteVersion` (class) — `atp/dashboard/models.py:790`
+- `MarketplaceSuiteReview` (class) — `atp/dashboard/models.py:858`
+- `MarketplaceSuiteInstall` (class) — `atp/dashboard/models.py:919`
+- `GameResult` (class) — `atp/dashboard/models.py:969`
+- `TournamentResult` (class) — `atp/dashboard/models.py:1088`
+- `get_agents_by_names` (function) — `atp/dashboard/optimized_queries.py:21`
+- `get_suite_executions_for_agents` (function) — `atp/dashboard/optimized_queries.py:42`
+- `get_run_results_for_test_executions` (function) — `atp/dashboard/optimized_queries.py:91`
+- `get_aggregated_metrics_for_suite` (function) — `atp/dashboard/optimized_queries.py:126`
+- `build_leaderboard_data` (function) — `atp/dashboard/optimized_queries.py:193`
+- `logger` (const) — `atp/dashboard/query_cache.py:14`
+- `QueryCache` (class) — `atp/dashboard/query_cache.py:67`
+- `get_leaderboard_cache` (function) — `atp/dashboard/query_cache.py:260`
+- `get_comparison_cache` (function) — `atp/dashboard/query_cache.py:279`
+- `invalidate_suite_caches` (function) — `atp/dashboard/query_cache.py:298`
+- `clear_all_query_caches` (function) — `atp/dashboard/query_cache.py:317`
+- `get_query_cache_stats` (function) — `atp/dashboard/query_cache.py:336`
+- `Permission` (class) — `atp/dashboard/rbac/models.py:32`
+- `RolePermissions` (class) — `atp/dashboard/rbac/models.py:119`
+- `ADMIN_PERMISSIONS` (const) — `atp/dashboard/rbac/models.py:138`
+- `DEVELOPER_PERMISSIONS` (const) — `atp/dashboard/rbac/models.py:140`
+- `ANALYST_PERMISSIONS` (const) — `atp/dashboard/rbac/models.py:181`
+- `VIEWER_PERMISSIONS` (const) — `atp/dashboard/rbac/models.py:205`
+- `DEFAULT_ROLES` (const) — `atp/dashboard/rbac/models.py:227`
+- `Role` (class) — `atp/dashboard/rbac/models.py:255`
+- `RolePermission` (class) — `atp/dashboard/rbac/models.py:309`
+- `UserRole` (class) — `atp/dashboard/rbac/models.py:336`
+- `get_user_permissions` (function) — `atp/dashboard/rbac/models.py:372`
+- `has_permission` (function) — `atp/dashboard/rbac/models.py:396`
+- `require_permission` (function) — `atp/dashboard/rbac/models.py:419`
+- `RoleResponse` (class) — `atp/dashboard/rbac/models.py:519`
+- `RoleCreate` (class) — `atp/dashboard/rbac/models.py:534`
+- `RoleUpdate` (class) — `atp/dashboard/rbac/models.py:542`
+- `UserRoleResponse` (class) — `atp/dashboard/rbac/models.py:551`
+- `UserRoleAssign` (class) — `atp/dashboard/rbac/models.py:564`
+- `UserRoleRemove` (class) — `atp/dashboard/rbac/models.py:571`
+- `UserPermissionsResponse` (class) — `atp/dashboard/rbac/models.py:578`
+- `AgentCreate` (class) — `atp/dashboard/schemas.py:11`
+- `AgentUpdate` (class) — `atp/dashboard/schemas.py:20`
+- `AgentResponse` (class) — `atp/dashboard/schemas.py:28`
+- `SuiteExecutionSummary` (class) — `atp/dashboard/schemas.py:45`
+- `SuiteExecutionDetail` (class) — `atp/dashboard/schemas.py:66`
+- `SuiteExecutionList` (class) — `atp/dashboard/schemas.py:72`
+- `TestExecutionSummary` (class) — `atp/dashboard/schemas.py:84`
+- `RunResultSummary` (class) — `atp/dashboard/schemas.py:105`
+- `EvaluationResultResponse` (class) — `atp/dashboard/schemas.py:127`
+- `ScoreComponentResponse` (class) — `atp/dashboard/schemas.py:142`
+- `TestExecutionDetail` (class) — `atp/dashboard/schemas.py:156`
+- `TestExecutionList` (class) — `atp/dashboard/schemas.py:165`
+- `TrendDataPoint` (class) — `atp/dashboard/schemas.py:177`
+- `TestTrend` (class) — `atp/dashboard/schemas.py:185`
+- `SuiteTrend` (class) — `atp/dashboard/schemas.py:194`
+- `TrendResponse` (class) — `atp/dashboard/schemas.py:203`
+- `EventSummary` (class) — `atp/dashboard/schemas.py:213`
+- `AgentExecutionDetail` (class) — `atp/dashboard/schemas.py:223`
+- `SideBySideComparisonResponse` (class) — `atp/dashboard/schemas.py:239`
+- `AgentComparisonMetrics` (class) — `atp/dashboard/schemas.py:251`
+- `TestComparisonMetrics` (class) — `atp/dashboard/schemas.py:263`
+- `AgentComparisonResponse` (class) — `atp/dashboard/schemas.py:271`
+- `UserCreate` (class) — `atp/dashboard/schemas.py:282`
+- `UserResponse` (class) — `atp/dashboard/schemas.py:291`
+- `Token` (class) — `atp/dashboard/schemas.py:304`
+- `TokenData` (class) — `atp/dashboard/schemas.py:311`
+- `TestScore` (class) — `atp/dashboard/schemas.py:321`
+- `TestRow` (class) — `atp/dashboard/schemas.py:329`
+- `AgentColumn` (class) — `atp/dashboard/schemas.py:341`
+- `LeaderboardMatrixResponse` (class) — `atp/dashboard/schemas.py:352`
+- `TimelineEvent` (class) — `atp/dashboard/schemas.py:367`
+- `TimelineEventsResponse` (class) — `atp/dashboard/schemas.py:382`
+- `AgentTimeline` (class) — `atp/dashboard/schemas.py:398`
+- `MultiTimelineResponse` (class) — `atp/dashboard/schemas.py:412`
+- `DashboardSummary` (class) — `atp/dashboard/schemas.py:428`
+- `ConstraintsCreate` (class) — `atp/dashboard/schemas.py:442`
+- `AssertionCreate` (class) — `atp/dashboard/schemas.py:454`
+- `TaskCreate` (class) — `atp/dashboard/schemas.py:463`
+- `ScoringWeightsCreate` (class) — `atp/dashboard/schemas.py:475`
+- `TestCreateRequest` (class) — `atp/dashboard/schemas.py:484`
+- `TestDefaultsCreate` (class) — `atp/dashboard/schemas.py:503`
+- `AgentConfigCreate` (class) — `atp/dashboard/schemas.py:516`
+- `SuiteCreateRequest` (class) — `atp/dashboard/schemas.py:528`
+- `SuiteUpdateRequest` (class) — `atp/dashboard/schemas.py:545`
+- `TestResponse` (class) — `atp/dashboard/schemas.py:559`
+- `SuiteDefinitionResponse` (class) — `atp/dashboard/schemas.py:572`
+- `SuiteDefinitionSummary` (class) — `atp/dashboard/schemas.py:588`
+- `SuiteDefinitionList` (class) — `atp/dashboard/schemas.py:603`
+- `TemplateVariableInfo` (class) — `atp/dashboard/schemas.py:615`
+- `TemplateResponse` (class) — `atp/dashboard/schemas.py:623`
+- `TemplateListResponse` (class) — `atp/dashboard/schemas.py:636`
+- `YAMLExportResponse` (class) — `atp/dashboard/schemas.py:647`
+- `CostRecordResponse` (class) — `atp/dashboard/schemas.py:658`
+- `CostRecordList` (class) — `atp/dashboard/schemas.py:676`
+- `CostBreakdownItem` (class) — `atp/dashboard/schemas.py:685`
+- `CostTrendPoint` (class) — `atp/dashboard/schemas.py:696`
+- `CostSummaryResponse` (class) — `atp/dashboard/schemas.py:705`
+- `BudgetCreate` (class) — `atp/dashboard/schemas.py:721`
+- `BudgetUpdate` (class) — `atp/dashboard/schemas.py:733`
+- `BudgetResponse` (class) — `atp/dashboard/schemas.py:746`
+- `BudgetUsageResponse` (class) — `atp/dashboard/schemas.py:764`
+- `BudgetWithUsageResponse` (class) — `atp/dashboard/schemas.py:779`
+- `BudgetList` (class) — `atp/dashboard/schemas.py:785`
+- `TrendDataPointResponse` (class) — `atp/dashboard/schemas.py:795`
+- `TrendAnalysisResponse` (class) — `atp/dashboard/schemas.py:803`
+- `ScoreTrendsResponse` (class) — `atp/dashboard/schemas.py:818`
+- `AnomalyResultResponse` (class) — `atp/dashboard/schemas.py:828`
+- `AnomalyDetectionResponseSchema` (class) — `atp/dashboard/schemas.py:844`
+- `CorrelationResultResponse` (class) — `atp/dashboard/schemas.py:854`
+- `CorrelationAnalysisResponseSchema` (class) — `atp/dashboard/schemas.py:866`
+- `ScheduledReportCreate` (class) — `atp/dashboard/schemas.py:874`
+- `ScheduledReportUpdate` (class) — `atp/dashboard/schemas.py:886`
+- `ScheduledReportResponse` (class) — `atp/dashboard/schemas.py:899`
+- `ScheduledReportList` (class) — `atp/dashboard/schemas.py:918`
+- `ExportRequest` (class) — `atp/dashboard/schemas.py:925`
+- `VariantCreate` (class) — `atp/dashboard/schemas.py:941`
+- `MetricConfigCreate` (class) — `atp/dashboard/schemas.py:950`
+- `RollbackConfigCreate` (class) — `atp/dashboard/schemas.py:959`
+- `ExperimentCreate` (class) — `atp/dashboard/schemas.py:968`
+- `ExperimentUpdate` (class) — `atp/dashboard/schemas.py:989`
+- `VariantResponse` (class) — `atp/dashboard/schemas.py:998`
+- `VariantMetricsResponse` (class) — `atp/dashboard/schemas.py:1008`
+- `StatisticalResultResponse` (class) — `atp/dashboard/schemas.py:1021`
+- `ExperimentResponse` (class) — `atp/dashboard/schemas.py:1036`
+- `ExperimentSummary` (class) — `atp/dashboard/schemas.py:1065`
+- `ExperimentList` (class) — `atp/dashboard/schemas.py:1084`
+- `ExperimentReportResponse` (class) — `atp/dashboard/schemas.py:1091`
+- `ObservationCreate` (class) — `atp/dashboard/schemas.py:1100`
+- `ObservationResponse` (class) — `atp/dashboard/schemas.py:1114`
+- `TrafficAssignmentResponse` (class) — `atp/dashboard/schemas.py:1132`
+- `BenchmarkCategoryCreate` (class) — `atp/dashboard/schemas.py:1144`
+- `BenchmarkCategoryUpdate` (class) — `atp/dashboard/schemas.py:1156`
+- `BenchmarkCategoryResponse` (class) — `atp/dashboard/schemas.py:1167`
+- `BenchmarkCategoryList` (class) — `atp/dashboard/schemas.py:1185`
+- `AgentProfileCreate` (class) — `atp/dashboard/schemas.py:1192`
+- `AgentProfileUpdate` (class) — `atp/dashboard/schemas.py:1205`
+- `AgentProfileResponse` (class) — `atp/dashboard/schemas.py:1217`
+- `AgentProfileSummary` (class) — `atp/dashboard/schemas.py:1240`
+- `AgentProfileList` (class) — `atp/dashboard/schemas.py:1255`
+- `PublishResultRequest` (class) — `atp/dashboard/schemas.py:1264`
+- `PublishedResultResponse` (class) — `atp/dashboard/schemas.py:1271`
+- `PublishedResultWithProfile` (class) — `atp/dashboard/schemas.py:1293`
+- `PublishedResultList` (class) — `atp/dashboard/schemas.py:1299`
+- `LeaderboardEntry` (class) — `atp/dashboard/schemas.py:1308`
+- `PublicLeaderboardResponse` (class) — `atp/dashboard/schemas.py:1327`
+- `LeaderboardTrendPoint` (class) — `atp/dashboard/schemas.py:1338`
+- `AgentLeaderboardHistory` (class) — `atp/dashboard/schemas.py:1346`
+- `VerificationRequest` (class) — `atp/dashboard/schemas.py:1354`
+- `VerificationBadgeRequest` (class) — `atp/dashboard/schemas.py:1362`
+- `MarketplaceSuiteCreate` (class) — `atp/dashboard/schemas.py:1374`
+- `MarketplaceSuiteUpdate` (class) — `atp/dashboard/schemas.py:1397`
+- `MarketplaceSuiteResponse` (class) — `atp/dashboard/schemas.py:1413`
+- `MarketplaceSuiteSummary` (class) — `atp/dashboard/schemas.py:1446`
+- `MarketplaceSuiteList` (class) — `atp/dashboard/schemas.py:1469`
+- `MarketplaceSuiteDetail` (class) — `atp/dashboard/schemas.py:1478`
+- `MarketplaceSuiteVersionCreate` (class) — `atp/dashboard/schemas.py:1489`
+- `MarketplaceSuiteVersionResponse` (class) — `atp/dashboard/schemas.py:1498`
+- `MarketplaceSuiteVersionList` (class) — `atp/dashboard/schemas.py:1521`
+- `MarketplaceSuiteVersionUpdate` (class) — `atp/dashboard/schemas.py:1528`
+- `MarketplaceSuiteReviewCreate` (class) — `atp/dashboard/schemas.py:1539`
+- `MarketplaceSuiteReviewUpdate` (class) — `atp/dashboard/schemas.py:1548`
+- `MarketplaceSuiteReviewResponse` (class) — `atp/dashboard/schemas.py:1556`
+- `MarketplaceSuiteReviewList` (class) — `atp/dashboard/schemas.py:1576`
+- `MarketplaceSuiteInstallResponse` (class) — `atp/dashboard/schemas.py:1590`
+- `MarketplaceSuiteInstallList` (class) — `atp/dashboard/schemas.py:1604`
+- `MarketplaceSearchParams` (class) — `atp/dashboard/schemas.py:1614`
+- `MarketplaceCategoryStats` (class) — `atp/dashboard/schemas.py:1631`
+- `MarketplaceStats` (class) — `atp/dashboard/schemas.py:1640`
+- `GitHubImportRequest` (class) — `atp/dashboard/schemas.py:1654`
+- `GitHubImportResponse` (class) — `atp/dashboard/schemas.py:1668`
+- `GamePlayerResponse` (class) — `atp/dashboard/schemas.py:1680`
+- `GameResultSummary` (class) — `atp/dashboard/schemas.py:1691`
+- `GameResultDetail` (class) — `atp/dashboard/schemas.py:1707`
+- `GameResultList` (class) — `atp/dashboard/schemas.py:1729`
+- `MatchupResponse` (class) — `atp/dashboard/schemas.py:1738`
+- `TournamentStandingResponse` (class) — `atp/dashboard/schemas.py:1749`
+- `TournamentResultSummary` (class) — `atp/dashboard/schemas.py:1761`
+- `TournamentResultDetail` (class) — `atp/dashboard/schemas.py:1777`
+- `TournamentResultList` (class) — `atp/dashboard/schemas.py:1796`
+- `APITokenCreate` (class) — `atp/dashboard/schemas.py:1813`
+- `APITokenResponse` (class) — `atp/dashboard/schemas.py:1827`
+- `APITokenCreated` (class) — `atp/dashboard/schemas.py:1843`
+- `InviteCreate` (class) — `atp/dashboard/schemas.py:1849`
+- `InviteResponse` (class) — `atp/dashboard/schemas.py:1855`
+- `AgentOwnerCreate` (class) — `atp/dashboard/schemas.py:1871`
+- `AgentOwnerUpdate` (class) — `atp/dashboard/schemas.py:1888`
+- `AgentOwnerResponse` (class) — `atp/dashboard/schemas.py:1896`
+- `ResultStorage` (class) — `atp/dashboard/storage.py:34`
+- `logger` (const) — `atp/dashboard/tenancy/manager.py:24`
+- `TenantError` (class) — `atp/dashboard/tenancy/manager.py:27`
+- `TenantExistsError` (class) — `atp/dashboard/tenancy/manager.py:33`
+- `TenantNotFoundError` (class) — `atp/dashboard/tenancy/manager.py:39`
+- `TenantDeleteError` (class) — `atp/dashboard/tenancy/manager.py:45`
+- `TenantManager` (class) — `atp/dashboard/tenancy/manager.py:51`
+- `logger` (const) — `atp/dashboard/tenancy/middleware.py:22`
+- `QUOTA_EXCEEDED_RESPONSE` (const) — `atp/dashboard/tenancy/middleware.py:26`
+- `QuotaEnforcementMiddleware` (class) — `atp/dashboard/tenancy/middleware.py:32`
+- `get_quota_checker` (function) — `atp/dashboard/tenancy/middleware.py:234`
+- `get_quota_tracker` (function) — `atp/dashboard/tenancy/middleware.py:248`
+- `get_quota_checker_dep` (function) — `atp/dashboard/tenancy/middleware.py:262`
+- `get_quota_tracker_dep` (function) — `atp/dashboard/tenancy/middleware.py:283`
+- `QuotaCheckerDep` (const) — `atp/dashboard/tenancy/middleware.py:305`
+- `QuotaTrackerDep` (const) — `atp/dashboard/tenancy/middleware.py:306`
+- `require_quota` (function) — `atp/dashboard/tenancy/middleware.py:309`
+- `create_quota_exceeded_response` (function) — `atp/dashboard/tenancy/middleware.py:351`
+- `logger` (const) — `atp/dashboard/tenancy/migration.py:22`
+- `ensure_tenant_table` (function) — `atp/dashboard/tenancy/migration.py:25`
+- `create_default_tenant` (function) — `atp/dashboard/tenancy/migration.py:42`
+- `migrate_existing_data_to_default_tenant` (function) — `atp/dashboard/tenancy/migration.py:91`
+- `run_tenant_migration` (function) — `atp/dashboard/tenancy/migration.py:174`
+- `verify_tenant_isolation` (function) — `atp/dashboard/tenancy/migration.py:199`
+- `TenantQuotas` (class) — `atp/dashboard/tenancy/models.py:17`
+- `TenantSettings` (class) — `atp/dashboard/tenancy/models.py:46`
+- `Tenant` (class) — `atp/dashboard/tenancy/models.py:77`
+- `DEFAULT_TENANT_ID` (const) — `atp/dashboard/tenancy/models.py:146`
+- `DEFAULT_TENANT_NAME` (const) — `atp/dashboard/tenancy/models.py:147`
+- `DEFAULT_TENANT_SCHEMA` (const) — `atp/dashboard/tenancy/models.py:148`
+- `logger` (const) — `atp/dashboard/tenancy/quotas.py:28`
+- `STORAGE_CACHE_TTL_SECONDS` (const) — `atp/dashboard/tenancy/quotas.py:32`
+- `QuotaType` (class) — `atp/dashboard/tenancy/quotas.py:35`
+- `QuotaViolation` (class) — `atp/dashboard/tenancy/quotas.py:47`
+- `QuotaCheckResult` (class) — `atp/dashboard/tenancy/quotas.py:58`
+- `QuotaUsage` (class) — `atp/dashboard/tenancy/quotas.py:72`
+- `QuotaExceededError` (class) — `atp/dashboard/tenancy/quotas.py:88`
+- `QuotaChecker` (class) — `atp/dashboard/tenancy/quotas.py:107`
+- `QuotaUsageTracker` (class) — `atp/dashboard/tenancy/quotas.py:642`
+- `TenantCreate` (class) — `atp/dashboard/tenancy/schemas.py:10`
+- `TenantUpdate` (class) — `atp/dashboard/tenancy/schemas.py:38`
+- `TenantResponse` (class) — `atp/dashboard/tenancy/schemas.py:50`
+- `TenantSummary` (class) — `atp/dashboard/tenancy/schemas.py:68`
+- `TenantList` (class) — `atp/dashboard/tenancy/schemas.py:80`
+- `TenantUsage` (class) — `atp/dashboard/tenancy/schemas.py:89`
+- `TenantUsageResponse` (class) — `atp/dashboard/tenancy/schemas.py:102`
+- `TenantQuotaCheck` (class) — `atp/dashboard/tenancy/schemas.py:112`
+- `TenantQuotaStatus` (class) — `atp/dashboard/tenancy/schemas.py:122`
+- `logger` (const) — `atp/dashboard/tenancy/session.py:17`
+- `T` (const) — `atp/dashboard/tenancy/session.py:19`
+- `TenantAwareSession` (class) — `atp/dashboard/tenancy/session.py:22`
+- `TenantSessionFactory` (class) — `atp/dashboard/tenancy/session.py:116`
+- `get_tenant_session_factory` (function) — `atp/dashboard/tenancy/session.py:194`
+- `set_tenant_factory` (function) — `atp/dashboard/tenancy/session.py:210`
+- `get_tenant_factory` (function) — `atp/dashboard/tenancy/session.py:220`
+- `generate_api_token` (function) — `atp/dashboard/tokens.py:21`
+- `hash_token` (function) — `atp/dashboard/tokens.py:27`
+- `generate_invite_code` (function) — `atp/dashboard/tokens.py:32`
+- `APIToken` (class) — `atp/dashboard/tokens.py:37`
+- `Invite` (class) — `atp/dashboard/tokens.py:86`
+- `can_view_reasoning` (function) — `atp/dashboard/tournament/access.py:14`
+- `BuiltinNotFoundError` (class) — `atp/dashboard/tournament/builtins.py:33`
+- `list_builtins_for_game` (function) — `atp/dashboard/tournament/builtins.py:90`
+- `resolve_builtin` (function) — `atp/dashboard/tournament/builtins.py:119`
+- `run_deadline_worker` (function) — `atp/dashboard/tournament/deadlines.py:57`
+- `TournamentError` (class) — `atp/dashboard/tournament/errors.py:11`
+- `ValidationError` (class) — `atp/dashboard/tournament/errors.py:15`
+- `RosterValidationError` (class) — `atp/dashboard/tournament/errors.py:23`
+- `ConflictError` (class) — `atp/dashboard/tournament/errors.py:33`
+- `NotFoundError` (class) — `atp/dashboard/tournament/errors.py:41`
+- `ConcurrentPrivateCapExceededError` (class) — `atp/dashboard/tournament/errors.py:53`
+- `logger` (const) — `atp/dashboard/tournament/events.py:24`
+- `EventType` (const) — `atp/dashboard/tournament/events.py:28`
+- `TournamentEventBus` (class) — `atp/dashboard/tournament/events.py:53`
+- `AnyTournamentEvent` (const) — `atp/dashboard/tournament/events.py:171`
+- `TournamentStatus` (class) — `atp/dashboard/tournament/models.py:27`
+- `RoundStatus` (class) — `atp/dashboard/tournament/models.py:36`
+- `ActionSource` (class) — `atp/dashboard/tournament/models.py:54`
+- `Tournament` (class) — `atp/dashboard/tournament/models.py:75`
+- `Participant` (class) — `atp/dashboard/tournament/models.py:194`
+- `Round` (class) — `atp/dashboard/tournament/models.py:291`
+- `Action` (class) — `atp/dashboard/tournament/models.py:335`
+- `CancelReason` (class) — `atp/dashboard/tournament/reasons.py:7`
+- `ActionTelemetry` (class) — `atp/dashboard/tournament/schemas.py:14`
+- `TournamentResponse` (class) — `atp/dashboard/tournament/schemas.py:37`
+- `JoinRequest` (class) — `atp/dashboard/tournament/schemas.py:47`
+- `ActionRequest` (class) — `atp/dashboard/tournament/schemas.py:53`
+- `RoundResponse` (class) — `atp/dashboard/tournament/schemas.py:59`
+- `PDAction` (class) — `atp/dashboard/tournament/schemas.py:68`
+- `ElFarolAction` (class) — `atp/dashboard/tournament/schemas.py:80`
+- `SHAction` (class) — `atp/dashboard/tournament/schemas.py:132`
+- `BoSAction` (class) — `atp/dashboard/tournament/schemas.py:143`
+- `PGAction` (class) — `atp/dashboard/tournament/schemas.py:155`
+- `TournamentAction` (const) — `atp/dashboard/tournament/schemas.py:167`
+- `PDRoundState` (class) — `atp/dashboard/tournament/schemas.py:173`
+- `ElFarolRoundState` (class) — `atp/dashboard/tournament/schemas.py:196`
+- `SHRoundState` (class) — `atp/dashboard/tournament/schemas.py:222`
+- `BoSRoundState` (class) — `atp/dashboard/tournament/schemas.py:249`
+- `PGRoundState` (class) — `atp/dashboard/tournament/schemas.py:278`
+- `RoundState` (const) — `atp/dashboard/tournament/schemas.py:311`
+- `logger` (const) — `atp/dashboard/tournament/service.py:74`
+- `TOURNAMENT_PENDING_MAX_WAIT_S` (const) — `atp/dashboard/tournament/service.py:86`
+- `SUPPORTED_GAMES` (const) — `atp/dashboard/tournament/service.py:90`
+- `TournamentService` (class) — `atp/dashboard/tournament/service.py:190`
+- `is_tournament_visible_to` (function) — `atp/dashboard/tournament/visibility.py:27`
+- `logger` (const) — `atp/dashboard/v2/config.py:15`
+- `DashboardConfig` (class) — `atp/dashboard/v2/config.py:20`
+- `get_db_session` (function) — `atp/dashboard/v2/dependencies.py:26`
+- `get_dashboard_config` (function) — `atp/dashboard/v2/dependencies.py:47`
+- `get_db` (function) — `atp/dashboard/v2/dependencies.py:61`
+- `DBSession` (const) — `atp/dashboard/v2/dependencies.py:71`
+- `Config` (const) — `atp/dashboard/v2/dependencies.py:72`
+- `CurrentUser` (const) — `atp/dashboard/v2/dependencies.py:73`
+- `RequiredUser` (const) — `atp/dashboard/v2/dependencies.py:74`
+- `AdminUser` (const) — `atp/dashboard/v2/dependencies.py:75`
+- `get_benchmark_caller` (function) — `atp/dashboard/v2/dependencies.py:78`
+- `reject_tournament_token` (function) — `atp/dashboard/v2/dependencies.py:98`
+- `BenchmarkCaller` (const) — `atp/dashboard/v2/dependencies.py:113`
+- `PaginationParams` (class) — `atp/dashboard/v2/dependencies.py:116`
+- `Pagination` (const) — `atp/dashboard/v2/dependencies.py:134`
+- `require_feature` (function) — `atp/dashboard/v2/dependencies.py:137`
+- `get_test_service` (function) — `atp/dashboard/v2/dependencies.py:168`
+- `get_comparison_service` (function) — `atp/dashboard/v2/dependencies.py:185`
+- `get_export_service` (function) — `atp/dashboard/v2/dependencies.py:202`
+- `TestServiceDep` (const) — `atp/dashboard/v2/dependencies.py:220`
+- `ComparisonServiceDep` (const) — `atp/dashboard/v2/dependencies.py:221`
+- `ExportServiceDep` (const) — `atp/dashboard/v2/dependencies.py:222`
+- `V2_DIR` (const) — `atp/dashboard/v2/factory.py:34`
+- `TEMPLATES_DIR` (const) — `atp/dashboard/v2/factory.py:35`
+- `STATIC_DIR` (const) — `atp/dashboard/v2/factory.py:36`
+- `assert_single_worker` (function) — `atp/dashboard/v2/factory.py:39`
+- `create_app` (function) — `atp/dashboard/v2/factory.py:76`
+- `create_test_app` (function) — `atp/dashboard/v2/factory.py:295`
+- `GAME_COPY` (const) — `atp/dashboard/v2/game_copy.py:95`
+- `get_copy` (function) — `atp/dashboard/v2/game_copy.py:497`
+- `ExtrasFormatter` (class) — `atp/dashboard/v2/logging_config.py:69`
+- `configure_app_logging` (function) — `atp/dashboard/v2/logging_config.py:117`
+- `logger` (const) — `atp/dashboard/v2/rate_limit.py:26`
+- `get_rate_limit_key` (function) — `atp/dashboard/v2/rate_limit.py:29`
+- `limiter` (const) — `atp/dashboard/v2/rate_limit.py:49`
+- `create_limiter` (function) — `atp/dashboard/v2/rate_limit.py:55`
+- `JWTUserStateMiddleware` (class) — `atp/dashboard/v2/rate_limit.py:142`
+- `rate_limit_exceeded_handler` (function) — `atp/dashboard/v2/rate_limit.py:345`
+- `router` (const) — `atp/dashboard/v2/routes/__init__.py:102`
+- `router` (const) — `atp/dashboard/v2/routes/admin_ui.py:33`
+- `router` (const) — `atp/dashboard/v2/routes/agent_management_api.py:20`
+- `create_agent_for_user` (function) — `atp/dashboard/v2/routes/agent_management_api.py:27`
+- `router` (const) — `atp/dashboard/v2/routes/agent_traces.py:12`
+- `TraceStepResponse` (class) — `atp/dashboard/v2/routes/agent_traces.py:15`
+- `TraceSummaryResponse` (class) — `atp/dashboard/v2/routes/agent_traces.py:26`
+- `TraceDetailResponse` (class) — `atp/dashboard/v2/routes/agent_traces.py:40`
+- `TraceListResponse` (class) — `atp/dashboard/v2/routes/agent_traces.py:58`
+- `router` (const) — `atp/dashboard/v2/routes/agents.py:26`
+- `router` (const) — `atp/dashboard/v2/routes/analytics.py:48`
+- `router` (const) — `atp/dashboard/v2/routes/audit.py:48`
+- `router` (const) — `atp/dashboard/v2/routes/auth.py:27`
+- `router` (const) — `atp/dashboard/v2/routes/benchmark_api.py:53`
+- `MAX_RUN_EVENTS` (const) — `atp/dashboard/v2/routes/benchmark_api.py:59`
+- `router` (const) — `atp/dashboard/v2/routes/budgets.py:34`
+- `router` (const) — `atp/dashboard/v2/routes/builtins_api.py:16`
+- `BuiltinEntry` (class) — `atp/dashboard/v2/routes/builtins_api.py:19`
+- `BuiltinsResponse` (class) — `atp/dashboard/v2/routes/builtins_api.py:24`
+- `logger` (const) — `atp/dashboard/v2/routes/catalog.py:16`
+- `router` (const) — `atp/dashboard/v2/routes/catalog.py:18`
+- `CategoryResponse` (class) — `atp/dashboard/v2/routes/catalog.py:24`
+- `SuiteResponse` (class) — `atp/dashboard/v2/routes/catalog.py:34`
+- `TestResponse` (class) — `atp/dashboard/v2/routes/catalog.py:46`
+- `SuiteDetailResponse` (class) — `atp/dashboard/v2/routes/catalog.py:58`
+- `SubmissionResponse` (class) — `atp/dashboard/v2/routes/catalog.py:71`
+- `GlobalLeaderboardEntry` (class) — `atp/dashboard/v2/routes/catalog.py:83`
+- `router` (const) — `atp/dashboard/v2/routes/comparison.py:30`
+- `router` (const) — `atp/dashboard/v2/routes/costs.py:32`
+- `get_analytics_session` (function) — `atp/dashboard/v2/routes/costs.py:35`
+- `router` (const) — `atp/dashboard/v2/routes/definitions.py:39`
+- `router` (const) — `atp/dashboard/v2/routes/device_auth.py:24`
+- `DeviceInitResponse` (class) — `atp/dashboard/v2/routes/device_auth.py:44`
+- `DevicePollRequest` (class) — `atp/dashboard/v2/routes/device_auth.py:54`
+- `SHAPE_VERSION` (const) — `atp/dashboard/v2/routes/el_farol_dashboard.py:24`
+- `router` (const) — `atp/dashboard/v2/routes/el_farol_dashboard.py:26`
+- `DashboardAgent` (class) — `atp/dashboard/v2/routes/el_farol_dashboard.py:34`
+- `SlotPayoff` (class) — `atp/dashboard/v2/routes/el_farol_dashboard.py:46`
+- `IntervalPayoff` (class) — `atp/dashboard/v2/routes/el_farol_dashboard.py:52`
+- `DashboardDecision` (class) — `atp/dashboard/v2/routes/el_farol_dashboard.py:58`
+- `DashboardRound` (class) — `atp/dashboard/v2/routes/el_farol_dashboard.py:88`
+- `DashboardPayload` (class) — `atp/dashboard/v2/routes/el_farol_dashboard.py:97`
+- `ShapeVersion` (const) — `atp/dashboard/v2/routes/el_farol_dashboard.py:324`
+- `router` (const) — `atp/dashboard/v2/routes/experiments.py:56`
+- `router` (const) — `atp/dashboard/v2/routes/games.py:41`
+- `router` (const) — `atp/dashboard/v2/routes/home.py:21`
+- `router` (const) — `atp/dashboard/v2/routes/invite_api.py:16`
+- `create_invite_for_admin` (function) — `atp/dashboard/v2/routes/invite_api.py:23`
+- `deactivate_invite_for_admin` (function) — `atp/dashboard/v2/routes/invite_api.py:45`
+- `logger` (const) — `atp/dashboard/v2/routes/leaderboard.py:28`
+- `router` (const) — `atp/dashboard/v2/routes/leaderboard.py:30`
+- `logger` (const) — `atp/dashboard/v2/routes/marketplace.py:83`
+- `router` (const) — `atp/dashboard/v2/routes/marketplace.py:85`
+- `get_marketplace_cache` (function) — `atp/dashboard/v2/routes/marketplace.py:91`
+- `parse_semver` (function) — `atp/dashboard/v2/routes/marketplace.py:99`
+- `router` (const) — `atp/dashboard/v2/routes/metrics.py:15`
+- `MetricsStatusResponse` (class) — `atp/dashboard/v2/routes/metrics.py:18`
+- `logger` (const) — `atp/dashboard/v2/routes/public_leaderboard.py:63`
+- `router` (const) — `atp/dashboard/v2/routes/public_leaderboard.py:65`
+- `get_public_leaderboard_cache` (function) — `atp/dashboard/v2/routes/public_leaderboard.py:71`
+- `router` (const) — `atp/dashboard/v2/routes/roles.py:31`
+- `router` (const) — `atp/dashboard/v2/routes/saml.py:37`
+- `SAMLInitRequest` (class) — `atp/dashboard/v2/routes/saml.py:40`
+- `SAMLInitResponse` (class) — `atp/dashboard/v2/routes/saml.py:51`
+- `SAMLConfigCreate` (class) — `atp/dashboard/v2/routes/saml.py:58`
+- `SAMLConfigResponse` (class) — `atp/dashboard/v2/routes/saml.py:98`
+- `SAMLProviderPresetResponse` (class) — `atp/dashboard/v2/routes/saml.py:114`
+- `SAMLIdPMetadataRequest` (class) — `atp/dashboard/v2/routes/saml.py:124`
+- `SAMLIdPMetadataResponse` (class) — `atp/dashboard/v2/routes/saml.py:133`
+- `router` (const) — `atp/dashboard/v2/routes/sso.py:35`
+- `SSOInitRequest` (class) — `atp/dashboard/v2/routes/sso.py:38`
+- `SSOInitResponse` (class) — `atp/dashboard/v2/routes/sso.py:46`
+- `SSOConfigCreate` (class) — `atp/dashboard/v2/routes/sso.py:53`
+- `SSOConfigResponse` (class) — `atp/dashboard/v2/routes/sso.py:76`
+- `ProviderPresetResponse` (class) — `atp/dashboard/v2/routes/sso.py:89`
+- `router` (const) — `atp/dashboard/v2/routes/suites.py:28`
+- `router` (const) — `atp/dashboard/v2/routes/templates.py:22`
+- `router` (const) — `atp/dashboard/v2/routes/tenants.py:36`
+- `get_tenant_manager` (function) — `atp/dashboard/v2/routes/tenants.py:39`
+- `TenantManagerDep` (const) — `atp/dashboard/v2/routes/tenants.py:50`
+- `router` (const) — `atp/dashboard/v2/routes/tests.py:29`
+- `router` (const) — `atp/dashboard/v2/routes/timeline.py:28`
+- `router` (const) — `atp/dashboard/v2/routes/token_api.py:17`
+- `create_token_for_user` (function) — `atp/dashboard/v2/routes/token_api.py:24`
+- `revoke_token_for_user` (function) — `atp/dashboard/v2/routes/token_api.py:119`
+- `router` (const) — `atp/dashboard/v2/routes/tournament_api.py:47`
+- `get_current_user_for_tournament` (function) — `atp/dashboard/v2/routes/tournament_api.py:55`
+- `get_tournament_service` (function) — `atp/dashboard/v2/routes/tournament_api.py:83`
+- `TournamentUser` (const) — `atp/dashboard/v2/routes/tournament_api.py:94`
+- `TournamentSvc` (const) — `atp/dashboard/v2/routes/tournament_api.py:95`
+- `BuiltinRosterEntry` (class) — `atp/dashboard/v2/routes/tournament_api.py:103`
+- `CreateTournamentRequest` (class) — `atp/dashboard/v2/routes/tournament_api.py:109`
+- `router` (const) — `atp/dashboard/v2/routes/tournament_live.py:46`
+- `router` (const) — `atp/dashboard/v2/routes/traces.py:15`
+- `SpanResponse` (class) — `atp/dashboard/v2/routes/traces.py:18`
+- `TracesResponse` (class) — `atp/dashboard/v2/routes/traces.py:37`
+- `TelemetryStatusResponse` (class) — `atp/dashboard/v2/routes/traces.py:46`
+- `router` (const) — `atp/dashboard/v2/routes/trends.py:26`
+- `logger` (const) — `atp/dashboard/v2/routes/ui.py:31`
+- `router` (const) — `atp/dashboard/v2/routes/ui.py:33`
+- `logger` (const) — `atp/dashboard/v2/routes/upload.py:36`
+- `router` (const) — `atp/dashboard/v2/routes/upload.py:38`
+- `ALLOWED_EXTENSIONS` (const) — `atp/dashboard/v2/routes/upload.py:40`
+- `ALLOWED_CONTENT_TYPES` (const) — `atp/dashboard/v2/routes/upload.py:41`
+- `MAX_PARSED_SIZE_BYTES` (const) — `atp/dashboard/v2/routes/upload.py:48`
+- `ValidationReport` (class) — `atp/dashboard/v2/routes/upload.py:51`
+- `UploadResponse` (class) — `atp/dashboard/v2/routes/upload.py:59`
+- `router` (const) — `atp/dashboard/v2/routes/users.py:35`
+- `UserResponse` (class) — `atp/dashboard/v2/routes/users.py:38`
+- `UserListResponse` (class) — `atp/dashboard/v2/routes/users.py:48`
+- `RoleAssignment` (class) — `atp/dashboard/v2/routes/users.py:57`
+- `logger` (const) — `atp/dashboard/v2/routes/websocket.py:15`
+- `router` (const) — `atp/dashboard/v2/routes/websocket.py:17`
+- `router` (const) — `atp/dashboard/v2/routes/winners_api.py:23`
+- `router` (const) — `atp/dashboard/v2/routes/winners_ui.py:21`
+- `AgentService` (class) — `atp/dashboard/v2/services/agent_service.py:14`
+- `ComparisonService` (class) — `atp/dashboard/v2/services/comparison_service.py:32`
+- `CAPACITY_RATIO` (const) — `atp/dashboard/v2/services/el_farol_constants.py:9`
+- `ExportService` (class) — `atp/dashboard/v2/services/export_service.py:34`
+- `logger` (const) — `atp/dashboard/v2/services/github_import.py:17`
+- `parse_github_url` (function) — `atp/dashboard/v2/services/github_import.py:87`
+- `build_raw_url` (function) — `atp/dashboard/v2/services/github_import.py:124`
+- `fetch_github_file` (function) — `atp/dashboard/v2/services/github_import.py:141`
+- `validate_suite_yaml` (function) — `atp/dashboard/v2/services/github_import.py:192`
+- `import_from_github` (function) — `atp/dashboard/v2/services/github_import.py:222`
+- `TestService` (class) — `atp/dashboard/v2/services/test_service.py:35`
+- `SCHEMA_VERSION` (const) — `atp/dashboard/v2/services/winners.py:32`
+- `WinnerEntry` (class) — `atp/dashboard/v2/services/winners.py:35`
+- `HallEntry` (class) — `atp/dashboard/v2/services/winners.py:57`
+- `LeaderboardPayload` (class) — `atp/dashboard/v2/services/winners.py:73`
+- `get_winners_cache` (function) — `atp/dashboard/v2/services/winners.py:107`
+- `get_hof_cache` (function) — `atp/dashboard/v2/services/winners.py:118`
+- `reset_caches_for_tests` (function) — `atp/dashboard/v2/services/winners.py:133`
+- `winners_cache_key` (function) — `atp/dashboard/v2/services/winners.py:140`
+- `hof_cache_key` (function) — `atp/dashboard/v2/services/winners.py:149`
+- `CAPACITY_RATIO` (const) — `atp/dashboard/v2/services/winners.py:160`
+- `utc_now` (function) — `atp/dashboard/v2/services/winners.py:383`
+- `logger` (const) — `atp/dashboard/v2/websocket/manager.py:21`
+- `ConnectionManager` (class) — `atp/dashboard/v2/websocket/manager.py:24`
+- `get_connection_manager` (function) — `atp/dashboard/v2/websocket/manager.py:661`
+- `set_connection_manager` (function) — `atp/dashboard/v2/websocket/manager.py:673`
+- `WSMessageType` (class) — `atp/dashboard/v2/websocket/models.py:13`
+- `WSSubscription` (class) — `atp/dashboard/v2/websocket/models.py:38`
+- `WSMessage` (class) — `atp/dashboard/v2/websocket/models.py:47`
+- `WSClientInfo` (class) — `atp/dashboard/v2/websocket/models.py:58`
+- `TestProgressData` (class) — `atp/dashboard/v2/websocket/models.py:74`
+- `SuiteProgressData` (class) — `atp/dashboard/v2/websocket/models.py:90`
+- `LogEntryData` (class) — `atp/dashboard/v2/websocket/models.py:106`
+- `EventData` (class) — `atp/dashboard/v2/websocket/models.py:121`
+- `DeltaUpdateData` (class) — `atp/dashboard/v2/websocket/models.py:134`
+- `logger` (const) — `atp/dashboard/v2/websocket/pubsub.py:15`
+- `Topic` (class) — `atp/dashboard/v2/websocket/pubsub.py:18`
+- `PubSubManager` (class) — `atp/dashboard/v2/websocket/pubsub.py:79`
+- `logger` (const) — `atp/dashboard/webhook.py:20`
+- `RETRY_DELAYS` (const) — `atp/dashboard/webhook.py:22`
+- `REQUEST_TIMEOUT` (const) — `atp/dashboard/webhook.py:23`
+- `validate_webhook_url` (function) — `atp/dashboard/webhook.py:31`
+- `build_webhook_payload` (function) — `atp/dashboard/webhook.py:64`
+- `deliver_webhook` (function) — `atp/dashboard/webhook.py:91`
+- `schedule_webhook` (function) — `atp/dashboard/webhook.py:145`
+- `TestVariant` (class) — `tests/unit/analytics/test_ab_testing.py:83`
+- `TestExperimentConfig` (class) — `tests/unit/analytics/test_ab_testing.py:116`
+- `TestExperiment` (class) — `tests/unit/analytics/test_ab_testing.py:154`
+- `TestTrafficRouter` (class) — `tests/unit/analytics/test_ab_testing.py:233`
+- `TestExperimentAnalyzer` (class) — `tests/unit/analytics/test_ab_testing.py:318`
+- `TestExperimentManager` (class) — `tests/unit/analytics/test_ab_testing.py:472`
+- `TestModuleFunctions` (class) — `tests/unit/analytics/test_ab_testing.py:727`
+- `TestWinnerDetermination` (class) — `tests/unit/analytics/test_ab_testing.py:750`
+- `TestAdvancedAnalyticsService` (class) — `tests/unit/analytics/test_advanced.py:20`
+- `TestScheduledReportsRepository` (class) — `tests/unit/analytics/test_advanced.py:355`
+- `TestScheduledReportConfig` (class) — `tests/unit/analytics/test_advanced.py:400`
+- `TestTrendDirection` (class) — `tests/unit/analytics/test_advanced.py:441`
+- `TestAnomalyType` (class) — `tests/unit/analytics/test_advanced.py:452`
+- `TestCorrelationStrength` (class) — `tests/unit/analytics/test_advanced.py:464`
+- `TestTrendDataPoint` (class) — `tests/unit/analytics/test_advanced.py:478`
+- `TestTrendAnalysisResult` (class) — `tests/unit/analytics/test_advanced.py:498`
+- `TestAnomalyResult` (class) — `tests/unit/analytics/test_advanced.py:526`
+- `TestCorrelationResult` (class) — `tests/unit/analytics/test_advanced.py:564`
+- `TestScoreTrendResponse` (class) — `tests/unit/analytics/test_advanced.py:584`
+- `TestAnomalyDetectionResponse` (class) — `tests/unit/analytics/test_advanced.py:603`
+- `TestCorrelationAnalysisResponse` (class) — `tests/unit/analytics/test_advanced.py:622`
+- `TestExportFormat` (class) — `tests/unit/analytics/test_advanced.py:639`
+- `TestScheduledReportFrequency` (class) — `tests/unit/analytics/test_advanced.py:650`
+- `TestAlertConfig` (class) — `tests/unit/analytics/test_budgets.py:27`
+- `TestBudgetConfig` (class) — `tests/unit/analytics/test_budgets.py:62`
+- `TestBudgetPeriod` (class) — `tests/unit/analytics/test_budgets.py:181`
+- `TestBudgetStatus` (class) — `tests/unit/analytics/test_budgets.py:197`
+- `TestBudgetCheckResult` (class) — `tests/unit/analytics/test_budgets.py:244`
+- `TestLogAlertChannel` (class) — `tests/unit/analytics/test_budgets.py:263`
+- `TestWebhookAlertChannel` (class) — `tests/unit/analytics/test_budgets.py:294`
+- `TestEmailAlertChannel` (class) — `tests/unit/analytics/test_budgets.py:366`
+- `TestAlertChannelRegistry` (class) — `tests/unit/analytics/test_budgets.py:397`
+- `TestBudgetManager` (class) — `tests/unit/analytics/test_budgets.py:469`
+- `TestGlobalBudgetManager` (class) — `tests/unit/analytics/test_budgets.py:828`
+- `TestModelPricing` (class) — `tests/unit/analytics/test_cost.py:21`
+- `TestPricingConfig` (class) — `tests/unit/analytics/test_cost.py:61`
+- `TestCostEvent` (class) — `tests/unit/analytics/test_cost.py:203`
+- `TestCostTracker` (class) — `tests/unit/analytics/test_cost.py:248`
+- `TestGlobalCostTracker` (class) — `tests/unit/analytics/test_cost.py:418`
+- `TestPricingConfigFromYaml` (class) — `tests/unit/analytics/test_cost.py:465`
+- `TestAnalyticsDatabase` (class) — `tests/unit/analytics/test_database.py:16`
+- `TestDatabaseGlobals` (class) — `tests/unit/analytics/test_database.py:133`
+- `TestDatabaseIntegration` (class) — `tests/unit/analytics/test_database.py:183`
+- `TestCostRecord` (class) — `tests/unit/analytics/test_models.py:9`
+- `TestCostBudget` (class) — `tests/unit/analytics/test_models.py:103`
+- `TestCostRecordCRUD` (class) — `tests/unit/analytics/test_repository.py:15`
+- `TestCostBudgetCRUD` (class) — `tests/unit/analytics/test_repository.py:197`
+- `TestAggregationQueries` (class) — `tests/unit/analytics/test_repository.py:355`
+- `TestBudgetUsage` (class) — `tests/unit/analytics/test_repository.py:629`
+
+## Modules
+
+_140 files, 761 public symbols, 0 internal imports._
+
+- `atp/analytics/__init__.py` (python)
+- `atp/analytics/ab_testing.py` (python)
+- `atp/analytics/advanced.py` (python)
+- `atp/analytics/budgets.py` (python)
+- `atp/analytics/cost.py` (python)
+- `atp/analytics/database.py` (python)
+- `atp/analytics/estimator.py` (python)
+- `atp/analytics/models.py` (python)
+- `atp/analytics/repository.py` (python)
+- `atp/analytics/trend.py` (python)
+- `atp/dashboard/__init__.py` (python)
+- `atp/dashboard/__main__.py` (python)
+- `atp/dashboard/audit.py` (python)
+- `atp/dashboard/audit_middleware.py` (python)
+- `atp/dashboard/auth/__init__.py` (python)
+- `atp/dashboard/auth/device_flow.py` (python)
+- `atp/dashboard/auth/post_auth.py` (python)
+- `atp/dashboard/auth/sso/__init__.py` (python)
+- `atp/dashboard/auth/sso/oidc.py` (python)
+- `atp/dashboard/auth/sso/saml.py` (python)
+- `atp/dashboard/auth/state_store.py` (python)
+- `atp/dashboard/benchmark/__init__.py` (python)
+- `atp/dashboard/benchmark/models.py` (python)
+- `atp/dashboard/benchmark/schemas.py` (python)
+- `atp/dashboard/benchmark/service.py` (python)
+- `atp/dashboard/cli/__init__.py` (python)
+- `atp/dashboard/cli/admin.py` (python)
+- `atp/dashboard/database.py` (python)
+- `atp/dashboard/mcp/__init__.py` (python)
+- `atp/dashboard/mcp/auth.py` (python)
+- `atp/dashboard/mcp/notifications.py` (python)
+- `atp/dashboard/mcp/observability.py` (python)
+- `atp/dashboard/mcp/tools.py` (python)
+- `atp/dashboard/migrations/__init__.py` (python)
+- `atp/dashboard/migrations/probes/__init__.py` (python)
+- `atp/dashboard/migrations/probes/check_tournament_invariants.py` (python)
+- `atp/dashboard/migrations/url_helpers.py` (python)
+- `atp/dashboard/models.py` (python)
+- `atp/dashboard/optimized_queries.py` (python)
+- `atp/dashboard/query_cache.py` (python)
+- `atp/dashboard/rbac/__init__.py` (python)
+- `atp/dashboard/rbac/models.py` (python)
+- `atp/dashboard/schemas.py` (python)
+- `atp/dashboard/storage.py` (python)
+- `atp/dashboard/tenancy/__init__.py` (python)
+- `atp/dashboard/tenancy/manager.py` (python)
+- `atp/dashboard/tenancy/middleware.py` (python)
+- `atp/dashboard/tenancy/migration.py` (python)
+- `atp/dashboard/tenancy/models.py` (python)
+- `atp/dashboard/tenancy/quotas.py` (python)
+- `atp/dashboard/tenancy/schemas.py` (python)
+- `atp/dashboard/tenancy/session.py` (python)
+- `atp/dashboard/tokens.py` (python)
+- `atp/dashboard/tournament/__init__.py` (python)
+- `atp/dashboard/tournament/access.py` (python)
+- `atp/dashboard/tournament/builtins.py` (python)
+- `atp/dashboard/tournament/deadlines.py` (python)
+- `atp/dashboard/tournament/errors.py` (python)
+- `atp/dashboard/tournament/events.py` (python)
+- `atp/dashboard/tournament/models.py` (python)
+- `atp/dashboard/tournament/reasons.py` (python)
+- `atp/dashboard/tournament/schemas.py` (python)
+- `atp/dashboard/tournament/service.py` (python)
+- `atp/dashboard/tournament/state.py` (python)
+- `atp/dashboard/tournament/visibility.py` (python)
+- `atp/dashboard/v2/__init__.py` (python)
+- `atp/dashboard/v2/config.py` (python)
+- `atp/dashboard/v2/dependencies.py` (python)
+- `atp/dashboard/v2/factory.py` (python)
+- `atp/dashboard/v2/game_copy.py` (python)
+- `atp/dashboard/v2/logging_config.py` (python)
+- `atp/dashboard/v2/rate_limit.py` (python)
+- `atp/dashboard/v2/routes/__init__.py` (python)
+- `atp/dashboard/v2/routes/admin_ui.py` (python)
+- `atp/dashboard/v2/routes/agent_management_api.py` (python)
+- `atp/dashboard/v2/routes/agent_traces.py` (python)
+- `atp/dashboard/v2/routes/agents.py` (python)
+- `atp/dashboard/v2/routes/analytics.py` (python)
+- `atp/dashboard/v2/routes/audit.py` (python)
+- `atp/dashboard/v2/routes/auth.py` (python)
+- `atp/dashboard/v2/routes/benchmark_api.py` (python)
+- `atp/dashboard/v2/routes/budgets.py` (python)
+- `atp/dashboard/v2/routes/builtins_api.py` (python)
+- `atp/dashboard/v2/routes/catalog.py` (python)
+- `atp/dashboard/v2/routes/comparison.py` (python)
+- `atp/dashboard/v2/routes/costs.py` (python)
+- `atp/dashboard/v2/routes/definitions.py` (python)
+- `atp/dashboard/v2/routes/device_auth.py` (python)
+- `atp/dashboard/v2/routes/el_farol_dashboard.py` (python)
+- `atp/dashboard/v2/routes/el_farol_from_tournament.py` (python)
+- `atp/dashboard/v2/routes/experiments.py` (python)
+- `atp/dashboard/v2/routes/games.py` (python)
+- `atp/dashboard/v2/routes/home.py` (python)
+- `atp/dashboard/v2/routes/invite_api.py` (python)
+- `atp/dashboard/v2/routes/leaderboard.py` (python)
+- `atp/dashboard/v2/routes/marketplace.py` (python)
+- `atp/dashboard/v2/routes/metrics.py` (python)
+- `atp/dashboard/v2/routes/public_leaderboard.py` (python)
+- `atp/dashboard/v2/routes/roles.py` (python)
+- `atp/dashboard/v2/routes/saml.py` (python)
+- `atp/dashboard/v2/routes/sso.py` (python)
+- `atp/dashboard/v2/routes/suites.py` (python)
+- `atp/dashboard/v2/routes/templates.py` (python)
+- `atp/dashboard/v2/routes/tenants.py` (python)
+- `atp/dashboard/v2/routes/tests.py` (python)
+- `atp/dashboard/v2/routes/timeline.py` (python)
+- `atp/dashboard/v2/routes/token_api.py` (python)
+- `atp/dashboard/v2/routes/tournament_api.py` (python)
+- `atp/dashboard/v2/routes/tournament_live.py` (python)
+- `atp/dashboard/v2/routes/traces.py` (python)
+- `atp/dashboard/v2/routes/trends.py` (python)
+- `atp/dashboard/v2/routes/ui.py` (python)
+- `atp/dashboard/v2/routes/upload.py` (python)
+- `atp/dashboard/v2/routes/users.py` (python)
+- `atp/dashboard/v2/routes/websocket.py` (python)
+- `atp/dashboard/v2/routes/winners_api.py` (python)
+- `atp/dashboard/v2/routes/winners_ui.py` (python)
+- `atp/dashboard/v2/services/__init__.py` (python)
+- `atp/dashboard/v2/services/agent_service.py` (python)
+- `atp/dashboard/v2/services/comparison_service.py` (python)
+- `atp/dashboard/v2/services/el_farol_constants.py` (python)
+- `atp/dashboard/v2/services/export_service.py` (python)
+- `atp/dashboard/v2/services/github_import.py` (python)
+- `atp/dashboard/v2/services/test_service.py` (python)
+- `atp/dashboard/v2/services/winners.py` (python)
+- `atp/dashboard/v2/websocket/__init__.py` (python)
+- `atp/dashboard/v2/websocket/manager.py` (python)
+- `atp/dashboard/v2/websocket/models.py` (python)
+- `atp/dashboard/v2/websocket/pubsub.py` (python)
+- `atp/dashboard/webhook.py` (python)
+- `tests/__init__.py` (python)
+- `tests/unit/__init__.py` (python)
+- `tests/unit/analytics/__init__.py` (python)
+- `tests/unit/analytics/test_ab_testing.py` (python)
+- `tests/unit/analytics/test_advanced.py` (python)
+- `tests/unit/analytics/test_budgets.py` (python)
+- `tests/unit/analytics/test_cost.py` (python)
+- `tests/unit/analytics/test_database.py` (python)
+- `tests/unit/analytics/test_models.py` (python)
+- `tests/unit/analytics/test_repository.py` (python)
+
+## Inbound references
+
+_None._
+
+## Outbound references
+
+_None._
+
+## Outbound edges
+
+- → [[atp-core]] · `package_dep` · `atp-core` `>=1.0.0`
+- → [[game-environments]] · `package_dep` · `game-environments` `>=1.0.0`
+
+## Inbound edges
+
+- ← [[atp-platform]] · `mcp_call` · tool `make_move`
+- ← [[atp-platform]] · `mcp_call` · tool `get_current_state`
+- ← [[atp-platform]] · `package_dep` · `atp-dashboard`
+
+## Recent changes (last 5)
+
+- snapshot 43 (2026-05-27T10:51:48Z): project added (added)
+
+## Drift findings
+
+_None._

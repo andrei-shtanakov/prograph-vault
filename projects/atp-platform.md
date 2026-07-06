@@ -1,0 +1,5615 @@
+<!-- prograph:generated -->
+
+---
+indexed_at: "2026-05-27T12:45:37Z"
+kind: python
+name: atp-platform
+prograph: project
+root: ./atp-platform
+snapshot: 48
+---
+
+# atp-platform
+
+> The framework-agnostic platform for testing and evaluating AI agents.
+
+## Description
+
+**The framework-agnostic platform for testing and evaluating AI agents.**
+
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Coverage](https://img.shields.io/badge/coverage-80%25+-green.svg)](https://github.com/andrei-shtanakov/atp-platform)
+
+## Why ATP?
+
+- **Framework-agnostic** — test any agent (LangGraph, CrewAI, AutoGen, HTTP endpoint, CLI, container, cloud) through a single unified protocol. No vendor lock-in.
+- **Game-theoretic evaluation** — the only platform with built-in multi-agent game evaluation: Prisoner's Dilemma, Public Goods, Auction, Colonel Blotto, Congestion Game, and more. Measure strategic reasoning, cooperation, and equilibrium play.
+- **Statistical rigor** — multiple runs per test, 95% confidence intervals, Welch's t-test regression detection, and Elo ratings. Know when a change is real, not noise.
+- **Production-ready** — web dashboard, SQLite/PostgreSQL storage, JUnit XML for CI/CD, HTML reports, cost tracking, and security evaluation out of the box.
+
+## Quick Start
+
+```bash
+uv add atp-platform
+atp quickstart
+```
+
+See the [Quick Start Guide](docs/guides/quickstart.md) for a full walkthrough.
+
+## Quick Start (from source)
+
+```bash
+git clone https://github.com/andrei-shtanakov/atp-platform.git
+cd atp-platform
+uv sync --group dev
+uv run pytest tests/ -v  # verify installation
+```
+
+_(README truncated — see the full file)_
+
+## Manifest
+
+- declared package: `atp-platform` version `2.0.0`
+
+## Public surface
+
+### MCP tools exposed
+
+- `_join_tournament_mcp` — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:184`
+- `get_current_state` — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:237`
+- `make_move` — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:284`
+- `mcp_cancel_tournament` — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:558`
+- `mcp_get_history` — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:489`
+- `mcp_get_tournament` — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:539`
+- `mcp_leave_tournament` — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:464`
+- `mcp_list_tournaments` — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:513`
+- `ping` — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:261`
+
+### Contracts declared
+
+- [[hash-35f390d9dba9]] (json_schema) — `demo/fixtures/response_schema.json` — `hash-35f390d9dba9`
+
+### Public symbols
+
+- `add_hyperlink` (function) — `art/generate_article_docx.py:10`
+- `create_article` (function) — `art/generate_article_docx.py:44`
+- `FONT` (const) — `art/generate_quickstart_pdf.py:6`
+- `FONT_BOLD` (const) — `art/generate_quickstart_pdf.py:7`
+- `FONT_ITALIC` (const) — `art/generate_quickstart_pdf.py:8`
+- `FONT_MONO` (const) — `art/generate_quickstart_pdf.py:9`
+- `ATPGuide` (class) — `art/generate_quickstart_pdf.py:12`
+- `build_english` (function) — `art/generate_quickstart_pdf.py:130`
+- `build_russian` (function) — `art/generate_quickstart_pdf.py:491`
+- `main` (function) — `art/generate_quickstart_pdf.py:894`
+- `CooperationEvaluator` (class) — `atp-games/atp_games/evaluators/cooperation_evaluator.py:56`
+- `EquilibriumEvaluator` (class) — `atp-games/atp_games/evaluators/equilibrium_evaluator.py:54`
+- `ExploitabilityEvaluator` (class) — `atp-games/atp_games/evaluators/exploitability_evaluator.py:48`
+- `FairnessEvaluator` (class) — `atp-games/atp_games/evaluators/fairness_evaluator.py:198`
+- `PayoffEvaluator` (class) — `atp-games/atp_games/evaluators/payoff_evaluator.py:48`
+- `logger` (const) — `atp-games/atp_games/mapping/action_mapper.py:16`
+- `ActionMapper` (class) — `atp-games/atp_games/mapping/action_mapper.py:67`
+- `ObservationMapper` (class) — `atp-games/atp_games/mapping/observation_mapper.py:11`
+- `welchs_t_test` (function) — `atp-games/atp_games/models.py:306`
+- `compare_agents` (function) — `atp-games/atp_games/models.py:381`
+- `Interval` (const) — `atp-games/atp_games/models.py:608`
+- `register_suite_loader` (function) — `atp-games/atp_games/plugin.py:9`
+- `get_suite_loader` (function) — `atp-games/atp_games/plugin.py:22`
+- `register` (function) — `atp-games/atp_games/plugin.py:34`
+- `EloCalculator` (class) — `atp-games/atp_games/rating/elo.py:31`
+- `logger` (const) — `atp-games/atp_games/runner/action_validator.py:13`
+- `ActionValidator` (class) — `atp-games/atp_games/runner/action_validator.py:35`
+- `BuiltinAdapter` (class) — `atp-games/atp_games/runner/builtin_adapter.py:19`
+- `logger` (const) — `atp-games/atp_games/runner/game_runner.py:29`
+- `ProgressReporter` (class) — `atp-games/atp_games/runner/game_runner.py:32`
+- `GameRunner` (class) — `atp-games/atp_games/runner/game_runner.py:154`
+- `CATEGORY_WEIGHTS` (const) — `atp-games/atp_games/suites/alympics.py:20`
+- `CATEGORY_GAME_MAP` (const) — `atp-games/atp_games/suites/alympics.py:29`
+- `GAME_BASELINES` (const) — `atp-games/atp_games/suites/alympics.py:56`
+- `normalise_payoff` (function) — `atp-games/atp_games/suites/alympics.py:140`
+- `compute_category_scores` (function) — `atp-games/atp_games/suites/alympics.py:170`
+- `compute_composite_score` (function) — `atp-games/atp_games/suites/alympics.py:217`
+- `score_benchmark` (function) — `atp-games/atp_games/suites/alympics.py:235`
+- `load_alympics_config` (function) — `atp-games/atp_games/suites/alympics.py:294`
+- `run_alympics` (function) — `atp-games/atp_games/suites/alympics.py:306`
+- `logger` (const) — `atp-games/atp_games/suites/cross_play.py:20`
+- `run_cross_play` (function) — `atp-games/atp_games/suites/cross_play.py:109`
+- `GameSuiteLoader` (class) — `atp-games/atp_games/suites/game_suite_loader.py:22`
+- `GameMetricConfig` (class) — `atp-games/atp_games/suites/models.py:10`
+- `GameEvaluationConfig` (class) — `atp-games/atp_games/suites/models.py:18`
+- `GameReportingConfig` (class) — `atp-games/atp_games/suites/models.py:28`
+- `GameAgentConfig` (class) — `atp-games/atp_games/suites/models.py:37`
+- `GameConfig` (class) — `atp-games/atp_games/suites/models.py:47`
+- `GameSuiteConfig` (class) — `atp-games/atp_games/suites/models.py:55`
+- `GAME_SUITE_SCHEMA` (const) — `atp-games/atp_games/suites/schema.py:5`
+- `validate_game_suite_schema` (function) — `atp-games/atp_games/suites/schema.py:108`
+- `logger` (const) — `atp-games/atp_games/suites/stress_test.py:32`
+- `BestResponseStrategy` (class) — `atp-games/atp_games/suites/stress_test.py:35`
+- `run_stress_test` (function) — `atp-games/atp_games/suites/stress_test.py:220`
+- `logger` (const) — `atp-games/atp_games/suites/tournament.py:21`
+- `run_round_robin` (function) — `atp-games/atp_games/suites/tournament.py:190`
+- `run_single_elimination` (function) — `atp-games/atp_games/suites/tournament.py:300`
+- `run_double_elimination` (function) — `atp-games/atp_games/suites/tournament.py:424`
+- `TestActionMapper` (class) — `atp-games/tests/test_action_mapper.py:14`
+- `TestActionMapperIntent` (class) — `atp-games/tests/test_action_mapper.py:131`
+- `TestActionValidator` (class) — `atp-games/tests/test_action_validator.py:15`
+- `TestActionValidatorMaxRetries` (class) — `atp-games/tests/test_action_validator.py:87`
+- `TestAgentRecord` (class) — `atp-games/tests/test_agent_record.py:28`
+- `TestGameResultAgents` (class) — `atp-games/tests/test_agent_record.py:162`
+- `TestNormalisePayoff` (class) — `atp-games/tests/test_alympics.py:24`
+- `TestComputeCategoryScores` (class) — `atp-games/tests/test_alympics.py:97`
+- `TestComputeCompositeScore` (class) — `atp-games/tests/test_alympics.py:185`
+- `TestScoreBenchmark` (class) — `atp-games/tests/test_alympics.py:240`
+- `TestLoadAlympicsConfig` (class) — `atp-games/tests/test_alympics.py:355`
+- `TestRunAlympics` (class) — `atp-games/tests/test_alympics.py:415`
+- `TestBuiltinAdapter` (class) — `atp-games/tests/test_builtin_adapter.py:18`
+- `TestCooperationEvaluatorBasic` (class) — `atp-games/tests/test_cooperation_evaluator.py:50`
+- `TestTFTvsTFTCooperation` (class) — `atp-games/tests/test_cooperation_evaluator.py:105`
+- `TestAllDvsAllCCooperation` (class) — `atp-games/tests/test_cooperation_evaluator.py:164`
+- `TestCooperationThresholds` (class) — `atp-games/tests/test_cooperation_evaluator.py:190`
+- `TestConditionalCooperation` (class) — `atp-games/tests/test_cooperation_evaluator.py:265`
+- `TestConfigOverride` (class) — `atp-games/tests/test_cooperation_evaluator.py:305`
+- `TestMultiEpisode` (class) — `atp-games/tests/test_cooperation_evaluator.py:320`
+- `TestCooperationScoring` (class) — `atp-games/tests/test_cooperation_evaluator.py:340`
+- `TestCrossPlay` (class) — `atp-games/tests/test_cross_play.py:24`
+- `TestDominance` (class) — `atp-games/tests/test_cross_play.py:162`
+- `TestParetoFrontier` (class) — `atp-games/tests/test_cross_play.py:204`
+- `TestClusters` (class) — `atp-games/tests/test_cross_play.py:228`
+- `TestConstructorConfigurable` (class) — `atp-games/tests/test_el_farol_action_space.py:34`
+- `TestContainsListOfPairs` (class) — `atp-games/tests/test_el_farol_action_space.py:65`
+- `TestContainsDictIntervals` (class) — `atp-games/tests/test_el_farol_action_space.py:142`
+- `TestContainsRejectsFlatSlotList` (class) — `atp-games/tests/test_el_farol_action_space.py:177`
+- `TestSanitize` (class) — `atp-games/tests/test_el_farol_action_space.py:193`
+- `TestIntegrationWithConfig` (class) — `atp-games/tests/test_el_farol_action_space.py:272`
+- `TestElFarolConfigDefaults` (class) — `atp-games/tests/test_el_farol_config.py:28`
+- `TestCapacityThresholdDerivation` (class) — `atp-games/tests/test_el_farol_config.py:43`
+- `TestStructuralValidation` (class) — `atp-games/tests/test_el_farol_config.py:75`
+- `TestCapacityRatioBounds` (class) — `atp-games/tests/test_el_farol_config.py:91`
+- `TestImmutability` (class) — `atp-games/tests/test_el_farol_config.py:121`
+- `TestResolvedThresholdValidation` (class) — `atp-games/tests/test_el_farol_config.py:131`
+- `PairFormatMorning` (class) — `atp-games/tests/test_el_farol_interval_agents.py:33`
+- `DictFormatEvening` (class) — `atp-games/tests/test_el_farol_interval_agents.py:44`
+- `TwoIntervalMidday` (class) — `atp-games/tests/test_el_farol_interval_agents.py:55`
+- `ThreeIntervalsAgent` (class) — `atp-games/tests/test_el_farol_interval_agents.py:66`
+- `OverlappingIntervalsAgent` (class) — `atp-games/tests/test_el_farol_interval_agents.py:77`
+- `TestIntervalFormatsYieldActionRecords` (class) — `atp-games/tests/test_el_farol_interval_agents.py:124`
+- `TestActionSpaceRejectsInvalidIntervalInput` (class) — `atp-games/tests/test_el_farol_interval_agents.py:209`
+- `TestConfigDrivenMaxTotalSlots` (class) — `atp-games/tests/test_el_farol_interval_agents.py:265`
+- `TestEloCalculator` (class) — `atp-games/tests/test_elo.py:8`
+- `PD_PAYOFF_1` (const) — `atp-games/tests/test_equilibrium_evaluator.py:13`
+- `PD_PAYOFF_2` (const) — `atp-games/tests/test_equilibrium_evaluator.py:14`
+- `PD_ACTIONS` (const) — `atp-games/tests/test_equilibrium_evaluator.py:15`
+- `TestEquilibriumEvaluatorBasic` (class) — `atp-games/tests/test_equilibrium_evaluator.py:56`
+- `TestNashDistanceAtEquilibrium` (class) — `atp-games/tests/test_equilibrium_evaluator.py:124`
+- `TestNashDistanceAwayFromEquilibrium` (class) — `atp-games/tests/test_equilibrium_evaluator.py:171`
+- `TestEquilibriumType` (class) — `atp-games/tests/test_equilibrium_evaluator.py:221`
+- `TestConvergenceDetection` (class) — `atp-games/tests/test_equilibrium_evaluator.py:273`
+- `TestConfigOverride` (class) — `atp-games/tests/test_equilibrium_evaluator.py:349`
+- `TestEquilibriumScoring` (class) — `atp-games/tests/test_equilibrium_evaluator.py:388`
+- `TestMultiEpisode` (class) — `atp-games/tests/test_equilibrium_evaluator.py:435`
+- `TestPluginRegistration` (class) — `atp-games/tests/test_equilibrium_evaluator.py:464`
+- `PD_PAYOFF_1` (const) — `atp-games/tests/test_exploitability_evaluator.py:13`
+- `PD_PAYOFF_2` (const) — `atp-games/tests/test_exploitability_evaluator.py:14`
+- `PD_ACTIONS` (const) — `atp-games/tests/test_exploitability_evaluator.py:15`
+- `TestExploitabilityBasic` (class) — `atp-games/tests/test_exploitability_evaluator.py:60`
+- `TestNashEquilibriumExploitability` (class) — `atp-games/tests/test_exploitability_evaluator.py:92`
+- `TestAllCExploitability` (class) — `atp-games/tests/test_exploitability_evaluator.py:155`
+- `TestMixedStrategies` (class) — `atp-games/tests/test_exploitability_evaluator.py:243`
+- `TestMultiEpisode` (class) — `atp-games/tests/test_exploitability_evaluator.py:276`
+- `TestConfigOverride` (class) — `atp-games/tests/test_exploitability_evaluator.py:307`
+- `TestEmpiricalStrategySummary` (class) — `atp-games/tests/test_exploitability_evaluator.py:344`
+- `TestExploitabilityScoring` (class) — `atp-games/tests/test_exploitability_evaluator.py:374`
+- `TestEdgeCases` (class) — `atp-games/tests/test_exploitability_evaluator.py:434`
+- `TestFairnessEvaluatorBasic` (class) — `atp-games/tests/test_fairness_evaluator.py:50`
+- `TestGiniCheck` (class) — `atp-games/tests/test_fairness_evaluator.py:74`
+- `TestEnvyFreenessCheck` (class) — `atp-games/tests/test_fairness_evaluator.py:123`
+- `TestProportionalityCheck` (class) — `atp-games/tests/test_fairness_evaluator.py:161`
+- `TestNoBiasWhenDescriptionConstant` (class) — `atp-games/tests/test_fairness_evaluator.py:207`
+- `TestSyntheticBiasInjectionDetected` (class) — `atp-games/tests/test_fairness_evaluator.py:296`
+- `TestBiasReportGeneration` (class) — `atp-games/tests/test_fairness_evaluator.py:389`
+- `TestChiSquaredTest` (class) — `atp-games/tests/test_fairness_evaluator.py:467`
+- `TestConfigOverride` (class) — `atp-games/tests/test_fairness_evaluator.py:489`
+- `TestFairnessScoring` (class) — `atp-games/tests/test_fairness_evaluator.py:512`
+- `TestBiasWithGameConfig` (class) — `atp-games/tests/test_fairness_evaluator.py:546`
+- `TestMultiEpisodeFairness` (class) — `atp-games/tests/test_fairness_evaluator.py:605`
+- `TestGameRunnerWithBuiltinAgents` (class) — `atp-games/tests/test_game_runner.py:24`
+- `TestGameRunnerWithMockAgent` (class) — `atp-games/tests/test_game_runner.py:134`
+- `MINIMAL_SUITE_YAML` (const) — `atp-games/tests/test_game_suite_loader.py:18`
+- `FULL_SUITE_YAML` (const) — `atp-games/tests/test_game_suite_loader.py:32`
+- `VARIABLE_SUITE_YAML` (const) — `atp-games/tests/test_game_suite_loader.py:66`
+- `VARIABLE_DEFAULT_YAML` (const) — `atp-games/tests/test_game_suite_loader.py:80`
+- `TestGameSuiteSchema` (class) — `atp-games/tests/test_game_suite_loader.py:98`
+- `TestGameSuiteLoader` (class) — `atp-games/tests/test_game_suite_loader.py:220`
+- `TestSemanticValidation` (class) — `atp-games/tests/test_game_suite_loader.py:343`
+- `TestVariableSubstitution` (class) — `atp-games/tests/test_game_suite_loader.py:386`
+- `TestSuiteInheritance` (class) — `atp-games/tests/test_game_suite_loader.py:414`
+- `TestDeepMerge` (class) — `atp-games/tests/test_game_suite_loader.py:569`
+- `TestResolution` (class) — `atp-games/tests/test_game_suite_loader.py:604`
+- `TestBuiltinYAMLs` (class) — `atp-games/tests/test_game_suite_loader.py:686`
+- `TestGameSuiteModels` (class) — `atp-games/tests/test_game_suite_loader.py:726`
+- `TestFullPDIntegration` (class) — `atp-games/tests/test_integration.py:19`
+- `TestGameRunConfig` (class) — `atp-games/tests/test_models.py:53`
+- `TestEpisodeResult` (class) — `atp-games/tests/test_models.py:84`
+- `TestGameResult` (class) — `atp-games/tests/test_models.py:106`
+- `TestDashboardRoundtrip` (class) — `atp-games/tests/test_models.py:205`
+- `TestIntervalPair` (class) — `atp-games/tests/test_models_action_record.py:33`
+- `TestActionRecord` (class) — `atp-games/tests/test_models_action_record.py:136`
+- `TestDayAggregate` (class) — `atp-games/tests/test_models_action_record.py:253`
+- `TestMatchConfig` (class) — `atp-games/tests/test_models_action_record.py:301`
+- `TestGameRunConfigNewFields` (class) — `atp-games/tests/test_multi_episode.py:49`
+- `TestEpisodeResultSeed` (class) — `atp-games/tests/test_multi_episode.py:86`
+- `TestSeedManagement` (class) — `atp-games/tests/test_multi_episode.py:122`
+- `TestParallelVsSequential` (class) — `atp-games/tests/test_multi_episode.py:164`
+- `TestFiftyEpisodeAggregation` (class) — `atp-games/tests/test_multi_episode.py:215`
+- `TestPlayerStats` (class) — `atp-games/tests/test_multi_episode.py:288`
+- `TestWelchsTTest` (class) — `atp-games/tests/test_multi_episode.py:354`
+- `TestCompareAgents` (class) — `atp-games/tests/test_multi_episode.py:400`
+- `TestGameResultStatistics` (class) — `atp-games/tests/test_multi_episode.py:496`
+- `TestTCritical` (class) — `atp-games/tests/test_multi_episode.py:600`
+- `TestProgressReporter` (class) — `atp-games/tests/test_multi_episode.py:625`
+- `TestMakeGameForEpisode` (class) — `atp-games/tests/test_multi_episode.py:648`
+- `TestIntegrationMultiEpisode` (class) — `atp-games/tests/test_multi_episode.py:674`
+- `TestObservationMapper` (class) — `atp-games/tests/test_observation_mapper.py:8`
+- `TestPayoffEvaluatorBasic` (class) — `atp-games/tests/test_payoff_evaluator.py:27`
+- `TestPayoffEvaluatorAverages` (class) — `atp-games/tests/test_payoff_evaluator.py:50`
+- `TestPayoffThresholds` (class) — `atp-games/tests/test_payoff_evaluator.py:97`
+- `TestSocialWelfare` (class) — `atp-games/tests/test_payoff_evaluator.py:144`
+- `TestPayoffDistribution` (class) — `atp-games/tests/test_payoff_evaluator.py:179`
+- `TestParetoEfficiency` (class) — `atp-games/tests/test_payoff_evaluator.py:202`
+- `TestPayoffScoring` (class) — `atp-games/tests/test_payoff_evaluator.py:261`
+- `TestPluginRegistration` (class) — `atp-games/tests/test_plugin_registration.py:12`
+- `MorningAttendee` (class) — `atp-games/tests/test_round_payoffs.py:43`
+- `EveningAttendee` (class) — `atp-games/tests/test_round_payoffs.py:54`
+- `TestEpisodeResultRoundPayoffsField` (class) — `atp-games/tests/test_round_payoffs.py:98`
+- `TestRunnerPopulatesRoundPayoffsForPD` (class) — `atp-games/tests/test_round_payoffs.py:109`
+- `TestRunnerPopulatesRoundPayoffsForElFarol` (class) — `atp-games/tests/test_round_payoffs.py:156`
+- `MorningAttendee` (class) — `atp-games/tests/test_runner_action_records.py:45`
+- `EveningAttendee` (class) — `atp-games/tests/test_runner_action_records.py:56`
+- `TestEpisodeResultActionsField` (class) — `atp-games/tests/test_runner_action_records.py:110`
+- `TestRunnerBuildsActionRecordsForElFarol` (class) — `atp-games/tests/test_runner_action_records.py:121`
+- `TestRunIdAndMatchIdUniqueness` (class) — `atp-games/tests/test_runner_action_records.py:203`
+- `TestRunnerSkipsActionRecordsForNonIntervalGames` (class) — `atp-games/tests/test_runner_action_records.py:258`
+- `TestActionRecordIntentPlumbing` (class) — `atp-games/tests/test_runner_action_records.py:336`
+- `TestActionRecordIntervalPairCap` (class) — `atp-games/tests/test_runner_action_records.py:432`
+- `TestActionToIntervalPair` (class) — `atp-games/tests/test_runner_action_records.py:530`
+- `TestBestResponseStrategy` (class) — `atp-games/tests/test_stress_test.py:23`
+- `TestStressTest` (class) — `atp-games/tests/test_stress_test.py:45`
+- `TestExtractEmpiricalStrategy` (class) — `atp-games/tests/test_stress_test.py:179`
+- `TestRoundRobin` (class) — `atp-games/tests/test_tournament.py:25`
+- `TestSingleElimination` (class) — `atp-games/tests/test_tournament.py:151`
+- `TestDoubleElimination` (class) — `atp-games/tests/test_tournament.py:262`
+- `TestStanding` (class) — `atp-games/tests/test_tournament.py:310`
+- `TestMatchResult` (class) — `atp-games/tests/test_tournament.py:343`
+- `TestRoundRobinWithElo` (class) — `atp-games/tests/test_tournament_elo.py:17`
+- `TestComparison` (class) — `atp/baseline/comparison.py:20`
+- `ComparisonResult` (class) — `atp/baseline/comparison.py:95`
+- `welchs_t_test` (function) — `atp/baseline/comparison.py:158`
+- `compare_test` (function) — `atp/baseline/comparison.py:267`
+- `compare_results` (function) — `atp/baseline/comparison.py:344`
+- `ChangeType` (class) — `atp/baseline/models.py:15`
+- `TestBaseline` (class) — `atp/baseline/models.py:25`
+- `Baseline` (class) — `atp/baseline/models.py:73`
+- `Colors` (class) — `atp/baseline/reporter.py:12`
+- `SYMBOLS` (const) — `atp/baseline/reporter.py:28`
+- `format_comparison_console` (function) — `atp/baseline/reporter.py:62`
+- `format_comparison_json` (function) — `atp/baseline/reporter.py:249`
+- `print_comparison` (function) — `atp/baseline/reporter.py:262`
+- `save_baseline` (function) — `atp/baseline/storage.py:9`
+- `load_baseline` (function) — `atp/baseline/storage.py:26`
+- `LOADERS` (const) — `atp/benchmarks/loaders/__init__.py:11`
+- `get_loader` (function) — `atp/benchmarks/loaders/__init__.py:18`
+- `logger` (const) — `atp/benchmarks/loaders/base.py:15`
+- `DEFAULT_CACHE_DIR` (const) — `atp/benchmarks/loaders/base.py:17`
+- `BenchmarkLoader` (class) — `atp/benchmarks/loaders/base.py:20`
+- `HUMANEVAL_URL` (const) — `atp/benchmarks/loaders/humaneval.py:23`
+- `HUMANEVAL_JSONL_URL` (const) — `atp/benchmarks/loaders/humaneval.py:29`
+- `HUMANEVAL_HF_API` (const) — `atp/benchmarks/loaders/humaneval.py:34`
+- `HumanEvalLoader` (class) — `atp/benchmarks/loaders/humaneval.py:43`
+- `MMLU_HF_API` (const) — `atp/benchmarks/loaders/mmlu.py:23`
+- `ANSWER_MAP` (const) — `atp/benchmarks/loaders/mmlu.py:31`
+- `MMLULoader` (class) — `atp/benchmarks/loaders/mmlu.py:34`
+- `SWEBENCH_HF_API` (const) — `atp/benchmarks/loaders/swebench.py:22`
+- `SWEBenchLoader` (class) — `atp/benchmarks/loaders/swebench.py:31`
+- `BenchmarkCategory` (class) — `atp/benchmarks/models.py:9`
+- `BenchmarkDifficulty` (class) — `atp/benchmarks/models.py:18`
+- `BaselineScore` (class) — `atp/benchmarks/models.py:26`
+- `BenchmarkMetadata` (class) — `atp/benchmarks/models.py:35`
+- `BenchmarkTest` (class) — `atp/benchmarks/models.py:53`
+- `BenchmarkSuiteInfo` (class) — `atp/benchmarks/models.py:73`
+- `BenchmarkSuite` (class) — `atp/benchmarks/models.py:89`
+- `BenchmarkResult` (class) — `atp/benchmarks/models.py:127`
+- `BenchmarkSuiteResult` (class) — `atp/benchmarks/models.py:148`
+- `NormalizationConfig` (class) — `atp/benchmarks/models.py:178`
+- `logger` (const) — `atp/benchmarks/registry.py:21`
+- `BenchmarkNotFoundError` (class) — `atp/benchmarks/registry.py:24`
+- `BenchmarkCategoryNotFoundError` (class) — `atp/benchmarks/registry.py:32`
+- `BenchmarkRegistry` (class) — `atp/benchmarks/registry.py:40`
+- `get_registry` (function) — `atp/benchmarks/registry.py:407`
+- `get_benchmark` (function) — `atp/benchmarks/registry.py:419`
+- `list_benchmarks` (function) — `atp/benchmarks/registry.py:434`
+- `list_categories` (function) — `atp/benchmarks/registry.py:443`
+- `format_comparison_table` (function) — `atp/catalog/comparison.py:4`
+- `CatalogCategory` (class) — `atp/catalog/models.py:20`
+- `CatalogSuite` (class) — `atp/catalog/models.py:44`
+- `CatalogTest` (class) — `atp/catalog/models.py:78`
+- `CatalogSubmission` (class) — `atp/catalog/models.py:112`
+- `CatalogRepository` (class) — `atp/catalog/repository.py:19`
+- `BUILTIN_DIR` (const) — `atp/catalog/sync.py:10`
+- `parse_catalog_yaml` (function) — `atp/catalog/sync.py:13`
+- `sync_builtin_catalog` (function) — `atp/catalog/sync.py:29`
+- `EXIT_SUCCESS` (const) — `atp/cli/commands/benchmark.py:23`
+- `EXIT_FAILURE` (const) — `atp/cli/commands/benchmark.py:24`
+- `EXIT_ERROR` (const) — `atp/cli/commands/benchmark.py:25`
+- `EXIT_SUCCESS` (const) — `atp/cli/commands/budget.py:15`
+- `EXIT_FAILURE` (const) — `atp/cli/commands/budget.py:16`
+- `EXIT_ERROR` (const) — `atp/cli/commands/budget.py:17`
+- `EXIT_SUCCESS` (const) — `atp/cli/commands/catalog.py:21`
+- `EXIT_FAILURE` (const) — `atp/cli/commands/catalog.py:22`
+- `EXIT_ERROR` (const) — `atp/cli/commands/catalog.py:23`
+- `EXIT_SUCCESS` (const) — `atp/cli/commands/estimate.py:15`
+- `EXIT_FAILURE` (const) — `atp/cli/commands/estimate.py:16`
+- `EXIT_ERROR` (const) — `atp/cli/commands/estimate.py:17`
+- `EXIT_SUCCESS` (const) — `atp/cli/commands/experiment.py:13`
+- `EXIT_FAILURE` (const) — `atp/cli/commands/experiment.py:14`
+- `EXIT_ERROR` (const) — `atp/cli/commands/experiment.py:15`
+- `EXIT_SUCCESS` (const) — `atp/cli/commands/generate.py:20`
+- `EXIT_ERROR` (const) — `atp/cli/commands/generate.py:21`
+- `EXIT_SUCCESS` (const) — `atp/cli/commands/init.py:14`
+- `EXIT_ERROR` (const) — `atp/cli/commands/init.py:15`
+- `AGENT_TYPES` (const) — `atp/cli/commands/init.py:18`
+- `EXIT_SUCCESS` (const) — `atp/cli/commands/plugins.py:20`
+- `EXIT_FAILURE` (const) — `atp/cli/commands/plugins.py:21`
+- `EXIT_ERROR` (const) — `atp/cli/commands/plugins.py:22`
+- `GROUP_TYPE_MAP` (const) — `atp/cli/commands/plugins.py:25`
+- `GROUP_DISPLAY_MAP` (const) — `atp/cli/commands/plugins.py:32`
+- `EXIT_SUCCESS` (const) — `atp/cli/commands/quickstart.py:9`
+- `EXIT_ERROR` (const) — `atp/cli/commands/quickstart.py:10`
+- `MINIMAL_SUITE_TEMPLATE` (const) — `atp/cli/commands/quickstart.py:12`
+- `logger` (const) — `atp/cli/commands/remote.py:19`
+- `MANIFEST_FILE` (const) — `atp/cli/commands/remote.py:21`
+- `EXIT_SUCCESS` (const) — `atp/cli/commands/remote.py:24`
+- `EXIT_FAILURE` (const) — `atp/cli/commands/remote.py:25`
+- `EXIT_PARTIAL` (const) — `atp/cli/commands/remote.py:26`
+- `resolve_auth_headers` (function) — `atp/cli/commands/remote.py:29`
+- `resolve_server_url` (function) — `atp/cli/commands/remote.py:45`
+- `load_manifest` (function) — `atp/cli/commands/remote.py:64`
+- `save_manifest` (function) — `atp/cli/commands/remote.py:75`
+- `file_sha256` (function) — `atp/cli/commands/remote.py:82`
+- `find_yaml_files` (function) — `atp/cli/commands/remote.py:87`
+- `now_iso` (function) — `atp/cli/commands/remote.py:98`
+- `LiveDisplayState` (class) — `atp/cli/live_display.py:18`
+- `build_table` (function) — `atp/cli/live_display.py:286`
+- `is_terminal_capable` (function) — `atp/cli/live_display.py:347`
+- `LiveProgressDisplay` (class) — `atp/cli/live_display.py:360`
+- `SimpleFallbackDisplay` (class) — `atp/cli/live_display.py:432`
+- `create_live_progress_callback` (function) — `atp/cli/live_display.py:487`
+- `logger` (const) — `atp/cli/main.py:34`
+- `EXIT_SUCCESS` (const) — `atp/cli/main.py:37`
+- `EXIT_FAILURE` (const) — `atp/cli/main.py:38`
+- `EXIT_ERROR` (const) — `atp/cli/main.py:39`
+- `ConfigContext` (class) — `atp/cli/main.py:42`
+- `pass_config` (const) — `atp/cli/main.py:103`
+- `main` (function) — `atp/cli/main.py:1988`
+- `ArtifactEvaluator` (class) — `atp/evaluators/artifact.py:13`
+- `tracer` (const) — `atp/evaluators/base.py:19`
+- `Evaluator` (class) — `atp/evaluators/base.py:22`
+- `BehaviorEvaluator` (class) — `atp/evaluators/behavior.py:11`
+- `CodeExecEvaluator` (class) — `atp/evaluators/code_exec.py:85`
+- `CompositeEvaluator` (class) — `atp/evaluators/composite.py:11`
+- `logger` (const) — `atp/evaluators/container.py:19`
+- `ContainerRuntime` (class) — `atp/evaluators/container.py:22`
+- `DockerRuntime` (class) — `atp/evaluators/container.py:147`
+- `PodmanRuntime` (class) — `atp/evaluators/container.py:154`
+- `detect_runtime` (function) — `atp/evaluators/container.py:161`
+- `logger` (const) — `atp/evaluators/factuality.py:32`
+- `VerificationMethod` (class) — `atp/evaluators/factuality.py:35`
+- `ClaimType` (class) — `atp/evaluators/factuality.py:43`
+- `FactualityConfig` (class) — `atp/evaluators/factuality.py:146`
+- `ClaimExtractor` (class) — `atp/evaluators/factuality.py:161`
+- `CitationExtractor` (class) — `atp/evaluators/factuality.py:350`
+- `HallucinationDetector` (class) — `atp/evaluators/factuality.py:450`
+- `GroundTruthVerifier` (class) — `atp/evaluators/factuality.py:647`
+- `LLMFactVerifier` (class) — `atp/evaluators/factuality.py:787`
+- `FactualityEvaluator` (class) — `atp/evaluators/factuality.py:1006`
+- `FilesystemEvaluator` (class) — `atp/evaluators/filesystem.py:14`
+- `logger` (const) — `atp/evaluators/git_commit.py:15`
+- `GitCommitEvaluator` (class) — `atp/evaluators/git_commit.py:77`
+- `logger` (const) — `atp/evaluators/guardrails.py:35`
+- `check_not_silently_failed` (function) — `atp/evaluators/guardrails.py:47`
+- `check_timeout_not_exceeded` (function) — `atp/evaluators/guardrails.py:70`
+- `check_within_budget` (function) — `atp/evaluators/guardrails.py:89`
+- `run_guardrails` (function) — `atp/evaluators/guardrails.py:115`
+- `should_skip_evaluation` (function) — `atp/evaluators/guardrails.py:136`
+- `logger` (const) — `atp/evaluators/llm_judge.py:21`
+- `BUILTIN_CRITERIA` (const) — `atp/evaluators/llm_judge.py:25`
+- `LLMJudgeResponse` (class) — `atp/evaluators/llm_judge.py:65`
+- `LLMJudgeCost` (class) — `atp/evaluators/llm_judge.py:76`
+- `LLMJudgeConfig` (class) — `atp/evaluators/llm_judge.py:96`
+- `LLMJudgeEvaluator` (class) — `atp/evaluators/llm_judge.py:119`
+- `logger` (const) — `atp/evaluators/performance.py:28`
+- `PerformanceMetricType` (class) — `atp/evaluators/performance.py:31`
+- `RegressionStatus` (class) — `atp/evaluators/performance.py:44`
+- `PerformanceThresholds` (class) — `atp/evaluators/performance.py:135`
+- `PerformanceBaseline` (class) — `atp/evaluators/performance.py:164`
+- `PerformanceConfig` (class) — `atp/evaluators/performance.py:198`
+- `calculate_percentile` (function) — `atp/evaluators/performance.py:231`
+- `extract_latencies_from_trace` (function) — `atp/evaluators/performance.py:265`
+- `extract_time_to_first_token` (function) — `atp/evaluators/performance.py:285`
+- `calculate_tokens_per_second` (function) — `atp/evaluators/performance.py:319`
+- `calculate_token_efficiency` (function) — `atp/evaluators/performance.py:339`
+- `compute_performance_metrics` (function) — `atp/evaluators/performance.py:362`
+- `check_thresholds` (function) — `atp/evaluators/performance.py:420`
+- `detect_regression` (function) — `atp/evaluators/performance.py:521`
+- `check_regressions` (function) — `atp/evaluators/performance.py:605`
+- `PerformanceEvaluator` (class) — `atp/evaluators/performance.py:720`
+- `EvaluatorNotFoundError` (class) — `atp/evaluators/registry.py:18`
+- `EvaluatorRegistry` (class) — `atp/evaluators/registry.py:26`
+- `get_registry` (function) — `atp/evaluators/registry.py:255`
+- `create_evaluator` (function) — `atp/evaluators/registry.py:268`
+- `Severity` (class) — `atp/evaluators/security/base.py:10`
+- `SecurityFinding` (class) — `atp/evaluators/security/base.py:87`
+- `mask_sensitive_data` (function) — `atp/evaluators/security/base.py:109`
+- `mask_email` (function) — `atp/evaluators/security/base.py:126`
+- `mask_credit_card` (function) — `atp/evaluators/security/base.py:150`
+- `mask_ssn` (function) — `atp/evaluators/security/base.py:167`
+- `mask_phone` (function) — `atp/evaluators/security/base.py:184`
+- `mask_api_key` (function) — `atp/evaluators/security/base.py:201`
+- `SecurityChecker` (class) — `atp/evaluators/security/base.py:216`
+- `Language` (class) — `atp/evaluators/security/code.py:17`
+- `CodePattern` (class) — `atp/evaluators/security/code.py:26`
+- `mask_code_evidence` (function) — `atp/evaluators/security/code.py:44`
+- `PYTHON_DANGEROUS_IMPORTS` (const) — `atp/evaluators/security/code.py:61`
+- `PYTHON_DANGEROUS_FUNCTIONS` (const) — `atp/evaluators/security/code.py:98`
+- `JAVASCRIPT_DANGEROUS_PATTERNS` (const) — `atp/evaluators/security/code.py:115`
+- `BASH_DANGEROUS_PATTERNS` (const) — `atp/evaluators/security/code.py:153`
+- `FILE_OPERATION_PATTERNS` (const) — `atp/evaluators/security/code.py:196`
+- `NETWORK_OPERATION_PATTERNS` (const) — `atp/evaluators/security/code.py:221`
+- `CodeSafetyChecker` (class) — `atp/evaluators/security/code.py:438`
+- `SecurityEvaluator` (class) — `atp/evaluators/security/evaluator.py:16`
+- `InjectionPattern` (class) — `atp/evaluators/security/injection.py:14`
+- `INJECTION_PATTERNS` (const) — `atp/evaluators/security/injection.py:45`
+- `JAILBREAK_PATTERNS` (const) — `atp/evaluators/security/injection.py:121`
+- `ROLE_MANIPULATION_PATTERNS` (const) — `atp/evaluators/security/injection.py:208`
+- `mask_injection_evidence` (function) — `atp/evaluators/security/injection.py:291`
+- `PromptInjectionChecker` (class) — `atp/evaluators/security/injection.py:310`
+- `PIIPattern` (class) — `atp/evaluators/security/pii.py:18`
+- `EMAIL_PATTERN` (const) — `atp/evaluators/security/pii.py:46`
+- `PHONE_PATTERN` (const) — `atp/evaluators/security/pii.py:50`
+- `SSN_PATTERN` (const) — `atp/evaluators/security/pii.py:58`
+- `CREDIT_CARD_PATTERN` (const) — `atp/evaluators/security/pii.py:70`
+- `API_KEY_PATTERNS` (const) — `atp/evaluators/security/pii.py:83`
+- `PIIChecker` (class) — `atp/evaluators/security/pii.py:113`
+- `SecretPattern` (class) — `atp/evaluators/security/secrets.py:15`
+- `ENV_VAR_PATTERNS` (const) — `atp/evaluators/security/secrets.py:46`
+- `PRIVATE_KEY_PATTERNS` (const) — `atp/evaluators/security/secrets.py:72`
+- `JWT_PATTERN` (const) — `atp/evaluators/security/secrets.py:90`
+- `BEARER_PATTERN` (const) — `atp/evaluators/security/secrets.py:95`
+- `BASIC_AUTH_PATTERN` (const) — `atp/evaluators/security/secrets.py:98`
+- `CONNECTION_STRING_PATTERNS` (const) — `atp/evaluators/security/secrets.py:101`
+- `HARDCODED_PATTERNS` (const) — `atp/evaluators/security/secrets.py:125`
+- `AWS_PATTERNS` (const) — `atp/evaluators/security/secrets.py:142`
+- `CERTIFICATE_PATTERNS` (const) — `atp/evaluators/security/secrets.py:152`
+- `mask_private_key` (function) — `atp/evaluators/security/secrets.py:160`
+- `mask_jwt` (function) — `atp/evaluators/security/secrets.py:172`
+- `mask_connection_string` (function) — `atp/evaluators/security/secrets.py:187`
+- `SecretLeakChecker` (class) — `atp/evaluators/security/secrets.py:201`
+- `ToneType` (class) — `atp/evaluators/style.py:14`
+- `StyleConfig` (class) — `atp/evaluators/style.py:23`
+- `StyleMetrics` (class) — `atp/evaluators/style.py:75`
+- `TONE_INDICATORS` (const) — `atp/evaluators/style.py:102`
+- `PASSIVE_PATTERNS` (const) — `atp/evaluators/style.py:262`
+- `TextAnalyzer` (class) — `atp/evaluators/style.py:267`
+- `StyleEvaluator` (class) — `atp/evaluators/style.py:558`
+- `TestGenerator` (class) — `atp/generator/core.py:64`
+- `register_importer` (function) — `atp/generator/importers/__init__.py:10`
+- `get_importer` (function) — `atp/generator/importers/__init__.py:23`
+- `list_importers` (function) — `atp/generator/importers/__init__.py:41`
+- `LangSmithImporter` (class) — `atp/generator/importers/langsmith.py:16`
+- `OpenTelemetryImporter` (class) — `atp/generator/importers/opentelemetry.py:16`
+- `logger` (const) — `atp/generator/nl_generator.py:17`
+- `SYSTEM_PROMPT` (const) — `atp/generator/nl_generator.py:19`
+- `USER_PROMPT_TEMPLATE` (const) — `atp/generator/nl_generator.py:55`
+- `LLMClient` (class) — `atp/generator/nl_generator.py:65`
+- `NLTestGenerator` (class) — `atp/generator/nl_generator.py:188`
+- `AnonymizationLevel` (class) — `atp/generator/regression.py:37`
+- `RecordingStatus` (class) — `atp/generator/regression.py:45`
+- `RecordedEvent` (class) — `atp/generator/regression.py:53`
+- `Recording` (class) — `atp/generator/regression.py:72`
+- `DataAnonymizer` (class) — `atp/generator/regression.py:192`
+- `TestDeduplicator` (class) — `atp/generator/regression.py:360`
+- `TestParameterizer` (class) — `atp/generator/regression.py:475`
+- `RegressionTestGenerator` (class) — `atp/generator/regression.py:580`
+- `create_recording_session` (function) — `atp/generator/regression.py:810`
+- `load_recordings_from_file` (function) — `atp/generator/regression.py:824`
+- `save_recordings_to_file` (function) — `atp/generator/regression.py:846`
+- `TemplateRegistry` (class) — `atp/generator/templates.py:49`
+- `substitute_variables` (function) — `atp/generator/templates.py:225`
+- `substitute_in_assertion` (function) — `atp/generator/templates.py:250`
+- `extract_variables` (function) — `atp/generator/templates.py:280`
+- `get_template_variables` (function) — `atp/generator/templates.py:298`
+- `TraceImporter` (class) — `atp/generator/trace_import.py:42`
+- `YAMLWriter` (class) — `atp/generator/writer.py:371`
+- `MockDefinitionLoader` (class) — `atp/mock_tools/loader.py:20`
+- `MatchType` (class) — `atp/mock_tools/models.py:11`
+- `PatternMatcher` (class) — `atp/mock_tools/models.py:20`
+- `MockResponse` (class) — `atp/mock_tools/models.py:71`
+- `MockTool` (class) — `atp/mock_tools/models.py:88`
+- `ToolCall` (class) — `atp/mock_tools/models.py:148`
+- `ToolCallRecord` (class) — `atp/mock_tools/models.py:158`
+- `MockDefinition` (class) — `atp/mock_tools/models.py:174`
+- `CallRecorder` (class) — `atp/mock_tools/recorder.py:11`
+- `ToolCallRequest` (class) — `atp/mock_tools/server.py:18`
+- `ToolCallResponse` (class) — `atp/mock_tools/server.py:26`
+- `ToolListResponse` (class) — `atp/mock_tools/server.py:36`
+- `RecordsResponse` (class) — `atp/mock_tools/server.py:42`
+- `MockToolServer` (class) — `atp/mock_tools/server.py:49`
+- `create_mock_app` (function) — `atp/mock_tools/server.py:191`
+- `logger` (const) — `atp/performance/async_utils.py:18`
+- `T` (const) — `atp/performance/async_utils.py:20`
+- `R` (const) — `atp/performance/async_utils.py:21`
+- `AsyncBatcher` (class) — `atp/performance/async_utils.py:48`
+- `RateLimiter` (class) — `atp/performance/async_utils.py:108`
+- `ParallelExecutor` (class) — `atp/performance/async_utils.py:170`
+- `gather_with_limit` (function) — `atp/performance/async_utils.py:257`
+- `chunked_gather` (function) — `atp/performance/async_utils.py:287`
+- `timeout_wrapper` (function) — `atp/performance/async_utils.py:320`
+- `retry_async` (function) — `atp/performance/async_utils.py:342`
+- `AsyncPool` (class) — `atp/performance/async_utils.py:384`
+- `stream_with_timeout` (function) — `atp/performance/async_utils.py:482`
+- `logger` (const) — `atp/performance/benchmark.py:29`
+- `Benchmark` (class) — `atp/performance/benchmark.py:114`
+- `run_standard_benchmarks` (function) — `atp/performance/benchmark.py:280`
+- `run_async_benchmarks` (function) — `atp/performance/benchmark.py:407`
+- `logger` (const) — `atp/performance/cache.py:22`
+- `TestSuiteCache` (class) — `atp/performance/cache.py:69`
+- `CachedTestLoader` (class) — `atp/performance/cache.py:239`
+- `AdapterCache` (class) — `atp/performance/cache.py:313`
+- `get_test_suite_cache` (function) — `atp/performance/cache.py:499`
+- `get_adapter_cache` (function) — `atp/performance/cache.py:507`
+- `clear_all_caches` (function) — `atp/performance/cache.py:515`
+- `logger` (const) — `atp/performance/memory.py:19`
+- `MemoryTracker` (class) — `atp/performance/memory.py:184`
+- `get_memory_tracker` (function) — `atp/performance/memory.py:392`
+- `enable_memory_tracking` (function) — `atp/performance/memory.py:400`
+- `disable_memory_tracking` (function) — `atp/performance/memory.py:407`
+- `get_memory_size` (function) — `atp/performance/memory.py:429`
+- `logger` (const) — `atp/performance/profiler.py:21`
+- `T` (const) — `atp/performance/profiler.py:23`
+- `F` (const) — `atp/performance/profiler.py:24`
+- `Profiler` (class) — `atp/performance/profiler.py:91`
+- `get_profiler` (function) — `atp/performance/profiler.py:363`
+- `set_profiler` (function) — `atp/performance/profiler.py:378`
+- `enable_profiling` (function) — `atp/performance/profiler.py:389`
+- `disable_profiling` (function) — `atp/performance/profiler.py:401`
+- `profiled` (function) — `atp/performance/profiler.py:439`
+- `logger` (const) — `atp/performance/startup.py:16`
+- `LazyModule` (class) — `atp/performance/startup.py:44`
+- `LazyClass` (class) — `atp/performance/startup.py:92`
+- `DeferredRegistry` (class) — `atp/performance/startup.py:140`
+- `ImportAnalyzer` (class) — `atp/performance/startup.py:217`
+- `measure_startup_time` (function) — `atp/performance/startup.py:329`
+- `lazy_httpx` (const) — `atp/performance/startup.py:361`
+- `lazy_docker` (const) — `atp/performance/startup.py:362`
+- `lazy_anthropic` (const) — `atp/performance/startup.py:363`
+- `get_lazy_adapter_registry` (function) — `atp/performance/startup.py:366`
+- `PluginConfigError` (class) — `atp/plugins/config.py:16`
+- `PluginConfig` (class) — `atp/plugins/config.py:39`
+- `validate_plugin_config` (function) — `atp/plugins/config.py:237`
+- `ConfigMetadata` (class) — `atp/plugins/config.py:289`
+- `logger` (const) — `atp/plugins/dependencies.py:13`
+- `DependencyCycleError` (class) — `atp/plugins/dependencies.py:35`
+- `MissingDependencyError` (class) — `atp/plugins/dependencies.py:44`
+- `extract_dependencies` (function) — `atp/plugins/dependencies.py:57`
+- `resolve_load_order` (function) — `atp/plugins/dependencies.py:94`
+- `check_dependencies_satisfied` (function) — `atp/plugins/dependencies.py:153`
+- `logger` (const) — `atp/plugins/discovery.py:20`
+- `ADAPTER_GROUP` (const) — `atp/plugins/discovery.py:24`
+- `EVALUATOR_GROUP` (const) — `atp/plugins/discovery.py:25`
+- `REPORTER_GROUP` (const) — `atp/plugins/discovery.py:26`
+- `ALL_GROUPS` (const) — `atp/plugins/discovery.py:28`
+- `PluginInfo` (class) — `atp/plugins/discovery.py:31`
+- `LazyPlugin` (class) — `atp/plugins/discovery.py:57`
+- `PluginManager` (class) — `atp/plugins/discovery.py:125`
+- `get_plugin_manager` (function) — `atp/plugins/discovery.py:606`
+- `MIN_ATP_VERSION` (const) — `atp/plugins/interfaces.py:22`
+- `PluginValidationError` (class) — `atp/plugins/interfaces.py:25`
+- `PluginVersionError` (class) — `atp/plugins/interfaces.py:52`
+- `PluginProtocol` (const) — `atp/plugins/interfaces.py:272`
+- `get_plugin_protocol_for_group` (function) — `atp/plugins/interfaces.py:275`
+- `get_required_attributes` (function) — `atp/plugins/interfaces.py:294`
+- `get_required_methods` (function) — `atp/plugins/interfaces.py:313`
+- `validate_plugin` (function) — `atp/plugins/interfaces.py:332`
+- `check_version_compatibility` (function) — `atp/plugins/interfaces.py:421`
+- `validate_plugin_full` (function) — `atp/plugins/interfaces.py:503`
+- `get_plugin_config_schema` (function) — `atp/plugins/interfaces.py:527`
+- `validate_plugin_config` (function) — `atp/plugins/interfaces.py:551`
+- `get_plugin_config_metadata` (function) — `atp/plugins/interfaces.py:579`
+- `Reporter` (class) — `atp/reporters/base.py:16`
+- `ConsoleReporter` (class) — `atp/reporters/console.py:10`
+- `PlayerResult` (class) — `atp/reporters/game_reporter.py:22`
+- `EpisodeResult` (class) — `atp/reporters/game_reporter.py:33`
+- `MatchupResult` (class) — `atp/reporters/game_reporter.py:42`
+- `TournamentStanding` (class) — `atp/reporters/game_reporter.py:53`
+- `GameReport` (class) — `atp/reporters/game_reporter.py:65`
+- `GameReporter` (class) — `atp/reporters/game_reporter.py:89`
+- `GameHTMLReporter` (class) — `atp/reporters/game_reporter.py:243`
+- `export_game_csv` (function) — `atp/reporters/game_reporter.py:660`
+- `export_game_json` (function) — `atp/reporters/game_reporter.py:710`
+- `CHARTJS_VERSION` (const) — `atp/reporters/html_reporter.py:13`
+- `CHARTJS_CDN` (const) — `atp/reporters/html_reporter.py:14`
+- `HTML_TEMPLATE` (const) — `atp/reporters/html_reporter.py:18`
+- `HTMLReporter` (class) — `atp/reporters/html_reporter.py:815`
+- `JSONReporter` (class) — `atp/reporters/json_reporter.py:12`
+- `JUnitReporter` (class) — `atp/reporters/junit_reporter.py:16`
+- `ReporterNotFoundError` (class) — `atp/reporters/registry.py:13`
+- `ReporterRegistry` (class) — `atp/reporters/registry.py:21`
+- `get_registry` (function) — `atp/reporters/registry.py:156`
+- `create_reporter` (function) — `atp/reporters/registry.py:168`
+- `RunnerError` (class) — `atp/runner/exceptions.py:6`
+- `TestExecutionError` (class) — `atp/runner/exceptions.py:20`
+- `RunnerTimeoutError` (class) — `atp/runner/exceptions.py:34`
+- `SandboxError` (class) — `atp/runner/exceptions.py:47`
+- `SandboxConfig` (class) — `atp/runner/models.py:17`
+- `logger` (const) — `atp/runner/multi_agent.py:34`
+- `tracer` (const) — `atp/runner/multi_agent.py:35`
+- `RankingMetric` (class) — `atp/runner/multi_agent.py:38`
+- `AgentConfig` (class) — `atp/runner/multi_agent.py:49`
+- `AgentRanking` (class) — `atp/runner/multi_agent.py:61`
+- `ComparisonMetrics` (class) — `atp/runner/multi_agent.py:70`
+- `CollaborationMessageType` (class) — `atp/runner/multi_agent.py:86`
+- `CollaborationMessage` (class) — `atp/runner/multi_agent.py:97`
+- `SharedContext` (class) — `atp/runner/multi_agent.py:116`
+- `CollaborationConfig` (class) — `atp/runner/multi_agent.py:177`
+- `CollaborationMetrics` (class) — `atp/runner/multi_agent.py:202`
+- `HandoffTrigger` (class) — `atp/runner/multi_agent.py:235`
+- `ContextAccumulationMode` (class) — `atp/runner/multi_agent.py:245`
+- `HandoffConfig` (class) — `atp/runner/multi_agent.py:254`
+- `AgentHandoffOutput` (class) — `atp/runner/multi_agent.py:282`
+- `HandoffContext` (class) — `atp/runner/multi_agent.py:295`
+- `HandoffMetrics` (class) — `atp/runner/multi_agent.py:342`
+- `MultiAgentOrchestrator` (class) — `atp/runner/multi_agent.py:662`
+- `run_comparison` (function) — `atp/runner/multi_agent.py:2496`
+- `run_suite_comparison` (function) — `atp/runner/multi_agent.py:2529`
+- `run_collaboration` (function) — `atp/runner/multi_agent.py:2562`
+- `run_suite_collaboration` (function) — `atp/runner/multi_agent.py:2589`
+- `run_handoff` (function) — `atp/runner/multi_agent.py:2616`
+- `run_suite_handoff` (function) — `atp/runner/multi_agent.py:2646`
+- `logger` (const) — `atp/runner/orchestrator.py:45`
+- `tracer` (const) — `atp/runner/orchestrator.py:46`
+- `TestOrchestrator` (class) — `atp/runner/orchestrator.py:49`
+- `run_test` (function) — `atp/runner/orchestrator.py:889`
+- `run_suite` (function) — `atp/runner/orchestrator.py:915`
+- `ProgressStatus` (class) — `atp/runner/progress.py:16`
+- `create_progress_callback` (function) — `atp/runner/progress.py:312`
+- `logger` (const) — `atp/runner/sandbox.py:24`
+- `SandboxManager` (class) — `atp/runner/sandbox.py:27`
+- `detect_scope_conflicts` (function) — `atp/runner/sandbox.py:574`
+- `load_suite` (function) — `atp/sdk/__init__.py:60`
+- `load_suite_string` (function) — `atp/sdk/__init__.py:81`
+- `arun` (function) — `atp/sdk/__init__.py:123`
+- `run` (function) — `atp/sdk/__init__.py:172`
+- `aevaluate` (function) — `atp/sdk/__init__.py:208`
+- `evaluate` (function) — `atp/sdk/__init__.py:239`
+- `score` (function) — `atp/sdk/__init__.py:260`
+- `ModelConfig` (class) — `atp/sdk/compare.py:21`
+- `TestComparison` (class) — `atp/sdk/compare.py:32`
+- `ComparisonResult` (class) — `atp/sdk/compare.py:51`
+- `acompare` (function) — `atp/sdk/compare.py:80`
+- `compare` (function) — `atp/sdk/compare.py:129`
+- `format_comparison_table` (function) — `atp/sdk/compare.py:256`
+- `format_comparison_json` (function) — `atp/sdk/compare.py:308`
+- `TraceStep` (class) — `atp/tracing/models.py:12`
+- `TraceMetadata` (class) — `atp/tracing/models.py:27`
+- `Trace` (class) — `atp/tracing/models.py:40`
+- `TraceSummary` (class) — `atp/tracing/models.py:85`
+- `logger` (const) — `atp/tracing/recorder.py:9`
+- `TraceRecorder` (class) — `atp/tracing/recorder.py:12`
+- `logger` (const) — `atp/tracing/storage.py:11`
+- `DEFAULT_TRACES_DIR` (const) — `atp/tracing/storage.py:13`
+- `DEFAULT_RETENTION_DAYS` (const) — `atp/tracing/storage.py:14`
+- `TraceStorage` (class) — `atp/tracing/storage.py:17`
+- `FileTraceStorage` (class) — `atp/tracing/storage.py:69`
+- `get_default_storage` (function) — `atp/tracing/storage.py:199`
+- `WelcomePanel` (class) — `atp/tui/app.py:27`
+- `SuitesPanel` (class) — `atp/tui/app.py:47`
+- `ResultsPanel` (class) — `atp/tui/app.py:59`
+- `AgentsPanel` (class) — `atp/tui/app.py:71`
+- `HelpPanel` (class) — `atp/tui/app.py:83`
+- `HomeScreen` (class) — `atp/tui/app.py:112`
+- `SuitesScreen` (class) — `atp/tui/app.py:165`
+- `ResultsScreen` (class) — `atp/tui/app.py:199`
+- `AgentsScreen` (class) — `atp/tui/app.py:233`
+- `HelpScreen` (class) — `atp/tui/app.py:267`
+- `ATPTUI` (class) — `atp/tui/app.py:311`
+- `run_tui` (function) — `atp/tui/app.py:543`
+- `MainScreen` (class) — `atp/tui/screens/main_menu.py:26`
+- `NewSuiteScreen` (class) — `atp/tui/screens/suite_editor.py:23`
+- `AddTestScreen` (class) — `atp/tui/screens/test_editor.py:24`
+- `TestTreeWidget` (class) — `atp/tui/widgets/test_tree.py:19`
+- `YAMLPreviewWidget` (class) — `atp/tui/widgets/yaml_preview.py:18`
+- `app` (const) — `demo-game/agents/el_farol_agent.py:26`
+- `client` (const) — `demo-game/agents/el_farol_agent.py:28`
+- `MODEL` (const) — `demo-game/agents/el_farol_agent.py:30`
+- `INPUT_PRICE_PER_M` (const) — `demo-game/agents/el_farol_agent.py:33`
+- `OUTPUT_PRICE_PER_M` (const) — `demo-game/agents/el_farol_agent.py:34`
+- `SYSTEM_PROMPT` (const) — `demo-game/agents/el_farol_agent.py:36`
+- `Task` (class) — `demo-game/agents/el_farol_agent.py:76`
+- `Constraints` (class) — `demo-game/agents/el_farol_agent.py:82`
+- `ATPRequest` (class) — `demo-game/agents/el_farol_agent.py:90`
+- `StructuredArtifact` (class) — `demo-game/agents/el_farol_agent.py:99`
+- `Metrics` (class) — `demo-game/agents/el_farol_agent.py:105`
+- `ATPResponse` (class) — `demo-game/agents/el_farol_agent.py:116`
+- `extract_json` (function) — `demo-game/agents/el_farol_agent.py:128`
+- `parse_action` (function) — `demo-game/agents/el_farol_agent.py:156`
+- `calculate_cost` (function) — `demo-game/agents/el_farol_agent.py:187`
+- `app` (const) — `demo-game/agents/openai_game_agent.py:25`
+- `client` (const) — `demo-game/agents/openai_game_agent.py:27`
+- `MODEL` (const) — `demo-game/agents/openai_game_agent.py:29`
+- `INPUT_PRICE_PER_M` (const) — `demo-game/agents/openai_game_agent.py:32`
+- `OUTPUT_PRICE_PER_M` (const) — `demo-game/agents/openai_game_agent.py:33`
+- `SYSTEM_PROMPT` (const) — `demo-game/agents/openai_game_agent.py:35`
+- `Task` (class) — `demo-game/agents/openai_game_agent.py:58`
+- `Constraints` (class) — `demo-game/agents/openai_game_agent.py:64`
+- `ATPRequest` (class) — `demo-game/agents/openai_game_agent.py:72`
+- `StructuredArtifact` (class) — `demo-game/agents/openai_game_agent.py:81`
+- `Metrics` (class) — `demo-game/agents/openai_game_agent.py:87`
+- `ATPResponse` (class) — `demo-game/agents/openai_game_agent.py:98`
+- `extract_json` (function) — `demo-game/agents/openai_game_agent.py:110`
+- `calculate_cost` (function) — `demo-game/agents/openai_game_agent.py:141`
+- `logger` (const) — `demo-game/bots/el_farol_mcp_bot.py:21`
+- `DEFAULT_NUM_SLOTS` (const) — `demo-game/bots/el_farol_mcp_bot.py:26`
+- `DEFAULT_MAX_SLOTS_PER_DAY` (const) — `demo-game/bots/el_farol_mcp_bot.py:27`
+- `run_bot` (function) — `demo-game/bots/el_farol_mcp_bot.py:30`
+- `logger` (const) — `demo-game/bots/llm_mcp_bot.py:41`
+- `CompletionFn` (const) — `demo-game/bots/llm_mcp_bot.py:43`
+- `LLM_CALL_TIMEOUT_S` (const) — `demo-game/bots/llm_mcp_bot.py:51`
+- `llm_decide_action` (function) — `demo-game/bots/llm_mcp_bot.py:60`
+- `build_openai_completion_fn` (function) — `demo-game/bots/llm_mcp_bot.py:103`
+- `build_anthropic_completion_fn` (function) — `demo-game/bots/llm_mcp_bot.py:126`
+- `build_completion_fn_from_env` (function) — `demo-game/bots/llm_mcp_bot.py:145`
+- `run_bot` (function) — `demo-game/bots/llm_mcp_bot.py:174`
+- `REASONING_MAX_CHARS` (const) — `demo-game/bots/llm_prompts.py:16`
+- `SYSTEM_PROMPT` (const) — `demo-game/bots/llm_prompts.py:25`
+- `build_user_prompt` (function) — `demo-game/bots/llm_prompts.py:83`
+- `parse_llm_response` (function) — `demo-game/bots/llm_prompts.py:186`
+- `random_action` (function) — `demo-game/bots/llm_prompts.py:267`
+- `app` (const) — `demo/agents/anthropic_agent.py:23`
+- `client` (const) — `demo/agents/anthropic_agent.py:25`
+- `MODEL` (const) — `demo/agents/anthropic_agent.py:27`
+- `INPUT_PRICE_PER_M` (const) — `demo/agents/anthropic_agent.py:30`
+- `OUTPUT_PRICE_PER_M` (const) — `demo/agents/anthropic_agent.py:31`
+- `SYSTEM_PROMPT` (const) — `demo/agents/anthropic_agent.py:33`
+- `Task` (class) — `demo/agents/anthropic_agent.py:50`
+- `Constraints` (class) — `demo/agents/anthropic_agent.py:56`
+- `ATPRequest` (class) — `demo/agents/anthropic_agent.py:63`
+- `Artifact` (class) — `demo/agents/anthropic_agent.py:72`
+- `Metrics` (class) — `demo/agents/anthropic_agent.py:79`
+- `ATPResponse` (class) — `demo/agents/anthropic_agent.py:90`
+- `strip_markdown_fences` (function) — `demo/agents/anthropic_agent.py:102`
+- `calculate_cost` (function) — `demo/agents/anthropic_agent.py:112`
+- `app` (const) — `demo/agents/openai_agent.py:23`
+- `client` (const) — `demo/agents/openai_agent.py:25`
+- `MODEL` (const) — `demo/agents/openai_agent.py:27`
+- `INPUT_PRICE_PER_M` (const) — `demo/agents/openai_agent.py:30`
+- `OUTPUT_PRICE_PER_M` (const) — `demo/agents/openai_agent.py:31`
+- `SYSTEM_PROMPT` (const) — `demo/agents/openai_agent.py:33`
+- `Task` (class) — `demo/agents/openai_agent.py:50`
+- `Constraints` (class) — `demo/agents/openai_agent.py:56`
+- `ATPRequest` (class) — `demo/agents/openai_agent.py:63`
+- `Artifact` (class) — `demo/agents/openai_agent.py:72`
+- `Metrics` (class) — `demo/agents/openai_agent.py:79`
+- `ATPResponse` (class) — `demo/agents/openai_agent.py:90`
+- `strip_markdown_fences` (function) — `demo/agents/openai_agent.py:102`
+- `calculate_cost` (function) — `demo/agents/openai_agent.py:112`
+- `load_agent_results` (function) — `demo/compare_agents.py:15`
+- `extract_test_scores` (function) — `demo/compare_agents.py:24`
+- `compute_summary` (function) — `demo/compare_agents.py:56`
+- `print_comparison` (function) — `demo/compare_agents.py:82`
+- `main` (function) — `demo/compare_agents.py:168`
+- `MockTransport` (class) — `demo/fixtures/tests/test_api_client.py:14`
+- `make_client` (function) — `demo/fixtures/tests/test_api_client.py:28`
+- `TestGet` (class) — `demo/fixtures/tests/test_api_client.py:41`
+- `TestPost` (class) — `demo/fixtures/tests/test_api_client.py:68`
+- `TestInit` (class) — `demo/fixtures/tests/test_api_client.py:89`
+- `SAMPLE_CSV` (const) — `demo/fixtures/tests/test_csv_parser.py:9`
+- `TestReadCsv` (class) — `demo/fixtures/tests/test_csv_parser.py:21`
+- `TestFilterRows` (class) — `demo/fixtures/tests/test_csv_parser.py:47`
+- `TestWriteCsv` (class) — `demo/fixtures/tests/test_csv_parser.py:67`
+- `TestFibonacciBasic` (class) — `demo/fixtures/tests/test_fibonacci.py:9`
+- `TestFibonacciEdgeCases` (class) — `demo/fixtures/tests/test_fibonacci.py:28`
+- `TestFibonacciSequence` (class) — `demo/fixtures/tests/test_fibonacci.py:48`
+- `emit_event` (function) — `examples/demo_agent.py:22`
+- `create_file` (function) — `examples/demo_agent.py:40`
+- `read_file` (function) — `examples/demo_agent.py:53`
+- `list_files` (function) — `examples/demo_agent.py:71`
+- `parse_file_operation` (function) — `examples/demo_agent.py:97`
+- `execute_operation` (function) — `examples/demo_agent.py:190`
+- `build_response` (function) — `examples/demo_agent.py:401`
+- `main` (function) — `examples/demo_agent.py:423`
+- `emit_event` (function) — `examples/docker/agent.py:21`
+- `parse_task` (function) — `examples/docker/agent.py:32`
+- `execute_operation` (function) — `examples/docker/agent.py:54`
+- `main` (function) — `examples/docker/agent.py:109`
+- `MCPAgent` (class) — `examples/docker/openai_agent.py:38`
+- `main` (function) — `examples/docker/openai_agent.py:364`
+- `build_game_specs` (function) — `examples/experiments/run_experiment.py:58`
+- `print_standings` (function) — `examples/experiments/run_experiment.py:92`
+- `build_json_output` (function) — `examples/experiments/run_experiment.py:120`
+- `build_csv_rows` (function) — `examples/experiments/run_experiment.py:155`
+- `run_experiment` (function) — `examples/experiments/run_experiment.py:190`
+- `parse_args` (function) — `examples/experiments/run_experiment.py:240`
+- `main` (function) — `examples/experiments/run_experiment.py:268`
+- `run_one_shot_pd` (function) — `examples/games/basic_usage.py:26`
+- `run_repeated_pd` (function) — `examples/games/basic_usage.py:53`
+- `strategy_tournament` (function) — `examples/games/basic_usage.py:90`
+- `use_game_registry` (function) — `examples/games/basic_usage.py:138`
+- `noisy_game` (function) — `examples/games/basic_usage.py:161`
+- `RockPaperScissors` (class) — `examples/games/custom_game.py:29`
+- `AlwaysRock` (class) — `examples/games/custom_game.py:127`
+- `CounterStrategy` (class) — `examples/games/custom_game.py:141`
+- `FrequencyCounter` (class) — `examples/games/custom_game.py:167`
+- `main` (function) — `examples/games/custom_game.py:202`
+- `evaluate_strategy_as_agent` (function) — `examples/games/llm_agent_eval.py:36`
+- `run_game_battery` (function) — `examples/games/llm_agent_eval.py:113`
+- `main` (function) — `examples/games/llm_agent_eval.py:130`
+- `replicator_dynamics_demo` (function) — `examples/games/population_dynamics.py:28`
+- `ess_check_demo` (function) — `examples/games/population_dynamics.py:72`
+- `moran_process_demo` (function) — `examples/games/population_dynamics.py:95`
+- `population_simulator_demo` (function) — `examples/games/population_dynamics.py:132`
+- `loader` (const) — `examples/loader_example.py:6`
+- `suite` (const) — `examples/loader_example.py:7`
+- `loader_with_env` (const) — `examples/loader_example.py:21`
+- `suite_with_vars` (const) — `examples/loader_example.py:24`
+- `MCPAgent` (class) — `examples/mcp_agent.py:38`
+- `main` (function) — `examples/mcp_agent.py:364`
+- `get_timestamp` (function) — `examples/mcp_simple_agent.py:22`
+- `main` (function) — `examples/mcp_simple_agent.py:27`
+- `logger` (const) — `examples/mock_mcp_server.py:26`
+- `MockMCPHandler` (class) — `examples/mock_mcp_server.py:29`
+- `main` (function) — `examples/mock_mcp_server.py:311`
+- `TOOLS` (const) — `examples/openai_agent.py:28`
+- `EventEmitter` (class) — `examples/openai_agent.py:105`
+- `ToolExecutor` (class) — `examples/openai_agent.py:126`
+- `OpenAIAgent` (class) — `examples/openai_agent.py:253`
+- `build_response` (function) — `examples/openai_agent.py:415`
+- `main` (function) — `examples/openai_agent.py:442`
+- `get_timestamp` (function) — `examples/search_agent/agent.py:26`
+- `emit_event` (function) — `examples/search_agent/agent.py:31`
+- `extract_price` (function) — `examples/search_agent/agent.py:49`
+- `parse_task_description` (function) — `examples/search_agent/agent.py:57`
+- `WebSearchAgent` (class) — `examples/search_agent/agent.py:109`
+- `main` (function) — `examples/search_agent/agent.py:402`
+- `CONFIG_FILE` (const) — `executor.py:37`
+- `load_config_from_yaml` (function) — `executor.py:72`
+- `build_config` (function) — `executor.py:119`
+- `ExecutorState` (class) — `executor.py:189`
+- `extract_test_failures` (function) — `executor.py:297`
+- `build_task_prompt` (function) — `executor.py:325`
+- `get_task_branch_name` (function) — `executor.py:453`
+- `get_main_branch` (function) — `executor.py:459`
+- `pre_start_hook` (function) — `executor.py:484`
+- `post_done_hook` (function) — `executor.py:552`
+- `execute_task` (function) — `executor.py:713`
+- `run_with_retries` (function) — `executor.py:837`
+- `cmd_run` (function) — `executor.py:862`
+- `cmd_status` (function) — `executor.py:984`
+- `cmd_retry` (function) — `executor.py:1032`
+- `cmd_logs` (function) — `executor.py:1076`
+- `cmd_reset` (function) — `executor.py:1092`
+- `main` (function) — `executor.py:1107`
+- `COOPERATIVE_ACTIONS` (const) — `game-environments/game_envs/analysis/cooperation.py:14`
+- `cooperation_rate` (function) — `game-environments/game_envs/analysis/cooperation.py:56`
+- `conditional_cooperation` (function) — `game-environments/game_envs/analysis/cooperation.py:83`
+- `reciprocity_index` (function) — `game-environments/game_envs/analysis/cooperation.py:155`
+- `compute_best_response` (function) — `game-environments/game_envs/analysis/exploitability.py:150`
+- `compute_exploitability` (function) — `game-environments/game_envs/analysis/exploitability.py:179`
+- `compute_exploitability_from_game` (function) — `game-environments/game_envs/analysis/exploitability.py:245`
+- `gini_coefficient` (function) — `game-environments/game_envs/analysis/fairness.py:53`
+- `envy_freeness` (function) — `game-environments/game_envs/analysis/fairness.py:88`
+- `proportionality` (function) — `game-environments/game_envs/analysis/fairness.py:120`
+- `utilitarian_welfare` (function) — `game-environments/game_envs/analysis/fairness.py:174`
+- `NashSolver` (class) — `game-environments/game_envs/analysis/nash_solver.py:19`
+- `PopulationDynamics` (class) — `game-environments/game_envs/analysis/population.py:156`
+- `ReplicatorDynamics` (class) — `game-environments/game_envs/analysis/population.py:177`
+- `MoranProcess` (class) — `game-environments/game_envs/analysis/population.py:218`
+- `is_ess` (function) — `game-environments/game_envs/analysis/population.py:297`
+- `PopulationSimulator` (class) — `game-environments/game_envs/analysis/population.py:382`
+- `ActionSpace` (class) — `game-environments/game_envs/core/action.py:10`
+- `DiscreteActionSpace` (class) — `game-environments/game_envs/core/action.py:34`
+- `ContinuousActionSpace` (class) — `game-environments/game_envs/core/action.py:64`
+- `StructuredActionSpace` (class) — `game-environments/game_envs/core/action.py:107`
+- `CommunicationMode` (class) — `game-environments/game_envs/core/communication.py:12`
+- `CommunicationChannel` (class) — `game-environments/game_envs/core/communication.py:21`
+- `ValidationError` (class) — `game-environments/game_envs/core/errors.py:4`
+- `GameType` (class) — `game-environments/game_envs/core/game.py:21`
+- `MoveOrder` (class) — `game-environments/game_envs/core/game.py:30`
+- `Game` (class) — `game-environments/game_envs/core/game.py:86`
+- `GameHistory` (class) — `game-environments/game_envs/core/history.py:10`
+- `Strategy` (class) — `game-environments/game_envs/core/strategy.py:11`
+- `AuctionType` (class) — `game-environments/game_envs/games/auction.py:21`
+- `ValueDistribution` (class) — `game-environments/game_envs/games/auction.py:28`
+- `A` (const) — `game-environments/game_envs/games/battle_of_sexes.py:18`
+- `B` (const) — `game-environments/game_envs/games/battle_of_sexes.py:19`
+- `MAX_SLOTS_PER_DAY` (const) — `game-environments/game_envs/games/el_farol.py:60`
+- `ElFarolActionSpace` (class) — `game-environments/game_envs/games/el_farol.py:63`
+- `COOPERATE` (const) — `game-environments/game_envs/games/prisoners_dilemma.py:18`
+- `DEFECT` (const) — `game-environments/game_envs/games/prisoners_dilemma.py:19`
+- `PGStage` (class) — `game-environments/game_envs/games/public_goods.py:20`
+- `GameRegistry` (class) — `game-environments/game_envs/games/registry.py:11`
+- `register_game` (function) — `game-environments/game_envs/games/registry.py:189`
+- `STAG` (const) — `game-environments/game_envs/games/stag_hunt.py:18`
+- `HARE` (const) — `game-environments/game_envs/games/stag_hunt.py:19`
+- `TruthfulBidder` (class) — `game-environments/game_envs/strategies/auction_strategies.py:12`
+- `ShadeBidder` (class) — `game-environments/game_envs/strategies/auction_strategies.py:29`
+- `RandomBidder` (class) — `game-environments/game_envs/strategies/auction_strategies.py:57`
+- `UniformAllocation` (class) — `game-environments/game_envs/strategies/blotto_strategies.py:12`
+- `ConcentratedAllocation` (class) — `game-environments/game_envs/strategies/blotto_strategies.py:34`
+- `NashMixed` (class) — `game-environments/game_envs/strategies/blotto_strategies.py:64`
+- `ACTION_A` (const) — `game-environments/game_envs/strategies/bos_strategies.py:10`
+- `ACTION_B` (const) — `game-environments/game_envs/strategies/bos_strategies.py:11`
+- `AlwaysA` (class) — `game-environments/game_envs/strategies/bos_strategies.py:14`
+- `AlwaysB` (class) — `game-environments/game_envs/strategies/bos_strategies.py:25`
+- `Alternating` (class) — `game-environments/game_envs/strategies/bos_strategies.py:36`
+- `SelfishRouter` (class) — `game-environments/game_envs/strategies/congestion_strategies.py:12`
+- `SocialOptimum` (class) — `game-environments/game_envs/strategies/congestion_strategies.py:44`
+- `EpsilonGreedy` (class) — `game-environments/game_envs/strategies/congestion_strategies.py:76`
+- `Traditionalist` (class) — `game-environments/game_envs/strategies/el_farol_strategies.py:84`
+- `TrendFollower` (class) — `game-environments/game_envs/strategies/el_farol_strategies.py:118`
+- `Contrarian` (class) — `game-environments/game_envs/strategies/el_farol_strategies.py:147`
+- `Gambler` (class) — `game-environments/game_envs/strategies/el_farol_strategies.py:175`
+- `SmartPredictor` (class) — `game-environments/game_envs/strategies/el_farol_strategies.py:217`
+- `Scout` (class) — `game-environments/game_envs/strategies/el_farol_strategies.py:254`
+- `COOPERATE` (const) — `game-environments/game_envs/strategies/pd_strategies.py:11`
+- `DEFECT` (const) — `game-environments/game_envs/strategies/pd_strategies.py:12`
+- `AlwaysCooperate` (class) — `game-environments/game_envs/strategies/pd_strategies.py:15`
+- `AlwaysDefect` (class) — `game-environments/game_envs/strategies/pd_strategies.py:26`
+- `TitForTat` (class) — `game-environments/game_envs/strategies/pd_strategies.py:37`
+- `GrimTrigger` (class) — `game-environments/game_envs/strategies/pd_strategies.py:61`
+- `Pavlov` (class) — `game-environments/game_envs/strategies/pd_strategies.py:89`
+- `RandomStrategy` (class) — `game-environments/game_envs/strategies/pd_strategies.py:120`
+- `FullContributor` (class) — `game-environments/game_envs/strategies/pg_strategies.py:11`
+- `FreeRider` (class) — `game-environments/game_envs/strategies/pg_strategies.py:26`
+- `ConditionalCooperator` (class) — `game-environments/game_envs/strategies/pg_strategies.py:41`
+- `Punisher` (class) — `game-environments/game_envs/strategies/pg_strategies.py:72`
+- `StrategyRegistry` (class) — `game-environments/game_envs/strategies/registry.py:10`
+- `STAG` (const) — `game-environments/game_envs/strategies/stag_hunt_strategies.py:10`
+- `HARE` (const) — `game-environments/game_envs/strategies/stag_hunt_strategies.py:11`
+- `AlwaysStag` (class) — `game-environments/game_envs/strategies/stag_hunt_strategies.py:14`
+- `AlwaysHare` (class) — `game-environments/game_envs/strategies/stag_hunt_strategies.py:25`
+- `StagTitForTat` (class) — `game-environments/game_envs/strategies/stag_hunt_strategies.py:36`
+- `StubGame` (class) — `game-environments/tests/conftest.py:31`
+- `StubStrategy` (class) — `game-environments/tests/conftest.py:117`
+- `TestDiscreteActionSpace` (class) — `game-environments/tests/test_action.py:16`
+- `TestContinuousActionSpace` (class) — `game-environments/tests/test_action.py:73`
+- `TestStructuredActionSpace` (class) — `game-environments/tests/test_action.py:138`
+- `TestDiscreteActionSpaceProperties` (class) — `game-environments/tests/test_action_properties.py:17`
+- `TestContinuousActionSpaceProperties` (class) — `game-environments/tests/test_action_properties.py:85`
+- `TestStructuredActionSpaceProperties` (class) — `game-environments/tests/test_action_properties.py:164`
+- `TestAuctionConfig` (class) — `game-environments/tests/test_auction.py:18`
+- `TestAuctionProperties` (class) — `game-environments/tests/test_auction.py:81`
+- `TestAuctionReset` (class) — `game-environments/tests/test_auction.py:137`
+- `TestAuctionFirstPrice` (class) — `game-environments/tests/test_auction.py:224`
+- `TestAuctionSecondPrice` (class) — `game-environments/tests/test_auction.py:273`
+- `TestAuctionFirstPriceOptimalShading` (class) — `game-environments/tests/test_auction.py:397`
+- `TestAuctionReservePrice` (class) — `game-environments/tests/test_auction.py:452`
+- `TestAuctionTies` (class) — `game-environments/tests/test_auction.py:501`
+- `TestAuctionObserve` (class) — `game-environments/tests/test_auction.py:539`
+- `TestAuctionToPrompt` (class) — `game-environments/tests/test_auction.py:629`
+- `TestAuctionRepeated` (class) — `game-environments/tests/test_auction.py:676`
+- `TestAuctionRegistry` (class) — `game-environments/tests/test_auction.py:756`
+- `TestBoSConfig` (class) — `game-environments/tests/test_battle_of_sexes.py:11`
+- `TestBattleOfSexesPayoffs` (class) — `game-environments/tests/test_battle_of_sexes.py:25`
+- `TestBattleOfSexesRepeated` (class) — `game-environments/tests/test_battle_of_sexes.py:67`
+- `TestBattleOfSexesRegistry` (class) — `game-environments/tests/test_battle_of_sexes.py:89`
+- `test_validate_action_accepts_a` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:19`
+- `test_validate_action_accepts_b` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:23`
+- `test_validate_action_rejects_unknown_choice` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:27`
+- `test_validate_action_rejects_missing_choice` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:32`
+- `test_validate_action_rejects_non_dict` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:37`
+- `test_default_action_on_timeout_is_a` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:42`
+- `test_format_state_empty_history_exposes_your_preferred` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:47`
+- `test_format_state_populated_history_from_both_sides` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:68`
+- `test_compute_round_payoffs_coord_on_a` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:85`
+- `test_compute_round_payoffs_coord_on_b` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:92`
+- `test_compute_round_payoffs_mismatch_ab` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:99`
+- `test_compute_round_payoffs_mismatch_ba` (function) — `game-environments/tests/test_battle_of_sexes_service_methods.py:105`
+- `TestBlottoConfig` (class) — `game-environments/tests/test_colonel_blotto.py:14`
+- `TestColonelBlottoProperties` (class) — `game-environments/tests/test_colonel_blotto.py:62`
+- `TestAllocationValidation` (class) — `game-environments/tests/test_colonel_blotto.py:108`
+- `TestPayoffComputation` (class) — `game-environments/tests/test_colonel_blotto.py:209`
+- `TestColonelBlottoRepeated` (class) — `game-environments/tests/test_colonel_blotto.py:356`
+- `TestColonelBlottoObserve` (class) — `game-environments/tests/test_colonel_blotto.py:492`
+- `TestToPrompt` (class) — `game-environments/tests/test_colonel_blotto.py:553`
+- `TestNoPureNashEquilibrium` (class) — `game-environments/tests/test_colonel_blotto.py:592`
+- `TestColonelBlottoRegistry` (class) — `game-environments/tests/test_colonel_blotto.py:734`
+- `TestCommunicationMode` (class) — `game-environments/tests/test_communication.py:19`
+- `TestCommunicationChannelNoComm` (class) — `game-environments/tests/test_communication.py:33`
+- `TestCommunicationChannelPreAction` (class) — `game-environments/tests/test_communication.py:54`
+- `TestCommunicationChannelPostAction` (class) — `game-environments/tests/test_communication.py:122`
+- `TestCommunicationChannelFree` (class) — `game-environments/tests/test_communication.py:145`
+- `TestCommunicationChannelSerialization` (class) — `game-environments/tests/test_communication.py:165`
+- `TestInformationSet` (class) — `game-environments/tests/test_communication.py:213`
+- `TestGameConfigCommunication` (class) — `game-environments/tests/test_communication.py:304`
+- `TestGameCommunication` (class) — `game-environments/tests/test_communication.py:334`
+- `TestPDWithCommunication` (class) — `game-environments/tests/test_communication.py:363`
+- `TestAuctionWithInformationSet` (class) — `game-environments/tests/test_communication.py:449`
+- `TestMessageTimestamp` (class) — `game-environments/tests/test_communication.py:551`
+- `TestInformationSetFilterHistory` (class) — `game-environments/tests/test_communication.py:585`
+- `TestGameGetInformationSet` (class) — `game-environments/tests/test_communication.py:693`
+- `TestResetClearsChannel` (class) — `game-environments/tests/test_communication.py:736`
+- `TestPDPostActionCommunication` (class) — `game-environments/tests/test_communication.py:803`
+- `TestRouteDefinition` (class) — `game-environments/tests/test_congestion.py:18`
+- `TestCongestionConfig` (class) — `game-environments/tests/test_congestion.py:46`
+- `TestCongestionGameProperties` (class) — `game-environments/tests/test_congestion.py:91`
+- `TestCongestionGameLatency` (class) — `game-environments/tests/test_congestion.py:140`
+- `TestCongestionGameOneShot` (class) — `game-environments/tests/test_congestion.py:162`
+- `TestCongestionGameNPlayer` (class) — `game-environments/tests/test_congestion.py:228`
+- `TestCongestionGameNashFlow` (class) — `game-environments/tests/test_congestion.py:289`
+- `TestBraessParadox` (class) — `game-environments/tests/test_congestion.py:341`
+- `TestCongestionGameRepeated` (class) — `game-environments/tests/test_congestion.py:489`
+- `TestCongestionGameObserve` (class) — `game-environments/tests/test_congestion.py:573`
+- `TestCongestionGameRegistry` (class) — `game-environments/tests/test_congestion.py:641`
+- `TestCongestionGameToPrompt` (class) — `game-environments/tests/test_congestion.py:665`
+- `TestBraessParadoxVerification` (class) — `game-environments/tests/test_congestion.py:723`
+- `TestCooperationRate` (class) — `game-environments/tests/test_cooperation.py:67`
+- `TestConditionalCooperation` (class) — `game-environments/tests/test_cooperation.py:107`
+- `TestReciprocityIndex` (class) — `game-environments/tests/test_cooperation.py:154`
+- `TestCooperationMetricsSerialization` (class) — `game-environments/tests/test_cooperation.py:204`
+- `TestCooperationIntegration` (class) — `game-environments/tests/test_cooperation.py:240`
+- `test_validate_action_accepts_intervals` (function) — `game-environments/tests/test_el_farol.py:22`
+- `test_validate_action_orders_intervals` (function) — `game-environments/tests/test_el_farol.py:27`
+- `test_validate_action_accepts_empty_list` (function) — `game-environments/tests/test_el_farol.py:35`
+- `test_validate_action_rejects_overlapping_intervals` (function) — `game-environments/tests/test_el_farol.py:40`
+- `test_validate_action_rejects_adjacent_intervals` (function) — `game-environments/tests/test_el_farol.py:46`
+- `test_validate_action_rejects_out_of_range` (function) — `game-environments/tests/test_el_farol.py:52`
+- `test_validate_action_rejects_negative` (function) — `game-environments/tests/test_el_farol.py:58`
+- `test_validate_action_rejects_too_many_total_slots` (function) — `game-environments/tests/test_el_farol.py:64`
+- `test_validate_action_rejects_too_many_intervals` (function) — `game-environments/tests/test_el_farol.py:71`
+- `test_validate_action_rejects_non_list_intervals` (function) — `game-environments/tests/test_el_farol.py:78`
+- `test_validate_action_rejects_missing_intervals_key` (function) — `game-environments/tests/test_el_farol.py:84`
+- `test_validate_action_rejects_legacy_slots_key` (function) — `game-environments/tests/test_el_farol.py:90`
+- `test_validate_action_rejects_non_dict` (function) — `game-environments/tests/test_el_farol.py:96`
+- `test_validate_action_rejects_bool_bounds` (function) — `game-environments/tests/test_el_farol.py:102`
+- `test_validate_action_rejects_bad_pair_shape` (function) — `game-environments/tests/test_el_farol.py:108`
+- `test_validate_action_rejects_start_after_end` (function) — `game-environments/tests/test_el_farol.py:114`
+- `test_default_action_on_timeout_returns_empty_intervals` (function) — `game-environments/tests/test_el_farol.py:120`
+- `test_format_state_empty_history` (function) — `game-environments/tests/test_el_farol.py:125`
+- `test_format_state_populated_history_aggregates_attendance` (function) — `game-environments/tests/test_el_farol.py:151`
+- `test_compute_round_payoffs_legacy_mode_happy_minus_crowded` (function) — `game-environments/tests/test_el_farol.py:184`
+- `test_format_state_your_history_is_defensive_copy` (function) — `game-environments/tests/test_el_farol.py:207`
+- `test_scoring_mode_validation_rejects_unknown` (function) — `game-environments/tests/test_el_farol.py:231`
+- `test_scoring_mode_default_is_happy_only` (function) — `game-environments/tests/test_el_farol.py:237`
+- `test_scoring_mode_dataclass_round_trip` (function) — `game-environments/tests/test_el_farol.py:244`
+- `test_compute_round_payoffs_happy_only_default` (function) — `game-environments/tests/test_el_farol.py:257`
+- `test_step_happy_only_accumulates_t_happy_and_t_crowded` (function) — `game-environments/tests/test_el_farol.py:285`
+- `test_get_payoffs_happy_only_returns_t_happy_sum` (function) — `game-environments/tests/test_el_farol.py:319`
+- `test_get_payoffs_happy_only_disqualification_still_applies` (function) — `game-environments/tests/test_el_farol.py:345`
+- `test_happy_only_per_round_payoff_is_non_negative` (function) — `game-environments/tests/test_el_farol.py:368`
+- `test_observation_includes_t_crowded_in_both_modes` (function) — `game-environments/tests/test_el_farol.py:398`
+- `test_to_prompt_happy_only_describes_no_penalty` (function) — `game-environments/tests/test_el_farol.py:417`
+- `test_to_prompt_legacy_describes_ratio_formula` (function) — `game-environments/tests/test_el_farol.py:440`
+- `test_get_payoffs_legacy_mode_returns_ratio` (function) — `game-environments/tests/test_el_farol.py:457`
+- `PD_P1` (const) — `game-environments/tests/test_exploitability.py:28`
+- `PD_P2` (const) — `game-environments/tests/test_exploitability.py:29`
+- `TestEmpiricalStrategy` (class) — `game-environments/tests/test_exploitability.py:32`
+- `TestExploitabilityResult` (class) — `game-environments/tests/test_exploitability.py:105`
+- `TestBestResponse` (class) — `game-environments/tests/test_exploitability.py:120`
+- `TestComputeExploitability` (class) — `game-environments/tests/test_exploitability.py:168`
+- `TestComputeExploitabilityFromGame` (class) — `game-environments/tests/test_exploitability.py:281`
+- `TestCrossSolverExploitability` (class) — `game-environments/tests/test_exploitability.py:362`
+- `TestGiniCoefficient` (class) — `game-environments/tests/test_fairness.py:18`
+- `TestEnvyFreeness` (class) — `game-environments/tests/test_fairness.py:60`
+- `TestProportionality` (class) — `game-environments/tests/test_fairness.py:92`
+- `TestUtilitarianWelfare` (class) — `game-environments/tests/test_fairness.py:131`
+- `TestFairnessMetricsSerialization` (class) — `game-environments/tests/test_fairness.py:152`
+- `TestGameConfig` (class) — `game-environments/tests/test_game.py:10`
+- `TestGameType` (class) — `game-environments/tests/test_game.py:73`
+- `TestMoveOrder` (class) — `game-environments/tests/test_game.py:81`
+- `TestStubGame` (class) — `game-environments/tests/test_game.py:87`
+- `TestGameHistory` (class) — `game-environments/tests/test_history.py:9`
+- `PD_P1` (const) — `game-environments/tests/test_nash_solver.py:25`
+- `PD_P2` (const) — `game-environments/tests/test_nash_solver.py:26`
+- `MP_P1` (const) — `game-environments/tests/test_nash_solver.py:29`
+- `MP_P2` (const) — `game-environments/tests/test_nash_solver.py:30`
+- `BOS_P1` (const) — `game-environments/tests/test_nash_solver.py:33`
+- `BOS_P2` (const) — `game-environments/tests/test_nash_solver.py:34`
+- `RPS_P1` (const) — `game-environments/tests/test_nash_solver.py:37`
+- `RPS_P2` (const) — `game-environments/tests/test_nash_solver.py:44`
+- `TestNashEquilibriumModel` (class) — `game-environments/tests/test_nash_solver.py:47`
+- `TestSupportEnumeration` (class) — `game-environments/tests/test_nash_solver.py:133`
+- `TestLemkeHowson` (class) — `game-environments/tests/test_nash_solver.py:216`
+- `TestFictitiousPlay` (class) — `game-environments/tests/test_nash_solver.py:285`
+- `TestReplicatorDynamics` (class) — `game-environments/tests/test_nash_solver.py:343`
+- `TestSolve2Player` (class) — `game-environments/tests/test_nash_solver.py:407`
+- `TestSolveNPlayer` (class) — `game-environments/tests/test_nash_solver.py:435`
+- `TestPerformance` (class) — `game-environments/tests/test_nash_solver.py:460`
+- `TestVerificationOnKnownGames` (class) — `game-environments/tests/test_nash_solver.py:502`
+- `PD_PAYOFF` (const) — `game-environments/tests/test_population.py:25`
+- `TestPopulationSnapshot` (class) — `game-environments/tests/test_population.py:36`
+- `TestPopulationResult` (class) — `game-environments/tests/test_population.py:62`
+- `TestReplicatorDynamics` (class) — `game-environments/tests/test_population.py:116`
+- `TestMoranProcess` (class) — `game-environments/tests/test_population.py:186`
+- `TestIsESS` (class) — `game-environments/tests/test_population.py:240`
+- `TestPopulationSimulator` (class) — `game-environments/tests/test_population.py:289`
+- `TestPDConfig` (class) — `game-environments/tests/test_prisoners_dilemma.py:16`
+- `TestPrisonersDilemmaOneShot` (class) — `game-environments/tests/test_prisoners_dilemma.py:74`
+- `TestPrisonersDilemmaRepeated` (class) — `game-environments/tests/test_prisoners_dilemma.py:164`
+- `TestPrisonersDilemmaNoise` (class) — `game-environments/tests/test_prisoners_dilemma.py:252`
+- `TestPrisonersDilemmaObserve` (class) — `game-environments/tests/test_prisoners_dilemma.py:306`
+- `TestPrisonersDilemmaSerialization` (class) — `game-environments/tests/test_prisoners_dilemma.py:363`
+- `TestPrisonersDilemmaValidateAction` (class) — `game-environments/tests/test_prisoners_dilemma.py:393`
+- `test_default_action_on_timeout_returns_defect` (function) — `game-environments/tests/test_prisoners_dilemma.py:426`
+- `test_format_state_accepts_generic_action_history_shape` (function) — `game-environments/tests/test_prisoners_dilemma.py:431`
+- `test_compute_round_payoffs_from_action_dicts` (function) — `game-environments/tests/test_prisoners_dilemma.py:452`
+- `test_format_state_empty_history` (function) — `game-environments/tests/test_prisoners_dilemma.py:460`
+- `TestPGConfig` (class) — `game-environments/tests/test_public_goods.py:14`
+- `TestPublicGoodsGameProperties` (class) — `game-environments/tests/test_public_goods.py:76`
+- `TestPublicGoodsGameOneShot` (class) — `game-environments/tests/test_public_goods.py:159`
+- `TestPublicGoodsGameNPlayer` (class) — `game-environments/tests/test_public_goods.py:268`
+- `TestPublicGoodsGameRepeated` (class) — `game-environments/tests/test_public_goods.py:330`
+- `TestPublicGoodsGamePunishment` (class) — `game-environments/tests/test_public_goods.py:413`
+- `TestPublicGoodsGameObserve` (class) — `game-environments/tests/test_public_goods.py:513`
+- `TestPublicGoodsGameRegistry` (class) — `game-environments/tests/test_public_goods.py:627`
+- `test_validate_action_accepts_float` (function) — `game-environments/tests/test_public_goods_service_methods.py:22`
+- `test_validate_action_coerces_int_to_float` (function) — `game-environments/tests/test_public_goods_service_methods.py:26`
+- `test_validate_action_accepts_zero` (function) — `game-environments/tests/test_public_goods_service_methods.py:30`
+- `test_validate_action_accepts_full_endowment` (function) — `game-environments/tests/test_public_goods_service_methods.py:34`
+- `test_validate_action_rejects_negative` (function) — `game-environments/tests/test_public_goods_service_methods.py:40`
+- `test_validate_action_rejects_above_endowment` (function) — `game-environments/tests/test_public_goods_service_methods.py:45`
+- `test_validate_action_rejects_non_number` (function) — `game-environments/tests/test_public_goods_service_methods.py:50`
+- `test_validate_action_rejects_bool` (function) — `game-environments/tests/test_public_goods_service_methods.py:55`
+- `test_validate_action_rejects_missing_field` (function) — `game-environments/tests/test_public_goods_service_methods.py:62`
+- `test_validate_action_rejects_non_dict` (function) — `game-environments/tests/test_public_goods_service_methods.py:67`
+- `test_default_action_on_timeout_is_zero_contribution` (function) — `game-environments/tests/test_public_goods_service_methods.py:75`
+- `test_compute_round_payoffs_all_contribute_full` (function) — `game-environments/tests/test_public_goods_service_methods.py:82`
+- `test_compute_round_payoffs_all_free_ride` (function) — `game-environments/tests/test_public_goods_service_methods.py:93`
+- `test_compute_round_payoffs_asymmetric` (function) — `game-environments/tests/test_public_goods_service_methods.py:101`
+- `test_compute_round_payoffs_missing_action_treated_as_zero` (function) — `game-environments/tests/test_public_goods_service_methods.py:119`
+- `test_format_state_empty_history` (function) — `game-environments/tests/test_public_goods_service_methods.py:136`
+- `test_format_state_exposes_full_contribution_vector` (function) — `game-environments/tests/test_public_goods_service_methods.py:160`
+- `TestGameRegistry` (class) — `game-environments/tests/test_registry.py:79`
+- `TestGameInfo` (class) — `game-environments/tests/test_registry.py:217`
+- `TestRegisterGameDecorator` (class) — `game-environments/tests/test_registry.py:304`
+- `TestBuiltinRegistration` (class) — `game-environments/tests/test_registry.py:384`
+- `TestSHConfig` (class) — `game-environments/tests/test_stag_hunt.py:11`
+- `TestStagHuntPayoffs` (class) — `game-environments/tests/test_stag_hunt.py:37`
+- `TestStagHuntNashEquilibria` (class) — `game-environments/tests/test_stag_hunt.py:80`
+- `TestStagHuntRepeated` (class) — `game-environments/tests/test_stag_hunt.py:92`
+- `TestStagHuntRegistry` (class) — `game-environments/tests/test_stag_hunt.py:122`
+- `test_validate_action_accepts_stag` (function) — `game-environments/tests/test_stag_hunt_service_methods.py:19`
+- `test_validate_action_accepts_hare` (function) — `game-environments/tests/test_stag_hunt_service_methods.py:23`
+- `test_validate_action_rejects_unknown_choice` (function) — `game-environments/tests/test_stag_hunt_service_methods.py:27`
+- `test_validate_action_rejects_missing_choice` (function) — `game-environments/tests/test_stag_hunt_service_methods.py:32`
+- `test_validate_action_rejects_non_dict` (function) — `game-environments/tests/test_stag_hunt_service_methods.py:37`
+- `test_default_action_on_timeout_is_hare` (function) — `game-environments/tests/test_stag_hunt_service_methods.py:42`
+- `test_format_state_empty_history` (function) — `game-environments/tests/test_stag_hunt_service_methods.py:47`
+- `test_format_state_populated_history_from_both_sides` (function) — `game-environments/tests/test_stag_hunt_service_methods.py:65`
+- `test_compute_round_payoffs_mutual_stag` (function) — `game-environments/tests/test_stag_hunt_service_methods.py:97`
+- `test_compute_round_payoffs_mutual_hare` (function) — `game-environments/tests/test_stag_hunt_service_methods.py:104`
+- `test_compute_round_payoffs_sucker_and_hare` (function) — `game-environments/tests/test_stag_hunt_service_methods.py:111`
+- `TestMessage` (class) — `game-environments/tests/test_state.py:14`
+- `TestRoundResult` (class) — `game-environments/tests/test_state.py:40`
+- `TestGameState` (class) — `game-environments/tests/test_state.py:77`
+- `TestObservation` (class) — `game-environments/tests/test_state.py:123`
+- `TestStepResult` (class) — `game-environments/tests/test_state.py:189`
+- `TestTruthfulBidder` (class) — `game-environments/tests/test_strategies/test_auction_strategies.py:43`
+- `TestShadeBidder` (class) — `game-environments/tests/test_strategies/test_auction_strategies.py:58`
+- `TestRandomBidder` (class) — `game-environments/tests/test_strategies/test_auction_strategies.py:90`
+- `TestAuctionIntegration` (class) — `game-environments/tests/test_strategies/test_auction_strategies.py:109`
+- `FIELDS` (const) — `game-environments/tests/test_strategies/test_blotto_strategies.py:15`
+- `TOTAL` (const) — `game-environments/tests/test_strategies/test_blotto_strategies.py:16`
+- `TestUniformAllocation` (class) — `game-environments/tests/test_strategies/test_blotto_strategies.py:44`
+- `TestConcentratedAllocation` (class) — `game-environments/tests/test_strategies/test_blotto_strategies.py:67`
+- `TestNashMixed` (class) — `game-environments/tests/test_strategies/test_blotto_strategies.py:100`
+- `TestBlottoIntegration` (class) — `game-environments/tests/test_strategies/test_blotto_strategies.py:139`
+- `TestSelfishRouter` (class) — `game-environments/tests/test_strategies/test_congestion_strategies.py:45`
+- `TestSocialOptimum` (class) — `game-environments/tests/test_strategies/test_congestion_strategies.py:73`
+- `TestEpsilonGreedy` (class) — `game-environments/tests/test_strategies/test_congestion_strategies.py:108`
+- `TestCongestionIntegration` (class) — `game-environments/tests/test_strategies/test_congestion_strategies.py:156`
+- `TestAlwaysCooperate` (class) — `game-environments/tests/test_strategies/test_pd_strategies.py:58`
+- `TestAlwaysDefect` (class) — `game-environments/tests/test_strategies/test_pd_strategies.py:72`
+- `TestTitForTat` (class) — `game-environments/tests/test_strategies/test_pd_strategies.py:86`
+- `TestGrimTrigger` (class) — `game-environments/tests/test_strategies/test_pd_strategies.py:138`
+- `TestPavlov` (class) — `game-environments/tests/test_strategies/test_pd_strategies.py:176`
+- `TestRandomStrategy` (class) — `game-environments/tests/test_strategies/test_pd_strategies.py:205`
+- `TestPDPayoffsMatchTheory` (class) — `game-environments/tests/test_strategies/test_pd_strategies.py:224`
+- `TestFullContributor` (class) — `game-environments/tests/test_strategies/test_pg_strategies.py:49`
+- `TestFreeRider` (class) — `game-environments/tests/test_strategies/test_pg_strategies.py:64`
+- `TestConditionalCooperator` (class) — `game-environments/tests/test_strategies/test_pg_strategies.py:73`
+- `TestPunisher` (class) — `game-environments/tests/test_strategies/test_pg_strategies.py:129`
+- `TestPGIntegration` (class) — `game-environments/tests/test_strategies/test_pg_strategies.py:172`
+- `TestStrategyRegistry` (class) — `game-environments/tests/test_strategies/test_registry.py:11`
+- `TestStubStrategy` (class) — `game-environments/tests/test_strategy.py:32`
+- `ALL_STRATEGIES` (const) — `game-environments/tests/test_strategy.py:70`
+- `TestAllStrategiesABC` (class) — `game-environments/tests/test_strategy.py:93`
+- `TestResetClearsState` (class) — `game-environments/tests/test_strategy.py:122`
+- `config` (const) — `migrations/analytics/env.py:12`
+- `target_metadata` (const) — `migrations/analytics/env.py:17`
+- `db_url` (const) — `migrations/analytics/env.py:20`
+- `run_migrations_offline` (function) — `migrations/analytics/env.py:29`
+- `run_migrations_online` (function) — `migrations/analytics/env.py:44`
+- `revision` (const) — `migrations/analytics/versions/c25a35e0b9eb_initial_schema.py:15`
+- `down_revision` (const) — `migrations/analytics/versions/c25a35e0b9eb_initial_schema.py:16`
+- `branch_labels` (const) — `migrations/analytics/versions/c25a35e0b9eb_initial_schema.py:17`
+- `depends_on` (const) — `migrations/analytics/versions/c25a35e0b9eb_initial_schema.py:18`
+- `upgrade` (function) — `migrations/analytics/versions/c25a35e0b9eb_initial_schema.py:21`
+- `downgrade` (function) — `migrations/analytics/versions/c25a35e0b9eb_initial_schema.py:222`
+- `config` (const) — `migrations/dashboard/env.py:14`
+- `target_metadata` (const) — `migrations/dashboard/env.py:19`
+- `db_url` (const) — `migrations/dashboard/env.py:25`
+- `run_migrations_offline` (function) — `migrations/dashboard/env.py:37`
+- `run_migrations_online` (function) — `migrations/dashboard/env.py:52`
+- `revision` (const) — `migrations/dashboard/versions/028d8a9fdc46_tournament_slice_columns.py:14`
+- `down_revision` (const) — `migrations/dashboard/versions/028d8a9fdc46_tournament_slice_columns.py:15`
+- `branch_labels` (const) — `migrations/dashboard/versions/028d8a9fdc46_tournament_slice_columns.py:16`
+- `depends_on` (const) — `migrations/dashboard/versions/028d8a9fdc46_tournament_slice_columns.py:17`
+- `upgrade` (function) — `migrations/dashboard/versions/028d8a9fdc46_tournament_slice_columns.py:20`
+- `downgrade` (function) — `migrations/dashboard/versions/028d8a9fdc46_tournament_slice_columns.py:44`
+- `revision` (const) — `migrations/dashboard/versions/4e902371a941_add_tournament_tables.py:15`
+- `down_revision` (const) — `migrations/dashboard/versions/4e902371a941_add_tournament_tables.py:16`
+- `branch_labels` (const) — `migrations/dashboard/versions/4e902371a941_add_tournament_tables.py:17`
+- `depends_on` (const) — `migrations/dashboard/versions/4e902371a941_add_tournament_tables.py:18`
+- `upgrade` (function) — `migrations/dashboard/versions/4e902371a941_add_tournament_tables.py:21`
+- `downgrade` (function) — `migrations/dashboard/versions/4e902371a941_add_tournament_tables.py:114`
+- `revision` (const) — `migrations/dashboard/versions/52987a83afb7_apitoken_agent_purpose_labs_tsa_pr_3.py:19`
+- `down_revision` (const) — `migrations/dashboard/versions/52987a83afb7_apitoken_agent_purpose_labs_tsa_pr_3.py:20`
+- `branch_labels` (const) — `migrations/dashboard/versions/52987a83afb7_apitoken_agent_purpose_labs_tsa_pr_3.py:21`
+- `depends_on` (const) — `migrations/dashboard/versions/52987a83afb7_apitoken_agent_purpose_labs_tsa_pr_3.py:22`
+- `upgrade` (function) — `migrations/dashboard/versions/52987a83afb7_apitoken_agent_purpose_labs_tsa_pr_3.py:25`
+- `downgrade` (function) — `migrations/dashboard/versions/52987a83afb7_apitoken_agent_purpose_labs_tsa_pr_3.py:33`
+- `revision` (const) — `migrations/dashboard/versions/7a1c3d9e4b02_el_farol_game_result_columns.py:19`
+- `down_revision` (const) — `migrations/dashboard/versions/7a1c3d9e4b02_el_farol_game_result_columns.py:20`
+- `branch_labels` (const) — `migrations/dashboard/versions/7a1c3d9e4b02_el_farol_game_result_columns.py:21`
+- `depends_on` (const) — `migrations/dashboard/versions/7a1c3d9e4b02_el_farol_game_result_columns.py:22`
+- `upgrade` (function) — `migrations/dashboard/versions/7a1c3d9e4b02_el_farol_game_result_columns.py:25`
+- `downgrade` (function) — `migrations/dashboard/versions/7a1c3d9e4b02_el_farol_game_result_columns.py:52`
+- `revision` (const) — `migrations/dashboard/versions/853688412c5b_tournament_agent_sandbox_labs_tsa_pr_1.py:19`
+- `down_revision` (const) — `migrations/dashboard/versions/853688412c5b_tournament_agent_sandbox_labs_tsa_pr_1.py:20`
+- `branch_labels` (const) — `migrations/dashboard/versions/853688412c5b_tournament_agent_sandbox_labs_tsa_pr_1.py:21`
+- `depends_on` (const) — `migrations/dashboard/versions/853688412c5b_tournament_agent_sandbox_labs_tsa_pr_1.py:22`
+- `upgrade` (function) — `migrations/dashboard/versions/853688412c5b_tournament_agent_sandbox_labs_tsa_pr_1.py:25`
+- `downgrade` (function) — `migrations/dashboard/versions/853688412c5b_tournament_agent_sandbox_labs_tsa_pr_1.py:89`
+- `revision` (const) — `migrations/dashboard/versions/97e900e385ae_add_benchmark_tables.py:15`
+- `down_revision` (const) — `migrations/dashboard/versions/97e900e385ae_add_benchmark_tables.py:16`
+- `branch_labels` (const) — `migrations/dashboard/versions/97e900e385ae_add_benchmark_tables.py:17`
+- `depends_on` (const) — `migrations/dashboard/versions/97e900e385ae_add_benchmark_tables.py:18`
+- `upgrade` (function) — `migrations/dashboard/versions/97e900e385ae_add_benchmark_tables.py:21`
+- `downgrade` (function) — `migrations/dashboard/versions/97e900e385ae_add_benchmark_tables.py:105`
+- `revision` (const) — `migrations/dashboard/versions/9f1fc0c9cb9f_initial_schema.py:15`
+- `down_revision` (const) — `migrations/dashboard/versions/9f1fc0c9cb9f_initial_schema.py:16`
+- `branch_labels` (const) — `migrations/dashboard/versions/9f1fc0c9cb9f_initial_schema.py:17`
+- `depends_on` (const) — `migrations/dashboard/versions/9f1fc0c9cb9f_initial_schema.py:18`
+- `upgrade` (function) — `migrations/dashboard/versions/9f1fc0c9cb9f_initial_schema.py:21`
+- `downgrade` (function) — `migrations/dashboard/versions/9f1fc0c9cb9f_initial_schema.py:659`
+- `revision` (const) — `migrations/dashboard/versions/a1b2c3d4e5f6_action_tier2_fields.py:31`
+- `down_revision` (const) — `migrations/dashboard/versions/a1b2c3d4e5f6_action_tier2_fields.py:37`
+- `branch_labels` (const) — `migrations/dashboard/versions/a1b2c3d4e5f6_action_tier2_fields.py:38`
+- `depends_on` (const) — `migrations/dashboard/versions/a1b2c3d4e5f6_action_tier2_fields.py:39`
+- `upgrade` (function) — `migrations/dashboard/versions/a1b2c3d4e5f6_action_tier2_fields.py:42`
+- `downgrade` (function) — `migrations/dashboard/versions/a1b2c3d4e5f6_action_tier2_fields.py:65`
+- `revision` (const) — `migrations/dashboard/versions/a7b8c9d0e1f2_suite_execution_agent_name.py:20`
+- `down_revision` (const) — `migrations/dashboard/versions/a7b8c9d0e1f2_suite_execution_agent_name.py:21`
+- `branch_labels` (const) — `migrations/dashboard/versions/a7b8c9d0e1f2_suite_execution_agent_name.py:22`
+- `depends_on` (const) — `migrations/dashboard/versions/a7b8c9d0e1f2_suite_execution_agent_name.py:23`
+- `upgrade` (function) — `migrations/dashboard/versions/a7b8c9d0e1f2_suite_execution_agent_name.py:26`
+- `downgrade` (function) — `migrations/dashboard/versions/a7b8c9d0e1f2_suite_execution_agent_name.py:71`
+- `revision` (const) — `migrations/dashboard/versions/a9c4e81f3d2a_tournament_participant_agent_xor_builtin_check.py:22`
+- `down_revision` (const) — `migrations/dashboard/versions/a9c4e81f3d2a_tournament_participant_agent_xor_builtin_check.py:23`
+- `branch_labels` (const) — `migrations/dashboard/versions/a9c4e81f3d2a_tournament_participant_agent_xor_builtin_check.py:24`
+- `depends_on` (const) — `migrations/dashboard/versions/a9c4e81f3d2a_tournament_participant_agent_xor_builtin_check.py:25`
+- `upgrade` (function) — `migrations/dashboard/versions/a9c4e81f3d2a_tournament_participant_agent_xor_builtin_check.py:28`
+- `downgrade` (function) — `migrations/dashboard/versions/a9c4e81f3d2a_tournament_participant_agent_xor_builtin_check.py:40`
+- `revision` (const) — `migrations/dashboard/versions/b3a1f7c2d4e5_add_webhook_url_and_run_events.py:15`
+- `down_revision` (const) — `migrations/dashboard/versions/b3a1f7c2d4e5_add_webhook_url_and_run_events.py:16`
+- `branch_labels` (const) — `migrations/dashboard/versions/b3a1f7c2d4e5_add_webhook_url_and_run_events.py:17`
+- `depends_on` (const) — `migrations/dashboard/versions/b3a1f7c2d4e5_add_webhook_url_and_run_events.py:18`
+- `upgrade` (function) — `migrations/dashboard/versions/b3a1f7c2d4e5_add_webhook_url_and_run_events.py:21`
+- `downgrade` (function) — `migrations/dashboard/versions/b3a1f7c2d4e5_add_webhook_url_and_run_events.py:35`
+- `revision` (const) — `migrations/dashboard/versions/b8c9d0e1f2a3_agent_owner_not_null.py:19`
+- `down_revision` (const) — `migrations/dashboard/versions/b8c9d0e1f2a3_agent_owner_not_null.py:20`
+- `branch_labels` (const) — `migrations/dashboard/versions/b8c9d0e1f2a3_agent_owner_not_null.py:21`
+- `depends_on` (const) — `migrations/dashboard/versions/b8c9d0e1f2a3_agent_owner_not_null.py:22`
+- `upgrade` (function) — `migrations/dashboard/versions/b8c9d0e1f2a3_agent_owner_not_null.py:25`
+- `downgrade` (function) — `migrations/dashboard/versions/b8c9d0e1f2a3_agent_owner_not_null.py:57`
+- `revision` (const) — `migrations/dashboard/versions/c60b45e516be_tournament_plan_2a_constraints.py:39`
+- `down_revision` (const) — `migrations/dashboard/versions/c60b45e516be_tournament_plan_2a_constraints.py:40`
+- `branch_labels` (const) — `migrations/dashboard/versions/c60b45e516be_tournament_plan_2a_constraints.py:41`
+- `depends_on` (const) — `migrations/dashboard/versions/c60b45e516be_tournament_plan_2a_constraints.py:42`
+- `upgrade` (function) — `migrations/dashboard/versions/c60b45e516be_tournament_plan_2a_constraints.py:45`
+- `downgrade` (function) — `migrations/dashboard/versions/c60b45e516be_tournament_plan_2a_constraints.py:171`
+- `revision` (const) — `migrations/dashboard/versions/c8d5f2a91234_enforce_run_user_id_not_null.py:24`
+- `down_revision` (const) — `migrations/dashboard/versions/c8d5f2a91234_enforce_run_user_id_not_null.py:25`
+- `branch_labels` (const) — `migrations/dashboard/versions/c8d5f2a91234_enforce_run_user_id_not_null.py:26`
+- `depends_on` (const) — `migrations/dashboard/versions/c8d5f2a91234_enforce_run_user_id_not_null.py:27`
+- `upgrade` (function) — `migrations/dashboard/versions/c8d5f2a91234_enforce_run_user_id_not_null.py:30`
+- `downgrade` (function) — `migrations/dashboard/versions/c8d5f2a91234_enforce_run_user_id_not_null.py:60`
+- `revision` (const) — `migrations/dashboard/versions/d2e5a1c7f3b8_agent_level_participant_uniqueness.py:30`
+- `down_revision` (const) — `migrations/dashboard/versions/d2e5a1c7f3b8_agent_level_participant_uniqueness.py:31`
+- `branch_labels` (const) — `migrations/dashboard/versions/d2e5a1c7f3b8_agent_level_participant_uniqueness.py:32`
+- `depends_on` (const) — `migrations/dashboard/versions/d2e5a1c7f3b8_agent_level_participant_uniqueness.py:33`
+- `upgrade` (function) — `migrations/dashboard/versions/d2e5a1c7f3b8_agent_level_participant_uniqueness.py:36`
+- `downgrade` (function) — `migrations/dashboard/versions/d2e5a1c7f3b8_agent_level_participant_uniqueness.py:71`
+- `revision` (const) — `migrations/dashboard/versions/d7f3a2b1c4e5_agent_ownership_tokens_invites.py:14`
+- `down_revision` (const) — `migrations/dashboard/versions/d7f3a2b1c4e5_agent_ownership_tokens_invites.py:15`
+- `branch_labels` (const) — `migrations/dashboard/versions/d7f3a2b1c4e5_agent_ownership_tokens_invites.py:16`
+- `depends_on` (const) — `migrations/dashboard/versions/d7f3a2b1c4e5_agent_ownership_tokens_invites.py:17`
+- `upgrade` (function) — `migrations/dashboard/versions/d7f3a2b1c4e5_agent_ownership_tokens_invites.py:20`
+- `downgrade` (function) — `migrations/dashboard/versions/d7f3a2b1c4e5_agent_ownership_tokens_invites.py:100`
+- `revision` (const) — `migrations/dashboard/versions/e1b2c3d4f5a6_agent_ownerless_partial_unique.py:24`
+- `down_revision` (const) — `migrations/dashboard/versions/e1b2c3d4f5a6_agent_ownerless_partial_unique.py:25`
+- `branch_labels` (const) — `migrations/dashboard/versions/e1b2c3d4f5a6_agent_ownerless_partial_unique.py:26`
+- `depends_on` (const) — `migrations/dashboard/versions/e1b2c3d4f5a6_agent_ownerless_partial_unique.py:27`
+- `upgrade` (function) — `migrations/dashboard/versions/e1b2c3d4f5a6_agent_ownerless_partial_unique.py:30`
+- `downgrade` (function) — `migrations/dashboard/versions/e1b2c3d4f5a6_agent_ownerless_partial_unique.py:41`
+- `revision` (const) — `migrations/dashboard/versions/f1a2b3c4d5e6_action_reasoning.py:18`
+- `down_revision` (const) — `migrations/dashboard/versions/f1a2b3c4d5e6_action_reasoning.py:19`
+- `branch_labels` (const) — `migrations/dashboard/versions/f1a2b3c4d5e6_action_reasoning.py:20`
+- `depends_on` (const) — `migrations/dashboard/versions/f1a2b3c4d5e6_action_reasoning.py:21`
+- `upgrade` (function) — `migrations/dashboard/versions/f1a2b3c4d5e6_action_reasoning.py:24`
+- `downgrade` (function) — `migrations/dashboard/versions/f1a2b3c4d5e6_action_reasoning.py:29`
+- `logger` (const) — `packages/atp-adapters/atp/adapters/autogen.py:27`
+- `AutoGenAdapterConfig` (class) — `packages/atp-adapters/atp/adapters/autogen.py:30`
+- `AutoGenAdapter` (class) — `packages/atp-adapters/atp/adapters/autogen.py:52`
+- `AzureOpenAIAdapter` (class) — `packages/atp-adapters/atp/adapters/azure_openai/adapter.py:31`
+- `get_openai_client` (function) — `packages/atp-adapters/atp/adapters/azure_openai/auth.py:13`
+- `get_azure_ad_token_provider` (function) — `packages/atp-adapters/atp/adapters/azure_openai/auth.py:69`
+- `AzureOpenAIAdapterConfig` (class) — `packages/atp-adapters/atp/adapters/azure_openai/models.py:10`
+- `logger` (const) — `packages/atp-adapters/atp/adapters/base.py:25`
+- `tracer` (const) — `packages/atp-adapters/atp/adapters/base.py:26`
+- `AdapterConfig` (class) — `packages/atp-adapters/atp/adapters/base.py:29`
+- `AgentAdapter` (class) — `packages/atp-adapters/atp/adapters/base.py:46`
+- `track_response_cost` (function) — `packages/atp-adapters/atp/adapters/base.py:312`
+- `BedrockAdapter` (class) — `packages/atp-adapters/atp/adapters/bedrock/adapter.py:30`
+- `create_boto3_client` (function) — `packages/atp-adapters/atp/adapters/bedrock/auth.py:10`
+- `BedrockAdapterConfig` (class) — `packages/atp-adapters/atp/adapters/bedrock/models.py:10`
+- `logger` (const) — `packages/atp-adapters/atp/adapters/cli.py:31`
+- `CLIAdapterConfig` (class) — `packages/atp-adapters/atp/adapters/cli.py:34`
+- `CLIAdapter` (class) — `packages/atp-adapters/atp/adapters/cli.py:58`
+- `ContainerResources` (class) — `packages/atp-adapters/atp/adapters/container.py:41`
+- `ContainerAdapterConfig` (class) — `packages/atp-adapters/atp/adapters/container.py:55`
+- `ContainerAdapter` (class) — `packages/atp-adapters/atp/adapters/container.py:121`
+- `CrewAIAdapterConfig` (class) — `packages/atp-adapters/atp/adapters/crewai.py:27`
+- `CrewAIAdapter` (class) — `packages/atp-adapters/atp/adapters/crewai.py:42`
+- `AdapterError` (class) — `packages/atp-adapters/atp/adapters/exceptions.py:6`
+- `AdapterTimeoutError` (class) — `packages/atp-adapters/atp/adapters/exceptions.py:20`
+- `AdapterConnectionError` (class) — `packages/atp-adapters/atp/adapters/exceptions.py:33`
+- `AdapterResponseError` (class) — `packages/atp-adapters/atp/adapters/exceptions.py:47`
+- `AdapterNotFoundError` (class) — `packages/atp-adapters/atp/adapters/exceptions.py:62`
+- `logger` (const) — `packages/atp-adapters/atp/adapters/fallback.py:11`
+- `FallbackAdapter` (class) — `packages/atp-adapters/atp/adapters/fallback.py:14`
+- `HTTPAdapterConfig` (class) — `packages/atp-adapters/atp/adapters/http.py:25`
+- `HTTPAdapter` (class) — `packages/atp-adapters/atp/adapters/http.py:85`
+- `LangGraphAdapterConfig` (class) — `packages/atp-adapters/atp/adapters/langgraph.py:27`
+- `LangGraphAdapter` (class) — `packages/atp-adapters/atp/adapters/langgraph.py:47`
+- `logger` (const) — `packages/atp-adapters/atp/adapters/mcp/adapter.py:33`
+- `MCPTool` (class) — `packages/atp-adapters/atp/adapters/mcp/adapter.py:36`
+- `MCPResource` (class) — `packages/atp-adapters/atp/adapters/mcp/adapter.py:46`
+- `MCPPrompt` (class) — `packages/atp-adapters/atp/adapters/mcp/adapter.py:55`
+- `MCPServerInfo` (class) — `packages/atp-adapters/atp/adapters/mcp/adapter.py:65`
+- `MCPAdapterConfig` (class) — `packages/atp-adapters/atp/adapters/mcp/adapter.py:76`
+- `MCPAdapter` (class) — `packages/atp-adapters/atp/adapters/mcp/adapter.py:150`
+- `TransportState` (class) — `packages/atp-adapters/atp/adapters/mcp/transport.py:21`
+- `TransportConfig` (class) — `packages/atp-adapters/atp/adapters/mcp/transport.py:31`
+- `JSONRPCMessage` (class) — `packages/atp-adapters/atp/adapters/mcp/transport.py:57`
+- `JSONRPCError` (class) — `packages/atp-adapters/atp/adapters/mcp/transport.py:90`
+- `create_jsonrpc_request` (function) — `packages/atp-adapters/atp/adapters/mcp/transport.py:100`
+- `create_jsonrpc_response` (function) — `packages/atp-adapters/atp/adapters/mcp/transport.py:123`
+- `parse_jsonrpc_message` (function) — `packages/atp-adapters/atp/adapters/mcp/transport.py:146`
+- `MCPTransport` (class) — `packages/atp-adapters/atp/adapters/mcp/transport.py:175`
+- `StdioTransportConfig` (class) — `packages/atp-adapters/atp/adapters/mcp/transport.py:375`
+- `StdioTransport` (class) — `packages/atp-adapters/atp/adapters/mcp/transport.py:406`
+- `SSETransportConfig` (class) — `packages/atp-adapters/atp/adapters/mcp/transport.py:702`
+- `SSETransport` (class) — `packages/atp-adapters/atp/adapters/mcp/transport.py:727`
+- `logger` (const) — `packages/atp-adapters/atp/adapters/registry.py:12`
+- `AdapterRegistry` (class) — `packages/atp-adapters/atp/adapters/registry.py:89`
+- `get_registry` (function) — `packages/atp-adapters/atp/adapters/registry.py:318`
+- `create_adapter` (function) — `packages/atp-adapters/atp/adapters/registry.py:331`
+- `logger` (const) — `packages/atp-adapters/atp/adapters/sdk_adapter.py:21`
+- `SDKAdapterConfig` (class) — `packages/atp-adapters/atp/adapters/sdk_adapter.py:24`
+- `SDKAdapter` (class) — `packages/atp-adapters/atp/adapters/sdk_adapter.py:34`
+- `VertexAdapter` (class) — `packages/atp-adapters/atp/adapters/vertex/adapter.py:30`
+- `get_vertexai_module` (function) — `packages/atp-adapters/atp/adapters/vertex/auth.py:13`
+- `initialize_vertexai` (function) — `packages/atp-adapters/atp/adapters/vertex/auth.py:36`
+- `VertexAdapterConfig` (class) — `packages/atp-adapters/atp/adapters/vertex/models.py:10`
+- `logger` (const) — `packages/atp-core/atp/chaos/concurrency.py:13`
+- `stress_test_async` (function) — `packages/atp-core/atp/chaos/concurrency.py:32`
+- `stress_test_sync` (function) — `packages/atp-core/atp/chaos/concurrency.py:70`
+- `logger` (const) — `packages/atp-core/atp/chaos/injectors.py:24`
+- `ChaosError` (class) — `packages/atp-core/atp/chaos/injectors.py:27`
+- `ToolFailureError` (class) — `packages/atp-core/atp/chaos/injectors.py:41`
+- `RateLimitError` (class) — `packages/atp-core/atp/chaos/injectors.py:59`
+- `TokenLimitError` (class) — `packages/atp-core/atp/chaos/injectors.py:71`
+- `ChaosInjector` (class) — `packages/atp-core/atp/chaos/injectors.py:85`
+- `RateLimiter` (class) — `packages/atp-core/atp/chaos/injectors.py:438`
+- `LatencyInjector` (class) — `packages/atp-core/atp/chaos/injectors.py:507`
+- `ToolFailureInjector` (class) — `packages/atp-core/atp/chaos/injectors.py:547`
+- `TokenLimitInjector` (class) — `packages/atp-core/atp/chaos/injectors.py:596`
+- `PartialResponseInjector` (class) — `packages/atp-core/atp/chaos/injectors.py:630`
+- `ErrorType` (class) — `packages/atp-core/atp/chaos/models.py:9`
+- `ToolFailureConfig` (class) — `packages/atp-core/atp/chaos/models.py:20`
+- `LatencyConfig` (class) — `packages/atp-core/atp/chaos/models.py:43`
+- `TokenLimitConfig` (class) — `packages/atp-core/atp/chaos/models.py:63`
+- `PartialResponseConfig` (class) — `packages/atp-core/atp/chaos/models.py:74`
+- `RateLimitConfig` (class) — `packages/atp-core/atp/chaos/models.py:100`
+- `ChaosConfig` (class) — `packages/atp-core/atp/chaos/models.py:113`
+- `ChaosProfile` (class) — `packages/atp-core/atp/chaos/models.py:159`
+- `DEFAULT_ERROR_MESSAGES` (const) — `packages/atp-core/atp/chaos/models.py:173`
+- `get_profile` (function) — `packages/atp-core/atp/chaos/profiles.py:15`
+- `list_profiles` (function) — `packages/atp-core/atp/chaos/profiles.py:39`
+- `get_profile_description` (function) — `packages/atp-core/atp/chaos/profiles.py:48`
+- `ATPError` (class) — `packages/atp-core/atp/core/exceptions.py:4`
+- `LoaderError` (class) — `packages/atp-core/atp/core/exceptions.py:8`
+- `ValidationError` (class) — `packages/atp-core/atp/core/exceptions.py:12`
+- `ParseError` (class) — `packages/atp-core/atp/core/exceptions.py:43`
+- `ATP_VERSION` (const) — `packages/atp-core/atp/core/logging.py:42`
+- `SENSITIVE_KEY_PATTERNS` (const) — `packages/atp-core/atp/core/logging.py:54`
+- `generate_correlation_id` (function) — `packages/atp-core/atp/core/logging.py:73`
+- `get_correlation_id` (function) — `packages/atp-core/atp/core/logging.py:82`
+- `set_correlation_id` (function) — `packages/atp-core/atp/core/logging.py:91`
+- `correlation_context` (class) — `packages/atp-core/atp/core/logging.py:100`
+- `bind_context` (class) — `packages/atp-core/atp/core/logging.py:141`
+- `add_correlation_id` (function) — `packages/atp-core/atp/core/logging.py:176`
+- `add_bound_context` (function) — `packages/atp-core/atp/core/logging.py:186`
+- `add_common_fields` (function) — `packages/atp-core/atp/core/logging.py:207`
+- `redact_sensitive_data` (function) — `packages/atp-core/atp/core/logging.py:222`
+- `sanitize_event` (function) — `packages/atp-core/atp/core/logging.py:264`
+- `filter_by_module_level` (function) — `packages/atp-core/atp/core/logging.py:274`
+- `set_module_log_level` (function) — `packages/atp-core/atp/core/logging.py:319`
+- `get_module_log_level` (function) — `packages/atp-core/atp/core/logging.py:333`
+- `clear_module_log_levels` (function) — `packages/atp-core/atp/core/logging.py:345`
+- `StructlogHandler` (class) — `packages/atp-core/atp/core/logging.py:392`
+- `configure_logging` (function) — `packages/atp-core/atp/core/logging.py:454`
+- `configure_logging_from_settings` (function) — `packages/atp-core/atp/core/logging.py:549`
+- `get_logger` (function) — `packages/atp-core/atp/core/logging.py:567`
+- `log_with_context` (function) — `packages/atp-core/atp/core/logging.py:588`
+- `create_test_logger` (function) — `packages/atp-core/atp/core/logging.py:611`
+- `reset_logging` (function) — `packages/atp-core/atp/core/logging.py:642`
+- `logger` (const) — `packages/atp-core/atp/core/metrics.py:54`
+- `MetricsSettings` (class) — `packages/atp-core/atp/core/metrics.py:66`
+- `ATPMetrics` (class) — `packages/atp-core/atp/core/metrics.py:107`
+- `configure_metrics` (function) — `packages/atp-core/atp/core/metrics.py:354`
+- `reset_metrics` (function) — `packages/atp-core/atp/core/metrics.py:410`
+- `get_metrics` (function) — `packages/atp-core/atp/core/metrics.py:467`
+- `get_registry` (function) — `packages/atp-core/atp/core/metrics.py:479`
+- `generate_metrics` (function) — `packages/atp-core/atp/core/metrics.py:490`
+- `record_llm_call` (function) — `packages/atp-core/atp/core/metrics.py:619`
+- `record_adapter_error` (function) — `packages/atp-core/atp/core/metrics.py:643`
+- `logger` (const) — `packages/atp-core/atp/core/observer.py:13`
+- `Observer` (class) — `packages/atp-core/atp/core/observer.py:34`
+- `LoggingObserver` (class) — `packages/atp-core/atp/core/observer.py:42`
+- `ErrorCollector` (class) — `packages/atp-core/atp/core/observer.py:60`
+- `CompositeObserver` (class) — `packages/atp-core/atp/core/observer.py:104`
+- `get_observer` (function) — `packages/atp-core/atp/core/observer.py:123`
+- `set_observer` (function) — `packages/atp-core/atp/core/observer.py:128`
+- `EvalCheck` (class) — `packages/atp-core/atp/core/results.py:33`
+- `EvalResult` (class) — `packages/atp-core/atp/core/results.py:43`
+- `ProgressEventType` (class) — `packages/atp-core/atp/core/results.py:105`
+- `ProgressEvent` (class) — `packages/atp-core/atp/core/results.py:119`
+- `ProgressCallback` (const) — `packages/atp-core/atp/core/results.py:145`
+- `TestReport` (class) — `packages/atp-core/atp/core/results.py:305`
+- `SuiteReport` (class) — `packages/atp-core/atp/core/results.py:327`
+- `rebuild_report_models` (function) — `packages/atp-core/atp/core/results.py:393`
+- `logger` (const) — `packages/atp-core/atp/core/security.py:24`
+- `audit_logger` (const) — `packages/atp-core/atp/core/security.py:25`
+- `SECRET_PATTERNS` (const) — `packages/atp-core/atp/core/security.py:34`
+- `SENSITIVE_ENV_PATTERNS` (const) — `packages/atp-core/atp/core/security.py:148`
+- `SAFE_ENV_ALLOWLIST` (const) — `packages/atp-core/atp/core/security.py:172`
+- `ALLOWED_URL_SCHEMES` (const) — `packages/atp-core/atp/core/security.py:205`
+- `INTERNAL_IP_RANGES` (const) — `packages/atp-core/atp/core/security.py:208`
+- `METADATA_ENDPOINTS` (const) — `packages/atp-core/atp/core/security.py:220`
+- `DOCKER_IMAGE_PATTERN` (const) — `packages/atp-core/atp/core/security.py:228`
+- `VALID_NETWORK_MODES` (const) — `packages/atp-core/atp/core/security.py:235`
+- `MAX_MEMORY_BYTES` (const) — `packages/atp-core/atp/core/security.py:238`
+- `MAX_CPU_CORES` (const) — `packages/atp-core/atp/core/security.py:239`
+- `MAX_TIMEOUT_SECONDS` (const) — `packages/atp-core/atp/core/security.py:240`
+- `MAX_PATH_LENGTH` (const) — `packages/atp-core/atp/core/security.py:241`
+- `MAX_DESCRIPTION_LENGTH` (const) — `packages/atp-core/atp/core/security.py:242`
+- `MAX_REQUEST_SIZE_BYTES` (const) — `packages/atp-core/atp/core/security.py:245`
+- `MAX_RESPONSE_SIZE_BYTES` (const) — `packages/atp-core/atp/core/security.py:246`
+- `MAX_ARTIFACTS_COUNT` (const) — `packages/atp-core/atp/core/security.py:247`
+- `MAX_ENV_VARS_COUNT` (const) — `packages/atp-core/atp/core/security.py:248`
+- `MAX_OBJECT_DEPTH` (const) — `packages/atp-core/atp/core/security.py:249`
+- `MAX_ARRAY_SIZE` (const) — `packages/atp-core/atp/core/security.py:250`
+- `REDACTED` (const) — `packages/atp-core/atp/core/security.py:253`
+- `SAFE_COMMAND_BINARIES` (const) — `packages/atp-core/atp/core/security.py:256`
+- `SecurityEventType` (class) — `packages/atp-core/atp/core/security.py:277`
+- `SecurityValidationError` (class) — `packages/atp-core/atp/core/security.py:294`
+- `log_security_event` (function) — `packages/atp-core/atp/core/security.py:328`
+- `validate_request_size` (function) — `packages/atp-core/atp/core/security.py:373`
+- `validate_object_depth` (function) — `packages/atp-core/atp/core/security.py:395`
+- `validate_artifacts_count` (function) — `packages/atp-core/atp/core/security.py:436`
+- `validate_env_vars_count` (function) — `packages/atp-core/atp/core/security.py:454`
+- `validate_path_within_workspace` (function) — `packages/atp-core/atp/core/security.py:478`
+- `open_file_safely` (function) — `packages/atp-core/atp/core/security.py:577`
+- `sanitize_filename` (function) — `packages/atp-core/atp/core/security.py:629`
+- `validate_url` (function) — `packages/atp-core/atp/core/security.py:665`
+- `validate_url_with_dns` (function) — `packages/atp-core/atp/core/security.py:765`
+- `validate_docker_image` (function) — `packages/atp-core/atp/core/security.py:842`
+- `validate_docker_network` (function) — `packages/atp-core/atp/core/security.py:876`
+- `validate_volume_mount` (function) — `packages/atp-core/atp/core/security.py:902`
+- `parse_memory_limit` (function) — `packages/atp-core/atp/core/security.py:964`
+- `validate_cpu_limit` (function) — `packages/atp-core/atp/core/security.py:1024`
+- `validate_timeout` (function) — `packages/atp-core/atp/core/security.py:1066`
+- `redact_secrets` (function) — `packages/atp-core/atp/core/security.py:1101`
+- `is_sensitive_env_var` (function) — `packages/atp-core/atp/core/security.py:1126`
+- `filter_environment_variables` (function) — `packages/atp-core/atp/core/security.py:1146`
+- `sanitize_env_value` (function) — `packages/atp-core/atp/core/security.py:1202`
+- `redact_dict_secrets` (function) — `packages/atp-core/atp/core/security.py:1240`
+- `validate_task_description` (function) — `packages/atp-core/atp/core/security.py:1289`
+- `validate_command` (function) — `packages/atp-core/atp/core/security.py:1317`
+- `escape_shell_arg` (function) — `packages/atp-core/atp/core/security.py:1391`
+- `validate_task_id` (function) — `packages/atp-core/atp/core/security.py:1406`
+- `SecureFormatter` (class) — `packages/atp-core/atp/core/security.py:1449`
+- `sanitize_log_message` (function) — `packages/atp-core/atp/core/security.py:1458`
+- `sanitize_error_message` (function) — `packages/atp-core/atp/core/security.py:1486`
+- `setup_secure_logging` (function) — `packages/atp-core/atp/core/security.py:1527`
+- `logger` (const) — `packages/atp-core/atp/core/settings.py:33`
+- `CONFIG_FILE_NAMES` (const) — `packages/atp-core/atp/core/settings.py:36`
+- `DashboardSettings` (class) — `packages/atp-core/atp/core/settings.py:110`
+- `RunnerSettings` (class) — `packages/atp-core/atp/core/settings.py:200`
+- `LLMSettings` (class) — `packages/atp-core/atp/core/settings.py:234`
+- `LoggingSettings` (class) — `packages/atp-core/atp/core/settings.py:271`
+- `ATPSettings` (class) — `packages/atp-core/atp/core/settings.py:302`
+- `get_settings` (function) — `packages/atp-core/atp/core/settings.py:533`
+- `generate_json_schema` (function) — `packages/atp-core/atp/core/settings.py:587`
+- `generate_example_config` (function) — `packages/atp-core/atp/core/settings.py:617`
+- `logger` (const) — `packages/atp-core/atp/core/telemetry.py:64`
+- `P` (const) — `packages/atp-core/atp/core/telemetry.py:67`
+- `R` (const) — `packages/atp-core/atp/core/telemetry.py:68`
+- `TelemetrySettings` (class) — `packages/atp-core/atp/core/telemetry.py:80`
+- `InMemorySpanExporter` (class) — `packages/atp-core/atp/core/telemetry.py:164`
+- `get_debug_exporter` (function) — `packages/atp-core/atp/core/telemetry.py:321`
+- `configure_telemetry` (function) — `packages/atp-core/atp/core/telemetry.py:340`
+- `reset_telemetry` (function) — `packages/atp-core/atp/core/telemetry.py:463`
+- `add_exporter_to_provider` (function) — `packages/atp-core/atp/core/telemetry.py:486`
+- `ensure_debug_exporter` (function) — `packages/atp-core/atp/core/telemetry.py:509`
+- `get_tracer` (function) — `packages/atp-core/atp/core/telemetry.py:567`
+- `get_current_span` (function) — `packages/atp-core/atp/core/telemetry.py:579`
+- `set_span_attribute` (function) — `packages/atp-core/atp/core/telemetry.py:588`
+- `set_span_attributes` (function) — `packages/atp-core/atp/core/telemetry.py:603`
+- `add_span_event` (function) — `packages/atp-core/atp/core/telemetry.py:615`
+- `record_exception` (function) — `packages/atp-core/atp/core/telemetry.py:633`
+- `inject_trace_context` (function) — `packages/atp-core/atp/core/telemetry.py:656`
+- `extract_trace_context` (function) — `packages/atp-core/atp/core/telemetry.py:674`
+- `span` (function) — `packages/atp-core/atp/core/telemetry.py:692`
+- `create_test_span` (function) — `packages/atp-core/atp/core/telemetry.py:770`
+- `create_adapter_span` (function) — `packages/atp-core/atp/core/telemetry.py:804`
+- `create_evaluator_span` (function) — `packages/atp-core/atp/core/telemetry.py:834`
+- `set_test_result_attributes` (function) — `packages/atp-core/atp/core/telemetry.py:864`
+- `set_adapter_response_attributes` (function) — `packages/atp-core/atp/core/telemetry.py:891`
+- `set_evaluator_result_attributes` (function) — `packages/atp-core/atp/core/telemetry.py:916`
+- `logger` (const) — `packages/atp-core/atp/cost/models.py:14`
+- `logger` (const) — `packages/atp-core/atp/cost/tracker.py:13`
+- `CostPersistenceBackend` (class) — `packages/atp-core/atp/cost/tracker.py:16`
+- `CostTracker` (class) — `packages/atp-core/atp/cost/tracker.py:37`
+- `get_cost_tracker` (function) — `packages/atp-core/atp/cost/tracker.py:294`
+- `set_cost_tracker` (function) — `packages/atp-core/atp/cost/tracker.py:306`
+- `shutdown_cost_tracker` (function) — `packages/atp-core/atp/cost/tracker.py:312`
+- `TagFilter` (class) — `packages/atp-core/atp/loader/filters.py:6`
+- `TestLoader` (class) — `packages/atp-core/atp/loader/loader.py:14`
+- `MultiAgentMode` (class) — `packages/atp-core/atp/loader/models.py:11`
+- `CollaborationConfig` (class) — `packages/atp-core/atp/loader/models.py:19`
+- `HandoffTrigger` (class) — `packages/atp-core/atp/loader/models.py:44`
+- `ContextAccumulationMode` (class) — `packages/atp-core/atp/loader/models.py:54`
+- `HandoffConfig` (class) — `packages/atp-core/atp/loader/models.py:63`
+- `ComparisonConfig` (class) — `packages/atp-core/atp/loader/models.py:91`
+- `TaskDefinition` (class) — `packages/atp-core/atp/loader/models.py:106`
+- `Constraints` (class) — `packages/atp-core/atp/loader/models.py:122`
+- `Assertion` (class) — `packages/atp-core/atp/loader/models.py:139`
+- `ScoringWeights` (class) — `packages/atp-core/atp/loader/models.py:148`
+- `TestDefinition` (class) — `packages/atp-core/atp/loader/models.py:157`
+- `AgentConfig` (class) — `packages/atp-core/atp/loader/models.py:264`
+- `ChaosSettings` (class) — `packages/atp-core/atp/loader/models.py:274`
+- `TestDefaults` (class) — `packages/atp-core/atp/loader/models.py:299`
+- `TestSuite` (class) — `packages/atp-core/atp/loader/models.py:315`
+- `YAMLParser` (class) — `packages/atp-core/atp/loader/parser.py:14`
+- `VariableSubstitution` (class) — `packages/atp-core/atp/loader/parser.py:90`
+- `COLLABORATION_CONFIG_SCHEMA` (const) — `packages/atp-core/atp/loader/schema.py:6`
+- `HANDOFF_CONFIG_SCHEMA` (const) — `packages/atp-core/atp/loader/schema.py:27`
+- `COMPARISON_CONFIG_SCHEMA` (const) — `packages/atp-core/atp/loader/schema.py:53`
+- `TEST_SUITE_SCHEMA` (const) — `packages/atp-core/atp/loader/schema.py:67`
+- `validate_schema` (function) — `packages/atp-core/atp/loader/schema.py:249`
+- `PROTOCOL_VERSION` (const) — `packages/atp-core/atp/protocol/_version.py:3`
+- `SUPPORTED_VERSIONS` (const) — `packages/atp-core/atp/protocol/_version.py:5`
+- `MAX_TASK_ID_LENGTH` (const) — `packages/atp-core/atp/protocol/models.py:14`
+- `MAX_DESCRIPTION_LENGTH` (const) — `packages/atp-core/atp/protocol/models.py:15`
+- `MAX_PATH_LENGTH` (const) — `packages/atp-core/atp/protocol/models.py:16`
+- `MAX_ERROR_LENGTH` (const) — `packages/atp-core/atp/protocol/models.py:17`
+- `MAX_CONTENT_LENGTH` (const) — `packages/atp-core/atp/protocol/models.py:18`
+- `MAX_ARTIFACTS_COUNT` (const) — `packages/atp-core/atp/protocol/models.py:19`
+- `MAX_ENV_VARS_COUNT` (const) — `packages/atp-core/atp/protocol/models.py:20`
+- `MAX_METADATA_KEYS` (const) — `packages/atp-core/atp/protocol/models.py:21`
+- `TASK_ID_PATTERN` (const) — `packages/atp-core/atp/protocol/models.py:24`
+- `ResponseStatus` (class) — `packages/atp-core/atp/protocol/models.py:27`
+- `EventType` (class) — `packages/atp-core/atp/protocol/models.py:37`
+- `Task` (class) — `packages/atp-core/atp/protocol/models.py:47`
+- `Context` (class) — `packages/atp-core/atp/protocol/models.py:94`
+- `ATPRequest` (class) — `packages/atp-core/atp/protocol/models.py:162`
+- `Metrics` (class) — `packages/atp-core/atp/protocol/models.py:216`
+- `ArtifactFile` (class) — `packages/atp-core/atp/protocol/models.py:231`
+- `ArtifactStructured` (class) — `packages/atp-core/atp/protocol/models.py:279`
+- `ArtifactReference` (class) — `packages/atp-core/atp/protocol/models.py:304`
+- `Artifact` (const) — `packages/atp-core/atp/protocol/models.py:326`
+- `ATPResponse` (class) — `packages/atp-core/atp/protocol/models.py:329`
+- `ToolCallPayload` (class) — `packages/atp-core/atp/protocol/models.py:383`
+- `LLMRequestPayload` (class) — `packages/atp-core/atp/protocol/models.py:395`
+- `ReasoningPayload` (class) — `packages/atp-core/atp/protocol/models.py:406`
+- `ErrorPayload` (class) — `packages/atp-core/atp/protocol/models.py:414`
+- `ProgressPayload` (class) — `packages/atp-core/atp/protocol/models.py:422`
+- `EventPayload` (const) — `packages/atp-core/atp/protocol/models.py:432`
+- `ATPEvent` (class) — `packages/atp-core/atp/protocol/models.py:442`
+- `generate_request_schema` (function) — `packages/atp-core/atp/protocol/schema.py:8`
+- `generate_response_schema` (function) — `packages/atp-core/atp/protocol/schema.py:13`
+- `generate_event_schema` (function) — `packages/atp-core/atp/protocol/schema.py:18`
+- `generate_all_schemas` (function) — `packages/atp-core/atp/protocol/schema.py:23`
+- `ScoreAggregator` (class) — `packages/atp-core/atp/scoring/aggregator.py:18`
+- `NormalizationConfig` (class) — `packages/atp-core/atp/scoring/models.py:8`
+- `ComponentScore` (class) — `packages/atp-core/atp/scoring/models.py:33`
+- `ScoreBreakdown` (class) — `packages/atp-core/atp/scoring/models.py:50`
+- `ScoredTestResult` (class) — `packages/atp-core/atp/scoring/models.py:109`
+- `CV_STABLE_THRESHOLD` (const) — `packages/atp-core/atp/statistics/calculator.py:14`
+- `CV_MODERATE_THRESHOLD` (const) — `packages/atp-core/atp/statistics/calculator.py:15`
+- `CV_UNSTABLE_THRESHOLD` (const) — `packages/atp-core/atp/statistics/calculator.py:16`
+- `T_CRITICAL_VALUES` (const) — `packages/atp-core/atp/statistics/calculator.py:20`
+- `StatisticsCalculator` (class) — `packages/atp-core/atp/statistics/calculator.py:72`
+- `StabilityLevel` (class) — `packages/atp-core/atp/statistics/models.py:9`
+- `StabilityAssessment` (class) — `packages/atp-core/atp/statistics/models.py:18`
+- `StatisticalResult` (class) — `packages/atp-core/atp/statistics/models.py:33`
+- `MetricStatistics` (class) — `packages/atp-core/atp/statistics/models.py:69`
+- `TestRunStatistics` (class) — `packages/atp-core/atp/statistics/models.py:78`
+- `StatisticalReporter` (class) — `packages/atp-core/atp/statistics/reporter.py:13`
+- `logger` (const) — `packages/atp-core/atp/streaming/buffer.py:11`
+- `DEFAULT_MAX_EVENTS` (const) — `packages/atp-core/atp/streaming/buffer.py:13`
+- `EventBuffer` (class) — `packages/atp-core/atp/streaming/buffer.py:16`
+- `EventReplayIterator` (class) — `packages/atp-core/atp/streaming/buffer.py:202`
+- `BufferingEventIterator` (class) — `packages/atp-core/atp/streaming/buffer.py:268`
+- `EventOrderingError` (class) — `packages/atp-core/atp/streaming/validation.py:10`
+- `EventValidator` (class) — `packages/atp-core/atp/streaming/validation.py:34`
+- `validate_event_sequence` (function) — `packages/atp-core/atp/streaming/validation.py:120`
+- `ValidatingEventIterator` (class) — `packages/atp-core/atp/streaming/validation.py:178`
+- `ExperimentStatus` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:154`
+- `VariantType` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:164`
+- `WinnerDecision` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:171`
+- `MetricType` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:180`
+- `Variant` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:193`
+- `MetricConfig` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:208`
+- `VariantMetrics` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:227`
+- `StatisticalResult` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:240`
+- `RollbackConfig` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:264`
+- `ExperimentConfig` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:286`
+- `ExperimentObservation` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:326`
+- `Experiment` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:344`
+- `ExperimentReport` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:426`
+- `TrafficRouter` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:445`
+- `ExperimentAnalyzer` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:552`
+- `ExperimentManager` (class) — `packages/atp-dashboard/atp/analytics/ab_testing.py:832`
+- `get_experiment_manager` (function) — `packages/atp-dashboard/atp/analytics/ab_testing.py:1233`
+- `reset_experiment_manager` (function) — `packages/atp-dashboard/atp/analytics/ab_testing.py:1245`
+- `stats_mean` (const) — `packages/atp-dashboard/atp/analytics/advanced.py:57`
+- `stats_stdev` (const) — `packages/atp-dashboard/atp/analytics/advanced.py:58`
+- `TrendDirection` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:61`
+- `AnomalyType` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:70`
+- `CorrelationStrength` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:80`
+- `TrendDataPoint` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:95`
+- `TrendAnalysisResult` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:105`
+- `AnomalyResult` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:122`
+- `CorrelationResult` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:140`
+- `ScoreTrendResponse` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:154`
+- `AnomalyDetectionResponse` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:166`
+- `CorrelationAnalysisResponse` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:178`
+- `ExportFormat` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:188`
+- `ScheduledReportFrequency` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:195`
+- `ScheduledReportConfig` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:203`
+- `AdvancedAnalyticsService` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:237`
+- `ScheduledReportsRepository` (class) — `packages/atp-dashboard/atp/analytics/advanced.py:1067`
+- `logger` (const) — `packages/atp-dashboard/atp/analytics/budgets.py:55`
+- `BudgetPeriod` (class) — `packages/atp-dashboard/atp/analytics/budgets.py:58`
+- `AlertChannel` (class) — `packages/atp-dashboard/atp/analytics/budgets.py:215`
+- `LogAlertChannel` (class) — `packages/atp-dashboard/atp/analytics/budgets.py:245`
+- `WebhookAlertChannel` (class) — `packages/atp-dashboard/atp/analytics/budgets.py:270`
+- `EmailAlertChannel` (class) — `packages/atp-dashboard/atp/analytics/budgets.py:354`
+- `AlertChannelRegistry` (class) — `packages/atp-dashboard/atp/analytics/budgets.py:468`
+- `BudgetManager` (class) — `packages/atp-dashboard/atp/analytics/budgets.py:551`
+- `get_budget_manager` (function) — `packages/atp-dashboard/atp/analytics/budgets.py:926`
+- `set_budget_manager` (function) — `packages/atp-dashboard/atp/analytics/budgets.py:940`
+- `check_budget_for_cost` (function) — `packages/atp-dashboard/atp/analytics/budgets.py:952`
+- `logger` (const) — `packages/atp-dashboard/atp/analytics/cost.py:21`
+- `AnalyticsCostBackend` (class) — `packages/atp-dashboard/atp/analytics/cost.py:24`
+- `get_cost_tracker_with_db` (function) — `packages/atp-dashboard/atp/analytics/cost.py:67`
+- `AnalyticsDatabase` (class) — `packages/atp-dashboard/atp/analytics/database.py:17`
+- `get_analytics_database` (function) — `packages/atp-dashboard/atp/analytics/database.py:133`
+- `set_analytics_database` (function) — `packages/atp-dashboard/atp/analytics/database.py:141`
+- `init_analytics_database` (function) — `packages/atp-dashboard/atp/analytics/database.py:147`
+- `logger` (const) — `packages/atp-dashboard/atp/analytics/estimator.py:25`
+- `CHARS_PER_TOKEN` (const) — `packages/atp-dashboard/atp/analytics/estimator.py:28`
+- `OUTPUT_TOKENS_MIN` (const) — `packages/atp-dashboard/atp/analytics/estimator.py:32`
+- `OUTPUT_TOKENS_MAX` (const) — `packages/atp-dashboard/atp/analytics/estimator.py:33`
+- `SYSTEM_PROMPT_OVERHEAD` (const) — `packages/atp-dashboard/atp/analytics/estimator.py:36`
+- `CostEstimator` (class) — `packages/atp-dashboard/atp/analytics/estimator.py:97`
+- `AnalyticsBase` (class) — `packages/atp-dashboard/atp/analytics/models.py:27`
+- `CostRecord` (class) — `packages/atp-dashboard/atp/analytics/models.py:33`
+- `CostBudget` (class) — `packages/atp-dashboard/atp/analytics/models.py:103`
+- `ScheduledReport` (class) — `packages/atp-dashboard/atp/analytics/models.py:167`
+- `ABExperiment` (class) — `packages/atp-dashboard/atp/analytics/models.py:233`
+- `ABExperimentObservation` (class) — `packages/atp-dashboard/atp/analytics/models.py:338`
+- `CostRepository` (class) — `packages/atp-dashboard/atp/analytics/repository.py:13`
+- `logger` (const) — `packages/atp-dashboard/atp/analytics/trend.py:18`
+- `analyze_trend` (function) — `packages/atp-dashboard/atp/analytics/trend.py:71`
+- `create_app` (function) — `packages/atp-dashboard/atp/dashboard/__init__.py:59`
+- `app` (const) — `packages/atp-dashboard/atp/dashboard/__init__.py:95`
+- `run_server` (function) — `packages/atp-dashboard/atp/dashboard/__init__.py:98`
+- `main` (function) — `packages/atp-dashboard/atp/dashboard/__main__.py:10`
+- `T` (const) — `packages/atp-dashboard/atp/dashboard/audit.py:39`
+- `AuditCategory` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:42`
+- `AuditAction` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:54`
+- `AuditSeverity` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:121`
+- `AuditLog` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:131`
+- `compute_entry_hash` (function) — `packages/atp-dashboard/atp/dashboard/audit.py:220`
+- `get_previous_hash` (function) — `packages/atp-dashboard/atp/dashboard/audit.py:261`
+- `audit_log` (function) — `packages/atp-dashboard/atp/dashboard/audit.py:282`
+- `verify_audit_chain` (function) — `packages/atp-dashboard/atp/dashboard/audit.py:391`
+- `RetentionPolicy` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:454`
+- `DEFAULT_RETENTION_POLICY` (const) — `packages/atp-dashboard/atp/dashboard/audit.py:486`
+- `apply_retention_policy` (function) — `packages/atp-dashboard/atp/dashboard/audit.py:489`
+- `AuditLogResponse` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:571`
+- `AuditLogList` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:623`
+- `AuditLogFilter` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:632`
+- `AuditChainVerificationResponse` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:648`
+- `RetentionPolicyResponse` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:657`
+- `RetentionExecutionResponse` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:666`
+- `AuditExportRequest` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:673`
+- `AuditStatistics` (class) — `packages/atp-dashboard/atp/dashboard/audit.py:683`
+- `query_audit_logs` (function) — `packages/atp-dashboard/atp/dashboard/audit.py:697`
+- `get_audit_statistics` (function) — `packages/atp-dashboard/atp/dashboard/audit.py:788`
+- `create_audit_context` (function) — `packages/atp-dashboard/atp/dashboard/audit.py:884`
+- `audit_endpoint` (function) — `packages/atp-dashboard/atp/dashboard/audit.py:919`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/audit_middleware.py:34`
+- `RESOURCE_PATTERNS` (const) — `packages/atp-dashboard/atp/dashboard/audit_middleware.py:37`
+- `EXEMPT_PATHS` (const) — `packages/atp-dashboard/atp/dashboard/audit_middleware.py:54`
+- `AUTH_PATHS` (const) — `packages/atp-dashboard/atp/dashboard/audit_middleware.py:69`
+- `extract_resource_info` (function) — `packages/atp-dashboard/atp/dashboard/audit_middleware.py:85`
+- `get_action_for_method` (function) — `packages/atp-dashboard/atp/dashboard/audit_middleware.py:102`
+- `should_audit_request` (function) — `packages/atp-dashboard/atp/dashboard/audit_middleware.py:255`
+- `AuditMiddleware` (class) — `packages/atp-dashboard/atp/dashboard/audit_middleware.py:297`
+- `get_audit_middleware` (function) — `packages/atp-dashboard/atp/dashboard/audit_middleware.py:479`
+- `SECRET_KEY` (const) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:31`
+- `ALGORITHM` (const) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:40`
+- `ACCESS_TOKEN_EXPIRE_MINUTES` (const) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:41`
+- `access_token_ttl` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:56`
+- `oauth2_scheme` (const) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:67`
+- `verify_password` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:70`
+- `get_password_hash` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:85`
+- `create_access_token` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:98`
+- `get_user_by_username` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:127`
+- `get_user_by_email` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:142`
+- `authenticate_user` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:157`
+- `create_user` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:178`
+- `get_current_user` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:224`
+- `get_current_active_user` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:283`
+- `get_current_admin_user` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:306`
+- `require_user_level_token` (function) — `packages/atp-dashboard/atp/dashboard/auth/__init__.py:328`
+- `GITHUB_DEVICE_VERIFY_URI` (const) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:15`
+- `GITHUB_DEVICE_AUTH_URL` (const) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:16`
+- `GITHUB_TOKEN_URL` (const) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:17`
+- `GITHUB_USER_API` (const) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:18`
+- `GITHUB_USER_EMAILS_API` (const) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:19`
+- `DEFAULT_EXPIRES_IN` (const) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:21`
+- `DEFAULT_INTERVAL` (const) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:22`
+- `DeviceFlowError` (class) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:28`
+- `DeviceCodePendingError` (class) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:32`
+- `DeviceCodeExpiredError` (class) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:36`
+- `DeviceCodeNotFoundError` (class) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:40`
+- `DeviceFlowManager` (class) — `packages/atp-dashboard/atp/dashboard/auth/device_flow.py:44`
+- `PostAuthError` (class) — `packages/atp-dashboard/atp/dashboard/auth/post_auth.py:19`
+- `complete_auth` (function) — `packages/atp-dashboard/atp/dashboard/auth/post_auth.py:23`
+- `OIDCProvider` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:28`
+- `GroupRoleMapping` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:39`
+- `SSOConfig` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:51`
+- `SSOUserInfo` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:124`
+- `ProviderPresets` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:155`
+- `OIDCDiscoveryDocument` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:316`
+- `TokenResponse` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:331`
+- `SSOError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:344`
+- `ConfigurationError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:350`
+- `TokenValidationError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:356`
+- `UserProvisioningError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:362`
+- `SSOManager` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:368`
+- `SAMLProvider` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:25`
+- `SAMLGroupRoleMapping` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:37`
+- `SAMLAttributeMapping` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:51`
+- `SAMLNameIDFormat` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:86`
+- `SAMLConfig` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:95`
+- `SAMLUserInfo` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:200`
+- `SAMLProviderPresets` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:230`
+- `SAMLError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:325`
+- `SAMLConfigurationError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:331`
+- `SAMLValidationError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:337`
+- `SAMLUserProvisioningError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:343`
+- `SAMLManager` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:382`
+- `parse_idp_metadata` (function) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:799`
+- `parse_idp_metadata_url` (function) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:818`
+- `AuthStateStore` (class) — `packages/atp-dashboard/atp/dashboard/auth/state_store.py:17`
+- `InMemoryAuthStateStore` (class) — `packages/atp-dashboard/atp/dashboard/auth/state_store.py:37`
+- `get_auth_state_store` (function) — `packages/atp-dashboard/atp/dashboard/auth/state_store.py:78`
+- `reset_auth_state_store` (function) — `packages/atp-dashboard/atp/dashboard/auth/state_store.py:90`
+- `RunStatus` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/models.py:24`
+- `Benchmark` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/models.py:35`
+- `Run` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/models.py:97`
+- `TaskResult` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/models.py:156`
+- `BenchmarkCreate` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/schemas.py:8`
+- `BenchmarkResponse` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/schemas.py:21`
+- `RunResponse` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/schemas.py:34`
+- `SubmitRequest` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/schemas.py:48`
+- `TaskResultResponse` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/schemas.py:59`
+- `LeaderboardEntry` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/schemas.py:67`
+- `RunStatusResponse` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/schemas.py:76`
+- `BenchmarkService` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/service.py:21`
+- `main` (function) — `packages/atp-dashboard/atp/dashboard/cli/admin.py:207`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/database.py:20`
+- `Database` (class) — `packages/atp-dashboard/atp/dashboard/database.py:23`
+- `get_database` (function) — `packages/atp-dashboard/atp/dashboard/database.py:143`
+- `set_database` (function) — `packages/atp-dashboard/atp/dashboard/database.py:151`
+- `init_database` (function) — `packages/atp-dashboard/atp/dashboard/database.py:157`
+- `mcp_server` (const) — `packages/atp-dashboard/atp/dashboard/mcp/__init__.py:12`
+- `tournament_event_bus` (const) — `packages/atp-dashboard/atp/dashboard/mcp/__init__.py:13`
+- `MCPAuthMiddleware` (class) — `packages/atp-dashboard/atp/dashboard/mcp/auth.py:34`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/mcp/notifications.py:32`
+- `resolve_user_from_ctx` (function) — `packages/atp-dashboard/atp/dashboard/mcp/notifications.py:43`
+- `resolve_agent_id_from_ctx` (function) — `packages/atp-dashboard/atp/dashboard/mcp/notifications.py:66`
+- `forward_events_to_session` (function) — `packages/atp-dashboard/atp/dashboard/mcp/notifications.py:173`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/mcp/observability.py:28`
+- `MCP_HANDSHAKE_STARTED` (const) — `packages/atp-dashboard/atp/dashboard/mcp/observability.py:37`
+- `MCP_HANDSHAKE_AUTHORIZED` (const) — `packages/atp-dashboard/atp/dashboard/mcp/observability.py:42`
+- `MCP_HANDSHAKE_REJECTED` (const) — `packages/atp-dashboard/atp/dashboard/mcp/observability.py:48`
+- `MCP_FIRST_TOOL_CALL` (const) — `packages/atp-dashboard/atp/dashboard/mcp/observability.py:57`
+- `new_request_id` (function) — `packages/atp-dashboard/atp/dashboard/mcp/observability.py:80`
+- `now_monotonic_ms` (function) — `packages/atp-dashboard/atp/dashboard/mcp/observability.py:86`
+- `emit_event` (function) — `packages/atp-dashboard/atp/dashboard/mcp/observability.py:92`
+- `maybe_emit_first_tool_call` (function) — `packages/atp-dashboard/atp/dashboard/mcp/observability.py:100`
+- `reset_state` (function) — `packages/atp-dashboard/atp/dashboard/mcp/observability.py:120`
+- `emit_tool_call` (function) — `packages/atp-dashboard/atp/dashboard/mcp/observability.py:126`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:25`
+- `join_tournament` (function) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:56`
+- `leave_tournament` (function) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:346`
+- `get_history` (function) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:367`
+- `list_tournaments` (function) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:390`
+- `get_tournament` (function) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:424`
+- `cancel_tournament` (function) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:442`
+- `check_tournament_schema_ready` (function) — `packages/atp-dashboard/atp/dashboard/migrations/probes/check_tournament_invariants.py:34`
+- `as_sync_url` (function) — `packages/atp-dashboard/atp/dashboard/migrations/url_helpers.py:13`
+- `DEFAULT_TENANT_ID` (const) — `packages/atp-dashboard/atp/dashboard/models.py:28`
+- `Base` (class) — `packages/atp-dashboard/atp/dashboard/models.py:31`
+- `User` (class) — `packages/atp-dashboard/atp/dashboard/models.py:37`
+- `Agent` (class) — `packages/atp-dashboard/atp/dashboard/models.py:67`
+- `SuiteExecution` (class) — `packages/atp-dashboard/atp/dashboard/models.py:139`
+- `TestExecution` (class) — `packages/atp-dashboard/atp/dashboard/models.py:204`
+- `RunResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:264`
+- `Artifact` (class) — `packages/atp-dashboard/atp/dashboard/models.py:325`
+- `EvaluationResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:358`
+- `ScoreComponent` (class) — `packages/atp-dashboard/atp/dashboard/models.py:393`
+- `PublishedResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:436`
+- `AgentProfile` (class) — `packages/atp-dashboard/atp/dashboard/models.py:510`
+- `BenchmarkCategory` (class) — `packages/atp-dashboard/atp/dashboard/models.py:583`
+- `SuiteDefinition` (class) — `packages/atp-dashboard/atp/dashboard/models.py:633`
+- `MarketplaceSuite` (class) — `packages/atp-dashboard/atp/dashboard/models.py:691`
+- `MarketplaceSuiteVersion` (class) — `packages/atp-dashboard/atp/dashboard/models.py:790`
+- `MarketplaceSuiteReview` (class) — `packages/atp-dashboard/atp/dashboard/models.py:858`
+- `MarketplaceSuiteInstall` (class) — `packages/atp-dashboard/atp/dashboard/models.py:919`
+- `GameResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:969`
+- `TournamentResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:1088`
+- `get_agents_by_names` (function) — `packages/atp-dashboard/atp/dashboard/optimized_queries.py:21`
+- `get_suite_executions_for_agents` (function) — `packages/atp-dashboard/atp/dashboard/optimized_queries.py:42`
+- `get_run_results_for_test_executions` (function) — `packages/atp-dashboard/atp/dashboard/optimized_queries.py:91`
+- `get_aggregated_metrics_for_suite` (function) — `packages/atp-dashboard/atp/dashboard/optimized_queries.py:126`
+- `build_leaderboard_data` (function) — `packages/atp-dashboard/atp/dashboard/optimized_queries.py:193`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/query_cache.py:14`
+- `QueryCache` (class) — `packages/atp-dashboard/atp/dashboard/query_cache.py:67`
+- `get_leaderboard_cache` (function) — `packages/atp-dashboard/atp/dashboard/query_cache.py:260`
+- `get_comparison_cache` (function) — `packages/atp-dashboard/atp/dashboard/query_cache.py:279`
+- `invalidate_suite_caches` (function) — `packages/atp-dashboard/atp/dashboard/query_cache.py:298`
+- `clear_all_query_caches` (function) — `packages/atp-dashboard/atp/dashboard/query_cache.py:317`
+- `get_query_cache_stats` (function) — `packages/atp-dashboard/atp/dashboard/query_cache.py:336`
+- `Permission` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:32`
+- `RolePermissions` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:119`
+- `ADMIN_PERMISSIONS` (const) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:138`
+- `DEVELOPER_PERMISSIONS` (const) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:140`
+- `ANALYST_PERMISSIONS` (const) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:181`
+- `VIEWER_PERMISSIONS` (const) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:205`
+- `DEFAULT_ROLES` (const) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:227`
+- `Role` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:255`
+- `RolePermission` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:309`
+- `UserRole` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:336`
+- `get_user_permissions` (function) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:372`
+- `has_permission` (function) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:396`
+- `require_permission` (function) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:419`
+- `RoleResponse` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:519`
+- `RoleCreate` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:534`
+- `RoleUpdate` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:542`
+- `UserRoleResponse` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:551`
+- `UserRoleAssign` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:564`
+- `UserRoleRemove` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:571`
+- `UserPermissionsResponse` (class) — `packages/atp-dashboard/atp/dashboard/rbac/models.py:578`
+- `AgentCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:11`
+- `AgentUpdate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:20`
+- `AgentResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:28`
+- `SuiteExecutionSummary` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:45`
+- `SuiteExecutionDetail` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:66`
+- `SuiteExecutionList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:72`
+- `TestExecutionSummary` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:84`
+- `RunResultSummary` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:105`
+- `EvaluationResultResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:127`
+- `ScoreComponentResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:142`
+- `TestExecutionDetail` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:156`
+- `TestExecutionList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:165`
+- `TrendDataPoint` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:177`
+- `TestTrend` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:185`
+- `SuiteTrend` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:194`
+- `TrendResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:203`
+- `EventSummary` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:213`
+- `AgentExecutionDetail` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:223`
+- `SideBySideComparisonResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:239`
+- `AgentComparisonMetrics` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:251`
+- `TestComparisonMetrics` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:263`
+- `AgentComparisonResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:271`
+- `UserCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:282`
+- `UserResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:291`
+- `Token` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:304`
+- `TokenData` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:311`
+- `TestScore` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:321`
+- `TestRow` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:329`
+- `AgentColumn` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:341`
+- `LeaderboardMatrixResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:352`
+- `TimelineEvent` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:367`
+- `TimelineEventsResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:382`
+- `AgentTimeline` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:398`
+- `MultiTimelineResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:412`
+- `DashboardSummary` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:428`
+- `ConstraintsCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:442`
+- `AssertionCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:454`
+- `TaskCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:463`
+- `ScoringWeightsCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:475`
+- `TestCreateRequest` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:484`
+- `TestDefaultsCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:503`
+- `AgentConfigCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:516`
+- `SuiteCreateRequest` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:528`
+- `SuiteUpdateRequest` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:545`
+- `TestResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:559`
+- `SuiteDefinitionResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:572`
+- `SuiteDefinitionSummary` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:588`
+- `SuiteDefinitionList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:603`
+- `TemplateVariableInfo` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:615`
+- `TemplateResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:623`
+- `TemplateListResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:636`
+- `YAMLExportResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:647`
+- `CostRecordResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:658`
+- `CostRecordList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:676`
+- `CostBreakdownItem` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:685`
+- `CostTrendPoint` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:696`
+- `CostSummaryResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:705`
+- `BudgetCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:721`
+- `BudgetUpdate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:733`
+- `BudgetResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:746`
+- `BudgetUsageResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:764`
+- `BudgetWithUsageResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:779`
+- `BudgetList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:785`
+- `TrendDataPointResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:795`
+- `TrendAnalysisResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:803`
+- `ScoreTrendsResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:818`
+- `AnomalyResultResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:828`
+- `AnomalyDetectionResponseSchema` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:844`
+- `CorrelationResultResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:854`
+- `CorrelationAnalysisResponseSchema` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:866`
+- `ScheduledReportCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:874`
+- `ScheduledReportUpdate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:886`
+- `ScheduledReportResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:899`
+- `ScheduledReportList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:918`
+- `ExportRequest` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:925`
+- `VariantCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:941`
+- `MetricConfigCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:950`
+- `RollbackConfigCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:959`
+- `ExperimentCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:968`
+- `ExperimentUpdate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:989`
+- `VariantResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:998`
+- `VariantMetricsResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1008`
+- `StatisticalResultResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1021`
+- `ExperimentResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1036`
+- `ExperimentSummary` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1065`
+- `ExperimentList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1084`
+- `ExperimentReportResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1091`
+- `ObservationCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1100`
+- `ObservationResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1114`
+- `TrafficAssignmentResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1132`
+- `BenchmarkCategoryCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1144`
+- `BenchmarkCategoryUpdate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1156`
+- `BenchmarkCategoryResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1167`
+- `BenchmarkCategoryList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1185`
+- `AgentProfileCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1192`
+- `AgentProfileUpdate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1205`
+- `AgentProfileResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1217`
+- `AgentProfileSummary` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1240`
+- `AgentProfileList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1255`
+- `PublishResultRequest` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1264`
+- `PublishedResultResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1271`
+- `PublishedResultWithProfile` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1293`
+- `PublishedResultList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1299`
+- `LeaderboardEntry` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1308`
+- `PublicLeaderboardResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1327`
+- `LeaderboardTrendPoint` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1338`
+- `AgentLeaderboardHistory` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1346`
+- `VerificationRequest` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1354`
+- `VerificationBadgeRequest` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1362`
+- `MarketplaceSuiteCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1374`
+- `MarketplaceSuiteUpdate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1397`
+- `MarketplaceSuiteResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1413`
+- `MarketplaceSuiteSummary` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1446`
+- `MarketplaceSuiteList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1469`
+- `MarketplaceSuiteDetail` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1478`
+- `MarketplaceSuiteVersionCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1489`
+- `MarketplaceSuiteVersionResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1498`
+- `MarketplaceSuiteVersionList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1521`
+- `MarketplaceSuiteVersionUpdate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1528`
+- `MarketplaceSuiteReviewCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1539`
+- `MarketplaceSuiteReviewUpdate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1548`
+- `MarketplaceSuiteReviewResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1556`
+- `MarketplaceSuiteReviewList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1576`
+- `MarketplaceSuiteInstallResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1590`
+- `MarketplaceSuiteInstallList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1604`
+- `MarketplaceSearchParams` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1614`
+- `MarketplaceCategoryStats` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1631`
+- `MarketplaceStats` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1640`
+- `GitHubImportRequest` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1654`
+- `GitHubImportResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1668`
+- `GamePlayerResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1680`
+- `GameResultSummary` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1691`
+- `GameResultDetail` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1707`
+- `GameResultList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1729`
+- `MatchupResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1738`
+- `TournamentStandingResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1749`
+- `TournamentResultSummary` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1761`
+- `TournamentResultDetail` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1777`
+- `TournamentResultList` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1796`
+- `APITokenCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1813`
+- `APITokenResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1827`
+- `APITokenCreated` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1843`
+- `InviteCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1849`
+- `InviteResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1855`
+- `AgentOwnerCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1871`
+- `AgentOwnerUpdate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1888`
+- `AgentOwnerResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1896`
+- `ResultStorage` (class) — `packages/atp-dashboard/atp/dashboard/storage.py:34`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/manager.py:24`
+- `TenantError` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/manager.py:27`
+- `TenantExistsError` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/manager.py:33`
+- `TenantNotFoundError` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/manager.py:39`
+- `TenantDeleteError` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/manager.py:45`
+- `TenantManager` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/manager.py:51`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py:22`
+- `QUOTA_EXCEEDED_RESPONSE` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py:26`
+- `QuotaEnforcementMiddleware` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py:32`
+- `get_quota_checker` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py:234`
+- `get_quota_tracker` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py:248`
+- `get_quota_checker_dep` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py:262`
+- `get_quota_tracker_dep` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py:283`
+- `QuotaCheckerDep` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py:305`
+- `QuotaTrackerDep` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py:306`
+- `require_quota` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py:309`
+- `create_quota_exceeded_response` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py:351`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/migration.py:22`
+- `ensure_tenant_table` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/migration.py:25`
+- `create_default_tenant` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/migration.py:42`
+- `migrate_existing_data_to_default_tenant` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/migration.py:91`
+- `run_tenant_migration` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/migration.py:174`
+- `verify_tenant_isolation` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/migration.py:199`
+- `TenantQuotas` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/models.py:17`
+- `TenantSettings` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/models.py:46`
+- `Tenant` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/models.py:77`
+- `DEFAULT_TENANT_ID` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/models.py:146`
+- `DEFAULT_TENANT_NAME` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/models.py:147`
+- `DEFAULT_TENANT_SCHEMA` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/models.py:148`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/quotas.py:28`
+- `STORAGE_CACHE_TTL_SECONDS` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/quotas.py:32`
+- `QuotaType` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/quotas.py:35`
+- `QuotaViolation` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/quotas.py:47`
+- `QuotaCheckResult` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/quotas.py:58`
+- `QuotaUsage` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/quotas.py:72`
+- `QuotaExceededError` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/quotas.py:88`
+- `QuotaChecker` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/quotas.py:107`
+- `QuotaUsageTracker` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/quotas.py:642`
+- `TenantCreate` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/schemas.py:10`
+- `TenantUpdate` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/schemas.py:38`
+- `TenantResponse` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/schemas.py:50`
+- `TenantSummary` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/schemas.py:68`
+- `TenantList` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/schemas.py:80`
+- `TenantUsage` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/schemas.py:89`
+- `TenantUsageResponse` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/schemas.py:102`
+- `TenantQuotaCheck` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/schemas.py:112`
+- `TenantQuotaStatus` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/schemas.py:122`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/session.py:17`
+- `T` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/session.py:19`
+- `TenantAwareSession` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/session.py:22`
+- `TenantSessionFactory` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/session.py:116`
+- `get_tenant_session_factory` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/session.py:194`
+- `set_tenant_factory` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/session.py:210`
+- `get_tenant_factory` (function) — `packages/atp-dashboard/atp/dashboard/tenancy/session.py:220`
+- `generate_api_token` (function) — `packages/atp-dashboard/atp/dashboard/tokens.py:21`
+- `hash_token` (function) — `packages/atp-dashboard/atp/dashboard/tokens.py:27`
+- `generate_invite_code` (function) — `packages/atp-dashboard/atp/dashboard/tokens.py:32`
+- `APIToken` (class) — `packages/atp-dashboard/atp/dashboard/tokens.py:37`
+- `Invite` (class) — `packages/atp-dashboard/atp/dashboard/tokens.py:86`
+- `can_view_reasoning` (function) — `packages/atp-dashboard/atp/dashboard/tournament/access.py:14`
+- `BuiltinNotFoundError` (class) — `packages/atp-dashboard/atp/dashboard/tournament/builtins.py:33`
+- `list_builtins_for_game` (function) — `packages/atp-dashboard/atp/dashboard/tournament/builtins.py:90`
+- `resolve_builtin` (function) — `packages/atp-dashboard/atp/dashboard/tournament/builtins.py:119`
+- `run_deadline_worker` (function) — `packages/atp-dashboard/atp/dashboard/tournament/deadlines.py:57`
+- `TournamentError` (class) — `packages/atp-dashboard/atp/dashboard/tournament/errors.py:11`
+- `ValidationError` (class) — `packages/atp-dashboard/atp/dashboard/tournament/errors.py:15`
+- `RosterValidationError` (class) — `packages/atp-dashboard/atp/dashboard/tournament/errors.py:23`
+- `ConflictError` (class) — `packages/atp-dashboard/atp/dashboard/tournament/errors.py:33`
+- `NotFoundError` (class) — `packages/atp-dashboard/atp/dashboard/tournament/errors.py:41`
+- `ConcurrentPrivateCapExceededError` (class) — `packages/atp-dashboard/atp/dashboard/tournament/errors.py:53`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/tournament/events.py:24`
+- `EventType` (const) — `packages/atp-dashboard/atp/dashboard/tournament/events.py:28`
+- `TournamentEventBus` (class) — `packages/atp-dashboard/atp/dashboard/tournament/events.py:53`
+- `AnyTournamentEvent` (const) — `packages/atp-dashboard/atp/dashboard/tournament/events.py:171`
+- `TournamentStatus` (class) — `packages/atp-dashboard/atp/dashboard/tournament/models.py:27`
+- `RoundStatus` (class) — `packages/atp-dashboard/atp/dashboard/tournament/models.py:36`
+- `ActionSource` (class) — `packages/atp-dashboard/atp/dashboard/tournament/models.py:54`
+- `Tournament` (class) — `packages/atp-dashboard/atp/dashboard/tournament/models.py:75`
+- `Participant` (class) — `packages/atp-dashboard/atp/dashboard/tournament/models.py:194`
+- `Round` (class) — `packages/atp-dashboard/atp/dashboard/tournament/models.py:291`
+- `Action` (class) — `packages/atp-dashboard/atp/dashboard/tournament/models.py:335`
+- `CancelReason` (class) — `packages/atp-dashboard/atp/dashboard/tournament/reasons.py:7`
+- `ActionTelemetry` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:14`
+- `TournamentResponse` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:37`
+- `JoinRequest` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:47`
+- `ActionRequest` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:53`
+- `RoundResponse` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:59`
+- `PDAction` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:68`
+- `ElFarolAction` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:80`
+- `SHAction` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:132`
+- `BoSAction` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:143`
+- `PGAction` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:155`
+- `TournamentAction` (const) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:167`
+- `PDRoundState` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:173`
+- `ElFarolRoundState` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:196`
+- `SHRoundState` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:222`
+- `BoSRoundState` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:249`
+- `PGRoundState` (class) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:278`
+- `RoundState` (const) — `packages/atp-dashboard/atp/dashboard/tournament/schemas.py:311`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/tournament/service.py:74`
+- `TOURNAMENT_PENDING_MAX_WAIT_S` (const) — `packages/atp-dashboard/atp/dashboard/tournament/service.py:86`
+- `SUPPORTED_GAMES` (const) — `packages/atp-dashboard/atp/dashboard/tournament/service.py:90`
+- `TournamentService` (class) — `packages/atp-dashboard/atp/dashboard/tournament/service.py:190`
+- `is_tournament_visible_to` (function) — `packages/atp-dashboard/atp/dashboard/tournament/visibility.py:27`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/config.py:15`
+- `DashboardConfig` (class) — `packages/atp-dashboard/atp/dashboard/v2/config.py:20`
+- `get_db_session` (function) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:26`
+- `get_dashboard_config` (function) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:47`
+- `get_db` (function) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:61`
+- `DBSession` (const) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:71`
+- `Config` (const) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:72`
+- `CurrentUser` (const) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:73`
+- `RequiredUser` (const) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:74`
+- `AdminUser` (const) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:75`
+- `get_benchmark_caller` (function) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:78`
+- `reject_tournament_token` (function) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:98`
+- `BenchmarkCaller` (const) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:113`
+- `PaginationParams` (class) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:116`
+- `Pagination` (const) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:134`
+- `require_feature` (function) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:137`
+- `get_test_service` (function) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:168`
+- `get_comparison_service` (function) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:185`
+- `get_export_service` (function) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:202`
+- `TestServiceDep` (const) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:220`
+- `ComparisonServiceDep` (const) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:221`
+- `ExportServiceDep` (const) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:222`
+- `V2_DIR` (const) — `packages/atp-dashboard/atp/dashboard/v2/factory.py:34`
+- `TEMPLATES_DIR` (const) — `packages/atp-dashboard/atp/dashboard/v2/factory.py:35`
+- `STATIC_DIR` (const) — `packages/atp-dashboard/atp/dashboard/v2/factory.py:36`
+- `assert_single_worker` (function) — `packages/atp-dashboard/atp/dashboard/v2/factory.py:39`
+- `create_app` (function) — `packages/atp-dashboard/atp/dashboard/v2/factory.py:76`
+- `create_test_app` (function) — `packages/atp-dashboard/atp/dashboard/v2/factory.py:295`
+- `GAME_COPY` (const) — `packages/atp-dashboard/atp/dashboard/v2/game_copy.py:95`
+- `get_copy` (function) — `packages/atp-dashboard/atp/dashboard/v2/game_copy.py:497`
+- `ExtrasFormatter` (class) — `packages/atp-dashboard/atp/dashboard/v2/logging_config.py:69`
+- `configure_app_logging` (function) — `packages/atp-dashboard/atp/dashboard/v2/logging_config.py:117`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/rate_limit.py:26`
+- `get_rate_limit_key` (function) — `packages/atp-dashboard/atp/dashboard/v2/rate_limit.py:29`
+- `limiter` (const) — `packages/atp-dashboard/atp/dashboard/v2/rate_limit.py:49`
+- `create_limiter` (function) — `packages/atp-dashboard/atp/dashboard/v2/rate_limit.py:55`
+- `JWTUserStateMiddleware` (class) — `packages/atp-dashboard/atp/dashboard/v2/rate_limit.py:142`
+- `rate_limit_exceeded_handler` (function) — `packages/atp-dashboard/atp/dashboard/v2/rate_limit.py:345`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/__init__.py:102`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/admin_ui.py:33`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/agent_management_api.py:20`
+- `create_agent_for_user` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/agent_management_api.py:27`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/agent_traces.py:12`
+- `TraceStepResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/agent_traces.py:15`
+- `TraceSummaryResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/agent_traces.py:26`
+- `TraceDetailResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/agent_traces.py:40`
+- `TraceListResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/agent_traces.py:58`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/agents.py:26`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/analytics.py:48`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/audit.py:48`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/auth.py:27`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/benchmark_api.py:53`
+- `MAX_RUN_EVENTS` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/benchmark_api.py:59`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/budgets.py:34`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/builtins_api.py:16`
+- `BuiltinEntry` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/builtins_api.py:19`
+- `BuiltinsResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/builtins_api.py:24`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/catalog.py:16`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/catalog.py:18`
+- `CategoryResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/catalog.py:24`
+- `SuiteResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/catalog.py:34`
+- `TestResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/catalog.py:46`
+- `SuiteDetailResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/catalog.py:58`
+- `SubmissionResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/catalog.py:71`
+- `GlobalLeaderboardEntry` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/catalog.py:83`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/comparison.py:30`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/costs.py:32`
+- `get_analytics_session` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/costs.py:35`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/definitions.py:39`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/device_auth.py:24`
+- `DeviceInitResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/device_auth.py:44`
+- `DevicePollRequest` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/device_auth.py:54`
+- `SHAPE_VERSION` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/el_farol_dashboard.py:24`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/el_farol_dashboard.py:26`
+- `DashboardAgent` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/el_farol_dashboard.py:34`
+- `SlotPayoff` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/el_farol_dashboard.py:46`
+- `IntervalPayoff` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/el_farol_dashboard.py:52`
+- `DashboardDecision` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/el_farol_dashboard.py:58`
+- `DashboardRound` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/el_farol_dashboard.py:88`
+- `DashboardPayload` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/el_farol_dashboard.py:97`
+- `ShapeVersion` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/el_farol_dashboard.py:324`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/experiments.py:56`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/games.py:41`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/home.py:21`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/invite_api.py:16`
+- `create_invite_for_admin` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/invite_api.py:23`
+- `deactivate_invite_for_admin` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/invite_api.py:45`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/leaderboard.py:28`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/leaderboard.py:30`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/marketplace.py:83`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/marketplace.py:85`
+- `get_marketplace_cache` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/marketplace.py:91`
+- `parse_semver` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/marketplace.py:99`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/metrics.py:15`
+- `MetricsStatusResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/metrics.py:18`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/public_leaderboard.py:63`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/public_leaderboard.py:65`
+- `get_public_leaderboard_cache` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/public_leaderboard.py:71`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/roles.py:31`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/saml.py:37`
+- `SAMLInitRequest` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/saml.py:40`
+- `SAMLInitResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/saml.py:51`
+- `SAMLConfigCreate` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/saml.py:58`
+- `SAMLConfigResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/saml.py:98`
+- `SAMLProviderPresetResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/saml.py:114`
+- `SAMLIdPMetadataRequest` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/saml.py:124`
+- `SAMLIdPMetadataResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/saml.py:133`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/sso.py:35`
+- `SSOInitRequest` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/sso.py:38`
+- `SSOInitResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/sso.py:46`
+- `SSOConfigCreate` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/sso.py:53`
+- `SSOConfigResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/sso.py:76`
+- `ProviderPresetResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/sso.py:89`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/suites.py:28`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/templates.py:22`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/tenants.py:36`
+- `get_tenant_manager` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/tenants.py:39`
+- `TenantManagerDep` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/tenants.py:50`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/tests.py:29`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/timeline.py:28`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/token_api.py:17`
+- `create_token_for_user` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/token_api.py:24`
+- `revoke_token_for_user` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/token_api.py:119`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/tournament_api.py:47`
+- `get_current_user_for_tournament` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/tournament_api.py:55`
+- `get_tournament_service` (function) — `packages/atp-dashboard/atp/dashboard/v2/routes/tournament_api.py:83`
+- `TournamentUser` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/tournament_api.py:94`
+- `TournamentSvc` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/tournament_api.py:95`
+- `BuiltinRosterEntry` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/tournament_api.py:103`
+- `CreateTournamentRequest` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/tournament_api.py:109`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/tournament_live.py:46`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/traces.py:15`
+- `SpanResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/traces.py:18`
+- `TracesResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/traces.py:37`
+- `TelemetryStatusResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/traces.py:46`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/trends.py:26`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/ui.py:31`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/ui.py:33`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/upload.py:36`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/upload.py:38`
+- `ALLOWED_EXTENSIONS` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/upload.py:40`
+- `ALLOWED_CONTENT_TYPES` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/upload.py:41`
+- `MAX_PARSED_SIZE_BYTES` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/upload.py:48`
+- `ValidationReport` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/upload.py:51`
+- `UploadResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/upload.py:59`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/users.py:35`
+- `UserResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/users.py:38`
+- `UserListResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/users.py:48`
+- `RoleAssignment` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/users.py:57`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/websocket.py:15`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/websocket.py:17`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/winners_api.py:23`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/winners_ui.py:21`
+- `AgentService` (class) — `packages/atp-dashboard/atp/dashboard/v2/services/agent_service.py:14`
+- `ComparisonService` (class) — `packages/atp-dashboard/atp/dashboard/v2/services/comparison_service.py:32`
+- `CAPACITY_RATIO` (const) — `packages/atp-dashboard/atp/dashboard/v2/services/el_farol_constants.py:9`
+- `ExportService` (class) — `packages/atp-dashboard/atp/dashboard/v2/services/export_service.py:34`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/services/github_import.py:17`
+- `parse_github_url` (function) — `packages/atp-dashboard/atp/dashboard/v2/services/github_import.py:87`
+- `build_raw_url` (function) — `packages/atp-dashboard/atp/dashboard/v2/services/github_import.py:124`
+- `fetch_github_file` (function) — `packages/atp-dashboard/atp/dashboard/v2/services/github_import.py:141`
+- `validate_suite_yaml` (function) — `packages/atp-dashboard/atp/dashboard/v2/services/github_import.py:192`
+- `import_from_github` (function) — `packages/atp-dashboard/atp/dashboard/v2/services/github_import.py:222`
+- `TestService` (class) — `packages/atp-dashboard/atp/dashboard/v2/services/test_service.py:35`
+- `SCHEMA_VERSION` (const) — `packages/atp-dashboard/atp/dashboard/v2/services/winners.py:32`
+- `WinnerEntry` (class) — `packages/atp-dashboard/atp/dashboard/v2/services/winners.py:35`
+- `HallEntry` (class) — `packages/atp-dashboard/atp/dashboard/v2/services/winners.py:57`
+- `LeaderboardPayload` (class) — `packages/atp-dashboard/atp/dashboard/v2/services/winners.py:73`
+- `get_winners_cache` (function) — `packages/atp-dashboard/atp/dashboard/v2/services/winners.py:107`
+- `get_hof_cache` (function) — `packages/atp-dashboard/atp/dashboard/v2/services/winners.py:118`
+- `reset_caches_for_tests` (function) — `packages/atp-dashboard/atp/dashboard/v2/services/winners.py:133`
+- `winners_cache_key` (function) — `packages/atp-dashboard/atp/dashboard/v2/services/winners.py:140`
+- `hof_cache_key` (function) — `packages/atp-dashboard/atp/dashboard/v2/services/winners.py:149`
+- `CAPACITY_RATIO` (const) — `packages/atp-dashboard/atp/dashboard/v2/services/winners.py:160`
+- `utc_now` (function) — `packages/atp-dashboard/atp/dashboard/v2/services/winners.py:383`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/websocket/manager.py:21`
+- `ConnectionManager` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/manager.py:24`
+- `get_connection_manager` (function) — `packages/atp-dashboard/atp/dashboard/v2/websocket/manager.py:661`
+- `set_connection_manager` (function) — `packages/atp-dashboard/atp/dashboard/v2/websocket/manager.py:673`
+- `WSMessageType` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/models.py:13`
+- `WSSubscription` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/models.py:38`
+- `WSMessage` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/models.py:47`
+- `WSClientInfo` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/models.py:58`
+- `TestProgressData` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/models.py:74`
+- `SuiteProgressData` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/models.py:90`
+- `LogEntryData` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/models.py:106`
+- `EventData` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/models.py:121`
+- `DeltaUpdateData` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/models.py:134`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/websocket/pubsub.py:15`
+- `Topic` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/pubsub.py:18`
+- `PubSubManager` (class) — `packages/atp-dashboard/atp/dashboard/v2/websocket/pubsub.py:79`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/webhook.py:20`
+- `RETRY_DELAYS` (const) — `packages/atp-dashboard/atp/dashboard/webhook.py:22`
+- `REQUEST_TIMEOUT` (const) — `packages/atp-dashboard/atp/dashboard/webhook.py:23`
+- `validate_webhook_url` (function) — `packages/atp-dashboard/atp/dashboard/webhook.py:31`
+- `build_webhook_payload` (function) — `packages/atp-dashboard/atp/dashboard/webhook.py:64`
+- `deliver_webhook` (function) — `packages/atp-dashboard/atp/dashboard/webhook.py:91`
+- `schedule_webhook` (function) — `packages/atp-dashboard/atp/dashboard/webhook.py:145`
+- `TestVariant` (class) — `packages/atp-dashboard/tests/unit/analytics/test_ab_testing.py:83`
+- `TestExperimentConfig` (class) — `packages/atp-dashboard/tests/unit/analytics/test_ab_testing.py:116`
+- `TestExperiment` (class) — `packages/atp-dashboard/tests/unit/analytics/test_ab_testing.py:154`
+- `TestTrafficRouter` (class) — `packages/atp-dashboard/tests/unit/analytics/test_ab_testing.py:233`
+- `TestExperimentAnalyzer` (class) — `packages/atp-dashboard/tests/unit/analytics/test_ab_testing.py:318`
+- `TestExperimentManager` (class) — `packages/atp-dashboard/tests/unit/analytics/test_ab_testing.py:472`
+- `TestModuleFunctions` (class) — `packages/atp-dashboard/tests/unit/analytics/test_ab_testing.py:727`
+- `TestWinnerDetermination` (class) — `packages/atp-dashboard/tests/unit/analytics/test_ab_testing.py:750`
+- `TestAdvancedAnalyticsService` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:20`
+- `TestScheduledReportsRepository` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:355`
+- `TestScheduledReportConfig` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:400`
+- `TestTrendDirection` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:441`
+- `TestAnomalyType` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:452`
+- `TestCorrelationStrength` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:464`
+- `TestTrendDataPoint` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:478`
+- `TestTrendAnalysisResult` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:498`
+- `TestAnomalyResult` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:526`
+- `TestCorrelationResult` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:564`
+- `TestScoreTrendResponse` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:584`
+- `TestAnomalyDetectionResponse` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:603`
+- `TestCorrelationAnalysisResponse` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:622`
+- `TestExportFormat` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:639`
+- `TestScheduledReportFrequency` (class) — `packages/atp-dashboard/tests/unit/analytics/test_advanced.py:650`
+- `TestAlertConfig` (class) — `packages/atp-dashboard/tests/unit/analytics/test_budgets.py:27`
+- `TestBudgetConfig` (class) — `packages/atp-dashboard/tests/unit/analytics/test_budgets.py:62`
+- `TestBudgetPeriod` (class) — `packages/atp-dashboard/tests/unit/analytics/test_budgets.py:181`
+- `TestBudgetStatus` (class) — `packages/atp-dashboard/tests/unit/analytics/test_budgets.py:197`
+- `TestBudgetCheckResult` (class) — `packages/atp-dashboard/tests/unit/analytics/test_budgets.py:244`
+- `TestLogAlertChannel` (class) — `packages/atp-dashboard/tests/unit/analytics/test_budgets.py:263`
+- `TestWebhookAlertChannel` (class) — `packages/atp-dashboard/tests/unit/analytics/test_budgets.py:294`
+- `TestEmailAlertChannel` (class) — `packages/atp-dashboard/tests/unit/analytics/test_budgets.py:366`
+- `TestAlertChannelRegistry` (class) — `packages/atp-dashboard/tests/unit/analytics/test_budgets.py:397`
+- `TestBudgetManager` (class) — `packages/atp-dashboard/tests/unit/analytics/test_budgets.py:469`
+- `TestGlobalBudgetManager` (class) — `packages/atp-dashboard/tests/unit/analytics/test_budgets.py:828`
+- `TestModelPricing` (class) — `packages/atp-dashboard/tests/unit/analytics/test_cost.py:21`
+- `TestPricingConfig` (class) — `packages/atp-dashboard/tests/unit/analytics/test_cost.py:61`
+- `TestCostEvent` (class) — `packages/atp-dashboard/tests/unit/analytics/test_cost.py:203`
+- `TestCostTracker` (class) — `packages/atp-dashboard/tests/unit/analytics/test_cost.py:248`
+- `TestGlobalCostTracker` (class) — `packages/atp-dashboard/tests/unit/analytics/test_cost.py:418`
+- `TestPricingConfigFromYaml` (class) — `packages/atp-dashboard/tests/unit/analytics/test_cost.py:465`
+- `TestAnalyticsDatabase` (class) — `packages/atp-dashboard/tests/unit/analytics/test_database.py:16`
+- `TestDatabaseGlobals` (class) — `packages/atp-dashboard/tests/unit/analytics/test_database.py:133`
+- `TestDatabaseIntegration` (class) — `packages/atp-dashboard/tests/unit/analytics/test_database.py:183`
+- `TestCostRecord` (class) — `packages/atp-dashboard/tests/unit/analytics/test_models.py:9`
+- `TestCostBudget` (class) — `packages/atp-dashboard/tests/unit/analytics/test_models.py:103`
+- `TestCostRecordCRUD` (class) — `packages/atp-dashboard/tests/unit/analytics/test_repository.py:15`
+- `TestCostBudgetCRUD` (class) — `packages/atp-dashboard/tests/unit/analytics/test_repository.py:197`
+- `TestAggregationQueries` (class) — `packages/atp-dashboard/tests/unit/analytics/test_repository.py:355`
+- `TestBudgetUsage` (class) — `packages/atp-dashboard/tests/unit/analytics/test_repository.py:629`
+- `CONFIG_DIR` (const) — `packages/atp-sdk/atp_sdk/auth.py:21`
+- `CONFIG_FILE` (const) — `packages/atp-sdk/atp_sdk/auth.py:22`
+- `load_token` (function) — `packages/atp-sdk/atp_sdk/auth.py:25`
+- `save_token` (function) — `packages/atp-sdk/atp_sdk/auth.py:45`
+- `login` (function) — `packages/atp-sdk/atp_sdk/auth.py:69`
+- `logger` (const) — `packages/atp-sdk/atp_sdk/benchmark.py:14`
+- `BenchmarkRun` (class) — `packages/atp-sdk/atp_sdk/benchmark.py:17`
+- `logger` (const) — `packages/atp-sdk/atp_sdk/client.py:18`
+- `AsyncATPClient` (class) — `packages/atp-sdk/atp_sdk/client.py:21`
+- `RunStatus` (class) — `packages/atp-sdk/atp_sdk/models.py:8`
+- `LeaderboardEntry` (class) — `packages/atp-sdk/atp_sdk/models.py:19`
+- `BenchmarkInfo` (class) — `packages/atp-sdk/atp_sdk/models.py:28`
+- `RunInfo` (class) — `packages/atp-sdk/atp_sdk/models.py:40`
+- `logger` (const) — `packages/atp-sdk/atp_sdk/retry.py:13`
+- `RETRYABLE_STATUS_CODES` (const) — `packages/atp-sdk/atp_sdk/retry.py:15`
+- `retry_request` (function) — `packages/atp-sdk/atp_sdk/retry.py:49`
+- `logger` (const) — `packages/atp-sdk/atp_sdk/sync.py:21`
+- `ATPClient` (class) — `packages/atp-sdk/atp_sdk/sync.py:27`
+- `main` (function) — `participant-kit-el-farol-en/bot_el_farol_random.py:90`
+- `measure_time` (function) — `scripts/benchmark_dashboard.py:28`
+- `measure_memory` (function) — `scripts/benchmark_dashboard.py:54`
+- `benchmark_app_creation` (function) — `scripts/benchmark_dashboard.py:75`
+- `benchmark_route_count` (function) — `scripts/benchmark_dashboard.py:96`
+- `benchmark_file_sizes` (function) — `scripts/benchmark_dashboard.py:108`
+- `print_results` (function) — `scripts/benchmark_dashboard.py:139`
+- `main` (function) — `scripts/benchmark_dashboard.py:180`
+- `fix_agents_legacy_unique` (function) — `scripts/ops/reconcile_prod_schema.py:59`
+- `fix_participants_user_id_nullable` (function) — `scripts/ops/reconcile_prod_schema.py:151`
+- `stamp_alembic_head` (function) — `scripts/ops/reconcile_prod_schema.py:296`
+- `main` (function) — `scripts/ops/reconcile_prod_schema.py:324`
+- `build_server` (function) — `scripts/repro_mcp_concurrent_tools_list.py:57`
+- `expected_tool_names` (function) — `scripts/repro_mcp_concurrent_tools_list.py:86`
+- `pick_free_port` (function) — `scripts/repro_mcp_concurrent_tools_list.py:90`
+- `hold_sse_session` (function) — `scripts/repro_mcp_concurrent_tools_list.py:110`
+- `run_repro` (function) — `scripts/repro_mcp_concurrent_tools_list.py:167`
+- `main` (function) — `scripts/repro_mcp_concurrent_tools_list.py:279`
+- `N` (const) — `scripts/smoke_el_farol_load.py:44`
+- `R` (const) — `scripts/smoke_el_farol_load.py:45`
+- `ROUND_DEADLINE_S` (const) — `scripts/smoke_el_farol_load.py:46`
+- `NUM_SLOTS` (const) — `scripts/smoke_el_farol_load.py:47`
+- `NUM_BOTS` (const) — `scripts/smoke_el_farol_prod.py:36`
+- `BOT_AGENT_PREFIX` (const) — `scripts/smoke_el_farol_prod.py:37`
+- `logger` (const) — `scripts/smoke_el_farol_prod.py:39`
+- `NUM_BOTS` (const) — `scripts/smoke_llm_pd.py:39`
+- `BOT_AGENT_PREFIX` (const) — `scripts/smoke_llm_pd.py:40`
+- `logger` (const) — `scripts/smoke_llm_pd.py:42`
+- `TASKS_FILE` (const) — `task.py:29`
+- `HISTORY_FILE` (const) — `task.py:30`
+- `TASK_HEADER` (const) — `task.py:33`
+- `TASK_META` (const) — `task.py:34`
+- `CHECKLIST_ITEM` (const) — `task.py:35`
+- `TRACES_TO` (const) — `task.py:36`
+- `DEPENDS_ON` (const) — `task.py:37`
+- `BLOCKS` (const) — `task.py:38`
+- `ESTIMATE` (const) — `task.py:39`
+- `STATUS_EMOJI` (const) — `task.py:41`
+- `STATUS_FROM_EMOJI` (const) — `task.py:43`
+- `PRIORITY_EMOJI` (const) — `task.py:45`
+- `PRIORITY_FROM_EMOJI` (const) — `task.py:47`
+- `parse_tasks` (function) — `task.py:76`
+- `update_task_status` (function) — `task.py:185`
+- `update_checklist_item` (function) — `task.py:221`
+- `mark_all_checklist_done` (function) — `task.py:253`
+- `log_change` (function) — `task.py:285`
+- `get_task_by_id` (function) — `task.py:293`
+- `resolve_dependencies` (function) — `task.py:301`
+- `get_next_tasks` (function) — `task.py:316`
+- `cmd_list` (function) — `task.py:329`
+- `cmd_show` (function) — `task.py:369`
+- `cmd_start` (function) — `task.py:403`
+- `cmd_done` (function) — `task.py:426`
+- `cmd_block` (function) — `task.py:456`
+- `cmd_check` (function) — `task.py:469`
+- `cmd_stats` (function) — `task.py:491`
+- `cmd_next` (function) — `task.py:542`
+- `cmd_graph` (function) — `task.py:568`
+- `cmd_export_gh` (function) — `task.py:602`
+- `main` (function) — `task.py:635`
+- `REPO_ROOT` (const) — `tests/ci/test_check_changelog.py:13`
+- `SCRIPT` (const) — `tests/ci/test_check_changelog.py:14`
+- `test_no_relevant_label_passes_with_no_changelog_diff` (function) — `tests/ci/test_check_changelog.py:89`
+- `test_chore_label_passes` (function) — `tests/ci/test_check_changelog.py:95`
+- `test_bug_label_passes` (function) — `tests/ci/test_check_changelog.py:101`
+- `test_feat_label_without_changelog_fails` (function) — `tests/ci/test_check_changelog.py:107`
+- `test_breaking_label_with_unreleased_addition_passes` (function) — `tests/ci/test_check_changelog.py:113`
+- `test_feat_label_with_unreleased_addition_passes` (function) — `tests/ci/test_check_changelog.py:128`
+- `test_feat_label_editing_only_1_0_0_section_fails` (function) — `tests/ci/test_check_changelog.py:143`
+- `test_both_labels_with_unreleased_addition_passes` (function) — `tests/ci/test_check_changelog.py:158`
+- `test_feat_label_addition_under_2_0_0_only_fails` (function) — `tests/ci/test_check_changelog.py:173`
+- `test_feat_label_typo_fix_in_1_0_0_only_fails` (function) — `tests/ci/test_check_changelog.py:188`
+- `FIXTURES_DIR` (const) — `tests/contract/test_protocol_contract.py:38`
+- `load_fixture` (function) — `tests/contract/test_protocol_contract.py:41`
+- `TestATPRequestContract` (class) — `tests/contract/test_protocol_contract.py:48`
+- `TestATPResponseContract` (class) — `tests/contract/test_protocol_contract.py:147`
+- `TestATPEventContract` (class) — `tests/contract/test_protocol_contract.py:250`
+- `TestEventPayloadsContract` (class) — `tests/contract/test_protocol_contract.py:332`
+- `TestJSONSchemaGeneration` (class) — `tests/contract/test_protocol_contract.py:435`
+- `TestProtocolVersionHandling` (class) — `tests/contract/test_protocol_contract.py:516`
+- `TestPydanticModelRoundtrip` (class) — `tests/contract/test_protocol_contract.py:606`
+- `REPO_ROOT` (const) — `tests/docs/test_release_artifacts.py:10`
+- `ROOT_CHANGELOG` (const) — `tests/docs/test_release_artifacts.py:11`
+- `MIGRATIONS_DIR` (const) — `tests/docs/test_release_artifacts.py:12`
+- `EXPECTED_MIGRATIONS` (const) — `tests/docs/test_release_artifacts.py:14`
+- `EXPECTED_HEADINGS` (const) — `tests/docs/test_release_artifacts.py:21`
+- `PACKAGE_CHANGELOGS` (const) — `tests/docs/test_release_artifacts.py:28`
+- `test_root_changelog_has_unreleased_and_2_0_0` (function) — `tests/docs/test_release_artifacts.py:36`
+- `test_root_changelog_linkbacks_use_correct_org` (function) — `tests/docs/test_release_artifacts.py:43`
+- `test_migrations_dir_exists` (function) — `tests/docs/test_release_artifacts.py:55`
+- `test_migration_guide_no_unfilled_placeholders` (function) — `tests/docs/test_release_artifacts.py:70`
+- `MockAgentHandler` (class) — `tests/e2e/conftest.py:14`
+- `MockAgentServer` (class) — `tests/e2e/conftest.py:261`
+- `pytestmark` (const) — `tests/e2e/dashboard/test_about_quickstart_e2e.py:43`
+- `test_expected_games_match_supported_games` (function) — `tests/e2e/dashboard/test_about_quickstart_e2e.py:95`
+- `test_about_links_reachable` (function) — `tests/e2e/dashboard/test_about_quickstart_e2e.py:117`
+- `test_about_mcp_walkthrough` (function) — `tests/e2e/dashboard/test_about_quickstart_e2e.py:200`
+- `pytestmark` (const) — `tests/e2e/dashboard/tournament/test_e2e_30_round_pd_with_reconnect.py:19`
+- `test_thirty_round_pd_with_reconnect_sc1` (function) — `tests/e2e/dashboard/tournament/test_e2e_30_round_pd_with_reconnect.py:349`
+- `pytestmark` (const) — `tests/e2e/dashboard/tournament/test_e2e_ad9_ad10.py:8`
+- `test_e2e_ad9_duration_cap_rejects_over_budget` (function) — `tests/e2e/dashboard/tournament/test_e2e_ad9_ad10.py:11`
+- `test_e2e_ad10_join_token_required_when_private` (function) — `tests/e2e/dashboard/tournament/test_e2e_ad9_ad10.py:34`
+- `pytestmark` (const) — `tests/e2e/dashboard/tournament/test_e2e_cancel_paths.py:11`
+- `test_e2e_user_cancel_via_mcp` (function) — `tests/e2e/dashboard/tournament/test_e2e_cancel_paths.py:14`
+- `test_e2e_pending_timeout_autocancel` (function) — `tests/e2e/dashboard/tournament/test_e2e_cancel_paths.py:45`
+- `test_e2e_idempotent_cancel` (function) — `tests/e2e/dashboard/tournament/test_e2e_cancel_paths.py:84`
+- `pytestmark` (const) — `tests/e2e/dashboard/tournament/test_e2e_rest_admin_curl.py:9`
+- `test_e2e_rest_cancel_returns_200` (function) — `tests/e2e/dashboard/tournament/test_e2e_rest_admin_curl.py:12`
+- `TestAtpTestHappyPath` (class) — `tests/e2e/test_cli_commands.py:20`
+- `TestAtpTestFailingTests` (class) — `tests/e2e/test_cli_commands.py:94`
+- `TestAtpTestTimeout` (class) — `tests/e2e/test_cli_commands.py:145`
+- `TestAtpValidate` (class) — `tests/e2e/test_cli_commands.py:184`
+- `TestJsonReportGeneration` (class) — `tests/e2e/test_cli_commands.py:298`
+- `TestExitCodes` (class) — `tests/e2e/test_cli_commands.py:422`
+- `TestMultipleRuns` (class) — `tests/e2e/test_cli_commands.py:592`
+- `TestParallelExecution` (class) — `tests/e2e/test_cli_commands.py:634`
+- `MockMCPTransport` (class) — `tests/e2e/test_mcp_adapter.py:37`
+- `MockMCPAdapter` (class) — `tests/e2e/test_mcp_adapter.py:221`
+- `TestMCPAdapterE2E` (class) — `tests/e2e/test_mcp_adapter.py:328`
+- `TestMCPAdapterPipelineIntegration` (class) — `tests/e2e/test_mcp_adapter.py:459`
+- `TestMCPAdapterErrorHandling` (class) — `tests/e2e/test_mcp_adapter.py:598`
+- `TestMCPAdapterWithYAML` (class) — `tests/e2e/test_mcp_adapter.py:651`
+- `TestMCPAdapterRegistration` (class) — `tests/e2e/test_mcp_adapter.py:752`
+- `pytestmark` (const) — `tests/e2e/test_mcp_pd_tournament.py:10`
+- `contextlib_suppress` (function) — `tests/e2e/test_mcp_pd_tournament.py:260`
+- `EventType` (class) — `tests/fixtures/comparison/events.py:12`
+- `create_tool_call_event` (function) — `tests/fixtures/comparison/events.py:22`
+- `create_llm_request_event` (function) — `tests/fixtures/comparison/events.py:75`
+- `create_reasoning_event` (function) — `tests/fixtures/comparison/events.py:124`
+- `create_error_event` (function) — `tests/fixtures/comparison/events.py:166`
+- `create_progress_event` (function) — `tests/fixtures/comparison/events.py:204`
+- `generate_realistic_event_sequence` (function) — `tests/fixtures/comparison/events.py:246`
+- `SAMPLE_EVENTS` (const) — `tests/fixtures/comparison/events.py:385`
+- `AgentFactory` (class) — `tests/fixtures/comparison/factories.py:22`
+- `SuiteExecutionFactory` (class) — `tests/fixtures/comparison/factories.py:91`
+- `TestExecutionFactory` (class) — `tests/fixtures/comparison/factories.py:165`
+- `RunResultFactory` (class) — `tests/fixtures/comparison/factories.py:330`
+- `ArtifactFactory` (class) — `tests/fixtures/comparison/factories.py:473`
+- `EvaluationResultFactory` (class) — `tests/fixtures/comparison/factories.py:528`
+- `ScoreComponentFactory` (class) — `tests/fixtures/comparison/factories.py:584`
+- `reset_all_factories` (function) — `tests/fixtures/comparison/factories.py:674`
+- `TestDefinition` (class) — `tests/fixtures/comparison/leaderboard.py:23`
+- `create_leaderboard_scenario` (function) — `tests/fixtures/comparison/leaderboard.py:43`
+- `generate_leaderboard_data` (function) — `tests/fixtures/comparison/leaderboard.py:207`
+- `LEADERBOARD_SCENARIOS` (const) — `tests/fixtures/comparison/leaderboard.py:379`
+- `app` (const) — `tests/fixtures/test_site/app.py:22`
+- `PRODUCTS` (const) — `tests/fixtures/test_site/app.py:25`
+- `COMPANY_INFO` (const) — `tests/fixtures/test_site/app.py:113`
+- `base_template` (function) — `tests/fixtures/test_site/app.py:122`
+- `CONTAINER_RUNTIME` (const) — `tests/integration/adapters/test_container_integration.py:38`
+- `pytestmark` (const) — `tests/integration/adapters/test_container_integration.py:46`
+- `TestContainerAdapterIntegration` (class) — `tests/integration/adapters/test_container_integration.py:171`
+- `TestContainerAdapterFailures` (class) — `tests/integration/adapters/test_container_integration.py:380`
+- `TestContainerAdapterTimeout` (class) — `tests/integration/adapters/test_container_integration.py:469`
+- `TestLangGraphAdapterIntegration` (class) — `tests/integration/adapters/test_framework_adapters.py:36`
+- `TestCrewAIAdapterIntegration` (class) — `tests/integration/adapters/test_framework_adapters.py:127`
+- `TestAutoGenAdapterIntegration` (class) — `tests/integration/adapters/test_framework_adapters.py:190`
+- `TestAdapterCommonBehavior` (class) — `tests/integration/adapters/test_framework_adapters.py:277`
+- `MockAgentHandler` (class) — `tests/integration/adapters/test_http_integration.py:25`
+- `TestHTTPAdapterIntegration` (class) — `tests/integration/adapters/test_http_integration.py:173`
+- `TestGenerateCommandHelp` (class) — `tests/integration/cli/test_generate_command.py:42`
+- `TestGenerateTestSubcommand` (class) — `tests/integration/cli/test_generate_command.py:80`
+- `TestGenerateSuiteSubcommand` (class) — `tests/integration/cli/test_generate_command.py:264`
+- `TestGenerateTestWithAssertions` (class) — `tests/integration/cli/test_generate_command.py:519`
+- `TestGenerateTestWithConstraints` (class) — `tests/integration/cli/test_generate_command.py:602`
+- `TestGenerateAbort` (class) — `tests/integration/cli/test_generate_command.py:643`
+- `TestInitCommandHelp` (class) — `tests/integration/cli/test_init_command.py:18`
+- `TestInitCommandNonInteractive` (class) — `tests/integration/cli/test_init_command.py:39`
+- `TestInitCommandInteractive` (class) — `tests/integration/cli/test_init_command.py:114`
+- `TestInitCommandAbort` (class) — `tests/integration/cli/test_init_command.py:406`
+- `TestInitCommandOutputFormat` (class) — `tests/integration/cli/test_init_command.py:422`
+- `TestInitCommandWithConstraints` (class) — `tests/integration/cli/test_init_command.py:468`
+- `TestCreateAgent` (class) — `tests/integration/dashboard/test_agent_management_api.py:60`
+- `TestListAgents` (class) — `tests/integration/dashboard/test_agent_management_api.py:114`
+- `TestSoftDelete` (class) — `tests/integration/dashboard/test_agent_management_api.py:159`
+- `TestAgentLimit` (class) — `tests/integration/dashboard/test_agent_management_api.py:198`
+- `TestGetAndUpdateAgent` (class) — `tests/integration/dashboard/test_agent_management_api.py:225`
+- `TestTrendsRoutes` (class) — `tests/integration/dashboard/test_analytics_routes.py:212`
+- `TestAnomaliesRoutes` (class) — `tests/integration/dashboard/test_analytics_routes.py:268`
+- `TestCorrelationsRoutes` (class) — `tests/integration/dashboard/test_analytics_routes.py:329`
+- `TestExportRoutes` (class) — `tests/integration/dashboard/test_analytics_routes.py:367`
+- `TestScheduledReportsRoutes` (class) — `tests/integration/dashboard/test_analytics_routes.py:401`
+- `TestExcelExportRoutes` (class) — `tests/integration/dashboard/test_analytics_routes.py:521`
+- `TestAnalyticsRouteConsistency` (class) — `tests/integration/dashboard/test_analytics_routes.py:557`
+- `TestTrendsWithData` (class) — `tests/integration/dashboard/test_analytics_routes.py:580`
+- `TestAnomaliesWithData` (class) — `tests/integration/dashboard/test_analytics_routes.py:619`
+- `TestCorrelationsWithData` (class) — `tests/integration/dashboard/test_analytics_routes.py:660`
+- `TestAPITokenMiddleware` (class) — `tests/integration/dashboard/test_api_token_auth.py:66`
+- `TestAuditLogModel` (class) — `tests/integration/dashboard/test_audit_routes.py:88`
+- `TestAuditLogQueries` (class) — `tests/integration/dashboard/test_audit_routes.py:168`
+- `TestAuditChainVerification` (class) — `tests/integration/dashboard/test_audit_routes.py:222`
+- `TestRetentionPolicy` (class) — `tests/integration/dashboard/test_audit_routes.py:246`
+- `TestAuditStatistics` (class) — `tests/integration/dashboard/test_audit_routes.py:311`
+- `TestCostRoutes` (class) — `tests/integration/dashboard/test_cost_routes.py:176`
+- `TestBudgetRoutes` (class) — `tests/integration/dashboard/test_cost_routes.py:333`
+- `TestCostRouteConsistency` (class) — `tests/integration/dashboard/test_cost_routes.py:497`
+- `TestElFarolDashboardEndpoint` (class) — `tests/integration/dashboard/test_el_farol_dashboard_endpoint.py:135`
+- `TestElFarolColumnsOnGameResult` (class) — `tests/integration/dashboard/test_game_result_el_farol_columns.py:47`
+- `TestListGameResults` (class) — `tests/integration/dashboard/test_game_routes.py:214`
+- `TestGetGameResult` (class) — `tests/integration/dashboard/test_game_routes.py:301`
+- `TestExportGameCSV` (class) — `tests/integration/dashboard/test_game_routes.py:341`
+- `TestExportGameJSON` (class) — `tests/integration/dashboard/test_game_routes.py:384`
+- `TestListTournamentResults` (class) — `tests/integration/dashboard/test_game_routes.py:426`
+- `TestGetTournamentResult` (class) — `tests/integration/dashboard/test_game_routes.py:471`
+- `TestGetCrossplayMatrix` (class) — `tests/integration/dashboard/test_game_routes.py:510`
+- `TestRoutesReturn200` (class) — `tests/integration/dashboard/test_game_routes.py:547`
+- `LEGACY_GAME_RESULTS_DDL` (const) — `tests/integration/dashboard/test_init_database_schema_reconcile.py:37`
+- `NEW_EL_FAROL_COLUMNS` (const) — `tests/integration/dashboard/test_init_database_schema_reconcile.py:58`
+- `TestCreateInvite` (class) — `tests/integration/dashboard/test_invite_api.py:83`
+- `TestListInvites` (class) — `tests/integration/dashboard/test_invite_api.py:133`
+- `TestDeactivateInvite` (class) — `tests/integration/dashboard/test_invite_api.py:148`
+- `TestInviteGatedRegistration` (class) — `tests/integration/dashboard/test_invite_api.py:180`
+- `TestLeaderboardMatrixEndpointIntegration` (class) — `tests/integration/dashboard/test_leaderboard_matrix_endpoint.py:277`
+- `TestLeaderboardPerformance` (class) — `tests/integration/dashboard/test_leaderboard_performance.py:212`
+- `SUITE_DATA` (const) — `tests/integration/dashboard/test_marketplace_routes.py:119`
+- `TestPublishSuite` (class) — `tests/integration/dashboard/test_marketplace_routes.py:139`
+- `TestListAndSearch` (class) — `tests/integration/dashboard/test_marketplace_routes.py:190`
+- `TestSuiteDetail` (class) — `tests/integration/dashboard/test_marketplace_routes.py:268`
+- `TestVersioning` (class) — `tests/integration/dashboard/test_marketplace_routes.py:301`
+- `TestReviews` (class) — `tests/integration/dashboard/test_marketplace_routes.py:410`
+- `TestDownload` (class) — `tests/integration/dashboard/test_marketplace_routes.py:535`
+- `TestInstall` (class) — `tests/integration/dashboard/test_marketplace_routes.py:594`
+- `TestUpdateAndUnpublish` (class) — `tests/integration/dashboard/test_marketplace_routes.py:701`
+- `TestAdminOperations` (class) — `tests/integration/dashboard/test_marketplace_routes.py:788`
+- `TestStats` (class) — `tests/integration/dashboard/test_marketplace_routes.py:880`
+- `TestCategories` (class) — `tests/integration/dashboard/test_marketplace_routes.py:919`
+- `TestGitHubImport` (class) — `tests/integration/dashboard/test_marketplace_routes.py:939`
+- `TestMatchDetailUI` (class) — `tests/integration/dashboard/test_match_detail_ui.py:89`
+- `TestMatchesListing` (class) — `tests/integration/dashboard/test_matches_listing.py:33`
+- `TestVisibilityFilter` (class) — `tests/integration/dashboard/test_matches_listing.py:335`
+- `test_migration_backfills_ownerless_to_admin` (function) — `tests/integration/dashboard/test_migration_agent_owner_not_null.py:79`
+- `test_migration_drops_partial_unique_index` (function) — `tests/integration/dashboard/test_migration_agent_owner_not_null.py:101`
+- `test_migration_makes_owner_id_not_null` (function) — `tests/integration/dashboard/test_migration_agent_owner_not_null.py:119`
+- `test_migration_aborts_when_no_admin_exists` (function) — `tests/integration/dashboard/test_migration_agent_owner_not_null.py:132`
+- `test_migration_downgrade_restores_partial_index` (function) — `tests/integration/dashboard/test_migration_agent_owner_not_null.py:148`
+- `test_migration_adds_agent_name_and_backfills` (function) — `tests/integration/dashboard/test_migration_suite_execution_agent_name.py:36`
+- `test_migration_agent_id_becomes_nullable` (function) — `tests/integration/dashboard/test_migration_suite_execution_agent_name.py:76`
+- `test_migration_downgrade_removes_agent_name` (function) — `tests/integration/dashboard/test_migration_suite_execution_agent_name.py:105`
+- `test_migration_downgrade_blocks_when_null_agent_id_rows_exist` (function) — `tests/integration/dashboard/test_migration_suite_execution_agent_name.py:121`
+- `TestMultiTimelineEndpointIntegration` (class) — `tests/integration/dashboard/test_multi_timeline_endpoint.py:214`
+- `TestAgentEndpointAuthorization` (class) — `tests/integration/dashboard/test_rbac_authorization.py:249`
+- `TestSuiteDefinitionAuthorization` (class) — `tests/integration/dashboard/test_rbac_authorization.py:353`
+- `TestAnalyticsAuthorization` (class) — `tests/integration/dashboard/test_rbac_authorization.py:401`
+- `TestBudgetAuthorization` (class) — `tests/integration/dashboard/test_rbac_authorization.py:430`
+- `TestDashboardSummaryAuthorization` (class) — `tests/integration/dashboard/test_rbac_authorization.py:472`
+- `TestAdminOnlyEndpoints` (class) — `tests/integration/dashboard/test_rbac_authorization.py:499`
+- `TestRoleListEndpoint` (class) — `tests/integration/dashboard/test_role_routes.py:234`
+- `TestRoleGetEndpoint` (class) — `tests/integration/dashboard/test_role_routes.py:292`
+- `TestRoleCreateEndpoint` (class) — `tests/integration/dashboard/test_role_routes.py:328`
+- `TestRoleUpdateEndpoint` (class) — `tests/integration/dashboard/test_role_routes.py:402`
+- `TestRoleDeleteEndpoint` (class) — `tests/integration/dashboard/test_role_routes.py:476`
+- `TestUserRoleAssignmentEndpoints` (class) — `tests/integration/dashboard/test_role_routes.py:508`
+- `TestUserPermissionsEndpoints` (class) — `tests/integration/dashboard/test_role_routes.py:599`
+- `TestDefaultRolesEndpoints` (class) — `tests/integration/dashboard/test_role_routes.py:641`
+- `TestSideBySideEndpointIntegration` (class) — `tests/integration/dashboard/test_side_by_side_endpoint.py:251`
+- `TestSuiteDefinitionEndpoints` (class) — `tests/integration/dashboard/test_suite_definition_api.py:45`
+- `TestAddTestToSuiteEndpoints` (class) — `tests/integration/dashboard/test_suite_definition_api.py:126`
+- `TestYAMLExportEndpoints` (class) — `tests/integration/dashboard/test_suite_definition_api.py:162`
+- `TestTemplateEndpoints` (class) — `tests/integration/dashboard/test_suite_definition_api.py:177`
+- `TestRouterConfiguration` (class) — `tests/integration/dashboard/test_suite_definition_api.py:243`
+- `TestSuiteDefinitionResponseFormat` (class) — `tests/integration/dashboard/test_suite_definition_api.py:258`
+- `TestComplexSuiteCreation` (class) — `tests/integration/dashboard/test_suite_definition_api.py:274`
+- `TestTenantListEndpoint` (class) — `tests/integration/dashboard/test_tenant_routes.py:160`
+- `TestTenantCreateEndpoint` (class) — `tests/integration/dashboard/test_tenant_routes.py:270`
+- `TestTenantGetEndpoint` (class) — `tests/integration/dashboard/test_tenant_routes.py:407`
+- `TestTenantUpdateEndpoint` (class) — `tests/integration/dashboard/test_tenant_routes.py:440`
+- `TestTenantDeleteEndpoint` (class) — `tests/integration/dashboard/test_tenant_routes.py:479`
+- `TestTenantQuotasEndpoint` (class) — `tests/integration/dashboard/test_tenant_routes.py:523`
+- `TestTenantSettingsEndpoint` (class) — `tests/integration/dashboard/test_tenant_routes.py:570`
+- `TestTenantUsageEndpoint` (class) — `tests/integration/dashboard/test_tenant_routes.py:615`
+- `TestTenantQuotaStatusEndpoint` (class) — `tests/integration/dashboard/test_tenant_routes.py:636`
+- `TestTenantActivationEndpoints` (class) — `tests/integration/dashboard/test_tenant_routes.py:659`
+- `TestTimelineEventsEndpointIntegration` (class) — `tests/integration/dashboard/test_timeline_events_endpoint.py:195`
+- `TestCreateToken` (class) — `tests/integration/dashboard/test_token_api.py:69`
+- `TestListTokens` (class) — `tests/integration/dashboard/test_token_api.py:107`
+- `TestRevokeToken` (class) — `tests/integration/dashboard/test_token_api.py:130`
+- `TestTokenLimits` (class) — `tests/integration/dashboard/test_token_api.py:174`
+- `TestAgentPurposeAPI` (class) — `tests/integration/dashboard/test_tsa_agent_api.py:31`
+- `TestAgentQuota` (class) — `tests/integration/dashboard/test_tsa_agent_api.py:91`
+- `TestTokenSnapshot` (class) — `tests/integration/dashboard/test_tsa_auth_gating.py:86`
+- `TestMCPAuthGate` (class) — `tests/integration/dashboard/test_tsa_auth_gating.py:144`
+- `TestBenchmarkAPIGate` (class) — `tests/integration/dashboard/test_tsa_auth_gating.py:198`
+- `TestLegacyTokenLookup` (class) — `tests/integration/dashboard/test_tsa_auth_gating.py:257`
+- `TestBuiltinRegistry` (class) — `tests/integration/dashboard/test_tsa_builtins.py:37`
+- `TestBuiltinsEndpoint` (class) — `tests/integration/dashboard/test_tsa_builtins.py:71`
+- `TestAgentPurpose` (class) — `tests/integration/dashboard/test_tsa_data_model.py:40`
+- `TestParticipantBuiltin` (class) — `tests/integration/dashboard/test_tsa_data_model.py:75`
+- `TestGameResultTournamentLink` (class) — `tests/integration/dashboard/test_tsa_data_model.py:112`
+- `TestDualWrite` (class) — `tests/integration/dashboard/test_tsa_match_linkage.py:69`
+- `TestRunnerBranch` (class) — `tests/integration/dashboard/test_tsa_runner_builtins.py:127`
+- `TestCreateWithRoster` (class) — `tests/integration/dashboard/test_tsa_tournament_create.py:45`
+- `TestConcurrentPrivateCap` (class) — `tests/integration/dashboard/test_tsa_tournament_create.py:171`
+- `TestTournamentNewGet` (class) — `tests/integration/dashboard/test_tsa_ui_tournament_new.py:61`
+- `TestTournamentNewPost` (class) — `tests/integration/dashboard/test_tsa_ui_tournament_new.py:80`
+- `TestAgentNewForm` (class) — `tests/integration/dashboard/test_ui_agent_new.py:48`
+- `TestAgentNewSubmit` (class) — `tests/integration/dashboard/test_ui_agent_new.py:93`
+- `TestAgentDelete` (class) — `tests/integration/dashboard/test_ui_agent_new.py:189`
+- `TestV2HomeRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:161`
+- `TestV2AgentRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:179`
+- `TestV2SuiteRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:220`
+- `TestV2TestRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:262`
+- `TestV2TrendRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:293`
+- `TestV2ComparisonRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:327`
+- `TestV2TimelineRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:372`
+- `TestV2TemplateRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:397`
+- `TestV2AuthRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:414`
+- `TestV2RouteConsistency` (class) — `tests/integration/dashboard/test_v2_routes.py:427`
+- `test_single_worker_ok` (function) — `tests/integration/dashboard/tournament/test_factory_lifespan.py:8`
+- `test_default_is_single_worker` (function) — `tests/integration/dashboard/tournament/test_factory_lifespan.py:13`
+- `test_multi_worker_raises` (function) — `tests/integration/dashboard/tournament/test_factory_lifespan.py:18`
+- `TestDashboardJSONEndpoint` (class) — `tests/integration/dashboard/tournament/test_live_dashboard_endpoints.py:279`
+- `TestDashboardSSEEndpoint` (class) — `tests/integration/dashboard/tournament/test_live_dashboard_endpoints.py:453`
+- `TestLiveDashboardUI` (class) — `tests/integration/dashboard/tournament/test_live_dashboard_ui.py:150`
+- `test_upgrade_creates_all_new_tournament_columns` (function) — `tests/integration/dashboard/tournament/test_migration_plan_2a.py:30`
+- `test_upgrade_creates_participant_released_at` (function) — `tests/integration/dashboard/tournament/test_migration_plan_2a.py:45`
+- `test_upgrade_creates_action_source` (function) — `tests/integration/dashboard/tournament/test_migration_plan_2a.py:65`
+- `test_upgrade_creates_six_base_invariants` (function) — `tests/integration/dashboard/tournament/test_migration_plan_2a.py:72`
+- `test_upgrade_creates_check_constraint` (function) — `tests/integration/dashboard/tournament/test_migration_plan_2a.py:111`
+- `test_downgrade_then_upgrade_idempotent` (function) — `tests/integration/dashboard/tournament/test_migration_plan_2a.py:124`
+- `BASE` (const) — `tests/integration/test_benchmark_e2e.py:24`
+- `DB_URL` (const) — `tests/integration/test_benchmark_e2e.py:26`
+- `MockAdapter` (class) — `tests/integration/test_full_pipeline.py:51`
+- `TestFullPipeline` (class) — `tests/integration/test_full_pipeline.py:294`
+- `TestTimeoutHandling` (class) — `tests/integration/test_full_pipeline.py:588`
+- `TestErrorRecovery` (class) — `tests/integration/test_full_pipeline.py:762`
+- `TestMultiRunStatistics` (class) — `tests/integration/test_full_pipeline.py:1026`
+- `AdvancedMockHandler` (class) — `tests/integration/test_full_pipeline.py:1315`
+- `TestHTTPAdapterPipelineIntegration` (class) — `tests/integration/test_full_pipeline.py:1435`
+- `TestEvaluatorIntegration` (class) — `tests/integration/test_full_pipeline.py:1591`
+- `TestEdgeCases` (class) — `tests/integration/test_full_pipeline.py:1933`
+- `make_response` (function) — `tests/integration/test_security_evaluator.py:43`
+- `make_structured_response` (function) — `tests/integration/test_security_evaluator.py:52`
+- `TestPIIDetectionIntegration` (class) — `tests/integration/test_security_evaluator.py:66`
+- `TestPromptInjectionIntegration` (class) — `tests/integration/test_security_evaluator.py:160`
+- `TestCodeSafetyIntegration` (class) — `tests/integration/test_security_evaluator.py:236`
+- `TestSecretLeakIntegration` (class) — `tests/integration/test_security_evaluator.py:326`
+- `TestSecurityConfigurationIntegration` (class) — `tests/integration/test_security_evaluator.py:427`
+- `TestSecurityReportIntegration` (class) — `tests/integration/test_security_evaluator.py:546`
+- `TestStructuredDataIntegration` (class) — `tests/integration/test_security_evaluator.py:641`
+- `TestCustomCheckerIntegration` (class) — `tests/integration/test_security_evaluator.py:701`
+- `TestEdgeCasesIntegration` (class) — `tests/integration/test_security_evaluator.py:758`
+- `TestTracesEndpoint` (class) — `tests/integration/test_telemetry_integration.py:51`
+- `TestTelemetryStatusEndpoint` (class) — `tests/integration/test_telemetry_integration.py:160`
+- `TestTelemetryAcrossComponents` (class) — `tests/integration/test_telemetry_integration.py:195`
+- `SCRIPT_PATH` (const) — `tests/ops/test_reconcile_prod_schema.py:17`
+- `test_fix_agents_rebuild_drops_legacy_unique` (function) — `tests/ops/test_reconcile_prod_schema.py:104`
+- `test_fix_participants_rebuild_makes_user_id_nullable` (function) — `tests/ops/test_reconcile_prod_schema.py:143`
+- `test_fix_participants_drops_orphan_rows_before_xor_check` (function) — `tests/ops/test_reconcile_prod_schema.py:209`
+- `test_stamp_alembic_head_idempotent` (function) — `tests/ops/test_reconcile_prod_schema.py:272`
+- `test_full_reconcile_is_idempotent` (function) — `tests/ops/test_reconcile_prod_schema.py:285`
+- `TestMCPAdapterConfig` (class) — `tests/unit/adapters/mcp/test_adapter.py:30`
+- `TestMCPModels` (class) — `tests/unit/adapters/mcp/test_adapter.py:131`
+- `TestMCPAdapter` (class) — `tests/unit/adapters/mcp/test_adapter.py:187`
+- `TestMCPEventConversion` (class) — `tests/unit/adapters/mcp/test_adapter.py:758`
+- `TestMCPResponseConversion` (class) — `tests/unit/adapters/mcp/test_adapter.py:830`
+- `TestTransportConfig` (class) — `tests/unit/adapters/mcp/test_transport.py:28`
+- `TestJSONRPCHelpers` (class) — `tests/unit/adapters/mcp/test_transport.py:72`
+- `TestJSONRPCMessage` (class) — `tests/unit/adapters/mcp/test_transport.py:179`
+- `TestStdioTransportConfig` (class) — `tests/unit/adapters/mcp/test_transport.py:203`
+- `TestStdioTransport` (class) — `tests/unit/adapters/mcp/test_transport.py:245`
+- `TestSSETransportConfig` (class) — `tests/unit/adapters/mcp/test_transport.py:752`
+- `TestSSETransport` (class) — `tests/unit/adapters/mcp/test_transport.py:789`
+- `TestAutoGenAdapterConfig` (class) — `tests/unit/adapters/test_autogen.py:44`
+- `TestAutoGenAdapter` (class) — `tests/unit/adapters/test_autogen.py:83`
+- `TestAzureOpenAIAdapterConfig` (class) — `tests/unit/adapters/test_azure_openai.py:108`
+- `TestAzureOpenAIAdapter` (class) — `tests/unit/adapters/test_azure_openai.py:301`
+- `TestAzureOpenAIMessageBuilding` (class) — `tests/unit/adapters/test_azure_openai.py:804`
+- `TestAzureOpenAICompletionParams` (class) — `tests/unit/adapters/test_azure_openai.py:872`
+- `TestAzureOpenAIToolExtraction` (class) — `tests/unit/adapters/test_azure_openai.py:955`
+- `TestAzureOpenAIUsageExtraction` (class) — `tests/unit/adapters/test_azure_openai.py:1039`
+- `TestAdapterConfig` (class) — `tests/unit/adapters/test_base.py:15`
+- `TestAdapterError` (class) — `tests/unit/adapters/test_base.py:57`
+- `TestAdapterTimeoutError` (class) — `tests/unit/adapters/test_base.py:82`
+- `TestAdapterConnectionError` (class) — `tests/unit/adapters/test_base.py:112`
+- `TestAdapterResponseError` (class) — `tests/unit/adapters/test_base.py:140`
+- `TestAdapterNotFoundError` (class) — `tests/unit/adapters/test_base.py:183`
+- `TestBedrockAdapterConfig` (class) — `tests/unit/adapters/test_bedrock.py:143`
+- `TestBedrockAdapter` (class) — `tests/unit/adapters/test_bedrock.py:227`
+- `TestBedrockTraceExtraction` (class) — `tests/unit/adapters/test_bedrock.py:607`
+- `TestBedrockInvokeParams` (class) — `tests/unit/adapters/test_bedrock.py:795`
+- `TestCLIAdapterConfig` (class) — `tests/unit/adapters/test_cli.py:56`
+- `TestCLIAdapter` (class) — `tests/unit/adapters/test_cli.py:82`
+- `TestCleanupOwnership` (class) — `tests/unit/adapters/test_cli_cleanup.py:15`
+- `TestContainerAdapterConfig` (class) — `tests/unit/adapters/test_container.py:57`
+- `TestContainerResources` (class) — `tests/unit/adapters/test_container.py:91`
+- `TestContainerAdapter` (class) — `tests/unit/adapters/test_container.py:107`
+- `TestCrewAIAdapterConfig` (class) — `tests/unit/adapters/test_crewai.py:44`
+- `TestCrewAIAdapter` (class) — `tests/unit/adapters/test_crewai.py:80`
+- `TestFallbackAdapter` (class) — `tests/unit/adapters/test_fallback.py:53`
+- `TestHTTPAdapterConfig` (class) — `tests/unit/adapters/test_http.py:54`
+- `TestHTTPAdapter` (class) — `tests/unit/adapters/test_http.py:83`
+- `TestLangGraphAdapterConfig` (class) — `tests/unit/adapters/test_langgraph.py:44`
+- `TestLangGraphAdapter` (class) — `tests/unit/adapters/test_langgraph.py:77`
+- `TestAdapterRegistry` (class) — `tests/unit/adapters/test_registry.py:29`
+- `TestGlobalRegistry` (class) — `tests/unit/adapters/test_registry.py:206`
+- `TestFrameworkAdapters` (class) — `tests/unit/adapters/test_registry.py:231`
+- `TestLazyLoading` (class) — `tests/unit/adapters/test_registry.py:316`
+- `TestConfigDrivenRegistry` (class) — `tests/unit/adapters/test_registry_config.py:6`
+- `TestSDKAdapterConfig` (class) — `tests/unit/adapters/test_sdk_adapter.py:37`
+- `TestSDKAdapter` (class) — `tests/unit/adapters/test_sdk_adapter.py:51`
+- `TestVertexAdapterConfig` (class) — `tests/unit/adapters/test_vertex.py:153`
+- `TestVertexAdapter` (class) — `tests/unit/adapters/test_vertex.py:238`
+- `TestVertexToolExtraction` (class) — `tests/unit/adapters/test_vertex.py:643`
+- `TestVertexResponseExtraction` (class) — `tests/unit/adapters/test_vertex.py:732`
+- `TestVertexGenerationConfig` (class) — `tests/unit/adapters/test_vertex.py:836`
+- `TestVariant` (class) — `tests/unit/analytics/test_ab_testing.py:83`
+- `TestExperimentConfig` (class) — `tests/unit/analytics/test_ab_testing.py:116`
+- `TestExperiment` (class) — `tests/unit/analytics/test_ab_testing.py:154`
+- `TestTrafficRouter` (class) — `tests/unit/analytics/test_ab_testing.py:233`
+- `TestExperimentAnalyzer` (class) — `tests/unit/analytics/test_ab_testing.py:318`
+- `TestExperimentManager` (class) — `tests/unit/analytics/test_ab_testing.py:472`
+- `TestModuleFunctions` (class) — `tests/unit/analytics/test_ab_testing.py:727`
+- `TestWinnerDetermination` (class) — `tests/unit/analytics/test_ab_testing.py:750`
+- `TestAdvancedAnalyticsService` (class) — `tests/unit/analytics/test_advanced.py:20`
+- `TestScheduledReportsRepository` (class) — `tests/unit/analytics/test_advanced.py:355`
+- `TestScheduledReportConfig` (class) — `tests/unit/analytics/test_advanced.py:400`
+- `TestTrendDirection` (class) — `tests/unit/analytics/test_advanced.py:441`
+- `TestAnomalyType` (class) — `tests/unit/analytics/test_advanced.py:452`
+- `TestCorrelationStrength` (class) — `tests/unit/analytics/test_advanced.py:464`
+- `TestTrendDataPoint` (class) — `tests/unit/analytics/test_advanced.py:478`
+- `TestTrendAnalysisResult` (class) — `tests/unit/analytics/test_advanced.py:498`
+- `TestAnomalyResult` (class) — `tests/unit/analytics/test_advanced.py:526`
+- `TestCorrelationResult` (class) — `tests/unit/analytics/test_advanced.py:564`
+- `TestScoreTrendResponse` (class) — `tests/unit/analytics/test_advanced.py:584`
+- `TestAnomalyDetectionResponse` (class) — `tests/unit/analytics/test_advanced.py:603`
+- `TestCorrelationAnalysisResponse` (class) — `tests/unit/analytics/test_advanced.py:622`
+- `TestExportFormat` (class) — `tests/unit/analytics/test_advanced.py:639`
+- `TestScheduledReportFrequency` (class) — `tests/unit/analytics/test_advanced.py:650`
+- `TestAlertConfig` (class) — `tests/unit/analytics/test_budgets.py:27`
+- `TestBudgetConfig` (class) — `tests/unit/analytics/test_budgets.py:62`
+- `TestBudgetPeriod` (class) — `tests/unit/analytics/test_budgets.py:181`
+- `TestBudgetStatus` (class) — `tests/unit/analytics/test_budgets.py:197`
+- `TestBudgetCheckResult` (class) — `tests/unit/analytics/test_budgets.py:244`
+- `TestLogAlertChannel` (class) — `tests/unit/analytics/test_budgets.py:263`
+- `TestWebhookAlertChannel` (class) — `tests/unit/analytics/test_budgets.py:294`
+- `TestEmailAlertChannel` (class) — `tests/unit/analytics/test_budgets.py:366`
+- `TestAlertChannelRegistry` (class) — `tests/unit/analytics/test_budgets.py:397`
+- `TestBudgetManager` (class) — `tests/unit/analytics/test_budgets.py:469`
+- `TestGlobalBudgetManager` (class) — `tests/unit/analytics/test_budgets.py:828`
+- `TestModelPricing` (class) — `tests/unit/analytics/test_cost.py:22`
+- `TestPricingConfig` (class) — `tests/unit/analytics/test_cost.py:62`
+- `TestCostEvent` (class) — `tests/unit/analytics/test_cost.py:204`
+- `TestCostTracker` (class) — `tests/unit/analytics/test_cost.py:249`
+- `TestGlobalCostTracker` (class) — `tests/unit/analytics/test_cost.py:419`
+- `TestPricingConfigFromYaml` (class) — `tests/unit/analytics/test_cost.py:466`
+- `TestAnalyticsDatabase` (class) — `tests/unit/analytics/test_database.py:16`
+- `TestDatabaseGlobals` (class) — `tests/unit/analytics/test_database.py:133`
+- `TestDatabaseIntegration` (class) — `tests/unit/analytics/test_database.py:183`
+- `TestCostRecord` (class) — `tests/unit/analytics/test_models.py:9`
+- `TestCostBudget` (class) — `tests/unit/analytics/test_models.py:103`
+- `TestCostRecordCRUD` (class) — `tests/unit/analytics/test_repository.py:15`
+- `TestCostBudgetCRUD` (class) — `tests/unit/analytics/test_repository.py:197`
+- `TestAggregationQueries` (class) — `tests/unit/analytics/test_repository.py:355`
+- `TestBudgetUsage` (class) — `tests/unit/analytics/test_repository.py:629`
+- `TestAnalyzeTrend` (class) — `tests/unit/analytics/test_trend.py:32`
+- `TestTCriticalValues` (class) — `tests/unit/atp_statistics/test_calculator.py:17`
+- `TestCalculateMean` (class) — `tests/unit/atp_statistics/test_calculator.py:46`
+- `TestCalculateStd` (class) — `tests/unit/atp_statistics/test_calculator.py:71`
+- `TestCalculateMedian` (class) — `tests/unit/atp_statistics/test_calculator.py:103`
+- `TestCalculateConfidenceInterval` (class) — `tests/unit/atp_statistics/test_calculator.py:133`
+- `TestCalculateCoefficientOfVariation` (class) — `tests/unit/atp_statistics/test_calculator.py:176`
+- `TestAssessStability` (class) — `tests/unit/atp_statistics/test_calculator.py:210`
+- `TestCompute` (class) — `tests/unit/atp_statistics/test_calculator.py:285`
+- `TestComputeWithStability` (class) — `tests/unit/atp_statistics/test_calculator.py:324`
+- `TestComputeTestStatistics` (class) — `tests/unit/atp_statistics/test_calculator.py:353`
+- `TestStabilityLevel` (class) — `tests/unit/atp_statistics/test_models.py:13`
+- `TestStabilityAssessment` (class) — `tests/unit/atp_statistics/test_models.py:29`
+- `TestStatisticalResult` (class) — `tests/unit/atp_statistics/test_models.py:63`
+- `TestTestRunStatistics` (class) — `tests/unit/atp_statistics/test_models.py:139`
+- `TestStatisticalReporter` (class) — `tests/unit/atp_statistics/test_reporter.py:85`
+- `TestWelchsTTest` (class) — `tests/unit/baseline/test_comparison.py:17`
+- `TestCompareTest` (class) — `tests/unit/baseline/test_comparison.py:109`
+- `TestCompareResults` (class) — `tests/unit/baseline/test_comparison.py:216`
+- `TestTestComparison` (class) — `tests/unit/baseline/test_comparison.py:347`
+- `TestComparisonResult` (class) — `tests/unit/baseline/test_comparison.py:379`
+- `TestTestBaselineModel` (class) — `tests/unit/baseline/test_models.py:8`
+- `TestBaselineModel` (class) — `tests/unit/baseline/test_models.py:101`
+- `TestChangeTypeEnum` (class) — `tests/unit/baseline/test_models.py:207`
+- `TestFormatComparisonConsole` (class) — `tests/unit/baseline/test_reporter.py:16`
+- `TestFormatComparisonJson` (class) — `tests/unit/baseline/test_reporter.py:178`
+- `TestPrintComparison` (class) — `tests/unit/baseline/test_reporter.py:216`
+- `TestSaveBaseline` (class) — `tests/unit/baseline/test_storage.py:13`
+- `TestLoadBaseline` (class) — `tests/unit/baseline/test_storage.py:62`
+- `SAMPLE_SUITE` (const) — `tests/unit/benchmark/test_benchmark_api.py:18`
+- `OWNER_USER_ID` (const) — `tests/unit/benchmark/test_benchmark_models.py:49`
+- `TestRunStatus` (class) — `tests/unit/benchmark/test_benchmark_models.py:52`
+- `TestBenchmark` (class) — `tests/unit/benchmark/test_benchmark_models.py:67`
+- `TestRun` (class) — `tests/unit/benchmark/test_benchmark_models.py:150`
+- `TestTaskResult` (class) — `tests/unit/benchmark/test_benchmark_models.py:210`
+- `SAMPLE_SUITE` (const) — `tests/unit/benchmark/test_benchmark_service.py:14`
+- `TestCreateBenchmark` (class) — `tests/unit/benchmark/test_benchmark_service.py:67`
+- `TestGetAndListBenchmarks` (class) — `tests/unit/benchmark/test_benchmark_service.py:101`
+- `TestStartRun` (class) — `tests/unit/benchmark/test_benchmark_service.py:133`
+- `TestNextTask` (class) — `tests/unit/benchmark/test_benchmark_service.py:165`
+- `TestSubmit` (class) — `tests/unit/benchmark/test_benchmark_service.py:214`
+- `TestCancelRun` (class) — `tests/unit/benchmark/test_benchmark_service.py:291`
+- `TestLeaderboard` (class) — `tests/unit/benchmark/test_benchmark_service.py:307`
+- `MOCK_HUMANEVAL_RESPONSE` (const) — `tests/unit/benchmarks/test_loaders.py:23`
+- `MOCK_SWEBENCH_RESPONSE` (const) — `tests/unit/benchmarks/test_loaders.py:66`
+- `MOCK_MMLU_RESPONSE` (const) — `tests/unit/benchmarks/test_loaders.py:92`
+- `TestGetLoader` (class) — `tests/unit/benchmarks/test_loaders.py:141`
+- `TestBenchmarkLoaderBase` (class) — `tests/unit/benchmarks/test_loaders.py:167`
+- `TestHumanEvalLoader` (class) — `tests/unit/benchmarks/test_loaders.py:239`
+- `TestSWEBenchLoader` (class) — `tests/unit/benchmarks/test_loaders.py:308`
+- `TestMMLULoader` (class) — `tests/unit/benchmarks/test_loaders.py:375`
+- `TestLoadBenchmarkCLI` (class) — `tests/unit/benchmarks/test_loaders.py:455`
+- `TestBenchmarkCategory` (class) — `tests/unit/benchmarks/test_models.py:20`
+- `TestBenchmarkDifficulty` (class) — `tests/unit/benchmarks/test_models.py:36`
+- `TestBaselineScore` (class) — `tests/unit/benchmarks/test_models.py:46`
+- `TestBenchmarkMetadata` (class) — `tests/unit/benchmarks/test_models.py:88`
+- `TestBenchmarkTest` (class) — `tests/unit/benchmarks/test_models.py:121`
+- `TestBenchmarkSuite` (class) — `tests/unit/benchmarks/test_models.py:160`
+- `TestBenchmarkResult` (class) — `tests/unit/benchmarks/test_models.py:224`
+- `TestBenchmarkSuiteResult` (class) — `tests/unit/benchmarks/test_models.py:255`
+- `TestNormalizationConfig` (class) — `tests/unit/benchmarks/test_models.py:323`
+- `TestBenchmarkRegistry` (class) — `tests/unit/benchmarks/test_registry.py:57`
+- `TestNormalization` (class) — `tests/unit/benchmarks/test_registry.py:190`
+- `TestSuiteResults` (class) — `tests/unit/benchmarks/test_registry.py:225`
+- `TestFileLoading` (class) — `tests/unit/benchmarks/test_registry.py:283`
+- `TestGlobalRegistry` (class) — `tests/unit/benchmarks/test_registry.py:341`
+- `TestBuiltinSuites` (class) — `tests/unit/benchmarks/test_registry.py:357`
+- `test_parse_adapter_config_empty` (function) — `tests/unit/catalog/test_catalog_run.py:15`
+- `test_parse_adapter_config_blank` (function) — `tests/unit/catalog/test_catalog_run.py:20`
+- `test_parse_adapter_config_single_pair` (function) — `tests/unit/catalog/test_catalog_run.py:25`
+- `test_parse_adapter_config_multiple_pairs` (function) — `tests/unit/catalog/test_catalog_run.py:31`
+- `test_parse_adapter_config_flag_without_value` (function) — `tests/unit/catalog/test_catalog_run.py:37`
+- `test_parse_adapter_config_mixed` (function) — `tests/unit/catalog/test_catalog_run.py:43`
+- `test_format_comparison_table_basic` (function) — `tests/unit/catalog/test_comparison.py:6`
+- `test_format_comparison_table_empty` (function) — `tests/unit/catalog/test_comparison.py:40`
+- `test_format_comparison_table_no_top3` (function) — `tests/unit/catalog/test_comparison.py:46`
+- `test_format_comparison_table_none_values` (function) — `tests/unit/catalog/test_comparison.py:55`
+- `test_category_creation` (function) — `tests/unit/catalog/test_models.py:34`
+- `test_suite_creation` (function) — `tests/unit/catalog/test_models.py:54`
+- `test_test_creation` (function) — `tests/unit/catalog/test_models.py:83`
+- `test_submission_creation` (function) — `tests/unit/catalog/test_models.py:120`
+- `SAMPLE_YAML` (const) — `tests/unit/catalog/test_sync.py:11`
+- `test_parse_catalog_yaml_returns_meta_and_tests` (function) — `tests/unit/catalog/test_sync.py:64`
+- `test_parse_catalog_yaml_empty_tests` (function) — `tests/unit/catalog/test_sync.py:78`
+- `test_parse_catalog_yaml_missing_catalog_key` (function) — `tests/unit/catalog/test_sync.py:90`
+- `TestStressResult` (class) — `tests/unit/chaos/test_concurrency.py:8`
+- `TestStressTestAsync` (class) — `tests/unit/chaos/test_concurrency.py:18`
+- `TestStressTestSync` (class) — `tests/unit/chaos/test_concurrency.py:57`
+- `TestChaosInjector` (class) — `tests/unit/chaos/test_injectors.py:36`
+- `TestToolFailureInjection` (class) — `tests/unit/chaos/test_injectors.py:74`
+- `TestLatencyInjection` (class) — `tests/unit/chaos/test_injectors.py:150`
+- `TestTokenLimitInjection` (class) — `tests/unit/chaos/test_injectors.py:203`
+- `TestPartialResponseInjection` (class) — `tests/unit/chaos/test_injectors.py:250`
+- `TestRateLimitInjection` (class) — `tests/unit/chaos/test_injectors.py:309`
+- `TestProcessResponse` (class) — `tests/unit/chaos/test_injectors.py:355`
+- `TestProcessEvent` (class) — `tests/unit/chaos/test_injectors.py:407`
+- `TestProcessToolCall` (class) — `tests/unit/chaos/test_injectors.py:457`
+- `TestStandaloneInjectors` (class) — `tests/unit/chaos/test_injectors.py:522`
+- `TestRateLimiter` (class) — `tests/unit/chaos/test_injectors.py:576`
+- `TestReproducibility` (class) — `tests/unit/chaos/test_injectors.py:626`
+- `TestChaosSettings` (class) — `tests/unit/chaos/test_loader_integration.py:21`
+- `TestTestDefaultsChaos` (class) — `tests/unit/chaos/test_loader_integration.py:72`
+- `TestTestSuiteChaos` (class) — `tests/unit/chaos/test_loader_integration.py:91`
+- `TestChaosConfigYamlCompatibility` (class) — `tests/unit/chaos/test_loader_integration.py:191`
+- `TestToolFailureConfig` (class) — `tests/unit/chaos/test_models.py:18`
+- `TestLatencyConfig` (class) — `tests/unit/chaos/test_models.py:74`
+- `TestTokenLimitConfig` (class) — `tests/unit/chaos/test_models.py:111`
+- `TestPartialResponseConfig` (class) — `tests/unit/chaos/test_models.py:138`
+- `TestRateLimitConfig` (class) — `tests/unit/chaos/test_models.py:172`
+- `TestChaosConfig` (class) — `tests/unit/chaos/test_models.py:202`
+- `TestChaosProfile` (class) — `tests/unit/chaos/test_models.py:297`
+- `TestGetProfile` (class) — `tests/unit/chaos/test_profiles.py:14`
+- `TestListProfiles` (class) — `tests/unit/chaos/test_profiles.py:96`
+- `TestGetProfileDescription` (class) — `tests/unit/chaos/test_profiles.py:117`
+- `TestProfileConfigurations` (class) — `tests/unit/chaos/test_profiles.py:148`
+- `TestSplitConfigItem` (class) — `tests/unit/cli/test_adapter_config.py:6`
+- `TestParseAdapterConfig` (class) — `tests/unit/cli/test_adapter_config.py:31`
+- `TestHelperFunctions` (class) — `tests/unit/cli/test_benchmark.py:112`
+- `TestConvertToTestSuite` (class) — `tests/unit/cli/test_benchmark.py:162`
+- `TestBenchmarkListCommand` (class) — `tests/unit/cli/test_benchmark.py:187`
+- `TestBenchmarkRunCommand` (class) — `tests/unit/cli/test_benchmark.py:255`
+- `TestBenchmarkInfoCommand` (class) — `tests/unit/cli/test_benchmark.py:355`
+- `TestBenchmarkCategoriesCommand` (class) — `tests/unit/cli/test_benchmark.py:395`
+- `TestBenchmarkCommandGroup` (class) — `tests/unit/cli/test_benchmark.py:418`
+- `TestExitCodes` (class) — `tests/unit/cli/test_benchmark.py:438`
+- `TestJsonOutput` (class) — `tests/unit/cli/test_benchmark.py:448`
+- `TestBudgetListCommand` (class) — `tests/unit/cli/test_budget.py:18`
+- `TestBudgetStatusCommand` (class) — `tests/unit/cli/test_budget.py:89`
+- `TestBudgetCreateCommand` (class) — `tests/unit/cli/test_budget.py:181`
+- `TestBudgetUpdateCommand` (class) — `tests/unit/cli/test_budget.py:254`
+- `TestBudgetDeleteCommand` (class) — `tests/unit/cli/test_budget.py:298`
+- `TestBudgetSetThresholdsCommand` (class) — `tests/unit/cli/test_budget.py:339`
+- `TestBudgetCheckCommand` (class) — `tests/unit/cli/test_budget.py:383`
+- `TestCatalogHelp` (class) — `tests/unit/cli/test_catalog_cli.py:40`
+- `TestCatalogSync` (class) — `tests/unit/cli/test_catalog_cli.py:83`
+- `TestCatalogList` (class) — `tests/unit/cli/test_catalog_cli.py:136`
+- `TestCatalogInfo` (class) — `tests/unit/cli/test_catalog_cli.py:214`
+- `TestCatalogRun` (class) — `tests/unit/cli/test_catalog_cli.py:273`
+- `TestCatalogResults` (class) — `tests/unit/cli/test_catalog_cli.py:343`
+- `TestResolveAgentDirs` (class) — `tests/unit/cli/test_compare.py:55`
+- `TestExtractTestScores` (class) — `tests/unit/cli/test_compare.py:81`
+- `TestComputeSummary` (class) — `tests/unit/cli/test_compare.py:105`
+- `TestBuildComparisonJson` (class) — `tests/unit/cli/test_compare.py:135`
+- `TestCompareCommandCLI` (class) — `tests/unit/cli/test_compare.py:151`
+- `TestDotenvLoading` (class) — `tests/unit/cli/test_dotenv_loading.py:10`
+- `TestLiveDisplayState` (class) — `tests/unit/cli/test_live_display.py:49`
+- `TestBuildTable` (class) — `tests/unit/cli/test_live_display.py:269`
+- `TestLiveProgressDisplay` (class) — `tests/unit/cli/test_live_display.py:387`
+- `TestSimpleFallbackDisplay` (class) — `tests/unit/cli/test_live_display.py:441`
+- `TestIsTerminalCapable` (class) — `tests/unit/cli/test_live_display.py:540`
+- `TestCLILiveFlagIntegration` (class) — `tests/unit/cli/test_live_display.py:556`
+- `TestExitCodes` (class) — `tests/unit/cli/test_main.py:75`
+- `TestConfigContext` (class) — `tests/unit/cli/test_main.py:85`
+- `TestCLIGroup` (class) — `tests/unit/cli/test_main.py:154`
+- `TestVersionCommand` (class) — `tests/unit/cli/test_main.py:177`
+- `TestTestCommand` (class) — `tests/unit/cli/test_main.py:195`
+- `TestRunCommand` (class) — `tests/unit/cli/test_main.py:272`
+- `TestRunCommandWithMockAdapter` (class) — `tests/unit/cli/test_main.py:365`
+- `TestRunCommandFailures` (class) — `tests/unit/cli/test_main.py:569`
+- `TestValidateCommand` (class) — `tests/unit/cli/test_main.py:616`
+- `TestListAgentsCommand` (class) — `tests/unit/cli/test_main.py:684`
+- `TestListCommand` (class) — `tests/unit/cli/test_main.py:731`
+- `TestBaselineCommands` (class) — `tests/unit/cli/test_main.py:769`
+- `TestParallelExecutionIntegration` (class) — `tests/unit/cli/test_main.py:797`
+- `TestTestCommandWithMockAdapter` (class) — `tests/unit/cli/test_main.py:870`
+- `TestHelperFunctions` (class) — `tests/unit/cli/test_plugins.py:59`
+- `TestGetAllPlugins` (class) — `tests/unit/cli/test_plugins.py:117`
+- `TestFindPluginByName` (class) — `tests/unit/cli/test_plugins.py:158`
+- `TestPluginsListCommand` (class) — `tests/unit/cli/test_plugins.py:198`
+- `TestPluginsInfoCommand` (class) — `tests/unit/cli/test_plugins.py:264`
+- `TestPluginsEnableCommand` (class) — `tests/unit/cli/test_plugins.py:334`
+- `TestPluginsDisableCommand` (class) — `tests/unit/cli/test_plugins.py:386`
+- `TestPluginsCommandGroup` (class) — `tests/unit/cli/test_plugins.py:437`
+- `TestExitCodes` (class) — `tests/unit/cli/test_plugins.py:459`
+- `TestPullCommand` (class) — `tests/unit/cli/test_pull.py:17`
+- `TestPushCommand` (class) — `tests/unit/cli/test_push.py:34`
+- `test_quickstart_help` (function) — `tests/unit/cli/test_quickstart.py:11`
+- `test_quickstart_creates_suite` (function) — `tests/unit/cli/test_quickstart.py:19`
+- `test_quickstart_default_dir` (function) — `tests/unit/cli/test_quickstart.py:27`
+- `TestResolveAuthHeaders` (class) — `tests/unit/cli/test_remote.py:18`
+- `TestResolveServerUrl` (class) — `tests/unit/cli/test_remote.py:49`
+- `TestManifest` (class) — `tests/unit/cli/test_remote.py:79`
+- `TestFileSha256` (class) — `tests/unit/cli/test_remote.py:110`
+- `TestSyncCommand` (class) — `tests/unit/cli/test_sync.py:25`
+- `TestCORSHardening` (class) — `tests/unit/core/test_cors_hardening.py:11`
+- `TestATPError` (class) — `tests/unit/core/test_exceptions.py:13`
+- `TestLoaderError` (class) — `tests/unit/core/test_exceptions.py:26`
+- `TestParseError` (class) — `tests/unit/core/test_exceptions.py:34`
+- `TestValidationError` (class) — `tests/unit/core/test_exceptions.py:42`
+- `TestCorrelationId` (class) — `tests/unit/core/test_logging.py:39`
+- `TestBindContext` (class) — `tests/unit/core/test_logging.py:110`
+- `TestProcessors` (class) — `tests/unit/core/test_logging.py:128`
+- `TestModuleLogLevels` (class) — `tests/unit/core/test_logging.py:224`
+- `TestConfigureLogging` (class) — `tests/unit/core/test_logging.py:287`
+- `TestGetLogger` (class) — `tests/unit/core/test_logging.py:333`
+- `TestResetLogging` (class) — `tests/unit/core/test_logging.py:356`
+- `TestIntegrationWithStdlib` (class) — `tests/unit/core/test_logging.py:378`
+- `TestJsonOutput` (class) — `tests/unit/core/test_logging.py:418`
+- `TestSensitiveDataInRealLogs` (class) — `tests/unit/core/test_logging.py:433`
+- `TestAddBoundContext` (class) — `tests/unit/core/test_logging.py:477`
+- `TestLogWithContext` (class) — `tests/unit/core/test_logging.py:508`
+- `TestCreateTestLogger` (class) — `tests/unit/core/test_logging.py:534`
+- `TestGetProcessors` (class) — `tests/unit/core/test_logging.py:559`
+- `TestHostnameCache` (class) — `tests/unit/core/test_logging.py:577`
+- `TestConfigureLoggingFromSettings` (class) — `tests/unit/core/test_logging.py:594`
+- `TestMetricsSettings` (class) — `tests/unit/core/test_metrics.py:37`
+- `TestATPMetrics` (class) — `tests/unit/core/test_metrics.py:61`
+- `TestConfigureMetrics` (class) — `tests/unit/core/test_metrics.py:186`
+- `TestGetMetrics` (class) — `tests/unit/core/test_metrics.py:210`
+- `TestGenerateMetrics` (class) — `tests/unit/core/test_metrics.py:232`
+- `TestContextManagers` (class) — `tests/unit/core/test_metrics.py:271`
+- `TestConvenienceFunctions` (class) — `tests/unit/core/test_metrics.py:326`
+- `TestGetRegistry` (class) — `tests/unit/core/test_metrics.py:366`
+- `TestResetMetrics` (class) — `tests/unit/core/test_metrics.py:383`
+- `TestLoggingObserver` (class) — `tests/unit/core/test_observer.py:12`
+- `TestErrorCollector` (class) — `tests/unit/core/test_observer.py:22`
+- `TestCompositeObserver` (class) — `tests/unit/core/test_observer.py:58`
+- `TestModuleLevelObserver` (class) — `tests/unit/core/test_observer.py:71`
+- `TestSuccess` (class) — `tests/unit/core/test_result.py:6`
+- `TestFailure` (class) — `tests/unit/core/test_result.py:18`
+- `TestResultUnion` (class) — `tests/unit/core/test_result.py:40`
+- `TestAdditionalSecretPatterns` (class) — `tests/unit/core/test_secret_patterns.py:6`
+- `TestHuggingFaceEnvVars` (class) — `tests/unit/core/test_secret_patterns.py:36`
+- `TestPathValidation` (class) — `tests/unit/core/test_security.py:52`
+- `TestSanitizeFilename` (class) — `tests/unit/core/test_security.py:150`
+- `TestURLValidation` (class) — `tests/unit/core/test_security.py:191`
+- `TestDockerValidation` (class) — `tests/unit/core/test_security.py:252`
+- `TestVolumeValidation` (class) — `tests/unit/core/test_security.py:297`
+- `TestResourceValidation` (class) — `tests/unit/core/test_security.py:355`
+- `TestSecretRedaction` (class) — `tests/unit/core/test_security.py:432`
+- `TestEnvironmentFiltering` (class) — `tests/unit/core/test_security.py:480`
+- `TestDictRedaction` (class) — `tests/unit/core/test_security.py:559`
+- `TestInputValidation` (class) — `tests/unit/core/test_security.py:601`
+- `TestSecureLogging` (class) — `tests/unit/core/test_security.py:645`
+- `TestSecurityValidationError` (class) — `tests/unit/core/test_security.py:678`
+- `TestRequestSizeValidation` (class) — `tests/unit/core/test_security.py:712`
+- `TestObjectDepthValidation` (class) — `tests/unit/core/test_security.py:739`
+- `TestArtifactsCountValidation` (class) — `tests/unit/core/test_security.py:773`
+- `TestEnvVarsCountValidation` (class) — `tests/unit/core/test_security.py:787`
+- `TestCommandValidation` (class) — `tests/unit/core/test_security.py:801`
+- `TestEscapeShellArg` (class) — `tests/unit/core/test_security.py:855`
+- `TestSanitizeEnvValue` (class) — `tests/unit/core/test_security.py:874`
+- `TestSanitizeLogMessage` (class) — `tests/unit/core/test_security.py:904`
+- `TestSanitizeErrorMessage` (class) — `tests/unit/core/test_security.py:937`
+- `TestURLValidationWithDNS` (class) — `tests/unit/core/test_security.py:970`
+- `TestOpenFileSafely` (class) — `tests/unit/core/test_security.py:993`
+- `TestSecurityEventLogging` (class) — `tests/unit/core/test_security.py:1026`
+- `TestAdditionalSecretPatterns` (class) — `tests/unit/core/test_security.py:1053`
+- `TestATPSettings` (class) — `tests/unit/core/test_settings.py:26`
+- `TestEnvironmentVariables` (class) — `tests/unit/core/test_settings.py:214`
+- `TestConfigFileLoading` (class) — `tests/unit/core/test_settings.py:265`
+- `TestConfigHierarchy` (class) — `tests/unit/core/test_settings.py:343`
+- `TestNestedSettings` (class) — `tests/unit/core/test_settings.py:381`
+- `TestUtilityFunctions` (class) — `tests/unit/core/test_settings.py:447`
+- `TestSchemaGeneration` (class) — `tests/unit/core/test_settings.py:493`
+- `TestTelemetrySettings` (class) — `tests/unit/core/test_telemetry.py:54`
+- `TestInMemorySpanExporter` (class) — `tests/unit/core/test_telemetry.py:102`
+- `TestConfigureTelemetry` (class) — `tests/unit/core/test_telemetry.py:264`
+- `TestGetTracer` (class) — `tests/unit/core/test_telemetry.py:313`
+- `TestSpanDecorator` (class) — `tests/unit/core/test_telemetry.py:327`
+- `TestSpanAttributes` (class) — `tests/unit/core/test_telemetry.py:392`
+- `TestSpanEvents` (class) — `tests/unit/core/test_telemetry.py:423`
+- `TestExceptionRecording` (class) — `tests/unit/core/test_telemetry.py:440`
+- `TestContextPropagation` (class) — `tests/unit/core/test_telemetry.py:460`
+- `TestSpecializedSpans` (class) — `tests/unit/core/test_telemetry.py:481`
+- `TestResultAttributes` (class) — `tests/unit/core/test_telemetry.py:528`
+- `TestResetTelemetry` (class) — `tests/unit/core/test_telemetry.py:591`
+- `TestGetCurrentSpan` (class) — `tests/unit/core/test_telemetry.py:620`
+- `TestComputeEntryHash` (class) — `tests/unit/dashboard/audit/test_audit.py:25`
+- `TestAuditLog` (class) — `tests/unit/dashboard/audit/test_audit.py:120`
+- `TestRetentionPolicy` (class) — `tests/unit/dashboard/audit/test_audit.py:251`
+- `TestAuditLogResponse` (class) — `tests/unit/dashboard/audit/test_audit.py:283`
+- `TestAuditLogFilter` (class) — `tests/unit/dashboard/audit/test_audit.py:338`
+- `TestCreateAuditContext` (class) — `tests/unit/dashboard/audit/test_audit.py:366`
+- `TestAuditEnums` (class) — `tests/unit/dashboard/audit/test_audit.py:405`
+- `TestExtractResourceInfo` (class) — `tests/unit/dashboard/audit/test_middleware.py:13`
+- `TestGetActionForMethod` (class) — `tests/unit/dashboard/audit/test_middleware.py:66`
+- `TestShouldAuditRequest` (class) — `tests/unit/dashboard/audit/test_middleware.py:168`
+- `TestExemptPaths` (class) — `tests/unit/dashboard/audit/test_middleware.py:219`
+- `TestAuthPaths` (class) — `tests/unit/dashboard/audit/test_middleware.py:239`
+- `TestOIDCProvider` (class) — `tests/unit/dashboard/auth/sso/test_oidc.py:26`
+- `TestGroupRoleMapping` (class) — `tests/unit/dashboard/auth/sso/test_oidc.py:38`
+- `TestSSOConfig` (class) — `tests/unit/dashboard/auth/sso/test_oidc.py:54`
+- `TestSSOUserInfo` (class) — `tests/unit/dashboard/auth/sso/test_oidc.py:111`
+- `TestProviderPresets` (class) — `tests/unit/dashboard/auth/sso/test_oidc.py:155`
+- `TestSSOManager` (class) — `tests/unit/dashboard/auth/sso/test_oidc.py:227`
+- `TestOIDCDiscoveryDocument` (class) — `tests/unit/dashboard/auth/sso/test_oidc.py:849`
+- `TestTokenResponse` (class) — `tests/unit/dashboard/auth/sso/test_oidc.py:864`
+- `TestExceptions` (class) — `tests/unit/dashboard/auth/sso/test_oidc.py:880`
+- `TestSSOInitRequest` (class) — `tests/unit/dashboard/auth/sso/test_routes.py:38`
+- `TestSSOInitResponse` (class) — `tests/unit/dashboard/auth/sso/test_routes.py:60`
+- `TestSSOConfigCreate` (class) — `tests/unit/dashboard/auth/sso/test_routes.py:73`
+- `TestSSOConfigResponse` (class) — `tests/unit/dashboard/auth/sso/test_routes.py:103`
+- `TestProviderPresetResponse` (class) — `tests/unit/dashboard/auth/sso/test_routes.py:126`
+- `TestListProvidersEndpoint` (class) — `tests/unit/dashboard/auth/sso/test_routes.py:144`
+- `TestProviderPresetEndpoint` (class) — `tests/unit/dashboard/auth/sso/test_routes.py:164`
+- `TestSSOFlowIntegration` (class) — `tests/unit/dashboard/auth/sso/test_routes.py:227`
+- `TestSAMLProvider` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:26`
+- `TestSAMLGroupRoleMapping` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:40`
+- `TestSAMLAttributeMapping` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:56`
+- `TestSAMLNameIDFormat` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:81`
+- `TestSAMLConfig` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:92`
+- `TestSAMLUserInfo` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:147`
+- `TestSAMLProviderPresets` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:200`
+- `TestPrepareRequest` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:260`
+- `TestSAMLManager` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:298`
+- `TestParseIdPMetadata` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:435`
+- `TestExceptions` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:467`
+- `TestCompleteAuth` (class) — `tests/unit/dashboard/auth/test_post_auth.py:10`
+- `TestInMemoryAuthStateStore` (class) — `tests/unit/dashboard/auth/test_state_store.py:12`
+- `TestGetAuthStateStore` (class) — `tests/unit/dashboard/auth/test_state_store.py:77`
+- `test_access_token_ttl_defaults_to_60_minutes_for_regular_users` (function) — `tests/unit/dashboard/auth/test_token_ttl.py:39`
+- `test_access_token_ttl_is_720_minutes_for_admins_by_default` (function) — `tests/unit/dashboard/auth/test_token_ttl.py:43`
+- `test_access_token_ttl_respects_admin_env_override` (function) — `tests/unit/dashboard/auth/test_token_ttl.py:47`
+- `test_create_access_token_uses_admin_ttl_when_is_admin_true` (function) — `tests/unit/dashboard/auth/test_token_ttl.py:54`
+- `test_create_access_token_uses_regular_ttl_when_is_admin_false` (function) — `tests/unit/dashboard/auth/test_token_ttl.py:66`
+- `test_create_access_token_admin_exp_exceeds_regular_exp_by_10h` (function) — `tests/unit/dashboard/auth/test_token_ttl.py:81`
+- `test_parser_requires_subcommand` (function) — `tests/unit/dashboard/cli/test_admin.py:138`
+- `test_parser_rejects_unknown_subcommand` (function) — `tests/unit/dashboard/cli/test_admin.py:144`
+- `test_parser_create_bot_user_requires_username` (function) — `tests/unit/dashboard/cli/test_admin.py:150`
+- `test_parser_issue_token_requires_username` (function) — `tests/unit/dashboard/cli/test_admin.py:155`
+- `test_mcp_auth_rejects_when_no_user_id` (function) — `tests/unit/dashboard/mcp/test_auth_middleware.py:42`
+- `test_mcp_auth_accepts_when_user_id_present` (function) — `tests/unit/dashboard/mcp/test_auth_middleware.py:48`
+- `test_cancel_event_admin_recipient_sees_cancelled_by` (function) — `tests/unit/dashboard/mcp/test_format_for_user.py:31`
+- `test_cancel_event_non_admin_recipient_hides_cancelled_by` (function) — `tests/unit/dashboard/mcp/test_format_for_user.py:38`
+- `test_system_cancel_has_none_cancelled_by_regardless_of_recipient` (function) — `tests/unit/dashboard/mcp/test_format_for_user.py:44`
+- `test_new_request_id_returns_16_char_hex_and_is_unique` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:49`
+- `test_emit_event_produces_structured_log_record` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:59`
+- `test_maybe_emit_first_tool_call_dedupes_per_session` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:77`
+- `test_emit_tool_call_uses_url_session_id_when_present` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:156`
+- `test_emit_tool_call_falls_back_to_ctx_session_id` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:184`
+- `test_emit_tool_call_skips_when_neither_source_has_session_id` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:208`
+- `test_emit_tool_call_tolerates_get_http_request_raising` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:228`
+- `test_handshake_started_then_authorized_for_tournament_token` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:280`
+- `test_handshake_rejected_unauthenticated` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:310`
+- `test_handshake_rejected_user_level_token` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:329`
+- `test_handshake_rejected_benchmark_token` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:344`
+- `test_request_id_propagated_to_scope_state` (function) — `tests/unit/dashboard/mcp/test_handshake_observability.py:359`
+- `test_clean_db_returns_empty` (function) — `tests/unit/dashboard/migrations/probes/test_check_tournament_invariants.py:79`
+- `test_p1_detects_null_user_id` (function) — `tests/unit/dashboard/migrations/probes/test_check_tournament_invariants.py:85`
+- `test_p2_detects_fk_orphan` (function) — `tests/unit/dashboard/migrations/probes/test_check_tournament_invariants.py:99`
+- `test_p3_detects_duplicate_participant` (function) — `tests/unit/dashboard/migrations/probes/test_check_tournament_invariants.py:113`
+- `test_p4_detects_duplicate_action` (function) — `tests/unit/dashboard/migrations/probes/test_check_tournament_invariants.py:133`
+- `test_p5_detects_duplicate_round` (function) — `tests/unit/dashboard/migrations/probes/test_check_tournament_invariants.py:160`
+- `test_p6_detects_multi_active_user` (function) — `tests/unit/dashboard/migrations/probes/test_check_tournament_invariants.py:174`
+- `test_p6_ignores_completed_tournament_history` (function) — `tests/unit/dashboard/migrations/probes/test_check_tournament_invariants.py:194`
+- `TestPermission` (class) — `tests/unit/dashboard/rbac/test_models.py:30`
+- `TestRolePermissions` (class) — `tests/unit/dashboard/rbac/test_models.py:74`
+- `TestDefaultRoles` (class) — `tests/unit/dashboard/rbac/test_models.py:101`
+- `TestRoleModel` (class) — `tests/unit/dashboard/rbac/test_models.py:182`
+- `TestRolePermissionModel` (class) — `tests/unit/dashboard/rbac/test_models.py:232`
+- `TestUserRoleModel` (class) — `tests/unit/dashboard/rbac/test_models.py:254`
+- `TestGetUserPermissions` (class) — `tests/unit/dashboard/rbac/test_models.py:278`
+- `TestHasPermission` (class) — `tests/unit/dashboard/rbac/test_models.py:335`
+- `TestRoleSchemas` (class) — `tests/unit/dashboard/rbac/test_models.py:373`
+- `TestPermissionSets` (class) — `tests/unit/dashboard/rbac/test_models.py:474`
+- `TestTenantManagerValidation` (class) — `tests/unit/dashboard/tenancy/test_manager.py:21`
+- `TestTenantManagerOperations` (class) — `tests/unit/dashboard/tenancy/test_manager.py:91`
+- `TestQuotaEnforcementMiddleware` (class) — `tests/unit/dashboard/tenancy/test_middleware.py:23`
+- `TestGetQuotaChecker` (class) — `tests/unit/dashboard/tenancy/test_middleware.py:131`
+- `TestGetQuotaTracker` (class) — `tests/unit/dashboard/tenancy/test_middleware.py:153`
+- `TestRequireQuota` (class) — `tests/unit/dashboard/tenancy/test_middleware.py:175`
+- `TestCreateQuotaExceededResponse` (class) — `tests/unit/dashboard/tenancy/test_middleware.py:239`
+- `TestMigration` (class) — `tests/unit/dashboard/tenancy/test_migration.py:17`
+- `TestMigrationEdgeCases` (class) — `tests/unit/dashboard/tenancy/test_migration.py:178`
+- `TestTenantQuotas` (class) — `tests/unit/dashboard/tenancy/test_models.py:15`
+- `TestTenantSettings` (class) — `tests/unit/dashboard/tenancy/test_models.py:64`
+- `TestTenant` (class) — `tests/unit/dashboard/tenancy/test_models.py:102`
+- `TestConstants` (class) — `tests/unit/dashboard/tenancy/test_models.py:189`
+- `TestQuotaType` (class) — `tests/unit/dashboard/tenancy/test_quotas.py:20`
+- `TestQuotaViolation` (class) — `tests/unit/dashboard/tenancy/test_quotas.py:38`
+- `TestQuotaCheckResult` (class) — `tests/unit/dashboard/tenancy/test_quotas.py:68`
+- `TestQuotaUsage` (class) — `tests/unit/dashboard/tenancy/test_quotas.py:118`
+- `TestQuotaExceededError` (class) — `tests/unit/dashboard/tenancy/test_quotas.py:156`
+- `TestQuotaChecker` (class) — `tests/unit/dashboard/tenancy/test_quotas.py:185`
+- `TestQuotaUsageTracker` (class) — `tests/unit/dashboard/tenancy/test_quotas.py:438`
+- `TestTenantCreate` (class) — `tests/unit/dashboard/tenancy/test_schemas.py:21`
+- `TestTenantUpdate` (class) — `tests/unit/dashboard/tenancy/test_schemas.py:82`
+- `TestTenantResponse` (class) — `tests/unit/dashboard/tenancy/test_schemas.py:117`
+- `TestTenantSummary` (class) — `tests/unit/dashboard/tenancy/test_schemas.py:145`
+- `TestTenantList` (class) — `tests/unit/dashboard/tenancy/test_schemas.py:168`
+- `TestTenantUsage` (class) — `tests/unit/dashboard/tenancy/test_schemas.py:210`
+- `TestTenantQuotaStatus` (class) — `tests/unit/dashboard/tenancy/test_schemas.py:230`
+- `TestTenantAwareSession` (class) — `tests/unit/dashboard/tenancy/test_session.py:18`
+- `TestTenantSessionFactory` (class) — `tests/unit/dashboard/tenancy/test_session.py:117`
+- `TestGlobalFactory` (class) — `tests/unit/dashboard/tenancy/test_session.py:212`
+- `TestAuthEndpoints` (class) — `tests/unit/dashboard/test_api.py:43`
+- `TestAgentEndpoints` (class) — `tests/unit/dashboard/test_api.py:75`
+- `TestSuiteEndpoints` (class) — `tests/unit/dashboard/test_api.py:99`
+- `TestTestEndpoints` (class) — `tests/unit/dashboard/test_api.py:118`
+- `TestTrendEndpoints` (class) — `tests/unit/dashboard/test_api.py:132`
+- `TestComparisonEndpoints` (class) — `tests/unit/dashboard/test_api.py:146`
+- `TestDashboardEndpoints` (class) — `tests/unit/dashboard/test_api.py:155`
+- `TestRouterConfiguration` (class) — `tests/unit/dashboard/test_api.py:164`
+- `TestGetSession` (class) — `tests/unit/dashboard/test_api_detailed.py:21`
+- `TestAgentSchemas` (class) — `tests/unit/dashboard/test_api_detailed.py:42`
+- `TestAuthSchemas` (class) — `tests/unit/dashboard/test_api_detailed.py:69`
+- `TestSuiteExecutionSchemas` (class) — `tests/unit/dashboard/test_api_detailed.py:88`
+- `TestAgentResponseSchema` (class) — `tests/unit/dashboard/test_api_detailed.py:114`
+- `TestRouterRoutes` (class) — `tests/unit/dashboard/test_api_detailed.py:133`
+- `TestAppConfiguration` (class) — `tests/unit/dashboard/test_app.py:6`
+- `TestAppRoutes` (class) — `tests/unit/dashboard/test_app.py:33`
+- `TestPasswordHashing` (class) — `tests/unit/dashboard/test_auth.py:26`
+- `TestAccessToken` (class) — `tests/unit/dashboard/test_auth.py:62`
+- `TestUserQueries` (class) — `tests/unit/dashboard/test_auth.py:96`
+- `TestAuthenticateUser` (class) — `tests/unit/dashboard/test_auth.py:149`
+- `TestCreateUser` (class) — `tests/unit/dashboard/test_auth.py:205`
+- `TestGetCurrentUser` (class) — `tests/unit/dashboard/test_auth.py:298`
+- `TestConstants` (class) — `tests/unit/dashboard/test_auth.py:437`
+- `TestEmitEvents` (class) — `tests/unit/dashboard/test_benchmark_events.py:31`
+- `TestSideBySideComparisonEndpoint` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:75`
+- `TestFormatEventSummary` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:148`
+- `TestEventSummarySchema` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:272`
+- `TestAgentExecutionDetailSchema` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:290`
+- `TestSideBySideComparisonResponseSchema` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:332`
+- `TestLeaderboardMatrixEndpoint` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:391`
+- `TestTimelineEventsEndpoint` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:425`
+- `TestMultiTimelineEndpoint` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:481`
+- `TestAgentTimelineSchema` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:564`
+- `TestMultiTimelineResponseSchema` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:619`
+- `TestFixturesIntegration` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:710`
+- `TestDataConsistency` (class) — `tests/unit/dashboard/test_comparison_endpoints.py:782`
+- `TestEventCreation` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:41`
+- `TestRealisticEventSequence` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:153`
+- `TestSampleEvents` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:209`
+- `TestAgentFactory` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:240`
+- `TestSuiteExecutionFactory` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:272`
+- `TestTestExecutionFactory` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:298`
+- `TestRunResultFactory` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:337`
+- `TestArtifactFactory` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:382`
+- `TestEvaluationResultFactory` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:403`
+- `TestScoreComponentFactory` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:431`
+- `TestLeaderboardScenario` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:459`
+- `TestLeaderboardScenarios` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:561`
+- `TestEventTypeEnum` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:633`
+- `TestTokenSelfServiceConfig` (class) — `tests/unit/dashboard/test_config_new_fields.py:8`
+- `TestDatabase` (class) — `tests/unit/dashboard/test_database.py:15`
+- `TestDatabaseGlobals` (class) — `tests/unit/dashboard/test_database.py:118`
+- `TestDatabaseWithPostgres` (class) — `tests/unit/dashboard/test_database.py:152`
+- `TestAddMissingColumnsServerDefaults` (class) — `tests/unit/dashboard/test_database.py:171`
+- `MOCK_GITHUB_DEVICE_RESPONSE` (const) — `tests/unit/dashboard/test_device_auth_routes.py:12`
+- `TestDeviceAuthInitiate` (class) — `tests/unit/dashboard/test_device_auth_routes.py:52`
+- `TestDeviceAuthPoll` (class) — `tests/unit/dashboard/test_device_auth_routes.py:100`
+- `MOCK_GITHUB_DEVICE_RESPONSE` (const) — `tests/unit/dashboard/test_device_flow.py:16`
+- `TestDeviceFlowManager` (class) — `tests/unit/dashboard/test_device_flow.py:42`
+- `test_build_agents_mixes_builtins_and_users` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:92`
+- `test_build_rounds_computes_slot_attendance_and_over_slots` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:120`
+- `test_build_decision_forwards_all_tier2_telemetry_fields` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:168`
+- `test_build_decision_preserves_none_for_unset_telemetry` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:203`
+- `test_build_rounds_threads_telemetry_through_to_decisions` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:227`
+- `test_build_decision_pads_single_interval_to_two_tuple` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:292`
+- `test_build_decision_preserves_two_intervals_in_order` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:312`
+- `test_build_decision_empty_intervals_stays_empty` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:332`
+- `test_valid_jwt_sets_user_id_on_request_state` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:47`
+- `test_valid_jwt_case_insensitive_bearer_scheme` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:58`
+- `test_no_authorization_header_leaves_state_unset` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:73`
+- `test_wrong_scheme_is_ignored` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:83`
+- `test_malformed_token_silently_ignored` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:97`
+- `test_expired_token_silently_ignored` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:107`
+- `test_wrong_signature_silently_ignored` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:123`
+- `test_token_without_user_id_claim_leaves_state_unset` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:133`
+- `test_bearer_prefix_only_no_token` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:147`
+- `test_rate_limit_key_is_user_scoped_for_authenticated_requests` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:161`
+- `TestLeaderboardMatrixEndpoint` (class) — `tests/unit/dashboard/test_leaderboard_endpoint.py:45`
+- `TestCalculateDifficulty` (class) — `tests/unit/dashboard/test_leaderboard_endpoint.py:124`
+- `TestDetectPattern` (class) — `tests/unit/dashboard/test_leaderboard_endpoint.py:156`
+- `TestRouterConfiguration` (class) — `tests/unit/dashboard/test_leaderboard_endpoint.py:217`
+- `TestMarketplaceSuiteModel` (class) — `tests/unit/dashboard/test_marketplace.py:49`
+- `TestMarketplaceSuiteVersionModel` (class) — `tests/unit/dashboard/test_marketplace.py:106`
+- `TestMarketplaceSuiteReviewModel` (class) — `tests/unit/dashboard/test_marketplace.py:148`
+- `TestMarketplaceSuiteInstallModel` (class) — `tests/unit/dashboard/test_marketplace.py:188`
+- `TestMarketplaceSuiteSchemas` (class) — `tests/unit/dashboard/test_marketplace.py:210`
+- `TestMarketplaceVersionSchemas` (class) — `tests/unit/dashboard/test_marketplace.py:335`
+- `TestMarketplaceReviewSchemas` (class) — `tests/unit/dashboard/test_marketplace.py:388`
+- `TestMarketplaceSearchSchemas` (class) — `tests/unit/dashboard/test_marketplace.py:420`
+- `TestGitHubImportSchemas` (class) — `tests/unit/dashboard/test_marketplace.py:482`
+- `TestSemverParsing` (class) — `tests/unit/dashboard/test_marketplace.py:511`
+- `TestMarketplaceSuiteDetailSchema` (class) — `tests/unit/dashboard/test_marketplace.py:525`
+- `TestMarketplaceRoutes` (class) — `tests/unit/dashboard/test_marketplace.py:576`
+- `TestMarketplacePermissions` (class) — `tests/unit/dashboard/test_marketplace.py:786`
+- `TestMarketplaceDatabaseModels` (class) — `tests/unit/dashboard/test_marketplace.py:837`
+- `TestLicenseSpecification` (class) — `tests/unit/dashboard/test_marketplace.py:945`
+- `TestGitHubImport` (class) — `tests/unit/dashboard/test_marketplace.py:1021`
+- `TestMarketplaceHelpers` (class) — `tests/unit/dashboard/test_marketplace.py:1072`
+- `TestMarketplaceCache` (class) — `tests/unit/dashboard/test_marketplace.py:1109`
+- `TestVersionSchemaExtended` (class) — `tests/unit/dashboard/test_marketplace.py:1144`
+- `TestReviewSchemaExtended` (class) — `tests/unit/dashboard/test_marketplace.py:1188`
+- `TestInstallSchemas` (class) — `tests/unit/dashboard/test_marketplace.py:1235`
+- `test_suite_execution_has_agent_name_column` (function) — `tests/unit/dashboard/test_model_columns.py:4`
+- `TestUserModel` (class) — `tests/unit/dashboard/test_models.py:18`
+- `TestAgentModel` (class) — `tests/unit/dashboard/test_models.py:58`
+- `TestSuiteExecutionModel` (class) — `tests/unit/dashboard/test_models.py:95`
+- `TestTestExecutionModel` (class) — `tests/unit/dashboard/test_models.py:139`
+- `TestRunResultModel` (class) — `tests/unit/dashboard/test_models.py:183`
+- `TestArtifactModel` (class) — `tests/unit/dashboard/test_models.py:227`
+- `TestEvaluationResultModel` (class) — `tests/unit/dashboard/test_models.py:258`
+- `TestScoreComponentModel` (class) — `tests/unit/dashboard/test_models.py:297`
+- `TestBaseModel` (class) — `tests/unit/dashboard/test_models.py:330`
+- `TestGetAgentsByNames` (class) — `tests/unit/dashboard/test_optimized_queries.py:149`
+- `TestGetSuiteExecutionsForAgents` (class) — `tests/unit/dashboard/test_optimized_queries.py:190`
+- `TestGetRunResultsForTestExecutions` (class) — `tests/unit/dashboard/test_optimized_queries.py:239`
+- `TestBuildLeaderboardData` (class) — `tests/unit/dashboard/test_optimized_queries.py:265`
+- `TestBenchmarkCategorySchemas` (class) — `tests/unit/dashboard/test_public_leaderboard.py:34`
+- `TestAgentProfileSchemas` (class) — `tests/unit/dashboard/test_public_leaderboard.py:84`
+- `TestPublishedResultSchemas` (class) — `tests/unit/dashboard/test_public_leaderboard.py:134`
+- `TestLeaderboardSchemas` (class) — `tests/unit/dashboard/test_public_leaderboard.py:179`
+- `TestVerificationSchemas` (class) — `tests/unit/dashboard/test_public_leaderboard.py:280`
+- `TestPublicLeaderboardRoutes` (class) — `tests/unit/dashboard/test_public_leaderboard.py:310`
+- `TestPublicLeaderboardHelpers` (class) — `tests/unit/dashboard/test_public_leaderboard.py:404`
+- `TestDatabaseModels` (class) — `tests/unit/dashboard/test_public_leaderboard.py:436`
+- `TestPublicLeaderboardCache` (class) — `tests/unit/dashboard/test_public_leaderboard.py:509`
+- `TestQueryCacheStats` (class) — `tests/unit/dashboard/test_query_cache.py:15`
+- `TestQueryCache` (class) — `tests/unit/dashboard/test_query_cache.py:58`
+- `TestGlobalCacheFunctions` (class) — `tests/unit/dashboard/test_query_cache.py:170`
+- `TestGetRateLimitKey` (class) — `tests/unit/dashboard/test_rate_limit.py:19`
+- `TestCreateLimiter` (class) — `tests/unit/dashboard/test_rate_limit.py:59`
+- `TestRateLimitEnabledNonDecoratedRoute` (class) — `tests/unit/dashboard/test_rate_limit.py:109`
+- `TestRateLimitExceededHandler` (class) — `tests/unit/dashboard/test_rate_limit.py:149`
+- `TestRateLimitIntegration` (class) — `tests/unit/dashboard/test_rate_limit.py:179`
+- `TestRateLimitWithApp` (class) — `tests/unit/dashboard/test_rate_limit.py:212`
+- `TestAgentSchemas` (class) — `tests/unit/dashboard/test_schemas.py:39`
+- `TestSuiteExecutionSchemas` (class) — `tests/unit/dashboard/test_schemas.py:99`
+- `TestTestExecutionSchemas` (class) — `tests/unit/dashboard/test_schemas.py:156`
+- `TestTrendSchemas` (class) — `tests/unit/dashboard/test_schemas.py:257`
+- `TestComparisonSchemas` (class) — `tests/unit/dashboard/test_schemas.py:305`
+- `TestAuthSchemas` (class) — `tests/unit/dashboard/test_schemas.py:350`
+- `TestDashboardSummary` (class) — `tests/unit/dashboard/test_schemas.py:411`
+- `TestLeaderboardSchemas` (class) — `tests/unit/dashboard/test_schemas.py:440`
+- `TestAgentService` (class) — `tests/unit/dashboard/test_services.py:116`
+- `TestTestService` (class) — `tests/unit/dashboard/test_services.py:284`
+- `TestComparisonService` (class) — `tests/unit/dashboard/test_services.py:473`
+- `TestExportService` (class) — `tests/unit/dashboard/test_services.py:572`
+- `TestDependencyInjection` (class) — `tests/unit/dashboard/test_services.py:818`
+- `TestResultStorageAgent` (class) — `tests/unit/dashboard/test_storage.py:23`
+- `TestResultStorageSuiteExecution` (class) — `tests/unit/dashboard/test_storage.py:131`
+- `TestResultStorageTestExecution` (class) — `tests/unit/dashboard/test_storage.py:218`
+- `TestResultStorageRunResult` (class) — `tests/unit/dashboard/test_storage.py:281`
+- `TestResultStorageEvaluation` (class) — `tests/unit/dashboard/test_storage.py:325`
+- `TestResultStorageScoring` (class) — `tests/unit/dashboard/test_storage.py:363`
+- `TestResultStorageQueries` (class) — `tests/unit/dashboard/test_storage.py:418`
+- `TestResultStorageAgentlessQueries` (class) — `tests/unit/dashboard/test_storage.py:475`
+- `TestGetStorageUsage` (class) — `tests/unit/dashboard/test_storage_tracking.py:55`
+- `TestGetArtifactStorageBytes` (class) — `tests/unit/dashboard/test_storage_tracking.py:212`
+- `TestGetRunResultStorageBytes` (class) — `tests/unit/dashboard/test_storage_tracking.py:256`
+- `TestGetTraceStorageBytes` (class) — `tests/unit/dashboard/test_storage_tracking.py:300`
+- `TestStorageInQuotaIntegration` (class) — `tests/unit/dashboard/test_storage_tracking.py:358`
+- `TestSuiteCreateRequest` (class) — `tests/unit/dashboard/test_suite_definitions.py:25`
+- `TestTestCreateRequest` (class) — `tests/unit/dashboard/test_suite_definitions.py:82`
+- `TestConstraintsCreate` (class) — `tests/unit/dashboard/test_suite_definitions.py:135`
+- `TestScoringWeightsCreate` (class) — `tests/unit/dashboard/test_suite_definitions.py:173`
+- `TestTemplateResponse` (class) — `tests/unit/dashboard/test_suite_definitions.py:203`
+- `TestSuiteDefinitionResponse` (class) — `tests/unit/dashboard/test_suite_definitions.py:226`
+- `TestYAMLExportResponse` (class) — `tests/unit/dashboard/test_suite_definitions.py:259`
+- `TestSuiteDefinitionModel` (class) — `tests/unit/dashboard/test_suite_definitions.py:274`
+- `TestTemplateListResponse` (class) — `tests/unit/dashboard/test_suite_definitions.py:312`
+- `TestAgentConfigCreate` (class) — `tests/unit/dashboard/test_suite_definitions.py:338`
+- `TestTaskCreate` (class) — `tests/unit/dashboard/test_suite_definitions.py:360`
+- `TestAssertionCreate` (class) — `tests/unit/dashboard/test_suite_definitions.py:387`
+- `TestTokenGeneration` (class) — `tests/unit/dashboard/test_token_helpers.py:6`
+- `TEST_OWNER_ID` (const) — `tests/unit/dashboard/test_ui_routes.py:14`
+- `TestUIRoutes` (class) — `tests/unit/dashboard/test_ui_routes.py:49`
+- `TestSuitesPage` (class) — `tests/unit/dashboard/test_ui_routes.py:155`
+- `TestBenchmarkDetail` (class) — `tests/unit/dashboard/test_ui_routes.py:243`
+- `TestRunDetailPage` (class) — `tests/unit/dashboard/test_ui_routes.py:254`
+- `VALID_YAML` (const) — `tests/unit/dashboard/test_upload.py:17`
+- `VALID_YAML_NO_ASSERTIONS` (const) — `tests/unit/dashboard/test_upload.py:39`
+- `INVALID_YAML_SYNTAX` (const) — `tests/unit/dashboard/test_upload.py:49`
+- `MISSING_FIELDS_YAML` (const) — `tests/unit/dashboard/test_upload.py:56`
+- `UNKNOWN_ASSERTION_YAML` (const) — `tests/unit/dashboard/test_upload.py:62`
+- `TestYAMLUploadSuccess` (class) — `tests/unit/dashboard/test_upload.py:136`
+- `TestYAMLUploadValidation` (class) — `tests/unit/dashboard/test_upload.py:162`
+- `TestYAMLUploadFileChecks` (class) — `tests/unit/dashboard/test_upload.py:207`
+- `TestValidateWebhookUrl` (class) — `tests/unit/dashboard/test_webhook.py:16`
+- `TestBuildWebhookPayload` (class) — `tests/unit/dashboard/test_webhook.py:65`
+- `TestDeliverWebhook` (class) — `tests/unit/dashboard/test_webhook.py:94`
+- `TestScheduleWebhook` (class) — `tests/unit/dashboard/test_webhook.py:169`
+- `grep_pattern` (function) — `tests/unit/dashboard/tournament/_grep_helper.py:16`
+- `OWNER_ID` (const) — `tests/unit/dashboard/tournament/test_access.py:25`
+- `PARTICIPANT_A_ID` (const) — `tests/unit/dashboard/tournament/test_access.py:26`
+- `PARTICIPANT_B_ID` (const) — `tests/unit/dashboard/tournament/test_access.py:27`
+- `ADMIN_ID` (const) — `tests/unit/dashboard/tournament/test_access.py:28`
+- `test_anon_allowed_when_completed` (function) — `tests/unit/dashboard/tournament/test_access.py:48`
+- `test_owner_sees_own_during_active` (function) — `tests/unit/dashboard/tournament/test_access.py:78`
+- `test_self_sees_own_during_active` (function) — `tests/unit/dashboard/tournament/test_access.py:90`
+- `test_self_denied_others_during_active` (function) — `tests/unit/dashboard/tournament/test_access.py:102`
+- `test_unrelated_user_denied_during_active` (function) — `tests/unit/dashboard/tournament/test_access.py:114`
+- `test_unrelated_user_allowed_after_completed` (function) — `tests/unit/dashboard/tournament/test_access.py:126`
+- `test_none_action_user_id_during_active_denies_non_admin` (function) — `tests/unit/dashboard/tournament/test_access.py:138`
+- `test_action_telemetry_defaults_all_fields_to_none` (function) — `tests/unit/dashboard/tournament/test_action_telemetry_schema.py:18`
+- `test_action_telemetry_accepts_decide_ms_zero` (function) — `tests/unit/dashboard/tournament/test_action_telemetry_schema.py:34`
+- `test_action_telemetry_accepts_positive_decide_ms` (function) — `tests/unit/dashboard/tournament/test_action_telemetry_schema.py:46`
+- `test_action_telemetry_rejects_negative_decide_ms` (function) — `tests/unit/dashboard/tournament/test_action_telemetry_schema.py:55`
+- `test_action_telemetry_round_trips_full_payload` (function) — `tests/unit/dashboard/tournament/test_action_telemetry_schema.py:68`
+- `test_action_telemetry_forbids_unknown_fields` (function) — `tests/unit/dashboard/tournament/test_action_telemetry_schema.py:89`
+- `test_el_farol_action_accepts_full_telemetry_block` (function) — `tests/unit/dashboard/tournament/test_action_telemetry_schema.py:101`
+- `test_legacy_slots_payload_rejected_as_extra_field` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:26`
+- `test_intervals_plus_slots_rejected_as_extra_field` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:37`
+- `test_native_intervals_single_pair` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:56`
+- `test_native_intervals_two_non_adjacent_pairs` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:63`
+- `test_native_intervals_empty_means_stay_home` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:70`
+- `test_native_intervals_preserves_reasoning_and_telemetry` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:75`
+- `test_intervals_total_slots_over_max_rejected` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:102`
+- `test_intervals_adjacent_pairs_rejected` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:109`
+- `test_intervals_overlapping_pairs_rejected` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:118`
+- `test_intervals_start_after_end_rejected` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:125`
+- `test_intervals_negative_start_rejected` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:130`
+- `test_intervals_too_many_pairs_rejected` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:135`
+- `test_intervals_bad_pair_shape_rejected` (function) — `tests/unit/dashboard/tournament/test_el_farol_action_schema.py:146`
+- `test_tournament_event_dataclass_holds_required_fields` (function) — `tests/unit/dashboard/tournament/test_event_bus.py:11`
+- `test_game_for_pd_is_singleton` (function) — `tests/unit/dashboard/tournament/test_game_factory.py:23`
+- `test_game_for_el_farol_caches_by_num_players` (function) — `tests/unit/dashboard/tournament/test_game_factory.py:30`
+- `test_el_farol_capacity_threshold_derived_from_ratio` (function) — `tests/unit/dashboard/tournament/test_game_factory.py:42`
+- `test_el_farol_min_players_yields_valid_threshold` (function) — `tests/unit/dashboard/tournament/test_game_factory.py:50`
+- `test_game_for_unknown_raises` (function) — `tests/unit/dashboard/tournament/test_game_factory.py:55`
+- `test_game_for_public_goods_caches_by_num_players` (function) — `tests/unit/dashboard/tournament/test_game_factory.py:63`
+- `test_pg_for_uses_config_defaults` (function) — `tests/unit/dashboard/tournament/test_game_factory.py:75`
+- `test_tournament_has_plan_2a_columns` (function) — `tests/unit/dashboard/tournament/test_model_columns.py:12`
+- `test_participant_has_released_at` (function) — `tests/unit/dashboard/tournament/test_model_columns.py:27`
+- `test_participant_user_id_nullable_for_builtins` (function) — `tests/unit/dashboard/tournament/test_model_columns.py:32`
+- `test_action_has_source_column` (function) — `tests/unit/dashboard/tournament/test_model_columns.py:40`
+- `test_action_source_has_server_default` (function) — `tests/unit/dashboard/tournament/test_model_columns.py:45`
+- `test_round_status_has_four_values` (function) — `tests/unit/dashboard/tournament/test_model_enums.py:6`
+- `test_round_status_wire_values_match_vertical_slice` (function) — `tests/unit/dashboard/tournament/test_model_enums.py:15`
+- `test_action_source_has_three_values` (function) — `tests/unit/dashboard/tournament/test_model_enums.py:22`
+- `test_action_source_wire_values` (function) — `tests/unit/dashboard/tournament/test_model_enums.py:33`
+- `test_cancel_reason_has_three_values` (function) — `tests/unit/dashboard/tournament/test_reasons.py:6`
+- `test_cancel_reason_values_are_stable_strings` (function) — `tests/unit/dashboard/tournament/test_reasons.py:14`
+- `test_cancel_reason_is_str_enum` (function) — `tests/unit/dashboard/tournament/test_reasons.py:20`
+- `test_round_state_to_dict_serializes_all_fields` (function) — `tests/unit/dashboard/tournament/test_state_formatter.py:6`
+- `test_pd_format_state_for_player_first_round_no_history` (function) — `tests/unit/dashboard/tournament/test_state_formatter.py:38`
+- `test_pd_format_state_for_player_with_history` (function) — `tests/unit/dashboard/tournament/test_state_formatter.py:60`
+- `test_cancel_tournament_system_not_called_from_handlers` (function) — `tests/unit/dashboard/tournament/test_static_guards.py:9`
+- `test_no_bare_string_round_status_comparisons` (function) — `tests/unit/dashboard/tournament/test_static_guards.py:27`
+- `test_no_direct_cancel_field_writes_outside_service` (function) — `tests/unit/dashboard/tournament/test_static_guards.py:41`
+- `test_admin_action_with_actor_valid` (function) — `tests/unit/dashboard/tournament/test_tournament_cancel_event.py:26`
+- `test_pending_timeout_without_actor_valid` (function) — `tests/unit/dashboard/tournament/test_tournament_cancel_event.py:32`
+- `test_abandoned_without_actor_valid` (function) — `tests/unit/dashboard/tournament/test_tournament_cancel_event.py:42`
+- `test_admin_action_without_actor_rejected` (function) — `tests/unit/dashboard/tournament/test_tournament_cancel_event.py:52`
+- `test_pending_timeout_with_actor_rejected` (function) — `tests/unit/dashboard/tournament/test_tournament_cancel_event.py:62`
+- `test_abandoned_with_actor_rejected` (function) — `tests/unit/dashboard/tournament/test_tournament_cancel_event.py:72`
+- `test_final_status_must_be_cancelled` (function) — `tests/unit/dashboard/tournament/test_tournament_cancel_event.py:82`
+- `test_is_frozen` (function) — `tests/unit/dashboard/tournament/test_tournament_cancel_event.py:91`
+- `test_game_copy_el_farol_describes_happy_only` (function) — `tests/unit/dashboard/ui/test_game_detail_ui.py:133`
+- `test_el_farol_boundary_matches_game_implementation` (function) — `tests/unit/dashboard/ui/test_game_detail_ui.py:163`
+- `TestDashboardConfig` (class) — `tests/unit/dashboard/v2/test_config.py:11`
+- `TestGetConfig` (class) — `tests/unit/dashboard/v2/test_config.py:122`
+- `TestGetDbSession` (class) — `tests/unit/dashboard/v2/test_dependencies.py:18`
+- `TestGetDashboardConfig` (class) — `tests/unit/dashboard/v2/test_dependencies.py:75`
+- `TestGetDb` (class) — `tests/unit/dashboard/v2/test_dependencies.py:94`
+- `TestPaginationParams` (class) — `tests/unit/dashboard/v2/test_dependencies.py:105`
+- `TestRequireFeature` (class) — `tests/unit/dashboard/v2/test_dependencies.py:138`
+- `TestCreateApp` (class) — `tests/unit/dashboard/v2/test_factory.py:15`
+- `TestCreateTestApp` (class) — `tests/unit/dashboard/v2/test_factory.py:83`
+- `TestLifespan` (class) — `tests/unit/dashboard/v2/test_factory.py:115`
+- `TestDefaultApp` (class) — `tests/unit/dashboard/v2/test_factory.py:149`
+- `TestCORSConfiguration` (class) — `tests/unit/dashboard/v2/test_factory.py:161`
+- `TestAppRoutes` (class) — `tests/unit/dashboard/v2/test_factory.py:189`
+- `TestAppRouting` (class) — `tests/unit/dashboard/v2/test_feature_flag.py:6`
+- `TestAppProxy` (class) — `tests/unit/dashboard/v2/test_feature_flag.py:26`
+- `test_extras_formatter_emits_message_alone_when_no_extras` (function) — `tests/unit/dashboard/v2/test_logging_config.py:66`
+- `test_extras_formatter_appends_extras_as_key_repr_pairs` (function) — `tests/unit/dashboard/v2/test_logging_config.py:78`
+- `test_extras_formatter_skips_underscore_prefixed_attrs` (function) — `tests/unit/dashboard/v2/test_logging_config.py:98`
+- `test_extras_formatter_does_not_duplicate_event_field` (function) — `tests/unit/dashboard/v2/test_logging_config.py:110`
+- `test_extras_formatter_strips_default_millisecond_asctime` (function) — `tests/unit/dashboard/v2/test_logging_config.py:132`
+- `test_configure_attaches_handler_with_extras_formatter` (function) — `tests/unit/dashboard/v2/test_logging_config.py:152`
+- `test_configure_disables_propagation_in_production` (function) — `tests/unit/dashboard/v2/test_logging_config.py:167`
+- `test_configure_keeps_propagation_under_pytest` (function) — `tests/unit/dashboard/v2/test_logging_config.py:197`
+- `test_configure_is_idempotent` (function) — `tests/unit/dashboard/v2/test_logging_config.py:208`
+- `test_info_records_from_child_logger_pass_through` (function) — `tests/unit/dashboard/v2/test_logging_config.py:224`
+- `TEMPLATES_DIR` (const) — `tests/unit/dashboard/v2/test_templates.py:12`
+- `TestBaseUITemplate` (class) — `tests/unit/dashboard/v2/test_templates.py:17`
+- `TestUIPages` (class) — `tests/unit/dashboard/v2/test_templates.py:47`
+- `TestAnalyticsTemplate` (class) — `tests/unit/dashboard/v2/test_templates.py:69`
+- `TestStaticFiles` (class) — `tests/unit/dashboard/v2/test_templates.py:89`
+- `MockWebSocket` (class) — `tests/unit/dashboard/v2/websocket/test_manager.py:18`
+- `TestConnectionManagerUnit` (class) — `tests/unit/dashboard/v2/websocket/test_manager.py:44`
+- `TestConnectionManagerAsync` (class) — `tests/unit/dashboard/v2/websocket/test_manager.py:70`
+- `TestGlobalConnectionManager` (class) — `tests/unit/dashboard/v2/websocket/test_manager.py:428`
+- `TestConnectionManagerCoverage` (class) — `tests/unit/dashboard/v2/websocket/test_manager.py:454`
+- `TestWSMessageType` (class) — `tests/unit/dashboard/v2/websocket/test_models.py:21`
+- `TestWSSubscription` (class) — `tests/unit/dashboard/v2/websocket/test_models.py:49`
+- `TestWSMessage` (class) — `tests/unit/dashboard/v2/websocket/test_models.py:73`
+- `TestWSClientInfo` (class) — `tests/unit/dashboard/v2/websocket/test_models.py:115`
+- `TestTestProgressData` (class) — `tests/unit/dashboard/v2/websocket/test_models.py:143`
+- `TestSuiteProgressData` (class) — `tests/unit/dashboard/v2/websocket/test_models.py:189`
+- `TestLogEntryData` (class) — `tests/unit/dashboard/v2/websocket/test_models.py:221`
+- `TestEventData` (class) — `tests/unit/dashboard/v2/websocket/test_models.py:249`
+- `TestDeltaUpdateData` (class) — `tests/unit/dashboard/v2/websocket/test_models.py:280`
+- `TestSubscription` (class) — `tests/unit/dashboard/v2/websocket/test_pubsub.py:8`
+- `TestPubSubManager` (class) — `tests/unit/dashboard/v2/websocket/test_pubsub.py:42`
+- `TestTopic` (class) — `tests/unit/dashboard/v2/websocket/test_pubsub.py:180`
+- `TestWebSocketInfoEndpoint` (class) — `tests/unit/dashboard/v2/websocket/test_routes.py:12`
+- `TestWebSocketClientsEndpoint` (class) — `tests/unit/dashboard/v2/websocket/test_routes.py:52`
+- `TestWebSocketConnection` (class) — `tests/unit/dashboard/v2/websocket/test_routes.py:83`
+- `test_parse_action_returns_intervals` (function) — `tests/unit/demo_game/test_el_farol_agent_parse.py:10`
+- `test_parse_action_clamps_out_of_range_bounds` (function) — `tests/unit/demo_game/test_el_farol_agent_parse.py:17`
+- `test_parse_action_clamps_negative_start` (function) — `tests/unit/demo_game/test_el_farol_agent_parse.py:25`
+- `test_parse_action_drops_malformed_pairs` (function) — `tests/unit/demo_game/test_el_farol_agent_parse.py:32`
+- `test_parse_action_falls_back_when_intervals_key_missing` (function) — `tests/unit/demo_game/test_el_farol_agent_parse.py:46`
+- `test_parse_action_falls_back_when_parsed_is_none` (function) — `tests/unit/demo_game/test_el_farol_agent_parse.py:54`
+- `test_prompt_pd_includes_history_from_wire_fields` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:74`
+- `test_prompt_pd_mentions_cooperate_and_defect` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:87`
+- `test_prompt_bos_surfaces_your_preferred` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:95`
+- `test_prompt_el_farol_mentions_slot_bounds` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:105`
+- `test_prompt_el_farol_asks_for_intervals_shape` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:117`
+- `test_parse_pd_happy` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:129`
+- `test_parse_sh_happy` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:137`
+- `test_parse_bos_accepts_either_letter` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:145`
+- `test_parse_el_farol_happy_intervals_key` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:153`
+- `test_parse_el_farol_orders_intervals_by_start` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:161`
+- `test_parse_el_farol_empty_intervals_is_valid` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:170`
+- `test_parse_el_farol_legacy_slots_key_returns_none` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:179`
+- `test_parse_json_inside_markdown_fence` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:187`
+- `test_parse_malformed_json_returns_none` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:195`
+- `test_parse_invalid_action_returns_none` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:201`
+- `test_parse_missing_action_returns_none` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:208`
+- `test_parse_el_farol_rejects_out_of_range_pair` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:215`
+- `test_parse_el_farol_rejects_overlapping_intervals` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:222`
+- `test_parse_el_farol_rejects_adjacent_intervals` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:229`
+- `test_parse_el_farol_rejects_too_many_intervals` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:237`
+- `test_parse_el_farol_rejects_too_many_total_slots` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:245`
+- `test_parse_el_farol_rejects_reversed_pair` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:253`
+- `test_parse_el_farol_rejects_non_pair_shape` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:261`
+- `test_parse_truncates_long_reasoning` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:269`
+- `test_parse_strips_empty_reasoning_to_absent` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:280`
+- `test_parse_happy_without_reasoning_field` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:288`
+- `test_random_action_pd_returns_valid_choice` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:300`
+- `test_random_action_el_farol_returns_intervals_shape` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:309`
+- `test_random_action_unknown_game_type_raises` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:327`
+- `test_extract_error_text_pulls_first_text_block` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:381`
+- `test_extract_error_text_fallback_when_no_content` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:391`
+- `TestSeverity` (class) — `tests/unit/evaluators/security/test_base.py:15`
+- `TestSecurityFinding` (class) — `tests/unit/evaluators/security/test_base.py:65`
+- `TestMaskSensitiveData` (class) — `tests/unit/evaluators/security/test_base.py:100`
+- `TestMaskEmail` (class) — `tests/unit/evaluators/security/test_base.py:125`
+- `TestMaskCreditCard` (class) — `tests/unit/evaluators/security/test_base.py:154`
+- `TestMaskSSN` (class) — `tests/unit/evaluators/security/test_base.py:173`
+- `TestMaskPhone` (class) — `tests/unit/evaluators/security/test_base.py:192`
+- `TestMaskApiKey` (class) — `tests/unit/evaluators/security/test_base.py:211`
+- `TestCodeSafetyCheckerProperties` (class) — `tests/unit/evaluators/security/test_code.py:22`
+- `TestLanguageDetection` (class) — `tests/unit/evaluators/security/test_code.py:38`
+- `TestMaskCodeEvidence` (class) — `tests/unit/evaluators/security/test_code.py:95`
+- `TestPythonDangerousImports` (class) — `tests/unit/evaluators/security/test_code.py:117`
+- `TestPythonDangerousFunctions` (class) — `tests/unit/evaluators/security/test_code.py:179`
+- `TestJavaScriptDangerousPatterns` (class) — `tests/unit/evaluators/security/test_code.py:227`
+- `TestBashDangerousPatterns` (class) — `tests/unit/evaluators/security/test_code.py:282`
+- `TestFileOperations` (class) — `tests/unit/evaluators/security/test_code.py:356`
+- `TestNetworkOperations` (class) — `tests/unit/evaluators/security/test_code.py:387`
+- `TestCategoryFiltering` (class) — `tests/unit/evaluators/security/test_code.py:409`
+- `TestCustomPatterns` (class) — `tests/unit/evaluators/security/test_code.py:455`
+- `TestIncludeCategories` (class) — `tests/unit/evaluators/security/test_code.py:489`
+- `TestLocationTracking` (class) — `tests/unit/evaluators/security/test_code.py:512`
+- `TestDuplicateDetection` (class) — `tests/unit/evaluators/security/test_code.py:530`
+- `TestFindingDetails` (class) — `tests/unit/evaluators/security/test_code.py:544`
+- `TestSafeCode` (class) — `tests/unit/evaluators/security/test_code.py:571`
+- `TestUnsafeCodeExamples` (class) — `tests/unit/evaluators/security/test_code.py:604`
+- `TestGetPatternsMethods` (class) — `tests/unit/evaluators/security/test_code.py:669`
+- `TestSecurityEvaluatorProperties` (class) — `tests/unit/evaluators/security/test_evaluator.py:99`
+- `TestSecurityEvaluatorNoPII` (class) — `tests/unit/evaluators/security/test_evaluator.py:107`
+- `TestSecurityEvaluatorWithPII` (class) — `tests/unit/evaluators/security/test_evaluator.py:140`
+- `TestSecurityEvaluatorConfiguration` (class) — `tests/unit/evaluators/security/test_evaluator.py:208`
+- `TestSecurityEvaluatorStructuredData` (class) — `tests/unit/evaluators/security/test_evaluator.py:305`
+- `TestSecurityEvaluatorInvalidConfig` (class) — `tests/unit/evaluators/security/test_evaluator.py:324`
+- `TestSecurityEvaluatorScoring` (class) — `tests/unit/evaluators/security/test_evaluator.py:344`
+- `TestSecurityEvaluatorMessage` (class) — `tests/unit/evaluators/security/test_evaluator.py:396`
+- `TestSecurityEvaluatorCustomChecker` (class) — `tests/unit/evaluators/security/test_evaluator.py:415`
+- `TestSecurityEvaluatorArtifactContent` (class) — `tests/unit/evaluators/security/test_evaluator.py:427`
+- `TestSecurityEvaluatorEnabledTypes` (class) — `tests/unit/evaluators/security/test_evaluator.py:450`
+- `TestSecurityEvaluatorLowSeverity` (class) — `tests/unit/evaluators/security/test_evaluator.py:507`
+- `TestSecurityEvaluatorPromptInjection` (class) — `tests/unit/evaluators/security/test_evaluator.py:542`
+- `TestPromptInjectionCheckerProperties` (class) — `tests/unit/evaluators/security/test_injection.py:24`
+- `TestInjectionPatternClass` (class) — `tests/unit/evaluators/security/test_injection.py:39`
+- `TestMaskInjectionEvidence` (class) — `tests/unit/evaluators/security/test_injection.py:70`
+- `TestInstructionOverrideDetection` (class) — `tests/unit/evaluators/security/test_injection.py:97`
+- `TestNewInstructionInjection` (class) — `tests/unit/evaluators/security/test_injection.py:136`
+- `TestSystemPromptExtraction` (class) — `tests/unit/evaluators/security/test_injection.py:158`
+- `TestDelimiterInjection` (class) — `tests/unit/evaluators/security/test_injection.py:189`
+- `TestCodeInjection` (class) — `tests/unit/evaluators/security/test_injection.py:218`
+- `TestDANJailbreak` (class) — `tests/unit/evaluators/security/test_injection.py:240`
+- `TestHypotheticalJailbreak` (class) — `tests/unit/evaluators/security/test_injection.py:270`
+- `TestDeveloperModeJailbreak` (class) — `tests/unit/evaluators/security/test_injection.py:295`
+- `TestOppositeDayJailbreak` (class) — `tests/unit/evaluators/security/test_injection.py:326`
+- `TestEmotionalManipulation` (class) — `tests/unit/evaluators/security/test_injection.py:343`
+- `TestRoleChange` (class) — `tests/unit/evaluators/security/test_injection.py:362`
+- `TestPersonaAssignment` (class) — `tests/unit/evaluators/security/test_injection.py:386`
+- `TestAuthorityImpersonation` (class) — `tests/unit/evaluators/security/test_injection.py:409`
+- `TestSystemAIConfusion` (class) — `tests/unit/evaluators/security/test_injection.py:440`
+- `TestResponseFormatManipulation` (class) — `tests/unit/evaluators/security/test_injection.py:463`
+- `TestCategoryFiltering` (class) — `tests/unit/evaluators/security/test_injection.py:483`
+- `TestCustomPatterns` (class) — `tests/unit/evaluators/security/test_injection.py:533`
+- `TestIncludeCategories` (class) — `tests/unit/evaluators/security/test_injection.py:565`
+- `TestLocationTracking` (class) — `tests/unit/evaluators/security/test_injection.py:585`
+- `TestDuplicateDetection` (class) — `tests/unit/evaluators/security/test_injection.py:603`
+- `TestFindingDetails` (class) — `tests/unit/evaluators/security/test_injection.py:615`
+- `TestNoInjection` (class) — `tests/unit/evaluators/security/test_injection.py:634`
+- `TestBuiltinPatternCounts` (class) — `tests/unit/evaluators/security/test_injection.py:663`
+- `TestPIICheckerProperties` (class) — `tests/unit/evaluators/security/test_pii.py:15`
+- `TestEmailDetection` (class) — `tests/unit/evaluators/security/test_pii.py:32`
+- `TestPhoneDetection` (class) — `tests/unit/evaluators/security/test_pii.py:57`
+- `TestSSNDetection` (class) — `tests/unit/evaluators/security/test_pii.py:87`
+- `TestCreditCardDetection` (class) — `tests/unit/evaluators/security/test_pii.py:136`
+- `TestAPIKeyDetection` (class) — `tests/unit/evaluators/security/test_pii.py:173`
+- `TestAllPIITypes` (class) — `tests/unit/evaluators/security/test_pii.py:224`
+- `TestDuplicateDetection` (class) — `tests/unit/evaluators/security/test_pii.py:247`
+- `TestLocationTracking` (class) — `tests/unit/evaluators/security/test_pii.py:257`
+- `TestSecretLeakCheckerProperties` (class) — `tests/unit/evaluators/security/test_secrets.py:12`
+- `TestPrivateKeyDetection` (class) — `tests/unit/evaluators/security/test_secrets.py:35`
+- `TestJWTDetection` (class) — `tests/unit/evaluators/security/test_secrets.py:82`
+- `TestBearerTokenDetection` (class) — `tests/unit/evaluators/security/test_secrets.py:107`
+- `TestBasicAuthDetection` (class) — `tests/unit/evaluators/security/test_secrets.py:126`
+- `TestEnvSecretDetection` (class) — `tests/unit/evaluators/security/test_secrets.py:139`
+- `TestConnectionStringDetection` (class) — `tests/unit/evaluators/security/test_secrets.py:179`
+- `TestHardcodedSecretDetection` (class) — `tests/unit/evaluators/security/test_secrets.py:213`
+- `TestAWSCredentialDetection` (class) — `tests/unit/evaluators/security/test_secrets.py:239`
+- `TestCertificateDetection` (class) — `tests/unit/evaluators/security/test_secrets.py:251`
+- `TestSecretLeakCheckerFiltering` (class) — `tests/unit/evaluators/security/test_secrets.py:270`
+- `TestMaskingFunctions` (class) — `tests/unit/evaluators/security/test_secrets.py:298`
+- `TestSecretLeakCheckerRemediation` (class) — `tests/unit/evaluators/security/test_secrets.py:332`
+- `TestSecretLeakCheckerContext` (class) — `tests/unit/evaluators/security/test_secrets.py:355`
+- `TestSecretLeakCheckerLocation` (class) — `tests/unit/evaluators/security/test_secrets.py:371`
+- `TestSecretLeakCheckerDeduplication` (class) — `tests/unit/evaluators/security/test_secrets.py:385`
+- `TestArtifactExists` (class) — `tests/unit/evaluators/test_artifact.py:81`
+- `TestContains` (class) — `tests/unit/evaluators/test_artifact.py:158`
+- `TestSchema` (class) — `tests/unit/evaluators/test_artifact.py:291`
+- `TestSections` (class) — `tests/unit/evaluators/test_artifact.py:391`
+- `TestUnknownAssertionType` (class) — `tests/unit/evaluators/test_artifact.py:466`
+- `TestEdgeCases` (class) — `tests/unit/evaluators/test_artifact.py:485`
+- `TestEvaluatorProperties` (class) — `tests/unit/evaluators/test_artifact.py:630`
+- `TestEvalCheck` (class) — `tests/unit/evaluators/test_base.py:8`
+- `TestEvalResult` (class) — `tests/unit/evaluators/test_base.py:63`
+- `create_tool_call_event` (function) — `tests/unit/evaluators/test_behavior.py:64`
+- `create_error_event` (function) — `tests/unit/evaluators/test_behavior.py:77`
+- `TestMustUseTools` (class) — `tests/unit/evaluators/test_behavior.py:124`
+- `TestMaxToolCalls` (class) — `tests/unit/evaluators/test_behavior.py:219`
+- `TestMinToolCalls` (class) — `tests/unit/evaluators/test_behavior.py:302`
+- `TestMinToolCallsNoLimit` (class) — `tests/unit/evaluators/test_behavior.py:337`
+- `TestNoErrors` (class) — `tests/unit/evaluators/test_behavior.py:357`
+- `TestForbiddenTools` (class) — `tests/unit/evaluators/test_behavior.py:409`
+- `TestBehaviorCombined` (class) — `tests/unit/evaluators/test_behavior.py:466`
+- `TestUnknownAssertionType` (class) — `tests/unit/evaluators/test_behavior.py:554`
+- `TestEdgeCases` (class) — `tests/unit/evaluators/test_behavior.py:574`
+- `TestEvaluatorProperties` (class) — `tests/unit/evaluators/test_behavior.py:620`
+- `mock_command_result` (function) — `tests/unit/evaluators/test_code_exec.py:45`
+- `TestEvaluatorProperties` (class) — `tests/unit/evaluators/test_code_exec.py:60`
+- `TestPytestParsing` (class) — `tests/unit/evaluators/test_code_exec.py:68`
+- `TestNpmParsing` (class) — `tests/unit/evaluators/test_code_exec.py:160`
+- `TestLintParsing` (class) — `tests/unit/evaluators/test_code_exec.py:226`
+- `TestCustomParsing` (class) — `tests/unit/evaluators/test_code_exec.py:278`
+- `TestPytestCheck` (class) — `tests/unit/evaluators/test_code_exec.py:309`
+- `TestNpmCheck` (class) — `tests/unit/evaluators/test_code_exec.py:395`
+- `TestCustomCommandCheck` (class) — `tests/unit/evaluators/test_code_exec.py:454`
+- `TestLintCheck` (class) — `tests/unit/evaluators/test_code_exec.py:564`
+- `TestUnknownAssertionType` (class) — `tests/unit/evaluators/test_code_exec.py:685`
+- `TestCommandExecution` (class) — `tests/unit/evaluators/test_code_exec.py:703`
+- `TestDataClasses` (class) — `tests/unit/evaluators/test_code_exec.py:742`
+- `TestRegistration` (class) — `tests/unit/evaluators/test_code_exec.py:784`
+- `TestEdgeCases` (class) — `tests/unit/evaluators/test_code_exec.py:813`
+- `TestCodeExecContainerIntegration` (class) — `tests/unit/evaluators/test_code_exec_container.py:10`
+- `TestEvaluatorProperties` (class) — `tests/unit/evaluators/test_composite.py:80`
+- `TestAndOperator` (class) — `tests/unit/evaluators/test_composite.py:88`
+- `TestOrOperator` (class) — `tests/unit/evaluators/test_composite.py:173`
+- `TestNotOperator` (class) — `tests/unit/evaluators/test_composite.py:258`
+- `TestNestedComposition` (class) — `tests/unit/evaluators/test_composite.py:314`
+- `TestThresholdCondition` (class) — `tests/unit/evaluators/test_composite.py:420`
+- `TestEmptyConditions` (class) — `tests/unit/evaluators/test_composite.py:534`
+- `TestErrorHandling` (class) — `tests/unit/evaluators/test_composite.py:572`
+- `TestWithMockedEvaluators` (class) — `tests/unit/evaluators/test_composite.py:642`
+- `TestDefaultOperator` (class) — `tests/unit/evaluators/test_composite.py:722`
+- `TestRegistration` (class) — `tests/unit/evaluators/test_composite.py:752`
+- `TestDockerRuntime` (class) — `tests/unit/evaluators/test_container.py:15`
+- `TestPodmanRuntime` (class) — `tests/unit/evaluators/test_container.py:138`
+- `TestDetectRuntime` (class) — `tests/unit/evaluators/test_container.py:161`
+- `TestFactualityConfig` (class) — `tests/unit/evaluators/test_factuality.py:170`
+- `TestVerificationMethod` (class) — `tests/unit/evaluators/test_factuality.py:198`
+- `TestClaimType` (class) — `tests/unit/evaluators/test_factuality.py:208`
+- `TestClaim` (class) — `tests/unit/evaluators/test_factuality.py:221`
+- `TestCitation` (class) — `tests/unit/evaluators/test_factuality.py:254`
+- `TestHallucinationIndicator` (class) — `tests/unit/evaluators/test_factuality.py:281`
+- `TestFactualityResult` (class) — `tests/unit/evaluators/test_factuality.py:307`
+- `TestClaimExtractor` (class) — `tests/unit/evaluators/test_factuality.py:333`
+- `TestCitationExtractor` (class) — `tests/unit/evaluators/test_factuality.py:392`
+- `TestHallucinationDetector` (class) — `tests/unit/evaluators/test_factuality.py:443`
+- `TestGroundTruthVerifier` (class) — `tests/unit/evaluators/test_factuality.py:502`
+- `TestLLMFactVerifier` (class) — `tests/unit/evaluators/test_factuality.py:575`
+- `TestFactualityEvaluatorProperties` (class) — `tests/unit/evaluators/test_factuality.py:666`
+- `TestFactualityEvaluatorEvaluate` (class) — `tests/unit/evaluators/test_factuality.py:674`
+- `TestRegistry` (class) — `tests/unit/evaluators/test_factuality.py:899`
+- `TestFactualityImports` (class) — `tests/unit/evaluators/test_factuality.py:925`
+- `TestFilesystemEvaluatorName` (class) — `tests/unit/evaluators/test_filesystem.py:51`
+- `TestFileExists` (class) — `tests/unit/evaluators/test_filesystem.py:59`
+- `TestFileNotExists` (class) — `tests/unit/evaluators/test_filesystem.py:134`
+- `TestFileContains` (class) — `tests/unit/evaluators/test_filesystem.py:176`
+- `TestDirExists` (class) — `tests/unit/evaluators/test_filesystem.py:261`
+- `TestFileCount` (class) — `tests/unit/evaluators/test_filesystem.py:300`
+- `TestNoWorkspacePath` (class) — `tests/unit/evaluators/test_filesystem.py:387`
+- `TestUnknownAssertionType` (class) — `tests/unit/evaluators/test_filesystem.py:407`
+- `SAMPLE_DIFF` (const) — `tests/unit/evaluators/test_git_commit.py:15`
+- `TestExtractChangedFiles` (class) — `tests/unit/evaluators/test_git_commit.py:28`
+- `TestLineSimilarity` (class) — `tests/unit/evaluators/test_git_commit.py:37`
+- `TestGitCommitEvaluator` (class) — `tests/unit/evaluators/test_git_commit.py:54`
+- `TestNotSilentlyFailed` (class) — `tests/unit/evaluators/test_guardrails.py:44`
+- `TestTimeoutNotExceeded` (class) — `tests/unit/evaluators/test_guardrails.py:68`
+- `TestWithinBudget` (class) — `tests/unit/evaluators/test_guardrails.py:82`
+- `TestRunGuardrailsIntegration` (class) — `tests/unit/evaluators/test_guardrails.py:106`
+- `TestLLMJudgeConfig` (class) — `tests/unit/evaluators/test_llm_judge.py:102`
+- `TestLLMJudgeCost` (class) — `tests/unit/evaluators/test_llm_judge.py:133`
+- `TestLLMJudgeResponse` (class) — `tests/unit/evaluators/test_llm_judge.py:156`
+- `TestLLMJudgeEvaluatorProperties` (class) — `tests/unit/evaluators/test_llm_judge.py:186`
+- `TestBuiltinCriteria` (class) — `tests/unit/evaluators/test_llm_judge.py:220`
+- `TestBuildPrompt` (class) — `tests/unit/evaluators/test_llm_judge.py:242`
+- `TestParseResponse` (class) — `tests/unit/evaluators/test_llm_judge.py:318`
+- `TestGetArtifactContent` (class) — `tests/unit/evaluators/test_llm_judge.py:394`
+- `TestEvaluate` (class) — `tests/unit/evaluators/test_llm_judge.py:449`
+- `TestEvaluateWithAveraging` (class) — `tests/unit/evaluators/test_llm_judge.py:640`
+- `TestErrorHandling` (class) — `tests/unit/evaluators/test_llm_judge.py:723`
+- `TestRegistry` (class) — `tests/unit/evaluators/test_llm_judge.py:797`
+- `TestPerformanceMetricType` (class) — `tests/unit/evaluators/test_performance.py:154`
+- `TestRegressionStatus` (class) — `tests/unit/evaluators/test_performance.py:167`
+- `TestPerformanceMetrics` (class) — `tests/unit/evaluators/test_performance.py:178`
+- `TestRegressionResult` (class) — `tests/unit/evaluators/test_performance.py:219`
+- `TestPerformanceThresholds` (class) — `tests/unit/evaluators/test_performance.py:245`
+- `TestPerformanceBaseline` (class) — `tests/unit/evaluators/test_performance.py:269`
+- `TestPerformanceConfig` (class) — `tests/unit/evaluators/test_performance.py:284`
+- `TestCalculatePercentile` (class) — `tests/unit/evaluators/test_performance.py:309`
+- `TestExtractLatenciesFromTrace` (class) — `tests/unit/evaluators/test_performance.py:341`
+- `TestExtractTimeToFirstToken` (class) — `tests/unit/evaluators/test_performance.py:370`
+- `TestCalculateTokensPerSecond` (class) — `tests/unit/evaluators/test_performance.py:409`
+- `TestCalculateTokenEfficiency` (class) — `tests/unit/evaluators/test_performance.py:431`
+- `TestComputePerformanceMetrics` (class) — `tests/unit/evaluators/test_performance.py:449`
+- `TestCheckThresholds` (class) — `tests/unit/evaluators/test_performance.py:487`
+- `TestDetectRegression` (class) — `tests/unit/evaluators/test_performance.py:537`
+- `TestCheckRegressions` (class) — `tests/unit/evaluators/test_performance.py:614`
+- `TestPerformanceEvaluatorProperties` (class) — `tests/unit/evaluators/test_performance.py:647`
+- `TestPerformanceEvaluatorEvaluate` (class) — `tests/unit/evaluators/test_performance.py:655`
+- `TestRegistry` (class) — `tests/unit/evaluators/test_performance.py:840`
+- `TestPerformanceImports` (class) — `tests/unit/evaluators/test_performance.py:866`
+- `TestEvaluatorRegistry` (class) — `tests/unit/evaluators/test_registry.py:22`
+- `TestAssertionMappings` (class) — `tests/unit/evaluators/test_registry.py:66`
+- `TestCustomEvaluatorRegistration` (class) — `tests/unit/evaluators/test_registry.py:118`
+- `TestGlobalRegistry` (class) — `tests/unit/evaluators/test_registry.py:156`
+- `TestEvaluatorNotFoundError` (class) — `tests/unit/evaluators/test_registry.py:176`
+- `TestSafeEnv` (class) — `tests/unit/evaluators/test_sandbox.py:18`
+- `TestSandboxedExecution` (class) — `tests/unit/evaluators/test_sandbox.py:36`
+- `TestCheckMethodsSandboxed` (class) — `tests/unit/evaluators/test_sandbox.py:82`
+- `TestTextAnalyzer` (class) — `tests/unit/evaluators/test_style.py:152`
+- `TestStyleConfig` (class) — `tests/unit/evaluators/test_style.py:278`
+- `TestStyleEvaluatorName` (class) — `tests/unit/evaluators/test_style.py:306`
+- `TestStyleEvaluatorTone` (class) — `tests/unit/evaluators/test_style.py:314`
+- `TestStyleEvaluatorReadability` (class) — `tests/unit/evaluators/test_style.py:377`
+- `TestStyleEvaluatorPassiveVoice` (class) — `tests/unit/evaluators/test_style.py:500`
+- `TestStyleEvaluatorSentenceLength` (class) — `tests/unit/evaluators/test_style.py:564`
+- `TestStyleEvaluatorRules` (class) — `tests/unit/evaluators/test_style.py:664`
+- `TestStyleEvaluatorComprehensive` (class) — `tests/unit/evaluators/test_style.py:854`
+- `TestStyleEvaluatorUnknownType` (class) — `tests/unit/evaluators/test_style.py:928`
+- `TestStyleEvaluatorEdgeCases` (class) — `tests/unit/evaluators/test_style.py:947`
+- `test_validate_action_accepts_a` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:18`
+- `test_validate_action_accepts_b` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:22`
+- `test_validate_action_rejects_unknown_choice` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:26`
+- `test_validate_action_rejects_missing_choice` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:31`
+- `test_validate_action_rejects_non_dict` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:36`
+- `test_default_action_on_timeout_is_a` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:41`
+- `test_format_state_empty_history_exposes_your_preferred` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:46`
+- `test_format_state_populated_history_from_both_sides` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:67`
+- `test_compute_round_payoffs_coord_on_a` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:84`
+- `test_compute_round_payoffs_coord_on_b` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:91`
+- `test_compute_round_payoffs_mismatch_ab` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:98`
+- `test_compute_round_payoffs_mismatch_ba` (function) — `tests/unit/games/test_battle_of_sexes_state_format.py:104`
+- `test_validate_action_accepts_intervals` (function) — `tests/unit/games/test_el_farol_state_format.py:19`
+- `test_validate_action_orders_intervals` (function) — `tests/unit/games/test_el_farol_state_format.py:24`
+- `test_validate_action_accepts_empty_intervals` (function) — `tests/unit/games/test_el_farol_state_format.py:31`
+- `test_validate_action_rejects_overlapping_intervals` (function) — `tests/unit/games/test_el_farol_state_format.py:36`
+- `test_validate_action_rejects_adjacent_intervals` (function) — `tests/unit/games/test_el_farol_state_format.py:42`
+- `test_validate_action_rejects_out_of_range` (function) — `tests/unit/games/test_el_farol_state_format.py:48`
+- `test_validate_action_rejects_negative` (function) — `tests/unit/games/test_el_farol_state_format.py:54`
+- `test_validate_action_rejects_legacy_slots_payload` (function) — `tests/unit/games/test_el_farol_state_format.py:60`
+- `test_validate_action_rejects_missing_intervals_key` (function) — `tests/unit/games/test_el_farol_state_format.py:66`
+- `test_validate_action_rejects_non_dict` (function) — `tests/unit/games/test_el_farol_state_format.py:72`
+- `test_default_action_on_timeout_returns_empty_intervals` (function) — `tests/unit/games/test_el_farol_state_format.py:78`
+- `test_format_state_empty_history` (function) — `tests/unit/games/test_el_farol_state_format.py:83`
+- `test_format_state_populated_history_aggregates_attendance` (function) — `tests/unit/games/test_el_farol_state_format.py:109`
+- `test_compute_round_payoffs_legacy_mode_happy_minus_crowded` (function) — `tests/unit/games/test_el_farol_state_format.py:141`
+- `test_format_state_your_history_is_defensive_copy` (function) — `tests/unit/games/test_el_farol_state_format.py:164`
+- `test_validate_action_accepts_stag` (function) — `tests/unit/games/test_stag_hunt_state_format.py:18`
+- `test_validate_action_accepts_hare` (function) — `tests/unit/games/test_stag_hunt_state_format.py:22`
+- `test_validate_action_rejects_unknown_choice` (function) — `tests/unit/games/test_stag_hunt_state_format.py:26`
+- `test_validate_action_rejects_missing_choice` (function) — `tests/unit/games/test_stag_hunt_state_format.py:31`
+- `test_validate_action_rejects_non_dict` (function) — `tests/unit/games/test_stag_hunt_state_format.py:36`
+- `test_default_action_on_timeout_is_hare` (function) — `tests/unit/games/test_stag_hunt_state_format.py:41`
+- `test_format_state_empty_history` (function) — `tests/unit/games/test_stag_hunt_state_format.py:46`
+- `test_format_state_populated_history_from_both_sides` (function) — `tests/unit/games/test_stag_hunt_state_format.py:64`
+- `test_compute_round_payoffs_mutual_stag` (function) — `tests/unit/games/test_stag_hunt_state_format.py:96`
+- `test_compute_round_payoffs_mutual_hare` (function) — `tests/unit/games/test_stag_hunt_state_format.py:103`
+- `test_compute_round_payoffs_sucker_and_hare` (function) — `tests/unit/games/test_stag_hunt_state_format.py:110`
+- `TestTestSuiteData` (class) — `tests/unit/generator/test_core.py:14`
+- `TestTestGeneratorCreateSuite` (class) — `tests/unit/generator/test_core.py:65`
+- `TestTestGeneratorAddAgent` (class) — `tests/unit/generator/test_core.py:112`
+- `TestTestGeneratorCreateCustomTest` (class) — `tests/unit/generator/test_core.py:174`
+- `TestTestGeneratorAddTest` (class) — `tests/unit/generator/test_core.py:278`
+- `TestTestGeneratorGenerateTestId` (class) — `tests/unit/generator/test_core.py:338`
+- `TestTestGeneratorIntegration` (class) — `tests/unit/generator/test_core.py:449`
+- `TestTestGeneratorTemplates` (class) — `tests/unit/generator/test_core.py:529`
+- `TestTestGeneratorTemplateIntegration` (class) — `tests/unit/generator/test_core.py:767`
+- `VALID_SUITE_YAML` (const) — `tests/unit/generator/test_nl_generator.py:19`
+- `MULTI_TEST_YAML` (const) — `tests/unit/generator/test_nl_generator.py:47`
+- `FakeLLMClient` (class) — `tests/unit/generator/test_nl_generator.py:86`
+- `TestCleanYamlResponse` (class) — `tests/unit/generator/test_nl_generator.py:98`
+- `TestNLTestGenerator` (class) — `tests/unit/generator/test_nl_generator.py:122`
+- `TestOpenAICompatibleClient` (class) — `tests/unit/generator/test_nl_generator.py:292`
+- `TestCreateDefaultClient` (class) — `tests/unit/generator/test_nl_generator.py:365`
+- `TestCLIFromDescription` (class) — `tests/unit/generator/test_nl_generator.py:421`
+- `TestRecordedEvent` (class) — `tests/unit/generator/test_regression.py:33`
+- `TestRecording` (class) — `tests/unit/generator/test_regression.py:65`
+- `TestRecordingSession` (class) — `tests/unit/generator/test_regression.py:148`
+- `TestDataAnonymizer` (class) — `tests/unit/generator/test_regression.py:244`
+- `TestTestDeduplicator` (class) — `tests/unit/generator/test_regression.py:365`
+- `TestTestParameterizer` (class) — `tests/unit/generator/test_regression.py:438`
+- `TestRegressionTestGenerator` (class) — `tests/unit/generator/test_regression.py:501`
+- `TestRecordingPersistence` (class) — `tests/unit/generator/test_regression.py:727`
+- `TestRegressionTestGeneratorSaveOutput` (class) — `tests/unit/generator/test_regression.py:825`
+- `TestTestTemplateDataclass` (class) — `tests/unit/generator/test_templates.py:16`
+- `TestTemplateRegistry` (class) — `tests/unit/generator/test_templates.py:60`
+- `TestSubstituteVariables` (class) — `tests/unit/generator/test_templates.py:163`
+- `TestSubstituteInAssertion` (class) — `tests/unit/generator/test_templates.py:236`
+- `TestExtractVariables` (class) — `tests/unit/generator/test_templates.py:310`
+- `TestGetTemplateVariables` (class) — `tests/unit/generator/test_templates.py:344`
+- `TestBuiltinTemplates` (class) — `tests/unit/generator/test_templates.py:422`
+- `TestTraceRecord` (class) — `tests/unit/generator/test_trace_import.py:28`
+- `TestDeduplication` (class) — `tests/unit/generator/test_trace_import.py:78`
+- `TestTraceToTest` (class) — `tests/unit/generator/test_trace_import.py:109`
+- `ConcreteImporter` (class) — `tests/unit/generator/test_trace_import.py:215`
+- `TestImportTraces` (class) — `tests/unit/generator/test_trace_import.py:228`
+- `TestLangSmithImporter` (class) — `tests/unit/generator/test_trace_import.py:320`
+- `TestOpenTelemetryImporter` (class) — `tests/unit/generator/test_trace_import.py:432`
+- `TestImporterRegistry` (class) — `tests/unit/generator/test_trace_import.py:651`
+- `TestEndToEnd` (class) — `tests/unit/generator/test_trace_import.py:691`
+- `TestCleanDict` (class) — `tests/unit/generator/test_writer.py:29`
+- `TestCleanList` (class) — `tests/unit/generator/test_writer.py:66`
+- `TestScoringToDict` (class) — `tests/unit/generator/test_writer.py:82`
+- `TestConstraintsToDict` (class) — `tests/unit/generator/test_writer.py:109`
+- `TestDefaultsToDict` (class) — `tests/unit/generator/test_writer.py:144`
+- `TestYAMLWriterToYaml` (class) — `tests/unit/generator/test_writer.py:168`
+- `TestYAMLWriterSave` (class) — `tests/unit/generator/test_writer.py:393`
+- `TestTestGeneratorYamlMethods` (class) — `tests/unit/generator/test_writer.py:456`
+- `TestRoundTrip` (class) — `tests/unit/generator/test_writer.py:487`
+- `TestMultilineStrings` (class) — `tests/unit/generator/test_writer.py:580`
+- `TestTagFilter` (class) — `tests/unit/loader/test_filters.py:6`
+- `TestTestLoader` (class) — `tests/unit/loader/test_loader.py:9`
+- `TestMultiAgentLoader` (class) — `tests/unit/loader/test_loader.py:207`
+- `TestTaskDefinition` (class) — `tests/unit/loader/test_models.py:23`
+- `TestConstraints` (class) — `tests/unit/loader/test_models.py:52`
+- `TestScoringWeights` (class) — `tests/unit/loader/test_models.py:83`
+- `TestAssertion` (class) — `tests/unit/loader/test_models.py:116`
+- `TestTestDefinition` (class) — `tests/unit/loader/test_models.py:137`
+- `TestTestSuite` (class) — `tests/unit/loader/test_models.py:176`
+- `TestMultiAgentMode` (class) — `tests/unit/loader/test_models.py:496`
+- `TestCollaborationConfig` (class) — `tests/unit/loader/test_models.py:512`
+- `TestHandoffConfig` (class) — `tests/unit/loader/test_models.py:553`
+- `TestComparisonConfig` (class) — `tests/unit/loader/test_models.py:599`
+- `TestMultiAgentTestDefinition` (class) — `tests/unit/loader/test_models.py:623`
+- `TestYAMLParser` (class) — `tests/unit/loader/test_parser.py:9`
+- `TestVariableSubstitution` (class) — `tests/unit/loader/test_parser.py:66`
+- `TestMockDefinitionLoader` (class) — `tests/unit/mock_tools/test_loader.py:10`
+- `TestPatternMatcher` (class) — `tests/unit/mock_tools/test_models.py:17`
+- `TestMockResponse` (class) — `tests/unit/mock_tools/test_models.py:103`
+- `TestMockTool` (class) — `tests/unit/mock_tools/test_models.py:135`
+- `TestToolCall` (class) — `tests/unit/mock_tools/test_models.py:216`
+- `TestToolCallRecord` (class) — `tests/unit/mock_tools/test_models.py:245`
+- `TestMockDefinition` (class) — `tests/unit/mock_tools/test_models.py:279`
+- `TestCallRecorder` (class) — `tests/unit/mock_tools/test_recorder.py:6`
+- `TestMockToolServer` (class) — `tests/unit/mock_tools/test_server.py:17`
+- `TestMockAppEndpoints` (class) — `tests/unit/mock_tools/test_server.py:231`
+- `TestConcurrencyConfig` (class) — `tests/unit/performance/test_async_utils.py:20`
+- `TestAsyncBatcher` (class) — `tests/unit/performance/test_async_utils.py:38`
+- `TestRateLimiter` (class) — `tests/unit/performance/test_async_utils.py:81`
+- `TestParallelExecutor` (class) — `tests/unit/performance/test_async_utils.py:122`
+- `TestGatherWithLimit` (class) — `tests/unit/performance/test_async_utils.py:171`
+- `TestChunkedGather` (class) — `tests/unit/performance/test_async_utils.py:209`
+- `TestTimeoutWrapper` (class) — `tests/unit/performance/test_async_utils.py:246`
+- `TestRetryAsync` (class) — `tests/unit/performance/test_async_utils.py:281`
+- `TestAsyncPool` (class) — `tests/unit/performance/test_async_utils.py:337`
+- `TestBenchmarkResult` (class) — `tests/unit/performance/test_benchmark.py:15`
+- `TestBenchmarkSuite` (class) — `tests/unit/performance/test_benchmark.py:53`
+- `TestBenchmark` (class) — `tests/unit/performance/test_benchmark.py:114`
+- `TestRunStandardBenchmarks` (class) — `tests/unit/performance/test_benchmark.py:248`
+- `TestCacheEntry` (class) — `tests/unit/performance/test_cache.py:20`
+- `TestCacheStats` (class) — `tests/unit/performance/test_cache.py:39`
+- `TestTestSuiteCache` (class) — `tests/unit/performance/test_cache.py:62`
+- `TestCachedTestLoader` (class) — `tests/unit/performance/test_cache.py:207`
+- `TestAdapterCache` (class) — `tests/unit/performance/test_cache.py:293`
+- `TestGlobalCacheFunctions` (class) — `tests/unit/performance/test_cache.py:336`
+- `TestMemorySnapshot` (class) — `tests/unit/performance/test_memory.py:15`
+- `TestMemoryDiff` (class) — `tests/unit/performance/test_memory.py:60`
+- `TestMemoryReport` (class) — `tests/unit/performance/test_memory.py:90`
+- `TestMemoryTracker` (class) — `tests/unit/performance/test_memory.py:174`
+- `TestGlobalTrackerFunctions` (class) — `tests/unit/performance/test_memory.py:266`
+- `TestGetMemorySize` (class) — `tests/unit/performance/test_memory.py:295`
+- `TestProfileResult` (class) — `tests/unit/performance/test_profiler.py:22`
+- `TestProfileStats` (class) — `tests/unit/performance/test_profiler.py:52`
+- `TestProfiler` (class) — `tests/unit/performance/test_profiler.py:80`
+- `TestGlobalProfiler` (class) — `tests/unit/performance/test_profiler.py:222`
+- `TestProfiledDecorator` (class) — `tests/unit/performance/test_profiler.py:271`
+- `TestImportTiming` (class) — `tests/unit/performance/test_startup.py:16`
+- `TestLazyModule` (class) — `tests/unit/performance/test_startup.py:43`
+- `TestLazyClass` (class) — `tests/unit/performance/test_startup.py:78`
+- `TestDeferredRegistry` (class) — `tests/unit/performance/test_startup.py:119`
+- `TestImportAnalyzer` (class) — `tests/unit/performance/test_startup.py:204`
+- `TestMeasureStartupTime` (class) — `tests/unit/performance/test_startup.py:234`
+- `TestGetLazyAdapterRegistry` (class) — `tests/unit/performance/test_startup.py:281`
+- `TestPluginConfig` (class) — `tests/unit/plugins/test_config.py:22`
+- `TestPluginConfigEnvSupport` (class) — `tests/unit/plugins/test_config.py:104`
+- `TestPluginConfigJsonSchema` (class) — `tests/unit/plugins/test_config.py:204`
+- `TestPluginConfigExamples` (class) — `tests/unit/plugins/test_config.py:249`
+- `TestPluginConfigFieldDescriptions` (class) — `tests/unit/plugins/test_config.py:292`
+- `TestPluginConfigDefaults` (class) — `tests/unit/plugins/test_config.py:310`
+- `TestPluginConfigToDict` (class) — `tests/unit/plugins/test_config.py:340`
+- `TestValidatePluginConfig` (class) — `tests/unit/plugins/test_config.py:356`
+- `TestPluginConfigError` (class) — `tests/unit/plugins/test_config.py:397`
+- `TestConfigMetadata` (class) — `tests/unit/plugins/test_config.py:422`
+- `TestGetPluginConfigSchema` (class) — `tests/unit/plugins/test_config.py:455`
+- `TestGetPluginConfigMetadata` (class) — `tests/unit/plugins/test_config.py:498`
+- `TestPluginConfigIntegration` (class) — `tests/unit/plugins/test_config.py:527`
+- `TestExtractDependencies` (class) — `tests/unit/plugins/test_dependencies.py:31`
+- `TestResolveLoadOrder` (class) — `tests/unit/plugins/test_dependencies.py:56`
+- `TestCheckDependenciesSatisfied` (class) — `tests/unit/plugins/test_dependencies.py:106`
+- `TestPluginInfo` (class) — `tests/unit/plugins/test_discovery.py:27`
+- `TestLazyPlugin` (class) — `tests/unit/plugins/test_discovery.py:74`
+- `TestPluginManager` (class) — `tests/unit/plugins/test_discovery.py:190`
+- `TestGetPluginManager` (class) — `tests/unit/plugins/test_discovery.py:480`
+- `TestEntryPointGroups` (class) — `tests/unit/plugins/test_discovery.py:506`
+- `TestPluginManagerValidation` (class) — `tests/unit/plugins/test_discovery.py:529`
+- `TestAdapterPluginProtocol` (class) — `tests/unit/plugins/test_interfaces.py:28`
+- `TestEvaluatorPluginProtocol` (class) — `tests/unit/plugins/test_interfaces.py:109`
+- `TestReporterPluginProtocol` (class) — `tests/unit/plugins/test_interfaces.py:164`
+- `TestVersionCompatibility` (class) — `tests/unit/plugins/test_interfaces.py:207`
+- `TestPluginValidationError` (class) — `tests/unit/plugins/test_interfaces.py:278`
+- `TestPluginVersionError` (class) — `tests/unit/plugins/test_interfaces.py:307`
+- `TestGetPluginProtocolForGroup` (class) — `tests/unit/plugins/test_interfaces.py:335`
+- `TestGetRequiredAttributes` (class) — `tests/unit/plugins/test_interfaces.py:359`
+- `TestGetRequiredMethods` (class) — `tests/unit/plugins/test_interfaces.py:387`
+- `TestValidatePluginFull` (class) — `tests/unit/plugins/test_interfaces.py:412`
+- `TestUnknownGroup` (class) — `tests/unit/plugins/test_interfaces.py:472`
+- `TestMinATPVersion` (class) — `tests/unit/plugins/test_interfaces.py:486`
+- `TestTask` (class) — `tests/unit/protocol/test_models.py:29`
+- `TestContext` (class) — `tests/unit/protocol/test_models.py:72`
+- `TestATPRequest` (class) — `tests/unit/protocol/test_models.py:94`
+- `TestMetrics` (class) — `tests/unit/protocol/test_models.py:173`
+- `TestArtifacts` (class) — `tests/unit/protocol/test_models.py:215`
+- `TestATPResponse` (class) — `tests/unit/protocol/test_models.py:277`
+- `TestEventPayloads` (class) — `tests/unit/protocol/test_models.py:368`
+- `TestATPEvent` (class) — `tests/unit/protocol/test_models.py:441`
+- `TestSecurityValidations` (class) — `tests/unit/protocol/test_models.py:575`
+- `TestEdgeCases` (class) — `tests/unit/protocol/test_models.py:672`
+- `TestSchemaGeneration` (class) — `tests/unit/protocol/test_schema.py:13`
+- `ConcreteReporter` (class) — `tests/unit/reporters/test_base.py:20`
+- `TestReporterBase` (class) — `tests/unit/reporters/test_base.py:34`
+- `TestTestReport` (class) — `tests/unit/reporters/test_base.py:93`
+- `TestSuiteReport` (class) — `tests/unit/reporters/test_base.py:149`
+- `TestSuiteReportFromSuiteResult` (class) — `tests/unit/reporters/test_base.py:196`
+- `TestConsoleReporter` (class) — `tests/unit/reporters/test_console.py:18`
+- `TestGameReporter` (class) — `tests/unit/reporters/test_game_reporter.py:129`
+- `TestGameHTMLReporter` (class) — `tests/unit/reporters/test_game_reporter.py:296`
+- `TestExportGameCSV` (class) — `tests/unit/reporters/test_game_reporter.py:391`
+- `TestExportGameJSON` (class) — `tests/unit/reporters/test_game_reporter.py:426`
+- `TestGameReportModel` (class) — `tests/unit/reporters/test_game_reporter.py:450`
+- `TestHTMLReporter` (class) — `tests/unit/reporters/test_html_reporter.py:20`
+- `TestHTMLReporterScoreColors` (class) — `tests/unit/reporters/test_html_reporter.py:567`
+- `TestHTMLReporterHelpers` (class) — `tests/unit/reporters/test_html_reporter.py:607`
+- `TestJSONReporter` (class) — `tests/unit/reporters/test_json_reporter.py:21`
+- `TestJUnitReporter` (class) — `tests/unit/reporters/test_junit_reporter.py:20`
+- `CustomReporter` (class) — `tests/unit/reporters/test_registry.py:20`
+- `TestReporterRegistry` (class) — `tests/unit/reporters/test_registry.py:31`
+- `TestGlobalRegistry` (class) — `tests/unit/reporters/test_registry.py:156`
+- `TestRunnerError` (class) — `tests/unit/runner/test_exceptions.py:12`
+- `TestTestExecutionError` (class) — `tests/unit/runner/test_exceptions.py:40`
+- `TestRunnerTimeoutError` (class) — `tests/unit/runner/test_exceptions.py:65`
+- `TestSandboxError` (class) — `tests/unit/runner/test_exceptions.py:94`
+- `TestSandboxConfig` (class) — `tests/unit/runner/test_models.py:20`
+- `TestProgressEvent` (class) — `tests/unit/runner/test_models.py:62`
+- `TestRunResult` (class) — `tests/unit/runner/test_models.py:117`
+- `TestTestResult` (class) — `tests/unit/runner/test_models.py:198`
+- `TestSuiteResult` (class) — `tests/unit/runner/test_models.py:326`
+- `MockAdapter` (class) — `tests/unit/runner/test_multi_agent.py:49`
+- `TestAgentConfig` (class) — `tests/unit/runner/test_multi_agent.py:169`
+- `TestComparisonMetrics` (class) — `tests/unit/runner/test_multi_agent.py:189`
+- `TestAgentRanking` (class) — `tests/unit/runner/test_multi_agent.py:230`
+- `TestMultiAgentTestResult` (class) — `tests/unit/runner/test_multi_agent.py:248`
+- `TestMultiAgentSuiteResult` (class) — `tests/unit/runner/test_multi_agent.py:301`
+- `TestMultiAgentOrchestratorInit` (class) — `tests/unit/runner/test_multi_agent.py:347`
+- `TestMultiAgentOrchestratorRunSingleTest` (class) — `tests/unit/runner/test_multi_agent.py:390`
+- `TestMultiAgentOrchestratorRunSuite` (class) — `tests/unit/runner/test_multi_agent.py:553`
+- `TestProgressCallback` (class) — `tests/unit/runner/test_multi_agent.py:658`
+- `TestRankingMetrics` (class) — `tests/unit/runner/test_multi_agent.py:724`
+- `TestConvenienceFunctions` (class) — `tests/unit/runner/test_multi_agent.py:806`
+- `TestContextManager` (class) — `tests/unit/runner/test_multi_agent.py:864`
+- `TestMultiAgentMode` (class) — `tests/unit/runner/test_multi_agent.py:925`
+- `TestRankingMetricEnum` (class) — `tests/unit/runner/test_multi_agent.py:935`
+- `TestCollaborationMessage` (class) — `tests/unit/runner/test_multi_agent.py:953`
+- `TestSharedContext` (class) — `tests/unit/runner/test_multi_agent.py:995`
+- `TestCollaborationConfig` (class) — `tests/unit/runner/test_multi_agent.py:1108`
+- `TestCollaborationMetrics` (class) — `tests/unit/runner/test_multi_agent.py:1141`
+- `TestCollaborationTurnResult` (class) — `tests/unit/runner/test_multi_agent.py:1182`
+- `TestCollaborationResult` (class) — `tests/unit/runner/test_multi_agent.py:1231`
+- `TestMultiAgentTestResultCollaboration` (class) — `tests/unit/runner/test_multi_agent.py:1305`
+- `TestMultiAgentOrchestratorCollaboration` (class) — `tests/unit/runner/test_multi_agent.py:1332`
+- `TestCollaborationProgressEvents` (class) — `tests/unit/runner/test_multi_agent.py:1584`
+- `TestCollaborationConvenienceFunctions` (class) — `tests/unit/runner/test_multi_agent.py:1621`
+- `TestCollaborationConsensusTermination` (class) — `tests/unit/runner/test_multi_agent.py:1670`
+- `TestCollaborationAllCompleteTermination` (class) — `tests/unit/runner/test_multi_agent.py:1702`
+- `TestHandoffConfig` (class) — `tests/unit/runner/test_multi_agent.py:1738`
+- `TestHandoffContext` (class) — `tests/unit/runner/test_multi_agent.py:1786`
+- `TestHandoffMetrics` (class) — `tests/unit/runner/test_multi_agent.py:1873`
+- `TestHandoffTurnResult` (class) — `tests/unit/runner/test_multi_agent.py:1923`
+- `TestHandoffResult` (class) — `tests/unit/runner/test_multi_agent.py:1971`
+- `TestMultiAgentTestResultHandoff` (class) — `tests/unit/runner/test_multi_agent.py:2087`
+- `TestMultiAgentOrchestratorHandoff` (class) — `tests/unit/runner/test_multi_agent.py:2127`
+- `TestHandoffProgressEvents` (class) — `tests/unit/runner/test_multi_agent.py:2433`
+- `TestHandoffConvenienceFunctions` (class) — `tests/unit/runner/test_multi_agent.py:2468`
+- `TestHandoffTriggerTypes` (class) — `tests/unit/runner/test_multi_agent.py:2515`
+- `TestContextAccumulationModes` (class) — `tests/unit/runner/test_multi_agent.py:2529`
+- `MockAdapter` (class) — `tests/unit/runner/test_orchestrator.py:27`
+- `TestTestOrchestrator` (class) — `tests/unit/runner/test_orchestrator.py:132`
+- `TestRunSingleTest` (class) — `tests/unit/runner/test_orchestrator.py:162`
+- `TestProgressCallback` (class) — `tests/unit/runner/test_orchestrator.py:272`
+- `TestTimeoutEnforcement` (class) — `tests/unit/runner/test_orchestrator.py:320`
+- `TestSuiteExecution` (class) — `tests/unit/runner/test_orchestrator.py:363`
+- `TestConvenienceFunctions` (class) — `tests/unit/runner/test_orchestrator.py:454`
+- `TestSandboxIntegration` (class) — `tests/unit/runner/test_orchestrator.py:498`
+- `TestRequestCreation` (class) — `tests/unit/runner/test_orchestrator.py:542`
+- `TestParallelTestExecution` (class) — `tests/unit/runner/test_orchestrator.py:577`
+- `TestRunSuiteConvenience` (class) — `tests/unit/runner/test_orchestrator.py:921`
+- `TestSingleTestProgress` (class) — `tests/unit/runner/test_progress.py:17`
+- `TestParallelProgressTracker` (class) — `tests/unit/runner/test_progress.py:79`
+- `TestCreateProgressCallback` (class) — `tests/unit/runner/test_progress.py:371`
+- `TestColorHandling` (class) — `tests/unit/runner/test_progress.py:402`
+- `TestParallelTestScenarios` (class) — `tests/unit/runner/test_progress.py:433`
+- `TestSandboxManager` (class) — `tests/unit/runner/test_sandbox.py:10`
+- `TestSandboxManagerContextManager` (class) — `tests/unit/runner/test_sandbox.py:136`
+- `TestPopulateWorkspace` (class) — `tests/unit/runner/test_sandbox_fixtures.py:11`
+- `TestProcessAlive` (class) — `tests/unit/runner/test_sandbox_phase2.py:13`
+- `TestScopeConflicts` (class) — `tests/unit/runner/test_sandbox_phase2.py:28`
+- `TestProcessTracking` (class) — `tests/unit/runner/test_sandbox_phase2.py:64`
+- `TestScoreAggregatorInit` (class) — `tests/unit/scoring/test_aggregator.py:14`
+- `TestQualityScore` (class) — `tests/unit/scoring/test_aggregator.py:56`
+- `TestCompletenessScore` (class) — `tests/unit/scoring/test_aggregator.py:161`
+- `TestEfficiencyScore` (class) — `tests/unit/scoring/test_aggregator.py:239`
+- `TestCostScore` (class) — `tests/unit/scoring/test_aggregator.py:388`
+- `TestAggregate` (class) — `tests/unit/scoring/test_aggregator.py:528`
+- `TestScoreTestResult` (class) — `tests/unit/scoring/test_aggregator.py:588`
+- `TestScoreCalculationExamples` (class) — `tests/unit/scoring/test_aggregator.py:673`
+- `TestNormalizationConfig` (class) — `tests/unit/scoring/test_models.py:13`
+- `TestComponentScore` (class) — `tests/unit/scoring/test_models.py:58`
+- `TestScoreBreakdown` (class) — `tests/unit/scoring/test_models.py:129`
+- `TestScoredTestResult` (class) — `tests/unit/scoring/test_models.py:246`
+- `test_explicit_token_takes_priority` (function) — `tests/unit/sdk/test_async_client.py:64`
+- `test_token_from_env_var` (function) — `tests/unit/sdk/test_async_client.py:72`
+- `test_token_from_config_file` (function) — `tests/unit/sdk/test_async_client.py:80`
+- `test_no_token_when_none_available` (function) — `tests/unit/sdk/test_async_client.py:88`
+- `test_retry_config_params_forwarded` (function) — `tests/unit/sdk/test_async_client.py:101`
+- `test_retry_config_defaults` (function) — `tests/unit/sdk/test_async_client.py:117`
+- `TestSaveLoadToken` (class) — `tests/unit/sdk/test_auth.py:11`
+- `TestATPClientTokenResolution` (class) — `tests/unit/sdk/test_auth.py:67`
+- `test_sync_iter_outside_async_raises_runtime_error` (function) — `tests/unit/sdk/test_benchmark_batch.py:288`
+- `test_sync_iter_without_loop_collects_all` (function) — `tests/unit/sdk/test_benchmark_batch.py:307`
+- `test_submit_sync` (function) — `tests/unit/sdk/test_benchmark_batch.py:359`
+- `test_status_sync` (function) — `tests/unit/sdk/test_benchmark_batch.py:373`
+- `test_cancel_sync` (function) — `tests/unit/sdk/test_benchmark_batch.py:387`
+- `test_leaderboard_sync` (function) — `tests/unit/sdk/test_benchmark_batch.py:400`
+- `test_next_batch_sync` (function) — `tests/unit/sdk/test_benchmark_batch.py:414`
+- `test_sync_methods_raise_without_sync_loop` (function) — `tests/unit/sdk/test_benchmark_batch.py:428`
+- `test_on_token_expired_default_is_none` (function) — `tests/unit/sdk/test_client_renew.py:156`
+- `TestModelConfig` (class) — `tests/unit/sdk/test_compare.py:161`
+- `TestResolveConfigs` (class) — `tests/unit/sdk/test_compare.py:181`
+- `TestBuildComparison` (class) — `tests/unit/sdk/test_compare.py:216`
+- `TestFormatComparisonTable` (class) — `tests/unit/sdk/test_compare.py:281`
+- `TestFormatComparisonJson` (class) — `tests/unit/sdk/test_compare.py:317`
+- `TestAcompare` (class) — `tests/unit/sdk/test_compare.py:344`
+- `test_retry_config_defaults` (function) — `tests/unit/sdk/test_retry.py:14`
+- `test_retry_config_frozen` (function) — `tests/unit/sdk/test_retry.py:23`
+- `test_retryable_status_codes` (function) — `tests/unit/sdk/test_retry.py:30`
+- `make_response` (function) — `tests/unit/sdk/test_retry.py:40`
+- `TestLoadSuite` (class) — `tests/unit/sdk/test_sdk.py:72`
+- `TestArun` (class) — `tests/unit/sdk/test_sdk.py:136`
+- `TestAevaluate` (class) — `tests/unit/sdk/test_sdk.py:269`
+- `TestScore` (class) — `tests/unit/sdk/test_sdk.py:372`
+- `TestResolveAdapter` (class) — `tests/unit/sdk/test_sdk.py:434`
+- `pytestmark` (const) — `tests/unit/sdk/test_sdk_benchmark.py:16`
+- `test_benchmark_run_iterates_tasks` (function) — `tests/unit/sdk/test_sdk_benchmark.py:31`
+- `test_benchmark_run_empty` (function) — `tests/unit/sdk/test_sdk_benchmark.py:56`
+- `test_benchmark_run_submit` (function) — `tests/unit/sdk/test_sdk_benchmark.py:66`
+- `test_benchmark_run_submit_no_events` (function) — `tests/unit/sdk/test_sdk_benchmark.py:96`
+- `test_benchmark_run_status` (function) — `tests/unit/sdk/test_sdk_benchmark.py:112`
+- `test_benchmark_run_cancel` (function) — `tests/unit/sdk/test_sdk_benchmark.py:130`
+- `test_benchmark_run_leaderboard` (function) — `tests/unit/sdk/test_sdk_benchmark.py:146`
+- `pytestmark` (const) — `tests/unit/sdk/test_sdk_client.py:15`
+- `test_list_benchmarks` (function) — `tests/unit/sdk/test_sdk_client.py:28`
+- `test_get_benchmark` (function) — `tests/unit/sdk/test_sdk_client.py:66`
+- `test_start_run` (function) — `tests/unit/sdk/test_sdk_client.py:90`
+- `test_get_leaderboard` (function) — `tests/unit/sdk/test_sdk_client.py:116`
+- `test_context_manager` (function) — `tests/unit/sdk/test_sdk_client.py:136`
+- `test_auth_header` (function) — `tests/unit/sdk/test_sdk_client.py:149`
+- `test_sdk_importable` (function) — `tests/unit/sdk/test_sdk_import.py:4`
+- `test_sdk_models_importable` (function) — `tests/unit/sdk/test_sdk_import.py:10`
+- `test_context_manager_open_close` (function) — `tests/unit/sdk/test_sync_client.py:42`
+- `test_context_manager_calls_close` (function) — `tests/unit/sdk/test_sync_client.py:50`
+- `test_token_property` (function) — `tests/unit/sdk/test_sync_client.py:63`
+- `test_token_property_none_when_no_token` (function) — `tests/unit/sdk/test_sync_client.py:69`
+- `test_platform_url_property` (function) — `tests/unit/sdk/test_sync_client.py:78`
+- `test_list_benchmarks_works_synchronously` (function) — `tests/unit/sdk/test_sync_client.py:90`
+- `test_get_benchmark` (function) — `tests/unit/sdk/test_sync_client.py:112`
+- `test_start_run_returns_benchmark_run` (function) — `tests/unit/sdk/test_sync_client.py:130`
+- `test_start_run_passes_batch_size` (function) — `tests/unit/sdk/test_sync_client.py:145`
+- `test_get_leaderboard` (function) — `tests/unit/sdk/test_sync_client.py:162`
+- `test_explicit_close` (function) — `tests/unit/sdk/test_sync_client.py:179`
+- `test_retry_params_forwarded` (function) — `tests/unit/sdk/test_sync_client.py:192`
+- `test_thread_safety_concurrent_list_benchmarks` (function) — `tests/unit/sdk/test_sync_client.py:215`
+- `test_login_calls_sync_auth` (function) — `tests/unit/sdk/test_sync_client.py:243`
+- `make_event` (function) — `tests/unit/streaming/test_buffer.py:15`
+- `TestEventBuffer` (class) — `tests/unit/streaming/test_buffer.py:31`
+- `TestEventReplayIterator` (class) — `tests/unit/streaming/test_buffer.py:273`
+- `TestBufferingEventIterator` (class) — `tests/unit/streaming/test_buffer.py:356`
+- `TestSequenceIndex` (class) — `tests/unit/streaming/test_buffer_index.py:19`
+- `make_event` (function) — `tests/unit/streaming/test_validation.py:16`
+- `TestEventValidator` (class) — `tests/unit/streaming/test_validation.py:32`
+- `TestValidateEventSequence` (class) — `tests/unit/streaming/test_validation.py:136`
+- `TestValidatingEventIterator` (class) — `tests/unit/streaming/test_validation.py:189`
+- `TestEventOrderingError` (class) — `tests/unit/streaming/test_validation.py:278`
+- `test_protocol_exports` (function) — `tests/unit/test_api_surface.py:9`
+- `test_adapters_exports` (function) — `tests/unit/test_api_surface.py:40`
+- `test_dashboard_exports` (function) — `tests/unit/test_api_surface.py:91`
+- `test_core_exports` (function) — `tests/unit/test_api_surface.py:121`
+- `TestCostEstimator` (class) — `tests/unit/test_estimate.py:108`
+- `TestEstimateCLI` (class) — `tests/unit/test_estimate.py:346`
+- `test_populates_existing_legacy_fields` (function) — `tests/unit/test_game_cli_writer.py:182`
+- `test_match_id_uses_run_id` (function) — `tests/unit/test_game_cli_writer.py:217`
+- `test_game_version_falls_back_to_suite_version` (function) — `tests/unit/test_game_cli_writer.py:230`
+- `test_el_farol_config_columns_populated_from_game_config` (function) — `tests/unit/test_game_cli_writer.py:243`
+- `test_non_el_farol_game_leaves_config_columns_absent_or_none` (function) — `tests/unit/test_game_cli_writer.py:269`
+- `test_agents_json_serialised_from_agent_records` (function) — `tests/unit/test_game_cli_writer.py:287`
+- `test_agents_json_absent_when_no_agent_records` (function) — `tests/unit/test_game_cli_writer.py:324`
+- `test_actions_json_flattens_records_across_episodes` (function) — `tests/unit/test_game_cli_writer.py:337`
+- `test_actions_json_serializes_submitted_at_as_iso_string` (function) — `tests/unit/test_game_cli_writer.py:381`
+- `test_actions_json_absent_when_no_episode_has_actions` (function) — `tests/unit/test_game_cli_writer.py:404`
+- `test_round_payoffs_json_uses_first_episode` (function) — `tests/unit/test_game_cli_writer.py:421`
+- `test_round_payoffs_json_absent_when_episode_0_has_none` (function) — `tests/unit/test_game_cli_writer.py:441`
+- `test_day_aggregates_derived_from_episode_0_history` (function) — `tests/unit/test_game_cli_writer.py:455`
+- `test_day_aggregates_absent_when_actions_list_is_empty` (function) — `tests/unit/test_game_cli_writer.py:531`
+- `test_day_aggregates_absent_when_history_lacks_attendance` (function) — `tests/unit/test_game_cli_writer.py:559`
+- `TestPrisonersDilemma` (class) — `tests/unit/test_game_correctness.py:25`
+- `TestAuction` (class) — `tests/unit/test_game_correctness.py:121`
+- `TestPublicGoodsGame` (class) — `tests/unit/test_game_correctness.py:218`
+- `TestColonelBlotto` (class) — `tests/unit/test_game_correctness.py:314`
+- `TestCongestionGame` (class) — `tests/unit/test_game_correctness.py:415`
+- `TestPDEdgeCases` (class) — `tests/unit/test_game_edge_cases.py:21`
+- `TestPublicGoodsEdgeCases` (class) — `tests/unit/test_game_edge_cases.py:115`
+- `TestAuctionEdgeCases` (class) — `tests/unit/test_game_edge_cases.py:206`
+- `TestBlottoEdgeCases` (class) — `tests/unit/test_game_edge_cases.py:310`
+- `TestCongestionEdgeCases` (class) — `tests/unit/test_game_edge_cases.py:430`
+- `ENTRYPOINT` (const) — `tests/unit/test_github_action.py:17`
+- `TestEntrypointValidation` (class) — `tests/unit/test_github_action.py:162`
+- `TestEntrypointOutputs` (class) — `tests/unit/test_github_action.py:199`
+- `TestEntrypointBadge` (class) — `tests/unit/test_github_action.py:257`
+- `TestEntrypointSummary` (class) — `tests/unit/test_github_action.py:311`
+- `TestThresholdCheck` (class) — `tests/unit/test_github_action.py:332`
+- `TestBudgetCheck` (class) — `tests/unit/test_github_action.py:370`
+- `TestAdapterInput` (class) — `tests/unit/test_github_action.py:408`
+- `VALID_SUITE_YAML` (const) — `tests/unit/test_github_import.py:21`
+- `INVALID_SUITE_YAML` (const) — `tests/unit/test_github_import.py:31`
+- `INVALID_YAML` (const) — `tests/unit/test_github_import.py:36`
+- `TestParseGitHubURL` (class) — `tests/unit/test_github_import.py:46`
+- `TestBuildRawURL` (class) — `tests/unit/test_github_import.py:133`
+- `TestFetchGitHubFile` (class) — `tests/unit/test_github_import.py:162`
+- `TestValidateSuiteYAML` (class) — `tests/unit/test_github_import.py:268`
+- `TestImportFromGitHub` (class) — `tests/unit/test_github_import.py:299`
+- `test_protocol_version_constant_exists` (function) — `tests/unit/test_protocol_version.py:13`
+- `test_request_default_version` (function) — `tests/unit/test_protocol_version.py:19`
+- `test_response_default_version` (function) — `tests/unit/test_protocol_version.py:28`
+- `test_event_default_version` (function) — `tests/unit/test_protocol_version.py:37`
+- `test_request_rejects_unsupported_version` (function) — `tests/unit/test_protocol_version.py:48`
+- `test_response_rejects_unsupported_version` (function) — `tests/unit/test_protocol_version.py:58`
+- `test_event_rejects_unsupported_version` (function) — `tests/unit/test_protocol_version.py:68`
+- `test_request_accepts_supported_version` (function) — `tests/unit/test_protocol_version.py:80`
+- `ADAPTER` (const) — `tests/unit/tournament/test_schemas_discriminator.py:15`
+- `STATE_ADAPTER` (const) — `tests/unit/tournament/test_schemas_discriminator.py:16`
+- `test_parses_pd_action` (function) — `tests/unit/tournament/test_schemas_discriminator.py:19`
+- `test_parses_el_farol_action` (function) — `tests/unit/tournament/test_schemas_discriminator.py:27`
+- `test_pd_missing_choice_rejected` (function) — `tests/unit/tournament/test_schemas_discriminator.py:35`
+- `test_pd_discriminator_with_el_farol_fields_rejected` (function) — `tests/unit/tournament/test_schemas_discriminator.py:41`
+- `test_unknown_game_type_rejected` (function) — `tests/unit/tournament/test_schemas_discriminator.py:52`
+- `test_pd_roundtrip` (function) — `tests/unit/tournament/test_schemas_discriminator.py:58`
+- `test_el_farol_roundtrip` (function) — `tests/unit/tournament/test_schemas_discriminator.py:63`
+- `test_parses_pd_round_state` (function) — `tests/unit/tournament/test_schemas_discriminator.py:68`
+- `test_parses_el_farol_round_state` (function) — `tests/unit/tournament/test_schemas_discriminator.py:90`
+- `test_pd_roundstate_missing_your_turn_rejected` (function) — `tests/unit/tournament/test_schemas_discriminator.py:118`
+- `TestTournamentStatus` (class) — `tests/unit/tournament/test_tournament_models.py:68`
+- `TestTournament` (class) — `tests/unit/tournament/test_tournament_models.py:81`
+- `TestParticipant` (class) — `tests/unit/tournament/test_tournament_models.py:129`
+- `TestRound` (class) — `tests/unit/tournament/test_tournament_models.py:185`
+- `TestAction` (class) — `tests/unit/tournament/test_tournament_models.py:215`
+- `TestTracesListCommand` (class) — `tests/unit/tracing/test_cli.py:57`
+- `TestTracesShowCommand` (class) — `tests/unit/tracing/test_cli.py:103`
+- `TestTracesDeleteCommand` (class) — `tests/unit/tracing/test_cli.py:179`
+- `TestReplayCommand` (class) — `tests/unit/tracing/test_cli.py:216`
+- `TestTraceStep` (class) — `tests/unit/tracing/test_models.py:14`
+- `TestTrace` (class) — `tests/unit/tracing/test_models.py:44`
+- `TestTraceMetadata` (class) — `tests/unit/tracing/test_models.py:109`
+- `TestTraceSummary` (class) — `tests/unit/tracing/test_models.py:131`
+- `TestTraceRecorder` (class) — `tests/unit/tracing/test_recorder.py:28`
+- `TestRetentionPolicy` (class) — `tests/unit/tracing/test_retention.py:35`
+- `TestFileTraceStorage` (class) — `tests/unit/tracing/test_storage.py:54`
+- `pytestmark` (const) — `tests/unit/tui/screens/test_main_screen.py:18`
+- `TestMainScreen` (class) — `tests/unit/tui/screens/test_main_screen.py:31`
+- `pytestmark` (const) — `tests/unit/tui/screens/test_suite_editor.py:16`
+- `TestNewSuiteScreen` (class) — `tests/unit/tui/screens/test_suite_editor.py:29`
+- `pytestmark` (const) — `tests/unit/tui/screens/test_test_editor.py:16`
+- `TestAddTestScreen` (class) — `tests/unit/tui/screens/test_test_editor.py:30`
+- `pytestmark` (const) — `tests/unit/tui/test_app.py:16`
+- `TestATPTUI` (class) — `tests/unit/tui/test_app.py:41`
+- `TestScreens` (class) — `tests/unit/tui/test_app.py:73`
+- `TestPanels` (class) — `tests/unit/tui/test_app.py:125`
+- `TestRunTui` (class) — `tests/unit/tui/test_app.py:154`
+- `pytestmark` (const) — `tests/unit/tui/widgets/test_test_tree.py:16`
+- `TestTestTreeWidget` (class) — `tests/unit/tui/widgets/test_test_tree.py:26`
+- `pytestmark` (const) — `tests/unit/tui/widgets/test_yaml_preview.py:16`
+- `TestYAMLPreviewWidget` (class) — `tests/unit/tui/widgets/test_yaml_preview.py:26`
+
+## Modules
+
+_954 files, 4252 public symbols, 112 internal imports._
+
+- `art/generate_article_docx.py` (python)
+- `art/generate_quickstart_pdf.py` (python)
+- `atp-games/atp_games/__init__.py` (python)
+- `atp-games/atp_games/evaluators/__init__.py` (python)
+- `atp-games/atp_games/evaluators/cooperation_evaluator.py` (python)
+- `atp-games/atp_games/evaluators/equilibrium_evaluator.py` (python)
+- `atp-games/atp_games/evaluators/exploitability_evaluator.py` (python)
+- `atp-games/atp_games/evaluators/fairness_evaluator.py` (python)
+- `atp-games/atp_games/evaluators/payoff_evaluator.py` (python)
+- `atp-games/atp_games/mapping/__init__.py` (python)
+- `atp-games/atp_games/mapping/action_mapper.py` (python)
+- `atp-games/atp_games/mapping/observation_mapper.py` (python)
+- `atp-games/atp_games/models.py` (python)
+- `atp-games/atp_games/plugin.py` (python)
+- `atp-games/atp_games/rating/__init__.py` (python)
+- `atp-games/atp_games/rating/elo.py` (python)
+- `atp-games/atp_games/runner/__init__.py` (python)
+- `atp-games/atp_games/runner/action_validator.py` (python)
+- `atp-games/atp_games/runner/builtin_adapter.py` (python)
+- `atp-games/atp_games/runner/game_runner.py` (python)
+- `atp-games/atp_games/suites/__init__.py` (python)
+- `atp-games/atp_games/suites/alympics.py` (python)
+- `atp-games/atp_games/suites/builtin/__init__.py` (python)
+- `atp-games/atp_games/suites/cross_play.py` (python)
+- `atp-games/atp_games/suites/game_suite_loader.py` (python)
+- `atp-games/atp_games/suites/models.py` (python)
+- `atp-games/atp_games/suites/schema.py` (python)
+- `atp-games/atp_games/suites/stress_test.py` (python)
+- `atp-games/atp_games/suites/tournament.py` (python)
+- `atp-games/tests/__init__.py` (python)
+- `atp-games/tests/test_action_mapper.py` (python)
+- `atp-games/tests/test_action_validator.py` (python)
+- `atp-games/tests/test_agent_record.py` (python)
+- `atp-games/tests/test_alympics.py` (python)
+- `atp-games/tests/test_builtin_adapter.py` (python)
+- `atp-games/tests/test_cooperation_evaluator.py` (python)
+- `atp-games/tests/test_cross_play.py` (python)
+- `atp-games/tests/test_el_farol_action_space.py` (python)
+- `atp-games/tests/test_el_farol_config.py` (python)
+- `atp-games/tests/test_el_farol_interval_agents.py` (python)
+- `atp-games/tests/test_elo.py` (python)
+- `atp-games/tests/test_equilibrium_evaluator.py` (python)
+- `atp-games/tests/test_exploitability_evaluator.py` (python)
+- `atp-games/tests/test_fairness_evaluator.py` (python)
+- `atp-games/tests/test_game_runner.py` (python)
+- `atp-games/tests/test_game_suite_loader.py` (python)
+- `atp-games/tests/test_integration.py` (python)
+- `atp-games/tests/test_models.py` (python)
+- `atp-games/tests/test_models_action_record.py` (python)
+- `atp-games/tests/test_multi_episode.py` (python)
+- `atp-games/tests/test_observation_mapper.py` (python)
+- `atp-games/tests/test_payoff_evaluator.py` (python)
+- `atp-games/tests/test_plugin_registration.py` (python)
+- `atp-games/tests/test_round_payoffs.py` (python)
+- `atp-games/tests/test_runner_action_records.py` (python)
+- `atp-games/tests/test_stress_test.py` (python)
+- `atp-games/tests/test_tournament.py` (python)
+- `atp-games/tests/test_tournament_elo.py` (python)
+- `atp/baseline/__init__.py` (python)
+- `atp/baseline/comparison.py` (python)
+- `atp/baseline/models.py` (python)
+- `atp/baseline/reporter.py` (python)
+- `atp/baseline/storage.py` (python)
+- `atp/benchmarks/__init__.py` (python)
+- `atp/benchmarks/loaders/__init__.py` (python)
+- `atp/benchmarks/loaders/base.py` (python)
+- `atp/benchmarks/loaders/humaneval.py` (python)
+- `atp/benchmarks/loaders/mmlu.py` (python)
+- `atp/benchmarks/loaders/swebench.py` (python)
+- `atp/benchmarks/models.py` (python)
+- `atp/benchmarks/registry.py` (python)
+- `atp/catalog/__init__.py` (python)
+- `atp/catalog/comparison.py` (python)
+- `atp/catalog/models.py` (python)
+- `atp/catalog/repository.py` (python)
+- `atp/catalog/sync.py` (python)
+- `atp/cli/__init__.py` (python)
+- `atp/cli/commands/__init__.py` (python)
+- `atp/cli/commands/benchmark.py` (python)
+- `atp/cli/commands/budget.py` (python)
+- `atp/cli/commands/catalog.py` (python)
+- `atp/cli/commands/compare.py` (python)
+- `atp/cli/commands/estimate.py` (python)
+- `atp/cli/commands/experiment.py` (python)
+- `atp/cli/commands/game.py` (python)
+- `atp/cli/commands/generate.py` (python)
+- `atp/cli/commands/init.py` (python)
+- `atp/cli/commands/plugins.py` (python)
+- `atp/cli/commands/pull.py` (python)
+- `atp/cli/commands/push.py` (python)
+- `atp/cli/commands/quickstart.py` (python)
+- `atp/cli/commands/remote.py` (python)
+- `atp/cli/commands/sync_cmd.py` (python)
+- `atp/cli/commands/traces.py` (python)
+- `atp/cli/commands/trend.py` (python)
+- `atp/cli/live_display.py` (python)
+- `atp/cli/main.py` (python)
+- `atp/evaluators/__init__.py` (python)
+- `atp/evaluators/artifact.py` (python)
+- `atp/evaluators/base.py` (python)
+- `atp/evaluators/behavior.py` (python)
+- `atp/evaluators/code_exec.py` (python)
+- `atp/evaluators/composite.py` (python)
+- `atp/evaluators/container.py` (python)
+- `atp/evaluators/factuality.py` (python)
+- `atp/evaluators/filesystem.py` (python)
+- `atp/evaluators/git_commit.py` (python)
+- `atp/evaluators/guardrails.py` (python)
+- `atp/evaluators/llm_judge.py` (python)
+- `atp/evaluators/performance.py` (python)
+- `atp/evaluators/registry.py` (python)
+- `atp/evaluators/security/__init__.py` (python)
+- `atp/evaluators/security/base.py` (python)
+- `atp/evaluators/security/code.py` (python)
+- `atp/evaluators/security/evaluator.py` (python)
+- `atp/evaluators/security/injection.py` (python)
+- `atp/evaluators/security/pii.py` (python)
+- `atp/evaluators/security/secrets.py` (python)
+- `atp/evaluators/style.py` (python)
+- `atp/generator/__init__.py` (python)
+- `atp/generator/core.py` (python)
+- `atp/generator/importers/__init__.py` (python)
+- `atp/generator/importers/langsmith.py` (python)
+- `atp/generator/importers/opentelemetry.py` (python)
+- `atp/generator/nl_generator.py` (python)
+- `atp/generator/regression.py` (python)
+- `atp/generator/templates.py` (python)
+- `atp/generator/trace_import.py` (python)
+- `atp/generator/writer.py` (python)
+- `atp/mock_tools/__init__.py` (python)
+- `atp/mock_tools/loader.py` (python)
+- `atp/mock_tools/models.py` (python)
+- `atp/mock_tools/recorder.py` (python)
+- `atp/mock_tools/server.py` (python)
+- `atp/performance/__init__.py` (python)
+- `atp/performance/async_utils.py` (python)
+- `atp/performance/benchmark.py` (python)
+- `atp/performance/cache.py` (python)
+- `atp/performance/memory.py` (python)
+- `atp/performance/profiler.py` (python)
+- `atp/performance/startup.py` (python)
+- `atp/plugins/__init__.py` (python)
+- `atp/plugins/config.py` (python)
+- `atp/plugins/dependencies.py` (python)
+- `atp/plugins/discovery.py` (python)
+- `atp/plugins/interfaces.py` (python)
+- `atp/reporters/__init__.py` (python)
+- `atp/reporters/base.py` (python)
+- `atp/reporters/console.py` (python)
+- `atp/reporters/game_reporter.py` (python)
+- `atp/reporters/html_reporter.py` (python)
+- `atp/reporters/json_reporter.py` (python)
+- `atp/reporters/junit_reporter.py` (python)
+- `atp/reporters/registry.py` (python)
+- `atp/runner/__init__.py` (python)
+- `atp/runner/exceptions.py` (python)
+- `atp/runner/models.py` (python)
+- `atp/runner/multi_agent.py` (python)
+- `atp/runner/orchestrator.py` (python)
+- `atp/runner/progress.py` (python)
+- `atp/runner/sandbox.py` (python)
+- `atp/sdk/__init__.py` (python)
+- `atp/sdk/compare.py` (python)
+- `atp/tracing/__init__.py` (python)
+- `atp/tracing/models.py` (python)
+- `atp/tracing/recorder.py` (python)
+- `atp/tracing/storage.py` (python)
+- `atp/tui/__init__.py` (python)
+- `atp/tui/app.py` (python)
+- `atp/tui/screens/__init__.py` (python)
+- `atp/tui/screens/main_menu.py` (python)
+- `atp/tui/screens/suite_editor.py` (python)
+- `atp/tui/screens/test_editor.py` (python)
+- `atp/tui/widgets/__init__.py` (python)
+- `atp/tui/widgets/test_tree.py` (python)
+- `atp/tui/widgets/yaml_preview.py` (python)
+- `demo-game/agents/el_farol_agent.py` (python)
+- `demo-game/agents/openai_game_agent.py` (python)
+- `demo-game/bots/__init__.py` (python)
+- `demo-game/bots/el_farol_mcp_bot.py` (python)
+- `demo-game/bots/llm_mcp_bot.py` (python)
+- `demo-game/bots/llm_prompts.py` (python)
+- `demo/agents/anthropic_agent.py` (python)
+- `demo/agents/openai_agent.py` (python)
+- `demo/compare_agents.py` (python)
+- `demo/fixtures/tests/test_api_client.py` (python)
+- `demo/fixtures/tests/test_csv_parser.py` (python)
+- `demo/fixtures/tests/test_fibonacci.py` (python)
+- `examples/demo_agent.py` (python)
+- `examples/docker/agent.py` (python)
+- `examples/docker/openai_agent.py` (python)
+- `examples/experiments/run_experiment.py` (python)
+- `examples/games/basic_usage.py` (python)
+- `examples/games/custom_game.py` (python)
+- `examples/games/llm_agent_eval.py` (python)
+- `examples/games/population_dynamics.py` (python)
+- `examples/loader_example.py` (python)
+- `examples/mcp_agent.py` (python)
+- `examples/mcp_simple_agent.py` (python)
+- `examples/mock_mcp_server.py` (python)
+- `examples/openai_agent.py` (python)
+- `examples/search_agent/agent.py` (python)
+- `executor.py` (python)
+- `game-environments/game_envs/__init__.py` (python)
+- `game-environments/game_envs/analysis/__init__.py` (python)
+- `game-environments/game_envs/analysis/cooperation.py` (python)
+- `game-environments/game_envs/analysis/exploitability.py` (python)
+- `game-environments/game_envs/analysis/fairness.py` (python)
+- `game-environments/game_envs/analysis/models.py` (python)
+- `game-environments/game_envs/analysis/nash_solver.py` (python)
+- `game-environments/game_envs/analysis/population.py` (python)
+- `game-environments/game_envs/core/__init__.py` (python)
+- `game-environments/game_envs/core/action.py` (python)
+- `game-environments/game_envs/core/communication.py` (python)
+- `game-environments/game_envs/core/errors.py` (python)
+- `game-environments/game_envs/core/game.py` (python)
+- `game-environments/game_envs/core/history.py` (python)
+- `game-environments/game_envs/core/state.py` (python)
+- `game-environments/game_envs/core/strategy.py` (python)
+- `game-environments/game_envs/games/__init__.py` (python)
+- `game-environments/game_envs/games/auction.py` (python)
+- `game-environments/game_envs/games/battle_of_sexes.py` (python)
+- `game-environments/game_envs/games/colonel_blotto.py` (python)
+- `game-environments/game_envs/games/congestion.py` (python)
+- `game-environments/game_envs/games/el_farol.py` (python)
+- `game-environments/game_envs/games/prisoners_dilemma.py` (python)
+- `game-environments/game_envs/games/public_goods.py` (python)
+- `game-environments/game_envs/games/registry.py` (python)
+- `game-environments/game_envs/games/stag_hunt.py` (python)
+- `game-environments/game_envs/strategies/__init__.py` (python)
+- `game-environments/game_envs/strategies/auction_strategies.py` (python)
+- `game-environments/game_envs/strategies/blotto_strategies.py` (python)
+- `game-environments/game_envs/strategies/bos_strategies.py` (python)
+- `game-environments/game_envs/strategies/congestion_strategies.py` (python)
+- `game-environments/game_envs/strategies/el_farol_strategies.py` (python)
+- `game-environments/game_envs/strategies/pd_strategies.py` (python)
+- `game-environments/game_envs/strategies/pg_strategies.py` (python)
+- `game-environments/game_envs/strategies/registry.py` (python)
+- `game-environments/game_envs/strategies/stag_hunt_strategies.py` (python)
+- `game-environments/tests/__init__.py` (python)
+- `game-environments/tests/conftest.py` (python)
+- `game-environments/tests/test_action.py` (python)
+- `game-environments/tests/test_action_properties.py` (python)
+- `game-environments/tests/test_auction.py` (python)
+- `game-environments/tests/test_battle_of_sexes.py` (python)
+- `game-environments/tests/test_battle_of_sexes_service_methods.py` (python)
+- `game-environments/tests/test_colonel_blotto.py` (python)
+- `game-environments/tests/test_communication.py` (python)
+- `game-environments/tests/test_congestion.py` (python)
+- `game-environments/tests/test_cooperation.py` (python)
+- `game-environments/tests/test_el_farol.py` (python)
+- `game-environments/tests/test_exploitability.py` (python)
+- `game-environments/tests/test_fairness.py` (python)
+- `game-environments/tests/test_game.py` (python)
+- `game-environments/tests/test_history.py` (python)
+- `game-environments/tests/test_nash_solver.py` (python)
+- `game-environments/tests/test_population.py` (python)
+- `game-environments/tests/test_prisoners_dilemma.py` (python)
+- `game-environments/tests/test_public_goods.py` (python)
+- `game-environments/tests/test_public_goods_service_methods.py` (python)
+- `game-environments/tests/test_registry.py` (python)
+- `game-environments/tests/test_stag_hunt.py` (python)
+- `game-environments/tests/test_stag_hunt_service_methods.py` (python)
+- `game-environments/tests/test_state.py` (python)
+- `game-environments/tests/test_strategies/__init__.py` (python)
+- `game-environments/tests/test_strategies/test_auction_strategies.py` (python)
+- `game-environments/tests/test_strategies/test_blotto_strategies.py` (python)
+- `game-environments/tests/test_strategies/test_congestion_strategies.py` (python)
+- `game-environments/tests/test_strategies/test_pd_strategies.py` (python)
+- `game-environments/tests/test_strategies/test_pg_strategies.py` (python)
+- `game-environments/tests/test_strategies/test_registry.py` (python)
+- `game-environments/tests/test_strategy.py` (python)
+- `migrations/analytics/env.py` (python)
+- `migrations/analytics/versions/c25a35e0b9eb_initial_schema.py` (python)
+- `migrations/dashboard/env.py` (python)
+- `migrations/dashboard/versions/028d8a9fdc46_tournament_slice_columns.py` (python)
+- `migrations/dashboard/versions/4e902371a941_add_tournament_tables.py` (python)
+- `migrations/dashboard/versions/52987a83afb7_apitoken_agent_purpose_labs_tsa_pr_3.py` (python)
+- `migrations/dashboard/versions/7a1c3d9e4b02_el_farol_game_result_columns.py` (python)
+- `migrations/dashboard/versions/853688412c5b_tournament_agent_sandbox_labs_tsa_pr_1.py` (python)
+- `migrations/dashboard/versions/97e900e385ae_add_benchmark_tables.py` (python)
+- `migrations/dashboard/versions/9f1fc0c9cb9f_initial_schema.py` (python)
+- `migrations/dashboard/versions/a1b2c3d4e5f6_action_tier2_fields.py` (python)
+- `migrations/dashboard/versions/a7b8c9d0e1f2_suite_execution_agent_name.py` (python)
+- `migrations/dashboard/versions/a9c4e81f3d2a_tournament_participant_agent_xor_builtin_check.py` (python)
+- `migrations/dashboard/versions/b3a1f7c2d4e5_add_webhook_url_and_run_events.py` (python)
+- `migrations/dashboard/versions/b8c9d0e1f2a3_agent_owner_not_null.py` (python)
+- `migrations/dashboard/versions/c60b45e516be_tournament_plan_2a_constraints.py` (python)
+- `migrations/dashboard/versions/c8d5f2a91234_enforce_run_user_id_not_null.py` (python)
+- `migrations/dashboard/versions/d2e5a1c7f3b8_agent_level_participant_uniqueness.py` (python)
+- `migrations/dashboard/versions/d7f3a2b1c4e5_agent_ownership_tokens_invites.py` (python)
+- `migrations/dashboard/versions/e1b2c3d4f5a6_agent_ownerless_partial_unique.py` (python)
+- `migrations/dashboard/versions/f1a2b3c4d5e6_action_reasoning.py` (python)
+- `packages/atp-adapters/atp/adapters/__init__.py` (python)
+- `packages/atp-adapters/atp/adapters/autogen.py` (python)
+- `packages/atp-adapters/atp/adapters/azure_openai/__init__.py` (python)
+- `packages/atp-adapters/atp/adapters/azure_openai/adapter.py` (python)
+- `packages/atp-adapters/atp/adapters/azure_openai/auth.py` (python)
+- `packages/atp-adapters/atp/adapters/azure_openai/models.py` (python)
+- `packages/atp-adapters/atp/adapters/base.py` (python)
+- `packages/atp-adapters/atp/adapters/bedrock/__init__.py` (python)
+- `packages/atp-adapters/atp/adapters/bedrock/adapter.py` (python)
+- `packages/atp-adapters/atp/adapters/bedrock/auth.py` (python)
+- `packages/atp-adapters/atp/adapters/bedrock/models.py` (python)
+- `packages/atp-adapters/atp/adapters/cli.py` (python)
+- `packages/atp-adapters/atp/adapters/container.py` (python)
+- `packages/atp-adapters/atp/adapters/crewai.py` (python)
+- `packages/atp-adapters/atp/adapters/exceptions.py` (python)
+- `packages/atp-adapters/atp/adapters/fallback.py` (python)
+- `packages/atp-adapters/atp/adapters/http.py` (python)
+- `packages/atp-adapters/atp/adapters/langgraph.py` (python)
+- `packages/atp-adapters/atp/adapters/mcp/__init__.py` (python)
+- `packages/atp-adapters/atp/adapters/mcp/adapter.py` (python)
+- `packages/atp-adapters/atp/adapters/mcp/transport.py` (python)
+- `packages/atp-adapters/atp/adapters/registry.py` (python)
+- `packages/atp-adapters/atp/adapters/sdk_adapter.py` (python)
+- `packages/atp-adapters/atp/adapters/vertex/__init__.py` (python)
+- `packages/atp-adapters/atp/adapters/vertex/adapter.py` (python)
+- `packages/atp-adapters/atp/adapters/vertex/auth.py` (python)
+- `packages/atp-adapters/atp/adapters/vertex/models.py` (python)
+- `packages/atp-core/atp/chaos/__init__.py` (python)
+- `packages/atp-core/atp/chaos/concurrency.py` (python)
+- `packages/atp-core/atp/chaos/injectors.py` (python)
+- `packages/atp-core/atp/chaos/models.py` (python)
+- `packages/atp-core/atp/chaos/profiles.py` (python)
+- `packages/atp-core/atp/core/__init__.py` (python)
+- `packages/atp-core/atp/core/exceptions.py` (python)
+- `packages/atp-core/atp/core/logging.py` (python)
+- `packages/atp-core/atp/core/metrics.py` (python)
+- `packages/atp-core/atp/core/observer.py` (python)
+- `packages/atp-core/atp/core/result.py` (python)
+- `packages/atp-core/atp/core/results.py` (python)
+- `packages/atp-core/atp/core/security.py` (python)
+- `packages/atp-core/atp/core/settings.py` (python)
+- `packages/atp-core/atp/core/telemetry.py` (python)
+- `packages/atp-core/atp/cost/__init__.py` (python)
+- `packages/atp-core/atp/cost/models.py` (python)
+- `packages/atp-core/atp/cost/tracker.py` (python)
+- `packages/atp-core/atp/loader/__init__.py` (python)
+- `packages/atp-core/atp/loader/filters.py` (python)
+- `packages/atp-core/atp/loader/loader.py` (python)
+- `packages/atp-core/atp/loader/models.py` (python)
+- `packages/atp-core/atp/loader/parser.py` (python)
+- `packages/atp-core/atp/loader/schema.py` (python)
+- `packages/atp-core/atp/protocol/__init__.py` (python)
+- `packages/atp-core/atp/protocol/_version.py` (python)
+- `packages/atp-core/atp/protocol/models.py` (python)
+- `packages/atp-core/atp/protocol/schema.py` (python)
+- `packages/atp-core/atp/scoring/__init__.py` (python)
+- `packages/atp-core/atp/scoring/aggregator.py` (python)
+- `packages/atp-core/atp/scoring/models.py` (python)
+- `packages/atp-core/atp/statistics/__init__.py` (python)
+- `packages/atp-core/atp/statistics/calculator.py` (python)
+- `packages/atp-core/atp/statistics/models.py` (python)
+- `packages/atp-core/atp/statistics/reporter.py` (python)
+- `packages/atp-core/atp/streaming/__init__.py` (python)
+- `packages/atp-core/atp/streaming/buffer.py` (python)
+- `packages/atp-core/atp/streaming/validation.py` (python)
+- `packages/atp-dashboard/atp/analytics/__init__.py` (python)
+- `packages/atp-dashboard/atp/analytics/ab_testing.py` (python)
+- `packages/atp-dashboard/atp/analytics/advanced.py` (python)
+- `packages/atp-dashboard/atp/analytics/budgets.py` (python)
+- `packages/atp-dashboard/atp/analytics/cost.py` (python)
+- `packages/atp-dashboard/atp/analytics/database.py` (python)
+- `packages/atp-dashboard/atp/analytics/estimator.py` (python)
+- `packages/atp-dashboard/atp/analytics/models.py` (python)
+- `packages/atp-dashboard/atp/analytics/repository.py` (python)
+- `packages/atp-dashboard/atp/analytics/trend.py` (python)
+- `packages/atp-dashboard/atp/dashboard/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/__main__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/audit.py` (python)
+- `packages/atp-dashboard/atp/dashboard/audit_middleware.py` (python)
+- `packages/atp-dashboard/atp/dashboard/auth/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/auth/device_flow.py` (python)
+- `packages/atp-dashboard/atp/dashboard/auth/post_auth.py` (python)
+- `packages/atp-dashboard/atp/dashboard/auth/sso/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py` (python)
+- `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py` (python)
+- `packages/atp-dashboard/atp/dashboard/auth/state_store.py` (python)
+- `packages/atp-dashboard/atp/dashboard/benchmark/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/benchmark/models.py` (python)
+- `packages/atp-dashboard/atp/dashboard/benchmark/schemas.py` (python)
+- `packages/atp-dashboard/atp/dashboard/benchmark/service.py` (python)
+- `packages/atp-dashboard/atp/dashboard/cli/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/cli/admin.py` (python)
+- `packages/atp-dashboard/atp/dashboard/database.py` (python)
+- `packages/atp-dashboard/atp/dashboard/mcp/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/mcp/auth.py` (python)
+- `packages/atp-dashboard/atp/dashboard/mcp/notifications.py` (python)
+- `packages/atp-dashboard/atp/dashboard/mcp/observability.py` (python)
+- `packages/atp-dashboard/atp/dashboard/mcp/tools.py` (python)
+- `packages/atp-dashboard/atp/dashboard/migrations/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/migrations/probes/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/migrations/probes/check_tournament_invariants.py` (python)
+- `packages/atp-dashboard/atp/dashboard/migrations/url_helpers.py` (python)
+- `packages/atp-dashboard/atp/dashboard/models.py` (python)
+- `packages/atp-dashboard/atp/dashboard/optimized_queries.py` (python)
+- `packages/atp-dashboard/atp/dashboard/query_cache.py` (python)
+- `packages/atp-dashboard/atp/dashboard/rbac/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/rbac/models.py` (python)
+- `packages/atp-dashboard/atp/dashboard/schemas.py` (python)
+- `packages/atp-dashboard/atp/dashboard/storage.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tenancy/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tenancy/manager.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tenancy/middleware.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tenancy/migration.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tenancy/models.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tenancy/quotas.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tenancy/schemas.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tenancy/session.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tokens.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/access.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/builtins.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/deadlines.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/errors.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/events.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/models.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/reasons.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/schemas.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/service.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/state.py` (python)
+- `packages/atp-dashboard/atp/dashboard/tournament/visibility.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/config.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/dependencies.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/factory.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/game_copy.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/logging_config.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/rate_limit.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/admin_ui.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/agent_management_api.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/agent_traces.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/agents.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/analytics.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/audit.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/auth.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/benchmark_api.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/budgets.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/builtins_api.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/catalog.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/comparison.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/costs.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/definitions.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/device_auth.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/el_farol_dashboard.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/el_farol_from_tournament.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/experiments.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/games.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/home.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/invite_api.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/leaderboard.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/marketplace.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/metrics.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/public_leaderboard.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/roles.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/saml.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/sso.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/suites.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/templates.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/tenants.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/tests.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/timeline.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/token_api.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/tournament_api.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/tournament_live.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/traces.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/trends.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/ui.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/upload.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/users.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/websocket.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/winners_api.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/routes/winners_ui.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/services/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/services/agent_service.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/services/comparison_service.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/services/el_farol_constants.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/services/export_service.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/services/github_import.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/services/test_service.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/services/winners.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/websocket/__init__.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/websocket/manager.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/websocket/models.py` (python)
+- `packages/atp-dashboard/atp/dashboard/v2/websocket/pubsub.py` (python)
+- `packages/atp-dashboard/atp/dashboard/webhook.py` (python)
+- `packages/atp-dashboard/tests/__init__.py` (python)
+- `packages/atp-dashboard/tests/unit/__init__.py` (python)
+- `packages/atp-dashboard/tests/unit/analytics/__init__.py` (python)
+- `packages/atp-dashboard/tests/unit/analytics/test_ab_testing.py` (python)
+- `packages/atp-dashboard/tests/unit/analytics/test_advanced.py` (python)
+- `packages/atp-dashboard/tests/unit/analytics/test_budgets.py` (python)
+- `packages/atp-dashboard/tests/unit/analytics/test_cost.py` (python)
+- `packages/atp-dashboard/tests/unit/analytics/test_database.py` (python)
+- `packages/atp-dashboard/tests/unit/analytics/test_models.py` (python)
+- `packages/atp-dashboard/tests/unit/analytics/test_repository.py` (python)
+- `packages/atp-sdk/atp_sdk/__init__.py` (python)
+- `packages/atp-sdk/atp_sdk/auth.py` (python)
+- `packages/atp-sdk/atp_sdk/benchmark.py` (python)
+- `packages/atp-sdk/atp_sdk/client.py` (python)
+- `packages/atp-sdk/atp_sdk/models.py` (python)
+- `packages/atp-sdk/atp_sdk/retry.py` (python)
+- `packages/atp-sdk/atp_sdk/sync.py` (python)
+- `participant-kit-el-farol-en/bot_el_farol_random.py` (python)
+- `scripts/benchmark_dashboard.py` (python)
+- `scripts/ops/reconcile_prod_schema.py` (python)
+- `scripts/repro_mcp_concurrent_tools_list.py` (python)
+- `scripts/smoke_el_farol_load.py` (python)
+- `scripts/smoke_el_farol_prod.py` (python)
+- `scripts/smoke_llm_pd.py` (python)
+- `task.py` (python)
+- `tests/__init__.py` (python)
+- `tests/ci/__init__.py` (python)
+- `tests/ci/test_check_changelog.py` (python)
+- `tests/conftest.py` (python)
+- `tests/contract/__init__.py` (python)
+- `tests/contract/test_protocol_contract.py` (python)
+- `tests/docs/__init__.py` (python)
+- `tests/docs/test_release_artifacts.py` (python)
+- `tests/e2e/__init__.py` (python)
+- `tests/e2e/conftest.py` (python)
+- `tests/e2e/dashboard/__init__.py` (python)
+- `tests/e2e/dashboard/conftest.py` (python)
+- `tests/e2e/dashboard/test_about_quickstart_e2e.py` (python)
+- `tests/e2e/dashboard/tournament/__init__.py` (python)
+- `tests/e2e/dashboard/tournament/conftest.py` (python)
+- `tests/e2e/dashboard/tournament/test_e2e_30_round_pd_with_reconnect.py` (python)
+- `tests/e2e/dashboard/tournament/test_e2e_ad9_ad10.py` (python)
+- `tests/e2e/dashboard/tournament/test_e2e_cancel_paths.py` (python)
+- `tests/e2e/dashboard/tournament/test_e2e_rest_admin_curl.py` (python)
+- `tests/e2e/test_cli_commands.py` (python)
+- `tests/e2e/test_mcp_adapter.py` (python)
+- `tests/e2e/test_mcp_pd_tournament.py` (python)
+- `tests/fixtures/__init__.py` (python)
+- `tests/fixtures/comparison/__init__.py` (python)
+- `tests/fixtures/comparison/events.py` (python)
+- `tests/fixtures/comparison/factories.py` (python)
+- `tests/fixtures/comparison/leaderboard.py` (python)
+- `tests/fixtures/test_site/app.py` (python)
+- `tests/integration/__init__.py` (python)
+- `tests/integration/adapters/__init__.py` (python)
+- `tests/integration/adapters/test_container_integration.py` (python)
+- `tests/integration/adapters/test_framework_adapters.py` (python)
+- `tests/integration/adapters/test_http_integration.py` (python)
+- `tests/integration/cli/__init__.py` (python)
+- `tests/integration/cli/test_generate_command.py` (python)
+- `tests/integration/cli/test_init_command.py` (python)
+- `tests/integration/dashboard/__init__.py` (python)
+- `tests/integration/dashboard/conftest.py` (python)
+- `tests/integration/dashboard/test_admin_tournament_ui.py` (python)
+- `tests/integration/dashboard/test_agent_management_api.py` (python)
+- `tests/integration/dashboard/test_analytics_routes.py` (python)
+- `tests/integration/dashboard/test_api_token_auth.py` (python)
+- `tests/integration/dashboard/test_audit_routes.py` (python)
+- `tests/integration/dashboard/test_cost_routes.py` (python)
+- `tests/integration/dashboard/test_el_farol_dashboard_endpoint.py` (python)
+- `tests/integration/dashboard/test_game_result_el_farol_columns.py` (python)
+- `tests/integration/dashboard/test_game_routes.py` (python)
+- `tests/integration/dashboard/test_init_database_env_url.py` (python)
+- `tests/integration/dashboard/test_init_database_schema_reconcile.py` (python)
+- `tests/integration/dashboard/test_invite_api.py` (python)
+- `tests/integration/dashboard/test_leaderboard_matrix_endpoint.py` (python)
+- `tests/integration/dashboard/test_leaderboard_performance.py` (python)
+- `tests/integration/dashboard/test_legacy_agents_endpoint_gone.py` (python)
+- `tests/integration/dashboard/test_marketplace_routes.py` (python)
+- `tests/integration/dashboard/test_match_detail_ui.py` (python)
+- `tests/integration/dashboard/test_matches_listing.py` (python)
+- `tests/integration/dashboard/test_migration_agent_owner_not_null.py` (python)
+- `tests/integration/dashboard/test_migration_suite_execution_agent_name.py` (python)
+- `tests/integration/dashboard/test_multi_timeline_endpoint.py` (python)
+- `tests/integration/dashboard/test_pending_banner.py` (python)
+- `tests/integration/dashboard/test_rbac_authorization.py` (python)
+- `tests/integration/dashboard/test_role_routes.py` (python)
+- `tests/integration/dashboard/test_side_by_side_endpoint.py` (python)
+- `tests/integration/dashboard/test_suite_definition_api.py` (python)
+- `tests/integration/dashboard/test_tenant_routes.py` (python)
+- `tests/integration/dashboard/test_timeline_events_endpoint.py` (python)
+- `tests/integration/dashboard/test_token_api.py` (python)
+- `tests/integration/dashboard/test_tournament_detail_ui.py` (python)
+- `tests/integration/dashboard/test_tsa_agent_api.py` (python)
+- `tests/integration/dashboard/test_tsa_alembic_migration.py` (python)
+- `tests/integration/dashboard/test_tsa_auth_gating.py` (python)
+- `tests/integration/dashboard/test_tsa_builtins.py` (python)
+- `tests/integration/dashboard/test_tsa_data_model.py` (python)
+- `tests/integration/dashboard/test_tsa_match_linkage.py` (python)
+- `tests/integration/dashboard/test_tsa_runner_builtins.py` (python)
+- `tests/integration/dashboard/test_tsa_tournament_create.py` (python)
+- `tests/integration/dashboard/test_tsa_ui_agents_quota.py` (python)
+- `tests/integration/dashboard/test_tsa_ui_tournament_new.py` (python)
+- `tests/integration/dashboard/test_ui_agent_new.py` (python)
+- `tests/integration/dashboard/test_ui_agents_routes.py` (python)
+- `tests/integration/dashboard/test_ui_bootstrap_invites.py` (python)
+- `tests/integration/dashboard/test_ui_home_leaderboard.py` (python)
+- `tests/integration/dashboard/test_ui_tokens_routes.py` (python)
+- `tests/integration/dashboard/test_v2_routes.py` (python)
+- `tests/integration/dashboard/tournament/__init__.py` (python)
+- `tests/integration/dashboard/tournament/conftest.py` (python)
+- `tests/integration/dashboard/tournament/test_cancel_cascade.py` (python)
+- `tests/integration/dashboard/tournament/test_cancel_check_constraint.py` (python)
+- `tests/integration/dashboard/tournament/test_deadline_worker_race.py` (python)
+- `tests/integration/dashboard/tournament/test_el_farol_flow.py` (python)
+- `tests/integration/dashboard/tournament/test_factory_lifespan.py` (python)
+- `tests/integration/dashboard/tournament/test_live_dashboard_endpoints.py` (python)
+- `tests/integration/dashboard/tournament/test_live_dashboard_ui.py` (python)
+- `tests/integration/dashboard/tournament/test_mcp_join_tournament.py` (python)
+- `tests/integration/dashboard/tournament/test_migration_plan_2a.py` (python)
+- `tests/integration/dashboard/tournament/test_partial_unique_index.py` (python)
+- `tests/integration/dashboard/tournament/test_public_goods_flow.py` (python)
+- `tests/integration/dashboard/tournament/test_rest_admin.py` (python)
+- `tests/integration/dashboard/tournament/test_service_join_idempotent.py` (python)
+- `tests/integration/dashboard/tournament/test_service_leave.py` (python)
+- `tests/integration/dashboard/tournament/test_service_read_methods.py` (python)
+- `tests/integration/dashboard/tournament/test_session_sync.py` (python)
+- `tests/integration/dashboard/tournament/test_tsa_multi_agent_join.py` (python)
+- `tests/integration/dashboard/winners/__init__.py` (python)
+- `tests/integration/dashboard/winners/conftest.py` (python)
+- `tests/integration/dashboard/winners/test_hall_of_fame_api.py` (python)
+- `tests/integration/dashboard/winners/test_hall_of_fame_ui.py` (python)
+- `tests/integration/dashboard/winners/test_winners_tournament_ui.py` (python)
+- `tests/integration/test_benchmark_e2e.py` (python)
+- `tests/integration/test_full_pipeline.py` (python)
+- `tests/integration/test_security_evaluator.py` (python)
+- `tests/integration/test_telemetry_integration.py` (python)
+- `tests/ops/__init__.py` (python)
+- `tests/ops/test_reconcile_prod_schema.py` (python)
+- `tests/unit/adapters/__init__.py` (python)
+- `tests/unit/adapters/mcp/__init__.py` (python)
+- `tests/unit/adapters/mcp/test_adapter.py` (python)
+- `tests/unit/adapters/mcp/test_transport.py` (python)
+- `tests/unit/adapters/test_autogen.py` (python)
+- `tests/unit/adapters/test_azure_openai.py` (python)
+- `tests/unit/adapters/test_base.py` (python)
+- `tests/unit/adapters/test_bedrock.py` (python)
+- `tests/unit/adapters/test_cli.py` (python)
+- `tests/unit/adapters/test_cli_cleanup.py` (python)
+- `tests/unit/adapters/test_container.py` (python)
+- `tests/unit/adapters/test_crewai.py` (python)
+- `tests/unit/adapters/test_fallback.py` (python)
+- `tests/unit/adapters/test_http.py` (python)
+- `tests/unit/adapters/test_langgraph.py` (python)
+- `tests/unit/adapters/test_registry.py` (python)
+- `tests/unit/adapters/test_registry_config.py` (python)
+- `tests/unit/adapters/test_sdk_adapter.py` (python)
+- `tests/unit/adapters/test_vertex.py` (python)
+- `tests/unit/analytics/__init__.py` (python)
+- `tests/unit/analytics/test_ab_testing.py` (python)
+- `tests/unit/analytics/test_advanced.py` (python)
+- `tests/unit/analytics/test_budgets.py` (python)
+- `tests/unit/analytics/test_cost.py` (python)
+- `tests/unit/analytics/test_database.py` (python)
+- `tests/unit/analytics/test_models.py` (python)
+- `tests/unit/analytics/test_repository.py` (python)
+- `tests/unit/analytics/test_trend.py` (python)
+- `tests/unit/atp_statistics/__init__.py` (python)
+- `tests/unit/atp_statistics/test_calculator.py` (python)
+- `tests/unit/atp_statistics/test_models.py` (python)
+- `tests/unit/atp_statistics/test_reporter.py` (python)
+- `tests/unit/baseline/__init__.py` (python)
+- `tests/unit/baseline/test_comparison.py` (python)
+- `tests/unit/baseline/test_models.py` (python)
+- `tests/unit/baseline/test_reporter.py` (python)
+- `tests/unit/baseline/test_storage.py` (python)
+- `tests/unit/benchmark/__init__.py` (python)
+- `tests/unit/benchmark/test_benchmark_api.py` (python)
+- `tests/unit/benchmark/test_benchmark_models.py` (python)
+- `tests/unit/benchmark/test_benchmark_service.py` (python)
+- `tests/unit/benchmarks/__init__.py` (python)
+- `tests/unit/benchmarks/test_loaders.py` (python)
+- `tests/unit/benchmarks/test_models.py` (python)
+- `tests/unit/benchmarks/test_registry.py` (python)
+- `tests/unit/catalog/__init__.py` (python)
+- `tests/unit/catalog/test_catalog_run.py` (python)
+- `tests/unit/catalog/test_comparison.py` (python)
+- `tests/unit/catalog/test_models.py` (python)
+- `tests/unit/catalog/test_repository.py` (python)
+- `tests/unit/catalog/test_sync.py` (python)
+- `tests/unit/chaos/__init__.py` (python)
+- `tests/unit/chaos/test_concurrency.py` (python)
+- `tests/unit/chaos/test_injectors.py` (python)
+- `tests/unit/chaos/test_loader_integration.py` (python)
+- `tests/unit/chaos/test_models.py` (python)
+- `tests/unit/chaos/test_profiles.py` (python)
+- `tests/unit/cli/__init__.py` (python)
+- `tests/unit/cli/test_adapter_config.py` (python)
+- `tests/unit/cli/test_benchmark.py` (python)
+- `tests/unit/cli/test_budget.py` (python)
+- `tests/unit/cli/test_catalog_cli.py` (python)
+- `tests/unit/cli/test_compare.py` (python)
+- `tests/unit/cli/test_dotenv_loading.py` (python)
+- `tests/unit/cli/test_live_display.py` (python)
+- `tests/unit/cli/test_main.py` (python)
+- `tests/unit/cli/test_plugins.py` (python)
+- `tests/unit/cli/test_pull.py` (python)
+- `tests/unit/cli/test_push.py` (python)
+- `tests/unit/cli/test_quickstart.py` (python)
+- `tests/unit/cli/test_remote.py` (python)
+- `tests/unit/cli/test_sync.py` (python)
+- `tests/unit/core/__init__.py` (python)
+- `tests/unit/core/test_cors_hardening.py` (python)
+- `tests/unit/core/test_exceptions.py` (python)
+- `tests/unit/core/test_logging.py` (python)
+- `tests/unit/core/test_metrics.py` (python)
+- `tests/unit/core/test_observer.py` (python)
+- `tests/unit/core/test_result.py` (python)
+- `tests/unit/core/test_secret_patterns.py` (python)
+- `tests/unit/core/test_security.py` (python)
+- `tests/unit/core/test_settings.py` (python)
+- `tests/unit/core/test_telemetry.py` (python)
+- `tests/unit/dashboard/__init__.py` (python)
+- `tests/unit/dashboard/audit/__init__.py` (python)
+- `tests/unit/dashboard/audit/test_audit.py` (python)
+- `tests/unit/dashboard/audit/test_middleware.py` (python)
+- `tests/unit/dashboard/auth/__init__.py` (python)
+- `tests/unit/dashboard/auth/sso/__init__.py` (python)
+- `tests/unit/dashboard/auth/sso/test_oidc.py` (python)
+- `tests/unit/dashboard/auth/sso/test_routes.py` (python)
+- `tests/unit/dashboard/auth/sso/test_saml.py` (python)
+- `tests/unit/dashboard/auth/test_post_auth.py` (python)
+- `tests/unit/dashboard/auth/test_state_store.py` (python)
+- `tests/unit/dashboard/auth/test_token_ttl.py` (python)
+- `tests/unit/dashboard/cli/__init__.py` (python)
+- `tests/unit/dashboard/cli/test_admin.py` (python)
+- `tests/unit/dashboard/conftest.py` (python)
+- `tests/unit/dashboard/mcp/__init__.py` (python)
+- `tests/unit/dashboard/mcp/test_auth_middleware.py` (python)
+- `tests/unit/dashboard/mcp/test_format_for_user.py` (python)
+- `tests/unit/dashboard/mcp/test_handshake_observability.py` (python)
+- `tests/unit/dashboard/mcp/test_notification_format.py` (python)
+- `tests/unit/dashboard/mcp/test_tools.py` (python)
+- `tests/unit/dashboard/mcp/test_tools_plan_2a.py` (python)
+- `tests/unit/dashboard/migrations/__init__.py` (python)
+- `tests/unit/dashboard/migrations/probes/__init__.py` (python)
+- `tests/unit/dashboard/migrations/probes/test_check_tournament_invariants.py` (python)
+- `tests/unit/dashboard/migrations/test_url_helpers.py` (python)
+- `tests/unit/dashboard/rbac/__init__.py` (python)
+- `tests/unit/dashboard/rbac/test_models.py` (python)
+- `tests/unit/dashboard/tenancy/__init__.py` (python)
+- `tests/unit/dashboard/tenancy/test_manager.py` (python)
+- `tests/unit/dashboard/tenancy/test_middleware.py` (python)
+- `tests/unit/dashboard/tenancy/test_migration.py` (python)
+- `tests/unit/dashboard/tenancy/test_models.py` (python)
+- `tests/unit/dashboard/tenancy/test_quotas.py` (python)
+- `tests/unit/dashboard/tenancy/test_schemas.py` (python)
+- `tests/unit/dashboard/tenancy/test_session.py` (python)
+- `tests/unit/dashboard/test_api.py` (python)
+- `tests/unit/dashboard/test_api_detailed.py` (python)
+- `tests/unit/dashboard/test_app.py` (python)
+- `tests/unit/dashboard/test_auth.py` (python)
+- `tests/unit/dashboard/test_benchmark_events.py` (python)
+- `tests/unit/dashboard/test_comparison_endpoints.py` (python)
+- `tests/unit/dashboard/test_comparison_fixtures.py` (python)
+- `tests/unit/dashboard/test_config_new_fields.py` (python)
+- `tests/unit/dashboard/test_database.py` (python)
+- `tests/unit/dashboard/test_device_auth_routes.py` (python)
+- `tests/unit/dashboard/test_device_flow.py` (python)
+- `tests/unit/dashboard/test_el_farol_from_tournament.py` (python)
+- `tests/unit/dashboard/test_jwt_user_middleware.py` (python)
+- `tests/unit/dashboard/test_leaderboard_endpoint.py` (python)
+- `tests/unit/dashboard/test_marketplace.py` (python)
+- `tests/unit/dashboard/test_model_columns.py` (python)
+- `tests/unit/dashboard/test_models.py` (python)
+- `tests/unit/dashboard/test_optimized_queries.py` (python)
+- `tests/unit/dashboard/test_pending_banner_context.py` (python)
+- `tests/unit/dashboard/test_public_leaderboard.py` (python)
+- `tests/unit/dashboard/test_query_cache.py` (python)
+- `tests/unit/dashboard/test_rate_limit.py` (python)
+- `tests/unit/dashboard/test_schemas.py` (python)
+- `tests/unit/dashboard/test_services.py` (python)
+- `tests/unit/dashboard/test_storage.py` (python)
+- `tests/unit/dashboard/test_storage_tracking.py` (python)
+- `tests/unit/dashboard/test_suite_definitions.py` (python)
+- `tests/unit/dashboard/test_token_helpers.py` (python)
+- `tests/unit/dashboard/test_token_resolution_cache.py` (python)
+- `tests/unit/dashboard/test_ui_routes.py` (python)
+- `tests/unit/dashboard/test_upload.py` (python)
+- `tests/unit/dashboard/test_webhook.py` (python)
+- `tests/unit/dashboard/tournament/__init__.py` (python)
+- `tests/unit/dashboard/tournament/_grep_helper.py` (python)
+- `tests/unit/dashboard/tournament/conftest.py` (python)
+- `tests/unit/dashboard/tournament/test_access.py` (python)
+- `tests/unit/dashboard/tournament/test_action_telemetry_schema.py` (python)
+- `tests/unit/dashboard/tournament/test_deadline_worker.py` (python)
+- `tests/unit/dashboard/tournament/test_el_farol_action_schema.py` (python)
+- `tests/unit/dashboard/tournament/test_event_bus.py` (python)
+- `tests/unit/dashboard/tournament/test_game_factory.py` (python)
+- `tests/unit/dashboard/tournament/test_get_admin_activity.py` (python)
+- `tests/unit/dashboard/tournament/test_kick_participant.py` (python)
+- `tests/unit/dashboard/tournament/test_model_columns.py` (python)
+- `tests/unit/dashboard/tournament/test_model_enums.py` (python)
+- `tests/unit/dashboard/tournament/test_reasons.py` (python)
+- `tests/unit/dashboard/tournament/test_service_cancel_impl.py` (python)
+- `tests/unit/dashboard/tournament/test_service_cancel_public.py` (python)
+- `tests/unit/dashboard/tournament/test_service_create.py` (python)
+- `tests/unit/dashboard/tournament/test_service_join.py` (python)
+- `tests/unit/dashboard/tournament/test_service_list.py` (python)
+- `tests/unit/dashboard/tournament/test_service_load_for_auth.py` (python)
+- `tests/unit/dashboard/tournament/test_service_play_roster.py` (python)
+- `tests/unit/dashboard/tournament/test_service_resolve.py` (python)
+- `tests/unit/dashboard/tournament/test_service_round_ended_event.py` (python)
+- `tests/unit/dashboard/tournament/test_service_shrink.py` (python)
+- `tests/unit/dashboard/tournament/test_service_state.py` (python)
+- `tests/unit/dashboard/tournament/test_service_submit.py` (python)
+- `tests/unit/dashboard/tournament/test_state_formatter.py` (python)
+- `tests/unit/dashboard/tournament/test_static_guards.py` (python)
+- `tests/unit/dashboard/tournament/test_tournament_cancel_event.py` (python)
+- `tests/unit/dashboard/tournament/test_visibility.py` (python)
+- `tests/unit/dashboard/ui/__init__.py` (python)
+- `tests/unit/dashboard/ui/test_auth_ux.py` (python)
+- `tests/unit/dashboard/ui/test_game_detail_ui.py` (python)
+- `tests/unit/dashboard/ui/test_tournament_ui.py` (python)
+- `tests/unit/dashboard/v2/__init__.py` (python)
+- `tests/unit/dashboard/v2/catalog/__init__.py` (python)
+- `tests/unit/dashboard/v2/catalog/test_routes.py` (python)
+- `tests/unit/dashboard/v2/test_config.py` (python)
+- `tests/unit/dashboard/v2/test_dependencies.py` (python)
+- `tests/unit/dashboard/v2/test_factory.py` (python)
+- `tests/unit/dashboard/v2/test_feature_flag.py` (python)
+- `tests/unit/dashboard/v2/test_logging_config.py` (python)
+- `tests/unit/dashboard/v2/test_templates.py` (python)
+- `tests/unit/dashboard/v2/websocket/__init__.py` (python)
+- `tests/unit/dashboard/v2/websocket/test_manager.py` (python)
+- `tests/unit/dashboard/v2/websocket/test_models.py` (python)
+- `tests/unit/dashboard/v2/websocket/test_pubsub.py` (python)
+- `tests/unit/dashboard/v2/websocket/test_routes.py` (python)
+- `tests/unit/dashboard/winners/__init__.py` (python)
+- `tests/unit/dashboard/winners/conftest.py` (python)
+- `tests/unit/dashboard/winners/test_aggregation.py` (python)
+- `tests/unit/demo_game/__init__.py` (python)
+- `tests/unit/demo_game/test_el_farol_agent_parse.py` (python)
+- `tests/unit/demo_game/test_llm_mcp_bot_parse.py` (python)
+- `tests/unit/evaluators/__init__.py` (python)
+- `tests/unit/evaluators/security/__init__.py` (python)
+- `tests/unit/evaluators/security/test_base.py` (python)
+- `tests/unit/evaluators/security/test_code.py` (python)
+- `tests/unit/evaluators/security/test_evaluator.py` (python)
+- `tests/unit/evaluators/security/test_injection.py` (python)
+- `tests/unit/evaluators/security/test_pii.py` (python)
+- `tests/unit/evaluators/security/test_secrets.py` (python)
+- `tests/unit/evaluators/test_artifact.py` (python)
+- `tests/unit/evaluators/test_base.py` (python)
+- `tests/unit/evaluators/test_behavior.py` (python)
+- `tests/unit/evaluators/test_code_exec.py` (python)
+- `tests/unit/evaluators/test_code_exec_container.py` (python)
+- `tests/unit/evaluators/test_composite.py` (python)
+- `tests/unit/evaluators/test_container.py` (python)
+- `tests/unit/evaluators/test_factuality.py` (python)
+- `tests/unit/evaluators/test_filesystem.py` (python)
+- `tests/unit/evaluators/test_git_commit.py` (python)
+- `tests/unit/evaluators/test_guardrails.py` (python)
+- `tests/unit/evaluators/test_llm_judge.py` (python)
+- `tests/unit/evaluators/test_performance.py` (python)
+- `tests/unit/evaluators/test_registry.py` (python)
+- `tests/unit/evaluators/test_sandbox.py` (python)
+- `tests/unit/evaluators/test_style.py` (python)
+- `tests/unit/games/__init__.py` (python)
+- `tests/unit/games/test_battle_of_sexes_state_format.py` (python)
+- `tests/unit/games/test_el_farol_state_format.py` (python)
+- `tests/unit/games/test_stag_hunt_state_format.py` (python)
+- `tests/unit/generator/__init__.py` (python)
+- `tests/unit/generator/test_core.py` (python)
+- `tests/unit/generator/test_nl_generator.py` (python)
+- `tests/unit/generator/test_regression.py` (python)
+- `tests/unit/generator/test_templates.py` (python)
+- `tests/unit/generator/test_trace_import.py` (python)
+- `tests/unit/generator/test_writer.py` (python)
+- `tests/unit/loader/__init__.py` (python)
+- `tests/unit/loader/test_filters.py` (python)
+- `tests/unit/loader/test_loader.py` (python)
+- `tests/unit/loader/test_models.py` (python)
+- `tests/unit/loader/test_parser.py` (python)
+- `tests/unit/mock_tools/__init__.py` (python)
+- `tests/unit/mock_tools/test_loader.py` (python)
+- `tests/unit/mock_tools/test_models.py` (python)
+- `tests/unit/mock_tools/test_recorder.py` (python)
+- `tests/unit/mock_tools/test_server.py` (python)
+- `tests/unit/performance/__init__.py` (python)
+- `tests/unit/performance/test_async_utils.py` (python)
+- `tests/unit/performance/test_benchmark.py` (python)
+- `tests/unit/performance/test_cache.py` (python)
+- `tests/unit/performance/test_memory.py` (python)
+- `tests/unit/performance/test_profiler.py` (python)
+- `tests/unit/performance/test_startup.py` (python)
+- `tests/unit/plugins/__init__.py` (python)
+- `tests/unit/plugins/test_config.py` (python)
+- `tests/unit/plugins/test_dependencies.py` (python)
+- `tests/unit/plugins/test_discovery.py` (python)
+- `tests/unit/plugins/test_interfaces.py` (python)
+- `tests/unit/protocol/__init__.py` (python)
+- `tests/unit/protocol/test_models.py` (python)
+- `tests/unit/protocol/test_schema.py` (python)
+- `tests/unit/reporters/__init__.py` (python)
+- `tests/unit/reporters/test_base.py` (python)
+- `tests/unit/reporters/test_console.py` (python)
+- `tests/unit/reporters/test_game_reporter.py` (python)
+- `tests/unit/reporters/test_html_reporter.py` (python)
+- `tests/unit/reporters/test_json_reporter.py` (python)
+- `tests/unit/reporters/test_junit_reporter.py` (python)
+- `tests/unit/reporters/test_registry.py` (python)
+- `tests/unit/runner/__init__.py` (python)
+- `tests/unit/runner/test_exceptions.py` (python)
+- `tests/unit/runner/test_models.py` (python)
+- `tests/unit/runner/test_multi_agent.py` (python)
+- `tests/unit/runner/test_orchestrator.py` (python)
+- `tests/unit/runner/test_progress.py` (python)
+- `tests/unit/runner/test_sandbox.py` (python)
+- `tests/unit/runner/test_sandbox_fixtures.py` (python)
+- `tests/unit/runner/test_sandbox_phase2.py` (python)
+- `tests/unit/scoring/__init__.py` (python)
+- `tests/unit/scoring/test_aggregator.py` (python)
+- `tests/unit/scoring/test_models.py` (python)
+- `tests/unit/sdk/__init__.py` (python)
+- `tests/unit/sdk/test_async_client.py` (python)
+- `tests/unit/sdk/test_auth.py` (python)
+- `tests/unit/sdk/test_benchmark_batch.py` (python)
+- `tests/unit/sdk/test_client_renew.py` (python)
+- `tests/unit/sdk/test_compare.py` (python)
+- `tests/unit/sdk/test_retry.py` (python)
+- `tests/unit/sdk/test_sdk.py` (python)
+- `tests/unit/sdk/test_sdk_benchmark.py` (python)
+- `tests/unit/sdk/test_sdk_client.py` (python)
+- `tests/unit/sdk/test_sdk_import.py` (python)
+- `tests/unit/sdk/test_sync_client.py` (python)
+- `tests/unit/streaming/__init__.py` (python)
+- `tests/unit/streaming/test_buffer.py` (python)
+- `tests/unit/streaming/test_buffer_index.py` (python)
+- `tests/unit/streaming/test_validation.py` (python)
+- `tests/unit/test_api_surface.py` (python)
+- `tests/unit/test_estimate.py` (python)
+- `tests/unit/test_game_cli_writer.py` (python)
+- `tests/unit/test_game_correctness.py` (python)
+- `tests/unit/test_game_edge_cases.py` (python)
+- `tests/unit/test_github_action.py` (python)
+- `tests/unit/test_github_import.py` (python)
+- `tests/unit/test_protocol_version.py` (python)
+- `tests/unit/tournament/__init__.py` (python)
+- `tests/unit/tournament/test_schemas_discriminator.py` (python)
+- `tests/unit/tournament/test_tournament_models.py` (python)
+- `tests/unit/tracing/__init__.py` (python)
+- `tests/unit/tracing/test_cli.py` (python)
+- `tests/unit/tracing/test_models.py` (python)
+- `tests/unit/tracing/test_recorder.py` (python)
+- `tests/unit/tracing/test_retention.py` (python)
+- `tests/unit/tracing/test_storage.py` (python)
+- `tests/unit/tui/__init__.py` (python)
+- `tests/unit/tui/screens/__init__.py` (python)
+- `tests/unit/tui/screens/test_main_screen.py` (python)
+- `tests/unit/tui/screens/test_suite_editor.py` (python)
+- `tests/unit/tui/screens/test_test_editor.py` (python)
+- `tests/unit/tui/test_app.py` (python)
+- `tests/unit/tui/widgets/__init__.py` (python)
+- `tests/unit/tui/widgets/test_test_tree.py` (python)
+- `tests/unit/tui/widgets/test_yaml_preview.py` (python)
+
+## Inbound references
+
+_None._
+
+## Outbound references
+
+- to [[atp-games]]:
+  - `examples/games/llm_agent_eval.py:17` → `BuiltinAdapter`
+  - `examples/games/llm_agent_eval.py:18` → `GameRunConfig`
+  - `examples/games/llm_agent_eval.py:19` → `GameRunner`
+  - `atp-games/atp_games/evaluators/__init__.py:4` → `evaluators.cooperation_evaluator::CooperationEvaluator`
+  - `atp-games/atp_games/plugin.py:44` → `evaluators.cooperation_evaluator::CooperationEvaluator`
+  - `atp-games/tests/test_cooperation_evaluator.py:6` → `evaluators.cooperation_evaluator::CooperationConfig`
+  - `atp-games/tests/test_cooperation_evaluator.py:7` → `evaluators.cooperation_evaluator::CooperationEvaluator`
+  - `atp-games/tests/test_equilibrium_evaluator.py:470` → `evaluators.cooperation_evaluator::CooperationEvaluator`
+  - `examples/games/llm_agent_eval.py:22` → `evaluators.cooperation_evaluator::CooperationEvaluator`
+  - `atp-games/atp_games/evaluators/__init__.py:7` → `evaluators.equilibrium_evaluator::EquilibriumEvaluator`
+  - `atp-games/atp_games/plugin.py:47` → `evaluators.equilibrium_evaluator::EquilibriumEvaluator`
+  - `atp-games/tests/test_equilibrium_evaluator.py:6` → `evaluators.equilibrium_evaluator::EquilibriumConfig`
+  - `atp-games/tests/test_equilibrium_evaluator.py:7` → `evaluators.equilibrium_evaluator::EquilibriumEvaluator`
+  - `atp-games/tests/test_equilibrium_evaluator.py:473` → `evaluators.equilibrium_evaluator::EquilibriumEvaluator`
+  - `atp-games/atp_games/__init__.py:4` → `evaluators.exploitability_evaluator::ExploitabilityEvaluator`
+  - `atp-games/atp_games/evaluators/__init__.py:10` → `evaluators.exploitability_evaluator::ExploitabilityEvaluator`
+  - `atp-games/atp_games/plugin.py:50` → `evaluators.exploitability_evaluator::ExploitabilityEvaluator`
+  - `atp-games/tests/test_exploitability_evaluator.py:6` → `evaluators.exploitability_evaluator::ExploitabilityConfig`
+  - `atp-games/tests/test_exploitability_evaluator.py:7` → `evaluators.exploitability_evaluator::ExploitabilityEvaluator`
+  - `atp-games/tests/test_plugin_registration.py:6` → `evaluators.exploitability_evaluator::ExploitabilityEvaluator`
+  - `atp-games/atp_games/evaluators/__init__.py:13` → `evaluators.fairness_evaluator::FairnessEvaluator`
+  - `atp-games/atp_games/plugin.py:53` → `evaluators.fairness_evaluator::FairnessEvaluator`
+  - `atp-games/tests/test_fairness_evaluator.py:6` → `evaluators.fairness_evaluator::BiasAttribute`
+  - `atp-games/tests/test_fairness_evaluator.py:7` → `evaluators.fairness_evaluator::BiasReport`
+  - `atp-games/tests/test_fairness_evaluator.py:8` → `evaluators.fairness_evaluator::FairnessConfig`
+  - `atp-games/tests/test_fairness_evaluator.py:9` → `evaluators.fairness_evaluator::FairnessEvaluator`
+  - `atp-games/tests/test_fairness_evaluator.py:10` → `evaluators.fairness_evaluator::_chi_squared_test`
+  - `atp-games/atp_games/__init__.py:6` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `atp-games/atp_games/evaluators/__init__.py:15` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `atp-games/atp_games/plugin.py:56` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `atp-games/tests/test_payoff_evaluator.py:6` → `evaluators.payoff_evaluator::PayoffConfig`
+  - `atp-games/tests/test_payoff_evaluator.py:7` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `atp-games/tests/test_plugin_registration.py:8` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `examples/games/llm_agent_eval.py:25` → `evaluators.payoff_evaluator::PayoffConfig`
+  - `examples/games/llm_agent_eval.py:26` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `atp-games/atp_games/__init__.py:7` → `mapping.action_mapper::ActionMapper`
+  - `atp-games/atp_games/mapping/__init__.py:3` → `mapping.action_mapper::ActionMapper`
+  - `atp-games/atp_games/runner/action_validator.py:11` → `mapping.action_mapper::GameAction`
+  - `atp-games/atp_games/runner/game_runner.py:16` → `mapping.action_mapper::ActionMapper`
+  - `atp-games/tests/test_action_mapper.py:11` → `mapping.action_mapper::ActionMapper`
+  - `atp-games/tests/test_action_validator.py:11` → `mapping.action_mapper::GameAction`
+  - `atp-games/atp_games/__init__.py:8` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/atp_games/mapping/__init__.py:4` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/atp_games/runner/game_runner.py:17` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/tests/test_action_mapper.py:102` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/tests/test_builtin_adapter.py:14` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/tests/test_observation_mapper.py:5` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/atp_games/__init__.py:10` → `models::AgentComparison`
+  - `atp-games/atp_games/__init__.py:11` → `models::EpisodeResult`
+  - `atp-games/atp_games/__init__.py:12` → `models::GameResult`
+  - `atp-games/atp_games/__init__.py:13` → `models::GameRunConfig`
+  - `atp-games/atp_games/__init__.py:14` → `models::PlayerStats`
+  - `atp-games/atp_games/__init__.py:15` → `models::compare_agents`
+  - `atp-games/atp_games/evaluators/cooperation_evaluator.py:24` → `models::GameResult`
+  - `atp-games/atp_games/evaluators/equilibrium_evaluator.py:22` → `models::GameResult`
+  - `atp-games/atp_games/evaluators/exploitability_evaluator.py:23` → `models::GameResult`
+  - `atp-games/atp_games/evaluators/fairness_evaluator.py:25` → `models::GameResult`
+  - `atp-games/atp_games/evaluators/fairness_evaluator.py:595` → `models::welchs_t_test`
+  - `atp-games/atp_games/evaluators/payoff_evaluator.py:17` → `models::GameResult`
+  - `atp-games/atp_games/runner/game_runner.py:19` → `models::ActionRecord`
+  - `atp-games/atp_games/runner/game_runner.py:20` → `models::AgentRecord`
+  - `atp-games/atp_games/runner/game_runner.py:21` → `models::EpisodeResult`
+  - `atp-games/atp_games/runner/game_runner.py:22` → `models::GameResult`
+  - `atp-games/atp_games/runner/game_runner.py:23` → `models::GameRunConfig`
+  - `atp-games/atp_games/runner/game_runner.py:24` → `models::IntervalPair`
+  - `atp-games/atp_games/suites/alympics.py:14` → `models::GameResult`
+  - `atp-games/atp_games/suites/alympics.py:14` → `models::GameRunConfig`
+  - `atp-games/atp_games/suites/cross_play.py:16` → `models::GameResult`
+  - `atp-games/atp_games/suites/cross_play.py:16` → `models::GameRunConfig`
+  - `atp-games/atp_games/suites/game_suite_loader.py:14` → `models::GameRunConfig`
+  - `atp-games/atp_games/suites/stress_test.py:28` → `models::GameResult`
+  - `atp-games/atp_games/suites/stress_test.py:28` → `models::GameRunConfig`
+  - `atp-games/atp_games/suites/tournament.py:17` → `models::GameResult`
+  - `atp-games/atp_games/suites/tournament.py:17` → `models::GameRunConfig`
+  - `atp-games/tests/test_agent_record.py:21` → `models::AgentRecord`
+  - `atp-games/tests/test_agent_record.py:21` → `models::GameResult`
+  - `atp-games/tests/test_agent_record.py:21` → `models::GameRunConfig`
+  - `atp-games/tests/test_alympics.py:7` → `models::EpisodeResult`
+  - `atp-games/tests/test_alympics.py:7` → `models::GameResult`
+  - `atp-games/tests/test_alympics.py:7` → `models::GameRunConfig`
+  - `atp-games/tests/test_cooperation_evaluator.py:9` → `models::EpisodeResult`
+  - `atp-games/tests/test_cooperation_evaluator.py:9` → `models::GameResult`
+  - `atp-games/tests/test_cooperation_evaluator.py:9` → `models::GameRunConfig`
+  - `atp-games/tests/test_cross_play.py:14` → `models::GameRunConfig`
+  - `atp-games/tests/test_el_farol_interval_agents.py:24` → `models::ActionRecord`
+  - `atp-games/tests/test_el_farol_interval_agents.py:24` → `models::EpisodeResult`
+  - `atp-games/tests/test_el_farol_interval_agents.py:24` → `models::GameRunConfig`
+  - `atp-games/tests/test_equilibrium_evaluator.py:9` → `models::EpisodeResult`
+  - `atp-games/tests/test_equilibrium_evaluator.py:9` → `models::GameResult`
+  - `atp-games/tests/test_equilibrium_evaluator.py:9` → `models::GameRunConfig`
+  - `atp-games/tests/test_exploitability_evaluator.py:9` → `models::EpisodeResult`
+  - `atp-games/tests/test_exploitability_evaluator.py:9` → `models::GameResult`
+  - `atp-games/tests/test_exploitability_evaluator.py:9` → `models::GameRunConfig`
+  - `atp-games/tests/test_fairness_evaluator.py:12` → `models::EpisodeResult`
+  - `atp-games/tests/test_fairness_evaluator.py:12` → `models::GameResult`
+  - `atp-games/tests/test_fairness_evaluator.py:12` → `models::GameRunConfig`
+  - `atp-games/tests/test_game_runner.py:19` → `models::GameRunConfig`
+  - `atp-games/tests/test_game_suite_loader.py:645` → `models::GameRunConfig`
+  - `atp-games/tests/test_integration.py:14` → `models::GameRunConfig`
+  - `atp-games/tests/test_models.py:9` → `models::ActionRecord`
+  - `atp-games/tests/test_models.py:10` → `models::AgentRecord`
+  - `atp-games/tests/test_models.py:11` → `models::EpisodeResult`
+  - `atp-games/tests/test_models.py:12` → `models::GameResult`
+  - `atp-games/tests/test_models.py:13` → `models::GameRunConfig`
+  - `atp-games/tests/test_models.py:14` → `models::IntervalPair`
+  - `atp-games/tests/test_models_action_record.py:22` → `models::ActionRecord`
+  - `atp-games/tests/test_models_action_record.py:23` → `models::DayAggregate`
+  - `atp-games/tests/test_models_action_record.py:24` → `models::IntervalPair`
+  - `atp-games/tests/test_models_action_record.py:25` → `models::MatchConfig`
+  - `atp-games/tests/test_multi_episode.py:28` → `models::AgentComparison`
+  - `atp-games/tests/test_multi_episode.py:29` → `models::EpisodeResult`
+  - `atp-games/tests/test_multi_episode.py:30` → `models::GameResult`
+  - `atp-games/tests/test_multi_episode.py:31` → `models::GameRunConfig`
+  - `atp-games/tests/test_multi_episode.py:32` → `models::_compute_player_stats`
+  - `atp-games/tests/test_multi_episode.py:33` → `models::_t_critical_95`
+  - `atp-games/tests/test_multi_episode.py:34` → `models::compare_agents`
+  - `atp-games/tests/test_multi_episode.py:35` → `models::welchs_t_test`
+  - `atp-games/tests/test_payoff_evaluator.py:9` → `models::EpisodeResult`
+  - `atp-games/tests/test_payoff_evaluator.py:9` → `models::GameResult`
+  - `atp-games/tests/test_payoff_evaluator.py:9` → `models::GameRunConfig`
+  - `atp-games/tests/test_round_payoffs.py:32` → `models::EpisodeResult`
+  - `atp-games/tests/test_round_payoffs.py:32` → `models::GameRunConfig`
+  - `atp-games/tests/test_runner_action_records.py:28` → `models::ActionRecord`
+  - `atp-games/tests/test_runner_action_records.py:29` → `models::EpisodeResult`
+  - `atp-games/tests/test_runner_action_records.py:30` → `models::GameResult`
+  - `atp-games/tests/test_runner_action_records.py:31` → `models::GameRunConfig`
+  - `atp-games/tests/test_runner_action_records.py:32` → `models::IntervalPair`
+  - `atp-games/tests/test_stress_test.py:13` → `models::GameRunConfig`
+  - `atp-games/tests/test_stress_test.py:205` → `models::EpisodeResult`
+  - `atp-games/tests/test_stress_test.py:205` → `models::GameResult`
+  - `atp-games/tests/test_tournament.py:14` → `models::GameRunConfig`
+  - `atp-games/tests/test_tournament.py:349` → `models::GameResult`
+  - `atp-games/tests/test_tournament_elo.py:11` → `models::GameRunConfig`
+  - `atp/cli/commands/game.py:128` → `models::GameRunConfig`
+  - `atp/cli/commands/game.py:356` → `models::GameRunConfig`
+  - `atp/cli/commands/game.py:450` → `models::GameRunConfig`
+  - `examples/experiments/run_experiment.py:27` → `models::GameRunConfig`
+  - `tests/unit/test_game_cli_writer.py:16` → `models::ActionRecord`
+  - `tests/unit/test_game_cli_writer.py:17` → `models::AgentRecord`
+  - `tests/unit/test_game_cli_writer.py:18` → `models::EpisodeResult`
+  - `tests/unit/test_game_cli_writer.py:19` → `models::GameRunConfig`
+  - `tests/unit/test_game_cli_writer.py:20` → `models::IntervalPair`
+  - `tests/unit/test_game_cli_writer.py:23` → `models::GameResult`
+  - `atp-games/tests/test_plugin_registration.py:9` → `plugin::register`
+  - `atp-games/atp_games/rating/__init__.py:3` → `rating.elo::EloCalculator`
+  - `atp-games/atp_games/rating/__init__.py:3` → `rating.elo::EloRating`
+  - `atp-games/atp_games/suites/tournament.py:18` → `rating.elo::EloCalculator`
+  - `atp-games/atp_games/suites/tournament.py:18` → `rating.elo::EloRating`
+  - `atp-games/tests/test_elo.py:5` → `rating.elo::EloCalculator`
+  - `atp-games/tests/test_elo.py:5` → `rating.elo::EloRating`
+  - `atp-games/tests/test_tournament_elo.py:12` → `rating.elo::EloCalculator`
+  - `examples/experiments/run_experiment.py:28` → `rating.elo::EloCalculator`
+  - `atp-games/atp_games/__init__.py:17` → `runner.action_validator::ActionValidator`
+  - `atp-games/atp_games/runner/__init__.py:3` → `runner.action_validator::ActionValidator`
+  - `atp-games/atp_games/runner/game_runner.py:26` → `runner.action_validator::ActionValidator`
+  - `atp-games/tests/test_action_validator.py:12` → `runner.action_validator::ActionValidator`
+  - `atp-games/atp_games/__init__.py:18` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/runner/__init__.py:4` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/runner/game_runner.py:27` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/suites/alympics.py:328` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/suites/game_suite_loader.py:324` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/suites/stress_test.py:29` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_builtin_adapter.py:15` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_cross_play.py:15` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_el_farol_interval_agents.py:25` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_game_runner.py:20` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_game_suite_loader.py:623` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_integration.py:15` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_multi_episode.py:37` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_round_payoffs.py:33` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_runner_action_records.py:34` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_stress_test.py:14` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_tournament.py:15` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_tournament_elo.py:13` → `runner.builtin_adapter::BuiltinAdapter`
+  - `examples/experiments/run_experiment.py:29` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/__init__.py:19` → `runner.game_runner::GameRunner`
+  - `atp-games/atp_games/__init__.py:19` → `runner.game_runner::ProgressReporter`
+  - `atp-games/atp_games/runner/__init__.py:5` → `runner.game_runner::GameRunner`
+  - `atp-games/atp_games/suites/alympics.py:329` → `runner.game_runner::GameRunner`
+  - `atp-games/atp_games/suites/cross_play.py:17` → `runner.game_runner::GameRunner`
+  - `atp-games/atp_games/suites/stress_test.py:30` → `runner.game_runner::GameRunner`
+  - `atp-games/atp_games/suites/tournament.py:19` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_el_farol_interval_agents.py:26` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_game_runner.py:21` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_integration.py:16` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_multi_episode.py:39` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_multi_episode.py:40` → `runner.game_runner::ProgressReporter`
+  - `atp-games/tests/test_multi_episode.py:41` → `runner.game_runner::_make_game_for_episode`
+  - `atp-games/tests/test_round_payoffs.py:34` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_runner_action_records.py:35` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_runner_action_records.py:35` → `runner.game_runner::_action_to_interval_pair`
+  - `atp-games/tests/test_stress_test.py:185` → `runner.game_runner::GameRunner`
+  - `atp/cli/commands/game.py:142` → `runner.game_runner::GameRunner`
+  - `atp/cli/commands/game.py:359` → `runner.game_runner::GameRunner`
+  - `atp/cli/commands/game.py:453` → `runner.game_runner::GameRunner`
+  - `atp-games/atp_games/__init__.py:21` → `suites.alympics::AlympicsResult`
+  - `atp-games/atp_games/__init__.py:22` → `suites.alympics::CategoryScore`
+  - `atp-games/atp_games/__init__.py:23` → `suites.alympics::run_alympics`
+  - `atp-games/atp_games/__init__.py:24` → `suites.alympics::score_benchmark`
+  - `atp-games/atp_games/suites/__init__.py:4` → `suites.alympics::AlympicsResult`
+  - `atp-games/atp_games/suites/__init__.py:5` → `suites.alympics::CategoryScore`
+  - `atp-games/atp_games/suites/__init__.py:6` → `suites.alympics::run_alympics`
+  - `atp-games/atp_games/suites/__init__.py:7` → `suites.alympics::score_benchmark`
+  - `atp-games/tests/test_alympics.py:9` → `suites.alympics::CATEGORY_WEIGHTS`
+  - `atp-games/tests/test_alympics.py:10` → `suites.alympics::AlympicsResult`
+  - `atp-games/tests/test_alympics.py:11` → `suites.alympics::CategoryScore`
+  - `atp-games/tests/test_alympics.py:12` → `suites.alympics::compute_category_scores`
+  - `atp-games/tests/test_alympics.py:13` → `suites.alympics::compute_composite_score`
+  - `atp-games/tests/test_alympics.py:14` → `suites.alympics::load_alympics_config`
+  - `atp-games/tests/test_alympics.py:15` → `suites.alympics::normalise_payoff`
+  - `atp-games/tests/test_alympics.py:16` → `suites.alympics::score_benchmark`
+  - `atp-games/tests/test_alympics.py:424` → `suites.alympics::run_alympics`
+  - `atp-games/tests/test_alympics.py:457` → `suites.alympics::run_alympics`
+  - `atp-games/tests/test_alympics.py:475` → `suites.alympics::run_alympics`
+  - `atp/cli/commands/game.py:679` → `suites.alympics::run_alympics`
+  - `atp-games/atp_games/__init__.py:26` → `suites.cross_play::CrossPlayResult`
+  - `atp-games/atp_games/__init__.py:26` → `suites.cross_play::run_cross_play`
+  - `atp-games/atp_games/suites/__init__.py:9` → `suites.cross_play::CrossPlayResult`
+  - `atp-games/atp_games/suites/__init__.py:9` → `suites.cross_play::run_cross_play`
+  - `atp-games/tests/test_cross_play.py:17` → `suites.cross_play::_compute_clusters`
+  - `atp-games/tests/test_cross_play.py:18` → `suites.cross_play::_compute_dominance`
+  - `atp-games/tests/test_cross_play.py:19` → `suites.cross_play::_compute_pareto_frontier`
+  - `atp-games/tests/test_cross_play.py:20` → `suites.cross_play::run_cross_play`
+  - `atp/cli/commands/game.py:456` → `suites.cross_play::run_cross_play`
+  - `atp-games/atp_games/__init__.py:27` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp-games/atp_games/plugin.py:58` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp-games/atp_games/suites/__init__.py:10` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp-games/tests/test_game_suite_loader.py:11` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp-games/tests/test_game_suite_loader.py:11` → `suites.game_suite_loader::_deep_merge`
+  - `atp/cli/commands/game.py:111` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp/cli/commands/game.py:362` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp/cli/commands/game.py:459` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp-games/atp_games/__init__.py:28` → `suites.models::GameSuiteConfig`
+  - `atp-games/atp_games/suites/__init__.py:12` → `suites.models::GameAgentConfig`
+  - `atp-games/atp_games/suites/__init__.py:13` → `suites.models::GameEvaluationConfig`
+  - `atp-games/atp_games/suites/__init__.py:14` → `suites.models::GameMetricConfig`
+  - `atp-games/atp_games/suites/__init__.py:15` → `suites.models::GameSuiteConfig`
+  - `atp-games/atp_games/suites/game_suite_loader.py:16` → `suites.models::GameAgentConfig`
+  - `atp-games/atp_games/suites/game_suite_loader.py:17` → `suites.models::GameSuiteConfig`
+  - `atp-games/tests/test_game_suite_loader.py:12` → `suites.models::GameSuiteConfig`
+  - `atp-games/tests/test_game_suite_loader.py:730` → `suites.models::GameConfig`
+  - `atp-games/tests/test_game_suite_loader.py:731` → `suites.models::GameSuiteConfig`
+  - `atp-games/tests/test_game_suite_loader.py:748` → `suites.models::GameMetricConfig`
+  - `atp-games/tests/test_game_suite_loader.py:761` → `suites.models::GameAgentConfig`
+  - `tests/unit/test_game_cli_writer.py:26` → `suites.models::GameAgentConfig`
+  - `tests/unit/test_game_cli_writer.py:27` → `suites.models::GameSuiteConfig`
+  - `tests/unit/test_game_cli_writer.py:30` → `suites.models::GameConfig`
+  - `atp-games/atp_games/suites/__init__.py:17` → `suites.schema::GAME_SUITE_SCHEMA`
+  - `atp-games/atp_games/suites/__init__.py:17` → `suites.schema::validate_game_suite_schema`
+  - `atp-games/atp_games/suites/game_suite_loader.py:19` → `suites.schema::validate_game_suite_schema`
+  - `atp-games/tests/test_game_suite_loader.py:13` → `suites.schema::validate_game_suite_schema`
+  - `atp-games/atp_games/__init__.py:29` → `suites.stress_test::StressTestResult`
+  - `atp-games/atp_games/__init__.py:29` → `suites.stress_test::run_stress_test`
+  - `atp-games/atp_games/suites/__init__.py:18` → `suites.stress_test::StressTestResult`
+  - `atp-games/atp_games/suites/__init__.py:18` → `suites.stress_test::run_stress_test`
+  - `atp-games/tests/test_stress_test.py:16` → `suites.stress_test::BestResponseStrategy`
+  - `atp-games/tests/test_stress_test.py:17` → `suites.stress_test::StressTestResult`
+  - `atp-games/tests/test_stress_test.py:18` → `suites.stress_test::_extract_empirical_strategy`
+  - `atp-games/tests/test_stress_test.py:19` → `suites.stress_test::run_stress_test`
+  - `atp-games/atp_games/__init__.py:31` → `suites.tournament::TournamentResult`
+  - `atp-games/atp_games/__init__.py:32` → `suites.tournament::run_double_elimination`
+  - `atp-games/atp_games/__init__.py:33` → `suites.tournament::run_round_robin`
+  - `atp-games/atp_games/__init__.py:34` → `suites.tournament::run_single_elimination`
+  - `atp-games/atp_games/suites/__init__.py:20` → `suites.tournament::TournamentResult`
+  - `atp-games/atp_games/suites/__init__.py:21` → `suites.tournament::run_double_elimination`
+  - `atp-games/atp_games/suites/__init__.py:22` → `suites.tournament::run_round_robin`
+  - `atp-games/atp_games/suites/__init__.py:23` → `suites.tournament::run_single_elimination`
+  - `atp-games/atp_games/suites/cross_play.py:18` → `suites.tournament::_run_match`
+  - `atp-games/tests/test_tournament.py:17` → `suites.tournament::MatchResult`
+  - `atp-games/tests/test_tournament.py:18` → `suites.tournament::Standing`
+  - `atp-games/tests/test_tournament.py:19` → `suites.tournament::run_double_elimination`
+  - `atp-games/tests/test_tournament.py:20` → `suites.tournament::run_round_robin`
+  - `atp-games/tests/test_tournament.py:21` → `suites.tournament::run_single_elimination`
+  - `atp-games/tests/test_tournament_elo.py:14` → `suites.tournament::run_round_robin`
+  - `atp/cli/commands/game.py:365` → `suites.tournament::run_double_elimination`
+  - `atp/cli/commands/game.py:366` → `suites.tournament::run_round_robin`
+  - `atp/cli/commands/game.py:367` → `suites.tournament::run_single_elimination`
+  - `examples/experiments/run_experiment.py:30` → `suites.tournament::TournamentResult`
+  - `examples/experiments/run_experiment.py:30` → `suites.tournament::run_round_robin`
+
+## Outbound edges
+
+- → [[atp-dashboard]] · `mcp_call` · tool `make_move`
+- → [[atp-dashboard]] · `mcp_call` · tool `get_current_state`
+- → [[atp-adapters]] · `package_dep` · `atp-adapters`
+- → [[atp-dashboard]] · `package_dep` · `atp-dashboard`
+- → [[atp-games]] · `package_dep` · `atp-games`
+- → [[atp-sdk]] · `package_dep` · `atp-platform-sdk`
+- → [[game-environments]] · `package_dep` · `game-environments`
+- → [[spec-runner]] · `package_dep` · `spec-runner` `>=0.1.4`
+
+## Inbound edges
+
+- ← [[atp-games]] · `package_dep` · `atp-platform`
+
+## Recent changes (last 5)
+
+- snapshot 1 (2026-05-26T08:18:45Z): project added (added)
+
+## Drift findings
+
+### Missing (declared in intent, not implemented)
+
+- `list_tournaments` (mcp_tool) — `docs/superpowers/specs/2026-04-15-el-farol-tournament-design.md:355`
+  - declared in docs/superpowers/specs/2026-04-15-el-farol-tournament-design.md:355, no McpToolDecl found
+
+### Extra (implemented, not declared in intent)
+
+- `_join_tournament_mcp` (mcp_tool) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:184`
+  - MCP tool decl in packages/atp-dashboard/atp/dashboard/mcp/tools.py:184 not listed in intent docs
+- `mcp_cancel_tournament` (mcp_tool) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:558`
+  - MCP tool decl in packages/atp-dashboard/atp/dashboard/mcp/tools.py:558 not listed in intent docs
+- `mcp_get_history` (mcp_tool) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:489`
+  - MCP tool decl in packages/atp-dashboard/atp/dashboard/mcp/tools.py:489 not listed in intent docs
+- `mcp_get_tournament` (mcp_tool) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:539`
+  - MCP tool decl in packages/atp-dashboard/atp/dashboard/mcp/tools.py:539 not listed in intent docs
+- `mcp_leave_tournament` (mcp_tool) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:464`
+  - MCP tool decl in packages/atp-dashboard/atp/dashboard/mcp/tools.py:464 not listed in intent docs
+- `mcp_list_tournaments` (mcp_tool) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:513`
+  - MCP tool decl in packages/atp-dashboard/atp/dashboard/mcp/tools.py:513 not listed in intent docs
+- `ping` (mcp_tool) — `packages/atp-dashboard/atp/dashboard/mcp/tools.py:261`
+  - MCP tool decl in packages/atp-dashboard/atp/dashboard/mcp/tools.py:261 not listed in intent docs

@@ -1,0 +1,596 @@
+<!-- prograph:generated -->
+
+---
+indexed_at: "2026-05-27T12:45:37Z"
+kind: python
+name: atp-games
+parent: atp-platform
+prograph: project
+root: ./atp-platform/atp-games
+snapshot: 48
+---
+
+# atp-games
+
+> > ATP plugin for game-theoretic agent evaluation
+
+## Manifest
+
+- declared package: `atp-games` version `1.0.0`
+
+## Public surface
+
+### MCP tools exposed
+
+_None._
+
+### Contracts declared
+
+_None._
+
+### Public symbols
+
+- `CooperationEvaluator` (class) — `atp_games/evaluators/cooperation_evaluator.py:56`
+- `EquilibriumEvaluator` (class) — `atp_games/evaluators/equilibrium_evaluator.py:54`
+- `ExploitabilityEvaluator` (class) — `atp_games/evaluators/exploitability_evaluator.py:48`
+- `FairnessEvaluator` (class) — `atp_games/evaluators/fairness_evaluator.py:198`
+- `PayoffEvaluator` (class) — `atp_games/evaluators/payoff_evaluator.py:48`
+- `logger` (const) — `atp_games/mapping/action_mapper.py:16`
+- `ActionMapper` (class) — `atp_games/mapping/action_mapper.py:67`
+- `ObservationMapper` (class) — `atp_games/mapping/observation_mapper.py:11`
+- `welchs_t_test` (function) — `atp_games/models.py:306`
+- `compare_agents` (function) — `atp_games/models.py:381`
+- `Interval` (const) — `atp_games/models.py:608`
+- `register_suite_loader` (function) — `atp_games/plugin.py:9`
+- `get_suite_loader` (function) — `atp_games/plugin.py:22`
+- `register` (function) — `atp_games/plugin.py:34`
+- `EloCalculator` (class) — `atp_games/rating/elo.py:31`
+- `logger` (const) — `atp_games/runner/action_validator.py:13`
+- `ActionValidator` (class) — `atp_games/runner/action_validator.py:35`
+- `BuiltinAdapter` (class) — `atp_games/runner/builtin_adapter.py:19`
+- `logger` (const) — `atp_games/runner/game_runner.py:29`
+- `ProgressReporter` (class) — `atp_games/runner/game_runner.py:32`
+- `GameRunner` (class) — `atp_games/runner/game_runner.py:154`
+- `CATEGORY_WEIGHTS` (const) — `atp_games/suites/alympics.py:20`
+- `CATEGORY_GAME_MAP` (const) — `atp_games/suites/alympics.py:29`
+- `GAME_BASELINES` (const) — `atp_games/suites/alympics.py:56`
+- `normalise_payoff` (function) — `atp_games/suites/alympics.py:140`
+- `compute_category_scores` (function) — `atp_games/suites/alympics.py:170`
+- `compute_composite_score` (function) — `atp_games/suites/alympics.py:217`
+- `score_benchmark` (function) — `atp_games/suites/alympics.py:235`
+- `load_alympics_config` (function) — `atp_games/suites/alympics.py:294`
+- `run_alympics` (function) — `atp_games/suites/alympics.py:306`
+- `logger` (const) — `atp_games/suites/cross_play.py:20`
+- `run_cross_play` (function) — `atp_games/suites/cross_play.py:109`
+- `GameSuiteLoader` (class) — `atp_games/suites/game_suite_loader.py:22`
+- `GameMetricConfig` (class) — `atp_games/suites/models.py:10`
+- `GameEvaluationConfig` (class) — `atp_games/suites/models.py:18`
+- `GameReportingConfig` (class) — `atp_games/suites/models.py:28`
+- `GameAgentConfig` (class) — `atp_games/suites/models.py:37`
+- `GameConfig` (class) — `atp_games/suites/models.py:47`
+- `GameSuiteConfig` (class) — `atp_games/suites/models.py:55`
+- `GAME_SUITE_SCHEMA` (const) — `atp_games/suites/schema.py:5`
+- `validate_game_suite_schema` (function) — `atp_games/suites/schema.py:108`
+- `logger` (const) — `atp_games/suites/stress_test.py:32`
+- `BestResponseStrategy` (class) — `atp_games/suites/stress_test.py:35`
+- `run_stress_test` (function) — `atp_games/suites/stress_test.py:220`
+- `logger` (const) — `atp_games/suites/tournament.py:21`
+- `run_round_robin` (function) — `atp_games/suites/tournament.py:190`
+- `run_single_elimination` (function) — `atp_games/suites/tournament.py:300`
+- `run_double_elimination` (function) — `atp_games/suites/tournament.py:424`
+- `TestActionMapper` (class) — `tests/test_action_mapper.py:14`
+- `TestActionMapperIntent` (class) — `tests/test_action_mapper.py:131`
+- `TestActionValidator` (class) — `tests/test_action_validator.py:15`
+- `TestActionValidatorMaxRetries` (class) — `tests/test_action_validator.py:87`
+- `TestAgentRecord` (class) — `tests/test_agent_record.py:28`
+- `TestGameResultAgents` (class) — `tests/test_agent_record.py:162`
+- `TestNormalisePayoff` (class) — `tests/test_alympics.py:24`
+- `TestComputeCategoryScores` (class) — `tests/test_alympics.py:97`
+- `TestComputeCompositeScore` (class) — `tests/test_alympics.py:185`
+- `TestScoreBenchmark` (class) — `tests/test_alympics.py:240`
+- `TestLoadAlympicsConfig` (class) — `tests/test_alympics.py:355`
+- `TestRunAlympics` (class) — `tests/test_alympics.py:415`
+- `TestBuiltinAdapter` (class) — `tests/test_builtin_adapter.py:18`
+- `TestCooperationEvaluatorBasic` (class) — `tests/test_cooperation_evaluator.py:50`
+- `TestTFTvsTFTCooperation` (class) — `tests/test_cooperation_evaluator.py:105`
+- `TestAllDvsAllCCooperation` (class) — `tests/test_cooperation_evaluator.py:164`
+- `TestCooperationThresholds` (class) — `tests/test_cooperation_evaluator.py:190`
+- `TestConditionalCooperation` (class) — `tests/test_cooperation_evaluator.py:265`
+- `TestConfigOverride` (class) — `tests/test_cooperation_evaluator.py:305`
+- `TestMultiEpisode` (class) — `tests/test_cooperation_evaluator.py:320`
+- `TestCooperationScoring` (class) — `tests/test_cooperation_evaluator.py:340`
+- `TestCrossPlay` (class) — `tests/test_cross_play.py:24`
+- `TestDominance` (class) — `tests/test_cross_play.py:162`
+- `TestParetoFrontier` (class) — `tests/test_cross_play.py:204`
+- `TestClusters` (class) — `tests/test_cross_play.py:228`
+- `TestConstructorConfigurable` (class) — `tests/test_el_farol_action_space.py:34`
+- `TestContainsListOfPairs` (class) — `tests/test_el_farol_action_space.py:65`
+- `TestContainsDictIntervals` (class) — `tests/test_el_farol_action_space.py:142`
+- `TestContainsRejectsFlatSlotList` (class) — `tests/test_el_farol_action_space.py:177`
+- `TestSanitize` (class) — `tests/test_el_farol_action_space.py:193`
+- `TestIntegrationWithConfig` (class) — `tests/test_el_farol_action_space.py:272`
+- `TestElFarolConfigDefaults` (class) — `tests/test_el_farol_config.py:28`
+- `TestCapacityThresholdDerivation` (class) — `tests/test_el_farol_config.py:43`
+- `TestStructuralValidation` (class) — `tests/test_el_farol_config.py:75`
+- `TestCapacityRatioBounds` (class) — `tests/test_el_farol_config.py:91`
+- `TestImmutability` (class) — `tests/test_el_farol_config.py:121`
+- `TestResolvedThresholdValidation` (class) — `tests/test_el_farol_config.py:131`
+- `PairFormatMorning` (class) — `tests/test_el_farol_interval_agents.py:33`
+- `DictFormatEvening` (class) — `tests/test_el_farol_interval_agents.py:44`
+- `TwoIntervalMidday` (class) — `tests/test_el_farol_interval_agents.py:55`
+- `ThreeIntervalsAgent` (class) — `tests/test_el_farol_interval_agents.py:66`
+- `OverlappingIntervalsAgent` (class) — `tests/test_el_farol_interval_agents.py:77`
+- `TestIntervalFormatsYieldActionRecords` (class) — `tests/test_el_farol_interval_agents.py:124`
+- `TestActionSpaceRejectsInvalidIntervalInput` (class) — `tests/test_el_farol_interval_agents.py:209`
+- `TestConfigDrivenMaxTotalSlots` (class) — `tests/test_el_farol_interval_agents.py:265`
+- `TestEloCalculator` (class) — `tests/test_elo.py:8`
+- `PD_PAYOFF_1` (const) — `tests/test_equilibrium_evaluator.py:13`
+- `PD_PAYOFF_2` (const) — `tests/test_equilibrium_evaluator.py:14`
+- `PD_ACTIONS` (const) — `tests/test_equilibrium_evaluator.py:15`
+- `TestEquilibriumEvaluatorBasic` (class) — `tests/test_equilibrium_evaluator.py:56`
+- `TestNashDistanceAtEquilibrium` (class) — `tests/test_equilibrium_evaluator.py:124`
+- `TestNashDistanceAwayFromEquilibrium` (class) — `tests/test_equilibrium_evaluator.py:171`
+- `TestEquilibriumType` (class) — `tests/test_equilibrium_evaluator.py:221`
+- `TestConvergenceDetection` (class) — `tests/test_equilibrium_evaluator.py:273`
+- `TestConfigOverride` (class) — `tests/test_equilibrium_evaluator.py:349`
+- `TestEquilibriumScoring` (class) — `tests/test_equilibrium_evaluator.py:388`
+- `TestMultiEpisode` (class) — `tests/test_equilibrium_evaluator.py:435`
+- `TestPluginRegistration` (class) — `tests/test_equilibrium_evaluator.py:464`
+- `PD_PAYOFF_1` (const) — `tests/test_exploitability_evaluator.py:13`
+- `PD_PAYOFF_2` (const) — `tests/test_exploitability_evaluator.py:14`
+- `PD_ACTIONS` (const) — `tests/test_exploitability_evaluator.py:15`
+- `TestExploitabilityBasic` (class) — `tests/test_exploitability_evaluator.py:60`
+- `TestNashEquilibriumExploitability` (class) — `tests/test_exploitability_evaluator.py:92`
+- `TestAllCExploitability` (class) — `tests/test_exploitability_evaluator.py:155`
+- `TestMixedStrategies` (class) — `tests/test_exploitability_evaluator.py:243`
+- `TestMultiEpisode` (class) — `tests/test_exploitability_evaluator.py:276`
+- `TestConfigOverride` (class) — `tests/test_exploitability_evaluator.py:307`
+- `TestEmpiricalStrategySummary` (class) — `tests/test_exploitability_evaluator.py:344`
+- `TestExploitabilityScoring` (class) — `tests/test_exploitability_evaluator.py:374`
+- `TestEdgeCases` (class) — `tests/test_exploitability_evaluator.py:434`
+- `TestFairnessEvaluatorBasic` (class) — `tests/test_fairness_evaluator.py:50`
+- `TestGiniCheck` (class) — `tests/test_fairness_evaluator.py:74`
+- `TestEnvyFreenessCheck` (class) — `tests/test_fairness_evaluator.py:123`
+- `TestProportionalityCheck` (class) — `tests/test_fairness_evaluator.py:161`
+- `TestNoBiasWhenDescriptionConstant` (class) — `tests/test_fairness_evaluator.py:207`
+- `TestSyntheticBiasInjectionDetected` (class) — `tests/test_fairness_evaluator.py:296`
+- `TestBiasReportGeneration` (class) — `tests/test_fairness_evaluator.py:389`
+- `TestChiSquaredTest` (class) — `tests/test_fairness_evaluator.py:467`
+- `TestConfigOverride` (class) — `tests/test_fairness_evaluator.py:489`
+- `TestFairnessScoring` (class) — `tests/test_fairness_evaluator.py:512`
+- `TestBiasWithGameConfig` (class) — `tests/test_fairness_evaluator.py:546`
+- `TestMultiEpisodeFairness` (class) — `tests/test_fairness_evaluator.py:605`
+- `TestGameRunnerWithBuiltinAgents` (class) — `tests/test_game_runner.py:24`
+- `TestGameRunnerWithMockAgent` (class) — `tests/test_game_runner.py:134`
+- `MINIMAL_SUITE_YAML` (const) — `tests/test_game_suite_loader.py:18`
+- `FULL_SUITE_YAML` (const) — `tests/test_game_suite_loader.py:32`
+- `VARIABLE_SUITE_YAML` (const) — `tests/test_game_suite_loader.py:66`
+- `VARIABLE_DEFAULT_YAML` (const) — `tests/test_game_suite_loader.py:80`
+- `TestGameSuiteSchema` (class) — `tests/test_game_suite_loader.py:98`
+- `TestGameSuiteLoader` (class) — `tests/test_game_suite_loader.py:220`
+- `TestSemanticValidation` (class) — `tests/test_game_suite_loader.py:343`
+- `TestVariableSubstitution` (class) — `tests/test_game_suite_loader.py:386`
+- `TestSuiteInheritance` (class) — `tests/test_game_suite_loader.py:414`
+- `TestDeepMerge` (class) — `tests/test_game_suite_loader.py:569`
+- `TestResolution` (class) — `tests/test_game_suite_loader.py:604`
+- `TestBuiltinYAMLs` (class) — `tests/test_game_suite_loader.py:686`
+- `TestGameSuiteModels` (class) — `tests/test_game_suite_loader.py:726`
+- `TestFullPDIntegration` (class) — `tests/test_integration.py:19`
+- `TestGameRunConfig` (class) — `tests/test_models.py:53`
+- `TestEpisodeResult` (class) — `tests/test_models.py:84`
+- `TestGameResult` (class) — `tests/test_models.py:106`
+- `TestDashboardRoundtrip` (class) — `tests/test_models.py:205`
+- `TestIntervalPair` (class) — `tests/test_models_action_record.py:33`
+- `TestActionRecord` (class) — `tests/test_models_action_record.py:136`
+- `TestDayAggregate` (class) — `tests/test_models_action_record.py:253`
+- `TestMatchConfig` (class) — `tests/test_models_action_record.py:301`
+- `TestGameRunConfigNewFields` (class) — `tests/test_multi_episode.py:49`
+- `TestEpisodeResultSeed` (class) — `tests/test_multi_episode.py:86`
+- `TestSeedManagement` (class) — `tests/test_multi_episode.py:122`
+- `TestParallelVsSequential` (class) — `tests/test_multi_episode.py:164`
+- `TestFiftyEpisodeAggregation` (class) — `tests/test_multi_episode.py:215`
+- `TestPlayerStats` (class) — `tests/test_multi_episode.py:288`
+- `TestWelchsTTest` (class) — `tests/test_multi_episode.py:354`
+- `TestCompareAgents` (class) — `tests/test_multi_episode.py:400`
+- `TestGameResultStatistics` (class) — `tests/test_multi_episode.py:496`
+- `TestTCritical` (class) — `tests/test_multi_episode.py:600`
+- `TestProgressReporter` (class) — `tests/test_multi_episode.py:625`
+- `TestMakeGameForEpisode` (class) — `tests/test_multi_episode.py:648`
+- `TestIntegrationMultiEpisode` (class) — `tests/test_multi_episode.py:674`
+- `TestObservationMapper` (class) — `tests/test_observation_mapper.py:8`
+- `TestPayoffEvaluatorBasic` (class) — `tests/test_payoff_evaluator.py:27`
+- `TestPayoffEvaluatorAverages` (class) — `tests/test_payoff_evaluator.py:50`
+- `TestPayoffThresholds` (class) — `tests/test_payoff_evaluator.py:97`
+- `TestSocialWelfare` (class) — `tests/test_payoff_evaluator.py:144`
+- `TestPayoffDistribution` (class) — `tests/test_payoff_evaluator.py:179`
+- `TestParetoEfficiency` (class) — `tests/test_payoff_evaluator.py:202`
+- `TestPayoffScoring` (class) — `tests/test_payoff_evaluator.py:261`
+- `TestPluginRegistration` (class) — `tests/test_plugin_registration.py:12`
+- `MorningAttendee` (class) — `tests/test_round_payoffs.py:43`
+- `EveningAttendee` (class) — `tests/test_round_payoffs.py:54`
+- `TestEpisodeResultRoundPayoffsField` (class) — `tests/test_round_payoffs.py:98`
+- `TestRunnerPopulatesRoundPayoffsForPD` (class) — `tests/test_round_payoffs.py:109`
+- `TestRunnerPopulatesRoundPayoffsForElFarol` (class) — `tests/test_round_payoffs.py:156`
+- `MorningAttendee` (class) — `tests/test_runner_action_records.py:45`
+- `EveningAttendee` (class) — `tests/test_runner_action_records.py:56`
+- `TestEpisodeResultActionsField` (class) — `tests/test_runner_action_records.py:110`
+- `TestRunnerBuildsActionRecordsForElFarol` (class) — `tests/test_runner_action_records.py:121`
+- `TestRunIdAndMatchIdUniqueness` (class) — `tests/test_runner_action_records.py:203`
+- `TestRunnerSkipsActionRecordsForNonIntervalGames` (class) — `tests/test_runner_action_records.py:258`
+- `TestActionRecordIntentPlumbing` (class) — `tests/test_runner_action_records.py:336`
+- `TestActionRecordIntervalPairCap` (class) — `tests/test_runner_action_records.py:432`
+- `TestActionToIntervalPair` (class) — `tests/test_runner_action_records.py:530`
+- `TestBestResponseStrategy` (class) — `tests/test_stress_test.py:23`
+- `TestStressTest` (class) — `tests/test_stress_test.py:45`
+- `TestExtractEmpiricalStrategy` (class) — `tests/test_stress_test.py:179`
+- `TestRoundRobin` (class) — `tests/test_tournament.py:25`
+- `TestSingleElimination` (class) — `tests/test_tournament.py:151`
+- `TestDoubleElimination` (class) — `tests/test_tournament.py:262`
+- `TestStanding` (class) — `tests/test_tournament.py:310`
+- `TestMatchResult` (class) — `tests/test_tournament.py:343`
+- `TestRoundRobinWithElo` (class) — `tests/test_tournament_elo.py:17`
+
+## Modules
+
+_56 files, 199 public symbols, 212 internal imports._
+
+- `atp_games/__init__.py` (python)
+- `atp_games/evaluators/__init__.py` (python)
+- `atp_games/evaluators/cooperation_evaluator.py` (python)
+- `atp_games/evaluators/equilibrium_evaluator.py` (python)
+- `atp_games/evaluators/exploitability_evaluator.py` (python)
+- `atp_games/evaluators/fairness_evaluator.py` (python)
+- `atp_games/evaluators/payoff_evaluator.py` (python)
+- `atp_games/mapping/__init__.py` (python)
+- `atp_games/mapping/action_mapper.py` (python)
+- `atp_games/mapping/observation_mapper.py` (python)
+- `atp_games/models.py` (python)
+- `atp_games/plugin.py` (python)
+- `atp_games/rating/__init__.py` (python)
+- `atp_games/rating/elo.py` (python)
+- `atp_games/runner/__init__.py` (python)
+- `atp_games/runner/action_validator.py` (python)
+- `atp_games/runner/builtin_adapter.py` (python)
+- `atp_games/runner/game_runner.py` (python)
+- `atp_games/suites/__init__.py` (python)
+- `atp_games/suites/alympics.py` (python)
+- `atp_games/suites/builtin/__init__.py` (python)
+- `atp_games/suites/cross_play.py` (python)
+- `atp_games/suites/game_suite_loader.py` (python)
+- `atp_games/suites/models.py` (python)
+- `atp_games/suites/schema.py` (python)
+- `atp_games/suites/stress_test.py` (python)
+- `atp_games/suites/tournament.py` (python)
+- `tests/__init__.py` (python)
+- `tests/test_action_mapper.py` (python)
+- `tests/test_action_validator.py` (python)
+- `tests/test_agent_record.py` (python)
+- `tests/test_alympics.py` (python)
+- `tests/test_builtin_adapter.py` (python)
+- `tests/test_cooperation_evaluator.py` (python)
+- `tests/test_cross_play.py` (python)
+- `tests/test_el_farol_action_space.py` (python)
+- `tests/test_el_farol_config.py` (python)
+- `tests/test_el_farol_interval_agents.py` (python)
+- `tests/test_elo.py` (python)
+- `tests/test_equilibrium_evaluator.py` (python)
+- `tests/test_exploitability_evaluator.py` (python)
+- `tests/test_fairness_evaluator.py` (python)
+- `tests/test_game_runner.py` (python)
+- `tests/test_game_suite_loader.py` (python)
+- `tests/test_integration.py` (python)
+- `tests/test_models.py` (python)
+- `tests/test_models_action_record.py` (python)
+- `tests/test_multi_episode.py` (python)
+- `tests/test_observation_mapper.py` (python)
+- `tests/test_payoff_evaluator.py` (python)
+- `tests/test_plugin_registration.py` (python)
+- `tests/test_round_payoffs.py` (python)
+- `tests/test_runner_action_records.py` (python)
+- `tests/test_stress_test.py` (python)
+- `tests/test_tournament.py` (python)
+- `tests/test_tournament_elo.py` (python)
+
+## Inbound references
+
+- from [[atp-platform]]:
+  - `atp-games/atp_games/__init__.py:4` → `evaluators.exploitability_evaluator::ExploitabilityEvaluator`
+  - `atp-games/atp_games/__init__.py:6` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `atp-games/atp_games/__init__.py:7` → `mapping.action_mapper::ActionMapper`
+  - `atp-games/atp_games/__init__.py:8` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/atp_games/__init__.py:10` → `models::AgentComparison`
+  - `atp-games/atp_games/__init__.py:11` → `models::EpisodeResult`
+  - `atp-games/atp_games/__init__.py:12` → `models::GameResult`
+  - `atp-games/atp_games/__init__.py:13` → `models::GameRunConfig`
+  - `atp-games/atp_games/__init__.py:14` → `models::PlayerStats`
+  - `atp-games/atp_games/__init__.py:15` → `models::compare_agents`
+  - `atp-games/atp_games/__init__.py:17` → `runner.action_validator::ActionValidator`
+  - `atp-games/atp_games/__init__.py:18` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/__init__.py:19` → `runner.game_runner::GameRunner`
+  - `atp-games/atp_games/__init__.py:19` → `runner.game_runner::ProgressReporter`
+  - `atp-games/atp_games/__init__.py:21` → `suites.alympics::AlympicsResult`
+  - `atp-games/atp_games/__init__.py:22` → `suites.alympics::CategoryScore`
+  - `atp-games/atp_games/__init__.py:23` → `suites.alympics::run_alympics`
+  - `atp-games/atp_games/__init__.py:24` → `suites.alympics::score_benchmark`
+  - `atp-games/atp_games/__init__.py:26` → `suites.cross_play::CrossPlayResult`
+  - `atp-games/atp_games/__init__.py:26` → `suites.cross_play::run_cross_play`
+  - `atp-games/atp_games/__init__.py:27` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp-games/atp_games/__init__.py:28` → `suites.models::GameSuiteConfig`
+  - `atp-games/atp_games/__init__.py:29` → `suites.stress_test::StressTestResult`
+  - `atp-games/atp_games/__init__.py:29` → `suites.stress_test::run_stress_test`
+  - `atp-games/atp_games/__init__.py:31` → `suites.tournament::TournamentResult`
+  - `atp-games/atp_games/__init__.py:32` → `suites.tournament::run_double_elimination`
+  - `atp-games/atp_games/__init__.py:33` → `suites.tournament::run_round_robin`
+  - `atp-games/atp_games/__init__.py:34` → `suites.tournament::run_single_elimination`
+  - `atp-games/atp_games/evaluators/__init__.py:4` → `evaluators.cooperation_evaluator::CooperationEvaluator`
+  - `atp-games/atp_games/evaluators/__init__.py:7` → `evaluators.equilibrium_evaluator::EquilibriumEvaluator`
+  - `atp-games/atp_games/evaluators/__init__.py:10` → `evaluators.exploitability_evaluator::ExploitabilityEvaluator`
+  - `atp-games/atp_games/evaluators/__init__.py:13` → `evaluators.fairness_evaluator::FairnessEvaluator`
+  - `atp-games/atp_games/evaluators/__init__.py:15` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `atp-games/atp_games/evaluators/cooperation_evaluator.py:24` → `models::GameResult`
+  - `atp-games/atp_games/evaluators/equilibrium_evaluator.py:22` → `models::GameResult`
+  - `atp-games/atp_games/evaluators/exploitability_evaluator.py:23` → `models::GameResult`
+  - `atp-games/atp_games/evaluators/fairness_evaluator.py:25` → `models::GameResult`
+  - `atp-games/atp_games/evaluators/fairness_evaluator.py:595` → `models::welchs_t_test`
+  - `atp-games/atp_games/evaluators/payoff_evaluator.py:17` → `models::GameResult`
+  - `atp-games/atp_games/mapping/__init__.py:3` → `mapping.action_mapper::ActionMapper`
+  - `atp-games/atp_games/mapping/__init__.py:4` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/atp_games/plugin.py:44` → `evaluators.cooperation_evaluator::CooperationEvaluator`
+  - `atp-games/atp_games/plugin.py:47` → `evaluators.equilibrium_evaluator::EquilibriumEvaluator`
+  - `atp-games/atp_games/plugin.py:50` → `evaluators.exploitability_evaluator::ExploitabilityEvaluator`
+  - `atp-games/atp_games/plugin.py:53` → `evaluators.fairness_evaluator::FairnessEvaluator`
+  - `atp-games/atp_games/plugin.py:56` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `atp-games/atp_games/plugin.py:58` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp-games/atp_games/rating/__init__.py:3` → `rating.elo::EloCalculator`
+  - `atp-games/atp_games/rating/__init__.py:3` → `rating.elo::EloRating`
+  - `atp-games/atp_games/runner/__init__.py:3` → `runner.action_validator::ActionValidator`
+  - `atp-games/atp_games/runner/__init__.py:4` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/runner/__init__.py:5` → `runner.game_runner::GameRunner`
+  - `atp-games/atp_games/runner/action_validator.py:11` → `mapping.action_mapper::GameAction`
+  - `atp-games/atp_games/runner/game_runner.py:16` → `mapping.action_mapper::ActionMapper`
+  - `atp-games/atp_games/runner/game_runner.py:17` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/atp_games/runner/game_runner.py:19` → `models::ActionRecord`
+  - `atp-games/atp_games/runner/game_runner.py:20` → `models::AgentRecord`
+  - `atp-games/atp_games/runner/game_runner.py:21` → `models::EpisodeResult`
+  - `atp-games/atp_games/runner/game_runner.py:22` → `models::GameResult`
+  - `atp-games/atp_games/runner/game_runner.py:23` → `models::GameRunConfig`
+  - `atp-games/atp_games/runner/game_runner.py:24` → `models::IntervalPair`
+  - `atp-games/atp_games/runner/game_runner.py:26` → `runner.action_validator::ActionValidator`
+  - `atp-games/atp_games/runner/game_runner.py:27` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/suites/__init__.py:4` → `suites.alympics::AlympicsResult`
+  - `atp-games/atp_games/suites/__init__.py:5` → `suites.alympics::CategoryScore`
+  - `atp-games/atp_games/suites/__init__.py:6` → `suites.alympics::run_alympics`
+  - `atp-games/atp_games/suites/__init__.py:7` → `suites.alympics::score_benchmark`
+  - `atp-games/atp_games/suites/__init__.py:9` → `suites.cross_play::CrossPlayResult`
+  - `atp-games/atp_games/suites/__init__.py:9` → `suites.cross_play::run_cross_play`
+  - `atp-games/atp_games/suites/__init__.py:10` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp-games/atp_games/suites/__init__.py:12` → `suites.models::GameAgentConfig`
+  - `atp-games/atp_games/suites/__init__.py:13` → `suites.models::GameEvaluationConfig`
+  - `atp-games/atp_games/suites/__init__.py:14` → `suites.models::GameMetricConfig`
+  - `atp-games/atp_games/suites/__init__.py:15` → `suites.models::GameSuiteConfig`
+  - `atp-games/atp_games/suites/__init__.py:17` → `suites.schema::GAME_SUITE_SCHEMA`
+  - `atp-games/atp_games/suites/__init__.py:17` → `suites.schema::validate_game_suite_schema`
+  - `atp-games/atp_games/suites/__init__.py:18` → `suites.stress_test::StressTestResult`
+  - `atp-games/atp_games/suites/__init__.py:18` → `suites.stress_test::run_stress_test`
+  - `atp-games/atp_games/suites/__init__.py:20` → `suites.tournament::TournamentResult`
+  - `atp-games/atp_games/suites/__init__.py:21` → `suites.tournament::run_double_elimination`
+  - `atp-games/atp_games/suites/__init__.py:22` → `suites.tournament::run_round_robin`
+  - `atp-games/atp_games/suites/__init__.py:23` → `suites.tournament::run_single_elimination`
+  - `atp-games/atp_games/suites/alympics.py:14` → `models::GameResult`
+  - `atp-games/atp_games/suites/alympics.py:14` → `models::GameRunConfig`
+  - `atp-games/atp_games/suites/alympics.py:328` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/suites/alympics.py:329` → `runner.game_runner::GameRunner`
+  - `atp-games/atp_games/suites/cross_play.py:16` → `models::GameResult`
+  - `atp-games/atp_games/suites/cross_play.py:16` → `models::GameRunConfig`
+  - `atp-games/atp_games/suites/cross_play.py:17` → `runner.game_runner::GameRunner`
+  - `atp-games/atp_games/suites/cross_play.py:18` → `suites.tournament::_run_match`
+  - `atp-games/atp_games/suites/game_suite_loader.py:14` → `models::GameRunConfig`
+  - `atp-games/atp_games/suites/game_suite_loader.py:16` → `suites.models::GameAgentConfig`
+  - `atp-games/atp_games/suites/game_suite_loader.py:17` → `suites.models::GameSuiteConfig`
+  - `atp-games/atp_games/suites/game_suite_loader.py:19` → `suites.schema::validate_game_suite_schema`
+  - `atp-games/atp_games/suites/game_suite_loader.py:324` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/suites/stress_test.py:28` → `models::GameResult`
+  - `atp-games/atp_games/suites/stress_test.py:28` → `models::GameRunConfig`
+  - `atp-games/atp_games/suites/stress_test.py:29` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/atp_games/suites/stress_test.py:30` → `runner.game_runner::GameRunner`
+  - `atp-games/atp_games/suites/tournament.py:17` → `models::GameResult`
+  - `atp-games/atp_games/suites/tournament.py:17` → `models::GameRunConfig`
+  - `atp-games/atp_games/suites/tournament.py:18` → `rating.elo::EloCalculator`
+  - `atp-games/atp_games/suites/tournament.py:18` → `rating.elo::EloRating`
+  - `atp-games/atp_games/suites/tournament.py:19` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_action_mapper.py:11` → `mapping.action_mapper::ActionMapper`
+  - `atp-games/tests/test_action_mapper.py:102` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/tests/test_action_validator.py:11` → `mapping.action_mapper::GameAction`
+  - `atp-games/tests/test_action_validator.py:12` → `runner.action_validator::ActionValidator`
+  - `atp-games/tests/test_agent_record.py:21` → `models::AgentRecord`
+  - `atp-games/tests/test_agent_record.py:21` → `models::GameResult`
+  - `atp-games/tests/test_agent_record.py:21` → `models::GameRunConfig`
+  - `atp-games/tests/test_alympics.py:7` → `models::EpisodeResult`
+  - `atp-games/tests/test_alympics.py:7` → `models::GameResult`
+  - `atp-games/tests/test_alympics.py:7` → `models::GameRunConfig`
+  - `atp-games/tests/test_alympics.py:9` → `suites.alympics::CATEGORY_WEIGHTS`
+  - `atp-games/tests/test_alympics.py:10` → `suites.alympics::AlympicsResult`
+  - `atp-games/tests/test_alympics.py:11` → `suites.alympics::CategoryScore`
+  - `atp-games/tests/test_alympics.py:12` → `suites.alympics::compute_category_scores`
+  - `atp-games/tests/test_alympics.py:13` → `suites.alympics::compute_composite_score`
+  - `atp-games/tests/test_alympics.py:14` → `suites.alympics::load_alympics_config`
+  - `atp-games/tests/test_alympics.py:15` → `suites.alympics::normalise_payoff`
+  - `atp-games/tests/test_alympics.py:16` → `suites.alympics::score_benchmark`
+  - `atp-games/tests/test_alympics.py:424` → `suites.alympics::run_alympics`
+  - `atp-games/tests/test_alympics.py:457` → `suites.alympics::run_alympics`
+  - `atp-games/tests/test_alympics.py:475` → `suites.alympics::run_alympics`
+  - `atp-games/tests/test_builtin_adapter.py:14` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/tests/test_builtin_adapter.py:15` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_cooperation_evaluator.py:6` → `evaluators.cooperation_evaluator::CooperationConfig`
+  - `atp-games/tests/test_cooperation_evaluator.py:7` → `evaluators.cooperation_evaluator::CooperationEvaluator`
+  - `atp-games/tests/test_cooperation_evaluator.py:9` → `models::EpisodeResult`
+  - `atp-games/tests/test_cooperation_evaluator.py:9` → `models::GameResult`
+  - `atp-games/tests/test_cooperation_evaluator.py:9` → `models::GameRunConfig`
+  - `atp-games/tests/test_cross_play.py:14` → `models::GameRunConfig`
+  - `atp-games/tests/test_cross_play.py:15` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_cross_play.py:17` → `suites.cross_play::_compute_clusters`
+  - `atp-games/tests/test_cross_play.py:18` → `suites.cross_play::_compute_dominance`
+  - `atp-games/tests/test_cross_play.py:19` → `suites.cross_play::_compute_pareto_frontier`
+  - `atp-games/tests/test_cross_play.py:20` → `suites.cross_play::run_cross_play`
+  - `atp-games/tests/test_el_farol_interval_agents.py:24` → `models::ActionRecord`
+  - `atp-games/tests/test_el_farol_interval_agents.py:24` → `models::EpisodeResult`
+  - `atp-games/tests/test_el_farol_interval_agents.py:24` → `models::GameRunConfig`
+  - `atp-games/tests/test_el_farol_interval_agents.py:25` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_el_farol_interval_agents.py:26` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_elo.py:5` → `rating.elo::EloCalculator`
+  - `atp-games/tests/test_elo.py:5` → `rating.elo::EloRating`
+  - `atp-games/tests/test_equilibrium_evaluator.py:6` → `evaluators.equilibrium_evaluator::EquilibriumConfig`
+  - `atp-games/tests/test_equilibrium_evaluator.py:7` → `evaluators.equilibrium_evaluator::EquilibriumEvaluator`
+  - `atp-games/tests/test_equilibrium_evaluator.py:9` → `models::EpisodeResult`
+  - `atp-games/tests/test_equilibrium_evaluator.py:9` → `models::GameResult`
+  - `atp-games/tests/test_equilibrium_evaluator.py:9` → `models::GameRunConfig`
+  - `atp-games/tests/test_equilibrium_evaluator.py:470` → `evaluators.cooperation_evaluator::CooperationEvaluator`
+  - `atp-games/tests/test_equilibrium_evaluator.py:473` → `evaluators.equilibrium_evaluator::EquilibriumEvaluator`
+  - `atp-games/tests/test_exploitability_evaluator.py:6` → `evaluators.exploitability_evaluator::ExploitabilityConfig`
+  - `atp-games/tests/test_exploitability_evaluator.py:7` → `evaluators.exploitability_evaluator::ExploitabilityEvaluator`
+  - `atp-games/tests/test_exploitability_evaluator.py:9` → `models::EpisodeResult`
+  - `atp-games/tests/test_exploitability_evaluator.py:9` → `models::GameResult`
+  - `atp-games/tests/test_exploitability_evaluator.py:9` → `models::GameRunConfig`
+  - `atp-games/tests/test_fairness_evaluator.py:6` → `evaluators.fairness_evaluator::BiasAttribute`
+  - `atp-games/tests/test_fairness_evaluator.py:7` → `evaluators.fairness_evaluator::BiasReport`
+  - `atp-games/tests/test_fairness_evaluator.py:8` → `evaluators.fairness_evaluator::FairnessConfig`
+  - `atp-games/tests/test_fairness_evaluator.py:9` → `evaluators.fairness_evaluator::FairnessEvaluator`
+  - `atp-games/tests/test_fairness_evaluator.py:10` → `evaluators.fairness_evaluator::_chi_squared_test`
+  - `atp-games/tests/test_fairness_evaluator.py:12` → `models::EpisodeResult`
+  - `atp-games/tests/test_fairness_evaluator.py:12` → `models::GameResult`
+  - `atp-games/tests/test_fairness_evaluator.py:12` → `models::GameRunConfig`
+  - `atp-games/tests/test_game_runner.py:19` → `models::GameRunConfig`
+  - `atp-games/tests/test_game_runner.py:20` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_game_runner.py:21` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_game_suite_loader.py:11` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp-games/tests/test_game_suite_loader.py:11` → `suites.game_suite_loader::_deep_merge`
+  - `atp-games/tests/test_game_suite_loader.py:12` → `suites.models::GameSuiteConfig`
+  - `atp-games/tests/test_game_suite_loader.py:13` → `suites.schema::validate_game_suite_schema`
+  - `atp-games/tests/test_game_suite_loader.py:623` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_game_suite_loader.py:645` → `models::GameRunConfig`
+  - `atp-games/tests/test_game_suite_loader.py:730` → `suites.models::GameConfig`
+  - `atp-games/tests/test_game_suite_loader.py:731` → `suites.models::GameSuiteConfig`
+  - `atp-games/tests/test_game_suite_loader.py:748` → `suites.models::GameMetricConfig`
+  - `atp-games/tests/test_game_suite_loader.py:761` → `suites.models::GameAgentConfig`
+  - `atp-games/tests/test_integration.py:14` → `models::GameRunConfig`
+  - `atp-games/tests/test_integration.py:15` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_integration.py:16` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_models.py:9` → `models::ActionRecord`
+  - `atp-games/tests/test_models.py:10` → `models::AgentRecord`
+  - `atp-games/tests/test_models.py:11` → `models::EpisodeResult`
+  - `atp-games/tests/test_models.py:12` → `models::GameResult`
+  - `atp-games/tests/test_models.py:13` → `models::GameRunConfig`
+  - `atp-games/tests/test_models.py:14` → `models::IntervalPair`
+  - `atp-games/tests/test_models_action_record.py:22` → `models::ActionRecord`
+  - `atp-games/tests/test_models_action_record.py:23` → `models::DayAggregate`
+  - `atp-games/tests/test_models_action_record.py:24` → `models::IntervalPair`
+  - `atp-games/tests/test_models_action_record.py:25` → `models::MatchConfig`
+  - `atp-games/tests/test_multi_episode.py:28` → `models::AgentComparison`
+  - `atp-games/tests/test_multi_episode.py:29` → `models::EpisodeResult`
+  - `atp-games/tests/test_multi_episode.py:30` → `models::GameResult`
+  - `atp-games/tests/test_multi_episode.py:31` → `models::GameRunConfig`
+  - `atp-games/tests/test_multi_episode.py:32` → `models::_compute_player_stats`
+  - `atp-games/tests/test_multi_episode.py:33` → `models::_t_critical_95`
+  - `atp-games/tests/test_multi_episode.py:34` → `models::compare_agents`
+  - `atp-games/tests/test_multi_episode.py:35` → `models::welchs_t_test`
+  - `atp-games/tests/test_multi_episode.py:37` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_multi_episode.py:39` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_multi_episode.py:40` → `runner.game_runner::ProgressReporter`
+  - `atp-games/tests/test_multi_episode.py:41` → `runner.game_runner::_make_game_for_episode`
+  - `atp-games/tests/test_observation_mapper.py:5` → `mapping.observation_mapper::ObservationMapper`
+  - `atp-games/tests/test_payoff_evaluator.py:6` → `evaluators.payoff_evaluator::PayoffConfig`
+  - `atp-games/tests/test_payoff_evaluator.py:7` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `atp-games/tests/test_payoff_evaluator.py:9` → `models::EpisodeResult`
+  - `atp-games/tests/test_payoff_evaluator.py:9` → `models::GameResult`
+  - `atp-games/tests/test_payoff_evaluator.py:9` → `models::GameRunConfig`
+  - `atp-games/tests/test_plugin_registration.py:6` → `evaluators.exploitability_evaluator::ExploitabilityEvaluator`
+  - `atp-games/tests/test_plugin_registration.py:8` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `atp-games/tests/test_plugin_registration.py:9` → `plugin::register`
+  - `atp-games/tests/test_round_payoffs.py:32` → `models::EpisodeResult`
+  - `atp-games/tests/test_round_payoffs.py:32` → `models::GameRunConfig`
+  - `atp-games/tests/test_round_payoffs.py:33` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_round_payoffs.py:34` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_runner_action_records.py:28` → `models::ActionRecord`
+  - `atp-games/tests/test_runner_action_records.py:29` → `models::EpisodeResult`
+  - `atp-games/tests/test_runner_action_records.py:30` → `models::GameResult`
+  - `atp-games/tests/test_runner_action_records.py:31` → `models::GameRunConfig`
+  - `atp-games/tests/test_runner_action_records.py:32` → `models::IntervalPair`
+  - `atp-games/tests/test_runner_action_records.py:34` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_runner_action_records.py:35` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_runner_action_records.py:35` → `runner.game_runner::_action_to_interval_pair`
+  - `atp-games/tests/test_stress_test.py:13` → `models::GameRunConfig`
+  - `atp-games/tests/test_stress_test.py:14` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_stress_test.py:16` → `suites.stress_test::BestResponseStrategy`
+  - `atp-games/tests/test_stress_test.py:17` → `suites.stress_test::StressTestResult`
+  - `atp-games/tests/test_stress_test.py:18` → `suites.stress_test::_extract_empirical_strategy`
+  - `atp-games/tests/test_stress_test.py:19` → `suites.stress_test::run_stress_test`
+  - `atp-games/tests/test_stress_test.py:185` → `runner.game_runner::GameRunner`
+  - `atp-games/tests/test_stress_test.py:205` → `models::EpisodeResult`
+  - `atp-games/tests/test_stress_test.py:205` → `models::GameResult`
+  - `atp-games/tests/test_tournament.py:14` → `models::GameRunConfig`
+  - `atp-games/tests/test_tournament.py:15` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_tournament.py:17` → `suites.tournament::MatchResult`
+  - `atp-games/tests/test_tournament.py:18` → `suites.tournament::Standing`
+  - `atp-games/tests/test_tournament.py:19` → `suites.tournament::run_double_elimination`
+  - `atp-games/tests/test_tournament.py:20` → `suites.tournament::run_round_robin`
+  - `atp-games/tests/test_tournament.py:21` → `suites.tournament::run_single_elimination`
+  - `atp-games/tests/test_tournament.py:349` → `models::GameResult`
+  - `atp-games/tests/test_tournament_elo.py:11` → `models::GameRunConfig`
+  - `atp-games/tests/test_tournament_elo.py:12` → `rating.elo::EloCalculator`
+  - `atp-games/tests/test_tournament_elo.py:13` → `runner.builtin_adapter::BuiltinAdapter`
+  - `atp-games/tests/test_tournament_elo.py:14` → `suites.tournament::run_round_robin`
+  - `atp/cli/commands/game.py:111` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp/cli/commands/game.py:128` → `models::GameRunConfig`
+  - `atp/cli/commands/game.py:142` → `runner.game_runner::GameRunner`
+  - `atp/cli/commands/game.py:356` → `models::GameRunConfig`
+  - `atp/cli/commands/game.py:359` → `runner.game_runner::GameRunner`
+  - `atp/cli/commands/game.py:362` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp/cli/commands/game.py:365` → `suites.tournament::run_double_elimination`
+  - `atp/cli/commands/game.py:366` → `suites.tournament::run_round_robin`
+  - `atp/cli/commands/game.py:367` → `suites.tournament::run_single_elimination`
+  - `atp/cli/commands/game.py:450` → `models::GameRunConfig`
+  - `atp/cli/commands/game.py:453` → `runner.game_runner::GameRunner`
+  - `atp/cli/commands/game.py:456` → `suites.cross_play::run_cross_play`
+  - `atp/cli/commands/game.py:459` → `suites.game_suite_loader::GameSuiteLoader`
+  - `atp/cli/commands/game.py:679` → `suites.alympics::run_alympics`
+  - `examples/experiments/run_experiment.py:27` → `models::GameRunConfig`
+  - `examples/experiments/run_experiment.py:28` → `rating.elo::EloCalculator`
+  - `examples/experiments/run_experiment.py:29` → `runner.builtin_adapter::BuiltinAdapter`
+  - `examples/experiments/run_experiment.py:30` → `suites.tournament::TournamentResult`
+  - `examples/experiments/run_experiment.py:30` → `suites.tournament::run_round_robin`
+  - `examples/games/llm_agent_eval.py:17` → `BuiltinAdapter`
+  - `examples/games/llm_agent_eval.py:18` → `GameRunConfig`
+  - `examples/games/llm_agent_eval.py:19` → `GameRunner`
+  - `examples/games/llm_agent_eval.py:22` → `evaluators.cooperation_evaluator::CooperationEvaluator`
+  - `examples/games/llm_agent_eval.py:25` → `evaluators.payoff_evaluator::PayoffConfig`
+  - `examples/games/llm_agent_eval.py:26` → `evaluators.payoff_evaluator::PayoffEvaluator`
+  - `tests/unit/test_game_cli_writer.py:16` → `models::ActionRecord`
+  - `tests/unit/test_game_cli_writer.py:17` → `models::AgentRecord`
+  - `tests/unit/test_game_cli_writer.py:18` → `models::EpisodeResult`
+  - `tests/unit/test_game_cli_writer.py:19` → `models::GameRunConfig`
+  - `tests/unit/test_game_cli_writer.py:20` → `models::IntervalPair`
+  - `tests/unit/test_game_cli_writer.py:23` → `models::GameResult`
+  - `tests/unit/test_game_cli_writer.py:26` → `suites.models::GameAgentConfig`
+  - `tests/unit/test_game_cli_writer.py:27` → `suites.models::GameSuiteConfig`
+  - `tests/unit/test_game_cli_writer.py:30` → `suites.models::GameConfig`
+
+## Outbound references
+
+_None._
+
+## Outbound edges
+
+- → [[atp-platform]] · `package_dep` · `atp-platform`
+- → [[game-environments]] · `package_dep` · `game-environments`
+
+## Inbound edges
+
+- ← [[atp-platform]] · `package_dep` · `atp-games`
+
+## Recent changes (last 5)
+
+- snapshot 28 (2026-05-26T13:48:53Z): project added (added)
+
+## Drift findings
+
+_None._
