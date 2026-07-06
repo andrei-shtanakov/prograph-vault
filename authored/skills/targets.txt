@@ -1,0 +1,13 @@
+# Projects that receive the kb-* skills, one per line (name relative to the workspace
+# root, or an absolute path). Re-run `./install-skills.sh --from-config` to sync.
+# Lines starting with # and blank lines are ignored.
+
+atp-platform
+Maestro
+arbiter
+spec-runner
+proctor-a
+open-prose
+prograph
+dispatcher
+steward

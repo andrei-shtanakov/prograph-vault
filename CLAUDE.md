@@ -1,116 +1,159 @@
-# Ecosystem KB — правила (CLAUDE.md)
+# Ecosystem KB — rules (CLAUDE.md)
 
-> Единая база знаний мульти-проектной экосистемы (повышена из prograph-vault, ADR 2026-07-05).
-> Этот файл — **конституция KB**. Все агенты и люди следуют ему при чтении/записи.
+> Unified knowledge base of a multi-project ecosystem (promoted from prograph-vault, ADR 2026-07-05).
+> This file is the **KB constitution**. All agents and humans follow it when reading/writing.
 
-## 0. Назначение
+## 0.0. Orientation for Claude Code (operational)
 
-KB хранит **cross-cutting знание экосистемы**: правила, ADR, контракты (снапшоты), шаблоны,
-скилы-указатели, заметки/планы, реестр проектов. KB — **источник правды для cross-cutting**;
-он **не дублирует** то, чем владеют репо (см. §4).
+> Read this before searching for or changing anything. Below is the actual state; the rules further
+> down (§0+) are the target canon.
 
-## 1. Золотые правила (инварианты)
+- **This is an Obsidian knowledge vault, not a code project.** There is no build/test/lint here — do
+  not look for `package.json`/`pyproject.toml`/CI. "Verification" means consistency of frontmatter,
+  links, and the `authored`/`derived` boundary — not `pytest`/`ruff`. The format is Markdown + YAML
+  frontmatter (§7) and Obsidian `[[wiki-links]]`.
+- **The main invariant before any write:** `authored/**` is written ONLY by humans (via git-review);
+  `derived/**` is written ONLY by tools (prograph/digest skills) and is **regenerable** — manual
+  edits there will be lost. Details in §1–§2, `authored/README.md`, `derived/README.md`.
+- **The §3 map is partly aspirational (migration is unfinished).** What actually exists now:
+  `authored/{rules,skills,decisions}`, `derived/{contracts,projects,digests,journal}`. NOT yet
+  created: `authored/{templates,notes,registry}`, `derived/graph`. Legacy dirs at the root
+  (`contracts/`, `projects/`, `mcp_patterns/`, `claude-kb/`) are leftovers awaiting reclassification
+  (mostly empty). When creating a missing `authored/*` subfolder, follow §3/§8 — do not invent a new
+  structure. The migration checklist lives in `index.md` (all items still open).
+- **How work happens here:**
+  - Curation/search/archival/graduation — the `kb-curator` skill
+    (`authored/skills/kb-curator/SKILL.md`); it writes only to `authored/**`, other repos are read-only.
+  - Knowledge search — Obsidian-MCP (`obsidian_simple_search`/`obsidian_complex_search`) + reading
+    files; return paths + quotes, not a recollection from memory.
+  - From sibling projects (atp-platform, Maestro, …) the **`kb-*` skills** reach into this KB over
+    the filesystem (no Obsidian): `kb-load` (warm up a work area), `kb-search` (targeted lookup),
+    `kb-session` (read-only start orientation) — all read-only, unrestricted; `kb-save` writes a
+    per-project journal to `derived/journal/<project>/` (see §3/§4, ADR 2026-07-06). Sources live in
+    `authored/skills/`; `authored/skills/install-skills.sh` distributes them into the sub-projects.
+  - `derived/**` is populated by **prograph** (not kb-curator), except `derived/journal/` (kb-save).
+  - Edits to `authored/**` — as a PR set under human review; do not auto-merge substantive changes.
+- **Reading entry points:** `index.md` (navigation + migration status), this `CLAUDE.md` (rules),
+  `authored/README.md` and `derived/README.md` (subfolder guardrails).
 
-1. **`authored/` пишут ЛЮДИ (через git-review). `derived/` пишут ИНСТРУМЕНТЫ.** Никогда не смешивать.
-2. **KB ссылается на контракты, но не владеет ими.** Авторитет — в репе-производителе.
-3. **Repo-local правила живут в CLAUDE.md репы.** KB держит только cross-cutting; CLAUDE.md репы
-   *ссылается* на `authored/rules/`, не копирует.
-4. **Канон рождается в `_cowork_output/` (dev-scratch) и graduated в KB.** Runtime никогда не читает
+## 0. Purpose
+
+The KB stores **cross-cutting knowledge of the ecosystem**: rules, ADRs, contracts (snapshots),
+templates, skill-pointers, notes/plans, project registry. The KB is the **source of truth for
+cross-cutting knowledge**; it does **not** duplicate what repos own (see §4).
+
+## 1. Golden rules (invariants)
+
+1. **`authored/` is written by HUMANS (via git-review). `derived/` is written by TOOLS.** Never mix.
+2. **The KB references contracts but does not own them.** Authority lives in the producing repo.
+3. **Repo-local rules live in the repo's CLAUDE.md.** The KB holds only cross-cutting knowledge; the
+   repo's CLAUDE.md *references* `authored/rules/`, it does not copy them.
+4. **Canon is born in `_cowork_output/` (dev-scratch) and graduated into the KB.** Runtime never reads
    `_cowork_output/`.
-5. **Ничего не удаляем — архивируем** с пометкой дата+почему. История решений ценна.
+5. **Nothing is deleted — it is archived** with a date + reason. The history of decisions is valuable.
 
 ## 2. authored/ vs derived/
 
 | | `authored/` | `derived/` |
 |---|---|---|
-| Кто пишет | люди (PR + review) | prograph и др. инструменты (авто) |
-| Можно править руками | да | **нет** (перезапишется) |
-| Примеры | rules, decisions (ADR), templates, notes, registry | graph, снапшоты контрактов, projects-факты, digests |
-| Git-review | обязателен | коммит инструментом, review опционален |
+| Written by | humans (PR + review) | prograph and other tools (auto) |
+| Editable by hand | yes | **no** (will be overwritten) |
+| Examples | rules, decisions (ADR), templates, notes, registry | graph, contract snapshots, project facts, journal, digests |
+| Git-review | required | committed by the tool, review optional |
 
-**Инструментам:** prograph пишет **только** в `derived/`. Запись в `authored/` из автоматики
-запрещена (граница директорий — жёсткая).
+**For tools:** prograph writes **only** to `derived/`. Writing to `authored/` from automation is
+forbidden (the directory boundary is hard). A second automated writer is allowed under `derived/`:
+the `kb-save` skill owns `derived/journal/` (append-only, not regenerable — ADR 2026-07-06).
 
-## 3. Карта директорий (что где)
+## 3. Directory map (what goes where)
 
 ```
 authored/
   rules/        cross-cutting: code-style.md, gui.md, tui.md, libraries.md
-  decisions/    ADR (cross-repo), YYYY-MM-DD-<kebab>.md
-  templates/    spec-шаблоны, steward-профили (lite/team), scaffolds
-  skills/       project-specific скилы: исходники/доки ИЛИ указатели на Cowork skills
-  notes/        планы, намерения, cross-cutting TODO
-  registry/     COWORK_CONTEXT (реестр + карта интеграций)
+  decisions/    ADRs (cross-repo), YYYY-MM-DD-<kebab>.md
+  templates/    spec templates, steward profiles (lite/team), scaffolds
+  skills/       project-specific skills: sources/docs OR pointers to Cowork skills
+  notes/        plans, intentions, cross-cutting TODOs
+  registry/     COWORK_CONTEXT (registry + integration map)
 derived/
-  graph/        вывод prograph (структура, deps, MCP-вызовы)
-  contracts/    СНАПШОТЫ контрактов для поиска (не авторитет)
-  projects/     авто-факты по репам (prograph)
-  digests/      claude-kb/digests (авто)
+  graph/        prograph output (structure, deps, MCP calls)
+  contracts/    contract SNAPSHOTS for search (not authority)
+  projects/     auto-facts per repo (prograph)
+  journal/      <project>/journal.md — per-project activity log (kb-save; append-only)
+  digests/      claude-kb/digests (auto)
 ```
 
-## 4. SSOT-границы (против дублей)
+## 4. SSOT boundaries (against duplication)
 
-| Знание | Владелец (SSOT) | Роль KB |
+| Knowledge | Owner (SSOT) | KB role |
 |---|---|---|
-| Inter-repo контракт | репо-производитель | `derived/contracts/` — снапшот/индекс, НЕ авторитет |
-| Repo-local правила | CLAUDE.md репы | нет; репа ссылается на `authored/rules/` |
-| Cross-cutting правила | **KB `authored/rules/`** | владеет |
-| История кода | git репы | нет; `authored/decisions/` = cross-repo *почему* |
-| Реестр проектов | **KB `authored/registry/`** | владеет; корень — указатель |
-| Runtime-скилы | механизм Cowork skills | `authored/skills/` — исходники/указатели |
-| Структура/дрейф | prograph (авто) | `derived/graph/` |
-| Транзитные черновики | `_cowork_output/` | канон graduated сюда |
+| Inter-repo contract | producing repo | `derived/contracts/` — snapshot/index, NOT authority |
+| Repo-local rules | the repo's CLAUDE.md | none; the repo references `authored/rules/` |
+| Cross-cutting rules | **KB `authored/rules/`** | owns |
+| Code history | the repo's git | none; `authored/decisions/` = cross-repo *why* |
+| Project registry | **KB `authored/registry/`** | owns; the root is a pointer |
+| Runtime skills | the Cowork skills mechanism | `authored/skills/` — sources/pointers |
+| Project activity log | **KB `derived/journal/`** (kb-save) | owns; append-only, not authoritative |
+| Structure/drift | prograph (auto) | `derived/graph/` |
+| Transient drafts | `_cowork_output/` | canon graduated here |
 
-Правило-мнемоника: **если этим владеет конкретная репа — KB только ссылается. KB владеет лишь тем,
-что не принадлежит ни одной репе.**
+Mnemonic rule: **if a specific repo owns it — the KB only references it. The KB owns only what
+belongs to no repo.**
 
 ## 5. Naming
 
-- Датированные: `YYYY-MM-DD-<kebab>.md` (ADR, заметки, статусы).
-- Тематические стабильные: `<kebab>.md` (rules, templates).
+- Dated: `YYYY-MM-DD-<kebab>.md` (ADRs, notes, statuses).
+- Stable thematic: `<kebab>.md` (rules, templates).
 - ADR: `authored/decisions/YYYY-MM-DD-adr-<slug>.md`.
 
 ## 6. Lifecycle
 
-- **Состояния ADR/доков:** `Proposed → Accepted → Superseded | Archived`. Superseded/Archived —
-  ссылка на заменяющий + причина.
-- **Архивация:** устаревшее → `authored/**/archive/` с YAML-пометкой `archived: YYYY-MM-DD` +
-  `reason:`. Не удалять.
-- **Graduation:** черновик в `_cowork_output/` → став каноном, переезжает в KB под git-review.
-- **Freshness:** `registry/` и `derived/` ре-аудитятся по расписанию (курационный скил, Stage 2).
+- **ADR/doc states:** `Proposed → Accepted → Superseded | Archived`. Superseded/Archived — a link to
+  the replacement + reason.
+- **Archival:** obsolete → `authored/**/archive/` with a YAML mark `archived: YYYY-MM-DD` +
+  `reason:`. Do not delete.
+- **Graduation:** a draft in `_cowork_output/` → once it becomes canon, it moves into the KB under
+  git-review.
+- **Freshness:** `registry/` and `derived/` are re-audited on a schedule (curation skill, Stage 2).
 
-## 7. Frontmatter документа (минимум)
+## 7. Document frontmatter (minimum)
 
 ```yaml
 ---
-title: <короткий>
+title: <short>
 type: rule | adr | template | note | contract-snapshot | registry
-status: proposed | accepted | superseded | archived | living   # для authored
-owner: <кто ведёт>            # для authored
-source: <derived-инструмент>  # для derived
+status: proposed | accepted | superseded | archived | living   # for authored
+owner: <who maintains it>     # for authored
+source: <derived tool>        # for derived
 updated: YYYY-MM-DD
 ---
 ```
 
-## 8. Как добавить
+## 8. How to add
 
-- **Правило (cross-cutting):** `authored/rules/<topic>.md`, `type: rule`, PR + review. Если правило
-  repo-local — оно идёт в CLAUDE.md репы, не сюда.
-- **ADR:** `authored/decisions/YYYY-MM-DD-adr-<slug>.md`, `status: proposed`.
-- **Шаблон/профиль:** `authored/templates/`. steward-профили `lite`/`team` — здесь (SSOT профилей).
-- **Контракт:** авторитет — в репе-производителе; сюда — снапшот в `derived/contracts/` (инструментом).
+- **A rule (cross-cutting):** `authored/rules/<topic>.md`, `type: rule`, PR + review. If the rule is
+  repo-local — it goes into the repo's CLAUDE.md, not here.
+- **An ADR:** `authored/decisions/YYYY-MM-DD-adr-<slug>.md`, `status: proposed`.
+- **A template/profile:** `authored/templates/`. Steward profiles `lite`/`team` go here (SSOT of
+  profiles).
+- **A contract:** authority is in the producing repo; here — a snapshot in `derived/contracts/` (by a
+  tool).
 
-## 9. Инструменты и агенты
+## 9. Tools and agents
 
-- **Поиск:** Obsidian-MCP над vault (KB — Obsidian-совместим).
-- **Пополнение `derived/`:** prograph.
-- **Курация (Stage 2):** скил архивации/freshness/link-fix (паттерн `consolidate-memory`).
-- **Энфорс (Stage 3):** правила `authored/rules/` → CI-проверки (à la `gate-check`); дрейф →
-  prograph → dispatcher → авто-PR.
+- **Search:** Obsidian-MCP over the vault (the KB is Obsidian-compatible); from sibling projects, the
+  filesystem-based `kb-search`/`kb-load` skills.
+- **Populating `derived/`:** prograph (structure/facts/contracts/digests); `kb-save` (journal only).
+- **kb-* skills:** sources in `authored/skills/` (`kb-load`, `kb-save`, `kb-search`, `kb-session`,
+  `kb-utils/kb-env.sh`); `install-skills.sh` distributes them into ecosystem sub-projects
+  (`targets.txt`). `kb-curator` stays KB-side.
+- **Curation (Stage 2):** an archival/freshness/link-fix skill (the `consolidate-memory` pattern).
+- **Enforcement (Stage 3):** rules in `authored/rules/` → CI checks (à la `gate-check`); drift →
+  prograph → dispatcher → auto-PR.
 
-## 10. Связи
+## 10. Relationships
 
-- **steward** — потребитель `authored/templates/` (профили гейтов) и `authored/rules/`.
-- **prograph** — писатель `derived/`.
-- **dispatcher** — читатель для панелей состояния.
-- **COWORK_CONTEXT** — переезжает в `authored/registry/`; в корне остаётся указатель.
+- **steward** — consumer of `authored/templates/` (gate profiles) and `authored/rules/`.
+- **prograph** — writer of `derived/`.
+- **dispatcher** — reader for status dashboards.
+- **COWORK_CONTEXT** — moves into `authored/registry/`; a pointer remains at the root.

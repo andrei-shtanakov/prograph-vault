@@ -6,25 +6,25 @@ owner: Andrei
 updated: 2026-07-05
 ---
 
-# authored/ — пишут ЛЮДИ
+# authored/ — written by HUMANS
 
-Всё здесь редактируется людьми через **git-review (PR)**. Инструментам запись сюда **запрещена**
-(prograph и авто-скилы пишут в `../derived/`).
+Everything here is edited by humans via **git-review (PR)**. Writing here from tools is **forbidden**
+(prograph and auto-skills write to `../derived/`).
 
-## Подпапки
+## Subfolders
 
-| Папка | Что держит | SSOT? |
+| Folder | What it holds | SSOT? |
 |---|---|---|
-| `rules/` | cross-cutting правила: `code-style.md`, `gui.md`, `tui.md`, `libraries.md` | ✅ KB владеет |
-| `decisions/` | ADR (cross-repo), `YYYY-MM-DD-adr-<slug>.md` | ✅ cross-repo *почему* |
-| `templates/` | spec-шаблоны, steward-профили (`lite`/`team`), scaffolds | ✅ SSOT профилей |
-| `skills/` | project-specific скилы: исходники/доки ИЛИ указатели на Cowork skills | ⚠️ runtime — у механизма skills |
-| `notes/` | планы, намерения, cross-cutting TODO | ✅ (repo-local TODO — в репе) |
-| `registry/` | COWORK_CONTEXT (реестр + карта интеграций) | ✅ KB владеет |
+| `rules/` | cross-cutting rules: `code-style.md`, `gui.md`, `tui.md`, `libraries.md` | ✅ KB owns |
+| `decisions/` | ADRs (cross-repo), `YYYY-MM-DD-adr-<slug>.md` | ✅ cross-repo *why* |
+| `templates/` | spec templates, steward profiles (`lite`/`team`), scaffolds | ✅ SSOT of profiles |
+| `skills/` | project-specific skills: sources/docs OR pointers to Cowork skills | ⚠️ runtime — owned by the skills mechanism |
+| `notes/` | plans, intentions, cross-cutting TODOs | ✅ (repo-local TODOs — in the repo) |
+| `registry/` | COWORK_CONTEXT (registry + integration map) | ✅ KB owns |
 
-## Правила
+## Rules
 
-- Repo-local правила сюда **не** кладём — они в CLAUDE.md соответствующей репы.
-- Контракты сюда **не** кладём как авторитет — авторитет в репе-производителе; снапшот в `derived/`.
-- Устаревшее → `<подпапка>/archive/` с `archived:`/`reason:` во frontmatter. Не удалять.
-- Каждый файл — с frontmatter (`title/type/status/owner/updated`), см. `../CLAUDE.md` §7.
+- Repo-local rules do **not** go here — they live in the corresponding repo's CLAUDE.md.
+- Contracts do **not** go here as authority — authority is in the producing repo; the snapshot goes in `derived/`.
+- Obsolete → `<subfolder>/archive/` with `archived:`/`reason:` in the frontmatter. Do not delete.
+- Every file has frontmatter (`title/type/status/owner/updated`), see `../CLAUDE.md` §7.
