@@ -3,19 +3,19 @@
 ---
 indexed_at: "2026-07-07T16:11:23Z"
 kind: docs
-name: open-prose
+name: robin-toolkit
 prograph: project
-root: ./open-prose
+root: ./robin-toolkit
 snapshot: 1
 ---
 
-# open-prose
+# robin-toolkit
 
-> A programming language for AI sessions — zero-dependency, pure-specification.
+> Build a team knowledge repo that answers questions instead of you — then give it a voice.
 
 ## Manifest
 
-- declared package: `open-prose`
+- declared package: `robin-toolkit`
 
 ## Public surface
 

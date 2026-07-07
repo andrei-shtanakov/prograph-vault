@@ -3,19 +3,19 @@
 ---
 indexed_at: "2026-07-07T16:11:23Z"
 kind: docs
-name: open-prose
+name: prograph-vault
 prograph: project
-root: ./open-prose
+root: ./prograph-vault
 snapshot: 1
 ---
 
-# open-prose
+# prograph-vault
 
-> A programming language for AI sessions — zero-dependency, pure-specification.
+> > Unified knowledge base of a multi-project ecosystem (promoted from prograph-vault, ADR 2026-07-05). > This file is the KB constitution. All agents and humans follow it when reading/writing.
 
 ## Manifest
 
-- declared package: `open-prose`
+- declared package: `prograph-vault`
 
 ## Public surface
 

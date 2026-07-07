@@ -3,19 +3,19 @@
 ---
 indexed_at: "2026-07-07T16:11:23Z"
 kind: docs
-name: open-prose
+name: sdd-framework
 prograph: project
-root: ./open-prose
+root: ./sdd-framework
 snapshot: 1
 ---
 
-# open-prose
+# sdd-framework
 
-> A programming language for AI sessions — zero-dependency, pure-specification.
+> Spec-Driven Development (SDD) for data pipelines. AI generates code and documentation from approved specs — never from ad-hoc descriptions.
 
 ## Manifest
 
-- declared package: `open-prose`
+- declared package: `sdd-framework`
 
 ## Public surface
 

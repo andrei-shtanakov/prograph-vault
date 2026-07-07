@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: python
 name: atp-core
 parent: atp-platform
 prograph: project
 root: ./atp-platform/packages/atp-core
-snapshot: 48
+snapshot: 1
 ---
 
 # atp-core
@@ -99,13 +99,14 @@ _None._
 - `get_observer` (function) — `atp/core/observer.py:123`
 - `set_observer` (function) — `atp/core/observer.py:128`
 - `EvalCheck` (class) — `atp/core/results.py:33`
-- `EvalResult` (class) — `atp/core/results.py:43`
-- `ProgressEventType` (class) — `atp/core/results.py:105`
-- `ProgressEvent` (class) — `atp/core/results.py:119`
-- `ProgressCallback` (const) — `atp/core/results.py:145`
-- `TestReport` (class) — `atp/core/results.py:305`
-- `SuiteReport` (class) — `atp/core/results.py:327`
-- `rebuild_report_models` (function) — `atp/core/results.py:393`
+- `CaseVerdict` (class) — `atp/core/results.py:43`
+- `EvalResult` (class) — `atp/core/results.py:66`
+- `ProgressEventType` (class) — `atp/core/results.py:133`
+- `ProgressEvent` (class) — `atp/core/results.py:147`
+- `ProgressCallback` (const) — `atp/core/results.py:173`
+- `TestReport` (class) — `atp/core/results.py:333`
+- `SuiteReport` (class) — `atp/core/results.py:355`
+- `rebuild_report_models` (function) — `atp/core/results.py:429`
 - `logger` (const) — `atp/core/security.py:24`
 - `audit_logger` (const) — `atp/core/security.py:25`
 - `SECRET_PATTERNS` (const) — `atp/core/security.py:34`
@@ -195,6 +196,10 @@ _None._
 - `set_test_result_attributes` (function) — `atp/core/telemetry.py:864`
 - `set_adapter_response_attributes` (function) — `atp/core/telemetry.py:891`
 - `set_evaluator_result_attributes` (function) — `atp/core/telemetry.py:916`
+- `USAGE_CONTRACT` (const) — `atp/cost/cloud_pricer.py:22`
+- `PRICING_INSTALL_HINT` (const) — `atp/cost/cloud_pricer.py:23`
+- `PricingDependencyError` (class) — `atp/cost/cloud_pricer.py:29`
+- `CloudPricer` (class) — `atp/cost/cloud_pricer.py:157`
 - `logger` (const) — `atp/cost/models.py:14`
 - `logger` (const) — `atp/cost/tracker.py:13`
 - `CostPersistenceBackend` (class) — `atp/cost/tracker.py:16`
@@ -203,6 +208,11 @@ _None._
 - `set_cost_tracker` (function) — `atp/cost/tracker.py:306`
 - `shutdown_cost_tracker` (function) — `atp/cost/tracker.py:312`
 - `TagFilter` (class) — `atp/loader/filters.py:6`
+- `logger` (const) — `atp/loader/format_dispatch.py:20`
+- `SuiteFormatDetector` (const) — `atp/loader/format_dispatch.py:23`
+- `SuiteFormatHandler` (const) — `atp/loader/format_dispatch.py:27`
+- `SuiteFormatRegistry` (class) — `atp/loader/format_dispatch.py:30`
+- `get_suite_format_registry` (function) — `atp/loader/format_dispatch.py:90`
 - `TestLoader` (class) — `atp/loader/loader.py:14`
 - `MultiAgentMode` (class) — `atp/loader/models.py:11`
 - `CollaborationConfig` (class) — `atp/loader/models.py:19`
@@ -213,19 +223,35 @@ _None._
 - `TaskDefinition` (class) — `atp/loader/models.py:106`
 - `Constraints` (class) — `atp/loader/models.py:122`
 - `Assertion` (class) — `atp/loader/models.py:139`
-- `ScoringWeights` (class) — `atp/loader/models.py:148`
-- `TestDefinition` (class) — `atp/loader/models.py:157`
-- `AgentConfig` (class) — `atp/loader/models.py:264`
-- `ChaosSettings` (class) — `atp/loader/models.py:274`
-- `TestDefaults` (class) — `atp/loader/models.py:299`
-- `TestSuite` (class) — `atp/loader/models.py:315`
+- `ScoringWeights` (class) — `atp/loader/models.py:153`
+- `TestDefinition` (class) — `atp/loader/models.py:162`
+- `AgentConfig` (class) — `atp/loader/models.py:269`
+- `ChaosSettings` (class) — `atp/loader/models.py:279`
+- `TestDefaults` (class) — `atp/loader/models.py:304`
+- `TestSuite` (class) — `atp/loader/models.py:320`
 - `YAMLParser` (class) — `atp/loader/parser.py:14`
 - `VariableSubstitution` (class) — `atp/loader/parser.py:90`
 - `COLLABORATION_CONFIG_SCHEMA` (const) — `atp/loader/schema.py:6`
 - `HANDOFF_CONFIG_SCHEMA` (const) — `atp/loader/schema.py:27`
 - `COMPARISON_CONFIG_SCHEMA` (const) — `atp/loader/schema.py:53`
 - `TEST_SUITE_SCHEMA` (const) — `atp/loader/schema.py:67`
-- `validate_schema` (function) — `atp/loader/schema.py:249`
+- `validate_schema` (function) — `atp/loader/schema.py:254`
+- `logger` (const) — `atp/loader/suite_source.py:20`
+- `SuiteSourceDetector` (const) — `atp/loader/suite_source.py:23`
+- `SuiteSourceLoader` (const) — `atp/loader/suite_source.py:25`
+- `SuiteSourceRegistry` (class) — `atp/loader/suite_source.py:28`
+- `get_suite_source_registry` (function) — `atp/loader/suite_source.py:68`
+- `CatalogError` (class) — `atp/model_catalog/errors.py:10`
+- `CatalogNotConfiguredError` (class) — `atp/model_catalog/errors.py:14`
+- `CatalogTOMLError` (class) — `atp/model_catalog/errors.py:22`
+- `CatalogSchemaError` (class) — `atp/model_catalog/errors.py:26`
+- `resolve_catalog_path` (function) — `atp/model_catalog/loader.py:46`
+- `load_catalog` (function) — `atp/model_catalog/loader.py:75`
+- `read_template` (function) — `atp/model_catalog/loader.py:90`
+- `ModelEntry` (class) — `atp/model_catalog/schema.py:16`
+- `HarnessEntry` (class) — `atp/model_catalog/schema.py:26`
+- `AgentEntry` (class) — `atp/model_catalog/schema.py:38`
+- `ModelCatalog` (class) — `atp/model_catalog/schema.py:49`
 - `PROTOCOL_VERSION` (const) — `atp/protocol/_version.py:3`
 - `SUPPORTED_VERSIONS` (const) — `atp/protocol/_version.py:5`
 - `MAX_TASK_ID_LENGTH` (const) — `atp/protocol/models.py:14`
@@ -243,18 +269,18 @@ _None._
 - `Context` (class) — `atp/protocol/models.py:94`
 - `ATPRequest` (class) — `atp/protocol/models.py:162`
 - `Metrics` (class) — `atp/protocol/models.py:216`
-- `ArtifactFile` (class) — `atp/protocol/models.py:231`
-- `ArtifactStructured` (class) — `atp/protocol/models.py:279`
-- `ArtifactReference` (class) — `atp/protocol/models.py:304`
-- `Artifact` (const) — `atp/protocol/models.py:326`
-- `ATPResponse` (class) — `atp/protocol/models.py:329`
-- `ToolCallPayload` (class) — `atp/protocol/models.py:383`
-- `LLMRequestPayload` (class) — `atp/protocol/models.py:395`
-- `ReasoningPayload` (class) — `atp/protocol/models.py:406`
-- `ErrorPayload` (class) — `atp/protocol/models.py:414`
-- `ProgressPayload` (class) — `atp/protocol/models.py:422`
-- `EventPayload` (const) — `atp/protocol/models.py:432`
-- `ATPEvent` (class) — `atp/protocol/models.py:442`
+- `ArtifactFile` (class) — `atp/protocol/models.py:237`
+- `ArtifactStructured` (class) — `atp/protocol/models.py:285`
+- `ArtifactReference` (class) — `atp/protocol/models.py:310`
+- `Artifact` (const) — `atp/protocol/models.py:332`
+- `ATPResponse` (class) — `atp/protocol/models.py:335`
+- `ToolCallPayload` (class) — `atp/protocol/models.py:389`
+- `LLMRequestPayload` (class) — `atp/protocol/models.py:401`
+- `ReasoningPayload` (class) — `atp/protocol/models.py:412`
+- `ErrorPayload` (class) — `atp/protocol/models.py:420`
+- `ProgressPayload` (class) — `atp/protocol/models.py:428`
+- `EventPayload` (const) — `atp/protocol/models.py:438`
+- `ATPEvent` (class) — `atp/protocol/models.py:448`
 - `generate_request_schema` (function) — `atp/protocol/schema.py:8`
 - `generate_response_schema` (function) — `atp/protocol/schema.py:13`
 - `generate_event_schema` (function) — `atp/protocol/schema.py:18`
@@ -287,7 +313,7 @@ _None._
 
 ## Modules
 
-_38 files, 256 public symbols, 14 internal imports._
+_45 files, 282 public symbols, 14 internal imports._
 
 - `atp/chaos/__init__.py` (python)
 - `atp/chaos/concurrency.py` (python)
@@ -305,14 +331,21 @@ _38 files, 256 public symbols, 14 internal imports._
 - `atp/core/settings.py` (python)
 - `atp/core/telemetry.py` (python)
 - `atp/cost/__init__.py` (python)
+- `atp/cost/cloud_pricer.py` (python)
 - `atp/cost/models.py` (python)
 - `atp/cost/tracker.py` (python)
 - `atp/loader/__init__.py` (python)
 - `atp/loader/filters.py` (python)
+- `atp/loader/format_dispatch.py` (python)
 - `atp/loader/loader.py` (python)
 - `atp/loader/models.py` (python)
 - `atp/loader/parser.py` (python)
 - `atp/loader/schema.py` (python)
+- `atp/loader/suite_source.py` (python)
+- `atp/model_catalog/__init__.py` (python)
+- `atp/model_catalog/errors.py` (python)
+- `atp/model_catalog/loader.py` (python)
+- `atp/model_catalog/schema.py` (python)
 - `atp/protocol/__init__.py` (python)
 - `atp/protocol/_version.py` (python)
 - `atp/protocol/models.py` (python)
@@ -344,10 +377,11 @@ _None._
 
 - ← [[atp-adapters]] · `package_dep` · `atp-core`
 - ← [[atp-dashboard]] · `package_dep` · `atp-core`
+- ← [[atp-platform]] · `package_dep` · `atp-core`
 
 ## Recent changes (last 5)
 
-- snapshot 43 (2026-05-27T10:51:48Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 

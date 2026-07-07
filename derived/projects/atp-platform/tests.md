@@ -3,19 +3,20 @@
 ---
 indexed_at: "2026-07-07T16:11:23Z"
 kind: docs
-name: open-prose
+name: tests
+parent: atp-platform
 prograph: project
-root: ./open-prose
+root: ./atp-platform/tests
 snapshot: 1
 ---
 
-# open-prose
+# tests
 
-> A programming language for AI sessions — zero-dependency, pure-specification.
+> This directory contains the test suite for the ATP (Agent Test Platform) project.
 
 ## Manifest
 
-- declared package: `open-prose`
+- declared package: `tests`
 
 ## Public surface
 

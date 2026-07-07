@@ -3,19 +3,20 @@
 ---
 indexed_at: "2026-07-07T16:11:23Z"
 kind: docs
-name: open-prose
+name: art
+parent: atp-platform
 prograph: project
-root: ./open-prose
+root: ./atp-platform/art
 snapshot: 1
 ---
 
-# open-prose
+# art
 
-> A programming language for AI sessions — zero-dependency, pure-specification.
+> > Framework-agnostic platform for testing and evaluating AI agents
 
 ## Manifest
 
-- declared package: `open-prose`
+- declared package: `art`
 
 ## Public surface
 

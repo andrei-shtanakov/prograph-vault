@@ -3,19 +3,20 @@
 ---
 indexed_at: "2026-07-07T16:11:23Z"
 kind: docs
-name: open-prose
+name: infra
+parent: atp-platform
 prograph: project
-root: ./open-prose
+root: ./atp-platform/infra
 snapshot: 1
 ---
 
-# open-prose
+# infra
 
-> A programming language for AI sessions — zero-dependency, pure-specification.
+> Codifies the "everything in AWS via IAM" demo: a Bedrock Agent stub (the agent under test) and Claude Sonnet 4.5 as judge, both authenticating through the EC2 instance role — no API keys, no static…
 
 ## Manifest
 
-- declared package: `open-prose`
+- declared package: `infra`
 
 ## Public surface
 

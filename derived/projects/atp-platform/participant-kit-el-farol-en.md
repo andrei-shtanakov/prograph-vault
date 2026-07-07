@@ -3,19 +3,20 @@
 ---
 indexed_at: "2026-07-07T16:11:23Z"
 kind: docs
-name: open-prose
+name: participant-kit-el-farol-en
+parent: atp-platform
 prograph: project
-root: ./open-prose
+root: ./atp-platform/participant-kit-el-farol-en
 snapshot: 1
 ---
 
-# open-prose
+# participant-kit-el-farol-en
 
-> A programming language for AI sessions — zero-dependency, pure-specification.
+> Portable starter kit for tournament participants playing `elfarol`.
 
 ## Manifest
 
-- declared package: `open-prose`
+- declared package: `participant-kit-el-farol-en`
 
 ## Public surface
 

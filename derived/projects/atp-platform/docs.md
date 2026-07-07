@@ -3,19 +3,20 @@
 ---
 indexed_at: "2026-07-07T16:11:23Z"
 kind: docs
-name: open-prose
+name: docs
+parent: atp-platform
 prograph: project
-root: ./open-prose
+root: ./atp-platform/docs
 snapshot: 1
 ---
 
-# open-prose
+# docs
 
-> A programming language for AI sessions — zero-dependency, pure-specification.
+> Complete documentation for the Agent Test Platform.
 
 ## Manifest
 
-- declared package: `open-prose`
+- declared package: `docs`
 
 ## Public surface
 

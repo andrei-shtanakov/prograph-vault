@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: python
 name: game-environments
 parent: atp-platform
 prograph: project
 root: ./atp-platform/game-environments
-snapshot: 48
+snapshot: 1
 ---
 
 # game-environments
@@ -451,7 +451,7 @@ _None._
 
 ## Recent changes (last 5)
 
-- snapshot 28 (2026-05-26T13:48:53Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 

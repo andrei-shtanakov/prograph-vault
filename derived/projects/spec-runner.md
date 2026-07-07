@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: python
 name: spec-runner
 prograph: project
 root: ./spec-runner
-snapshot: 48
+snapshot: 1
 ---
 
 # spec-runner
@@ -15,7 +15,7 @@ snapshot: 48
 
 ## Manifest
 
-- declared package: `spec-runner` version `2.1.0`
+- declared package: `spec-runner` version `2.9.0`
 
 ## Public surface
 
@@ -23,17 +23,21 @@ snapshot: 48
 
 - `spec_runner_costs` — `src/spec_runner/mcp_server.py:163`
 - `spec_runner_logs` — `src/spec_runner/mcp_server.py:170`
-- `spec_runner_next_tasks` — `src/spec_runner/mcp_server.py:224`
+- `spec_runner_next_tasks` — `src/spec_runner/mcp_server.py:236`
 - `spec_runner_run_task` — `src/spec_runner/mcp_server.py:177`
 - `spec_runner_status` — `src/spec_runner/mcp_server.py:149`
-- `spec_runner_stop` — `src/spec_runner/mcp_server.py:210`
-- `spec_runner_task_detail` — `src/spec_runner/mcp_server.py:235`
+- `spec_runner_stop` — `src/spec_runner/mcp_server.py:222`
+- `spec_runner_task_detail` — `src/spec_runner/mcp_server.py:247`
 - `spec_runner_tasks` — `src/spec_runner/mcp_server.py:156`
 
 ### Contracts declared
 
+- [[hash-b508052340f7]] (json_schema) — `schemas/doctor-result.schema.json` — `hash-b508052340f7`
+- [[https---github-com-andrei-shtanakov-spec-runner-schemas-costs-schema-json]] (json_schema) — `schemas/costs.schema.json` — `https://github.com/andrei-shtanakov/spec-runner/schemas/costs.schema.json`
 - [[https---github-com-andrei-shtanakov-spec-runner-schemas-executor-state-schema-json]] (json_schema) — `schemas/executor-state.schema.json` — `https://github.com/andrei-shtanakov/spec-runner/schemas/executor-state.schema.json`
 - [[https---github-com-andrei-shtanakov-spec-runner-schemas-json-result-schema-json]] (json_schema) — `schemas/json-result.schema.json` — `https://github.com/andrei-shtanakov/spec-runner/schemas/json-result.schema.json`
+- [[https---github-com-andrei-shtanakov-spec-runner-schemas-spec-frontmatter-schema-json]] (json_schema) — `schemas/spec-frontmatter.schema.json` — `https://github.com/andrei-shtanakov/spec-runner/schemas/spec-frontmatter.schema.json`
+- [[https---github-com-andrei-shtanakov-spec-runner-schemas-status-schema-json]] (json_schema) — `schemas/status.schema.json` — `https://github.com/andrei-shtanakov/spec-runner/schemas/status.schema.json`
 
 ### Public symbols
 
@@ -44,9 +48,9 @@ snapshot: 48
 - `CAT_DANGLING_DESIGN_REF` (const) — `src/spec_runner/audit.py:38`
 - `CAT_DEAD_DESIGN` (const) — `src/spec_runner/audit.py:39`
 - `audit_all` (function) — `src/spec_runner/audit.py:110`
-- `format_audit_text` (function) — `src/spec_runner/audit.py:236`
-- `format_audit_json` (function) — `src/spec_runner/audit.py:274`
-- `format_audit_csv` (function) — `src/spec_runner/audit.py:294`
+- `format_audit_text` (function) — `src/spec_runner/audit.py:228`
+- `format_audit_json` (function) — `src/spec_runner/audit.py:266`
+- `format_audit_csv` (function) — `src/spec_runner/audit.py:286`
 - `EVENT_RUN_STARTED` (const) — `src/spec_runner/audit_log.py:44`
 - `EVENT_RUN_ENDED` (const) — `src/spec_runner/audit_log.py:45`
 - `EVENT_TASK_STARTED` (const) — `src/spec_runner/audit_log.py:46`
@@ -59,39 +63,60 @@ snapshot: 48
 - `NoOpAuditLogger` (class) — `src/spec_runner/audit_log.py:83`
 - `AuditLogger` (class) — `src/spec_runner/audit_log.py:97`
 - `build_audit_logger` (function) — `src/spec_runner/audit_log.py:195`
-- `logger` (const) — `src/spec_runner/cli.py:63`
-- `build_task_json_result` (function) — `src/spec_runner/cli.py:69`
-- `cmd_run` (function) — `src/spec_runner/cli.py:119`
-- `cmd_retry` (function) — `src/spec_runner/cli.py:444`
-- `cmd_watch` (function) — `src/spec_runner/cli.py:489`
-- `main` (function) — `src/spec_runner/cli.py:649`
+- `logger` (const) — `src/spec_runner/cli.py:66`
+- `build_task_json_result` (function) — `src/spec_runner/cli.py:72`
+- `cmd_run` (function) — `src/spec_runner/cli.py:143`
+- `spec_run_gate_ok` (function) — `src/spec_runner/cli.py:190`
+- `cmd_retry` (function) — `src/spec_runner/cli.py:558`
+- `cmd_watch` (function) — `src/spec_runner/cli.py:609`
+- `cmd_doctor` (function) — `src/spec_runner/cli.py:723`
+- `main` (function) — `src/spec_runner/cli.py:1211`
 - `logger` (const) — `src/spec_runner/cli_info.py:23`
-- `cmd_status` (function) — `src/spec_runner/cli_info.py:26`
-- `cmd_costs` (function) — `src/spec_runner/cli_info.py:132`
-- `cmd_logs` (function) — `src/spec_runner/cli_info.py:267`
-- `cmd_stop` (function) — `src/spec_runner/cli_info.py:282`
-- `cmd_reset` (function) — `src/spec_runner/cli_info.py:290`
-- `cmd_validate` (function) — `src/spec_runner/cli_info.py:304`
-- `cmd_verify` (function) — `src/spec_runner/cli_info.py:318`
-- `cmd_audit` (function) — `src/spec_runner/cli_info.py:335`
-- `cmd_report` (function) — `src/spec_runner/cli_info.py:359`
-- `cmd_tui` (function) — `src/spec_runner/cli_info.py:376`
-- `cmd_mcp` (function) — `src/spec_runner/cli_info.py:390`
-- `logger` (const) — `src/spec_runner/cli_plan.py:23`
-- `cmd_plan` (function) — `src/spec_runner/cli_plan.py:26`
-- `ExecutorLock` (class) — `src/spec_runner/config.py:33`
-- `CONFIG_FILE` (const) — `src/spec_runner/config.py:97`
-- `LEGACY_CONFIG_FILE` (const) — `src/spec_runner/config.py:98`
-- `PROGRESS_FILE` (const) — `src/spec_runner/config.py:99`
-- `ERROR_PATTERNS` (const) — `src/spec_runner/config.py:102`
-- `load_config_from_yaml` (function) — `src/spec_runner/config.py:313`
-- `build_config` (function) — `src/spec_runner/config.py:401`
+- `print_status` (function) — `src/spec_runner/cli_info.py:26`
+- `cmd_status` (function) — `src/spec_runner/cli_info.py:136`
+- `cmd_costs` (function) — `src/spec_runner/cli_info.py:170`
+- `cmd_logs` (function) — `src/spec_runner/cli_info.py:323`
+- `cmd_stop` (function) — `src/spec_runner/cli_info.py:338`
+- `cmd_reset` (function) — `src/spec_runner/cli_info.py:346`
+- `cmd_validate` (function) — `src/spec_runner/cli_info.py:360`
+- `cmd_verify` (function) — `src/spec_runner/cli_info.py:374`
+- `cmd_audit` (function) — `src/spec_runner/cli_info.py:391`
+- `cmd_report` (function) — `src/spec_runner/cli_info.py:415`
+- `cmd_tui` (function) — `src/spec_runner/cli_info.py:432`
+- `cmd_mcp` (function) — `src/spec_runner/cli_info.py:446`
+- `logger` (const) — `src/spec_runner/cli_plan.py:40`
+- `run_gated_stage` (function) — `src/spec_runner/cli_plan.py:155`
+- `resolve_plan_description` (function) — `src/spec_runner/cli_plan.py:242`
+- `cmd_plan` (function) — `src/spec_runner/cli_plan.py:268`
+- `ConfigError` (class) — `src/spec_runner/config.py:25`
+- `ExecutorLock` (class) — `src/spec_runner/config.py:44`
+- `CONFIG_FILE` (const) — `src/spec_runner/config.py:108`
+- `LEGACY_CONFIG_FILE` (const) — `src/spec_runner/config.py:109`
+- `PROGRESS_FILE` (const) — `src/spec_runner/config.py:110`
+- `ERROR_PATTERNS` (const) — `src/spec_runner/config.py:113`
+- `load_config_from_yaml` (function) — `src/spec_runner/config.py:378`
+- `build_config` (function) — `src/spec_runner/config.py:469`
+- `CHECK_OK` (const) — `src/spec_runner/doctor.py:27`
+- `CHECK_UNSUPPORTED` (const) — `src/spec_runner/doctor.py:28`
+- `CHECK_FAIL` (const) — `src/spec_runner/doctor.py:29`
+- `CHECK_NA` (const) — `src/spec_runner/doctor.py:30`
+- `extract` (function) — `src/spec_runner/doctor.py:74`
+- `report_to_dict` (function) — `src/spec_runner/doctor.py:188`
+- `render_human` (function) — `src/spec_runner/doctor.py:205`
+- `resolve_target` (function) — `src/spec_runner/doctor.py:224`
+- `DOCTOR_TIMEOUT_MIN` (const) — `src/spec_runner/doctor.py:253`
+- `build_scratch` (function) — `src/spec_runner/doctor.py:271`
+- `run_probe` (function) — `src/spec_runner/doctor.py:326`
+- `run_doctor` (function) — `src/spec_runner/doctor.py:367`
+- `STDERR_TAIL_LINES` (const) — `src/spec_runner/errors.py:12`
+- `PATTERNS` (const) — `src/spec_runner/errors.py:28`
+- `classify` (function) — `src/spec_runner/errors.py:65`
 - `EventBus` (class) — `src/spec_runner/events.py:21`
-- `logger` (const) — `src/spec_runner/execution.py:30`
-- `execute_task` (function) — `src/spec_runner/execution.py:36`
-- `classify_retry_strategy` (function) — `src/spec_runner/execution.py:350`
-- `compute_retry_delay` (function) — `src/spec_runner/execution.py:365`
-- `run_with_retries` (function) — `src/spec_runner/execution.py:439`
+- `logger` (const) — `src/spec_runner/execution.py:31`
+- `execute_task` (function) — `src/spec_runner/execution.py:37`
+- `classify_retry_strategy` (function) — `src/spec_runner/execution.py:372`
+- `compute_retry_delay` (function) — `src/spec_runner/execution.py:387`
+- `run_with_retries` (function) — `src/spec_runner/execution.py:450`
 - `logger` (const) — `src/spec_runner/executor.py:9`
 - `logger` (const) — `src/spec_runner/git_ops.py:14`
 - `get_task_branch_name` (function) — `src/spec_runner/git_ops.py:17`
@@ -103,17 +128,17 @@ snapshot: 48
 - `cmd_sync_to_gh` (function) — `src/spec_runner/github_sync.py:63`
 - `cmd_sync_from_gh` (function) — `src/spec_runner/github_sync.py:128`
 - `export_gh` (function) — `src/spec_runner/github_sync.py:173`
-- `logger` (const) — `src/spec_runner/hooks.py:29`
-- `pre_start_hook` (function) — `src/spec_runner/hooks.py:49`
-- `post_done_hook` (function) — `src/spec_runner/hooks.py:156`
+- `logger` (const) — `src/spec_runner/hooks.py:30`
+- `pre_start_hook` (function) — `src/spec_runner/hooks.py:50`
+- `post_done_hook` (function) — `src/spec_runner/hooks.py:166`
 - `get_skills_source_dir` (function) — `src/spec_runner/init_cmd.py:17`
 - `install_skills` (function) — `src/spec_runner/init_cmd.py:22`
 - `main` (function) — `src/spec_runner/init_cmd.py:58`
 - `redact_sensitive` (function) — `src/spec_runner/logging.py:21`
 - `setup_logging` (function) — `src/spec_runner/logging.py:29`
-- `get_logger` (function) — `src/spec_runner/logging.py:40`
+- `get_logger` (function) — `src/spec_runner/logging.py:45`
 - `mcp_app` (const) — `src/spec_runner/mcp_server.py:18`
-- `run_server` (function) — `src/spec_runner/mcp_server.py:270`
+- `run_server` (function) — `src/spec_runner/mcp_server.py:282`
 - `logger` (const) — `src/spec_runner/notifications.py:20`
 - `TELEGRAM_API` (const) — `src/spec_runner/notifications.py:22`
 - `send_telegram` (function) — `src/spec_runner/notifications.py:41`
@@ -121,42 +146,57 @@ snapshot: 48
 - `notify` (function) — `src/spec_runner/notifications.py:114`
 - `notify_task_failed` (function) — `src/spec_runner/notifications.py:170`
 - `notify_run_complete` (function) — `src/spec_runner/notifications.py:178`
-- `init_logging` (function) — `src/spec_runner/obs.py:139`
-- `get_logger` (function) — `src/spec_runner/obs.py:192`
-- `Span` (class) — `src/spec_runner/obs.py:196`
-- `child_env` (function) — `src/spec_runner/obs.py:245`
-- `current_trace_id` (function) — `src/spec_runner/obs.py:261`
-- `current_span_id` (function) — `src/spec_runner/obs.py:265`
-- `current_pipeline_id` (function) — `src/spec_runner/obs.py:269`
+- `init_logging` (function) — `src/spec_runner/obs.py:194`
+- `get_logger` (function) — `src/spec_runner/obs.py:254`
+- `Span` (class) — `src/spec_runner/obs.py:259`
+- `child_env` (function) — `src/spec_runner/obs.py:308`
+- `current_trace_id` (function) — `src/spec_runner/obs.py:324`
+- `current_span_id` (function) — `src/spec_runner/obs.py:328`
+- `current_pipeline_id` (function) — `src/spec_runner/obs.py:332`
 - `log` (const) — `src/spec_runner/plugins.py:24`
 - `discover_plugins` (function) — `src/spec_runner/plugins.py:120`
 - `run_plugin_hooks` (function) — `src/spec_runner/plugins.py:164`
 - `build_task_env` (function) — `src/spec_runner/plugins.py:238`
-- `PROMPTS_DIR` (const) — `src/spec_runner/prompt.py:15`
-- `SPEC_STAGES` (const) — `src/spec_runner/prompt.py:17`
-- `load_prompt_template` (function) — `src/spec_runner/prompt.py:51`
-- `render_template` (function) — `src/spec_runner/prompt.py:101`
-- `format_error_summary` (function) — `src/spec_runner/prompt.py:121`
-- `extract_test_failures` (function) — `src/spec_runner/prompt.py:178`
-- `build_generation_prompt` (function) — `src/spec_runner/prompt.py:206`
-- `parse_spec_marker` (function) — `src/spec_runner/prompt.py:234`
-- `build_task_prompt` (function) — `src/spec_runner/prompt.py:256`
-- `build_report` (function) — `src/spec_runner/report.py:83`
-- `format_report_markdown` (function) — `src/spec_runner/report.py:201`
-- `format_report_json` (function) — `src/spec_runner/report.py:244`
+- `CONFIG_FILE` (const) — `src/spec_runner/preset_cmd.py:18`
+- `LEGACY_CONFIG_FILE` (const) — `src/spec_runner/preset_cmd.py:19`
+- `PRESET_NAMES` (const) — `src/spec_runner/preset_cmd.py:23`
+- `PROFILE_KEYS` (const) — `src/spec_runner/preset_cmd.py:35`
+- `list_presets` (function) — `src/spec_runner/preset_cmd.py:59`
+- `load_fragment` (function) — `src/spec_runner/preset_cmd.py:64`
+- `compose` (function) — `src/spec_runner/preset_cmd.py:92`
+- `apply_to_config` (function) — `src/spec_runner/preset_cmd.py:158`
+- `cmd_config` (function) — `src/spec_runner/preset_cmd.py:227`
+- `PROMPTS_DIR` (const) — `src/spec_runner/prompt.py:18`
+- `load_bundled_template` (function) — `src/spec_runner/prompt.py:37`
+- `template_hash` (function) — `src/spec_runner/prompt.py:58`
+- `SPEC_STAGES` (const) — `src/spec_runner/prompt.py:76`
+- `load_prompt_template` (function) — `src/spec_runner/prompt.py:81`
+- `render_template` (function) — `src/spec_runner/prompt.py:131`
+- `format_error_summary` (function) — `src/spec_runner/prompt.py:151`
+- `extract_test_failures` (function) — `src/spec_runner/prompt.py:208`
+- `build_generation_prompt` (function) — `src/spec_runner/prompt.py:236`
+- `build_gated_generation_prompt` (function) — `src/spec_runner/prompt.py:275`
+- `parse_spec_marker` (function) — `src/spec_runner/prompt.py:332`
+- `build_task_prompt` (function) — `src/spec_runner/prompt.py:354`
+- `build_report` (function) — `src/spec_runner/report.py:79`
+- `format_report_markdown` (function) — `src/spec_runner/report.py:193`
+- `format_report_json` (function) — `src/spec_runner/report.py:236`
 - `logger` (const) — `src/spec_runner/review.py:18`
-- `REVIEW_ROLES` (const) — `src/spec_runner/review.py:21`
-- `build_review_prompt` (function) — `src/spec_runner/review.py:55`
-- `run_code_review` (function) — `src/spec_runner/review.py:194`
-- `run_parallel_review` (function) — `src/spec_runner/review.py:370`
-- `format_review_findings` (function) — `src/spec_runner/review.py:456`
-- `prompt_hitl_verdict` (function) — `src/spec_runner/review.py:464`
-- `log_progress` (function) — `src/spec_runner/runner.py:23`
-- `check_error_patterns` (function) — `src/spec_runner/runner.py:43`
-- `parse_token_usage` (function) — `src/spec_runner/runner.py:52`
-- `send_callback` (function) — `src/spec_runner/runner.py:80`
-- `build_cli_command` (function) — `src/spec_runner/runner.py:141`
-- `run_claude_async` (function) — `src/spec_runner/runner.py:244`
+- `REVIEW_ROLES` (const) — `src/spec_runner/review.py:40`
+- `build_review_prompt` (function) — `src/spec_runner/review.py:74`
+- `run_code_review` (function) — `src/spec_runner/review.py:221`
+- `run_parallel_review` (function) — `src/spec_runner/review.py:397`
+- `format_review_findings` (function) — `src/spec_runner/review.py:483`
+- `prompt_hitl_verdict` (function) — `src/spec_runner/review.py:491`
+- `ResultFormat` (const) — `src/spec_runner/runner.py:23`
+- `parse_cli_result` (function) — `src/spec_runner/runner.py:111`
+- `log_progress` (function) — `src/spec_runner/runner.py:128`
+- `check_error_patterns` (function) — `src/spec_runner/runner.py:148`
+- `parse_token_usage` (function) — `src/spec_runner/runner.py:157`
+- `send_callback` (function) — `src/spec_runner/runner.py:185`
+- `build_cli_invocation` (function) — `src/spec_runner/runner.py:246`
+- `build_cli_command` (function) — `src/spec_runner/runner.py:359`
+- `run_claude_async` (function) — `src/spec_runner/runner.py:371`
 - `ExecutorState` (class) — `src/spec_runner/skills/spec-generator-skill/templates/executor.py:131`
 - `build_task_prompt` (function) — `src/spec_runner/skills/spec-generator-skill/templates/executor.py:239`
 - `pre_start_hook` (function) — `src/spec_runner/skills/spec-generator-skill/templates/executor.py:329`
@@ -201,38 +241,65 @@ snapshot: 48
 - `cmd_graph` (function) — `src/spec_runner/skills/spec-generator-skill/templates/task.py:566`
 - `cmd_export_gh` (function) — `src/spec_runner/skills/spec-generator-skill/templates/task.py:600`
 - `main` (function) — `src/spec_runner/skills/spec-generator-skill/templates/task.py:632`
+- `load_profile` (function) — `src/spec_runner/spec.py:54`
+- `available_profiles` (function) — `src/spec_runner/spec.py:86`
+- `LITE` (const) — `src/spec_runner/spec.py:96`
+- `STAGES` (const) — `src/spec_runner/spec.py:101`
+- `SpecLockError` (class) — `src/spec_runner/spec.py:104`
+- `split_frontmatter` (function) — `src/spec_runner/spec.py:123`
+- `strip_frontmatter` (function) — `src/spec_runner/spec.py:146`
+- `split_frontmatter_raw` (function) — `src/spec_runner/spec.py:152`
+- `meta_from_dict` (function) — `src/spec_runner/spec.py:166`
+- `meta_to_dict` (function) — `src/spec_runner/spec.py:172`
+- `read_spec_meta` (function) — `src/spec_runner/spec.py:183`
+- `read_spec_body` (function) — `src/spec_runner/spec.py:205`
+- `write_spec` (function) — `src/spec_runner/spec.py:212`
+- `downstream_stages` (function) — `src/spec_runner/spec.py:242`
+- `resolve_next_stage` (function) — `src/spec_runner/spec.py:248`
+- `stage_path` (function) — `src/spec_runner/spec.py:271`
+- `mark_downstream_stale` (function) — `src/spec_runner/spec.py:288`
+- `apply_approval` (function) — `src/spec_runner/spec.py:307`
+- `logger` (const) — `src/spec_runner/spec_commands.py:24`
+- `cmd_spec_status` (function) — `src/spec_runner/spec_commands.py:51`
+- `cmd_spec_approve` (function) — `src/spec_runner/spec_commands.py:67`
+- `cmd_spec_reject` (function) — `src/spec_runner/spec_commands.py:94`
+- `cmd_spec_adopt` (function) — `src/spec_runner/spec_commands.py:108`
+- `cmd_spec_check` (function) — `src/spec_runner/spec_commands.py:146`
+- `run_checkpoint_menu` (function) — `src/spec_runner/spec_commands.py:161`
+- `STAGES` (const) — `src/spec_runner/stages.py:12`
+- `StageReporter` (class) — `src/spec_runner/stages.py:25`
 - `ErrorCode` (class) — `src/spec_runner/state.py:19`
 - `ReviewVerdict` (class) — `src/spec_runner/state.py:34`
-- `ExecutorState` (class) — `src/spec_runner/state.py:113`
-- `check_stop_requested` (function) — `src/spec_runner/state.py:676`
-- `clear_stop_file` (function) — `src/spec_runner/state.py:683`
-- `recover_stale_tasks` (function) — `src/spec_runner/state.py:689`
-- `TASKS_FILE` (const) — `src/spec_runner/task.py:10`
-- `HISTORY_FILE` (const) — `src/spec_runner/task.py:11`
-- `TASK_HEADER` (const) — `src/spec_runner/task.py:14`
-- `TASK_META` (const) — `src/spec_runner/task.py:16`
-- `CHECKLIST_ITEM` (const) — `src/spec_runner/task.py:17`
-- `TRACES_TO` (const) — `src/spec_runner/task.py:18`
-- `DEPENDS_ON` (const) — `src/spec_runner/task.py:19`
-- `BLOCKS` (const) — `src/spec_runner/task.py:20`
-- `ESTIMATE` (const) — `src/spec_runner/task.py:21`
-- `STATUS_EMOJI` (const) — `src/spec_runner/task.py:23`
-- `STATUS_FROM_EMOJI` (const) — `src/spec_runner/task.py:25`
-- `PRIORITY_EMOJI` (const) — `src/spec_runner/task.py:27`
-- `PRIORITY_FROM_EMOJI` (const) — `src/spec_runner/task.py:29`
-- `parse_tasks` (function) — `src/spec_runner/task.py:58`
-- `history_file_for` (function) — `src/spec_runner/task.py:181`
-- `log_change` (function) — `src/spec_runner/task.py:192`
-- `update_task_status` (function) — `src/spec_runner/task.py:200`
-- `update_checklist_item` (function) — `src/spec_runner/task.py:250`
-- `mark_all_checklist_done` (function) — `src/spec_runner/task.py:281`
-- `get_task_by_id` (function) — `src/spec_runner/task.py:316`
-- `snapshot_task_statuses` (function) — `src/spec_runner/task.py:350`
-- `diff_task_statuses` (function) — `src/spec_runner/task.py:355`
-- `format_task_status_diff` (function) — `src/spec_runner/task.py:416`
-- `resolve_dependencies` (function) — `src/spec_runner/task.py:436`
-- `get_in_progress_tasks` (function) — `src/spec_runner/task.py:456`
-- `get_next_tasks` (function) — `src/spec_runner/task.py:467`
+- `ExecutorState` (class) — `src/spec_runner/state.py:115`
+- `check_stop_requested` (function) — `src/spec_runner/state.py:785`
+- `clear_stop_file` (function) — `src/spec_runner/state.py:792`
+- `recover_stale_tasks` (function) — `src/spec_runner/state.py:798`
+- `TASKS_FILE` (const) — `src/spec_runner/task.py:12`
+- `HISTORY_FILE` (const) — `src/spec_runner/task.py:13`
+- `TASK_HEADER` (const) — `src/spec_runner/task.py:16`
+- `TASK_META` (const) — `src/spec_runner/task.py:18`
+- `CHECKLIST_ITEM` (const) — `src/spec_runner/task.py:19`
+- `TRACES_TO` (const) — `src/spec_runner/task.py:20`
+- `DEPENDS_ON` (const) — `src/spec_runner/task.py:21`
+- `BLOCKS` (const) — `src/spec_runner/task.py:22`
+- `ESTIMATE` (const) — `src/spec_runner/task.py:23`
+- `STATUS_EMOJI` (const) — `src/spec_runner/task.py:25`
+- `STATUS_FROM_EMOJI` (const) — `src/spec_runner/task.py:27`
+- `PRIORITY_EMOJI` (const) — `src/spec_runner/task.py:29`
+- `PRIORITY_FROM_EMOJI` (const) — `src/spec_runner/task.py:31`
+- `parse_tasks` (function) — `src/spec_runner/task.py:60`
+- `history_file_for` (function) — `src/spec_runner/task.py:183`
+- `log_change` (function) — `src/spec_runner/task.py:194`
+- `update_task_status` (function) — `src/spec_runner/task.py:202`
+- `update_checklist_item` (function) — `src/spec_runner/task.py:252`
+- `mark_all_checklist_done` (function) — `src/spec_runner/task.py:283`
+- `get_task_by_id` (function) — `src/spec_runner/task.py:318`
+- `snapshot_task_statuses` (function) — `src/spec_runner/task.py:352`
+- `diff_task_statuses` (function) — `src/spec_runner/task.py:357`
+- `format_task_status_diff` (function) — `src/spec_runner/task.py:418`
+- `resolve_dependencies` (function) — `src/spec_runner/task.py:438`
+- `get_in_progress_tasks` (function) — `src/spec_runner/task.py:458`
+- `get_next_tasks` (function) — `src/spec_runner/task.py:469`
 - `cmd_list` (function) — `src/spec_runner/task_commands.py:44`
 - `cmd_show` (function) — `src/spec_runner/task_commands.py:82`
 - `cmd_start` (function) — `src/spec_runner/task_commands.py:116`
@@ -243,27 +310,35 @@ snapshot: 48
 - `cmd_next` (function) — `src/spec_runner/task_commands.py:258`
 - `cmd_graph` (function) — `src/spec_runner/task_commands.py:284`
 - `main` (function) — `src/spec_runner/task_commands.py:318`
-- `PRIORITY_BADGE` (const) — `src/spec_runner/tui.py:32`
-- `STATUS_STYLE` (const) — `src/spec_runner/tui.py:39`
-- `TaskCard` (class) — `src/spec_runner/tui.py:71`
-- `StatsBar` (class) — `src/spec_runner/tui.py:122`
-- `KanbanColumn` (class) — `src/spec_runner/tui.py:159`
-- `LogPanel` (class) — `src/spec_runner/tui.py:167`
-- `SpecRunnerApp` (class) — `src/spec_runner/tui.py:218`
-- `log` (const) — `src/spec_runner/validate.py:12`
-- `VALID_STATUSES` (const) — `src/spec_runner/validate.py:14`
-- `VALID_PRIORITIES` (const) — `src/spec_runner/validate.py:15`
-- `KNOWN_EXECUTOR_KEYS` (const) — `src/spec_runner/validate.py:19`
-- `validate_task_fields` (function) — `src/spec_runner/validate.py:44`
-- `validate_config` (function) — `src/spec_runner/validate.py:195`
-- `validate_tasks` (function) — `src/spec_runner/validate.py:245`
-- `validate_all` (function) — `src/spec_runner/validate.py:291`
-- `format_results` (function) — `src/spec_runner/validate.py:312`
+- `PRIORITY_BADGE` (const) — `src/spec_runner/tui.py:33`
+- `STATUS_STYLE` (const) — `src/spec_runner/tui.py:40`
+- `TaskCard` (class) — `src/spec_runner/tui.py:72`
+- `StatsBar` (class) — `src/spec_runner/tui.py:123`
+- `KanbanColumn` (class) — `src/spec_runner/tui.py:160`
+- `LogPanel` (class) — `src/spec_runner/tui.py:168`
+- `SpecRunnerApp` (class) — `src/spec_runner/tui.py:219`
+- `log` (const) — `src/spec_runner/validate.py:15`
+- `VALID_STATUSES` (const) — `src/spec_runner/validate.py:17`
+- `VALID_PRIORITIES` (const) — `src/spec_runner/validate.py:18`
+- `KNOWN_EXECUTOR_KEYS` (const) — `src/spec_runner/validate.py:26`
+- `verdict_from_result` (function) — `src/spec_runner/validate.py:51`
+- `validate_requirements` (function) — `src/spec_runner/validate.py:67`
+- `validate_design` (function) — `src/spec_runner/validate.py:94`
+- `validate_spec_stage` (function) — `src/spec_runner/validate.py:149`
+- `validate_task_fields` (function) — `src/spec_runner/validate.py:183`
+- `validate_config` (function) — `src/spec_runner/validate.py:334`
+- `validate_tasks` (function) — `src/spec_runner/validate.py:388`
+- `VALIDATORS` (const) — `src/spec_runner/validate.py:437`
+- `validate_all` (function) — `src/spec_runner/validate.py:444`
+- `format_results` (function) — `src/spec_runner/validate.py:465`
 - `verify_task` (function) — `src/spec_runner/verify.py:65`
 - `verify_all` (function) — `src/spec_runner/verify.py:107`
 - `format_verify_text` (function) — `src/spec_runner/verify.py:174`
 - `format_verify_json` (function) — `src/spec_runner/verify.py:208`
 - `pytest_addoption` (function) — `tests/conftest.py:6`
+- `test_adopt_invalid_file_becomes_draft` (function) — `tests/test_adopt_gate.py:9`
+- `test_adopt_force_invalid_becomes_approved` (function) — `tests/test_adopt_gate.py:18`
+- `test_adopt_valid_becomes_approved` (function) — `tests/test_adopt_gate.py:27`
 - `TASKS_ALL_CLEAN` (const) — `tests/test_audit.py:27`
 - `REQS_CLEAN` (const) — `tests/test_audit.py:47`
 - `DESIGN_CLEAN` (const) — `tests/test_audit.py:53`
@@ -271,48 +346,124 @@ snapshot: 48
 - `TestOrphanTasks` (class) — `tests/test_audit.py:94`
 - `TestDanglingReferences` (class) — `tests/test_audit.py:122`
 - `TestUncoveredSpec` (class) — `tests/test_audit.py:153`
-- `TestDeadDesign` (class) — `tests/test_audit.py:186`
-- `TestMissingSpecFiles` (class) — `tests/test_audit.py:206`
-- `TestAggregation` (class) — `tests/test_audit.py:231`
-- `TestFormatters` (class) — `tests/test_audit.py:268`
+- `TestDeadDesign` (class) — `tests/test_audit.py:184`
+- `TestMissingSpecFiles` (class) — `tests/test_audit.py:204`
+- `TestAggregation` (class) — `tests/test_audit.py:229`
+- `TestFormatters` (class) — `tests/test_audit.py:266`
 - `TestAuditLogger` (class) — `tests/test_audit_log.py:45`
 - `TestBuildAuditLogger` (class) — `tests/test_audit_log.py:129`
-- `TestExecutorStateAuditIntegration` (class) — `tests/test_audit_log.py:170`
-- `TestExecutorConfig` (class) — `tests/test_config.py:15`
-- `TestConfigStateFileDefault` (class) — `tests/test_config.py:50`
-- `TestLoadConfigFromYaml` (class) — `tests/test_config.py:60`
-- `TestBuildConfig` (class) — `tests/test_config.py:114`
-- `TestExecutorLock` (class) — `tests/test_config.py:189`
-- `TestBudgetConfig` (class) — `tests/test_config.py:204`
-- `TestErrorPatterns` (class) — `tests/test_config.py:220`
-- `TestHitlReviewConfig` (class) — `tests/test_config.py:232`
-- `TestLoggingConfig` (class) — `tests/test_config.py:264`
-- `TestLockDiagnostics` (class) — `tests/test_config.py:274`
-- `TestTimeoutConfig` (class) — `tests/test_config.py:305`
-- `TestConstitutionConfig` (class) — `tests/test_config.py:332`
-- `TestPersonaConfig` (class) — `tests/test_config.py:342`
+- `TestExecutorStateAuditIntegration` (class) — `tests/test_audit_log.py:168`
+- `FIXTURES_DIR` (const) — `tests/test_c1_zero_behaviour.py:31`
+- `test_spec_stages_export_frozen` (function) — `tests/test_c1_zero_behaviour.py:51`
+- `test_unknown_profile_raises_config_error` (function) — `tests/test_c1_zero_behaviour.py:139`
+- `test_unknown_profile_cli_exits_cleanly` (function) — `tests/test_c1_zero_behaviour.py:150`
+- `TestRunSubparserFlags` (class) — `tests/test_cli_flags.py:8`
+- `TestWatchSubparserFlags` (class) — `tests/test_cli_flags.py:32`
+- `TestPlanSubparserFlags` (class) — `tests/test_cli_flags.py:46`
+- `TestSpecSubparser` (class) — `tests/test_cli_flags.py:70`
+- `TestStatusVersionHeader` (class) — `tests/test_cli_info.py:22`
+- `TestErrorDisplay` (class) — `tests/test_cli_info.py:33`
+- `TestStopReasonLine` (class) — `tests/test_cli_info.py:72`
+- `TestSecondPassHint` (class) — `tests/test_cli_info.py:104`
+- `TestRunAllResetSemantics` (class) — `tests/test_cli_run_reset.py:67`
+- `TestSecondPassDetection` (class) — `tests/test_cli_run_reset.py:95`
+- `TestStopReasonCapture` (class) — `tests/test_cli_run_reset.py:154`
+- `TestExecutorConfig` (class) — `tests/test_config.py:43`
+- `TestConfigStateFileDefault` (class) — `tests/test_config.py:78`
+- `TestLoadConfigFromYaml` (class) — `tests/test_config.py:88`
+- `TestBuildConfig` (class) — `tests/test_config.py:142`
+- `TestExecutorLock` (class) — `tests/test_config.py:217`
+- `TestBudgetConfig` (class) — `tests/test_config.py:232`
+- `TestErrorPatterns` (class) — `tests/test_config.py:248`
+- `TestHitlReviewConfig` (class) — `tests/test_config.py:260`
+- `TestLoggingConfig` (class) — `tests/test_config.py:292`
+- `TestLockDiagnostics` (class) — `tests/test_config.py:302`
+- `TestTimeoutConfig` (class) — `tests/test_config.py:333`
+- `TestConstitutionConfig` (class) — `tests/test_config.py:360`
+- `TestPersonaConfig` (class) — `tests/test_config.py:370`
+- `TestSubdirAutoDefaultV230` (class) — `tests/test_config.py:443`
+- `TestSpecGovernance` (class) — `tests/test_config.py:476`
 - `TestCmdCosts` (class) — `tests/test_costs.py:93`
 - `TestCmdCostsSortTokens` (class) — `tests/test_costs.py:249`
+- `FIXTURES` (const) — `tests/test_doctor.py:31`
+- `test_sync_deps_defaults_true` (function) — `tests/test_doctor.py:34`
+- `test_build_config_reads_sync_deps_false` (function) — `tests/test_doctor.py:39`
+- `test_pre_start_skips_uv_sync_when_disabled` (function) — `tests/test_doctor.py:57`
+- `test_pre_start_runs_uv_sync_when_enabled` (function) — `tests/test_doctor.py:69`
+- `test_extract_all_ok` (function) — `tests/test_doctor.py:92`
+- `test_extract_no_cost_is_degraded` (function) — `tests/test_doctor.py:105`
+- `test_extract_no_marker_is_broken` (function) — `tests/test_doctor.py:114`
+- `test_extract_marker_but_no_file_is_broken` (function) — `tests/test_doctor.py:124`
+- `test_extract_wrong_file_content_is_degraded` (function) — `tests/test_doctor.py:131`
+- `test_extract_command_not_found` (function) — `tests/test_doctor.py:139`
+- `test_extract_not_found_in_message_is_not_path_error` (function) — `tests/test_doctor.py:153`
+- `test_extract_auth_failure_classified` (function) — `tests/test_doctor.py:168`
+- `test_extract_review_marker_ok` (function) — `tests/test_doctor.py:181`
+- `test_extract_review_marker_unrecognized` (function) — `tests/test_doctor.py:192`
+- `test_report_to_dict_shape` (function) — `tests/test_doctor.py:227`
+- `test_render_human_mentions_verdict_and_checks` (function) — `tests/test_doctor.py:236`
+- `test_json_matches_schema` (function) — `tests/test_doctor.py:243`
+- `test_resolve_cli_clears_templates` (function) — `tests/test_doctor.py:254`
+- `test_resolve_model_overrides_personas` (function) — `tests/test_doctor.py:267`
+- `test_resolve_no_overrides_keeps_config` (function) — `tests/test_doctor.py:280`
+- `test_build_scratch_executor_only` (function) — `tests/test_doctor.py:292`
+- `test_build_scratch_with_review_inits_git` (function) — `tests/test_doctor.py:313`
+- `test_build_scratch_honors_user_timeout` (function) — `tests/test_doctor.py:328`
+- `test_probe_ok` (function) — `tests/test_doctor.py:359`
+- `test_probe_nomarker_broken` (function) — `tests/test_doctor.py:366`
+- `test_probe_noaction_broken` (function) — `tests/test_doctor.py:372`
+- `test_probe_authfail` (function) — `tests/test_doctor.py:377`
+- `test_run_doctor_declined_makes_no_call` (function) — `tests/test_doctor.py:387`
+- `test_run_doctor_ready_exit_zero` (function) — `tests/test_doctor.py:406`
+- `test_run_doctor_broken_exit_one` (function) — `tests/test_doctor.py:424`
+- `test_run_doctor_strict_degraded_exit_one` (function) — `tests/test_doctor.py:441`
+- `test_run_doctor_json_output` (function) — `tests/test_doctor.py:458`
+- `test_run_doctor_json_with_keep_is_clean` (function) — `tests/test_doctor.py:476`
+- `test_doctor_parser_accepts_flags` (function) — `tests/test_doctor.py:524`
+- `test_doctor_parser_defaults` (function) — `tests/test_doctor.py:553`
+- `test_extract_tokens_without_cost_not_enforceable` (function) — `tests/test_doctor.py:600`
+- `test_build_scratch_isolates_plugins_dir` (function) — `tests/test_doctor.py:611`
+- `test_run_probe_no_progress_file_pollution` (function) — `tests/test_doctor.py:623`
 - `FAKE_CLI` (const) — `tests/test_e2e.py:17`
 - `MINIMAL_TASKS_MD` (const) — `tests/test_e2e.py:19`
 - `MULTI_TASKS_MD` (const) — `tests/test_e2e.py:200`
 - `INVALID_TASKS_MD` (const) — `tests/test_e2e.py:218`
+- `TestClassifyCodexUsageLimit` (class) — `tests/test_errors.py:8`
+- `TestErrorPatternImmutability` (class) — `tests/test_errors.py:22`
+- `TestClassifyMoreProviders` (class) — `tests/test_errors.py:31`
 - `TestTaskEvent` (class) — `tests/test_events.py:8`
 - `TestEventBus` (class) — `tests/test_events.py:17`
 - `TestEventBusWithRunClaudeAsync` (class) — `tests/test_events.py:93`
-- `TestExecuteTask` (class) — `tests/test_execution.py:63`
-- `TestRunWithRetries` (class) — `tests/test_execution.py:291`
-- `TestErrorClassification` (class) — `tests/test_execution.py:396`
-- `TestTokenTrackingInExecutor` (class) — `tests/test_execution.py:565`
-- `TestReviewDataTracking` (class) — `tests/test_execution.py:746`
-- `TestBudgetEnforcement` (class) — `tests/test_execution.py:908`
-- `TestStateCleanup` (class) — `tests/test_execution.py:1172`
-- `TestSignalHandling` (class) — `tests/test_execution.py:1209`
-- `TestCrashRecovery` (class) — `tests/test_execution.py:1272`
-- `TestForceFlag` (class) — `tests/test_execution.py:1301`
-- `TestRetryStrategy` (class) — `tests/test_execution.py:1386`
-- `TestComputeRetryDelay` (class) — `tests/test_execution.py:1421`
-- `TestSmartRetry` (class) — `tests/test_execution.py:1450`
+- `TestExecuteTask` (class) — `tests/test_execution.py:64`
+- `TestRunWithRetries` (class) — `tests/test_execution.py:305`
+- `TestErrorClassification` (class) — `tests/test_execution.py:410`
+- `TestTokenTrackingInExecutor` (class) — `tests/test_execution.py:590`
+- `TestReviewDataTracking` (class) — `tests/test_execution.py:782`
+- `TestBudgetEnforcement` (class) — `tests/test_execution.py:948`
+- `TestStateCleanup` (class) — `tests/test_execution.py:1212`
+- `TestSignalHandling` (class) — `tests/test_execution.py:1249`
+- `TestCrashRecovery` (class) — `tests/test_execution.py:1313`
+- `TestForceFlag` (class) — `tests/test_execution.py:1342`
+- `TestRetryStrategy` (class) — `tests/test_execution.py:1427`
+- `TestComputeRetryDelay` (class) — `tests/test_execution.py:1462`
+- `TestSmartRetry` (class) — `tests/test_execution.py:1491`
+- `TestStageReporterWiring` (class) — `tests/test_execution.py:1588`
+- `TestErrorStageRecorded` (class) — `tests/test_execution.py:1633`
+- `TestErrorClassificationInExecution` (class) — `tests/test_execution.py:1668`
+- `TestClaudeJsonCost` (class) — `tests/test_execution.py:1706`
+- `GOOD_REQ_BODY` (const) — `tests/test_gated_plan.py:29`
+- `test_gated_stage_writes_draft_with_frontmatter` (function) — `tests/test_gated_plan.py:47`
+- `test_gated_stage_gate_requires_upstream_approved` (function) — `tests/test_gated_plan.py:58`
+- `test_gated_stage_generation_failure_returns_nonzero` (function) — `tests/test_gated_plan.py:69`
+- `test_gated_stage_missing_marker_returns_nonzero` (function) — `tests/test_gated_plan.py:80`
+- `test_interactive_approve_via_menu` (function) — `tests/test_gated_plan.py:96`
+- `test_interactive_stop_leaves_draft` (function) — `tests/test_gated_plan.py:111`
+- `test_interactive_edit_then_stop_calls_editor` (function) — `tests/test_gated_plan.py:127`
+- `test_interactive_regenerate_then_stop_invokes_again` (function) — `tests/test_gated_plan.py:153`
+- `test_gated_interactive_auto_continue_terminates_at_first_draft` (function) — `tests/test_gated_plan.py:188`
+- `test_gated_no_interactive_does_not_auto_continue` (function) — `tests/test_gated_plan.py:233`
+- `test_regenerate_draft_preserves_existing_version` (function) — `tests/test_gated_plan.py:256`
+- `test_open_editor_splits_editor_with_args` (function) — `tests/test_gated_plan.py:278`
 - `SAMPLE_TASKS_MD` (const) — `tests/test_gh_sync.py:13`
 - `TestSyncToGh` (class) — `tests/test_gh_sync.py:64`
 - `TestSyncFromGh` (class) — `tests/test_gh_sync.py:186`
@@ -323,15 +474,19 @@ snapshot: 48
 - `TestPreStartHook` (class) — `tests/test_hooks.py:129`
 - `TestNoBranchMode` (class) — `tests/test_hooks.py:229`
 - `TestBuildReviewPrompt` (class) — `tests/test_hooks.py:269`
-- `TestRunCodeReview` (class) — `tests/test_hooks.py:365`
-- `TestPostDoneHookReviewWiring` (class) — `tests/test_hooks.py:452`
-- `TestHitlReviewGate` (class) — `tests/test_hooks.py:547`
-- `TestFindChangedSourceFiles` (class) — `tests/test_hooks.py:643`
-- `TestMapSourceToTestFiles` (class) — `tests/test_hooks.py:676`
-- `TestBuildScopedTestCommand` (class) — `tests/test_hooks.py:705`
-- `TestPostDoneHookScopedTests` (class) — `tests/test_hooks.py:725`
-- `TestReviewRoles` (class) — `tests/test_hooks.py:799`
-- `TestRunParallelReview` (class) — `tests/test_hooks.py:816`
+- `TestRunCodeReview` (class) — `tests/test_hooks.py:394`
+- `TestPostDoneHookReviewWiring` (class) — `tests/test_hooks.py:481`
+- `TestHitlReviewGate` (class) — `tests/test_hooks.py:576`
+- `TestFindChangedSourceFiles` (class) — `tests/test_hooks.py:672`
+- `TestMapSourceToTestFiles` (class) — `tests/test_hooks.py:705`
+- `TestBuildScopedTestCommand` (class) — `tests/test_hooks.py:734`
+- `TestPostDoneHookScopedTests` (class) — `tests/test_hooks.py:754`
+- `TestReviewRoles` (class) — `tests/test_hooks.py:828`
+- `TestRunParallelReview` (class) — `tests/test_hooks.py:845`
+- `TestStageEmissionPreStart` (class) — `tests/test_hooks.py:935`
+- `TestStageEmissionPostDone` (class) — `tests/test_hooks.py:960`
+- `TestReviewStageEmitted` (class) — `tests/test_hooks.py:1010`
+- `TestDoneStatusPersistence` (class) — `tests/test_hooks.py:1034`
 - `REPO_ROOT` (const) — `tests/test_json_result_contract.py:33`
 - `FIXTURES_DIR` (const) — `tests/test_json_result_contract.py:34`
 - `SCHEMAS_DIR` (const) — `tests/test_json_result_contract.py:35`
@@ -343,8 +498,9 @@ snapshot: 48
 - `TestLegacyJsonStateFixture` (class) — `tests/test_json_result_contract.py:229`
 - `TestErrorTruncation` (class) — `tests/test_json_result_contract.py:239`
 - `TestSetupLogging` (class) — `tests/test_logging.py:6`
-- `TestGetLogger` (class) — `tests/test_logging.py:24`
-- `TestRedactSensitive` (class) — `tests/test_logging.py:41`
+- `TestConsoleProgress` (class) — `tests/test_logging.py:24`
+- `TestGetLogger` (class) — `tests/test_logging.py:49`
+- `TestRedactSensitive` (class) — `tests/test_logging.py:66`
 - `TestMCPStatus` (class) — `tests/test_mcp.py:73`
 - `TestMCPTasks` (class) — `tests/test_mcp.py:116`
 - `TestMCPCosts` (class) — `tests/test_mcp.py:158`
@@ -352,6 +508,7 @@ snapshot: 48
 - `TestMCPStop` (class) — `tests/test_mcp.py:232`
 - `TestMCPNextTasks` (class) — `tests/test_mcp.py:252`
 - `TestMCPTaskDetail` (class) — `tests/test_mcp.py:274`
+- `TestMCPRunTask` (class) — `tests/test_mcp.py:308`
 - `TestSendTelegram` (class) — `tests/test_notifications.py:14`
 - `TestNotify` (class) — `tests/test_notifications.py:46`
 - `TestNotifyTaskFailed` (class) — `tests/test_notifications.py:75`
@@ -370,34 +527,131 @@ snapshot: 48
 - `test_redaction_extended_via_env` (function) — `tests/test_obs.py:206`
 - `test_traceparent_makes_first_span_child_of_external_parent` (function) — `tests/test_obs.py:223`
 - `test_child_env_contains_traceparent` (function) — `tests/test_obs.py:244`
-- `test_emits_schema_valid_records` (function) — `tests/test_obs_contract.py:33`
-- `test_fixture_root_span_is_schema_valid` (function) — `tests/test_obs_contract.py:41`
-- `test_fixture_nested_span_is_schema_valid` (function) — `tests/test_obs_contract.py:46`
-- `TestBuildGenerationPrompt` (class) — `tests/test_plan_full.py:6`
-- `TestParseSpecMarkers` (class) — `tests/test_plan_full.py:42`
-- `TestPlanFullPipeline` (class) — `tests/test_plan_full.py:60`
+- `test_emits_schema_valid_records` (function) — `tests/test_obs_contract.py:40`
+- `test_fixture_root_span_is_schema_valid` (function) — `tests/test_obs_contract.py:48`
+- `test_fixture_nested_span_is_schema_valid` (function) — `tests/test_obs_contract.py:53`
+- `TestResolvePlanDescription` (class) — `tests/test_plan_full.py:10`
+- `TestPlanParserFromFile` (class) — `tests/test_plan_full.py:51`
+- `TestBuildGenerationPrompt` (class) — `tests/test_plan_full.py:67`
+- `TestParseSpecMarkers` (class) — `tests/test_plan_full.py:103`
+- `TestPlanFullPipeline` (class) — `tests/test_plan_full.py:121`
 - `TestDiscoverPlugins` (class) — `tests/test_plugins.py:31`
 - `TestRunPluginHooks` (class) — `tests/test_plugins.py:126`
 - `TestBuildTaskEnv` (class) — `tests/test_plugins.py:208`
 - `TestPluginIntegration` (class) — `tests/test_plugins.py:296`
-- `TestRenderTemplate` (class) — `tests/test_prompt.py:21`
-- `TestFormatErrorSummary` (class) — `tests/test_prompt.py:47`
-- `TestExtractTestFailures` (class) — `tests/test_prompt.py:73`
-- `TestLoadPromptTemplate` (class) — `tests/test_prompt.py:100`
-- `TestBuildTaskPrompt` (class) — `tests/test_prompt.py:142`
-- `TestRetryContextRendering` (class) — `tests/test_prompt.py:228`
-- `TestParseSpecMarker` (class) — `tests/test_prompt.py:384`
+- `test_list_presets_has_known_clis` (function) — `tests/test_presets.py:17`
+- `test_load_fragment_claude_keeps_skip_permissions_true` (function) — `tests/test_presets.py:30`
+- `test_load_fragment_codex_is_skip_permissions_false` (function) — `tests/test_presets.py:35`
+- `test_load_fragment_llama_cli_command_is_llama_cli` (function) — `tests/test_presets.py:39`
+- `test_load_fragment_pi_has_model_note` (function) — `tests/test_presets.py:44`
+- `test_load_fragment_unknown_raises` (function) — `tests/test_presets.py:48`
+- `test_compose_mono_codex` (function) — `tests/test_presets.py:53`
+- `test_compose_multi_claude_exec_codex_review` (function) — `tests/test_presets.py:67`
+- `test_compose_clears_templates` (function) — `tests/test_presets.py:74`
+- `test_compose_model_override_applies_to_both_slots` (function) — `tests/test_presets.py:80`
+- `test_compose_review_model_override_targets_review_only` (function) — `tests/test_presets.py:86`
+- `test_fresh_write_creates_flat_file` (function) — `tests/test_presets.py:97`
+- `test_fresh_write_renders_skip_permissions_bool` (function) — `tests/test_presets.py:112`
+- `test_dry_run_writes_nothing_and_prints_keys` (function) — `tests/test_presets.py:119`
+- `test_refuse_without_apply_exits_1_and_leaves_file` (function) — `tests/test_presets.py:130`
+- `test_apply_merges_flat_preserving_other_keys` (function) — `tests/test_presets.py:142`
+- `test_apply_merges_wrapped_preserving_wrapper` (function) — `tests/test_presets.py:157`
+- `test_apply_malformed_yaml_aborts_without_writing` (function) — `tests/test_presets.py:171`
+- `test_config_subcommand_parses_and_lists` (function) — `tests/test_presets.py:187`
+- `test_config_requires_a_cli_selection` (function) — `tests/test_presets.py:196`
+- `test_config_preset_writes_mono` (function) — `tests/test_presets.py:205`
+- `test_config_preset_qwen_writes_template` (function) — `tests/test_presets.py:215`
+- `test_config_preset_copilot_no_longer_rejected` (function) — `tests/test_presets.py:226`
+- `test_config_multi_exec_review_through_parser` (function) — `tests/test_presets.py:237`
+- `test_config_dry_run_through_parser_writes_nothing` (function) — `tests/test_presets.py:251`
+- `test_config_apply_through_parser_merges` (function) — `tests/test_presets.py:260`
+- `test_load_fragment_qwen_has_templates` (function) — `tests/test_presets.py:271`
+- `test_load_fragment_copilot_has_templates_and_is_not_rejected` (function) — `tests/test_presets.py:278`
+- `test_auto_detect_presets_have_empty_templates` (function) — `tests/test_presets.py:285`
+- `test_compose_exec_template_lands_in_command_template` (function) — `tests/test_presets.py:292`
+- `test_compose_review_template_lands_in_review_command_template` (function) — `tests/test_presets.py:299`
+- `test_compose_mono_copilot_fills_both_template_slots` (function) — `tests/test_presets.py:306`
+- `test_qwen_copilot_fragments_have_model_flag` (function) — `tests/test_presets.py:315`
+- `test_auto_detect_fragments_have_no_model_flag` (function) — `tests/test_presets.py:320`
+- `test_compose_templated_preset_with_model_appends_flag` (function) — `tests/test_presets.py:325`
+- `test_compose_templated_preset_without_model_has_no_flag` (function) — `tests/test_presets.py:335`
+- `test_compose_auto_detect_preset_with_model_keeps_empty_template` (function) — `tests/test_presets.py:342`
+- `test_compose_multi_exec_qwen_review_claude_with_model` (function) — `tests/test_presets.py:349`
+- `test_config_preset_qwen_with_model_through_parser` (function) — `tests/test_presets.py:358`
+- `TestRenderTemplate` (class) — `tests/test_prompt.py:22`
+- `TestFormatErrorSummary` (class) — `tests/test_prompt.py:48`
+- `TestExtractTestFailures` (class) — `tests/test_prompt.py:74`
+- `TestLoadPromptTemplate` (class) — `tests/test_prompt.py:101`
+- `TestBuildTaskPrompt` (class) — `tests/test_prompt.py:143`
+- `TestRetryContextRendering` (class) — `tests/test_prompt.py:229`
+- `TestParseSpecMarker` (class) — `tests/test_prompt.py:385`
+- `TestBuildGatedGenerationPrompt` (class) — `tests/test_prompt.py:419`
+- `TestGoldenGenerationPrompt` (class) — `tests/test_prompt_profile.py:76`
+- `TestProfileParameterFlowsThrough` (class) — `tests/test_prompt_profile.py:89`
+- `TestReadsFromStageDef` (class) — `tests/test_prompt_profile.py:119`
 - `TASKS_MD` (const) — `tests/test_report.py:31`
 - `REQUIREMENTS_MD` (const) — `tests/test_report.py:46`
 - `DESIGN_MD` (const) — `tests/test_report.py:57`
 - `TestBuildReport` (class) — `tests/test_report.py:66`
 - `TestFormatReport` (class) — `tests/test_report.py:126`
 - `TestGapWarnings` (class) — `tests/test_report.py:159`
-- `TestBuildCliCommand` (class) — `tests/test_runner.py:18`
-- `TestCheckErrorPatterns` (class) — `tests/test_runner.py:129`
-- `TestLogProgress` (class) — `tests/test_runner.py:163`
-- `TestParseTokenUsage` (class) — `tests/test_runner.py:236`
-- `TestRunClaudeAsync` (class) — `tests/test_runner.py:280`
+- `TestResolveReviewTemplate` (class) — `tests/test_review.py:8`
+- `test_gate_off_always_allows` (function) — `tests/test_run_gate.py:20`
+- `test_gate_strict_allows_unmanaged` (function) — `tests/test_run_gate.py:27`
+- `test_gate_strict_blocks_draft` (function) — `tests/test_run_gate.py:35`
+- `test_gate_strict_allows_approved` (function) — `tests/test_run_gate.py:42`
+- `test_gate_strict_allows_non_spec_frontmatter` (function) — `tests/test_run_gate.py:49`
+- `TestRetryGovernanceGate` (class) — `tests/test_run_gate.py:59`
+- `TestBuildCliCommand` (class) — `tests/test_runner.py:22`
+- `TestCheckErrorPatterns` (class) — `tests/test_runner.py:132`
+- `TestLogProgress` (class) — `tests/test_runner.py:166`
+- `TestParseTokenUsage` (class) — `tests/test_runner.py:239`
+- `TestRunClaudeAsync` (class) — `tests/test_runner.py:283`
+- `TestBuildCliCommandCodexV230` (class) — `tests/test_runner.py:320`
+- `TestParseCliResultText` (class) — `tests/test_runner.py:344`
+- `TestParseClaudeJson` (class) — `tests/test_runner.py:364`
+- `TestBuildCliInvocation` (class) — `tests/test_runner.py:451`
+- `test_load_bundled_template_has_sections` (function) — `tests/test_source_prompt_version.py:6`
+- `test_template_hash_is_sha256_prefixed_and_stable` (function) — `tests/test_source_prompt_version.py:13`
+- `test_template_hash_differs_by_stage` (function) — `tests/test_source_prompt_version.py:20`
+- `GOOD_REQ` (const) — `tests/test_spec_commands.py:20`
+- `test_approve_blocks_on_validation_fail` (function) — `tests/test_spec_commands.py:31`
+- `test_approve_revalidates_ignoring_stale_cache_toctou` (function) — `tests/test_spec_commands.py:40`
+- `test_approve_succeeds_on_valid` (function) — `tests/test_spec_commands.py:54`
+- `test_reject_returns_to_draft` (function) — `tests/test_spec_commands.py:64`
+- `test_reject_writes_under_lock_and_releases` (function) — `tests/test_spec_commands.py:72`
+- `test_adopt_writes_under_lock_and_releases` (function) — `tests/test_spec_commands.py:83`
+- `test_check_writes_under_lock_and_releases` (function) — `tests/test_spec_commands.py:94`
+- `test_menu_refuses_approve_when_validation_fails` (function) — `tests/test_spec_commands.py:104`
+- `test_menu_approve_when_valid` (function) — `tests/test_spec_commands.py:115`
+- `test_menu_edit_returns_edit` (function) — `tests/test_spec_commands.py:122`
+- `test_menu_regenerate_returns_regenerate` (function) — `tests/test_spec_commands.py:129`
+- `test_menu_abort_returns_abort` (function) — `tests/test_spec_commands.py:136`
+- `test_write_under_lock_serializes` (function) — `tests/test_spec_lock.py:9`
+- `test_write_raises_when_lock_contended` (function) — `tests/test_spec_lock.py:19`
+- `CUSTOM_STAGES` (const) — `tests/test_spec_meta.py:22`
+- `FM` (const) — `tests/test_spec_meta.py:24`
+- `test_split_frontmatter_extracts_meta_and_body` (function) — `tests/test_spec_meta.py:35`
+- `test_split_frontmatter_none_when_absent` (function) — `tests/test_spec_meta.py:43`
+- `test_strip_frontmatter_returns_body_only` (function) — `tests/test_spec_meta.py:49`
+- `test_strip_frontmatter_noop_without_frontmatter` (function) — `tests/test_spec_meta.py:54`
+- `test_meta_roundtrip` (function) — `tests/test_spec_meta.py:59`
+- `test_split_frontmatter_missing_closing_delimiter` (function) — `tests/test_spec_meta.py:66`
+- `test_split_frontmatter_malformed_yaml` (function) — `tests/test_spec_meta.py:74`
+- `test_write_then_read_roundtrip` (function) — `tests/test_spec_meta.py:82`
+- `test_read_meta_none_for_unmanaged` (function) — `tests/test_spec_meta.py:90`
+- `test_read_meta_none_for_missing` (function) — `tests/test_spec_meta.py:96`
+- `test_read_meta_none_for_non_spec_frontmatter` (function) — `tests/test_spec_meta.py:100`
+- `test_read_meta_none_for_unknown_spec_stage` (function) — `tests/test_spec_meta.py:109`
+- `test_read_meta_valid_spec_still_returns_meta` (function) — `tests/test_spec_meta.py:116`
+- `test_write_is_atomic_no_partial_on_replace` (function) — `tests/test_spec_meta.py:125`
+- `test_downstream_stages` (function) — `tests/test_spec_meta.py:142`
+- `test_downstream_stages_uses_passed_profile` (function) — `tests/test_spec_meta.py:147`
+- `test_resolve_next_stage_table` (function) — `tests/test_spec_meta.py:157`
+- `test_resolve_next_stage_uses_passed_profile` (function) — `tests/test_spec_meta.py:189`
+- `test_read_spec_meta_uses_passed_profile` (function) — `tests/test_spec_meta.py:201`
+- `test_apply_approval_bumps_and_cascades_stale` (function) — `tests/test_spec_meta.py:233`
+- `test_mark_downstream_stale_flips_downstream_only` (function) — `tests/test_spec_meta.py:250`
 - `TestExecutorConfigDefaults` (class) — `tests/test_spec_prefix.py:19`
 - `TestExecutorConfigPrefix` (class) — `tests/test_spec_prefix.py:49`
 - `TestProjectRootResolution` (class) — `tests/test_spec_prefix.py:77`
@@ -406,6 +660,19 @@ snapshot: 48
 - `PHASE1_TASKS_MD` (const) — `tests/test_spec_prefix.py:168`
 - `PHASE2_TASKS_MD` (const) — `tests/test_spec_prefix.py:187`
 - `TestMultiPhaseE2E` (class) — `tests/test_spec_prefix.py:223`
+- `TestSpecProfileDefault` (class) — `tests/test_spec_profile_config.py:12`
+- `TestSpecProfileResolveError` (class) — `tests/test_spec_profile_config.py:23`
+- `TestAvailableProfiles` (class) — `tests/test_spec_profile_config.py:43`
+- `TestProfileCliFlag` (class) — `tests/test_spec_profile_config.py:52`
+- `TestProfileThreadedIntoConfig` (class) — `tests/test_spec_profile_config.py:70`
+- `TestUnknownProfileCleanExit` (class) — `tests/test_spec_profile_config.py:94`
+- `test_lite_names_matches_canonical_chain` (function) — `tests/test_stage_profile.py:9`
+- `test_lite_reproduces_current_chain_1to1` (function) — `tests/test_stage_profile.py:13`
+- `test_load_profile_returns_ordered_stage_profile` (function) — `tests/test_stage_profile.py:33`
+- `test_load_profile_unknown_name_raises` (function) — `tests/test_stage_profile.py:41`
+- `test_stages_export_derived_from_lite` (function) — `tests/test_stage_profile.py:46`
+- `test_spec_stages_export_derived_from_lite` (function) — `tests/test_stage_profile.py:51`
+- `TestStageReporter` (class) — `tests/test_stages.py:8`
 - `TestTaskAttempt` (class) — `tests/test_state.py:33`
 - `TestTaskState` (class) — `tests/test_state.py:59`
 - `TestExecutorState` (class) — `tests/test_state.py:104`
@@ -423,7 +690,20 @@ snapshot: 48
 - `TestInterruptedErrorCode` (class) — `tests/test_state.py:789`
 - `TestExecutorStateContextManager` (class) — `tests/test_state.py:801`
 - `TestRecoverStaleTasks` (class) — `tests/test_state.py:838`
-- `TestDegradedMode` (class) — `tests/test_state.py:907`
+- `TestDegradedMode` (class) — `tests/test_state.py:926`
+- `TestSchemaMigrationV230` (class) — `tests/test_state.py:1023`
+- `TestMetaHelpers` (class) — `tests/test_state.py:1048`
+- `TestResetFailedToPending` (class) — `tests/test_state.py:1069`
+- `TestSecondPassMeta` (class) — `tests/test_state.py:1132`
+- `TestAttemptErrorKindStage` (class) — `tests/test_state.py:1162`
+- `TestDetectSubdirRepo` (class) — `tests/test_subdir_detection.py:16`
+- `TestEstimateParsing` (class) — `tests/test_task.py:21`
+- `TASKS_WITH_FM` (const) — `tests/test_task.py:37`
+- `test_parse_tasks_ignores_frontmatter` (function) — `tests/test_task.py:49`
+- `test_parse_tasks_without_frontmatter_unchanged` (function) — `tests/test_task.py:57`
+- `test_update_task_status_preserves_frontmatter` (function) — `tests/test_task.py:64`
+- `test_update_checklist_item_preserves_frontmatter` (function) — `tests/test_task.py:78`
+- `test_mark_all_checklist_done_preserves_frontmatter` (function) — `tests/test_task.py:90`
 - `TestSnapshot` (class) — `tests/test_task_diff.py:24`
 - `TestDiff` (class) — `tests/test_task_diff.py:34`
 - `TestFormat` (class) — `tests/test_task_diff.py:95`
@@ -434,31 +714,55 @@ snapshot: 48
 - `TASKS_BEFORE` (const) — `tests/test_tui.py:191`
 - `TASKS_AFTER_PARENT_DONE` (const) — `tests/test_tui.py:200`
 - `TestTuiPauseResumeDiff` (class) — `tests/test_tui.py:217`
-- `VALID_TASKS_MD` (const) — `tests/test_validate.py:40`
-- `CIRCULAR_TASKS_MD` (const) — `tests/test_validate.py:59`
-- `TestValidateTasksExist` (class) — `tests/test_validate.py:72`
-- `TestValidateDependencies` (class) — `tests/test_validate.py:95`
-- `TestValidateStatusAndPriority` (class) — `tests/test_validate.py:125`
-- `TestCircularDepFile` (class) — `tests/test_validate.py:147`
-- `TestDfsCycleRegression` (class) — `tests/test_validate.py:160`
-- `TestValidateWarnings` (class) — `tests/test_validate.py:188`
-- `TestDuplicateTaskIds` (class) — `tests/test_validate.py:232`
-- `TestBlocksDependsSymmetry` (class) — `tests/test_validate.py:254`
-- `TestValidateConfig` (class) — `tests/test_validate.py:274`
-- `TestValidateAll` (class) — `tests/test_validate.py:313`
-- `TestFormatResults` (class) — `tests/test_validate.py:363`
+- `VALID_TASKS_MD` (const) — `tests/test_validate.py:45`
+- `CIRCULAR_TASKS_MD` (const) — `tests/test_validate.py:64`
+- `TestValidateTasksExist` (class) — `tests/test_validate.py:77`
+- `TestValidateDependencies` (class) — `tests/test_validate.py:100`
+- `TestValidateStatusAndPriority` (class) — `tests/test_validate.py:130`
+- `TestCircularDepFile` (class) — `tests/test_validate.py:152`
+- `TestDfsCycleRegression` (class) — `tests/test_validate.py:165`
+- `TestValidateWarnings` (class) — `tests/test_validate.py:193`
+- `TestDuplicateTaskIds` (class) — `tests/test_validate.py:237`
+- `TestBlocksDependsSymmetry` (class) — `tests/test_validate.py:259`
+- `TestValidateConfig` (class) — `tests/test_validate.py:279`
+- `TestValidateAll` (class) — `tests/test_validate.py:318`
+- `TestFormatResults` (class) — `tests/test_validate.py:368`
+- `TestValidateFlatConfig` (class) — `tests/test_validate.py:425`
+- `GOOD_REQ` (const) — `tests/test_validate.py:455`
+- `BAD_REQ_NO_SCOPE` (const) — `tests/test_validate.py:465`
+- `test_validate_requirements_ok` (function) — `tests/test_validate.py:471`
+- `test_validate_requirements_missing_out_of_scope` (function) — `tests/test_validate.py:477`
+- `test_validate_design_dangling_req` (function) — `tests/test_validate.py:485`
+- `test_verdict_levels` (function) — `tests/test_validate.py:494`
+- `TestValidateSpecStageDispatch` (class) — `tests/test_validate.py:503`
+- `TestValidatorRegistry` (class) — `tests/test_validate.py:555`
 - `TASKS_MD` (const) — `tests/test_verify.py:32`
 - `REQUIREMENTS_MD` (const) — `tests/test_verify.py:47`
 - `DESIGN_MD` (const) — `tests/test_verify.py:58`
 - `TestVerifyAll` (class) — `tests/test_verify.py:67`
 - `TestVerifyResult` (class) — `tests/test_verify.py:115`
 - `TestVerifyFormat` (class) — `tests/test_verify.py:133`
-- `TestCmdWatch` (class) — `tests/test_watch.py:95`
-- `TestWatchTui` (class) — `tests/test_watch.py:278`
+- `REPO_ROOT` (const) — `tests/test_vscode_contract.py:32`
+- `SCHEMAS_DIR` (const) — `tests/test_vscode_contract.py:33`
+- `FIXTURES_DIR` (const) — `tests/test_vscode_contract.py:34`
+- `test_status_sample_fixture_validates` (function) — `tests/test_vscode_contract.py:94`
+- `test_live_status_json_matches_schema` (function) — `tests/test_vscode_contract.py:99`
+- `test_costs_sample_fixture_validates` (function) — `tests/test_vscode_contract.py:109`
+- `test_live_costs_json_matches_schema` (function) — `tests/test_vscode_contract.py:114`
+- `test_costs_json_empty_project_is_valid_json` (function) — `tests/test_vscode_contract.py:121`
+- `test_status_json_stdout_not_polluted_by_logs_in_git_subdir` (function) — `tests/test_vscode_contract.py:134`
+- `test_costs_status_enum_covers_both_vocabularies` (function) — `tests/test_vscode_contract.py:159`
+- `test_frontmatter_sample_fixture_validates` (function) — `tests/test_vscode_contract.py:179`
+- `test_live_frontmatter_matches_schema` (function) — `tests/test_vscode_contract.py:184`
+- `test_live_frontmatter_draft_defaults_match_schema` (function) — `tests/test_vscode_contract.py:203`
+- `test_version_flag_prints_semver` (function) — `tests/test_vscode_contract.py:227`
+- `TestCmdWatch` (class) — `tests/test_watch.py:96`
+- `TestWatchGovernanceGate` (class) — `tests/test_watch.py:279`
+- `TestWatchTui` (class) — `tests/test_watch.py:323`
 
 ## Modules
 
-_60 files, 418 public symbols, 357 internal imports._
+_88 files, 718 public symbols, 515 internal imports._
 
 - `src/spec_runner/__init__.py` (python)
 - `src/spec_runner/audit.py` (python)
@@ -467,6 +771,8 @@ _60 files, 418 public symbols, 357 internal imports._
 - `src/spec_runner/cli_info.py` (python)
 - `src/spec_runner/cli_plan.py` (python)
 - `src/spec_runner/config.py` (python)
+- `src/spec_runner/doctor.py` (python)
+- `src/spec_runner/errors.py` (python)
 - `src/spec_runner/events.py` (python)
 - `src/spec_runner/execution.py` (python)
 - `src/spec_runner/executor.py` (python)
@@ -479,12 +785,16 @@ _60 files, 418 public symbols, 357 internal imports._
 - `src/spec_runner/notifications.py` (python)
 - `src/spec_runner/obs.py` (python)
 - `src/spec_runner/plugins.py` (python)
+- `src/spec_runner/preset_cmd.py` (python)
 - `src/spec_runner/prompt.py` (python)
 - `src/spec_runner/report.py` (python)
 - `src/spec_runner/review.py` (python)
 - `src/spec_runner/runner.py` (python)
 - `src/spec_runner/skills/spec-generator-skill/templates/executor.py` (python)
 - `src/spec_runner/skills/spec-generator-skill/templates/task.py` (python)
+- `src/spec_runner/spec.py` (python)
+- `src/spec_runner/spec_commands.py` (python)
+- `src/spec_runner/stages.py` (python)
 - `src/spec_runner/state.py` (python)
 - `src/spec_runner/task.py` (python)
 - `src/spec_runner/task_commands.py` (python)
@@ -493,13 +803,21 @@ _60 files, 418 public symbols, 357 internal imports._
 - `src/spec_runner/verify.py` (python)
 - `tests/__init__.py` (python)
 - `tests/conftest.py` (python)
+- `tests/test_adopt_gate.py` (python)
 - `tests/test_audit.py` (python)
 - `tests/test_audit_log.py` (python)
+- `tests/test_c1_zero_behaviour.py` (python)
+- `tests/test_cli_flags.py` (python)
+- `tests/test_cli_info.py` (python)
+- `tests/test_cli_run_reset.py` (python)
 - `tests/test_config.py` (python)
 - `tests/test_costs.py` (python)
+- `tests/test_doctor.py` (python)
 - `tests/test_e2e.py` (python)
+- `tests/test_errors.py` (python)
 - `tests/test_events.py` (python)
 - `tests/test_execution.py` (python)
+- `tests/test_gated_plan.py` (python)
 - `tests/test_gh_sync.py` (python)
 - `tests/test_hooks.py` (python)
 - `tests/test_json_result_contract.py` (python)
@@ -510,15 +828,29 @@ _60 files, 418 public symbols, 357 internal imports._
 - `tests/test_obs_contract.py` (python)
 - `tests/test_plan_full.py` (python)
 - `tests/test_plugins.py` (python)
+- `tests/test_presets.py` (python)
 - `tests/test_prompt.py` (python)
+- `tests/test_prompt_profile.py` (python)
 - `tests/test_report.py` (python)
+- `tests/test_review.py` (python)
+- `tests/test_run_gate.py` (python)
 - `tests/test_runner.py` (python)
+- `tests/test_source_prompt_version.py` (python)
+- `tests/test_spec_commands.py` (python)
+- `tests/test_spec_lock.py` (python)
+- `tests/test_spec_meta.py` (python)
 - `tests/test_spec_prefix.py` (python)
+- `tests/test_spec_profile_config.py` (python)
+- `tests/test_stage_profile.py` (python)
+- `tests/test_stages.py` (python)
 - `tests/test_state.py` (python)
+- `tests/test_subdir_detection.py` (python)
+- `tests/test_task.py` (python)
 - `tests/test_task_diff.py` (python)
 - `tests/test_tui.py` (python)
 - `tests/test_validate.py` (python)
 - `tests/test_verify.py` (python)
+- `tests/test_vscode_contract.py` (python)
 - `tests/test_watch.py` (python)
 
 ## Inbound references
@@ -531,16 +863,20 @@ _None._
 
 ## Outbound edges
 
-_None._
+- ↔ [[https---github-com-andrei-shtanakov-spec-runner-schemas-costs-schema-json]] · `contract_link` · `json_schema`
+- ↔ [[https---github-com-andrei-shtanakov-spec-runner-schemas-json-result-schema-json]] · `contract_link` · `json_schema`
+- ↔ [[https---github-com-andrei-shtanakov-spec-runner-schemas-spec-frontmatter-schema-json]] · `contract_link` · `json_schema`
+- ↔ [[https---github-com-andrei-shtanakov-spec-runner-schemas-status-schema-json]] · `contract_link` · `json_schema`
 
 ## Inbound edges
 
+- ← [[appgraph]] · `package_dep` · `spec-runner`
 - ← [[arbiter]] · `package_dep` · `spec-runner`
 - ← [[atp-platform]] · `package_dep` · `spec-runner`
 
 ## Recent changes (last 5)
 
-- snapshot 1 (2026-05-26T08:18:45Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 

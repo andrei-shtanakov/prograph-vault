@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: mixed
 name: prograph
 prograph: project
 root: ./prograph
-snapshot: 48
+snapshot: 1
 ---
 
 # prograph
@@ -479,7 +479,7 @@ _None._
 
 ## Recent changes (last 5)
 
-- snapshot 1 (2026-05-26T08:18:45Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 

@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: python
 name: Maestro
 prograph: project
 root: ./Maestro
-snapshot: 48
+snapshot: 1
 ---
 
 # Maestro
@@ -59,32 +59,51 @@ snapshot: 48
 - `BenchmarkRunner` (class) — `maestro/benchmark/runner.py:92`
 - `logger` (const) — `maestro/benchmark/spawner_responder.py:38`
 - `SpawnerResponder` (class) — `maestro/benchmark/spawner_responder.py:41`
-- `DEFAULT_DB_DIR` (const) — `maestro/cli.py:55`
-- `DEFAULT_DB_PATH` (const) — `maestro/cli.py:56`
-- `PID_FILE` (const) — `maestro/cli.py:57`
-- `console` (const) — `maestro/cli.py:60`
-- `err_console` (const) — `maestro/cli.py:61`
-- `app` (const) — `maestro/cli.py:64`
-- `main` (function) — `maestro/cli.py:1156`
+- `CatalogError` (class) — `maestro/catalog.py:36`
+- `CatalogNotConfigured` (class) — `maestro/catalog.py:40`
+- `CatalogMalformed` (class) — `maestro/catalog.py:44`
+- `HarnessModelUnresolved` (class) — `maestro/catalog.py:48`
+- `CatalogModel` (class) — `maestro/catalog.py:52`
+- `CatalogAgent` (class) — `maestro/catalog.py:60`
+- `Catalog` (class) — `maestro/catalog.py:69`
+- `resolve_catalog_path` (function) — `maestro/catalog.py:110`
+- `load_catalog` (function) — `maestro/catalog.py:120`
+- `resolve_model` (function) — `maestro/catalog.py:140`
+- `warn_on_model_status` (function) — `maestro/catalog.py:164`
+- `models_app` (const) — `maestro/catalog_cli.py:38`
+- `console` (const) — `maestro/catalog_cli.py:39`
+- `err_console` (const) — `maestro/catalog_cli.py:40`
+- `CHECKABLE_VENDORS` (const) — `maestro/catalog_discovery.py:21`
+- `ManifestInvalid` (class) — `maestro/catalog_discovery.py:26`
+- `parse_observed_manifest` (function) — `maestro/catalog_discovery.py:30`
+- `diff_catalog` (function) — `maestro/catalog_discovery.py:102`
+- `render_plane1_block` (function) — `maestro/catalog_discovery.py:186`
+- `DEFAULT_DB_DIR` (const) — `maestro/cli.py:78`
+- `DEFAULT_DB_PATH` (const) — `maestro/cli.py:79`
+- `PID_FILE` (const) — `maestro/cli.py:80`
+- `console` (const) — `maestro/cli.py:83`
+- `err_console` (const) — `maestro/cli.py:84`
+- `app` (const) — `maestro/cli.py:87`
+- `main` (function) — `maestro/cli.py:1534`
 - `ConfigError` (class) — `maestro/config.py:23`
 - `ENV_VAR_PATTERN` (const) — `maestro/config.py:63`
 - `resolve_env_vars` (function) — `maestro/config.py:66`
 - `load_config` (function) — `maestro/config.py:170`
 - `load_orchestrator_config` (function) — `maestro/config.py:227`
 - `load_config_from_string` (function) — `maestro/config.py:278`
-- `logger` (const) — `maestro/coordination/arbiter_client.py:52`
-- `ARBITER_MCP_REQUIRED_VERSION` (const) — `maestro/coordination/arbiter_client.py:54`
-- `ARBITER_PROTOCOL_VERSION` (const) — `maestro/coordination/arbiter_client.py:59`
-- `MIN_ARBITER_PROTOCOL` (const) — `maestro/coordination/arbiter_client.py:60`
-- `ARBITER_VENDORED_FROM_SHA` (const) — `maestro/coordination/arbiter_client.py:61`
-- `InvariantCheckDTO` (class) — `maestro/coordination/arbiter_client.py:77`
-- `RouteDecisionDTO` (class) — `maestro/coordination/arbiter_client.py:88`
-- `UpdatedStatsDTO` (class) — `maestro/coordination/arbiter_client.py:126`
-- `OutcomeResultDTO` (class) — `maestro/coordination/arbiter_client.py:138`
-- `AgentCapabilitiesDTO` (class) — `maestro/coordination/arbiter_client.py:169`
-- `AgentStatusInfoDTO` (class) — `maestro/coordination/arbiter_client.py:180`
-- `ArbiterClientConfig` (class) — `maestro/coordination/arbiter_client.py:221`
-- `ArbiterClient` (class) — `maestro/coordination/arbiter_client.py:240`
+- `logger` (const) — `maestro/coordination/arbiter_client.py:56`
+- `ARBITER_MCP_REQUIRED_VERSION` (const) — `maestro/coordination/arbiter_client.py:58`
+- `ARBITER_PROTOCOL_VERSION` (const) — `maestro/coordination/arbiter_client.py:63`
+- `MIN_ARBITER_PROTOCOL` (const) — `maestro/coordination/arbiter_client.py:64`
+- `ARBITER_VENDORED_FROM_SHA` (const) — `maestro/coordination/arbiter_client.py:65`
+- `InvariantCheckDTO` (class) — `maestro/coordination/arbiter_client.py:81`
+- `RouteDecisionDTO` (class) — `maestro/coordination/arbiter_client.py:92`
+- `UpdatedStatsDTO` (class) — `maestro/coordination/arbiter_client.py:130`
+- `OutcomeResultDTO` (class) — `maestro/coordination/arbiter_client.py:142`
+- `AgentCapabilitiesDTO` (class) — `maestro/coordination/arbiter_client.py:173`
+- `AgentStatusInfoDTO` (class) — `maestro/coordination/arbiter_client.py:184`
+- `ArbiterClientConfig` (class) — `maestro/coordination/arbiter_client.py:225`
+- `ArbiterClient` (class) — `maestro/coordination/arbiter_client.py:244`
 - `ArbiterError` (class) — `maestro/coordination/arbiter_errors.py:11`
 - `ArbiterStartupError` (class) — `maestro/coordination/arbiter_errors.py:15`
 - `ArbiterUnavailable` (class) — `maestro/coordination/arbiter_errors.py:28`
@@ -110,28 +129,33 @@ snapshot: 48
 - `PostMessageRequest` (class) — `maestro/coordination/rest_api.py:94`
 - `MarkMessagesReadRequest` (class) — `maestro/coordination/rest_api.py:104`
 - `TaskCostResponse` (class) — `maestro/coordination/rest_api.py:118`
-- `TaskCostsListResponse` (class) — `maestro/coordination/rest_api.py:145`
-- `CostSummaryResponse` (class) — `maestro/coordination/rest_api.py:152`
-- `RESTServer` (class) — `maestro/coordination/rest_api.py:168`
-- `create_rest_server` (function) — `maestro/coordination/rest_api.py:604`
-- `create_app_with_lifespan` (function) — `maestro/coordination/rest_api.py:619`
+- `TaskCostsListResponse` (class) — `maestro/coordination/rest_api.py:147`
+- `CostSummaryResponse` (class) — `maestro/coordination/rest_api.py:154`
+- `RESTServer` (class) — `maestro/coordination/rest_api.py:170`
+- `create_rest_server` (function) — `maestro/coordination/rest_api.py:606`
+- `create_app_with_lifespan` (function) — `maestro/coordination/rest_api.py:621`
 - `logger` (const) — `maestro/coordination/routing.py:32`
-- `RoutingStrategy` (class) — `maestro/coordination/routing.py:35`
-- `StaticRouting` (class) — `maestro/coordination/routing.py:56`
-- `task_status_to_outcome_status` (function) — `maestro/coordination/routing.py:99`
-- `ArbiterRouting` (class) — `maestro/coordination/routing.py:149`
-- `make_routing_strategy` (function) — `maestro/coordination/routing.py:277`
-- `logger` (const) — `maestro/cost_tracker.py:17`
-- `PRICING` (const) — `maestro/cost_tracker.py:26`
-- `parse_claude_code_log` (function) — `maestro/cost_tracker.py:52`
-- `parse_log` (function) — `maestro/cost_tracker.py:131`
-- `calculate_cost` (function) — `maestro/cost_tracker.py:165`
-- `create_task_cost` (function) — `maestro/cost_tracker.py:182`
-- `parse_and_create_cost` (function) — `maestro/cost_tracker.py:210`
-- `build_summary` (function) — `maestro/cost_tracker.py:260`
-- `format_summary` (function) — `maestro/cost_tracker.py:286`
+- `STATIC_ROUTING_REASON` (const) — `maestro/coordination/routing.py:39`
+- `RoutingStrategy` (class) — `maestro/coordination/routing.py:42`
+- `StaticRouting` (class) — `maestro/coordination/routing.py:63`
+- `task_status_to_outcome_status` (function) — `maestro/coordination/routing.py:106`
+- `ArbiterRouting` (class) — `maestro/coordination/routing.py:156`
+- `make_routing_strategy` (function) — `maestro/coordination/routing.py:284`
+- `logger` (const) — `maestro/cost_tracker.py:18`
+- `PRICING` (const) — `maestro/cost_tracker.py:27`
+- `has_pricing` (function) — `maestro/cost_tracker.py:41`
+- `effective_cost` (function) — `maestro/cost_tracker.py:51`
+- `parse_claude_code_log` (function) — `maestro/cost_tracker.py:93`
+- `parse_opencode_log` (function) — `maestro/cost_tracker.py:189`
+- `parse_log` (function) — `maestro/cost_tracker.py:259`
+- `calculate_cost` (function) — `maestro/cost_tracker.py:294`
+- `create_task_cost` (function) — `maestro/cost_tracker.py:311`
+- `parse_and_create_cost` (function) — `maestro/cost_tracker.py:340`
+- `build_summary` (function) — `maestro/cost_tracker.py:390`
+- `format_summary` (function) — `maestro/cost_tracker.py:425`
 - `CycleError` (class) — `maestro/dag.py:15`
-- `DAG` (class) — `maestro/dag.py:67`
+- `find_cycle` (function) — `maestro/dag.py:29`
+- `DAG` (class) — `maestro/dag.py:137`
 - `logger` (const) — `maestro/dashboard/app.py:28`
 - `STATIC_DIR` (const) — `maestro/dashboard/app.py:30`
 - `STATUS_COLORS` (const) — `maestro/dashboard/app.py:33`
@@ -148,15 +172,14 @@ snapshot: 48
 - `DependencyNotFoundError` (class) — `maestro/database.py:48`
 - `MessageNotFoundError` (class) — `maestro/database.py:52`
 - `SCHEMA_SQL` (const) — `maestro/database.py:57`
-- `WorkstreamNotFoundError` (class) — `maestro/database.py:274`
-- `WorkstreamAlreadyExistsError` (class) — `maestro/database.py:278`
-- `Database` (class) — `maestro/database.py:309`
-- `create_database` (function) — `maestro/database.py:1941`
-- `DecomposerError` (class) — `maestro/decomposer.py:17`
-- `ScopeOverlapWarning` (class) — `maestro/decomposer.py:21`
-- `DECOMPOSE_PROMPT` (const) — `maestro/decomposer.py:42`
-- `SPEC_GENERATION_PROMPT` (const) — `maestro/decomposer.py:85`
-- `ProjectDecomposer` (class) — `maestro/decomposer.py:137`
+- `WorkstreamNotFoundError` (class) — `maestro/database.py:277`
+- `WorkstreamAlreadyExistsError` (class) — `maestro/database.py:281`
+- `Database` (class) — `maestro/database.py:313`
+- `create_database` (function) — `maestro/database.py:2001`
+- `DecomposerError` (class) — `maestro/decomposer.py:23`
+- `ScopeOverlapWarning` (class) — `maestro/decomposer.py:27`
+- `DECOMPOSE_PROMPT` (const) — `maestro/decomposer.py:48`
+- `ProjectDecomposer` (class) — `maestro/decomposer.py:92`
 - `EventType` (class) — `maestro/event_log.py:17`
 - `Event` (class) — `maestro/event_log.py:58`
 - `EventLogger` (class) — `maestro/event_log.py:85`
@@ -178,38 +201,40 @@ snapshot: 48
 - `main` (function) — `maestro/merge_logs.py:43`
 - `TaskStatus` (class) — `maestro/models.py:17`
 - `AgentType` (class) — `maestro/models.py:72`
-- `TaskType` (class) — `maestro/models.py:89`
-- `Language` (class) — `maestro/models.py:105`
-- `Complexity` (class) — `maestro/models.py:121`
-- `Priority` (class) — `maestro/models.py:136`
-- `RouteAction` (class) — `maestro/models.py:150`
-- `RouteDecision` (class) — `maestro/models.py:158`
-- `TaskOutcomeStatus` (class) — `maestro/models.py:173`
-- `TaskOutcome` (class) — `maestro/models.py:183`
-- `ArbiterMode` (class) — `maestro/models.py:194`
-- `ArbiterConfig` (class) — `maestro/models.py:206`
-- `infer_task_type` (function) — `maestro/models.py:286`
-- `infer_language` (function) — `maestro/models.py:300`
-- `infer_complexity` (function) — `maestro/models.py:324`
-- `priority_int_to_enum` (function) — `maestro/models.py:343`
-- `TaskConfig` (class) — `maestro/models.py:359`
-- `Task` (class) — `maestro/models.py:455`
-- `GitConfig` (class) — `maestro/models.py:664`
-- `NotificationConfig` (class) — `maestro/models.py:685`
-- `DefaultsConfig` (class) — `maestro/models.py:706`
-- `ProjectConfig` (class) — `maestro/models.py:718`
-- `TaskCost` (class) — `maestro/models.py:816`
-- `Message` (class) — `maestro/models.py:838`
-- `WorkspaceType` (class) — `maestro/models.py:865`
-- `WorkstreamStatus` (class) — `maestro/models.py:871`
-- `WorkstreamConfig` (class) — `maestro/models.py:922`
-- `Workstream` (class) — `maestro/models.py:987`
-- `SpecRunnerConfig` (class) — `maestro/models.py:1088`
-- `ExecutorTaskStatus` (class) — `maestro/models.py:1138`
-- `ExecutorTaskAttempt` (class) — `maestro/models.py:1152`
-- `ExecutorTaskEntry` (class) — `maestro/models.py:1178`
-- `ExecutorState` (class) — `maestro/models.py:1195`
-- `OrchestratorConfig` (class) — `maestro/models.py:1235`
+- `harness_of_agent_id` (function) — `maestro/models.py:92`
+- `model_of_agent_id` (function) — `maestro/models.py:109`
+- `TaskType` (class) — `maestro/models.py:127`
+- `Language` (class) — `maestro/models.py:143`
+- `Complexity` (class) — `maestro/models.py:159`
+- `Priority` (class) — `maestro/models.py:174`
+- `RouteAction` (class) — `maestro/models.py:188`
+- `RouteDecision` (class) — `maestro/models.py:196`
+- `TaskOutcomeStatus` (class) — `maestro/models.py:211`
+- `TaskOutcome` (class) — `maestro/models.py:221`
+- `ArbiterMode` (class) — `maestro/models.py:232`
+- `ArbiterConfig` (class) — `maestro/models.py:244`
+- `infer_task_type` (function) — `maestro/models.py:324`
+- `infer_language` (function) — `maestro/models.py:338`
+- `infer_complexity` (function) — `maestro/models.py:362`
+- `priority_int_to_enum` (function) — `maestro/models.py:381`
+- `TaskConfig` (class) — `maestro/models.py:397`
+- `Task` (class) — `maestro/models.py:493`
+- `GitConfig` (class) — `maestro/models.py:702`
+- `NotificationConfig` (class) — `maestro/models.py:723`
+- `DefaultsConfig` (class) — `maestro/models.py:744`
+- `ProjectConfig` (class) — `maestro/models.py:756`
+- `TaskCost` (class) — `maestro/models.py:854`
+- `Message` (class) — `maestro/models.py:884`
+- `WorkspaceType` (class) — `maestro/models.py:911`
+- `WorkstreamStatus` (class) — `maestro/models.py:917`
+- `WorkstreamConfig` (class) — `maestro/models.py:968`
+- `Workstream` (class) — `maestro/models.py:1033`
+- `SpecRunnerConfig` (class) — `maestro/models.py:1138`
+- `ExecutorTaskStatus` (class) — `maestro/models.py:1196`
+- `ExecutorTaskAttempt` (class) — `maestro/models.py:1210`
+- `ExecutorTaskEntry` (class) — `maestro/models.py:1236`
+- `ExecutorState` (class) — `maestro/models.py:1253`
+- `OrchestratorConfig` (class) — `maestro/models.py:1293`
 - `NotificationEvent` (class) — `maestro/notifications/base.py:15`
 - `NotificationChannel` (class) — `maestro/notifications/base.py:98`
 - `logger` (const) — `maestro/notifications/desktop.py:17`
@@ -218,43 +243,51 @@ snapshot: 48
 - `logger` (const) — `maestro/notifications/manager.py:14`
 - `NotificationManager` (class) — `maestro/notifications/manager.py:17`
 - `create_notification_manager` (function) — `maestro/notifications/manager.py:75`
-- `OrchestratorError` (class) — `maestro/orchestrator.py:34`
-- `Orchestrator` (class) — `maestro/orchestrator.py:60`
+- `OrchestratorError` (class) — `maestro/orchestrator.py:35`
+- `Orchestrator` (class) — `maestro/orchestrator.py:84`
 - `PRManagerError` (class) — `maestro/pr_manager.py:14`
 - `GHNotFoundError` (class) — `maestro/pr_manager.py:18`
 - `PRManager` (class) — `maestro/pr_manager.py:22`
+- `Severity` (const) — `maestro/preflight.py:23`
+- `ValidationIssue` (class) — `maestro/preflight.py:26`
+- `ValidationReport` (class) — `maestro/preflight.py:35`
+- `validate_project` (function) — `maestro/preflight.py:56`
 - `logger` (const) — `maestro/recovery.py:20`
 - `StateRecovery` (class) — `maestro/recovery.py:56`
 - `recover_arbiter_outcomes` (function) — `maestro/recovery.py:227`
 - `logger` (const) — `maestro/retry.py:15`
 - `RetryManager` (class) — `maestro/retry.py:18`
-- `logger` (const) — `maestro/scheduler.py:51`
-- `MAX_REATTEMPTS_PER_TICK` (const) — `maestro/scheduler.py:54`
-- `StatusChangeCallback` (const) — `maestro/scheduler.py:56`
-- `SpawnerProtocol` (class) — `maestro/scheduler.py:59`
-- `BaseSpawner` (class) — `maestro/scheduler.py:83`
-- `SchedulerError` (class) — `maestro/scheduler.py:167`
-- `TaskTimeoutError` (class) — `maestro/scheduler.py:171`
-- `Scheduler` (class) — `maestro/scheduler.py:182`
-- `create_scheduler_from_config` (function) — `maestro/scheduler.py:1442`
+- `ScaffoldError` (class) — `maestro/scaffold.py:20`
+- `REPO_URL_PLACEHOLDER` (const) — `maestro/scaffold.py:24`
+- `generate_project_yaml` (function) — `maestro/scaffold.py:115`
+- `logger` (const) — `maestro/scheduler.py:56`
+- `MAX_REATTEMPTS_PER_TICK` (const) — `maestro/scheduler.py:59`
+- `StatusChangeCallback` (const) — `maestro/scheduler.py:61`
+- `SpawnerProtocol` (class) — `maestro/scheduler.py:64`
+- `BaseSpawner` (class) — `maestro/scheduler.py:90`
+- `SchedulerError` (class) — `maestro/scheduler.py:174`
+- `TaskTimeoutError` (class) — `maestro/scheduler.py:178`
+- `Scheduler` (class) — `maestro/scheduler.py:189`
+- `create_scheduler_from_config` (function) — `maestro/scheduler.py:1563`
 - `SCHEMA_DIR` (const) — `maestro/schemas/generate.py:9`
 - `main` (function) — `maestro/schemas/generate.py:12`
 - `AiderSpawner` (class) — `maestro/spawners/aider.py:16`
 - `AnnounceSpawner` (class) — `maestro/spawners/announce.py:16`
 - `spawn_env` (function) — `maestro/spawners/base.py:17`
 - `AgentSpawner` (class) — `maestro/spawners/base.py:27`
-- `ClaudeCodeSpawner` (class) — `maestro/spawners/claude_code.py:16`
-- `CodexSpawner` (class) — `maestro/spawners/codex.py:16`
+- `ClaudeCodeSpawner` (class) — `maestro/spawners/claude_code.py:21`
+- `CodexSpawner` (class) — `maestro/spawners/codex.py:21`
+- `OpencodeSpawner` (class) — `maestro/spawners/opencode.py:37`
 - `logger` (const) — `maestro/spawners/registry.py:26`
 - `SPAWNER_ENTRY_POINT_GROUP` (const) — `maestro/spawners/registry.py:29`
 - `SpawnerNotFoundError` (class) — `maestro/spawners/registry.py:32`
 - `SpawnerRegistry` (class) — `maestro/spawners/registry.py:44`
 - `create_default_registry` (function) — `maestro/spawners/registry.py:353`
 - `logger` (const) — `maestro/spec_runner.py:25`
-- `SPEC_RUNNER_REQUIRED_VERSION` (const) — `maestro/spec_runner.py:31`
-- `SQLITE_STATE_FILENAME` (const) — `maestro/spec_runner.py:36`
-- `JSON_STATE_FILENAME` (const) — `maestro/spec_runner.py:37`
-- `read_executor_state` (function) — `maestro/spec_runner.py:40`
+- `SPEC_RUNNER_REQUIRED_VERSION` (const) — `maestro/spec_runner.py:36`
+- `SQLITE_STATE_FILENAME` (const) — `maestro/spec_runner.py:41`
+- `JSON_STATE_FILENAME` (const) — `maestro/spec_runner.py:42`
+- `read_executor_state` (function) — `maestro/spec_runner.py:45`
 - `logger` (const) — `maestro/validator.py:20`
 - `ValidationError` (class) — `maestro/validator.py:23`
 - `ValidationTimeoutError` (class) — `maestro/validator.py:27`
@@ -342,27 +375,73 @@ snapshot: 48
 - `MockATPClient` (class) — `tests/test_benchmark_runner.py:58`
 - `MockResponder` (class) — `tests/test_benchmark_runner.py:68`
 - `FailingResponder` (class) — `tests/test_benchmark_runner.py:89`
+- `FIXTURES` (const) — `tests/test_catalog.py:21`
+- `test_path_unset_returns_none` (function) — `tests/test_catalog.py:28`
+- `test_path_absent_file_returns_none` (function) — `tests/test_catalog.py:34`
+- `test_malformed_raises_catalog_malformed` (function) — `tests/test_catalog.py:40`
+- `test_default_model_for_harness` (function) — `tests/test_catalog.py:46`
+- `test_default_no_routable_raises` (function) — `tests/test_catalog.py:54`
+- `test_default_ambiguous_raises` (function) — `tests/test_catalog.py:62`
+- `test_per_task_error_is_not_a_catalog_error` (function) — `tests/test_catalog.py:70`
+- `test_status_of` (function) — `tests/test_catalog.py:76`
+- `test_nearest_models` (function) — `tests/test_catalog.py:87`
+- `test_fixture_matches_sibling_ssot` (function) — `tests/test_catalog.py:95`
+- `test_resolve_precedence_routed_wins` (function) — `tests/test_catalog.py:115`
+- `test_resolve_env_then_catalog` (function) — `tests/test_catalog.py:124`
+- `test_resolve_empty_routed_treated_as_absent` (function) — `tests/test_catalog.py:138`
+- `test_resolve_no_catalog_default_path_raises` (function) — `tests/test_catalog.py:149`
+- `test_resolve_routed_selfsufficient_without_catalog` (function) — `tests/test_catalog.py:157`
+- `test_warn_retired_fires_even_for_catalog_source` (function) — `tests/test_catalog.py:167`
+- `test_warn_deprecated_fires` (function) — `tests/test_catalog.py:176`
+- `test_warn_unknown_soft_for_routed_but_skipped_for_catalog` (function) — `tests/test_catalog.py:183`
+- `test_warn_active_silent_and_no_catalog_noop` (function) — `tests/test_catalog.py:196`
+- `runner` (const) — `tests/test_catalog_cli.py:17`
+- `MINIMAL_CATALOG` (const) — `tests/test_catalog_cli.py:24`
+- `TestTemplate` (class) — `tests/test_catalog_cli.py:37`
+- `TestModelsInit` (class) — `tests/test_catalog_cli.py:67`
+- `TestModelsList` (class) — `tests/test_catalog_cli.py:128`
+- `OBSERVED_UP_TO_DATE` (const) — `tests/test_catalog_cli.py:176`
+- `OBSERVED_WITH_NEW` (const) — `tests/test_catalog_cli.py:177`
+- `TestModelsDiscover` (class) — `tests/test_catalog_cli.py:185`
+- `TestModelsUpdate` (class) — `tests/test_catalog_cli.py:315`
+- `TestParseObservedManifest` (class) — `tests/test_catalog_discovery.py:23`
+- `TestDiffCatalog` (class) — `tests/test_catalog_discovery.py:57`
+- `TestRenderPlane1Block` (class) — `tests/test_catalog_discovery.py:168`
 - `runner` (const) — `tests/test_cli.py:33`
-- `TestCLIHelp` (class) — `tests/test_cli.py:201`
-- `TestOrchestratorResumeFlag` (class) — `tests/test_cli.py:257`
-- `TestRunCommand` (class) — `tests/test_cli.py:334`
-- `TestStatusCommand` (class) — `tests/test_cli.py:385`
-- `TestRetryCommand` (class) — `tests/test_cli.py:470`
-- `TestStopCommand` (class) — `tests/test_cli.py:517`
-- `TestPIDFileManagement` (class) — `tests/test_cli.py:548`
-- `TestPidFileLocking` (class) — `tests/test_cli.py:572`
-- `TestStatusStyling` (class) — `tests/test_cli.py:615`
-- `TestDisplayFunctions` (class) — `tests/test_cli.py:649`
-- `TestArgumentParsing` (class) — `tests/test_cli.py:718`
-- `TestIntegrationScenarios` (class) — `tests/test_cli.py:844`
-- `TestSchedulerAlreadyRunning` (class) — `tests/test_cli.py:886`
-- `TestStopSchedulerScenarios` (class) — `tests/test_cli.py:921`
-- `TestAllStatusStyles` (class) — `tests/test_cli.py:966`
-- `TestDisplayEdgeCases` (class) — `tests/test_cli.py:977`
-- `TestStatusWithPID` (class) — `tests/test_cli.py:1022`
-- `TestRunScheduler` (class) — `tests/test_cli.py:1083`
-- `TestEntryPoint` (class) — `tests/test_cli.py:1164`
-- `TestApproveCommand` (class) — `tests/test_cli.py:1206`
+- `TestCLIHelp` (class) — `tests/test_cli.py:203`
+- `TestOrchestratorResumeFlag` (class) — `tests/test_cli.py:259`
+- `TestRunCommand` (class) — `tests/test_cli.py:336`
+- `TestStatusCommand` (class) — `tests/test_cli.py:387`
+- `TestRetryCommand` (class) — `tests/test_cli.py:472`
+- `TestStopCommand` (class) — `tests/test_cli.py:519`
+- `TestPIDFileManagement` (class) — `tests/test_cli.py:550`
+- `TestPidFileLocking` (class) — `tests/test_cli.py:574`
+- `TestStatusStyling` (class) — `tests/test_cli.py:617`
+- `TestDisplayFunctions` (class) — `tests/test_cli.py:651`
+- `TestArgumentParsing` (class) — `tests/test_cli.py:720`
+- `TestIntegrationScenarios` (class) — `tests/test_cli.py:846`
+- `TestSchedulerAlreadyRunning` (class) — `tests/test_cli.py:888`
+- `TestStopSchedulerScenarios` (class) — `tests/test_cli.py:923`
+- `TestAllStatusStyles` (class) — `tests/test_cli.py:968`
+- `TestDisplayEdgeCases` (class) — `tests/test_cli.py:979`
+- `TestStatusWithPID` (class) — `tests/test_cli.py:1024`
+- `TestRunScheduler` (class) — `tests/test_cli.py:1085`
+- `TestEntryPoint` (class) — `tests/test_cli.py:1166`
+- `TestApproveCommand` (class) — `tests/test_cli.py:1208`
+- `TestValidateCommand` (class) — `tests/test_cli.py:1289`
+- `TestOrchestratePreflight` (class) — `tests/test_cli.py:1424`
+- `TestInitCommand` (class) — `tests/test_cli.py:1461`
+- `runner` (const) — `tests/test_cli_benchmark.py:16`
+- `FakeTask` (class) — `tests/test_cli_benchmark.py:19`
+- `FakeRun` (class) — `tests/test_cli_benchmark.py:25`
+- `FakeAdapter` (class) — `tests/test_cli_benchmark.py:43`
+- `FakeBenchSpawner` (class) — `tests/test_cli_benchmark.py:68`
+- `TestAgentValidation` (class) — `tests/test_cli_benchmark.py:104`
+- `TestHappyPath` (class) — `tests/test_cli_benchmark.py:152`
+- `TestAtpUrl` (class) — `tests/test_cli_benchmark.py:251`
+- `TestAtpFailure` (class) — `tests/test_cli_benchmark.py:279`
+- `FakeArbiterClient` (class) — `tests/test_cli_benchmark.py:327`
+- `TestArbiterReport` (class) — `tests/test_cli_benchmark.py:368`
 - `TestLoadConfig` (class) — `tests/test_config.py:88`
 - `TestLoadConfigFromString` (class) — `tests/test_config.py:148`
 - `TestDefaultsMerging` (class) — `tests/test_config.py:193`
@@ -371,50 +450,55 @@ snapshot: 48
 - `TestConfigErrorFormatting` (class) — `tests/test_config.py:572`
 - `TestComplexConfiguration` (class) — `tests/test_config.py:613`
 - `TestArbiterSection` (class) — `tests/test_config.py:760`
-- `TestClaudeCodeLogParsing` (class) — `tests/test_cost_tracker.py:60`
-- `TestParseLog` (class) — `tests/test_cost_tracker.py:166`
-- `TestCostCalculation` (class) — `tests/test_cost_tracker.py:202`
-- `TestCreateTaskCost` (class) — `tests/test_cost_tracker.py:240`
-- `TestParseAndCreateCost` (class) — `tests/test_cost_tracker.py:261`
-- `TestBuildSummary` (class) — `tests/test_cost_tracker.py:307`
-- `TestFormatSummary` (class) — `tests/test_cost_tracker.py:388`
-- `TestTaskCostDatabase` (class) — `tests/test_cost_tracker.py:425`
-- `TestDAGConstruction` (class) — `tests/test_dag.py:155`
-- `TestCycleDetection` (class) — `tests/test_dag.py:256`
-- `TestTopologicalSort` (class) — `tests/test_dag.py:375`
-- `TestReadyTasks` (class) — `tests/test_dag.py:456`
-- `TestScopeOverlapWarning` (class) — `tests/test_dag.py:567`
-- `TestDAGNode` (class) — `tests/test_dag.py:721`
-- `TestScopeWarning` (class) — `tests/test_dag.py:748`
-- `TestCycleError` (class) — `tests/test_dag.py:775`
+- `TestClaudeCodeLogParsing` (class) — `tests/test_cost_tracker.py:63`
+- `TestOpencodeLogParsing` (class) — `tests/test_cost_tracker.py:207`
+- `TestHasPricing` (class) — `tests/test_cost_tracker.py:403`
+- `TestEffectiveCost` (class) — `tests/test_cost_tracker.py:418`
+- `TestParseLog` (class) — `tests/test_cost_tracker.py:451`
+- `TestCostCalculation` (class) — `tests/test_cost_tracker.py:497`
+- `TestCreateTaskCost` (class) — `tests/test_cost_tracker.py:541`
+- `TestParseAndCreateCost` (class) — `tests/test_cost_tracker.py:573`
+- `TestBuildSummary` (class) — `tests/test_cost_tracker.py:641`
+- `TestFormatSummary` (class) — `tests/test_cost_tracker.py:746`
+- `TestTaskCostDatabase` (class) — `tests/test_cost_tracker.py:783`
+- `TestDAGConstruction` (class) — `tests/test_dag.py:162`
+- `TestCycleDetection` (class) — `tests/test_dag.py:263`
+- `TestTopologicalSort` (class) — `tests/test_dag.py:382`
+- `TestReadyTasks` (class) — `tests/test_dag.py:463`
+- `TestScopeOverlapWarning` (class) — `tests/test_dag.py:574`
+- `TestDAGNode` (class) — `tests/test_dag.py:728`
+- `TestScopeWarning` (class) — `tests/test_dag.py:755`
+- `TestCycleError` (class) — `tests/test_dag.py:782`
+- `TestFindCycle` (class) — `tests/test_dag.py:803`
 - `TestDashboardPage` (class) — `tests/test_dashboard.py:152`
 - `TestDagEndpoint` (class) — `tests/test_dashboard.py:179`
 - `TestSSEStream` (class) — `tests/test_dashboard.py:233`
 - `TestRetryEndpoint` (class) — `tests/test_dashboard.py:360`
 - `TestLogViewer` (class) — `tests/test_dashboard.py:408`
 - `TestFactory` (class) — `tests/test_dashboard.py:473`
-- `TestDatabaseConnection` (class) — `tests/test_database.py:83`
-- `TestTransactionRollback` (class) — `tests/test_database.py:185`
-- `TestTaskCRUD` (class) — `tests/test_database.py:215`
-- `TestAtomicStatusUpdates` (class) — `tests/test_database.py:537`
-- `TestConcurrentAccess` (class) — `tests/test_database.py:713`
-- `TestQueryByStatus` (class) — `tests/test_database.py:784`
-- `TestTaskDependencies` (class) — `tests/test_database.py:888`
-- `TestFullLifecycle` (class) — `tests/test_database.py:1025`
-- `TestArbiterRoutingMigration` (class) — `tests/test_database.py:1271`
-- `TestSchemaMigrationsJournal` (class) — `tests/test_database.py:1372`
-- `TestUpdateTaskRouting` (class) — `tests/test_database.py:1487`
-- `TestMarkOutcomeReported` (class) — `tests/test_database.py:1529`
-- `TestResetForRetryAtomic` (class) — `tests/test_database.py:1587`
-- `TestGetTasksWithPendingOutcome` (class) — `tests/test_database.py:1677`
-- `TestMigrationRenameZadachiToWorkstreams` (class) — `tests/test_database.py:1724`
-- `TestProjectDecomposerInit` (class) — `tests/test_decomposer.py:104`
-- `TestDecompose` (class) — `tests/test_decomposer.py:135`
-- `TestGenerateSpec` (class) — `tests/test_decomposer.py:329`
-- `TestValidateNonOverlap` (class) — `tests/test_decomposer.py:483`
-- `TestPatternsOverlap` (class) — `tests/test_decomposer.py:656`
-- `TestGetRepoTree` (class) — `tests/test_decomposer.py:713`
-- `TestRunClaude` (class) — `tests/test_decomposer.py:762`
+- `TestDatabaseConnection` (class) — `tests/test_database.py:84`
+- `TestTransactionRollback` (class) — `tests/test_database.py:186`
+- `TestTaskCRUD` (class) — `tests/test_database.py:216`
+- `TestAtomicStatusUpdates` (class) — `tests/test_database.py:538`
+- `TestConcurrentAccess` (class) — `tests/test_database.py:714`
+- `TestQueryByStatus` (class) — `tests/test_database.py:785`
+- `TestTaskDependencies` (class) — `tests/test_database.py:889`
+- `TestFullLifecycle` (class) — `tests/test_database.py:1026`
+- `TestArbiterRoutingMigration` (class) — `tests/test_database.py:1272`
+- `TestSchemaMigrationsJournal` (class) — `tests/test_database.py:1373`
+- `TestUpdateTaskRouting` (class) — `tests/test_database.py:1506`
+- `TestMarkOutcomeReported` (class) — `tests/test_database.py:1548`
+- `TestResetForRetryAtomic` (class) — `tests/test_database.py:1606`
+- `TestGetTasksWithPendingOutcome` (class) — `tests/test_database.py:1696`
+- `TestMigrationRenameZadachiToWorkstreams` (class) — `tests/test_database.py:1743`
+- `TestProjectDecomposerInit` (class) — `tests/test_decomposer.py:105`
+- `TestDecompose` (class) — `tests/test_decomposer.py:136`
+- `TestGenerateSpec` (class) — `tests/test_decomposer.py:330`
+- `TestOnPidCallback` (class) — `tests/test_decomposer.py:535`
+- `TestValidateNonOverlap` (class) — `tests/test_decomposer.py:601`
+- `TestPatternsOverlap` (class) — `tests/test_decomposer.py:774`
+- `TestGetRepoTree` (class) — `tests/test_decomposer.py:831`
+- `TestRunClaude` (class) — `tests/test_decomposer.py:880`
 - `TestEvent` (class) — `tests/test_event_log.py:16`
 - `TestEventLogger` (class) — `tests/test_event_log.py:63`
 - `TestEventLoggerConvenienceMethods` (class) — `tests/test_event_log.py:128`
@@ -467,24 +551,27 @@ snapshot: 48
 - `TestRESTMarkMessagesRead` (class) — `tests/test_messages.py:555`
 - `TestBroadcastMessaging` (class) — `tests/test_messages.py:614`
 - `TestMessageOrdering` (class) — `tests/test_messages.py:727`
-- `TestTaskStatus` (class) — `tests/test_models.py:28`
-- `TestTaskConfig` (class) — `tests/test_models.py:114`
-- `TestAgentType` (class) — `tests/test_models.py:239`
-- `TestAgentTypeAuto` (class) — `tests/test_models.py:254`
-- `TestArbiterEnums` (class) — `tests/test_models.py:275`
-- `TestInferTaskType` (class) — `tests/test_models.py:307`
-- `TestInferLanguage` (class) — `tests/test_models.py:334`
-- `TestInferComplexity` (class) — `tests/test_models.py:354`
-- `TestPriorityIntToEnum` (class) — `tests/test_models.py:377`
-- `TestTaskFromConfigInference` (class) — `tests/test_models.py:399`
-- `TestTask` (class) — `tests/test_models.py:432`
-- `TestTaskArbiterFields` (class) — `tests/test_models.py:700`
-- `TestGitConfig` (class) — `tests/test_models.py:733`
-- `TestNotificationConfig` (class) — `tests/test_models.py:760`
-- `TestDefaultsConfig` (class) — `tests/test_models.py:789`
-- `TestProjectConfig` (class) — `tests/test_models.py:833`
-- `TestSerialization` (class) — `tests/test_models.py:1103`
-- `TestFromConfigAutoValidation` (class) — `tests/test_models.py:1242`
+- `TestTaskStatus` (class) — `tests/test_models.py:29`
+- `TestTaskConfig` (class) — `tests/test_models.py:124`
+- `TestAgentType` (class) — `tests/test_models.py:249`
+- `TestHarnessOfAgentId` (class) — `tests/test_models.py:264`
+- `TestModelOfAgentId` (class) — `tests/test_models.py:294`
+- `TestAgentTypeAuto` (class) — `tests/test_models.py:320`
+- `TestArbiterEnums` (class) — `tests/test_models.py:341`
+- `TestInferTaskType` (class) — `tests/test_models.py:373`
+- `TestInferLanguage` (class) — `tests/test_models.py:400`
+- `TestInferComplexity` (class) — `tests/test_models.py:420`
+- `TestPriorityIntToEnum` (class) — `tests/test_models.py:443`
+- `TestTaskFromConfigInference` (class) — `tests/test_models.py:465`
+- `TestTask` (class) — `tests/test_models.py:498`
+- `TestTaskArbiterFields` (class) — `tests/test_models.py:766`
+- `TestGitConfig` (class) — `tests/test_models.py:799`
+- `TestNotificationConfig` (class) — `tests/test_models.py:826`
+- `TestDefaultsConfig` (class) — `tests/test_models.py:855`
+- `TestProjectConfig` (class) — `tests/test_models.py:899`
+- `TestSerialization` (class) — `tests/test_models.py:1169`
+- `TestFromConfigAutoValidation` (class) — `tests/test_models.py:1308`
+- `TestSpecRunnerConfig` (class) — `tests/test_models.py:1333`
 - `TestNotificationEvent` (class) — `tests/test_notifications.py:79`
 - `TestNotificationFormatting` (class) — `tests/test_notifications.py:101`
 - `TestNotificationChannelABC` (class) — `tests/test_notifications.py:190`
@@ -494,12 +581,17 @@ snapshot: 48
 - `TestCreateNotificationManager` (class) — `tests/test_notifications.py:562`
 - `TestPackageExports` (class) — `tests/test_notifications.py:599`
 - `test_trace_continuity_across_subprocess` (function) — `tests/test_obs_integration.py:19`
-- `TestOrchestratorInit` (class) — `tests/test_orchestrator.py:135`
-- `TestEnsureWorkstreams` (class) — `tests/test_orchestrator.py:214`
-- `TestResolveReady` (class) — `tests/test_orchestrator.py:352`
-- `TestHandleFailure` (class) — `tests/test_orchestrator.py:522`
-- `TestBuildPrBody` (class) — `tests/test_orchestrator.py:627`
-- `TestShutdown` (class) — `tests/test_orchestrator.py:692`
+- `TestOrchestratorInit` (class) — `tests/test_orchestrator.py:136`
+- `TestEnsureWorkstreams` (class) — `tests/test_orchestrator.py:235`
+- `TestResolveReady` (class) — `tests/test_orchestrator.py:373`
+- `TestHandleFailure` (class) — `tests/test_orchestrator.py:543`
+- `TestBuildPrBody` (class) — `tests/test_orchestrator.py:648`
+- `TestShutdown` (class) — `tests/test_orchestrator.py:713`
+- `TestBackgroundGeneration` (class) — `tests/test_orchestrator.py:748`
+- `TestGenerationPidLifecycle` (class) — `tests/test_orchestrator.py:1033`
+- `TestStartupRecovery` (class) — `tests/test_orchestrator.py:1221`
+- `TestMergeIntoBase` (class) — `tests/test_orchestrator.py:1659`
+- `TestHandleSuccessMergeGating` (class) — `tests/test_orchestrator.py:1781`
 - `TestVersion` (class) — `tests/test_package.py:12`
 - `TestSubpackages` (class) — `tests/test_package.py:31`
 - `TestMain` (class) — `tests/test_package.py:53`
@@ -510,6 +602,15 @@ snapshot: 48
 - `TestCreatePR` (class) — `tests/test_pr_manager.py:92`
 - `TestPushAndCreatePR` (class) — `tests/test_pr_manager.py:337`
 - `TestIsAvailable` (class) — `tests/test_pr_manager.py:422`
+- `make_config` (function) — `tests/test_preflight.py:9`
+- `ws` (function) — `tests/test_preflight.py:21`
+- `make_git_repo` (function) — `tests/test_preflight.py:31`
+- `TestValidationReport` (class) — `tests/test_preflight.py:42`
+- `TestStaticChecks` (class) — `tests/test_preflight.py:61`
+- `TestFilesystemChecks` (class) — `tests/test_preflight.py:124`
+- `TestExactOverlapTier` (class) — `tests/test_preflight.py:175`
+- `TestInvalidScopePatterns` (class) — `tests/test_preflight.py:219`
+- `TestDanglingDeps` (class) — `tests/test_preflight.py:270`
 - `TestRecoveryStatistics` (class) — `tests/test_recovery.py:63`
 - `TestStateRecoveryNeedsRecovery` (class) — `tests/test_recovery.py:125`
 - `TestStateRecoveryOrphanedCount` (class) — `tests/test_recovery.py:180`
@@ -522,9 +623,10 @@ snapshot: 48
 - `TestClaimTask` (class) — `tests/test_rest_api.py:333`
 - `TestUpdateStatus` (class) — `tests/test_rest_api.py:424`
 - `TestGetTaskResult` (class) — `tests/test_rest_api.py:551`
-- `TestConcurrentClaimConflict` (class) — `tests/test_rest_api.py:633`
-- `TestStatusUpdateFlow` (class) — `tests/test_rest_api.py:749`
-- `TestRESTServerFactory` (class) — `tests/test_rest_api.py:863`
+- `TestGetTaskCosts` (class) — `tests/test_rest_api.py:633`
+- `TestConcurrentClaimConflict` (class) — `tests/test_rest_api.py:670`
+- `TestStatusUpdateFlow` (class) — `tests/test_rest_api.py:786`
+- `TestRESTServerFactory` (class) — `tests/test_rest_api.py:900`
 - `TestListWorkstreams` (class) — `tests/test_rest_workstreams.py:86`
 - `TestGetWorkstreamDetail` (class) — `tests/test_rest_workstreams.py:145`
 - `TestWorkstreamCallback` (class) — `tests/test_rest_workstreams.py:200`
@@ -541,57 +643,69 @@ snapshot: 48
 - `TestStaticRoutingReportOutcome` (class) — `tests/test_routing_static.py:36`
 - `TestStaticRoutingAclose` (class) — `tests/test_routing_static.py:45`
 - `TestProtocolSatisfied` (class) — `tests/test_routing_static.py:51`
-- `MockSpawner` (class) — `tests/test_scheduler.py:32`
-- `FailingSpawner` (class) — `tests/test_scheduler.py:112`
-- `TestReadyTaskResolution` (class) — `tests/test_scheduler.py:228`
-- `TestConcurrencyLimiting` (class) — `tests/test_scheduler.py:395`
-- `TestFullExecution` (class) — `tests/test_scheduler.py:518`
-- `TestTimeoutHandling` (class) — `tests/test_scheduler.py:790`
-- `TestGracefulShutdown` (class) — `tests/test_scheduler.py:917`
-- `TestSchedulerConfig` (class) — `tests/test_scheduler.py:1053`
-- `TestCreateSchedulerFromConfig` (class) — `tests/test_scheduler.py:1085`
-- `TestRunningTask` (class) — `tests/test_scheduler.py:1202`
-- `TestSchedulerErrors` (class) — `tests/test_scheduler.py:1235`
-- `TestSpawnerErrorHandling` (class) — `tests/test_scheduler.py:1257`
-- `TestSchedulerGracePeriod` (class) — `tests/test_scheduler.py:1408`
-- `TestStatusChangeCallback` (class) — `tests/test_scheduler.py:1425`
-- `TestAutoCommit` (class) — `tests/test_scheduler.py:1464`
-- `TestSchedulerRoutingInjection` (class) — `tests/test_scheduler.py:1478`
+- `make_git_repo` (function) — `tests/test_scaffold.py:12`
+- `load_generated` (function) — `tests/test_scaffold.py:31`
+- `TestGenerateProjectYaml` (class) — `tests/test_scaffold.py:36`
+- `MockSpawner` (class) — `tests/test_scheduler.py:33`
+- `FailingSpawner` (class) — `tests/test_scheduler.py:121`
+- `RaisingSpawner` (class) — `tests/test_scheduler.py:145`
+- `TestReadyTaskResolution` (class) — `tests/test_scheduler.py:266`
+- `TestConcurrencyLimiting` (class) — `tests/test_scheduler.py:433`
+- `TestFullExecution` (class) — `tests/test_scheduler.py:556`
+- `TestTimeoutHandling` (class) — `tests/test_scheduler.py:828`
+- `TestGracefulShutdown` (class) — `tests/test_scheduler.py:955`
+- `TestSchedulerConfig` (class) — `tests/test_scheduler.py:1091`
+- `TestCreateSchedulerFromConfig` (class) — `tests/test_scheduler.py:1123`
+- `TestRunningTask` (class) — `tests/test_scheduler.py:1240`
+- `TestSchedulerErrors` (class) — `tests/test_scheduler.py:1273`
+- `TestSpawnerErrorHandling` (class) — `tests/test_scheduler.py:1295`
+- `TestSchedulerGracePeriod` (class) — `tests/test_scheduler.py:1501`
+- `TestStatusChangeCallback` (class) — `tests/test_scheduler.py:1518`
+- `TestAutoCommit` (class) — `tests/test_scheduler.py:1557`
+- `TestSchedulerRoutingInjection` (class) — `tests/test_scheduler.py:1571`
+- `TestSchedulerModelPassthrough` (class) — `tests/test_scheduler.py:1609`
+- `TestSchedulerD2Gate` (class) — `tests/test_scheduler.py:1656`
+- `TestCatalogFaultHandling` (class) — `tests/test_scheduler.py:1802`
 - `real_arbiter_only` (const) — `tests/test_scheduler_arbiter_real_subprocess.py:71`
+- `OPENCODE_LOG` (const) — `tests/test_scheduler_cost_recording.py:273`
 - `test_scheduler_obs_log_emits_to_otel_jsonl` (function) — `tests/test_scheduler_observability.py:38`
 - `test_scheduler_span_carries_trace_id_for_subprocess` (function) — `tests/test_scheduler_observability.py:66`
 - `test_scheduler_emits_failure_with_retry_metadata` (function) — `tests/test_scheduler_observability.py:101`
-- `MockSpawner` (class) — `tests/test_spawner_registry.py:28`
-- `AnotherMockSpawner` (class) — `tests/test_spawner_registry.py:52`
-- `TestRegistryInitialization` (class) — `tests/test_spawner_registry.py:96`
-- `TestRegistration` (class) — `tests/test_spawner_registry.py:115`
-- `TestLookup` (class) — `tests/test_spawner_registry.py:199`
-- `TestFallbackHandling` (class) — `tests/test_spawner_registry.py:261`
-- `TestClearAndToDict` (class) — `tests/test_spawner_registry.py:328`
-- `TestEntryPointDiscovery` (class) — `tests/test_spawner_registry.py:369`
-- `TestDirectoryDiscovery` (class) — `tests/test_spawner_registry.py:434`
-- `TestDiscoverAll` (class) — `tests/test_spawner_registry.py:540`
-- `TestCreateDefaultRegistry` (class) — `tests/test_spawner_registry.py:561`
-- `TestSpawnerNotFoundError` (class) — `tests/test_spawner_registry.py:578`
-- `TestRegistryIntegration` (class) — `tests/test_spawner_registry.py:604`
-- `FakeProcess` (class) — `tests/test_spawner_responder.py:30`
-- `FakeSpawner` (class) — `tests/test_spawner_responder.py:59`
-- `TestAgentSpawnerABC` (class) — `tests/test_spawners.py:61`
-- `TestPromptBuilding` (class) — `tests/test_spawners.py:130`
-- `TestIsAvailable` (class) — `tests/test_spawners.py:203`
-- `TestClaudeCodeSpawner` (class) — `tests/test_spawners.py:228`
-- `TestSpawnIntegration` (class) — `tests/test_spawners.py:356`
-- `TestSpawnerInheritance` (class) — `tests/test_spawners.py:506`
-- `TestCodexSpawner` (class) — `tests/test_spawners.py:612`
-- `TestAiderSpawner` (class) — `tests/test_spawners.py:715`
-- `TestAnnounceSpawner` (class) — `tests/test_spawners.py:877`
-- `TestIsAvailableAllSpawners` (class) — `tests/test_spawners.py:956`
-- `TestSpawnIntegrationAdditional` (class) — `tests/test_spawners.py:995`
+- `test_emit_tick_first_and_on_change_only` (function) — `tests/test_scheduler_observability_m3.py:64`
+- `MockSpawner` (class) — `tests/test_spawner_registry.py:30`
+- `AnotherMockSpawner` (class) — `tests/test_spawner_registry.py:56`
+- `TestRegistryInitialization` (class) — `tests/test_spawner_registry.py:102`
+- `TestRegistration` (class) — `tests/test_spawner_registry.py:121`
+- `TestLookup` (class) — `tests/test_spawner_registry.py:205`
+- `TestFallbackHandling` (class) — `tests/test_spawner_registry.py:267`
+- `TestClearAndToDict` (class) — `tests/test_spawner_registry.py:334`
+- `TestEntryPointDiscovery` (class) — `tests/test_spawner_registry.py:375`
+- `TestDirectoryDiscovery` (class) — `tests/test_spawner_registry.py:449`
+- `TestDiscoverAll` (class) — `tests/test_spawner_registry.py:557`
+- `TestCreateDefaultRegistry` (class) — `tests/test_spawner_registry.py:578`
+- `TestSpawnerNotFoundError` (class) — `tests/test_spawner_registry.py:595`
+- `TestRegistryIntegration` (class) — `tests/test_spawner_registry.py:621`
+- `FakeProcess` (class) — `tests/test_spawner_responder.py:31`
+- `FakeSpawner` (class) — `tests/test_spawner_responder.py:60`
+- `TestAgentSpawnerABC` (class) — `tests/test_spawners.py:62`
+- `TestPromptBuilding` (class) — `tests/test_spawners.py:135`
+- `TestIsAvailable` (class) — `tests/test_spawners.py:208`
+- `TestClaudeCodeSpawner` (class) — `tests/test_spawners.py:233`
+- `TestSpawnIntegration` (class) — `tests/test_spawners.py:524`
+- `TestSpawnerInheritance` (class) — `tests/test_spawners.py:680`
+- `TestCodexSpawner` (class) — `tests/test_spawners.py:796`
+- `TestQualify` (class) — `tests/test_spawners.py:1007`
+- `TestOpencodeSpawner` (class) — `tests/test_spawners.py:1022`
+- `TestAiderSpawner` (class) — `tests/test_spawners.py:1171`
+- `TestAnnounceSpawner` (class) — `tests/test_spawners.py:1333`
+- `TestIsAvailableAllSpawners` (class) — `tests/test_spawners.py:1412`
+- `TestSpawnIntegrationAdditional` (class) — `tests/test_spawners.py:1451`
 - `TestVersionPin` (class) — `tests/test_spec_runner.py:33`
 - `TestReadExecutorStateJSON` (class) — `tests/test_spec_runner.py:44`
 - `TestReadExecutorStateSQLite` (class) — `tests/test_spec_runner.py:173`
 - `TestSpecRunnerConfigContract` (class) — `tests/test_spec_runner.py:259`
 - `TestExecutorStateRoundTrip` (class) — `tests/test_spec_runner.py:294`
+- `pytestmark` (const) — `tests/test_spec_runner_plan_e2e.py:22`
 - `TestMapping` (class) — `tests/test_status_mapping.py:9`
 - `TestValidationResult` (class) — `tests/test_validator.py:42`
 - `TestValidatorInit` (class) — `tests/test_validator.py:199`
@@ -611,7 +725,7 @@ snapshot: 48
 
 ## Modules
 
-_110 files, 572 public symbols, 620 internal imports._
+_125 files, 686 public symbols, 780 internal imports._
 
 - `maestro/__init__.py` (python)
 - `maestro/_vendor/__init__.py` (python)
@@ -622,6 +736,9 @@ _110 files, 572 public symbols, 620 internal imports._
 - `maestro/benchmark/models.py` (python)
 - `maestro/benchmark/runner.py` (python)
 - `maestro/benchmark/spawner_responder.py` (python)
+- `maestro/catalog.py` (python)
+- `maestro/catalog_cli.py` (python)
+- `maestro/catalog_discovery.py` (python)
 - `maestro/cli.py` (python)
 - `maestro/config.py` (python)
 - `maestro/coordination/__init__.py` (python)
@@ -646,8 +763,11 @@ _110 files, 572 public symbols, 620 internal imports._
 - `maestro/notifications/manager.py` (python)
 - `maestro/orchestrator.py` (python)
 - `maestro/pr_manager.py` (python)
+- `maestro/preflight.py` (python)
 - `maestro/recovery.py` (python)
+- `maestro/resources/__init__.py` (python)
 - `maestro/retry.py` (python)
+- `maestro/scaffold.py` (python)
 - `maestro/scheduler.py` (python)
 - `maestro/schemas/__init__.py` (python)
 - `maestro/schemas/generate.py` (python)
@@ -657,6 +777,7 @@ _110 files, 572 public symbols, 620 internal imports._
 - `maestro/spawners/base.py` (python)
 - `maestro/spawners/claude_code.py` (python)
 - `maestro/spawners/codex.py` (python)
+- `maestro/spawners/opencode.py` (python)
 - `maestro/spawners/registry.py` (python)
 - `maestro/spec_runner.py` (python)
 - `maestro/validator.py` (python)
@@ -682,7 +803,11 @@ _110 files, 572 public symbols, 620 internal imports._
 - `tests/test_benchmark_contract.py` (python)
 - `tests/test_benchmark_models.py` (python)
 - `tests/test_benchmark_runner.py` (python)
+- `tests/test_catalog.py` (python)
+- `tests/test_catalog_cli.py` (python)
+- `tests/test_catalog_discovery.py` (python)
 - `tests/test_cli.py` (python)
+- `tests/test_cli_benchmark.py` (python)
 - `tests/test_config.py` (python)
 - `tests/test_cost_tracker.py` (python)
 - `tests/test_dag.py` (python)
@@ -703,6 +828,7 @@ _110 files, 572 public symbols, 620 internal imports._
 - `tests/test_orchestrator.py` (python)
 - `tests/test_package.py` (python)
 - `tests/test_pr_manager.py` (python)
+- `tests/test_preflight.py` (python)
 - `tests/test_recovery.py` (python)
 - `tests/test_recovery_arbiter.py` (python)
 - `tests/test_rest_api.py` (python)
@@ -710,15 +836,18 @@ _110 files, 572 public symbols, 620 internal imports._
 - `tests/test_retry.py` (python)
 - `tests/test_routing_models.py` (python)
 - `tests/test_routing_static.py` (python)
+- `tests/test_scaffold.py` (python)
 - `tests/test_scheduler.py` (python)
 - `tests/test_scheduler_arbiter_integration.py` (python)
 - `tests/test_scheduler_arbiter_real_subprocess.py` (python)
 - `tests/test_scheduler_cost_recording.py` (python)
 - `tests/test_scheduler_observability.py` (python)
+- `tests/test_scheduler_observability_m3.py` (python)
 - `tests/test_spawner_registry.py` (python)
 - `tests/test_spawner_responder.py` (python)
 - `tests/test_spawners.py` (python)
 - `tests/test_spec_runner.py` (python)
+- `tests/test_spec_runner_plan_e2e.py` (python)
 - `tests/test_status_mapping.py` (python)
 - `tests/test_validator.py` (python)
 - `tests/test_vendor_obs.py` (python)
@@ -734,6 +863,7 @@ _None._
 
 ## Outbound edges
 
+- ↔ [[https---all_ai_orchestrators-observability-contract-v1]] · `contract_link` · `json_schema`
 - ↔ [[https---github-com-andrei-shtanakov-maestro-benchmark-contract-report_benchmark-v1-schema-json]] · `contract_link` · `json_schema`
 - → [[arbiter-mcp]] · `mcp_call` · tool `report_outcome`
 - → [[arbiter-mcp]] · `mcp_call` · tool `get_agent_status`
@@ -747,7 +877,7 @@ _None._
 
 ## Recent changes (last 5)
 
-- snapshot 1 (2026-05-26T08:18:45Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 

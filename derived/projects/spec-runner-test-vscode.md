@@ -2,20 +2,20 @@
 
 ---
 indexed_at: "2026-07-07T16:11:23Z"
-kind: docs
-name: open-prose
+kind: python
+name: spec-runner-test-vscode
 prograph: project
-root: ./open-prose
+root: ./spec-runner-test-vscode
 snapshot: 1
 ---
 
-# open-prose
+# spec-runner-test-vscode
 
-> A programming language for AI sessions — zero-dependency, pure-specification.
+> This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Manifest
 
-- declared package: `open-prose`
+- declared package: `spec-runner-test-vscode` version `0.1.0`
 
 ## Public surface
 
@@ -29,11 +29,13 @@ _None._
 
 ### Public symbols
 
-_None._
+- `main` (function) — `main.py:1`
 
 ## Modules
 
-_None._
+_1 files, 1 public symbols, 0 internal imports._
+
+- `main.py` (python)
 
 ## Inbound references
 

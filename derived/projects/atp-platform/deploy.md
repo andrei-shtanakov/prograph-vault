@@ -3,19 +3,20 @@
 ---
 indexed_at: "2026-07-07T16:11:23Z"
 kind: docs
-name: open-prose
+name: deploy
+parent: atp-platform
 prograph: project
-root: ./open-prose
+root: ./atp-platform/deploy
 snapshot: 1
 ---
 
-# open-prose
+# deploy
 
-> A programming language for AI sessions — zero-dependency, pure-specification.
+> Prod lives on a Namecheap VPS. See `.github/workflows/deploy.yml` for the trigger semantics (push to `main` or manual `workflowdispatch`).
 
 ## Manifest
 
-- declared package: `open-prose`
+- declared package: `deploy`
 
 ## Public surface
 

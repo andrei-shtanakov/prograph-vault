@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: rust
 name: arbiter-cli
 parent: arbiter
 prograph: project
 root: ./arbiter/arbiter-cli
-snapshot: 48
+snapshot: 1
 ---
 
 # arbiter-cli
@@ -32,10 +32,11 @@ _None._
 
 ## Modules
 
-_2 files, 0 public symbols, 0 internal imports._
+_3 files, 0 public symbols, 0 internal imports._
 
 - `benches/routing.rs` (rust)
 - `src/main.rs` (rust)
+- `tests/catalog_cli.rs` (rust)
 
 ## Inbound references
 
@@ -44,22 +45,25 @@ _None._
 ## Outbound references
 
 - to [[arbiter-core]]:
+  - `src/main.rs:19` → `catalog::Catalog`
+  - `src/main.rs:19` → `catalog::Severity`
+  - `src/main.rs:19` → `catalog::self`
   - `benches/routing.rs:14` → `policy::decision_tree::DecisionTree`
-  - `src/main.rs:17` → `policy::decision_tree::DecisionTree`
+  - `src/main.rs:20` → `policy::decision_tree::DecisionTree`
   - `benches/routing.rs:15` → `types::*`
-  - `src/main.rs:18` → `types::*`
+  - `src/main.rs:21` → `types::*`
 - to [[arbiter-mcp]]:
   - `benches/routing.rs:17` → `agents::AgentRegistry`
-  - `src/main.rs:20` → `agents::AgentRegistry`
+  - `src/main.rs:23` → `agents::AgentRegistry`
   - `benches/routing.rs:18` → `config::*`
-  - `src/main.rs:21` → `config::*`
+  - `src/main.rs:24` → `config::*`
   - `benches/routing.rs:19` → `db::Database`
-  - `src/main.rs:22` → `db::Database`
-  - `src/main.rs:22` → `db::DecisionRecord`
-  - `src/main.rs:22` → `db::OutcomeRecord`
+  - `src/main.rs:25` → `db::Database`
+  - `src/main.rs:25` → `db::DecisionRecord`
+  - `src/main.rs:25` → `db::OutcomeRecord`
   - `benches/routing.rs:20` → `metrics::Metrics`
   - `benches/routing.rs:21` → `tools::route_task`
-  - `src/main.rs:23` → `tools::route_task`
+  - `src/main.rs:26` → `tools::route_task`
 
 ## Outbound edges
 
@@ -72,8 +76,7 @@ _None._
 
 ## Recent changes (last 5)
 
-- snapshot 41 (2026-05-27T10:39:37Z): project attrs_changed (attrs_changed)
-- snapshot 39 (2026-05-27T10:18:26Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 

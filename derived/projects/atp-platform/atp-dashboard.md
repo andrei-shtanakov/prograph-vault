@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: python
 name: atp-dashboard
 parent: atp-platform
 prograph: project
 root: ./atp-platform/packages/atp-dashboard
-snapshot: 48
+snapshot: 1
 ---
 
 # atp-dashboard
@@ -183,20 +183,20 @@ _None._
 - `TokenValidationError` (class) — `atp/dashboard/auth/sso/oidc.py:356`
 - `UserProvisioningError` (class) — `atp/dashboard/auth/sso/oidc.py:362`
 - `SSOManager` (class) — `atp/dashboard/auth/sso/oidc.py:368`
-- `SAMLProvider` (class) — `atp/dashboard/auth/sso/saml.py:25`
-- `SAMLGroupRoleMapping` (class) — `atp/dashboard/auth/sso/saml.py:37`
-- `SAMLAttributeMapping` (class) — `atp/dashboard/auth/sso/saml.py:51`
-- `SAMLNameIDFormat` (class) — `atp/dashboard/auth/sso/saml.py:86`
-- `SAMLConfig` (class) — `atp/dashboard/auth/sso/saml.py:95`
-- `SAMLUserInfo` (class) — `atp/dashboard/auth/sso/saml.py:200`
-- `SAMLProviderPresets` (class) — `atp/dashboard/auth/sso/saml.py:230`
-- `SAMLError` (class) — `atp/dashboard/auth/sso/saml.py:325`
-- `SAMLConfigurationError` (class) — `atp/dashboard/auth/sso/saml.py:331`
-- `SAMLValidationError` (class) — `atp/dashboard/auth/sso/saml.py:337`
-- `SAMLUserProvisioningError` (class) — `atp/dashboard/auth/sso/saml.py:343`
-- `SAMLManager` (class) — `atp/dashboard/auth/sso/saml.py:382`
-- `parse_idp_metadata` (function) — `atp/dashboard/auth/sso/saml.py:799`
-- `parse_idp_metadata_url` (function) — `atp/dashboard/auth/sso/saml.py:818`
+- `SAMLProvider` (class) — `atp/dashboard/auth/sso/saml.py:46`
+- `SAMLGroupRoleMapping` (class) — `atp/dashboard/auth/sso/saml.py:58`
+- `SAMLAttributeMapping` (class) — `atp/dashboard/auth/sso/saml.py:72`
+- `SAMLNameIDFormat` (class) — `atp/dashboard/auth/sso/saml.py:107`
+- `SAMLConfig` (class) — `atp/dashboard/auth/sso/saml.py:116`
+- `SAMLUserInfo` (class) — `atp/dashboard/auth/sso/saml.py:221`
+- `SAMLProviderPresets` (class) — `atp/dashboard/auth/sso/saml.py:251`
+- `SAMLError` (class) — `atp/dashboard/auth/sso/saml.py:346`
+- `SAMLConfigurationError` (class) — `atp/dashboard/auth/sso/saml.py:352`
+- `SAMLValidationError` (class) — `atp/dashboard/auth/sso/saml.py:358`
+- `SAMLUserProvisioningError` (class) — `atp/dashboard/auth/sso/saml.py:364`
+- `SAMLManager` (class) — `atp/dashboard/auth/sso/saml.py:420`
+- `parse_idp_metadata` (function) — `atp/dashboard/auth/sso/saml.py:841`
+- `parse_idp_metadata_url` (function) — `atp/dashboard/auth/sso/saml.py:862`
 - `AuthStateStore` (class) — `atp/dashboard/auth/state_store.py:17`
 - `InMemoryAuthStateStore` (class) — `atp/dashboard/auth/state_store.py:37`
 - `get_auth_state_store` (function) — `atp/dashboard/auth/state_store.py:78`
@@ -214,11 +214,19 @@ _None._
 - `RunStatusResponse` (class) — `atp/dashboard/benchmark/schemas.py:76`
 - `BenchmarkService` (class) — `atp/dashboard/benchmark/service.py:21`
 - `main` (function) — `atp/dashboard/cli/admin.py:207`
-- `logger` (const) — `atp/dashboard/database.py:20`
-- `Database` (class) — `atp/dashboard/database.py:23`
-- `get_database` (function) — `atp/dashboard/database.py:143`
-- `set_database` (function) — `atp/dashboard/database.py:151`
-- `init_database` (function) — `atp/dashboard/database.py:157`
+- `logger` (const) — `atp/dashboard/database.py:21`
+- `Database` (class) — `atp/dashboard/database.py:24`
+- `get_database` (function) — `atp/dashboard/database.py:147`
+- `set_database` (function) — `atp/dashboard/database.py:155`
+- `init_database` (function) — `atp/dashboard/database.py:161`
+- `case_dimensions` (function) — `atp/dashboard/dimensions.py:44`
+- `aggregate_run` (function) — `atp/dashboard/dimensions.py:71`
+- `COMPLETED_STATUS` (const) — `atp/dashboard/failure_analysis.py:17`
+- `MAX_SAMPLE_ERRORS` (const) — `atp/dashboard/failure_analysis.py:18`
+- `RunResultLike` (class) — `atp/dashboard/failure_analysis.py:24`
+- `FailureCause` (class) — `atp/dashboard/failure_analysis.py:31`
+- `FailureBreakdown` (class) — `atp/dashboard/failure_analysis.py:46`
+- `compute_failure_breakdown` (function) — `atp/dashboard/failure_analysis.py:73`
 - `mcp_server` (const) — `atp/dashboard/mcp/__init__.py:12`
 - `tournament_event_bus` (const) — `atp/dashboard/mcp/__init__.py:13`
 - `MCPAuthMiddleware` (class) — `atp/dashboard/mcp/auth.py:34`
@@ -251,21 +259,21 @@ _None._
 - `User` (class) — `atp/dashboard/models.py:37`
 - `Agent` (class) — `atp/dashboard/models.py:67`
 - `SuiteExecution` (class) — `atp/dashboard/models.py:139`
-- `TestExecution` (class) — `atp/dashboard/models.py:204`
-- `RunResult` (class) — `atp/dashboard/models.py:264`
-- `Artifact` (class) — `atp/dashboard/models.py:325`
-- `EvaluationResult` (class) — `atp/dashboard/models.py:358`
-- `ScoreComponent` (class) — `atp/dashboard/models.py:393`
-- `PublishedResult` (class) — `atp/dashboard/models.py:436`
-- `AgentProfile` (class) — `atp/dashboard/models.py:510`
-- `BenchmarkCategory` (class) — `atp/dashboard/models.py:583`
-- `SuiteDefinition` (class) — `atp/dashboard/models.py:633`
-- `MarketplaceSuite` (class) — `atp/dashboard/models.py:691`
-- `MarketplaceSuiteVersion` (class) — `atp/dashboard/models.py:790`
-- `MarketplaceSuiteReview` (class) — `atp/dashboard/models.py:858`
-- `MarketplaceSuiteInstall` (class) — `atp/dashboard/models.py:919`
-- `GameResult` (class) — `atp/dashboard/models.py:969`
-- `TournamentResult` (class) — `atp/dashboard/models.py:1088`
+- `TestExecution` (class) — `atp/dashboard/models.py:218`
+- `RunResult` (class) — `atp/dashboard/models.py:295`
+- `Artifact` (class) — `atp/dashboard/models.py:356`
+- `EvaluationResult` (class) — `atp/dashboard/models.py:389`
+- `ScoreComponent` (class) — `atp/dashboard/models.py:424`
+- `PublishedResult` (class) — `atp/dashboard/models.py:467`
+- `AgentProfile` (class) — `atp/dashboard/models.py:541`
+- `BenchmarkCategory` (class) — `atp/dashboard/models.py:614`
+- `SuiteDefinition` (class) — `atp/dashboard/models.py:664`
+- `MarketplaceSuite` (class) — `atp/dashboard/models.py:722`
+- `MarketplaceSuiteVersion` (class) — `atp/dashboard/models.py:821`
+- `MarketplaceSuiteReview` (class) — `atp/dashboard/models.py:889`
+- `MarketplaceSuiteInstall` (class) — `atp/dashboard/models.py:950`
+- `GameResult` (class) — `atp/dashboard/models.py:1000`
+- `TournamentResult` (class) — `atp/dashboard/models.py:1119`
 - `get_agents_by_names` (function) — `atp/dashboard/optimized_queries.py:21`
 - `get_suite_executions_for_agents` (function) — `atp/dashboard/optimized_queries.py:42`
 - `get_run_results_for_test_executions` (function) — `atp/dashboard/optimized_queries.py:91`
@@ -445,7 +453,8 @@ _None._
 - `AgentOwnerCreate` (class) — `atp/dashboard/schemas.py:1871`
 - `AgentOwnerUpdate` (class) — `atp/dashboard/schemas.py:1888`
 - `AgentOwnerResponse` (class) — `atp/dashboard/schemas.py:1896`
-- `ResultStorage` (class) — `atp/dashboard/storage.py:34`
+- `AXIS_ORDER` (const) — `atp/dashboard/storage.py:35`
+- `ResultStorage` (class) — `atp/dashboard/storage.py:63`
 - `logger` (const) — `atp/dashboard/tenancy/manager.py:24`
 - `TenantError` (class) — `atp/dashboard/tenancy/manager.py:27`
 - `TenantExistsError` (class) — `atp/dashboard/tenancy/manager.py:33`
@@ -550,6 +559,8 @@ _None._
 - `SUPPORTED_GAMES` (const) — `atp/dashboard/tournament/service.py:90`
 - `TournamentService` (class) — `atp/dashboard/tournament/service.py:190`
 - `is_tournament_visible_to` (function) — `atp/dashboard/tournament/visibility.py:27`
+- `ols_slope` (function) — `atp/dashboard/trend_stats.py:13`
+- `classify_trend` (function) — `atp/dashboard/trend_stats.py:22`
 - `logger` (const) — `atp/dashboard/v2/config.py:15`
 - `DashboardConfig` (class) — `atp/dashboard/v2/config.py:20`
 - `get_db_session` (function) — `atp/dashboard/v2/dependencies.py:26`
@@ -686,8 +697,8 @@ _None._
 - `TracesResponse` (class) — `atp/dashboard/v2/routes/traces.py:37`
 - `TelemetryStatusResponse` (class) — `atp/dashboard/v2/routes/traces.py:46`
 - `router` (const) — `atp/dashboard/v2/routes/trends.py:26`
-- `logger` (const) — `atp/dashboard/v2/routes/ui.py:31`
-- `router` (const) — `atp/dashboard/v2/routes/ui.py:33`
+- `logger` (const) — `atp/dashboard/v2/routes/ui.py:45`
+- `router` (const) — `atp/dashboard/v2/routes/ui.py:47`
 - `logger` (const) — `atp/dashboard/v2/routes/upload.py:36`
 - `router` (const) — `atp/dashboard/v2/routes/upload.py:38`
 - `ALLOWED_EXTENSIONS` (const) — `atp/dashboard/v2/routes/upload.py:40`
@@ -800,7 +811,7 @@ _None._
 
 ## Modules
 
-_140 files, 761 public symbols, 0 internal imports._
+_143 files, 772 public symbols, 0 internal imports._
 
 - `atp/analytics/__init__.py` (python)
 - `atp/analytics/ab_testing.py` (python)
@@ -830,6 +841,8 @@ _140 files, 761 public symbols, 0 internal imports._
 - `atp/dashboard/cli/__init__.py` (python)
 - `atp/dashboard/cli/admin.py` (python)
 - `atp/dashboard/database.py` (python)
+- `atp/dashboard/dimensions.py` (python)
+- `atp/dashboard/failure_analysis.py` (python)
 - `atp/dashboard/mcp/__init__.py` (python)
 - `atp/dashboard/mcp/auth.py` (python)
 - `atp/dashboard/mcp/notifications.py` (python)
@@ -867,6 +880,7 @@ _140 files, 761 public symbols, 0 internal imports._
 - `atp/dashboard/tournament/service.py` (python)
 - `atp/dashboard/tournament/state.py` (python)
 - `atp/dashboard/tournament/visibility.py` (python)
+- `atp/dashboard/trend_stats.py` (python)
 - `atp/dashboard/v2/__init__.py` (python)
 - `atp/dashboard/v2/config.py` (python)
 - `atp/dashboard/v2/dependencies.py` (python)
@@ -964,7 +978,7 @@ _None._
 
 ## Recent changes (last 5)
 
-- snapshot 43 (2026-05-27T10:51:48Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 

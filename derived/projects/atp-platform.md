@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: python
 name: atp-platform
 prograph: project
 root: ./atp-platform
-snapshot: 48
+snapshot: 1
 ---
 
 # atp-platform
@@ -50,7 +50,7 @@ _(README truncated — see the full file)_
 
 ## Manifest
 
-- declared package: `atp-platform` version `2.0.0`
+- declared package: `atp-platform` version `2.1.0`
 
 ## Public surface
 
@@ -69,6 +69,8 @@ _(README truncated — see the full file)_
 ### Contracts declared
 
 - [[hash-35f390d9dba9]] (json_schema) — `demo/fixtures/response_schema.json` — `hash-35f390d9dba9`
+- [[https---github-com-andrei-shtanakov-maestro-benchmark-contract-report_benchmark-v1-schema-json]] (json_schema) — `method/contract/report_benchmark-v1.schema.json` — `https://github.com/andrei-shtanakov/maestro/benchmark-contract/report_benchmark-v1.schema.json`
+- [[https---vkgeorgia-github-io-schemas-agent-eval-case-schema-json]] (json_schema) — `method/agent-eval-case.schema.json` — `https://vkgeorgia.github.io/schemas/agent-eval-case.schema.json`
 
 ### Public symbols
 
@@ -383,17 +385,26 @@ _(README truncated — see the full file)_
 - `LiveProgressDisplay` (class) — `atp/cli/live_display.py:360`
 - `SimpleFallbackDisplay` (class) — `atp/cli/live_display.py:432`
 - `create_live_progress_callback` (function) — `atp/cli/live_display.py:487`
-- `logger` (const) — `atp/cli/main.py:34`
-- `EXIT_SUCCESS` (const) — `atp/cli/main.py:37`
-- `EXIT_FAILURE` (const) — `atp/cli/main.py:38`
-- `EXIT_ERROR` (const) — `atp/cli/main.py:39`
-- `ConfigContext` (class) — `atp/cli/main.py:42`
-- `pass_config` (const) — `atp/cli/main.py:103`
-- `main` (function) — `atp/cli/main.py:1988`
+- `logger` (const) — `atp/cli/main.py:39`
+- `EXIT_SUCCESS` (const) — `atp/cli/main.py:42`
+- `EXIT_FAILURE` (const) — `atp/cli/main.py:43`
+- `EXIT_ERROR` (const) — `atp/cli/main.py:44`
+- `ConfigContext` (class) — `atp/cli/main.py:47`
+- `pass_config` (const) — `atp/cli/main.py:108`
+- `main` (function) — `atp/cli/main.py:2204`
 - `ArtifactEvaluator` (class) — `atp/evaluators/artifact.py:13`
 - `tracer` (const) — `atp/evaluators/base.py:19`
 - `Evaluator` (class) — `atp/evaluators/base.py:22`
-- `BehaviorEvaluator` (class) — `atp/evaluators/behavior.py:11`
+- `PayloadMatch` (class) — `atp/evaluators/behavior.py:14`
+- `ToolCallExpectation` (class) — `atp/evaluators/behavior.py:22`
+- `ToolCallMatchResult` (class) — `atp/evaluators/behavior.py:31`
+- `BehaviorEvaluator` (class) — `atp/evaluators/behavior.py:39`
+- `Checker` (const) — `atp/evaluators/checkers/registry.py:14`
+- `register_checker` (function) — `atp/evaluators/checkers/registry.py:19`
+- `get_checker` (function) — `atp/evaluators/checkers/registry.py:26`
+- `list_checkers` (function) — `atp/evaluators/checkers/registry.py:31`
+- `CITATION_GROUNDING_CHECKER_VERSION` (const) — `atp/evaluators/citation_grounding/checker.py:13`
+- `citation_grounding_check` (function) — `atp/evaluators/citation_grounding/checker.py:16`
 - `CodeExecEvaluator` (class) — `atp/evaluators/code_exec.py:85`
 - `CompositeEvaluator` (class) — `atp/evaluators/composite.py:11`
 - `logger` (const) — `atp/evaluators/container.py:19`
@@ -412,6 +423,15 @@ _(README truncated — see the full file)_
 - `LLMFactVerifier` (class) — `atp/evaluators/factuality.py:787`
 - `FactualityEvaluator` (class) — `atp/evaluators/factuality.py:1006`
 - `FilesystemEvaluator` (class) — `atp/evaluators/filesystem.py:14`
+- `FINDINGS_CHECKER_VERSION` (const) — `atp/evaluators/findings/checker.py:8`
+- `findings_check` (function) — `atp/evaluators/findings/checker.py:11`
+- `FindingsMatchEvaluator` (class) — `atp/evaluators/findings/evaluator.py:12`
+- `Finding` (class) — `atp/evaluators/findings/matcher.py:16`
+- `MatchResult` (class) — `atp/evaluators/findings/matcher.py:34`
+- `parse_findings` (function) — `atp/evaluators/findings/matcher.py:80`
+- `validate_findings` (function) — `atp/evaluators/findings/matcher.py:89`
+- `grade_findings` (function) — `atp/evaluators/findings/matcher.py:109`
+- `match_findings` (function) — `atp/evaluators/findings/matcher.py:164`
 - `logger` (const) — `atp/evaluators/git_commit.py:15`
 - `GitCommitEvaluator` (class) — `atp/evaluators/git_commit.py:77`
 - `logger` (const) — `atp/evaluators/guardrails.py:35`
@@ -420,12 +440,17 @@ _(README truncated — see the full file)_
 - `check_within_budget` (function) — `atp/evaluators/guardrails.py:89`
 - `run_guardrails` (function) — `atp/evaluators/guardrails.py:115`
 - `should_skip_evaluation` (function) — `atp/evaluators/guardrails.py:136`
+- `JSON_PATH_CHECKER_VERSION` (const) — `atp/evaluators/json_path/checker.py:16`
+- `json_path_check` (function) — `atp/evaluators/json_path/checker.py:42`
+- `InvalidPath` (class) — `atp/evaluators/json_path/resolver.py:16`
+- `resolve` (function) — `atp/evaluators/json_path/resolver.py:20`
 - `logger` (const) — `atp/evaluators/llm_judge.py:21`
 - `BUILTIN_CRITERIA` (const) — `atp/evaluators/llm_judge.py:25`
 - `LLMJudgeResponse` (class) — `atp/evaluators/llm_judge.py:65`
 - `LLMJudgeCost` (class) — `atp/evaluators/llm_judge.py:76`
-- `LLMJudgeConfig` (class) — `atp/evaluators/llm_judge.py:96`
-- `LLMJudgeEvaluator` (class) — `atp/evaluators/llm_judge.py:119`
+- `DEFAULT_BEDROCK_MODEL` (const) — `atp/evaluators/llm_judge.py:99`
+- `LLMJudgeConfig` (class) — `atp/evaluators/llm_judge.py:102`
+- `LLMJudgeEvaluator` (class) — `atp/evaluators/llm_judge.py:136`
 - `logger` (const) — `atp/evaluators/performance.py:28`
 - `PerformanceMetricType` (class) — `atp/evaluators/performance.py:31`
 - `RegressionStatus` (class) — `atp/evaluators/performance.py:44`
@@ -442,10 +467,10 @@ _(README truncated — see the full file)_
 - `detect_regression` (function) — `atp/evaluators/performance.py:521`
 - `check_regressions` (function) — `atp/evaluators/performance.py:605`
 - `PerformanceEvaluator` (class) — `atp/evaluators/performance.py:720`
-- `EvaluatorNotFoundError` (class) — `atp/evaluators/registry.py:18`
-- `EvaluatorRegistry` (class) — `atp/evaluators/registry.py:26`
-- `get_registry` (function) — `atp/evaluators/registry.py:255`
-- `create_evaluator` (function) — `atp/evaluators/registry.py:268`
+- `EvaluatorNotFoundError` (class) — `atp/evaluators/registry.py:19`
+- `EvaluatorRegistry` (class) — `atp/evaluators/registry.py:27`
+- `get_registry` (function) — `atp/evaluators/registry.py:271`
+- `create_evaluator` (function) — `atp/evaluators/registry.py:284`
 - `Severity` (class) — `atp/evaluators/security/base.py:10`
 - `SecurityFinding` (class) — `atp/evaluators/security/base.py:87`
 - `mask_sensitive_data` (function) — `atp/evaluators/security/base.py:109`
@@ -529,6 +554,7 @@ _(README truncated — see the full file)_
 - `get_template_variables` (function) — `atp/generator/templates.py:298`
 - `TraceImporter` (class) — `atp/generator/trace_import.py:42`
 - `YAMLWriter` (class) — `atp/generator/writer.py:371`
+- `DirectoryFileRead` (class) — `atp/mock_tools/file_tools.py:25`
 - `MockDefinitionLoader` (class) — `atp/mock_tools/loader.py:20`
 - `MatchType` (class) — `atp/mock_tools/models.py:11`
 - `PatternMatcher` (class) — `atp/mock_tools/models.py:20`
@@ -538,12 +564,13 @@ _(README truncated — see the full file)_
 - `ToolCallRecord` (class) — `atp/mock_tools/models.py:158`
 - `MockDefinition` (class) — `atp/mock_tools/models.py:174`
 - `CallRecorder` (class) — `atp/mock_tools/recorder.py:11`
-- `ToolCallRequest` (class) — `atp/mock_tools/server.py:18`
-- `ToolCallResponse` (class) — `atp/mock_tools/server.py:26`
-- `ToolListResponse` (class) — `atp/mock_tools/server.py:36`
-- `RecordsResponse` (class) — `atp/mock_tools/server.py:42`
-- `MockToolServer` (class) — `atp/mock_tools/server.py:49`
-- `create_mock_app` (function) — `atp/mock_tools/server.py:191`
+- `ToolHandler` (class) — `atp/mock_tools/server.py:18`
+- `ToolCallRequest` (class) — `atp/mock_tools/server.py:25`
+- `ToolCallResponse` (class) — `atp/mock_tools/server.py:33`
+- `ToolListResponse` (class) — `atp/mock_tools/server.py:43`
+- `RecordsResponse` (class) — `atp/mock_tools/server.py:49`
+- `MockToolServer` (class) — `atp/mock_tools/server.py:56`
+- `create_mock_app` (function) — `atp/mock_tools/server.py:208`
 - `logger` (const) — `atp/performance/async_utils.py:18`
 - `T` (const) — `atp/performance/async_utils.py:20`
 - `R` (const) — `atp/performance/async_utils.py:21`
@@ -611,6 +638,9 @@ _(README truncated — see the full file)_
 - `LazyPlugin` (class) — `atp/plugins/discovery.py:57`
 - `PluginManager` (class) — `atp/plugins/discovery.py:125`
 - `get_plugin_manager` (function) — `atp/plugins/discovery.py:606`
+- `logger` (const) — `atp/plugins/entrypoints.py:15`
+- `ATP_PLUGINS_GROUP` (const) — `atp/plugins/entrypoints.py:17`
+- `load_entrypoint_plugins` (function) — `atp/plugins/entrypoints.py:22`
 - `MIN_ATP_VERSION` (const) — `atp/plugins/interfaces.py:22`
 - `PluginValidationError` (class) — `atp/plugins/interfaces.py:25`
 - `PluginVersionError` (class) — `atp/plugins/interfaces.py:52`
@@ -625,6 +655,10 @@ _(README truncated — see the full file)_
 - `validate_plugin_config` (function) — `atp/plugins/interfaces.py:551`
 - `get_plugin_config_metadata` (function) — `atp/plugins/interfaces.py:579`
 - `Reporter` (class) — `atp/reporters/base.py:16`
+- `PAYLOAD_VERSION` (const) — `atp/reporters/benchmark_reporter.py:10`
+- `normalize_report_error_class` (function) — `atp/reporters/benchmark_reporter.py:53`
+- `build_report_benchmark_payload` (function) — `atp/reporters/benchmark_reporter.py:81`
+- `BenchmarkReporter` (class) — `atp/reporters/benchmark_reporter.py:184`
 - `ConsoleReporter` (class) — `atp/reporters/console.py:10`
 - `PlayerResult` (class) — `atp/reporters/game_reporter.py:22`
 - `EpisodeResult` (class) — `atp/reporters/game_reporter.py:33`
@@ -641,10 +675,20 @@ _(README truncated — see the full file)_
 - `HTMLReporter` (class) — `atp/reporters/html_reporter.py:815`
 - `JSONReporter` (class) — `atp/reporters/json_reporter.py:12`
 - `JUnitReporter` (class) — `atp/reporters/junit_reporter.py:16`
-- `ReporterNotFoundError` (class) — `atp/reporters/registry.py:13`
-- `ReporterRegistry` (class) — `atp/reporters/registry.py:21`
-- `get_registry` (function) — `atp/reporters/registry.py:156`
-- `create_reporter` (function) — `atp/reporters/registry.py:168`
+- `ReporterNotFoundError` (class) — `atp/reporters/registry.py:15`
+- `ReporterRegistry` (class) — `atp/reporters/registry.py:23`
+- `get_registry` (function) — `atp/reporters/registry.py:173`
+- `create_reporter` (function) — `atp/reporters/registry.py:185`
+- `MAX_MESSAGE_LENGTH` (const) — `atp/reporters/summary_extractor.py:10`
+- `MAX_STRING_VALUE_LENGTH` (const) — `atp/reporters/summary_extractor.py:11`
+- `CompactFailureExtractor` (class) — `atp/reporters/summary_extractor.py:14`
+- `CitationGroundingFailureExtractor` (class) — `atp/reporters/summary_extractor.py:59`
+- `FailureKind` (const) — `atp/reporters/summary_models.py:12`
+- `CompactFailure` (class) — `atp/reporters/summary_models.py:24`
+- `FailureReasonCount` (class) — `atp/reporters/summary_models.py:36`
+- `CompactTestSummary` (class) — `atp/reporters/summary_models.py:43`
+- `CompactSuiteSummary` (class) — `atp/reporters/summary_models.py:78`
+- `SummaryReporter` (class) — `atp/reporters/summary_reporter.py:16`
 - `RunnerError` (class) — `atp/runner/exceptions.py:6`
 - `TestExecutionError` (class) — `atp/runner/exceptions.py:20`
 - `RunnerTimeoutError` (class) — `atp/runner/exceptions.py:34`
@@ -677,8 +721,12 @@ _(README truncated — see the full file)_
 - `logger` (const) — `atp/runner/orchestrator.py:45`
 - `tracer` (const) — `atp/runner/orchestrator.py:46`
 - `TestOrchestrator` (class) — `atp/runner/orchestrator.py:49`
-- `run_test` (function) — `atp/runner/orchestrator.py:889`
-- `run_suite` (function) — `atp/runner/orchestrator.py:915`
+- `run_test` (function) — `atp/runner/orchestrator.py:919`
+- `run_suite` (function) — `atp/runner/orchestrator.py:945`
+- `RequestPreparer` (class) — `atp/runner/preparation.py:21`
+- `register_request_preparer` (function) — `atp/runner/preparation.py:33`
+- `unregister_request_preparer` (function) — `atp/runner/preparation.py:38`
+- `get_request_preparer` (function) — `atp/runner/preparation.py:43`
 - `ProgressStatus` (class) — `atp/runner/progress.py:16`
 - `create_progress_callback` (function) — `atp/runner/progress.py:312`
 - `logger` (const) — `atp/runner/sandbox.py:24`
@@ -728,20 +776,19 @@ _(README truncated — see the full file)_
 - `TestTreeWidget` (class) — `atp/tui/widgets/test_tree.py:19`
 - `YAMLPreviewWidget` (class) — `atp/tui/widgets/yaml_preview.py:18`
 - `app` (const) — `demo-game/agents/el_farol_agent.py:26`
-- `client` (const) — `demo-game/agents/el_farol_agent.py:28`
-- `MODEL` (const) — `demo-game/agents/el_farol_agent.py:30`
-- `INPUT_PRICE_PER_M` (const) — `demo-game/agents/el_farol_agent.py:33`
-- `OUTPUT_PRICE_PER_M` (const) — `demo-game/agents/el_farol_agent.py:34`
-- `SYSTEM_PROMPT` (const) — `demo-game/agents/el_farol_agent.py:36`
-- `Task` (class) — `demo-game/agents/el_farol_agent.py:76`
-- `Constraints` (class) — `demo-game/agents/el_farol_agent.py:82`
-- `ATPRequest` (class) — `demo-game/agents/el_farol_agent.py:90`
-- `StructuredArtifact` (class) — `demo-game/agents/el_farol_agent.py:99`
-- `Metrics` (class) — `demo-game/agents/el_farol_agent.py:105`
-- `ATPResponse` (class) — `demo-game/agents/el_farol_agent.py:116`
-- `extract_json` (function) — `demo-game/agents/el_farol_agent.py:128`
-- `parse_action` (function) — `demo-game/agents/el_farol_agent.py:156`
-- `calculate_cost` (function) — `demo-game/agents/el_farol_agent.py:187`
+- `MODEL` (const) — `demo-game/agents/el_farol_agent.py:45`
+- `INPUT_PRICE_PER_M` (const) — `demo-game/agents/el_farol_agent.py:48`
+- `OUTPUT_PRICE_PER_M` (const) — `demo-game/agents/el_farol_agent.py:49`
+- `SYSTEM_PROMPT` (const) — `demo-game/agents/el_farol_agent.py:51`
+- `Task` (class) — `demo-game/agents/el_farol_agent.py:91`
+- `Constraints` (class) — `demo-game/agents/el_farol_agent.py:97`
+- `ATPRequest` (class) — `demo-game/agents/el_farol_agent.py:105`
+- `StructuredArtifact` (class) — `demo-game/agents/el_farol_agent.py:114`
+- `Metrics` (class) — `demo-game/agents/el_farol_agent.py:120`
+- `ATPResponse` (class) — `demo-game/agents/el_farol_agent.py:131`
+- `extract_json` (function) — `demo-game/agents/el_farol_agent.py:143`
+- `parse_action` (function) — `demo-game/agents/el_farol_agent.py:171`
+- `calculate_cost` (function) — `demo-game/agents/el_farol_agent.py:202`
 - `app` (const) — `demo-game/agents/openai_game_agent.py:25`
 - `client` (const) — `demo-game/agents/openai_game_agent.py:27`
 - `MODEL` (const) — `demo-game/agents/openai_game_agent.py:29`
@@ -818,6 +865,11 @@ _(README truncated — see the full file)_
 - `TestFibonacciBasic` (class) — `demo/fixtures/tests/test_fibonacci.py:9`
 - `TestFibonacciEdgeCases` (class) — `demo/fixtures/tests/test_fibonacci.py:28`
 - `TestFibonacciSequence` (class) — `demo/fixtures/tests/test_fibonacci.py:48`
+- `app` (const) — `examples/compose-demo/agent-llm/agent.py:24`
+- `LLM_BASE_URL` (const) — `examples/compose-demo/agent-llm/agent.py:26`
+- `LLM_MODEL` (const) — `examples/compose-demo/agent-llm/agent.py:27`
+- `LLM_API_KEY` (const) — `examples/compose-demo/agent-llm/agent.py:28`
+- `app` (const) — `examples/compose-demo/agent/agent.py:18`
 - `emit_event` (function) — `examples/demo_agent.py:22`
 - `create_file` (function) — `examples/demo_agent.py:40`
 - `read_file` (function) — `examples/demo_agent.py:53`
@@ -873,6 +925,8 @@ _(README truncated — see the full file)_
 - `OpenAIAgent` (class) — `examples/openai_agent.py:253`
 - `build_response` (function) — `examples/openai_agent.py:415`
 - `main` (function) — `examples/openai_agent.py:442`
+- `main` (function) — `examples/req-extraction-json/check_deadline_trap.py:94`
+- `main` (function) — `examples/req-extraction-json/score_extraction.py:87`
 - `get_timestamp` (function) — `examples/search_agent/agent.py:26`
 - `emit_event` (function) — `examples/search_agent/agent.py:31`
 - `extract_price` (function) — `examples/search_agent/agent.py:49`
@@ -1223,6 +1277,63 @@ _(README truncated — see the full file)_
 - `ALL_STRATEGIES` (const) — `game-environments/tests/test_strategy.py:70`
 - `TestAllStrategiesABC` (class) — `game-environments/tests/test_strategy.py:93`
 - `TestResetClearsState` (class) — `game-environments/tests/test_strategy.py:122`
+- `REPO_ROOT` (const) — `method/import_pipecheck_to_dashboard.py:37`
+- `DEFAULT_RESULTS_DIR` (const) — `method/import_pipecheck_to_dashboard.py:38`
+- `parse_report` (function) — `method/import_pipecheck_to_dashboard.py:74`
+- `discover_reports` (function) — `method/import_pipecheck_to_dashboard.py:105`
+- `case_details_path_for` (function) — `method/import_pipecheck_to_dashboard.py:115`
+- `parse_case_details` (function) — `method/import_pipecheck_to_dashboard.py:130`
+- `import_reports` (function) — `method/import_pipecheck_to_dashboard.py:154`
+- `main` (function) — `method/import_pipecheck_to_dashboard.py:272`
+- `resolve_model` (function) — `method/price_reports.py:29`
+- `derive_cost_view` (function) — `method/price_reports.py:136`
+- `main` (function) — `method/price_reports.py:168`
+- `REPO_ROOT` (const) — `method/run_pipe_check.py:62`
+- `CATALOG_PATH` (const) — `method/run_pipe_check.py:75`
+- `AGENTS` (const) — `method/run_pipe_check.py:118`
+- `safe_agent_id` (function) — `method/run_pipe_check.py:129`
+- `ALLOWED_ENV` (const) — `method/run_pipe_check.py:157`
+- `SUITE_LOCK_NAME` (const) — `method/run_pipe_check.py:205`
+- `SuiteLockError` (class) — `method/run_pipe_check.py:208`
+- `CORPUS_RUN_MODE` (const) — `method/run_pipe_check.py:365`
+- `CORPUS_CAPABLE_HARNESSES` (const) — `method/run_pipe_check.py:366`
+- `main` (function) — `method/run_pipe_check.py:1040`
+- `REQUEST_TIMEOUT_S` (const) — `method/spawners/_cli_common.py:22`
+- `fail` (function) — `method/spawners/_cli_common.py:47`
+- `build_response` (function) — `method/spawners/_cli_common.py:64`
+- `corpus_workspace` (function) — `method/spawners/_cli_common.py:90`
+- `normalize_citation_paths` (function) — `method/spawners/_cli_common.py:108`
+- `model_arg` (function) — `method/spawners/_cli_common.py:120`
+- `run` (function) — `method/spawners/_cli_common.py:126`
+- `REQUEST_TIMEOUT_S` (const) — `method/spawners/_openai_compat.py:21`
+- `build_response` (function) — `method/spawners/_openai_compat.py:64`
+- `run` (function) — `method/spawners/_openai_compat.py:97`
+- `call_tool` (function) — `method/spawners/_tool_client.py:10`
+- `MODEL` (const) — `method/spawners/anthropic_api_shim.py:38`
+- `MAX_TOKENS` (const) — `method/spawners/anthropic_api_shim.py:39`
+- `MAX_TOOL_ITERATIONS` (const) — `method/spawners/anthropic_api_shim.py:40`
+- `DEBUG_IO_DIR` (const) — `method/spawners/anthropic_api_shim.py:41`
+- `DEBUG_IO_TIMESTAMP` (const) — `method/spawners/anthropic_api_shim.py:42`
+- `main` (function) — `method/spawners/anthropic_api_shim.py:201`
+- `MODEL` (const) — `method/spawners/claude_code_shim.py:28`
+- `CLAUDE_BIN` (const) — `method/spawners/claude_code_shim.py:29`
+- `main` (function) — `method/spawners/claude_code_shim.py:32`
+- `CODEX_BIN` (const) — `method/spawners/codex_cli_shim.py:49`
+- `CODEX_MODEL` (const) — `method/spawners/codex_cli_shim.py:50`
+- `REQUEST_TIMEOUT_S` (const) — `method/spawners/codex_cli_shim.py:51`
+- `normalize_usage` (function) — `method/spawners/codex_cli_shim.py:54`
+- `main` (function) — `method/spawners/codex_cli_shim.py:129`
+- `DEFAULT_HOST` (const) — `method/spawners/deepseek_shim.py:35`
+- `DEFAULT_MODEL` (const) — `method/spawners/deepseek_shim.py:36`
+- `REQUEST_TIMEOUT_S` (const) — `method/spawners/deepseek_shim.py:37`
+- `build_response` (function) — `method/spawners/deepseek_shim.py:84`
+- `main` (function) — `method/spawners/deepseek_shim.py:121`
+- `DEFAULT_HOST` (const) — `method/spawners/ollama_shim.py:37`
+- `REQUEST_TIMEOUT_S` (const) — `method/spawners/ollama_shim.py:39`
+- `build_response` (function) — `method/spawners/ollama_shim.py:80`
+- `main` (function) — `method/spawners/ollama_shim.py:118`
+- `main` (function) — `method/spawners/opencode_shim.py:118`
+- `CORPUS_ARGS` (const) — `method/spawners/pi_shim.py:19`
 - `config` (const) — `migrations/analytics/env.py:12`
 - `target_metadata` (const) — `migrations/analytics/env.py:17`
 - `db_url` (const) — `migrations/analytics/env.py:20`
@@ -1299,6 +1410,12 @@ _(README truncated — see the full file)_
 - `depends_on` (const) — `migrations/dashboard/versions/a9c4e81f3d2a_tournament_participant_agent_xor_builtin_check.py:25`
 - `upgrade` (function) — `migrations/dashboard/versions/a9c4e81f3d2a_tournament_participant_agent_xor_builtin_check.py:28`
 - `downgrade` (function) — `migrations/dashboard/versions/a9c4e81f3d2a_tournament_participant_agent_xor_builtin_check.py:40`
+- `revision` (const) — `migrations/dashboard/versions/b2c3d4e5f6a7_suite_execution_adapter_model.py:24`
+- `down_revision` (const) — `migrations/dashboard/versions/b2c3d4e5f6a7_suite_execution_adapter_model.py:25`
+- `branch_labels` (const) — `migrations/dashboard/versions/b2c3d4e5f6a7_suite_execution_adapter_model.py:26`
+- `depends_on` (const) — `migrations/dashboard/versions/b2c3d4e5f6a7_suite_execution_adapter_model.py:27`
+- `upgrade` (function) — `migrations/dashboard/versions/b2c3d4e5f6a7_suite_execution_adapter_model.py:30`
+- `downgrade` (function) — `migrations/dashboard/versions/b2c3d4e5f6a7_suite_execution_adapter_model.py:36`
 - `revision` (const) — `migrations/dashboard/versions/b3a1f7c2d4e5_add_webhook_url_and_run_events.py:15`
 - `down_revision` (const) — `migrations/dashboard/versions/b3a1f7c2d4e5_add_webhook_url_and_run_events.py:16`
 - `branch_labels` (const) — `migrations/dashboard/versions/b3a1f7c2d4e5_add_webhook_url_and_run_events.py:17`
@@ -1311,6 +1428,12 @@ _(README truncated — see the full file)_
 - `depends_on` (const) — `migrations/dashboard/versions/b8c9d0e1f2a3_agent_owner_not_null.py:22`
 - `upgrade` (function) — `migrations/dashboard/versions/b8c9d0e1f2a3_agent_owner_not_null.py:25`
 - `downgrade` (function) — `migrations/dashboard/versions/b8c9d0e1f2a3_agent_owner_not_null.py:57`
+- `revision` (const) — `migrations/dashboard/versions/c3d4e5f6a7b8_eval_dimensions.py:13`
+- `down_revision` (const) — `migrations/dashboard/versions/c3d4e5f6a7b8_eval_dimensions.py:14`
+- `branch_labels` (const) — `migrations/dashboard/versions/c3d4e5f6a7b8_eval_dimensions.py:15`
+- `depends_on` (const) — `migrations/dashboard/versions/c3d4e5f6a7b8_eval_dimensions.py:16`
+- `upgrade` (function) — `migrations/dashboard/versions/c3d4e5f6a7b8_eval_dimensions.py:49`
+- `downgrade` (function) — `migrations/dashboard/versions/c3d4e5f6a7b8_eval_dimensions.py:73`
 - `revision` (const) — `migrations/dashboard/versions/c60b45e516be_tournament_plan_2a_constraints.py:39`
 - `down_revision` (const) — `migrations/dashboard/versions/c60b45e516be_tournament_plan_2a_constraints.py:40`
 - `branch_labels` (const) — `migrations/dashboard/versions/c60b45e516be_tournament_plan_2a_constraints.py:41`
@@ -1329,6 +1452,12 @@ _(README truncated — see the full file)_
 - `depends_on` (const) — `migrations/dashboard/versions/d2e5a1c7f3b8_agent_level_participant_uniqueness.py:33`
 - `upgrade` (function) — `migrations/dashboard/versions/d2e5a1c7f3b8_agent_level_participant_uniqueness.py:36`
 - `downgrade` (function) — `migrations/dashboard/versions/d2e5a1c7f3b8_agent_level_participant_uniqueness.py:71`
+- `revision` (const) — `migrations/dashboard/versions/d4e5f6a7b8c9_task_type_language.py:13`
+- `down_revision` (const) — `migrations/dashboard/versions/d4e5f6a7b8c9_task_type_language.py:14`
+- `branch_labels` (const) — `migrations/dashboard/versions/d4e5f6a7b8c9_task_type_language.py:15`
+- `depends_on` (const) — `migrations/dashboard/versions/d4e5f6a7b8c9_task_type_language.py:16`
+- `upgrade` (function) — `migrations/dashboard/versions/d4e5f6a7b8c9_task_type_language.py:31`
+- `downgrade` (function) — `migrations/dashboard/versions/d4e5f6a7b8c9_task_type_language.py:46`
 - `revision` (const) — `migrations/dashboard/versions/d7f3a2b1c4e5_agent_ownership_tokens_invites.py:14`
 - `down_revision` (const) — `migrations/dashboard/versions/d7f3a2b1c4e5_agent_ownership_tokens_invites.py:15`
 - `branch_labels` (const) — `migrations/dashboard/versions/d7f3a2b1c4e5_agent_ownership_tokens_invites.py:16`
@@ -1482,13 +1611,14 @@ _(README truncated — see the full file)_
 - `get_observer` (function) — `packages/atp-core/atp/core/observer.py:123`
 - `set_observer` (function) — `packages/atp-core/atp/core/observer.py:128`
 - `EvalCheck` (class) — `packages/atp-core/atp/core/results.py:33`
-- `EvalResult` (class) — `packages/atp-core/atp/core/results.py:43`
-- `ProgressEventType` (class) — `packages/atp-core/atp/core/results.py:105`
-- `ProgressEvent` (class) — `packages/atp-core/atp/core/results.py:119`
-- `ProgressCallback` (const) — `packages/atp-core/atp/core/results.py:145`
-- `TestReport` (class) — `packages/atp-core/atp/core/results.py:305`
-- `SuiteReport` (class) — `packages/atp-core/atp/core/results.py:327`
-- `rebuild_report_models` (function) — `packages/atp-core/atp/core/results.py:393`
+- `CaseVerdict` (class) — `packages/atp-core/atp/core/results.py:43`
+- `EvalResult` (class) — `packages/atp-core/atp/core/results.py:66`
+- `ProgressEventType` (class) — `packages/atp-core/atp/core/results.py:133`
+- `ProgressEvent` (class) — `packages/atp-core/atp/core/results.py:147`
+- `ProgressCallback` (const) — `packages/atp-core/atp/core/results.py:173`
+- `TestReport` (class) — `packages/atp-core/atp/core/results.py:333`
+- `SuiteReport` (class) — `packages/atp-core/atp/core/results.py:355`
+- `rebuild_report_models` (function) — `packages/atp-core/atp/core/results.py:429`
 - `logger` (const) — `packages/atp-core/atp/core/security.py:24`
 - `audit_logger` (const) — `packages/atp-core/atp/core/security.py:25`
 - `SECRET_PATTERNS` (const) — `packages/atp-core/atp/core/security.py:34`
@@ -1578,6 +1708,10 @@ _(README truncated — see the full file)_
 - `set_test_result_attributes` (function) — `packages/atp-core/atp/core/telemetry.py:864`
 - `set_adapter_response_attributes` (function) — `packages/atp-core/atp/core/telemetry.py:891`
 - `set_evaluator_result_attributes` (function) — `packages/atp-core/atp/core/telemetry.py:916`
+- `USAGE_CONTRACT` (const) — `packages/atp-core/atp/cost/cloud_pricer.py:22`
+- `PRICING_INSTALL_HINT` (const) — `packages/atp-core/atp/cost/cloud_pricer.py:23`
+- `PricingDependencyError` (class) — `packages/atp-core/atp/cost/cloud_pricer.py:29`
+- `CloudPricer` (class) — `packages/atp-core/atp/cost/cloud_pricer.py:157`
 - `logger` (const) — `packages/atp-core/atp/cost/models.py:14`
 - `logger` (const) — `packages/atp-core/atp/cost/tracker.py:13`
 - `CostPersistenceBackend` (class) — `packages/atp-core/atp/cost/tracker.py:16`
@@ -1586,6 +1720,11 @@ _(README truncated — see the full file)_
 - `set_cost_tracker` (function) — `packages/atp-core/atp/cost/tracker.py:306`
 - `shutdown_cost_tracker` (function) — `packages/atp-core/atp/cost/tracker.py:312`
 - `TagFilter` (class) — `packages/atp-core/atp/loader/filters.py:6`
+- `logger` (const) — `packages/atp-core/atp/loader/format_dispatch.py:20`
+- `SuiteFormatDetector` (const) — `packages/atp-core/atp/loader/format_dispatch.py:23`
+- `SuiteFormatHandler` (const) — `packages/atp-core/atp/loader/format_dispatch.py:27`
+- `SuiteFormatRegistry` (class) — `packages/atp-core/atp/loader/format_dispatch.py:30`
+- `get_suite_format_registry` (function) — `packages/atp-core/atp/loader/format_dispatch.py:90`
 - `TestLoader` (class) — `packages/atp-core/atp/loader/loader.py:14`
 - `MultiAgentMode` (class) — `packages/atp-core/atp/loader/models.py:11`
 - `CollaborationConfig` (class) — `packages/atp-core/atp/loader/models.py:19`
@@ -1596,19 +1735,35 @@ _(README truncated — see the full file)_
 - `TaskDefinition` (class) — `packages/atp-core/atp/loader/models.py:106`
 - `Constraints` (class) — `packages/atp-core/atp/loader/models.py:122`
 - `Assertion` (class) — `packages/atp-core/atp/loader/models.py:139`
-- `ScoringWeights` (class) — `packages/atp-core/atp/loader/models.py:148`
-- `TestDefinition` (class) — `packages/atp-core/atp/loader/models.py:157`
-- `AgentConfig` (class) — `packages/atp-core/atp/loader/models.py:264`
-- `ChaosSettings` (class) — `packages/atp-core/atp/loader/models.py:274`
-- `TestDefaults` (class) — `packages/atp-core/atp/loader/models.py:299`
-- `TestSuite` (class) — `packages/atp-core/atp/loader/models.py:315`
+- `ScoringWeights` (class) — `packages/atp-core/atp/loader/models.py:153`
+- `TestDefinition` (class) — `packages/atp-core/atp/loader/models.py:162`
+- `AgentConfig` (class) — `packages/atp-core/atp/loader/models.py:269`
+- `ChaosSettings` (class) — `packages/atp-core/atp/loader/models.py:279`
+- `TestDefaults` (class) — `packages/atp-core/atp/loader/models.py:304`
+- `TestSuite` (class) — `packages/atp-core/atp/loader/models.py:320`
 - `YAMLParser` (class) — `packages/atp-core/atp/loader/parser.py:14`
 - `VariableSubstitution` (class) — `packages/atp-core/atp/loader/parser.py:90`
 - `COLLABORATION_CONFIG_SCHEMA` (const) — `packages/atp-core/atp/loader/schema.py:6`
 - `HANDOFF_CONFIG_SCHEMA` (const) — `packages/atp-core/atp/loader/schema.py:27`
 - `COMPARISON_CONFIG_SCHEMA` (const) — `packages/atp-core/atp/loader/schema.py:53`
 - `TEST_SUITE_SCHEMA` (const) — `packages/atp-core/atp/loader/schema.py:67`
-- `validate_schema` (function) — `packages/atp-core/atp/loader/schema.py:249`
+- `validate_schema` (function) — `packages/atp-core/atp/loader/schema.py:254`
+- `logger` (const) — `packages/atp-core/atp/loader/suite_source.py:20`
+- `SuiteSourceDetector` (const) — `packages/atp-core/atp/loader/suite_source.py:23`
+- `SuiteSourceLoader` (const) — `packages/atp-core/atp/loader/suite_source.py:25`
+- `SuiteSourceRegistry` (class) — `packages/atp-core/atp/loader/suite_source.py:28`
+- `get_suite_source_registry` (function) — `packages/atp-core/atp/loader/suite_source.py:68`
+- `CatalogError` (class) — `packages/atp-core/atp/model_catalog/errors.py:10`
+- `CatalogNotConfiguredError` (class) — `packages/atp-core/atp/model_catalog/errors.py:14`
+- `CatalogTOMLError` (class) — `packages/atp-core/atp/model_catalog/errors.py:22`
+- `CatalogSchemaError` (class) — `packages/atp-core/atp/model_catalog/errors.py:26`
+- `resolve_catalog_path` (function) — `packages/atp-core/atp/model_catalog/loader.py:46`
+- `load_catalog` (function) — `packages/atp-core/atp/model_catalog/loader.py:75`
+- `read_template` (function) — `packages/atp-core/atp/model_catalog/loader.py:90`
+- `ModelEntry` (class) — `packages/atp-core/atp/model_catalog/schema.py:16`
+- `HarnessEntry` (class) — `packages/atp-core/atp/model_catalog/schema.py:26`
+- `AgentEntry` (class) — `packages/atp-core/atp/model_catalog/schema.py:38`
+- `ModelCatalog` (class) — `packages/atp-core/atp/model_catalog/schema.py:49`
 - `PROTOCOL_VERSION` (const) — `packages/atp-core/atp/protocol/_version.py:3`
 - `SUPPORTED_VERSIONS` (const) — `packages/atp-core/atp/protocol/_version.py:5`
 - `MAX_TASK_ID_LENGTH` (const) — `packages/atp-core/atp/protocol/models.py:14`
@@ -1626,18 +1781,18 @@ _(README truncated — see the full file)_
 - `Context` (class) — `packages/atp-core/atp/protocol/models.py:94`
 - `ATPRequest` (class) — `packages/atp-core/atp/protocol/models.py:162`
 - `Metrics` (class) — `packages/atp-core/atp/protocol/models.py:216`
-- `ArtifactFile` (class) — `packages/atp-core/atp/protocol/models.py:231`
-- `ArtifactStructured` (class) — `packages/atp-core/atp/protocol/models.py:279`
-- `ArtifactReference` (class) — `packages/atp-core/atp/protocol/models.py:304`
-- `Artifact` (const) — `packages/atp-core/atp/protocol/models.py:326`
-- `ATPResponse` (class) — `packages/atp-core/atp/protocol/models.py:329`
-- `ToolCallPayload` (class) — `packages/atp-core/atp/protocol/models.py:383`
-- `LLMRequestPayload` (class) — `packages/atp-core/atp/protocol/models.py:395`
-- `ReasoningPayload` (class) — `packages/atp-core/atp/protocol/models.py:406`
-- `ErrorPayload` (class) — `packages/atp-core/atp/protocol/models.py:414`
-- `ProgressPayload` (class) — `packages/atp-core/atp/protocol/models.py:422`
-- `EventPayload` (const) — `packages/atp-core/atp/protocol/models.py:432`
-- `ATPEvent` (class) — `packages/atp-core/atp/protocol/models.py:442`
+- `ArtifactFile` (class) — `packages/atp-core/atp/protocol/models.py:237`
+- `ArtifactStructured` (class) — `packages/atp-core/atp/protocol/models.py:285`
+- `ArtifactReference` (class) — `packages/atp-core/atp/protocol/models.py:310`
+- `Artifact` (const) — `packages/atp-core/atp/protocol/models.py:332`
+- `ATPResponse` (class) — `packages/atp-core/atp/protocol/models.py:335`
+- `ToolCallPayload` (class) — `packages/atp-core/atp/protocol/models.py:389`
+- `LLMRequestPayload` (class) — `packages/atp-core/atp/protocol/models.py:401`
+- `ReasoningPayload` (class) — `packages/atp-core/atp/protocol/models.py:412`
+- `ErrorPayload` (class) — `packages/atp-core/atp/protocol/models.py:420`
+- `ProgressPayload` (class) — `packages/atp-core/atp/protocol/models.py:428`
+- `EventPayload` (const) — `packages/atp-core/atp/protocol/models.py:438`
+- `ATPEvent` (class) — `packages/atp-core/atp/protocol/models.py:448`
 - `generate_request_schema` (function) — `packages/atp-core/atp/protocol/schema.py:8`
 - `generate_response_schema` (function) — `packages/atp-core/atp/protocol/schema.py:13`
 - `generate_event_schema` (function) — `packages/atp-core/atp/protocol/schema.py:18`
@@ -1814,20 +1969,20 @@ _(README truncated — see the full file)_
 - `TokenValidationError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:356`
 - `UserProvisioningError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:362`
 - `SSOManager` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/oidc.py:368`
-- `SAMLProvider` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:25`
-- `SAMLGroupRoleMapping` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:37`
-- `SAMLAttributeMapping` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:51`
-- `SAMLNameIDFormat` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:86`
-- `SAMLConfig` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:95`
-- `SAMLUserInfo` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:200`
-- `SAMLProviderPresets` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:230`
-- `SAMLError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:325`
-- `SAMLConfigurationError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:331`
-- `SAMLValidationError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:337`
-- `SAMLUserProvisioningError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:343`
-- `SAMLManager` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:382`
-- `parse_idp_metadata` (function) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:799`
-- `parse_idp_metadata_url` (function) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:818`
+- `SAMLProvider` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:46`
+- `SAMLGroupRoleMapping` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:58`
+- `SAMLAttributeMapping` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:72`
+- `SAMLNameIDFormat` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:107`
+- `SAMLConfig` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:116`
+- `SAMLUserInfo` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:221`
+- `SAMLProviderPresets` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:251`
+- `SAMLError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:346`
+- `SAMLConfigurationError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:352`
+- `SAMLValidationError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:358`
+- `SAMLUserProvisioningError` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:364`
+- `SAMLManager` (class) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:420`
+- `parse_idp_metadata` (function) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:841`
+- `parse_idp_metadata_url` (function) — `packages/atp-dashboard/atp/dashboard/auth/sso/saml.py:862`
 - `AuthStateStore` (class) — `packages/atp-dashboard/atp/dashboard/auth/state_store.py:17`
 - `InMemoryAuthStateStore` (class) — `packages/atp-dashboard/atp/dashboard/auth/state_store.py:37`
 - `get_auth_state_store` (function) — `packages/atp-dashboard/atp/dashboard/auth/state_store.py:78`
@@ -1845,11 +2000,19 @@ _(README truncated — see the full file)_
 - `RunStatusResponse` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/schemas.py:76`
 - `BenchmarkService` (class) — `packages/atp-dashboard/atp/dashboard/benchmark/service.py:21`
 - `main` (function) — `packages/atp-dashboard/atp/dashboard/cli/admin.py:207`
-- `logger` (const) — `packages/atp-dashboard/atp/dashboard/database.py:20`
-- `Database` (class) — `packages/atp-dashboard/atp/dashboard/database.py:23`
-- `get_database` (function) — `packages/atp-dashboard/atp/dashboard/database.py:143`
-- `set_database` (function) — `packages/atp-dashboard/atp/dashboard/database.py:151`
-- `init_database` (function) — `packages/atp-dashboard/atp/dashboard/database.py:157`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/database.py:21`
+- `Database` (class) — `packages/atp-dashboard/atp/dashboard/database.py:24`
+- `get_database` (function) — `packages/atp-dashboard/atp/dashboard/database.py:147`
+- `set_database` (function) — `packages/atp-dashboard/atp/dashboard/database.py:155`
+- `init_database` (function) — `packages/atp-dashboard/atp/dashboard/database.py:161`
+- `case_dimensions` (function) — `packages/atp-dashboard/atp/dashboard/dimensions.py:44`
+- `aggregate_run` (function) — `packages/atp-dashboard/atp/dashboard/dimensions.py:71`
+- `COMPLETED_STATUS` (const) — `packages/atp-dashboard/atp/dashboard/failure_analysis.py:17`
+- `MAX_SAMPLE_ERRORS` (const) — `packages/atp-dashboard/atp/dashboard/failure_analysis.py:18`
+- `RunResultLike` (class) — `packages/atp-dashboard/atp/dashboard/failure_analysis.py:24`
+- `FailureCause` (class) — `packages/atp-dashboard/atp/dashboard/failure_analysis.py:31`
+- `FailureBreakdown` (class) — `packages/atp-dashboard/atp/dashboard/failure_analysis.py:46`
+- `compute_failure_breakdown` (function) — `packages/atp-dashboard/atp/dashboard/failure_analysis.py:73`
 - `mcp_server` (const) — `packages/atp-dashboard/atp/dashboard/mcp/__init__.py:12`
 - `tournament_event_bus` (const) — `packages/atp-dashboard/atp/dashboard/mcp/__init__.py:13`
 - `MCPAuthMiddleware` (class) — `packages/atp-dashboard/atp/dashboard/mcp/auth.py:34`
@@ -1882,21 +2045,21 @@ _(README truncated — see the full file)_
 - `User` (class) — `packages/atp-dashboard/atp/dashboard/models.py:37`
 - `Agent` (class) — `packages/atp-dashboard/atp/dashboard/models.py:67`
 - `SuiteExecution` (class) — `packages/atp-dashboard/atp/dashboard/models.py:139`
-- `TestExecution` (class) — `packages/atp-dashboard/atp/dashboard/models.py:204`
-- `RunResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:264`
-- `Artifact` (class) — `packages/atp-dashboard/atp/dashboard/models.py:325`
-- `EvaluationResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:358`
-- `ScoreComponent` (class) — `packages/atp-dashboard/atp/dashboard/models.py:393`
-- `PublishedResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:436`
-- `AgentProfile` (class) — `packages/atp-dashboard/atp/dashboard/models.py:510`
-- `BenchmarkCategory` (class) — `packages/atp-dashboard/atp/dashboard/models.py:583`
-- `SuiteDefinition` (class) — `packages/atp-dashboard/atp/dashboard/models.py:633`
-- `MarketplaceSuite` (class) — `packages/atp-dashboard/atp/dashboard/models.py:691`
-- `MarketplaceSuiteVersion` (class) — `packages/atp-dashboard/atp/dashboard/models.py:790`
-- `MarketplaceSuiteReview` (class) — `packages/atp-dashboard/atp/dashboard/models.py:858`
-- `MarketplaceSuiteInstall` (class) — `packages/atp-dashboard/atp/dashboard/models.py:919`
-- `GameResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:969`
-- `TournamentResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:1088`
+- `TestExecution` (class) — `packages/atp-dashboard/atp/dashboard/models.py:218`
+- `RunResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:295`
+- `Artifact` (class) — `packages/atp-dashboard/atp/dashboard/models.py:356`
+- `EvaluationResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:389`
+- `ScoreComponent` (class) — `packages/atp-dashboard/atp/dashboard/models.py:424`
+- `PublishedResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:467`
+- `AgentProfile` (class) — `packages/atp-dashboard/atp/dashboard/models.py:541`
+- `BenchmarkCategory` (class) — `packages/atp-dashboard/atp/dashboard/models.py:614`
+- `SuiteDefinition` (class) — `packages/atp-dashboard/atp/dashboard/models.py:664`
+- `MarketplaceSuite` (class) — `packages/atp-dashboard/atp/dashboard/models.py:722`
+- `MarketplaceSuiteVersion` (class) — `packages/atp-dashboard/atp/dashboard/models.py:821`
+- `MarketplaceSuiteReview` (class) — `packages/atp-dashboard/atp/dashboard/models.py:889`
+- `MarketplaceSuiteInstall` (class) — `packages/atp-dashboard/atp/dashboard/models.py:950`
+- `GameResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:1000`
+- `TournamentResult` (class) — `packages/atp-dashboard/atp/dashboard/models.py:1119`
 - `get_agents_by_names` (function) — `packages/atp-dashboard/atp/dashboard/optimized_queries.py:21`
 - `get_suite_executions_for_agents` (function) — `packages/atp-dashboard/atp/dashboard/optimized_queries.py:42`
 - `get_run_results_for_test_executions` (function) — `packages/atp-dashboard/atp/dashboard/optimized_queries.py:91`
@@ -2076,7 +2239,8 @@ _(README truncated — see the full file)_
 - `AgentOwnerCreate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1871`
 - `AgentOwnerUpdate` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1888`
 - `AgentOwnerResponse` (class) — `packages/atp-dashboard/atp/dashboard/schemas.py:1896`
-- `ResultStorage` (class) — `packages/atp-dashboard/atp/dashboard/storage.py:34`
+- `AXIS_ORDER` (const) — `packages/atp-dashboard/atp/dashboard/storage.py:35`
+- `ResultStorage` (class) — `packages/atp-dashboard/atp/dashboard/storage.py:63`
 - `logger` (const) — `packages/atp-dashboard/atp/dashboard/tenancy/manager.py:24`
 - `TenantError` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/manager.py:27`
 - `TenantExistsError` (class) — `packages/atp-dashboard/atp/dashboard/tenancy/manager.py:33`
@@ -2181,6 +2345,8 @@ _(README truncated — see the full file)_
 - `SUPPORTED_GAMES` (const) — `packages/atp-dashboard/atp/dashboard/tournament/service.py:90`
 - `TournamentService` (class) — `packages/atp-dashboard/atp/dashboard/tournament/service.py:190`
 - `is_tournament_visible_to` (function) — `packages/atp-dashboard/atp/dashboard/tournament/visibility.py:27`
+- `ols_slope` (function) — `packages/atp-dashboard/atp/dashboard/trend_stats.py:13`
+- `classify_trend` (function) — `packages/atp-dashboard/atp/dashboard/trend_stats.py:22`
 - `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/config.py:15`
 - `DashboardConfig` (class) — `packages/atp-dashboard/atp/dashboard/v2/config.py:20`
 - `get_db_session` (function) — `packages/atp-dashboard/atp/dashboard/v2/dependencies.py:26`
@@ -2317,8 +2483,8 @@ _(README truncated — see the full file)_
 - `TracesResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/traces.py:37`
 - `TelemetryStatusResponse` (class) — `packages/atp-dashboard/atp/dashboard/v2/routes/traces.py:46`
 - `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/trends.py:26`
-- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/ui.py:31`
-- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/ui.py:33`
+- `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/ui.py:45`
+- `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/ui.py:47`
 - `logger` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/upload.py:36`
 - `router` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/upload.py:38`
 - `ALLOWED_EXTENSIONS` (const) — `packages/atp-dashboard/atp/dashboard/v2/routes/upload.py:40`
@@ -2428,6 +2594,231 @@ _(README truncated — see the full file)_
 - `TestCostBudgetCRUD` (class) — `packages/atp-dashboard/tests/unit/analytics/test_repository.py:197`
 - `TestAggregationQueries` (class) — `packages/atp-dashboard/tests/unit/analytics/test_repository.py:355`
 - `TestBudgetUsage` (class) — `packages/atp-dashboard/tests/unit/analytics/test_repository.py:629`
+- `TEXT_SUFFIXES` (const) — `packages/atp-method/atp_method/corpus.py:15`
+- `normalize_lf` (function) — `packages/atp-method/atp_method/corpus.py:87`
+- `CorpusResolver` (class) — `packages/atp-method/atp_method/corpus.py:126`
+- `CorpusIntegrityVerifier` (class) — `packages/atp-method/atp_method/corpus.py:177`
+- `CorpusMaterializer` (class) — `packages/atp-method/atp_method/corpus.py:254`
+- `generate_manifest` (function) — `packages/atp-method/atp_method/corpus_manifest.py:11`
+- `DEFAULT_MODEL` (const) — `packages/atp-method/atp_method/envelopes.py:16`
+- `REVIEW_ENVELOPE` (const) — `packages/atp-method/atp_method/envelopes.py:18`
+- `GENERIC_ENVELOPE` (const) — `packages/atp-method/atp_method/envelopes.py:26`
+- `get_envelope` (function) — `packages/atp-method/atp_method/envelopes.py:35`
+- `build_prompt` (function) — `packages/atp-method/atp_method/envelopes.py:40`
+- `CRITICAL_THRESHOLD` (const) — `packages/atp-method/atp_method/evaluators/case_evaluator.py:26`
+- `AgentEvalCaseEvaluator` (class) — `packages/atp-method/atp_method/evaluators/case_evaluator.py:29`
+- `METHOD_CRITICAL_CHECK` (const) — `packages/atp-method/atp_method/loader.py:28`
+- `METHOD_RUBRIC` (const) — `packages/atp-method/atp_method/loader.py:29`
+- `case_to_test_definition` (function) — `packages/atp-method/atp_method/loader.py:117`
+- `load_case` (function) — `packages/atp-method/atp_method/loader.py:156`
+- `is_agent_eval_case` (function) — `packages/atp-method/atp_method/loader.py:169`
+- `load_suite` (function) — `packages/atp-method/atp_method/loader.py:192`
+- `register` (function) — `packages/atp-method/atp_method/plugin.py:44`
+- `serve_corpus_tools` (function) — `packages/atp-method/atp_method/runtime.py:33`
+- `CorpusRunPreparer` (class) — `packages/atp-method/atp_method/runtime.py:52`
+- `Status` (const) — `packages/atp-method/atp_method/schema.py:23`
+- `SuiteType` (const) — `packages/atp-method/atp_method/schema.py:24`
+- `Capability` (const) — `packages/atp-method/atp_method/schema.py:25`
+- `ConstructionAxis` (const) — `packages/atp-method/atp_method/schema.py:33`
+- `AxisLevel` (const) — `packages/atp-method/atp_method/schema.py:41`
+- `ToolName` (const) — `packages/atp-method/atp_method/schema.py:42`
+- `SideEffects` (const) — `packages/atp-method/atp_method/schema.py:43`
+- `ArtifactType` (const) — `packages/atp-method/atp_method/schema.py:44`
+- `GraderType` (const) — `packages/atp-method/atp_method/schema.py:45`
+- `TurnRole` (const) — `packages/atp-method/atp_method/schema.py:53`
+- `RunMode` (const) — `packages/atp-method/atp_method/schema.py:54`
+- `WIRED_RUN_MODES` (const) — `packages/atp-method/atp_method/schema.py:57`
+- `Artifact` (class) — `packages/atp-method/atp_method/schema.py:77`
+- `CorpusDigest` (class) — `packages/atp-method/atp_method/schema.py:89`
+- `ArtifactCorpus` (class) — `packages/atp-method/atp_method/schema.py:105`
+- `CorpusFileMetadata` (class) — `packages/atp-method/atp_method/schema.py:140`
+- `CorpusMetadata` (class) — `packages/atp-method/atp_method/schema.py:150`
+- `RubricItem` (class) — `packages/atp-method/atp_method/schema.py:168`
+- `ExpectedFinding` (class) — `packages/atp-method/atp_method/schema.py:177`
+- `ForbiddenAnchor` (class) — `packages/atp-method/atp_method/schema.py:187`
+- `Turn` (class) — `packages/atp-method/atp_method/schema.py:195`
+- `Environment` (class) — `packages/atp-method/atp_method/schema.py:204`
+- `Grader` (class) — `packages/atp-method/atp_method/schema.py:222`
+- `BehaviorAssertion` (class) — `packages/atp-method/atp_method/schema.py:277`
+- `OutputContract` (class) — `packages/atp-method/atp_method/schema.py:287`
+- `Provenance` (class) — `packages/atp-method/atp_method/schema.py:299`
+- `AgentEvalCase` (class) — `packages/atp-method/atp_method/schema.py:321`
+- `TASK_TYPE_TO_BENCHMARK_ID` (const) — `packages/atp-method/atp_method/taxonomy.py:11`
+- `benchmark_id_for` (function) — `packages/atp-method/atp_method/taxonomy.py:17`
+- `REPO_ROOT` (const) — `packages/atp-method/tests/conftest.py:8`
+- `EXAMPLE_CASES_DIR` (const) — `packages/atp-method/tests/conftest.py:9`
+- `ROOT` (const) — `packages/atp-method/tests/test_cases_load.py:12`
+- `CASES` (const) — `packages/atp-method/tests/test_cases_load.py:13`
+- `REQ_CASES` (const) — `packages/atp-method/tests/test_cases_load.py:14`
+- `SCHEMA` (const) — `packages/atp-method/tests/test_cases_load.py:15`
+- `test_cases_present` (function) — `packages/atp-method/tests/test_cases_load.py:18`
+- `test_cases_validate_pydantic_and_contract` (function) — `packages/atp-method/tests/test_cases_load.py:27`
+- `test_req_extraction_cases_present` (function) — `packages/atp-method/tests/test_cases_load.py:44`
+- `test_req_extraction_cases_are_deterministic` (function) — `packages/atp-method/tests/test_cases_load.py:53`
+- `test_all_code_review_cases_discovered` (function) — `packages/atp-method/tests/test_code_review_structured.py:14`
+- `test_every_code_review_case_declares_object_output_contract` (function) — `packages/atp-method/tests/test_code_review_structured.py:20`
+- `test_code_review_prompt_uses_object_format_instruction` (function) — `packages/atp-method/tests/test_code_review_structured.py:34`
+- `test_object_output_grades_through_case_schema` (function) — `packages/atp-method/tests/test_code_review_structured.py:49`
+- `test_resolver_selects_canonical_sorted_included_files` (function) — `packages/atp-method/tests/test_corpus.py:85`
+- `test_resolver_rejects_symlink_selected_file` (function) — `packages/atp-method/tests/test_corpus.py:104`
+- `test_verifier_requires_manifest_paths_to_match_selected_set` (function) — `packages/atp-method/tests/test_corpus.py:115`
+- `test_verifier_rejects_duplicate_manifest_paths` (function) — `packages/atp-method/tests/test_corpus.py:131`
+- `test_verifier_hashes_lf_normalized_content_and_builds_line_index` (function) — `packages/atp-method/tests/test_corpus.py:151`
+- `test_verifier_rejects_hash_mismatch` (function) — `packages/atp-method/tests/test_corpus.py:169`
+- `test_materializer_copies_verified_files_preserving_relative_paths` (function) — `packages/atp-method/tests/test_corpus.py:187`
+- `test_materializer_accepts_safe_single_corpus_id` (function) — `packages/atp-method/tests/test_corpus.py:215`
+- `test_materializer_rejects_absolute_corpus_id_without_touching_outside_paths` (function) — `packages/atp-method/tests/test_corpus.py:248`
+- `test_default_model_is_pinned` (function) — `packages/atp-method/tests/test_envelopes.py:13`
+- `test_get_envelope_review` (function) — `packages/atp-method/tests/test_envelopes.py:17`
+- `test_get_envelope_unknown_raises` (function) — `packages/atp-method/tests/test_envelopes.py:22`
+- `test_build_prompt_inlines_task_and_artifacts` (function) — `packages/atp-method/tests/test_envelopes.py:27`
+- `test_build_prompt_tolerates_missing_fields` (function) — `packages/atp-method/tests/test_envelopes.py:43`
+- `test_build_prompt_delivers_loader_artifacts_end_to_end` (function) — `packages/atp-method/tests/test_envelopes.py:47`
+- `test_build_prompt_uses_format_instruction_when_present` (function) — `packages/atp-method/tests/test_envelopes.py:77`
+- `test_build_prompt_includes_response_schema_with_format_instruction` (function) — `packages/atp-method/tests/test_envelopes.py:97`
+- `test_build_prompt_falls_back_to_review_without_contract` (function) — `packages/atp-method/tests/test_envelopes.py:131`
+- `test_build_prompt_contract_without_instruction_uses_review` (function) — `packages/atp-method/tests/test_envelopes.py:137`
+- `test_build_prompt_includes_corpus_id_and_paths_without_file_contents` (function) — `packages/atp-method/tests/test_envelopes.py:151`
+- `test_build_prompt_lists_fixture_corpus_paths_without_inlining_fixture_text` (function) — `packages/atp-method/tests/test_envelopes.py:183`
+- `FakeJudge` (class) — `packages/atp-method/tests/test_evaluator.py:16`
+- `RecordingJudge` (class) — `packages/atp-method/tests/test_evaluator.py:127`
+- `BombJudge` (class) — `packages/atp-method/tests/test_evaluator.py:204`
+- `test_load_clean_case_structure` (function) — `packages/atp-method/tests/test_loader.py:16`
+- `test_critical_check_is_a_hard_gate` (function) — `packages/atp-method/tests/test_loader.py:27`
+- `test_rubric_assertion_present_when_rubric_exists` (function) — `packages/atp-method/tests/test_loader.py:37`
+- `test_governance_and_sweep_tags` (function) — `packages/atp-method/tests/test_loader.py:45`
+- `test_tools_mapped_to_allowed_tools` (function) — `packages/atp-method/tests/test_loader.py:54`
+- `test_none_tools_becomes_empty_allow_list` (function) — `packages/atp-method/tests/test_loader.py:60`
+- `test_no_rubric_emits_only_critical` (function) — `packages/atp-method/tests/test_loader.py:85`
+- `test_loader_threads_checker_into_critical_config` (function) — `packages/atp-method/tests/test_loader.py:102`
+- `test_loader_appends_behavior_assertions_as_normal_assertions` (function) — `packages/atp-method/tests/test_loader.py:131`
+- `test_loader_preserves_reserved_critical_config_values` (function) — `packages/atp-method/tests/test_loader.py:187`
+- `test_tags_include_case_version` (function) — `packages/atp-method/tests/test_loader.py:247`
+- `test_tags_include_task_type_and_language_when_set` (function) — `packages/atp-method/tests/test_loader.py:275`
+- `test_tags_omit_task_type_language_when_absent` (function) — `packages/atp-method/tests/test_loader.py:308`
+- `REPO_ROOT` (const) — `packages/atp-method/tests/test_loader_artifact_corpus.py:9`
+- `CORPUS_CASE_PATH` (const) — `packages/atp-method/tests/test_loader_artifact_corpus.py:10`
+- `CORPUS_ASSETS_PATH` (const) — `packages/atp-method/tests/test_loader_artifact_corpus.py:17`
+- `test_loader_preserves_corpus_metadata_without_inlining_contents` (function) — `packages/atp-method/tests/test_loader_artifact_corpus.py:79`
+- `test_loader_loads_corpus_backed_req_extraction_fixture` (function) — `packages/atp-method/tests/test_loader_artifact_corpus.py:96`
+- `test_output_contract_goes_into_input_data` (function) — `packages/atp-method/tests/test_loader_output_contract.py:46`
+- `test_critical_assertion_carries_schema_and_assertions` (function) — `packages/atp-method/tests/test_loader_output_contract.py:53`
+- `test_findings_match_case_gets_null_schema_empty_assertions` (function) — `packages/atp-method/tests/test_loader_output_contract.py:61`
+- `ROOT` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:9`
+- `CHECKER` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:10`
+- `L1` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:24`
+- `test_l1_good_passes` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:30`
+- `test_l1_miss_fails` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:44`
+- `test_l1_near_miss_anchor_not_accepted` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:49`
+- `test_l1_wellformed_not_malformed` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:58`
+- `L2` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:76`
+- `test_l2_good_passes` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:82`
+- `test_l2_miss_fails` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:96`
+- `test_l2_near_miss_anchor_not_accepted` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:101`
+- `test_l2_wellformed_not_malformed` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:116`
+- `F1` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:134`
+- `test_f1_good_no_findings_passes` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:139`
+- `test_f1_bad_flags_must_not_flag_fails` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:144`
+- `test_f1_precision_two_false_positives` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:158`
+- `test_f1_wellformed_empty_not_malformed` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:177`
+- `F2` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:184`
+- `test_f2_good_no_findings_passes` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:190`
+- `test_f2_bad_flags_must_not_flag_fails` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:195`
+- `test_f2_precision_two_false_positives` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:209`
+- `test_f2_wellformed_empty_not_malformed` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:228`
+- `F3` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:235`
+- `test_f3_good_no_findings_passes` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:241`
+- `test_f3_bad_flags_must_not_flag_fails` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:246`
+- `test_f3_wellformed_empty_not_malformed` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:260`
+- `S1` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:267`
+- `test_s1_good_passes` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:270`
+- `test_s1_miss_fails` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:284`
+- `test_s1_near_miss_anchor_not_accepted` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:289`
+- `test_s1_wellformed_not_malformed` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:304`
+- `S2` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:322`
+- `test_s2_good_passes` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:328`
+- `test_s2_miss_fails` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:342`
+- `test_s2_near_miss_anchor_not_accepted` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:347`
+- `test_s2_wellformed_not_malformed` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:362`
+- `D1` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:380`
+- `test_d1_good_passes` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:386`
+- `test_d1_miss_fails` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:400`
+- `test_d1_near_miss_distractor_not_accepted` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:405`
+- `test_d1_precision_two_false_positives` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:420`
+- `test_d1_wellformed_not_malformed` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:439`
+- `test_d1_overflag_dict_line_is_fp` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:455`
+- `D2` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:472`
+- `test_d2_good_passes` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:478`
+- `test_d2_miss_fails` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:492`
+- `test_d2_near_miss_distractor_not_accepted` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:497`
+- `test_d2_precision_two_false_positives` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:512`
+- `test_d2_wellformed_not_malformed` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:531`
+- `test_d2_overflag_compliant_line_is_fp` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:547`
+- `D3` (const) — `packages/atp-method/tests/test_p2_correctness_determinism.py:564`
+- `test_d3_good_passes` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:570`
+- `test_d3_miss_fails` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:584`
+- `test_d3_near_miss_distractor_not_accepted` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:589`
+- `test_d3_precision_two_false_positives` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:604`
+- `test_d3_wellformed_not_malformed` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:623`
+- `test_d3_overflag_fallthrough_line_is_fp` (function) — `packages/atp-method/tests/test_p2_correctness_determinism.py:639`
+- `test_register_does_not_import_corpus_runtime` (function) — `packages/atp-method/tests/test_plugin.py:48`
+- `test_register_wires_evaluator_source_and_corpus_preparer` (function) — `packages/atp-method/tests/test_plugin.py:57`
+- `test_detector_matches_example_and_rejects_native` (function) — `packages/atp-method/tests/test_plugin.py:146`
+- `test_load_suite_file_and_sweep` (function) — `packages/atp-method/tests/test_plugin.py:157`
+- `ROOT` (const) — `packages/atp-method/tests/test_req_extraction_determinism.py:11`
+- `CLEAN` (const) — `packages/atp-method/tests/test_req_extraction_determinism.py:12`
+- `MODERATE` (const) — `packages/atp-method/tests/test_req_extraction_determinism.py:19`
+- `SEVERE` (const) — `packages/atp-method/tests/test_req_extraction_determinism.py:26`
+- `VERY_SEVERE` (const) — `packages/atp-method/tests/test_req_extraction_determinism.py:33`
+- `CHECKER` (const) — `packages/atp-method/tests/test_req_extraction_determinism.py:41`
+- `test_clean_case_is_json_path` (function) — `packages/atp-method/tests/test_req_extraction_determinism.py:53`
+- `test_clean_faithful_passes_fabricated_fails` (function) — `packages/atp-method/tests/test_req_extraction_determinism.py:59`
+- `test_moderate_qualifier_preserved_fabricated_fails` (function) — `packages/atp-method/tests/test_req_extraction_determinism.py:109`
+- `test_severe_null_deadline_passes_fabricated_fails` (function) — `packages/atp-method/tests/test_req_extraction_determinism.py:158`
+- `test_very_severe_null_deadline_passes_fabricated_fails` (function) — `packages/atp-method/tests/test_req_extraction_determinism.py:207`
+- `test_checker_is_deterministic_same_input` (function) — `packages/atp-method/tests/test_req_extraction_determinism.py:245`
+- `test_all_example_cases_validate` (function) — `packages/atp-method/tests/test_schema.py:12`
+- `test_duplicate_tools_rejected` (function) — `packages/atp-method/tests/test_schema.py:23`
+- `test_invalid_created_date_rejected` (function) — `packages/atp-method/tests/test_schema.py:29`
+- `test_invalid_tag_pattern_rejected` (function) — `packages/atp-method/tests/test_schema.py:37`
+- `test_duplicate_tags_rejected` (function) — `packages/atp-method/tests/test_schema.py:45`
+- `test_none_tool_must_be_exclusive` (function) — `packages/atp-method/tests/test_schema.py:53`
+- `test_rubric_grader_requires_rubric` (function) — `packages/atp-method/tests/test_schema.py:59`
+- `test_volatility_requires_inject_turn` (function) — `packages/atp-method/tests/test_schema.py:71`
+- `test_extra_field_forbidden` (function) — `packages/atp-method/tests/test_schema.py:78`
+- `test_behavior_assertions_default_empty_and_validate_entries` (function) — `packages/atp-method/tests/test_schema.py:86`
+- `test_findings_match_grader_accepts_structured_ground_truth` (function) — `packages/atp-method/tests/test_schema.py:136`
+- `test_findings_match_grader_requires_expected_findings_key` (function) — `packages/atp-method/tests/test_schema.py:157`
+- `test_findings_match_grader_allows_empty_expected_findings` (function) — `packages/atp-method/tests/test_schema.py:168`
+- `test_grader_type_findings_match_now_rejected` (function) — `packages/atp-method/tests/test_schema.py:181`
+- `test_programmatic_checker_findings_requires_expected_findings` (function) — `packages/atp-method/tests/test_schema.py:192`
+- `test_programmatic_checker_findings_accepts_empty_expected` (function) — `packages/atp-method/tests/test_schema.py:202`
+- `test_checker_requires_programmatic_type` (function) — `packages/atp-method/tests/test_schema.py:213`
+- `test_task_type_and_language_optional_default_none` (function) — `packages/atp-method/tests/test_schema.py:274`
+- `test_task_type_and_language_accepted` (function) — `packages/atp-method/tests/test_schema.py:282`
+- `test_task_type_rejects_non_token` (function) — `packages/atp-method/tests/test_schema.py:292`
+- `test_empty_checker_rejected` (function) — `packages/atp-method/tests/test_schema.py:299`
+- `test_corpus_models_accept_spec_example_paths` (function) — `packages/atp-method/tests/test_schema_artifact_corpus.py:73`
+- `test_artifact_corpus_under_text_out_is_rejected` (function) — `packages/atp-method/tests/test_schema_artifact_corpus.py:90`
+- `test_read_only_corpus_without_artifact_corpus_is_rejected` (function) — `packages/atp-method/tests/test_schema_artifact_corpus.py:100`
+- `test_read_only_corpus_with_valid_corpus_validates_as_wired_mode` (function) — `packages/atp-method/tests/test_schema_artifact_corpus.py:110`
+- `test_duplicate_tools_rejected_for_corpus_case_before_wiring` (function) — `packages/atp-method/tests/test_schema_artifact_corpus.py:165`
+- `test_citation_grounding_requires_non_empty_expected_config` (function) — `packages/atp-method/tests/test_schema_artifact_corpus.py:175`
+- `SCHEMA` (const) — `packages/atp-method/tests/test_schema_contract.py:10`
+- `test_contract_accepts_programmatic_checker_findings` (function) — `packages/atp-method/tests/test_schema_contract.py:36`
+- `test_contract_rejects_findings_checker_without_expected_findings` (function) — `packages/atp-method/tests/test_schema_contract.py:52`
+- `test_contract_allows_expected_finding_without_severity` (function) — `packages/atp-method/tests/test_schema_contract.py:65`
+- `test_contract_rejects_empty_checker` (function) — `packages/atp-method/tests/test_schema_contract.py:80`
+- `test_contract_accepts_task_type_language` (function) — `packages/atp-method/tests/test_schema_contract.py:94`
+- `test_contract_accepts_behavior_assertions_and_rejects_extra_keys` (function) — `packages/atp-method/tests/test_schema_contract.py:109`
+- `test_output_contract_parses_and_aliases_schema` (function) — `packages/atp-method/tests/test_schema_output_contract.py:47`
+- `test_case_with_output_contract_and_run_mode_valid` (function) — `packages/atp-method/tests/test_schema_output_contract.py:56`
+- `test_run_mode_unwired_tier_rejected` (function) — `packages/atp-method/tests/test_schema_output_contract.py:62`
+- `test_run_mode_defaults_to_text_out` (function) — `packages/atp-method/tests/test_schema_output_contract.py:67`
+- `test_json_path_requires_assertions` (function) — `packages/atp-method/tests/test_schema_output_contract.py:73`
+- `test_review_maps_to_code_review` (function) — `packages/atp-method/tests/test_taxonomy.py:8`
+- `test_registry_is_the_source` (function) — `packages/atp-method/tests/test_taxonomy.py:12`
+- `test_unknown_task_type_raises` (function) — `packages/atp-method/tests/test_taxonomy.py:16`
 - `CONFIG_DIR` (const) — `packages/atp-sdk/atp_sdk/auth.py:21`
 - `CONFIG_FILE` (const) — `packages/atp-sdk/atp_sdk/auth.py:22`
 - `load_token` (function) — `packages/atp-sdk/atp_sdk/auth.py:25`
@@ -2544,7 +2935,7 @@ _(README truncated — see the full file)_
 - `test_about_links_reachable` (function) — `tests/e2e/dashboard/test_about_quickstart_e2e.py:117`
 - `test_about_mcp_walkthrough` (function) — `tests/e2e/dashboard/test_about_quickstart_e2e.py:200`
 - `pytestmark` (const) — `tests/e2e/dashboard/tournament/test_e2e_30_round_pd_with_reconnect.py:19`
-- `test_thirty_round_pd_with_reconnect_sc1` (function) — `tests/e2e/dashboard/tournament/test_e2e_30_round_pd_with_reconnect.py:349`
+- `test_thirty_round_pd_with_reconnect_sc1` (function) — `tests/e2e/dashboard/tournament/test_e2e_30_round_pd_with_reconnect.py:368`
 - `pytestmark` (const) — `tests/e2e/dashboard/tournament/test_e2e_ad9_ad10.py:8`
 - `test_e2e_ad9_duration_cap_rejects_over_budget` (function) — `tests/e2e/dashboard/tournament/test_e2e_ad9_ad10.py:11`
 - `test_e2e_ad10_join_token_required_when_private` (function) — `tests/e2e/dashboard/tournament/test_e2e_ad9_ad10.py:34`
@@ -2554,6 +2945,7 @@ _(README truncated — see the full file)_
 - `test_e2e_idempotent_cancel` (function) — `tests/e2e/dashboard/tournament/test_e2e_cancel_paths.py:84`
 - `pytestmark` (const) — `tests/e2e/dashboard/tournament/test_e2e_rest_admin_curl.py:9`
 - `test_e2e_rest_cancel_returns_200` (function) — `tests/e2e/dashboard/tournament/test_e2e_rest_admin_curl.py:12`
+- `mint_tournament_agent_token` (function) — `tests/e2e/mcp_auth.py:16`
 - `TestAtpTestHappyPath` (class) — `tests/e2e/test_cli_commands.py:20`
 - `TestAtpTestFailingTests` (class) — `tests/e2e/test_cli_commands.py:94`
 - `TestAtpTestTimeout` (class) — `tests/e2e/test_cli_commands.py:145`
@@ -2570,7 +2962,7 @@ _(README truncated — see the full file)_
 - `TestMCPAdapterWithYAML` (class) — `tests/e2e/test_mcp_adapter.py:651`
 - `TestMCPAdapterRegistration` (class) — `tests/e2e/test_mcp_adapter.py:752`
 - `pytestmark` (const) — `tests/e2e/test_mcp_pd_tournament.py:10`
-- `contextlib_suppress` (function) — `tests/e2e/test_mcp_pd_tournament.py:260`
+- `contextlib_suppress` (function) — `tests/e2e/test_mcp_pd_tournament.py:264`
 - `EventType` (class) — `tests/fixtures/comparison/events.py:12`
 - `create_tool_call_event` (function) — `tests/fixtures/comparison/events.py:22`
 - `create_llm_request_event` (function) — `tests/fixtures/comparison/events.py:75`
@@ -2618,6 +3010,10 @@ _(README truncated — see the full file)_
 - `TestInitCommandAbort` (class) — `tests/integration/cli/test_init_command.py:406`
 - `TestInitCommandOutputFormat` (class) — `tests/integration/cli/test_init_command.py:422`
 - `TestInitCommandWithConstraints` (class) — `tests/integration/cli/test_init_command.py:468`
+- `pytestmark` (const) — `tests/integration/cli/test_persist_dimensions.py:22`
+- `test_persist_records_dimensions` (function) — `tests/integration/cli/test_persist_dimensions.py:58`
+- `pytestmark` (const) — `tests/integration/cli/test_persist_eval_pass.py:21`
+- `test_persist_records_eval_pass_not_execution` (function) — `tests/integration/cli/test_persist_eval_pass.py:45`
 - `TestCreateAgent` (class) — `tests/integration/dashboard/test_agent_management_api.py:60`
 - `TestListAgents` (class) — `tests/integration/dashboard/test_agent_management_api.py:114`
 - `TestSoftDelete` (class) — `tests/integration/dashboard/test_agent_management_api.py:159`
@@ -2743,16 +3139,17 @@ _(README truncated — see the full file)_
 - `TestAgentNewForm` (class) — `tests/integration/dashboard/test_ui_agent_new.py:48`
 - `TestAgentNewSubmit` (class) — `tests/integration/dashboard/test_ui_agent_new.py:93`
 - `TestAgentDelete` (class) — `tests/integration/dashboard/test_ui_agent_new.py:189`
-- `TestV2HomeRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:161`
-- `TestV2AgentRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:179`
-- `TestV2SuiteRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:220`
-- `TestV2TestRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:262`
-- `TestV2TrendRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:293`
-- `TestV2ComparisonRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:327`
-- `TestV2TimelineRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:372`
-- `TestV2TemplateRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:397`
-- `TestV2AuthRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:414`
-- `TestV2RouteConsistency` (class) — `tests/integration/dashboard/test_v2_routes.py:427`
+- `TestV2HomeRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:163`
+- `TestV2AgentRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:181`
+- `TestV2SuiteRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:222`
+- `TestV2TestRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:264`
+- `TestV2TrendRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:295`
+- `TestV2ComparisonRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:329`
+- `TestV2TimelineRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:374`
+- `TestV2TemplateRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:399`
+- `TestV2AuthRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:416`
+- `TestV2RouteConsistency` (class) — `tests/integration/dashboard/test_v2_routes.py:429`
+- `TestV2ExecutionUIRoutes` (class) — `tests/integration/dashboard/test_v2_routes.py:457`
 - `test_single_worker_ok` (function) — `tests/integration/dashboard/tournament/test_factory_lifespan.py:8`
 - `test_default_is_single_worker` (function) — `tests/integration/dashboard/tournament/test_factory_lifespan.py:13`
 - `test_multi_worker_raises` (function) — `tests/integration/dashboard/tournament/test_factory_lifespan.py:18`
@@ -3051,20 +3448,21 @@ _(README truncated — see the full file)_
 - `TestSimpleFallbackDisplay` (class) — `tests/unit/cli/test_live_display.py:441`
 - `TestIsTerminalCapable` (class) — `tests/unit/cli/test_live_display.py:540`
 - `TestCLILiveFlagIntegration` (class) — `tests/unit/cli/test_live_display.py:556`
-- `TestExitCodes` (class) — `tests/unit/cli/test_main.py:75`
-- `TestConfigContext` (class) — `tests/unit/cli/test_main.py:85`
-- `TestCLIGroup` (class) — `tests/unit/cli/test_main.py:154`
-- `TestVersionCommand` (class) — `tests/unit/cli/test_main.py:177`
-- `TestTestCommand` (class) — `tests/unit/cli/test_main.py:195`
-- `TestRunCommand` (class) — `tests/unit/cli/test_main.py:272`
-- `TestRunCommandWithMockAdapter` (class) — `tests/unit/cli/test_main.py:365`
-- `TestRunCommandFailures` (class) — `tests/unit/cli/test_main.py:569`
-- `TestValidateCommand` (class) — `tests/unit/cli/test_main.py:616`
-- `TestListAgentsCommand` (class) — `tests/unit/cli/test_main.py:684`
-- `TestListCommand` (class) — `tests/unit/cli/test_main.py:731`
-- `TestBaselineCommands` (class) — `tests/unit/cli/test_main.py:769`
-- `TestParallelExecutionIntegration` (class) — `tests/unit/cli/test_main.py:797`
-- `TestTestCommandWithMockAdapter` (class) — `tests/unit/cli/test_main.py:870`
+- `TestExitCodes` (class) — `tests/unit/cli/test_main.py:78`
+- `TestConfigContext` (class) — `tests/unit/cli/test_main.py:88`
+- `TestCLIGroup` (class) — `tests/unit/cli/test_main.py:157`
+- `TestVersionCommand` (class) — `tests/unit/cli/test_main.py:180`
+- `TestTestCommand` (class) — `tests/unit/cli/test_main.py:198`
+- `TestRunSuiteReporterConfig` (class) — `tests/unit/cli/test_main.py:306`
+- `TestRunCommand` (class) — `tests/unit/cli/test_main.py:540`
+- `TestRunCommandWithMockAdapter` (class) — `tests/unit/cli/test_main.py:633`
+- `TestRunCommandFailures` (class) — `tests/unit/cli/test_main.py:837`
+- `TestValidateCommand` (class) — `tests/unit/cli/test_main.py:884`
+- `TestListAgentsCommand` (class) — `tests/unit/cli/test_main.py:952`
+- `TestListCommand` (class) — `tests/unit/cli/test_main.py:999`
+- `TestBaselineCommands` (class) — `tests/unit/cli/test_main.py:1037`
+- `TestParallelExecutionIntegration` (class) — `tests/unit/cli/test_main.py:1065`
+- `TestTestCommandWithMockAdapter` (class) — `tests/unit/cli/test_main.py:1138`
 - `TestHelperFunctions` (class) — `tests/unit/cli/test_plugins.py:59`
 - `TestGetAllPlugins` (class) — `tests/unit/cli/test_plugins.py:117`
 - `TestFindPluginByName` (class) — `tests/unit/cli/test_plugins.py:158`
@@ -3084,6 +3482,8 @@ _(README truncated — see the full file)_
 - `TestManifest` (class) — `tests/unit/cli/test_remote.py:79`
 - `TestFileSha256` (class) — `tests/unit/cli/test_remote.py:110`
 - `TestSyncCommand` (class) — `tests/unit/cli/test_sync.py:25`
+- `test_caseverdict_defaults_minimal` (function) — `tests/unit/core/test_case_verdict.py:6`
+- `test_caseverdict_roundtrips_dump` (function) — `tests/unit/core/test_case_verdict.py:17`
 - `TestCORSHardening` (class) — `tests/unit/core/test_cors_hardening.py:11`
 - `TestATPError` (class) — `tests/unit/core/test_exceptions.py:13`
 - `TestLoaderError` (class) — `tests/unit/core/test_exceptions.py:26`
@@ -3168,6 +3568,22 @@ _(README truncated — see the full file)_
 - `TestResultAttributes` (class) — `tests/unit/core/test_telemetry.py:528`
 - `TestResetTelemetry` (class) — `tests/unit/core/test_telemetry.py:591`
 - `TestGetCurrentSpan` (class) — `tests/unit/core/test_telemetry.py:620`
+- `test_measured_prices_with_cache_split` (function) — `tests/unit/cost/test_cloud_pricer.py:48`
+- `test_not_measured_is_cost_unknown` (function) — `tests/unit/cost/test_cloud_pricer.py:70`
+- `test_local_is_excluded_not_missing` (function) — `tests/unit/cost/test_cloud_pricer.py:80`
+- `test_silent_zero_is_price_unknown` (function) — `tests/unit/cost/test_cloud_pricer.py:90`
+- `test_price_map_version_survives_raising_version_attr` (function) — `tests/unit/cost/test_cloud_pricer.py:120`
+- `test_missing_litellm_raises` (function) — `tests/unit/cost/test_cloud_pricer.py:138`
+- `test_overrides_register_and_flags` (function) — `tests/unit/cost/test_cloud_pricer.py:147`
+- `test_overrides_missing_provenance_raises` (function) — `tests/unit/cost/test_cloud_pricer.py:183`
+- `test_overrides_cache_known_without_price_raises` (function) — `tests/unit/cost/test_cloud_pricer.py:202`
+- `test_overrides_cache_known_with_price_registers_cache_cost` (function) — `tests/unit/cost/test_cloud_pricer.py:222`
+- `test_cache_price_unknown_wired` (function) — `tests/unit/cost/test_cloud_pricer.py:256`
+- `test_cache_price_known_not_flagged` (function) — `tests/unit/cost/test_cloud_pricer.py:290`
+- `test_cache_price_unknown_false_when_no_cache_used` (function) — `tests/unit/cost/test_cloud_pricer.py:325`
+- `test_cache_price_unknown_false_for_model_without_override` (function) — `tests/unit/cost/test_cloud_pricer.py:358`
+- `test_cache_creation_only_trips_silent_zero_guard` (function) — `tests/unit/cost/test_cloud_pricer.py:376`
+- `litellm` (const) — `tests/unit/cost/test_cloud_pricer_contract.py:13`
 - `TestComputeEntryHash` (class) — `tests/unit/dashboard/audit/test_audit.py:25`
 - `TestAuditLog` (class) — `tests/unit/dashboard/audit/test_audit.py:120`
 - `TestRetentionPolicy` (class) — `tests/unit/dashboard/audit/test_audit.py:251`
@@ -3208,6 +3624,7 @@ _(README truncated — see the full file)_
 - `TestSAMLManager` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:298`
 - `TestParseIdPMetadata` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:435`
 - `TestExceptions` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:467`
+- `TestOptionalSAMLDependency` (class) — `tests/unit/dashboard/auth/sso/test_saml.py:495`
 - `TestCompleteAuth` (class) — `tests/unit/dashboard/auth/test_post_auth.py:10`
 - `TestInMemoryAuthStateStore` (class) — `tests/unit/dashboard/auth/test_state_store.py:12`
 - `TestGetAuthStateStore` (class) — `tests/unit/dashboard/auth/test_state_store.py:77`
@@ -3337,14 +3754,24 @@ _(README truncated — see the full file)_
 - `TestEventTypeEnum` (class) — `tests/unit/dashboard/test_comparison_fixtures.py:633`
 - `TestTokenSelfServiceConfig` (class) — `tests/unit/dashboard/test_config_new_fields.py:8`
 - `TestDatabase` (class) — `tests/unit/dashboard/test_database.py:15`
-- `TestDatabaseGlobals` (class) — `tests/unit/dashboard/test_database.py:118`
-- `TestDatabaseWithPostgres` (class) — `tests/unit/dashboard/test_database.py:152`
-- `TestAddMissingColumnsServerDefaults` (class) — `tests/unit/dashboard/test_database.py:171`
+- `TestDatabaseGlobals` (class) — `tests/unit/dashboard/test_database.py:160`
+- `TestDatabaseWithPostgres` (class) — `tests/unit/dashboard/test_database.py:194`
+- `TestAddMissingColumnsServerDefaults` (class) — `tests/unit/dashboard/test_database.py:213`
 - `MOCK_GITHUB_DEVICE_RESPONSE` (const) — `tests/unit/dashboard/test_device_auth_routes.py:12`
 - `TestDeviceAuthInitiate` (class) — `tests/unit/dashboard/test_device_auth_routes.py:52`
 - `TestDeviceAuthPoll` (class) — `tests/unit/dashboard/test_device_auth_routes.py:100`
 - `MOCK_GITHUB_DEVICE_RESPONSE` (const) — `tests/unit/dashboard/test_device_flow.py:16`
 - `TestDeviceFlowManager` (class) — `tests/unit/dashboard/test_device_flow.py:42`
+- `test_case_dimensions_from_tags_and_verdict` (function) — `tests/unit/dashboard/test_dimensions.py:39`
+- `test_aggregate_run_task_type_and_language_single_distinct` (function) — `tests/unit/dashboard/test_dimensions.py:74`
+- `test_aggregate_run_task_type_mixed_is_none` (function) — `tests/unit/dashboard/test_dimensions.py:84`
+- `test_aggregate_run_task_type_partly_missing_is_none` (function) — `tests/unit/dashboard/test_dimensions.py:94`
+- `test_aggregate_run_task_type_all_missing_is_none` (function) — `tests/unit/dashboard/test_dimensions.py:106`
+- `test_case_dimensions_judge_path_sets_critical_pass_without_details` (function) — `tests/unit/dashboard/test_dimensions.py:113`
+- `test_aggregate_run_malformed_rate_excludes_null_malformed` (function) — `tests/unit/dashboard/test_dimensions.py:133`
+- `test_case_dimensions_native_run_is_all_none` (function) — `tests/unit/dashboard/test_dimensions.py:155`
+- `test_aggregate_run_rates_and_breakpoint` (function) — `tests/unit/dashboard/test_dimensions.py:162`
+- `test_aggregate_run_empty_is_none` (function) — `tests/unit/dashboard/test_dimensions.py:190`
 - `test_build_agents_mixes_builtins_and_users` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:92`
 - `test_build_rounds_computes_slot_attendance_and_over_slots` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:120`
 - `test_build_decision_forwards_all_tier2_telemetry_fields` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:168`
@@ -3353,6 +3780,18 @@ _(README truncated — see the full file)_
 - `test_build_decision_pads_single_interval_to_two_tuple` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:292`
 - `test_build_decision_preserves_two_intervals_in_order` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:312`
 - `test_build_decision_empty_intervals_stays_empty` (function) — `tests/unit/dashboard/test_el_farol_from_tournament.py:332`
+- `CASE_COLS` (const) — `tests/unit/dashboard/test_eval_dimension_columns.py:5`
+- `RUN_COLS` (const) — `tests/unit/dashboard/test_eval_dimension_columns.py:20`
+- `test_test_execution_has_case_columns` (function) — `tests/unit/dashboard/test_eval_dimension_columns.py:31`
+- `test_suite_execution_has_run_columns` (function) — `tests/unit/dashboard/test_eval_dimension_columns.py:36`
+- `test_empty_input` (function) — `tests/unit/dashboard/test_failure_analysis.py:19`
+- `test_all_completed_has_no_causes` (function) — `tests/unit/dashboard/test_failure_analysis.py:28`
+- `test_mixed_counts` (function) — `tests/unit/dashboard/test_failure_analysis.py:38`
+- `test_error_normalization_and_sample_cap` (function) — `tests/unit/dashboard/test_failure_analysis.py:66`
+- `test_distinct_clusters_capped_at_three` (function) — `tests/unit/dashboard/test_failure_analysis.py:84`
+- `test_causes_sorted_by_count_desc` (function) — `tests/unit/dashboard/test_failure_analysis.py:101`
+- `test_none_error_produces_no_sample` (function) — `tests/unit/dashboard/test_failure_analysis.py:116`
+- `test_mixed_none_and_real_error_keeps_only_real_sample` (function) — `tests/unit/dashboard/test_failure_analysis.py:128`
 - `test_valid_jwt_sets_user_id_on_request_state` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:47`
 - `test_valid_jwt_case_insensitive_bearer_scheme` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:58`
 - `test_no_authorization_header_leaves_state_unset` (function) — `tests/unit/dashboard/test_jwt_user_middleware.py:73`
@@ -3434,13 +3873,19 @@ _(README truncated — see the full file)_
 - `TestExportService` (class) — `tests/unit/dashboard/test_services.py:572`
 - `TestDependencyInjection` (class) — `tests/unit/dashboard/test_services.py:818`
 - `TestResultStorageAgent` (class) — `tests/unit/dashboard/test_storage.py:23`
-- `TestResultStorageSuiteExecution` (class) — `tests/unit/dashboard/test_storage.py:131`
-- `TestResultStorageTestExecution` (class) — `tests/unit/dashboard/test_storage.py:218`
-- `TestResultStorageRunResult` (class) — `tests/unit/dashboard/test_storage.py:281`
-- `TestResultStorageEvaluation` (class) — `tests/unit/dashboard/test_storage.py:325`
-- `TestResultStorageScoring` (class) — `tests/unit/dashboard/test_storage.py:363`
-- `TestResultStorageQueries` (class) — `tests/unit/dashboard/test_storage.py:418`
-- `TestResultStorageAgentlessQueries` (class) — `tests/unit/dashboard/test_storage.py:475`
+- `TestResultStorageSuiteExecution` (class) — `tests/unit/dashboard/test_storage.py:153`
+- `TestResultStorageTestExecution` (class) — `tests/unit/dashboard/test_storage.py:317`
+- `TestResultStorageRunResult` (class) — `tests/unit/dashboard/test_storage.py:422`
+- `TestResultStorageEvaluation` (class) — `tests/unit/dashboard/test_storage.py:466`
+- `TestResultStorageScoring` (class) — `tests/unit/dashboard/test_storage.py:504`
+- `TestResultStorageQueries` (class) — `tests/unit/dashboard/test_storage.py:559`
+- `TestResultStorageAgentlessQueries` (class) — `tests/unit/dashboard/test_storage.py:616`
+- `TestResultStorageSP3Views` (class) — `tests/unit/dashboard/test_storage.py:698`
+- `test_json_safe_passes_through_plain_data` (function) — `tests/unit/dashboard/test_storage_json_safe.py:14`
+- `test_json_safe_handles_none` (function) — `tests/unit/dashboard/test_storage_json_safe.py:19`
+- `test_json_safe_datetime_uses_isoformat` (function) — `tests/unit/dashboard/test_storage_json_safe.py:23`
+- `test_json_safe_date_uses_isoformat` (function) — `tests/unit/dashboard/test_storage_json_safe.py:32`
+- `test_json_safe_result_is_json_serializable` (function) — `tests/unit/dashboard/test_storage_json_safe.py:37`
 - `TestGetStorageUsage` (class) — `tests/unit/dashboard/test_storage_tracking.py:55`
 - `TestGetArtifactStorageBytes` (class) — `tests/unit/dashboard/test_storage_tracking.py:212`
 - `TestGetRunResultStorageBytes` (class) — `tests/unit/dashboard/test_storage_tracking.py:256`
@@ -3459,6 +3904,10 @@ _(README truncated — see the full file)_
 - `TestTaskCreate` (class) — `tests/unit/dashboard/test_suite_definitions.py:360`
 - `TestAssertionCreate` (class) — `tests/unit/dashboard/test_suite_definitions.py:387`
 - `TestTokenGeneration` (class) — `tests/unit/dashboard/test_token_helpers.py:6`
+- `test_ols_slope_increasing` (function) — `tests/unit/dashboard/test_trend_stats.py:6`
+- `test_ols_slope_flat` (function) — `tests/unit/dashboard/test_trend_stats.py:10`
+- `test_ols_slope_needs_two_points` (function) — `tests/unit/dashboard/test_trend_stats.py:14`
+- `test_classify_trend` (function) — `tests/unit/dashboard/test_trend_stats.py:19`
 - `TEST_OWNER_ID` (const) — `tests/unit/dashboard/test_ui_routes.py:14`
 - `TestUIRoutes` (class) — `tests/unit/dashboard/test_ui_routes.py:49`
 - `TestSuitesPage` (class) — `tests/unit/dashboard/test_ui_routes.py:155`
@@ -3631,6 +4080,43 @@ _(README truncated — see the full file)_
 - `test_random_action_unknown_game_type_raises` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:327`
 - `test_extract_error_text_pulls_first_text_block` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:381`
 - `test_extract_error_text_fallback_when_no_content` (function) — `tests/unit/demo_game/test_llm_mcp_bot_parse.py:391`
+- `test_register_and_get` (function) — `tests/unit/evaluators/checkers/test_registry.py:17`
+- `test_unknown_checker_returns_none` (function) — `tests/unit/evaluators/checkers/test_registry.py:25`
+- `test_register_rejects_duplicate` (function) — `tests/unit/evaluators/checkers/test_registry.py:29`
+- `test_code_review_cases_list_via_plugin` (function) — `tests/unit/evaluators/findings/test_cases_load.py:6`
+- `EXPECTED` (const) — `tests/unit/evaluators/findings/test_checker.py:7`
+- `MUST_NOT` (const) — `tests/unit/evaluators/findings/test_checker.py:10`
+- `test_findings_match_registered` (function) — `tests/unit/evaluators/findings/test_checker.py:13`
+- `test_valid_match_verdict` (function) — `tests/unit/evaluators/findings/test_checker.py:17`
+- `test_malformed_verdict` (function) — `tests/unit/evaluators/findings/test_checker.py:32`
+- `pytestmark` (const) — `tests/unit/evaluators/findings/test_evaluator.py:11`
+- `EXPECTED_FINDINGS` (const) — `tests/unit/evaluators/findings/test_evaluator.py:13`
+- `MUST_NOT_FLAG` (const) — `tests/unit/evaluators/findings/test_evaluator.py:20`
+- `test_matching_finding_passes` (function) — `tests/unit/evaluators/findings/test_evaluator.py:59`
+- `test_unparseable_content_fails` (function) — `tests/unit/evaluators/findings/test_evaluator.py:85`
+- `test_finding_missing_severity_is_malformed` (function) — `tests/unit/evaluators/findings/test_evaluator.py:103`
+- `EXPECTED` (const) — `tests/unit/evaluators/findings/test_matcher.py:14`
+- `MUST_NOT` (const) — `tests/unit/evaluators/findings/test_matcher.py:21`
+- `test_anchor_hit_with_synonym_ruleid` (function) — `tests/unit/evaluators/findings/test_matcher.py:24`
+- `test_line_number_independence` (function) — `tests/unit/evaluators/findings/test_matcher.py:38`
+- `test_false_positive_on_compliant_line_fails_gate` (function) — `tests/unit/evaluators/findings/test_matcher.py:44`
+- `test_missed_critical_fails_gate` (function) — `tests/unit/evaluators/findings/test_matcher.py:54`
+- `test_compliant_case_empty_findings_passes` (function) — `tests/unit/evaluators/findings/test_matcher.py:61`
+- `test_compliant_case_false_positive_fails` (function) — `tests/unit/evaluators/findings/test_matcher.py:67`
+- `test_parse_findings_strips_code_fence` (function) — `tests/unit/evaluators/findings/test_matcher.py:73`
+- `test_parse_findings_unparseable_returns_none` (function) — `tests/unit/evaluators/findings/test_matcher.py:78`
+- `test_empty_rule_ids_does_not_crash` (function) — `tests/unit/evaluators/findings/test_matcher.py:82`
+- `test_multiple_findings_on_same_compliant_line_count_as_multiple_fps` (function) — `tests/unit/evaluators/findings/test_matcher.py:91`
+- `test_match_findings_is_never_malformed` (function) — `tests/unit/evaluators/findings/test_matcher.py:101`
+- `test_finding_accepts_valid_and_ignores_extra_keys` (function) — `tests/unit/evaluators/findings/test_matcher.py:111`
+- `test_validate_findings_passes_all_valid` (function) — `tests/unit/evaluators/findings/test_matcher.py:140`
+- `test_validate_findings_one_bad_malforms_whole_output` (function) — `tests/unit/evaluators/findings/test_matcher.py:145`
+- `test_validate_findings_non_dict_element_is_malformed` (function) — `tests/unit/evaluators/findings/test_matcher.py:155`
+- `test_grade_findings_unparseable_is_malformed` (function) — `tests/unit/evaluators/findings/test_matcher.py:159`
+- `test_grade_findings_none_text_is_malformed` (function) — `tests/unit/evaluators/findings/test_matcher.py:165`
+- `test_grade_findings_invalid_finding_is_malformed_not_missed` (function) — `tests/unit/evaluators/findings/test_matcher.py:171`
+- `test_grade_findings_valid_match_is_not_malformed` (function) — `tests/unit/evaluators/findings/test_matcher.py:179`
+- `test_grade_findings_valid_miss_is_not_malformed` (function) — `tests/unit/evaluators/findings/test_matcher.py:188`
 - `TestSeverity` (class) — `tests/unit/evaluators/security/test_base.py:15`
 - `TestSecurityFinding` (class) — `tests/unit/evaluators/security/test_base.py:65`
 - `TestMaskSensitiveData` (class) — `tests/unit/evaluators/security/test_base.py:100`
@@ -3731,17 +4217,32 @@ _(README truncated — see the full file)_
 - `TestEvalCheck` (class) — `tests/unit/evaluators/test_base.py:8`
 - `TestEvalResult` (class) — `tests/unit/evaluators/test_base.py:63`
 - `create_tool_call_event` (function) — `tests/unit/evaluators/test_behavior.py:64`
-- `create_error_event` (function) — `tests/unit/evaluators/test_behavior.py:77`
-- `TestMustUseTools` (class) — `tests/unit/evaluators/test_behavior.py:124`
-- `TestMaxToolCalls` (class) — `tests/unit/evaluators/test_behavior.py:219`
-- `TestMinToolCalls` (class) — `tests/unit/evaluators/test_behavior.py:302`
-- `TestMinToolCallsNoLimit` (class) — `tests/unit/evaluators/test_behavior.py:337`
-- `TestNoErrors` (class) — `tests/unit/evaluators/test_behavior.py:357`
-- `TestForbiddenTools` (class) — `tests/unit/evaluators/test_behavior.py:409`
-- `TestBehaviorCombined` (class) — `tests/unit/evaluators/test_behavior.py:466`
-- `TestUnknownAssertionType` (class) — `tests/unit/evaluators/test_behavior.py:554`
-- `TestEdgeCases` (class) — `tests/unit/evaluators/test_behavior.py:574`
-- `TestEvaluatorProperties` (class) — `tests/unit/evaluators/test_behavior.py:620`
+- `create_tool_call_payload_event` (function) — `tests/unit/evaluators/test_behavior.py:77`
+- `create_error_event` (function) — `tests/unit/evaluators/test_behavior.py:90`
+- `TestMustUseTools` (class) — `tests/unit/evaluators/test_behavior.py:137`
+- `TestMaxToolCalls` (class) — `tests/unit/evaluators/test_behavior.py:232`
+- `TestMinToolCalls` (class) — `tests/unit/evaluators/test_behavior.py:315`
+- `TestMinToolCallsNoLimit` (class) — `tests/unit/evaluators/test_behavior.py:350`
+- `TestNoErrors` (class) — `tests/unit/evaluators/test_behavior.py:370`
+- `TestForbiddenTools` (class) — `tests/unit/evaluators/test_behavior.py:422`
+- `TestBehaviorCombined` (class) — `tests/unit/evaluators/test_behavior.py:479`
+- `TestBehaviorToolCallAssertions` (class) — `tests/unit/evaluators/test_behavior.py:567`
+- `TestUnknownAssertionType` (class) — `tests/unit/evaluators/test_behavior.py:1046`
+- `TestEdgeCases` (class) — `tests/unit/evaluators/test_behavior.py:1066`
+- `TestEvaluatorProperties` (class) — `tests/unit/evaluators/test_behavior.py:1112`
+- `test_citation_grounding_accepts_expected_current_source` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:122`
+- `test_citation_grounding_fixture_accepts_current_policy_citation` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:136`
+- `test_citation_grounding_fixture_rejects_obsolete_archive_citation` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:157`
+- `test_citation_grounding_source_mismatch_includes_bounded_diagnostics` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:181`
+- `test_citation_grounding_page_mismatch_includes_bounded_diagnostics` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:205`
+- `test_citation_grounding_line_range_mismatch_includes_compact_range` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:221`
+- `test_citation_grounding_missing_output_path_diagnostic_is_bounded` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:244`
+- `test_citation_grounding_malformed_output_shape_has_no_results_list` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:260`
+- `test_citation_grounding_bad_json_is_malformed` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:270`
+- `test_citation_grounding_schema_failure_is_malformed` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:279`
+- `test_citation_grounding_missing_file_fails_not_malformed` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:288`
+- `test_citation_grounding_invalid_range_fails_not_malformed` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:301`
+- `test_citation_grounding_forbidden_or_obsolete_source_fails_not_malformed` (function) — `tests/unit/evaluators/test_citation_grounding_checker.py:320`
 - `mock_command_result` (function) — `tests/unit/evaluators/test_code_exec.py:45`
 - `TestEvaluatorProperties` (class) — `tests/unit/evaluators/test_code_exec.py:60`
 - `TestPytestParsing` (class) — `tests/unit/evaluators/test_code_exec.py:68`
@@ -3796,6 +4297,12 @@ _(README truncated — see the full file)_
 - `TestFileCount` (class) — `tests/unit/evaluators/test_filesystem.py:300`
 - `TestNoWorkspacePath` (class) — `tests/unit/evaluators/test_filesystem.py:387`
 - `TestUnknownAssertionType` (class) — `tests/unit/evaluators/test_filesystem.py:407`
+- `test_parse_findings_unwraps_object_form` (function) — `tests/unit/evaluators/test_findings_structured.py:34`
+- `test_parse_findings_still_accepts_legacy_array` (function) — `tests/unit/evaluators/test_findings_structured.py:41`
+- `test_grade_findings_schema_violation_is_malformed` (function) — `tests/unit/evaluators/test_findings_structured.py:48`
+- `test_grade_findings_valid_object_matches` (function) — `tests/unit/evaluators/test_findings_structured.py:60`
+- `test_grade_findings_object_without_findings_key_is_malformed` (function) — `tests/unit/evaluators/test_findings_structured.py:74`
+- `test_findings_check_threads_schema_from_config` (function) — `tests/unit/evaluators/test_findings_structured.py:82`
 - `SAMPLE_DIFF` (const) — `tests/unit/evaluators/test_git_commit.py:15`
 - `TestExtractChangedFiles` (class) — `tests/unit/evaluators/test_git_commit.py:28`
 - `TestLineSimilarity` (class) — `tests/unit/evaluators/test_git_commit.py:37`
@@ -3804,18 +4311,39 @@ _(README truncated — see the full file)_
 - `TestTimeoutNotExceeded` (class) — `tests/unit/evaluators/test_guardrails.py:68`
 - `TestWithinBudget` (class) — `tests/unit/evaluators/test_guardrails.py:82`
 - `TestRunGuardrailsIntegration` (class) — `tests/unit/evaluators/test_guardrails.py:106`
-- `TestLLMJudgeConfig` (class) — `tests/unit/evaluators/test_llm_judge.py:102`
-- `TestLLMJudgeCost` (class) — `tests/unit/evaluators/test_llm_judge.py:133`
-- `TestLLMJudgeResponse` (class) — `tests/unit/evaluators/test_llm_judge.py:156`
-- `TestLLMJudgeEvaluatorProperties` (class) — `tests/unit/evaluators/test_llm_judge.py:186`
-- `TestBuiltinCriteria` (class) — `tests/unit/evaluators/test_llm_judge.py:220`
-- `TestBuildPrompt` (class) — `tests/unit/evaluators/test_llm_judge.py:242`
-- `TestParseResponse` (class) — `tests/unit/evaluators/test_llm_judge.py:318`
-- `TestGetArtifactContent` (class) — `tests/unit/evaluators/test_llm_judge.py:394`
-- `TestEvaluate` (class) — `tests/unit/evaluators/test_llm_judge.py:449`
-- `TestEvaluateWithAveraging` (class) — `tests/unit/evaluators/test_llm_judge.py:640`
-- `TestErrorHandling` (class) — `tests/unit/evaluators/test_llm_judge.py:723`
-- `TestRegistry` (class) — `tests/unit/evaluators/test_llm_judge.py:797`
+- `test_pass_when_assertion_holds` (function) — `tests/unit/evaluators/test_json_path_checker.py:18`
+- `test_fail_when_fabricated` (function) — `tests/unit/evaluators/test_json_path_checker.py:25`
+- `test_unparseable_is_malformed` (function) — `tests/unit/evaluators/test_json_path_checker.py:32`
+- `test_none_text_is_malformed` (function) — `tests/unit/evaluators/test_json_path_checker.py:38`
+- `test_schema_violation_is_malformed` (function) — `tests/unit/evaluators/test_json_path_checker.py:43`
+- `test_absent_op` (function) — `tests/unit/evaluators/test_json_path_checker.py:49`
+- `test_contains_string` (function) — `tests/unit/evaluators/test_json_path_checker.py:57`
+- `test_contains_list` (function) — `tests/unit/evaluators/test_json_path_checker.py:73`
+- `test_contains_none_expected_no_crash` (function) — `tests/unit/evaluators/test_json_path_checker.py:81`
+- `test_invalid_schema_is_malformed` (function) — `tests/unit/evaluators/test_json_path_checker.py:88`
+- `test_empty_or_missing_assertions_is_malformed` (function) — `tests/unit/evaluators/test_json_path_checker.py:99`
+- `test_multi_or_bad_path_fails_assertion_not_crash` (function) — `tests/unit/evaluators/test_json_path_checker.py:107`
+- `test_root` (function) — `tests/unit/evaluators/test_json_path_resolver.py:8`
+- `test_key` (function) — `tests/unit/evaluators/test_json_path_resolver.py:12`
+- `test_nested_key_and_index` (function) — `tests/unit/evaluators/test_json_path_resolver.py:16`
+- `test_missing_key_or_index_not_found` (function) — `tests/unit/evaluators/test_json_path_resolver.py:22`
+- `test_root_index` (function) — `tests/unit/evaluators/test_json_path_resolver.py:27`
+- `test_unsupported_syntax_raises` (function) — `tests/unit/evaluators/test_json_path_resolver.py:31`
+- `TestLLMJudgeConfig` (class) — `tests/unit/evaluators/test_llm_judge.py:103`
+- `TestLLMJudgeCost` (class) — `tests/unit/evaluators/test_llm_judge.py:134`
+- `TestLLMJudgeResponse` (class) — `tests/unit/evaluators/test_llm_judge.py:157`
+- `TestLLMJudgeEvaluatorProperties` (class) — `tests/unit/evaluators/test_llm_judge.py:187`
+- `TestBuiltinCriteria` (class) — `tests/unit/evaluators/test_llm_judge.py:221`
+- `TestBuildPrompt` (class) — `tests/unit/evaluators/test_llm_judge.py:243`
+- `TestParseResponse` (class) — `tests/unit/evaluators/test_llm_judge.py:319`
+- `TestGetArtifactContent` (class) — `tests/unit/evaluators/test_llm_judge.py:395`
+- `TestEvaluate` (class) — `tests/unit/evaluators/test_llm_judge.py:450`
+- `TestEvaluateWithAveraging` (class) — `tests/unit/evaluators/test_llm_judge.py:641`
+- `TestErrorHandling` (class) — `tests/unit/evaluators/test_llm_judge.py:724`
+- `TestRegistry` (class) — `tests/unit/evaluators/test_llm_judge.py:798`
+- `TestBedrockProvider` (class) — `tests/unit/evaluators/test_llm_judge.py:824`
+- `TestOpenAIBaseUrl` (class) — `tests/unit/evaluators/test_llm_judge.py:907`
+- `TestJudgeEnvConfig` (class) — `tests/unit/evaluators/test_llm_judge.py:959`
 - `TestPerformanceMetricType` (class) — `tests/unit/evaluators/test_performance.py:154`
 - `TestRegressionStatus` (class) — `tests/unit/evaluators/test_performance.py:167`
 - `TestPerformanceMetrics` (class) — `tests/unit/evaluators/test_performance.py:178`
@@ -3946,21 +4474,193 @@ _(README truncated — see the full file)_
 - `TestRoundTrip` (class) — `tests/unit/generator/test_writer.py:487`
 - `TestMultilineStrings` (class) — `tests/unit/generator/test_writer.py:580`
 - `TestTagFilter` (class) — `tests/unit/loader/test_filters.py:6`
+- `test_empty_registry_returns_none` (function) — `tests/unit/loader/test_format_dispatch.py:14`
+- `test_register_and_find` (function) — `tests/unit/loader/test_format_dispatch.py:22`
+- `test_no_match_returns_none` (function) — `tests/unit/loader/test_format_dispatch.py:31`
+- `test_register_override_by_name` (function) — `tests/unit/loader/test_format_dispatch.py:40`
+- `test_detector_exception_is_skipped` (function) — `tests/unit/loader/test_format_dispatch.py:55`
+- `test_singleton_accessor` (function) — `tests/unit/loader/test_format_dispatch.py:73`
 - `TestTestLoader` (class) — `tests/unit/loader/test_loader.py:9`
-- `TestMultiAgentLoader` (class) — `tests/unit/loader/test_loader.py:207`
+- `TestMultiAgentLoader` (class) — `tests/unit/loader/test_loader.py:234`
 - `TestTaskDefinition` (class) — `tests/unit/loader/test_models.py:23`
 - `TestConstraints` (class) — `tests/unit/loader/test_models.py:52`
 - `TestScoringWeights` (class) — `tests/unit/loader/test_models.py:83`
 - `TestAssertion` (class) — `tests/unit/loader/test_models.py:116`
-- `TestTestDefinition` (class) — `tests/unit/loader/test_models.py:137`
-- `TestTestSuite` (class) — `tests/unit/loader/test_models.py:176`
-- `TestMultiAgentMode` (class) — `tests/unit/loader/test_models.py:496`
-- `TestCollaborationConfig` (class) — `tests/unit/loader/test_models.py:512`
-- `TestHandoffConfig` (class) — `tests/unit/loader/test_models.py:553`
-- `TestComparisonConfig` (class) — `tests/unit/loader/test_models.py:599`
-- `TestMultiAgentTestDefinition` (class) — `tests/unit/loader/test_models.py:623`
+- `TestTestDefinition` (class) — `tests/unit/loader/test_models.py:144`
+- `TestTestSuite` (class) — `tests/unit/loader/test_models.py:183`
+- `TestMultiAgentMode` (class) — `tests/unit/loader/test_models.py:503`
+- `TestCollaborationConfig` (class) — `tests/unit/loader/test_models.py:519`
+- `TestHandoffConfig` (class) — `tests/unit/loader/test_models.py:560`
+- `TestComparisonConfig` (class) — `tests/unit/loader/test_models.py:606`
+- `TestMultiAgentTestDefinition` (class) — `tests/unit/loader/test_models.py:630`
 - `TestYAMLParser` (class) — `tests/unit/loader/test_parser.py:9`
 - `TestVariableSubstitution` (class) — `tests/unit/loader/test_parser.py:66`
+- `test_empty_returns_none` (function) — `tests/unit/loader/test_suite_source.py:16`
+- `test_register_and_find` (function) — `tests/unit/loader/test_suite_source.py:23`
+- `test_detector_exception_skipped` (function) — `tests/unit/loader/test_suite_source.py:32`
+- `test_singleton` (function) — `tests/unit/loader/test_suite_source.py:46`
+- `test_cached_split_out_of_input_no_double_count` (function) — `tests/unit/method/test_codex_usage_normalization.py:10`
+- `test_no_cached_is_identity` (function) — `tests/unit/method/test_codex_usage_normalization.py:23`
+- `FIXTURES` (const) — `tests/unit/method/test_price_reports.py:20`
+- `test_resolve_model_from_agent_id` (function) — `tests/unit/method/test_price_reports.py:50`
+- `test_view_prices_measured_and_flags` (function) — `tests/unit/method/test_price_reports.py:62`
+- `test_missing_contract_is_flagged` (function) — `tests/unit/method/test_price_reports.py:99`
+- `test_estimated_cases_not_double_counted_as_cost_unknown` (function) — `tests/unit/method/test_price_reports.py:124`
+- `test_main_writes_sidecar` (function) — `tests/unit/method/test_price_reports.py:151`
+- `main` (function) — `tests/unit/method_spawners/fixtures/fake_codex.py:31`
+- `argv` (const) — `tests/unit/method_spawners/fixtures/fake_opencode.py:15`
+- `log` (const) — `tests/unit/method_spawners/fixtures/fake_opencode.py:17`
+- `prompt` (const) — `tests/unit/method_spawners/fixtures/fake_opencode.py:39`
+- `argv` (const) — `tests/unit/method_spawners/fixtures/fake_pi.py:14`
+- `log` (const) — `tests/unit/method_spawners/fixtures/fake_pi.py:16`
+- `prompt` (const) — `tests/unit/method_spawners/fixtures/fake_pi.py:21`
+- `SHIM` (const) — `tests/unit/method_spawners/test_anthropic_api_shim.py:16`
+- `test_missing_key_emits_failed` (function) — `tests/unit/method_spawners/test_anthropic_api_shim.py:162`
+- `test_success_with_fake_sdk` (function) — `tests/unit/method_spawners/test_anthropic_api_shim.py:171`
+- `test_success_writes_debug_io_files_when_enabled` (function) — `tests/unit/method_spawners/test_anthropic_api_shim.py:200`
+- `test_invalid_stdin_emits_failed_not_crash` (function) — `tests/unit/method_spawners/test_anthropic_api_shim.py:245`
+- `test_missing_usage_defaults_tokens_zero` (function) — `tests/unit/method_spawners/test_anthropic_api_shim.py:284`
+- `test_file_read_tool_loop_when_constraints_allow_endpoint` (function) — `tests/unit/method_spawners/test_anthropic_api_shim.py:361`
+- `test_file_read_tool_loop_stderr_event_includes_tool_error` (function) — `tests/unit/method_spawners/test_anthropic_api_shim.py:428`
+- `test_file_read_tool_loop_fails_contract_shaped_on_max_iterations` (function) — `tests/unit/method_spawners/test_anthropic_api_shim.py:491`
+- `SHIM` (const) — `tests/unit/method_spawners/test_claude_code_shim.py:9`
+- `FAKE` (const) — `tests/unit/method_spawners/test_claude_code_shim.py:12`
+- `test_shim_emits_valid_atp_response_with_review_artifact` (function) — `tests/unit/method_spawners/test_claude_code_shim.py:28`
+- `test_corpus_run_sets_cwd_and_confinement_flags` (function) — `tests/unit/method_spawners/test_claude_code_shim.py:86`
+- `test_corpus_run_normalizes_absolute_citation_paths` (function) — `tests/unit/method_spawners/test_claude_code_shim.py:105`
+- `test_non_corpus_run_has_no_confinement_flags` (function) — `tests/unit/method_spawners/test_claude_code_shim.py:122`
+- `corpus_workspace` (const) — `tests/unit/method_spawners/test_cli_common_corpus.py:15`
+- `normalize_citation_paths` (const) — `tests/unit/method_spawners/test_cli_common_corpus.py:16`
+- `test_corpus_workspace_returns_root_for_corpus_run` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:19`
+- `test_corpus_workspace_none_without_run_mode` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:27`
+- `test_corpus_workspace_none_without_workspace` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:37`
+- `test_corpus_workspace_none_on_missing_keys` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:45`
+- `test_corpus_workspace_none_on_null_context` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:49`
+- `test_normalize_strips_workspace_prefix` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:58`
+- `test_normalize_strips_nested_and_multiple` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:65`
+- `test_normalize_handles_trailing_slash_workspace` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:71`
+- `test_normalize_leaves_relative_paths_alone` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:75`
+- `test_pi_corpus_run_confine_flags_before_prompt_and_cwd` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:124`
+- `test_pi_non_corpus_run_has_no_tools_flag` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:153`
+- `test_opencode_corpus_run_injects_readonly_config_and_cwd` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:197`
+- `test_opencode_non_corpus_run_keeps_user_config_surface` (function) — `tests/unit/method_spawners/test_cli_common_corpus.py:232`
+- `test_model_arg_prefixes_provider_when_bare` (function) — `tests/unit/method_spawners/test_cli_shims.py:24`
+- `test_build_response_shape_and_token_total` (function) — `tests/unit/method_spawners/test_cli_shims.py:32`
+- `test_opencode_parse_output_text_and_tokens` (function) — `tests/unit/method_spawners/test_cli_shims.py:45`
+- `test_opencode_shim_fails_when_binary_missing` (function) — `tests/unit/method_spawners/test_cli_shims.py:74`
+- `test_opencode_shim_fails_without_model` (function) — `tests/unit/method_spawners/test_cli_shims.py:83`
+- `test_run_timeout_yields_failed` (function) — `tests/unit/method_spawners/test_cli_shims.py:89`
+- `test_pi_parse_output_assistant_text_and_usage` (function) — `tests/unit/method_spawners/test_cli_shims.py:122`
+- `test_pi_shim_fails_when_binary_missing` (function) — `tests/unit/method_spawners/test_cli_shims.py:136`
+- `test_opencode_parse_tolerates_non_dict_jsonl_line` (function) — `tests/unit/method_spawners/test_cli_shims.py:144`
+- `test_pi_parse_tolerates_non_dict_jsonl_line` (function) — `tests/unit/method_spawners/test_cli_shims.py:154`
+- `test_run_parse_error_yields_failed` (function) — `tests/unit/method_spawners/test_cli_shims.py:166`
+- `SHIM` (const) — `tests/unit/method_spawners/test_codex_cli_shim.py:9`
+- `FAKE` (const) — `tests/unit/method_spawners/test_codex_cli_shim.py:10`
+- `test_shim_emits_valid_atp_response_with_review_artifact` (function) — `tests/unit/method_spawners/test_codex_cli_shim.py:28`
+- `test_shim_captures_tokens_from_json_events` (function) — `tests/unit/method_spawners/test_codex_cli_shim.py:53`
+- `test_shim_surfaces_token_breakdown_without_inflating_total` (function) — `tests/unit/method_spawners/test_codex_cli_shim.py:61`
+- `test_shim_failure_path_emits_failed` (function) — `tests/unit/method_spawners/test_codex_cli_shim.py:81`
+- `test_corpus_run_sets_cwd_to_workspace` (function) — `tests/unit/method_spawners/test_codex_cli_shim.py:113`
+- `test_corpus_run_normalizes_absolute_citation_paths` (function) — `tests/unit/method_spawners/test_codex_cli_shim.py:134`
+- `test_non_corpus_run_keeps_default_cwd` (function) — `tests/unit/method_spawners/test_codex_cli_shim.py:151`
+- `SHIM_PATH` (const) — `tests/unit/method_spawners/test_deepseek_shim.py:12`
+- `shim` (const) — `tests/unit/method_spawners/test_deepseek_shim.py:26`
+- `test_build_response_success` (function) — `tests/unit/method_spawners/test_deepseek_shim.py:57`
+- `test_build_response_missing_usage` (function) — `tests/unit/method_spawners/test_deepseek_shim.py:74`
+- `test_main_success` (function) — `tests/unit/method_spawners/test_deepseek_shim.py:85`
+- `test_main_missing_key_emits_failed` (function) — `tests/unit/method_spawners/test_deepseek_shim.py:109`
+- `test_main_urllib_error_emits_failed` (function) — `tests/unit/method_spawners/test_deepseek_shim.py:127`
+- `test_main_invalid_stdin_emits_failed` (function) — `tests/unit/method_spawners/test_deepseek_shim.py:146`
+- `imp` (const) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:18`
+- `test_parse_report_extracts_store_fields` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:48`
+- `test_breakpoint_axis_level_absent_is_none` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:61`
+- `test_task_type_falls_back_to_benchmark_map` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:69`
+- `test_parse_report_rejects_incomplete_payload` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:81`
+- `test_parse_report_rejects_non_json` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:87`
+- `test_discover_reports_is_recursive_and_sorted` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:93`
+- `test_main_dry_run_writes_nothing` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:103`
+- `test_main_missing_dir_returns_1` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:114`
+- `test_main_empty_dir_returns_0` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:118`
+- `test_parse_case_details_skips_blank_and_malformed` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:163`
+- `test_parse_case_details_missing_file_is_empty` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:175`
+- `test_case_details_path_for_derives_sibling` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:179`
+- `test_case_details_path_for_rejects_non_report_name` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:184`
+- `test_parse_report_tolerates_non_dict_score_components` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:189`
+- `test_task_type_tolerates_non_list_per_task` (function) — `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py:198`
+- `SHIM_PATH` (const) — `tests/unit/method_spawners/test_ollama_shim.py:12`
+- `shim` (const) — `tests/unit/method_spawners/test_ollama_shim.py:26`
+- `test_build_response_success` (function) — `tests/unit/method_spawners/test_ollama_shim.py:56`
+- `test_build_response_missing_token_counts` (function) — `tests/unit/method_spawners/test_ollama_shim.py:73`
+- `test_main_success` (function) — `tests/unit/method_spawners/test_ollama_shim.py:84`
+- `test_main_missing_model_emits_failed` (function) — `tests/unit/method_spawners/test_ollama_shim.py:108`
+- `test_main_urllib_error_emits_failed` (function) — `tests/unit/method_spawners/test_ollama_shim.py:126`
+- `test_main_invalid_stdin_emits_failed` (function) — `tests/unit/method_spawners/test_ollama_shim.py:145`
+- `test_build_response_normalizes_openai_compat_payload` (function) — `tests/unit/method_spawners/test_openai_compat_shim.py:21`
+- `test_build_response_missing_usage_is_none` (function) — `tests/unit/method_spawners/test_openai_compat_shim.py:35`
+- `test_mimo_shim_fails_clearly_without_key` (function) — `tests/unit/method_spawners/test_openai_compat_shim.py:56`
+- `test_qwen_shim_fails_clearly_without_key` (function) — `tests/unit/method_spawners/test_openai_compat_shim.py:62`
+- `test_mimo_shim_fails_clearly_without_model` (function) — `tests/unit/method_spawners/test_openai_compat_shim.py:68`
+- `test_call_builds_single_v1_chat_completions_url` (function) — `tests/unit/method_spawners/test_openai_compat_shim.py:74`
+- `HARNESS` (const) — `tests/unit/method_spawners/test_run_pipe_check.py:10`
+- `test_unknown_task_type_exits_2_with_stderr` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:32`
+- `test_unknown_agent_exits_2` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:50`
+- `test_dashboard_replace_without_to_dashboard_exits_2` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:56`
+- `test_task_type_disagreeing_with_suite_exits_2` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:66`
+- `test_suite_task_type_reads_homogeneous_cases` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:86`
+- `test_suite_task_type_none_when_absent` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:94`
+- `test_suite_task_type_mixed_raises` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:101`
+- `test_suite_task_type_malformed_yaml_raises_valueerror` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:110`
+- `test_suite_task_type_empty_value_raises` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:120`
+- `test_grade_case_surfaces_continuous_metrics` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:233`
+- `test_grade_case_majority_pass_across_runs` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:265`
+- `test_grade_case_sums_per_class_usage_and_sets_source` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:282`
+- `test_grade_case_usage_source_measured_for_reported_zero_usage` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:300`
+- `test_grade_case_usage_source_none_when_all_infra` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:345`
+- `test_grade_case_minority_pass_fails` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:361`
+- `test_grade_case_majority_malformed_flags_malformed` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:374`
+- `test_grade_case_partial_infra_grades_completed_runs` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:386`
+- `test_grade_case_all_runs_infra_fail_sets_error_class` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:405`
+- `test_grade_case_normalizes_missing_run_error_class` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:443`
+- `test_export_to_dashboard_imports_written_reports` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:457`
+- `test_write_case_details_one_line_per_case` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:505`
+- `test_agents_registry_builds_harness_at_model_ids` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:526`
+- `test_default_registry_has_no_safe_id_collisions` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:543`
+- `test_safe_id_collision_detects_collapsing_ids` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:549`
+- `test_safe_agent_id_renders_filesystem_safe` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:557`
+- `test_legacy_bare_harness_id_is_unknown` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:567`
+- `test_registry_has_sonnet_and_new_api_agents_no_opus` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:574`
+- `test_preflight_skips_mimo_qwen_without_key` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:588`
+- `test_registry_has_pi_and_opencode` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:597`
+- `test_preflight_skips_pi_opencode_without_binary` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:607`
+- `test_vendored_catalog_is_the_roster_source` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:618`
+- `test_load_agent_catalog_only_includes_tested` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:637`
+- `test_load_agent_catalog_undeclared_harness_fails_loudly` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:670`
+- `test_projection_builds_harnesses_and_agent_models` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:714`
+- `test_agent_models_preserves_declaration_order` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:723`
+- `test_missing_planes_is_not_a_sweep_catalog` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:738`
+- `test_bad_catalog_wraps_error_with_ssot_hint_and_preserves_cause` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:746`
+- `test_axis_by_id_skips_read_only_corpus_cases` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:762`
+- `test_axis_by_id_includes_corpus_when_requested` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:779`
+- `test_corpus_capable_harnesses_lists_wired_clis_only` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:797`
+- `test_register_corpus_preparer_is_idempotent` (function) — `tests/unit/method_spawners/test_run_pipe_check.py:810`
+- `test_classify_shim_error_taxonomy` (function) — `tests/unit/method_spawners/test_shim_diagnostics.py:58`
+- `test_classifier_ignores_provider_words_inside_stderr_tail` (function) — `tests/unit/method_spawners/test_shim_diagnostics.py:80`
+- `test_empty_output_failure_carries_stderr_tail` (function) — `tests/unit/method_spawners/test_shim_diagnostics.py:97`
+- `test_raw_streams_persisted_when_dir_set` (function) — `tests/unit/method_spawners/test_shim_diagnostics.py:111`
+- `test_raw_streams_not_written_without_dir` (function) — `tests/unit/method_spawners/test_shim_diagnostics.py:127`
+- `test_opencode_isolated_data_home_seeds_auth` (function) — `tests/unit/method_spawners/test_shim_diagnostics.py:146`
+- `test_opencode_isolation_tolerates_missing_auth` (function) — `tests/unit/method_spawners/test_shim_diagnostics.py:169`
+- `test_opencode_main_restores_env_and_cleans_tmp` (function) — `tests/unit/method_spawners/test_shim_diagnostics.py:182`
+- `test_timeout_persists_partial_streams` (function) — `tests/unit/method_spawners/test_shim_diagnostics.py:202`
+- `test_write_then_verify_roundtrips_clean` (function) — `tests/unit/method_spawners/test_suite_lock.py:29`
+- `test_absent_lock_loads_as_none` (function) — `tests/unit/method_spawners/test_suite_lock.py:41`
+- `test_changed_case_content_is_drift` (function) — `tests/unit/method_spawners/test_suite_lock.py:46`
+- `test_added_case_is_drift` (function) — `tests/unit/method_spawners/test_suite_lock.py:57`
+- `test_removed_case_is_drift` (function) — `tests/unit/method_spawners/test_suite_lock.py:66`
+- `test_malformed_toml_raises_suite_lock_error` (function) — `tests/unit/method_spawners/test_suite_lock.py:75`
+- `test_missing_required_key_raises_suite_lock_error` (function) — `tests/unit/method_spawners/test_suite_lock.py:84`
+- `test_fingerprint_is_order_independent` (function) — `tests/unit/method_spawners/test_suite_lock.py:94`
 - `TestMockDefinitionLoader` (class) — `tests/unit/mock_tools/test_loader.py:10`
 - `TestPatternMatcher` (class) — `tests/unit/mock_tools/test_models.py:17`
 - `TestMockResponse` (class) — `tests/unit/mock_tools/test_models.py:103`
@@ -3970,7 +4670,50 @@ _(README truncated — see the full file)_
 - `TestMockDefinition` (class) — `tests/unit/mock_tools/test_models.py:279`
 - `TestCallRecorder` (class) — `tests/unit/mock_tools/test_recorder.py:6`
 - `TestMockToolServer` (class) — `tests/unit/mock_tools/test_server.py:17`
-- `TestMockAppEndpoints` (class) — `tests/unit/mock_tools/test_server.py:231`
+- `TestMockAppEndpoints` (class) — `tests/unit/mock_tools/test_server.py:256`
+- `test_atp_catalog_takes_precedence` (function) — `tests/unit/model_catalog/test_loader.py:22`
+- `test_xdg_used_when_atp_catalog_unset` (function) — `tests/unit/model_catalog/test_loader.py:31`
+- `test_empty_env_is_treated_as_unset` (function) — `tests/unit/model_catalog/test_loader.py:41`
+- `test_relative_atp_catalog_is_error` (function) — `tests/unit/model_catalog/test_loader.py:52`
+- `test_relative_xdg_config_home_is_error` (function) — `tests/unit/model_catalog/test_loader.py:59`
+- `test_empty_xdg_config_home_falls_back_to_home` (function) — `tests/unit/model_catalog/test_loader.py:66`
+- `test_nothing_configured_fails_loud` (function) — `tests/unit/model_catalog/test_loader.py:73`
+- `test_init_target_returned_even_when_absent` (function) — `tests/unit/model_catalog/test_loader.py:80`
+- `test_atp_catalog_pointing_at_directory_fails` (function) — `tests/unit/model_catalog/test_loader.py:87`
+- `test_xdg_config_home_pointing_at_file_fails` (function) — `tests/unit/model_catalog/test_loader.py:96`
+- `test_load_explicit_path` (function) — `tests/unit/model_catalog/test_loader.py:105`
+- `test_load_empty_models_ok` (function) — `tests/unit/model_catalog/test_loader.py:112`
+- `test_load_invalid_toml` (function) — `tests/unit/model_catalog/test_loader.py:118`
+- `test_load_bad_status_is_schema_error` (function) — `tests/unit/model_catalog/test_loader.py:125`
+- `test_load_referential_error_is_schema_error` (function) — `tests/unit/model_catalog/test_loader.py:132`
+- `test_init_writes_template` (function) — `tests/unit/model_catalog/test_models_cli.py:19`
+- `test_init_creates_parent_dirs` (function) — `tests/unit/model_catalog/test_models_cli.py:27`
+- `test_init_refuses_overwrite_without_force` (function) — `tests/unit/model_catalog/test_models_cli.py:36`
+- `test_init_force_overwrites` (function) — `tests/unit/model_catalog/test_models_cli.py:44`
+- `test_list_table` (function) — `tests/unit/model_catalog/test_models_cli.py:52`
+- `test_list_json` (function) — `tests/unit/model_catalog/test_models_cli.py:64`
+- `test_list_empty_is_friendly` (function) — `tests/unit/model_catalog/test_models_cli.py:76`
+- `test_list_no_catalog_fails_loud` (function) — `tests/unit/model_catalog/test_models_cli.py:84`
+- `test_init_rejects_directory_path` (function) — `tests/unit/model_catalog/test_models_cli.py:92`
+- `test_init_rejects_relative_path` (function) — `tests/unit/model_catalog/test_models_cli.py:97`
+- `test_model_entry_valid` (function) — `tests/unit/model_catalog/test_schema.py:14`
+- `test_model_entry_bad_status_rejected` (function) — `tests/unit/model_catalog/test_schema.py:20`
+- `test_model_entry_allows_extra_fields` (function) — `tests/unit/model_catalog/test_schema.py:25`
+- `test_catalog_empty_models_is_valid` (function) — `tests/unit/model_catalog/test_schema.py:30`
+- `test_catalog_missing_models_rejected` (function) — `tests/unit/model_catalog/test_schema.py:36`
+- `test_harness_entry_defaults` (function) — `tests/unit/model_catalog/test_schema.py:41`
+- `test_agent_entry_defaults` (function) — `tests/unit/model_catalog/test_schema.py:47`
+- `test_entries_allow_extra_fields` (function) — `tests/unit/model_catalog/test_schema.py:53`
+- `test_catalog_typed_planes_consistent_ok` (function) — `tests/unit/model_catalog/test_schema.py:59`
+- `test_referential_undeclared_harness_rejected` (function) — `tests/unit/model_catalog/test_schema.py:71`
+- `test_referential_noop_when_planes_absent` (function) — `tests/unit/model_catalog/test_schema.py:80`
+- `test_referential_present_empty_both_ok` (function) — `tests/unit/model_catalog/test_schema.py:86`
+- `test_referential_present_empty_harnesses_with_agent_fails` (function) — `tests/unit/model_catalog/test_schema.py:91`
+- `test_referential_noop_when_one_plane_absent` (function) — `tests/unit/model_catalog/test_schema.py:96`
+- `test_read_template_returns_text` (function) — `tests/unit/model_catalog/test_template.py:9`
+- `test_packaged_template_is_reachable_as_resource` (function) — `tests/unit/model_catalog/test_template.py:14`
+- `test_template_is_valid_and_loads_without_error` (function) — `tests/unit/model_catalog/test_template.py:21`
+- `test_template_endorses_no_active_model` (function) — `tests/unit/model_catalog/test_template.py:29`
 - `TestConcurrencyConfig` (class) — `tests/unit/performance/test_async_utils.py:20`
 - `TestAsyncBatcher` (class) — `tests/unit/performance/test_async_utils.py:38`
 - `TestRateLimiter` (class) — `tests/unit/performance/test_async_utils.py:81`
@@ -4030,6 +4773,9 @@ _(README truncated — see the full file)_
 - `TestGetPluginManager` (class) — `tests/unit/plugins/test_discovery.py:480`
 - `TestEntryPointGroups` (class) — `tests/unit/plugins/test_discovery.py:506`
 - `TestPluginManagerValidation` (class) — `tests/unit/plugins/test_discovery.py:529`
+- `test_runs_each_register_hook` (function) — `tests/unit/plugins/test_entrypoints.py:17`
+- `test_idempotent` (function) — `tests/unit/plugins/test_entrypoints.py:29`
+- `test_broken_hook_is_skipped` (function) — `tests/unit/plugins/test_entrypoints.py:37`
 - `TestAdapterPluginProtocol` (class) — `tests/unit/plugins/test_interfaces.py:28`
 - `TestEvaluatorPluginProtocol` (class) — `tests/unit/plugins/test_interfaces.py:109`
 - `TestReporterPluginProtocol` (class) — `tests/unit/plugins/test_interfaces.py:164`
@@ -4058,6 +4804,18 @@ _(README truncated — see the full file)_
 - `TestTestReport` (class) — `tests/unit/reporters/test_base.py:93`
 - `TestSuiteReport` (class) — `tests/unit/reporters/test_base.py:149`
 - `TestSuiteReportFromSuiteResult` (class) — `tests/unit/reporters/test_base.py:196`
+- `DDL` (const) — `tests/unit/reporters/test_benchmark_pipe_smoke.py:10`
+- `test_payload_inserts_and_is_idempotent` (function) — `tests/unit/reporters/test_benchmark_pipe_smoke.py:48`
+- `SCHEMA` (const) — `tests/unit/reporters/test_benchmark_reporter.py:12`
+- `test_mean_run_pass_rate_surfaces_flake_and_per_task_runs` (function) — `tests/unit/reporters/test_benchmark_reporter.py:35`
+- `test_mean_run_pass_rate_legacy_dict_equals_binary` (function) — `tests/unit/reporters/test_benchmark_reporter.py:61`
+- `test_per_task_carries_per_class_usage_and_source` (function) — `tests/unit/reporters/test_benchmark_reporter.py:81`
+- `test_per_task_per_class_defaults_none_for_legacy_dict` (function) — `tests/unit/reporters/test_benchmark_reporter.py:107`
+- `test_mean_run_pass_rate_counts_all_infra_case_as_zero` (function) — `tests/unit/reporters/test_benchmark_reporter.py:122`
+- `test_payload_conforms_to_contract_and_aggregates` (function) — `tests/unit/reporters/test_benchmark_reporter.py:148`
+- `test_payload_stamps_usage_contract` (function) — `tests/unit/reporters/test_benchmark_reporter.py:171`
+- `test_malformed_rate_aggregated_and_contract_conformant` (function) — `tests/unit/reporters/test_benchmark_reporter.py:186`
+- `test_malformed_rate_defaults_zero_for_legacy_case_dicts` (function) — `tests/unit/reporters/test_benchmark_reporter.py:206`
 - `TestConsoleReporter` (class) — `tests/unit/reporters/test_console.py:18`
 - `TestGameReporter` (class) — `tests/unit/reporters/test_game_reporter.py:129`
 - `TestGameHTMLReporter` (class) — `tests/unit/reporters/test_game_reporter.py:296`
@@ -4069,9 +4827,35 @@ _(README truncated — see the full file)_
 - `TestHTMLReporterHelpers` (class) — `tests/unit/reporters/test_html_reporter.py:607`
 - `TestJSONReporter` (class) — `tests/unit/reporters/test_json_reporter.py:21`
 - `TestJUnitReporter` (class) — `tests/unit/reporters/test_junit_reporter.py:20`
-- `CustomReporter` (class) — `tests/unit/reporters/test_registry.py:20`
-- `TestReporterRegistry` (class) — `tests/unit/reporters/test_registry.py:31`
-- `TestGlobalRegistry` (class) — `tests/unit/reporters/test_registry.py:156`
+- `test_bp_ordinal_none_is_best_and_levels_map_to_index` (function) — `tests/unit/reporters/test_rank_score.py:12`
+- `test_rank_score_equals_cpr_at_max_tiebreaker` (function) — `tests/unit/reporters/test_rank_score.py:21`
+- `test_rank_score_penalizes_below_cpr_at_min_tiebreaker` (function) — `tests/unit/reporters/test_rank_score.py:27`
+- `test_rank_score_monotonic_in_breakpoint` (function) — `tests/unit/reporters/test_rank_score.py:33`
+- `test_rank_score_breaks_ceiling_tie_within_bounds` (function) — `tests/unit/reporters/test_rank_score.py:51`
+- `test_rank_score_zero_cases` (function) — `tests/unit/reporters/test_rank_score.py:58`
+- `test_payload_emits_rank_score_and_bp_ordinal_without_touching_score` (function) — `tests/unit/reporters/test_rank_score.py:62`
+- `CustomReporter` (class) — `tests/unit/reporters/test_registry.py:21`
+- `TestReporterRegistry` (class) — `tests/unit/reporters/test_registry.py:32`
+- `TestGlobalRegistry` (class) — `tests/unit/reporters/test_registry.py:191`
+- `test_citation_extractor_missing_output_path_maps_missing_value` (function) — `tests/unit/reporters/test_summary_extractor.py:120`
+- `test_citation_extractor_forbidden_source_maps_forbidden_value` (function) — `tests/unit/reporters/test_summary_extractor.py:138`
+- `test_citation_extractor_malformed_verdict_maps_malformed_output` (function) — `tests/unit/reporters/test_summary_extractor.py:153`
+- `test_citation_extractor_unsupported_check_falls_back_to_concise_failure` (function) — `tests/unit/reporters/test_summary_extractor.py:166`
+- `test_compact_failure_extractor_execution_error_wins_over_failed_checks` (function) — `tests/unit/reporters/test_summary_extractor.py:181`
+- `test_compact_failure_extractor_unsupported_check_uses_generic_message` (function) — `tests/unit/reporters/test_summary_extractor.py:211`
+- `test_compact_suite_summary_passing_suite_has_no_failures_and_success_true` (function) — `tests/unit/reporters/test_summary_models.py:79`
+- `test_compact_test_summary_failed_test_includes_first_failure` (function) — `tests/unit/reporters/test_summary_models.py:108`
+- `test_compact_suite_summary_counts_malformed_and_error_breakdowns` (function) — `tests/unit/reporters/test_summary_models.py:121`
+- `test_compact_suite_summary_include_passed_adds_passed_test_summaries` (function) — `tests/unit/reporters/test_summary_models.py:171`
+- `test_compact_suite_summary_max_failures_truncates_failures` (function) — `tests/unit/reporters/test_summary_models.py:189`
+- `test_summary_reporter_name_is_summary` (function) — `tests/unit/reporters/test_summary_reporter.py:97`
+- `test_summary_reporter_console_passing_suite_shows_compact_counts` (function) — `tests/unit/reporters/test_summary_reporter.py:103`
+- `test_summary_reporter_console_failing_suite_shows_failures_only_by_default` (function) — `tests/unit/reporters/test_summary_reporter.py:116`
+- `test_summary_reporter_console_value_mismatch_includes_expected_received` (function) — `tests/unit/reporters/test_summary_reporter.py:130`
+- `test_summary_reporter_json_outputs_compact_summary_shape` (function) — `tests/unit/reporters/test_summary_reporter.py:143`
+- `test_summary_reporter_file_output_creates_parent_directories` (function) — `tests/unit/reporters/test_summary_reporter.py:158`
+- `test_summary_reporter_include_passed_includes_passed_test_summaries` (function) — `tests/unit/reporters/test_summary_reporter.py:171`
+- `test_summary_reporter_large_values_are_bounded_or_omitted` (function) — `tests/unit/reporters/test_summary_reporter.py:186`
 - `TestRunnerError` (class) — `tests/unit/runner/test_exceptions.py:12`
 - `TestTestExecutionError` (class) — `tests/unit/runner/test_exceptions.py:40`
 - `TestRunnerTimeoutError` (class) — `tests/unit/runner/test_exceptions.py:65`
@@ -4135,6 +4919,7 @@ _(README truncated — see the full file)_
 - `TestCreateProgressCallback` (class) — `tests/unit/runner/test_progress.py:371`
 - `TestColorHandling` (class) — `tests/unit/runner/test_progress.py:402`
 - `TestParallelTestScenarios` (class) — `tests/unit/runner/test_progress.py:433`
+- `test_request_preparer_registry_resolves_named_preparer` (function) — `tests/unit/runner/test_request_preparation.py:61`
 - `TestSandboxManager` (class) — `tests/unit/runner/test_sandbox.py:10`
 - `TestSandboxManagerContextManager` (class) — `tests/unit/runner/test_sandbox.py:136`
 - `TestPopulateWorkspace` (class) — `tests/unit/runner/test_sandbox_fixtures.py:11`
@@ -4149,6 +4934,7 @@ _(README truncated — see the full file)_
 - `TestAggregate` (class) — `tests/unit/scoring/test_aggregator.py:528`
 - `TestScoreTestResult` (class) — `tests/unit/scoring/test_aggregator.py:588`
 - `TestScoreCalculationExamples` (class) — `tests/unit/scoring/test_aggregator.py:673`
+- `TestCriticalHardGate` (class) — `tests/unit/scoring/test_aggregator.py:790`
 - `TestNormalizationConfig` (class) — `tests/unit/scoring/test_models.py:13`
 - `TestComponentScore` (class) — `tests/unit/scoring/test_models.py:58`
 - `TestScoreBreakdown` (class) — `tests/unit/scoring/test_models.py:129`
@@ -4327,7 +5113,7 @@ _(README truncated — see the full file)_
 
 ## Modules
 
-_954 files, 4252 public symbols, 112 internal imports._
+_1098 files, 5036 public symbols, 117 internal imports._
 
 - `art/generate_article_docx.py` (python)
 - `art/generate_quickstart_pdf.py` (python)
@@ -4416,6 +5202,7 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `atp/cli/commands/game.py` (python)
 - `atp/cli/commands/generate.py` (python)
 - `atp/cli/commands/init.py` (python)
+- `atp/cli/commands/models.py` (python)
 - `atp/cli/commands/plugins.py` (python)
 - `atp/cli/commands/pull.py` (python)
 - `atp/cli/commands/push.py` (python)
@@ -4430,13 +5217,24 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `atp/evaluators/artifact.py` (python)
 - `atp/evaluators/base.py` (python)
 - `atp/evaluators/behavior.py` (python)
+- `atp/evaluators/checkers/__init__.py` (python)
+- `atp/evaluators/checkers/registry.py` (python)
+- `atp/evaluators/citation_grounding/__init__.py` (python)
+- `atp/evaluators/citation_grounding/checker.py` (python)
 - `atp/evaluators/code_exec.py` (python)
 - `atp/evaluators/composite.py` (python)
 - `atp/evaluators/container.py` (python)
 - `atp/evaluators/factuality.py` (python)
 - `atp/evaluators/filesystem.py` (python)
+- `atp/evaluators/findings/__init__.py` (python)
+- `atp/evaluators/findings/checker.py` (python)
+- `atp/evaluators/findings/evaluator.py` (python)
+- `atp/evaluators/findings/matcher.py` (python)
 - `atp/evaluators/git_commit.py` (python)
 - `atp/evaluators/guardrails.py` (python)
+- `atp/evaluators/json_path/__init__.py` (python)
+- `atp/evaluators/json_path/checker.py` (python)
+- `atp/evaluators/json_path/resolver.py` (python)
 - `atp/evaluators/llm_judge.py` (python)
 - `atp/evaluators/performance.py` (python)
 - `atp/evaluators/registry.py` (python)
@@ -4459,9 +5257,11 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `atp/generator/trace_import.py` (python)
 - `atp/generator/writer.py` (python)
 - `atp/mock_tools/__init__.py` (python)
+- `atp/mock_tools/file_tools.py` (python)
 - `atp/mock_tools/loader.py` (python)
 - `atp/mock_tools/models.py` (python)
 - `atp/mock_tools/recorder.py` (python)
+- `atp/mock_tools/runtime.py` (python)
 - `atp/mock_tools/server.py` (python)
 - `atp/performance/__init__.py` (python)
 - `atp/performance/async_utils.py` (python)
@@ -4474,20 +5274,26 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `atp/plugins/config.py` (python)
 - `atp/plugins/dependencies.py` (python)
 - `atp/plugins/discovery.py` (python)
+- `atp/plugins/entrypoints.py` (python)
 - `atp/plugins/interfaces.py` (python)
 - `atp/reporters/__init__.py` (python)
 - `atp/reporters/base.py` (python)
+- `atp/reporters/benchmark_reporter.py` (python)
 - `atp/reporters/console.py` (python)
 - `atp/reporters/game_reporter.py` (python)
 - `atp/reporters/html_reporter.py` (python)
 - `atp/reporters/json_reporter.py` (python)
 - `atp/reporters/junit_reporter.py` (python)
 - `atp/reporters/registry.py` (python)
+- `atp/reporters/summary_extractor.py` (python)
+- `atp/reporters/summary_models.py` (python)
+- `atp/reporters/summary_reporter.py` (python)
 - `atp/runner/__init__.py` (python)
 - `atp/runner/exceptions.py` (python)
 - `atp/runner/models.py` (python)
 - `atp/runner/multi_agent.py` (python)
 - `atp/runner/orchestrator.py` (python)
+- `atp/runner/preparation.py` (python)
 - `atp/runner/progress.py` (python)
 - `atp/runner/sandbox.py` (python)
 - `atp/sdk/__init__.py` (python)
@@ -4517,6 +5323,8 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `demo/fixtures/tests/test_api_client.py` (python)
 - `demo/fixtures/tests/test_csv_parser.py` (python)
 - `demo/fixtures/tests/test_fibonacci.py` (python)
+- `examples/compose-demo/agent-llm/agent.py` (python)
+- `examples/compose-demo/agent/agent.py` (python)
 - `examples/demo_agent.py` (python)
 - `examples/docker/agent.py` (python)
 - `examples/docker/openai_agent.py` (python)
@@ -4530,6 +5338,8 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `examples/mcp_simple_agent.py` (python)
 - `examples/mock_mcp_server.py` (python)
 - `examples/openai_agent.py` (python)
+- `examples/req-extraction-json/check_deadline_trap.py` (python)
+- `examples/req-extraction-json/score_extraction.py` (python)
 - `examples/search_agent/agent.py` (python)
 - `executor.py` (python)
 - `game-environments/game_envs/__init__.py` (python)
@@ -4601,6 +5411,21 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `game-environments/tests/test_strategies/test_pg_strategies.py` (python)
 - `game-environments/tests/test_strategies/test_registry.py` (python)
 - `game-environments/tests/test_strategy.py` (python)
+- `method/import_pipecheck_to_dashboard.py` (python)
+- `method/price_reports.py` (python)
+- `method/run_pipe_check.py` (python)
+- `method/spawners/_cli_common.py` (python)
+- `method/spawners/_openai_compat.py` (python)
+- `method/spawners/_tool_client.py` (python)
+- `method/spawners/anthropic_api_shim.py` (python)
+- `method/spawners/claude_code_shim.py` (python)
+- `method/spawners/codex_cli_shim.py` (python)
+- `method/spawners/deepseek_shim.py` (python)
+- `method/spawners/mimo_shim.py` (python)
+- `method/spawners/ollama_shim.py` (python)
+- `method/spawners/opencode_shim.py` (python)
+- `method/spawners/pi_shim.py` (python)
+- `method/spawners/qwen_shim.py` (python)
 - `migrations/analytics/env.py` (python)
 - `migrations/analytics/versions/c25a35e0b9eb_initial_schema.py` (python)
 - `migrations/dashboard/env.py` (python)
@@ -4614,11 +5439,14 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `migrations/dashboard/versions/a1b2c3d4e5f6_action_tier2_fields.py` (python)
 - `migrations/dashboard/versions/a7b8c9d0e1f2_suite_execution_agent_name.py` (python)
 - `migrations/dashboard/versions/a9c4e81f3d2a_tournament_participant_agent_xor_builtin_check.py` (python)
+- `migrations/dashboard/versions/b2c3d4e5f6a7_suite_execution_adapter_model.py` (python)
 - `migrations/dashboard/versions/b3a1f7c2d4e5_add_webhook_url_and_run_events.py` (python)
 - `migrations/dashboard/versions/b8c9d0e1f2a3_agent_owner_not_null.py` (python)
+- `migrations/dashboard/versions/c3d4e5f6a7b8_eval_dimensions.py` (python)
 - `migrations/dashboard/versions/c60b45e516be_tournament_plan_2a_constraints.py` (python)
 - `migrations/dashboard/versions/c8d5f2a91234_enforce_run_user_id_not_null.py` (python)
 - `migrations/dashboard/versions/d2e5a1c7f3b8_agent_level_participant_uniqueness.py` (python)
+- `migrations/dashboard/versions/d4e5f6a7b8c9_task_type_language.py` (python)
 - `migrations/dashboard/versions/d7f3a2b1c4e5_agent_ownership_tokens_invites.py` (python)
 - `migrations/dashboard/versions/e1b2c3d4f5a6_agent_ownerless_partial_unique.py` (python)
 - `migrations/dashboard/versions/f1a2b3c4d5e6_action_reasoning.py` (python)
@@ -4665,14 +5493,21 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `packages/atp-core/atp/core/settings.py` (python)
 - `packages/atp-core/atp/core/telemetry.py` (python)
 - `packages/atp-core/atp/cost/__init__.py` (python)
+- `packages/atp-core/atp/cost/cloud_pricer.py` (python)
 - `packages/atp-core/atp/cost/models.py` (python)
 - `packages/atp-core/atp/cost/tracker.py` (python)
 - `packages/atp-core/atp/loader/__init__.py` (python)
 - `packages/atp-core/atp/loader/filters.py` (python)
+- `packages/atp-core/atp/loader/format_dispatch.py` (python)
 - `packages/atp-core/atp/loader/loader.py` (python)
 - `packages/atp-core/atp/loader/models.py` (python)
 - `packages/atp-core/atp/loader/parser.py` (python)
 - `packages/atp-core/atp/loader/schema.py` (python)
+- `packages/atp-core/atp/loader/suite_source.py` (python)
+- `packages/atp-core/atp/model_catalog/__init__.py` (python)
+- `packages/atp-core/atp/model_catalog/errors.py` (python)
+- `packages/atp-core/atp/model_catalog/loader.py` (python)
+- `packages/atp-core/atp/model_catalog/schema.py` (python)
 - `packages/atp-core/atp/protocol/__init__.py` (python)
 - `packages/atp-core/atp/protocol/_version.py` (python)
 - `packages/atp-core/atp/protocol/models.py` (python)
@@ -4715,6 +5550,8 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `packages/atp-dashboard/atp/dashboard/cli/__init__.py` (python)
 - `packages/atp-dashboard/atp/dashboard/cli/admin.py` (python)
 - `packages/atp-dashboard/atp/dashboard/database.py` (python)
+- `packages/atp-dashboard/atp/dashboard/dimensions.py` (python)
+- `packages/atp-dashboard/atp/dashboard/failure_analysis.py` (python)
 - `packages/atp-dashboard/atp/dashboard/mcp/__init__.py` (python)
 - `packages/atp-dashboard/atp/dashboard/mcp/auth.py` (python)
 - `packages/atp-dashboard/atp/dashboard/mcp/notifications.py` (python)
@@ -4752,6 +5589,7 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `packages/atp-dashboard/atp/dashboard/tournament/service.py` (python)
 - `packages/atp-dashboard/atp/dashboard/tournament/state.py` (python)
 - `packages/atp-dashboard/atp/dashboard/tournament/visibility.py` (python)
+- `packages/atp-dashboard/atp/dashboard/trend_stats.py` (python)
 - `packages/atp-dashboard/atp/dashboard/v2/__init__.py` (python)
 - `packages/atp-dashboard/atp/dashboard/v2/config.py` (python)
 - `packages/atp-dashboard/atp/dashboard/v2/dependencies.py` (python)
@@ -4827,6 +5665,36 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `packages/atp-dashboard/tests/unit/analytics/test_database.py` (python)
 - `packages/atp-dashboard/tests/unit/analytics/test_models.py` (python)
 - `packages/atp-dashboard/tests/unit/analytics/test_repository.py` (python)
+- `packages/atp-method/atp_method/__init__.py` (python)
+- `packages/atp-method/atp_method/corpus.py` (python)
+- `packages/atp-method/atp_method/corpus_manifest.py` (python)
+- `packages/atp-method/atp_method/envelopes.py` (python)
+- `packages/atp-method/atp_method/evaluators/__init__.py` (python)
+- `packages/atp-method/atp_method/evaluators/case_evaluator.py` (python)
+- `packages/atp-method/atp_method/loader.py` (python)
+- `packages/atp-method/atp_method/plugin.py` (python)
+- `packages/atp-method/atp_method/runtime.py` (python)
+- `packages/atp-method/atp_method/schema.py` (python)
+- `packages/atp-method/atp_method/taxonomy.py` (python)
+- `packages/atp-method/tests/__init__.py` (python)
+- `packages/atp-method/tests/conftest.py` (python)
+- `packages/atp-method/tests/test_cases_load.py` (python)
+- `packages/atp-method/tests/test_code_review_structured.py` (python)
+- `packages/atp-method/tests/test_corpus.py` (python)
+- `packages/atp-method/tests/test_envelopes.py` (python)
+- `packages/atp-method/tests/test_evaluator.py` (python)
+- `packages/atp-method/tests/test_loader.py` (python)
+- `packages/atp-method/tests/test_loader_artifact_corpus.py` (python)
+- `packages/atp-method/tests/test_loader_output_contract.py` (python)
+- `packages/atp-method/tests/test_p2_correctness_determinism.py` (python)
+- `packages/atp-method/tests/test_plugin.py` (python)
+- `packages/atp-method/tests/test_req_extraction_determinism.py` (python)
+- `packages/atp-method/tests/test_runtime_corpus_preparer.py` (python)
+- `packages/atp-method/tests/test_schema.py` (python)
+- `packages/atp-method/tests/test_schema_artifact_corpus.py` (python)
+- `packages/atp-method/tests/test_schema_contract.py` (python)
+- `packages/atp-method/tests/test_schema_output_contract.py` (python)
+- `packages/atp-method/tests/test_taxonomy.py` (python)
 - `packages/atp-sdk/atp_sdk/__init__.py` (python)
 - `packages/atp-sdk/atp_sdk/auth.py` (python)
 - `packages/atp-sdk/atp_sdk/benchmark.py` (python)
@@ -4861,6 +5729,7 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `tests/e2e/dashboard/tournament/test_e2e_ad9_ad10.py` (python)
 - `tests/e2e/dashboard/tournament/test_e2e_cancel_paths.py` (python)
 - `tests/e2e/dashboard/tournament/test_e2e_rest_admin_curl.py` (python)
+- `tests/e2e/mcp_auth.py` (python)
 - `tests/e2e/test_cli_commands.py` (python)
 - `tests/e2e/test_mcp_adapter.py` (python)
 - `tests/e2e/test_mcp_pd_tournament.py` (python)
@@ -4878,6 +5747,8 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `tests/integration/cli/__init__.py` (python)
 - `tests/integration/cli/test_generate_command.py` (python)
 - `tests/integration/cli/test_init_command.py` (python)
+- `tests/integration/cli/test_persist_dimensions.py` (python)
+- `tests/integration/cli/test_persist_eval_pass.py` (python)
 - `tests/integration/dashboard/__init__.py` (python)
 - `tests/integration/dashboard/conftest.py` (python)
 - `tests/integration/dashboard/test_admin_tournament_ui.py` (python)
@@ -4923,6 +5794,9 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `tests/integration/dashboard/test_ui_agent_new.py` (python)
 - `tests/integration/dashboard/test_ui_agents_routes.py` (python)
 - `tests/integration/dashboard/test_ui_bootstrap_invites.py` (python)
+- `tests/integration/dashboard/test_ui_eval_leaderboard.py` (python)
+- `tests/integration/dashboard/test_ui_eval_run_detail.py` (python)
+- `tests/integration/dashboard/test_ui_eval_trends.py` (python)
 - `tests/integration/dashboard/test_ui_home_leaderboard.py` (python)
 - `tests/integration/dashboard/test_ui_tokens_routes.py` (python)
 - `tests/integration/dashboard/test_v2_routes.py` (python)
@@ -5029,6 +5903,7 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `tests/unit/cli/test_remote.py` (python)
 - `tests/unit/cli/test_sync.py` (python)
 - `tests/unit/core/__init__.py` (python)
+- `tests/unit/core/test_case_verdict.py` (python)
 - `tests/unit/core/test_cors_hardening.py` (python)
 - `tests/unit/core/test_exceptions.py` (python)
 - `tests/unit/core/test_logging.py` (python)
@@ -5039,6 +5914,9 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `tests/unit/core/test_security.py` (python)
 - `tests/unit/core/test_settings.py` (python)
 - `tests/unit/core/test_telemetry.py` (python)
+- `tests/unit/cost/__init__.py` (python)
+- `tests/unit/cost/test_cloud_pricer.py` (python)
+- `tests/unit/cost/test_cloud_pricer_contract.py` (python)
 - `tests/unit/dashboard/__init__.py` (python)
 - `tests/unit/dashboard/audit/__init__.py` (python)
 - `tests/unit/dashboard/audit/test_audit.py` (python)
@@ -5086,7 +5964,10 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `tests/unit/dashboard/test_database.py` (python)
 - `tests/unit/dashboard/test_device_auth_routes.py` (python)
 - `tests/unit/dashboard/test_device_flow.py` (python)
+- `tests/unit/dashboard/test_dimensions.py` (python)
 - `tests/unit/dashboard/test_el_farol_from_tournament.py` (python)
+- `tests/unit/dashboard/test_eval_dimension_columns.py` (python)
+- `tests/unit/dashboard/test_failure_analysis.py` (python)
 - `tests/unit/dashboard/test_jwt_user_middleware.py` (python)
 - `tests/unit/dashboard/test_leaderboard_endpoint.py` (python)
 - `tests/unit/dashboard/test_marketplace.py` (python)
@@ -5100,10 +5981,12 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `tests/unit/dashboard/test_schemas.py` (python)
 - `tests/unit/dashboard/test_services.py` (python)
 - `tests/unit/dashboard/test_storage.py` (python)
+- `tests/unit/dashboard/test_storage_json_safe.py` (python)
 - `tests/unit/dashboard/test_storage_tracking.py` (python)
 - `tests/unit/dashboard/test_suite_definitions.py` (python)
 - `tests/unit/dashboard/test_token_helpers.py` (python)
 - `tests/unit/dashboard/test_token_resolution_cache.py` (python)
+- `tests/unit/dashboard/test_trend_stats.py` (python)
 - `tests/unit/dashboard/test_ui_routes.py` (python)
 - `tests/unit/dashboard/test_upload.py` (python)
 - `tests/unit/dashboard/test_webhook.py` (python)
@@ -5162,6 +6045,13 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `tests/unit/demo_game/test_el_farol_agent_parse.py` (python)
 - `tests/unit/demo_game/test_llm_mcp_bot_parse.py` (python)
 - `tests/unit/evaluators/__init__.py` (python)
+- `tests/unit/evaluators/checkers/__init__.py` (python)
+- `tests/unit/evaluators/checkers/test_registry.py` (python)
+- `tests/unit/evaluators/findings/__init__.py` (python)
+- `tests/unit/evaluators/findings/test_cases_load.py` (python)
+- `tests/unit/evaluators/findings/test_checker.py` (python)
+- `tests/unit/evaluators/findings/test_evaluator.py` (python)
+- `tests/unit/evaluators/findings/test_matcher.py` (python)
 - `tests/unit/evaluators/security/__init__.py` (python)
 - `tests/unit/evaluators/security/test_base.py` (python)
 - `tests/unit/evaluators/security/test_code.py` (python)
@@ -5172,14 +6062,18 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `tests/unit/evaluators/test_artifact.py` (python)
 - `tests/unit/evaluators/test_base.py` (python)
 - `tests/unit/evaluators/test_behavior.py` (python)
+- `tests/unit/evaluators/test_citation_grounding_checker.py` (python)
 - `tests/unit/evaluators/test_code_exec.py` (python)
 - `tests/unit/evaluators/test_code_exec_container.py` (python)
 - `tests/unit/evaluators/test_composite.py` (python)
 - `tests/unit/evaluators/test_container.py` (python)
 - `tests/unit/evaluators/test_factuality.py` (python)
 - `tests/unit/evaluators/test_filesystem.py` (python)
+- `tests/unit/evaluators/test_findings_structured.py` (python)
 - `tests/unit/evaluators/test_git_commit.py` (python)
 - `tests/unit/evaluators/test_guardrails.py` (python)
+- `tests/unit/evaluators/test_json_path_checker.py` (python)
+- `tests/unit/evaluators/test_json_path_resolver.py` (python)
 - `tests/unit/evaluators/test_llm_judge.py` (python)
 - `tests/unit/evaluators/test_performance.py` (python)
 - `tests/unit/evaluators/test_registry.py` (python)
@@ -5198,14 +6092,42 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `tests/unit/generator/test_writer.py` (python)
 - `tests/unit/loader/__init__.py` (python)
 - `tests/unit/loader/test_filters.py` (python)
+- `tests/unit/loader/test_format_dispatch.py` (python)
 - `tests/unit/loader/test_loader.py` (python)
 - `tests/unit/loader/test_models.py` (python)
 - `tests/unit/loader/test_parser.py` (python)
+- `tests/unit/loader/test_suite_source.py` (python)
+- `tests/unit/method/test_codex_usage_normalization.py` (python)
+- `tests/unit/method/test_price_reports.py` (python)
+- `tests/unit/method_spawners/__init__.py` (python)
+- `tests/unit/method_spawners/fixtures/fake_claude.py` (python)
+- `tests/unit/method_spawners/fixtures/fake_codex.py` (python)
+- `tests/unit/method_spawners/fixtures/fake_opencode.py` (python)
+- `tests/unit/method_spawners/fixtures/fake_pi.py` (python)
+- `tests/unit/method_spawners/test_anthropic_api_shim.py` (python)
+- `tests/unit/method_spawners/test_claude_code_shim.py` (python)
+- `tests/unit/method_spawners/test_cli_common_corpus.py` (python)
+- `tests/unit/method_spawners/test_cli_shims.py` (python)
+- `tests/unit/method_spawners/test_codex_cli_shim.py` (python)
+- `tests/unit/method_spawners/test_deepseek_shim.py` (python)
+- `tests/unit/method_spawners/test_import_pipecheck_to_dashboard.py` (python)
+- `tests/unit/method_spawners/test_ollama_shim.py` (python)
+- `tests/unit/method_spawners/test_openai_compat_shim.py` (python)
+- `tests/unit/method_spawners/test_run_pipe_check.py` (python)
+- `tests/unit/method_spawners/test_shim_diagnostics.py` (python)
+- `tests/unit/method_spawners/test_suite_lock.py` (python)
+- `tests/unit/method_spawners/test_tool_client.py` (python)
 - `tests/unit/mock_tools/__init__.py` (python)
+- `tests/unit/mock_tools/test_directory_file_read.py` (python)
 - `tests/unit/mock_tools/test_loader.py` (python)
 - `tests/unit/mock_tools/test_models.py` (python)
 - `tests/unit/mock_tools/test_recorder.py` (python)
 - `tests/unit/mock_tools/test_server.py` (python)
+- `tests/unit/model_catalog/__init__.py` (python)
+- `tests/unit/model_catalog/test_loader.py` (python)
+- `tests/unit/model_catalog/test_models_cli.py` (python)
+- `tests/unit/model_catalog/test_schema.py` (python)
+- `tests/unit/model_catalog/test_template.py` (python)
 - `tests/unit/performance/__init__.py` (python)
 - `tests/unit/performance/test_async_utils.py` (python)
 - `tests/unit/performance/test_benchmark.py` (python)
@@ -5217,24 +6139,32 @@ _954 files, 4252 public symbols, 112 internal imports._
 - `tests/unit/plugins/test_config.py` (python)
 - `tests/unit/plugins/test_dependencies.py` (python)
 - `tests/unit/plugins/test_discovery.py` (python)
+- `tests/unit/plugins/test_entrypoints.py` (python)
 - `tests/unit/plugins/test_interfaces.py` (python)
 - `tests/unit/protocol/__init__.py` (python)
 - `tests/unit/protocol/test_models.py` (python)
 - `tests/unit/protocol/test_schema.py` (python)
 - `tests/unit/reporters/__init__.py` (python)
 - `tests/unit/reporters/test_base.py` (python)
+- `tests/unit/reporters/test_benchmark_pipe_smoke.py` (python)
+- `tests/unit/reporters/test_benchmark_reporter.py` (python)
 - `tests/unit/reporters/test_console.py` (python)
 - `tests/unit/reporters/test_game_reporter.py` (python)
 - `tests/unit/reporters/test_html_reporter.py` (python)
 - `tests/unit/reporters/test_json_reporter.py` (python)
 - `tests/unit/reporters/test_junit_reporter.py` (python)
+- `tests/unit/reporters/test_rank_score.py` (python)
 - `tests/unit/reporters/test_registry.py` (python)
+- `tests/unit/reporters/test_summary_extractor.py` (python)
+- `tests/unit/reporters/test_summary_models.py` (python)
+- `tests/unit/reporters/test_summary_reporter.py` (python)
 - `tests/unit/runner/__init__.py` (python)
 - `tests/unit/runner/test_exceptions.py` (python)
 - `tests/unit/runner/test_models.py` (python)
 - `tests/unit/runner/test_multi_agent.py` (python)
 - `tests/unit/runner/test_orchestrator.py` (python)
 - `tests/unit/runner/test_progress.py` (python)
+- `tests/unit/runner/test_request_preparation.py` (python)
 - `tests/unit/runner/test_sandbox.py` (python)
 - `tests/unit/runner/test_sandbox_fixtures.py` (python)
 - `tests/unit/runner/test_sandbox_phase2.py` (python)
@@ -5570,14 +6500,158 @@ _None._
   - `atp/cli/commands/game.py:367` → `suites.tournament::run_single_elimination`
   - `examples/experiments/run_experiment.py:30` → `suites.tournament::TournamentResult`
   - `examples/experiments/run_experiment.py:30` → `suites.tournament::run_round_robin`
+- to [[atp-method]]:
+  - `packages/atp-method/atp_method/corpus_manifest.py:8` → `corpus::TEXT_SUFFIXES`
+  - `packages/atp-method/atp_method/corpus_manifest.py:8` → `corpus::normalize_lf`
+  - `packages/atp-method/atp_method/runtime.py:17` → `corpus::CorpusIntegrityVerifier`
+  - `packages/atp-method/atp_method/runtime.py:18` → `corpus::CorpusMaterializer`
+  - `packages/atp-method/atp_method/runtime.py:19` → `corpus::CorpusResolver`
+  - `packages/atp-method/atp_method/runtime.py:20` → `corpus::MaterializedCorpus`
+  - `packages/atp-method/tests/test_corpus.py:64` → `corpus::CorpusVerificationResult`
+  - `packages/atp-method/tests/test_corpus.py:64` → `corpus::VerifiedCorpusFile`
+  - `packages/atp-method/tests/test_corpus.py:86` → `corpus::CorpusResolver`
+  - `packages/atp-method/tests/test_corpus.py:105` → `corpus::CorpusResolver`
+  - `packages/atp-method/tests/test_corpus.py:116` → `corpus::CorpusIntegrityVerifier`
+  - `packages/atp-method/tests/test_corpus.py:116` → `corpus::CorpusResolver`
+  - `packages/atp-method/tests/test_corpus.py:132` → `corpus::CorpusIntegrityVerifier`
+  - `packages/atp-method/tests/test_corpus.py:132` → `corpus::CorpusResolver`
+  - `packages/atp-method/tests/test_corpus.py:154` → `corpus::CorpusIntegrityVerifier`
+  - `packages/atp-method/tests/test_corpus.py:154` → `corpus::CorpusResolver`
+  - `packages/atp-method/tests/test_corpus.py:170` → `corpus::CorpusIntegrityVerifier`
+  - `packages/atp-method/tests/test_corpus.py:170` → `corpus::CorpusResolver`
+  - `packages/atp-method/tests/test_corpus.py:191` → `corpus::CorpusIntegrityVerifier`
+  - `packages/atp-method/tests/test_corpus.py:192` → `corpus::CorpusMaterializer`
+  - `packages/atp-method/tests/test_corpus.py:193` → `corpus::CorpusResolver`
+  - `packages/atp-method/tests/test_corpus.py:216` → `corpus::CorpusMaterializer`
+  - `packages/atp-method/tests/test_corpus.py:233` → `corpus::CorpusMaterializer`
+  - `packages/atp-method/tests/test_corpus.py:251` → `corpus::CorpusMaterializer`
+  - `packages/atp-method/tests/test_envelopes.py:191` → `corpus::CorpusIntegrityVerifier`
+  - `packages/atp-method/tests/test_envelopes.py:191` → `corpus::CorpusResolver`
+  - `tests/unit/evaluators/test_citation_grounding_checker.py:103` → `corpus::CorpusIntegrityVerifier`
+  - `tests/unit/evaluators/test_citation_grounding_checker.py:103` → `corpus::CorpusResolver`
+  - `method/spawners/_cli_common.py:20` → `envelopes::build_prompt`
+  - `method/spawners/_cli_common.py:20` → `envelopes::get_envelope`
+  - `method/spawners/_openai_compat.py:19` → `envelopes::build_prompt`
+  - `method/spawners/_openai_compat.py:19` → `envelopes::get_envelope`
+  - `method/spawners/anthropic_api_shim.py:36` → `envelopes::DEFAULT_MODEL`
+  - `method/spawners/anthropic_api_shim.py:36` → `envelopes::build_prompt`
+  - `method/spawners/anthropic_api_shim.py:36` → `envelopes::get_envelope`
+  - `method/spawners/claude_code_shim.py:23` → `envelopes::DEFAULT_MODEL`
+  - `method/spawners/claude_code_shim.py:23` → `envelopes::build_prompt`
+  - `method/spawners/claude_code_shim.py:23` → `envelopes::get_envelope`
+  - `method/spawners/codex_cli_shim.py:44` → `envelopes::build_prompt`
+  - `method/spawners/codex_cli_shim.py:44` → `envelopes::get_envelope`
+  - `method/spawners/deepseek_shim.py:33` → `envelopes::build_prompt`
+  - `method/spawners/deepseek_shim.py:33` → `envelopes::get_envelope`
+  - `method/spawners/ollama_shim.py:35` → `envelopes::build_prompt`
+  - `method/spawners/ollama_shim.py:35` → `envelopes::get_envelope`
+  - `packages/atp-method/tests/test_code_review_structured.py:4` → `envelopes::build_prompt`
+  - `packages/atp-method/tests/test_code_review_structured.py:4` → `envelopes::get_envelope`
+  - `packages/atp-method/tests/test_envelopes.py:6` → `envelopes::DEFAULT_MODEL`
+  - `packages/atp-method/tests/test_envelopes.py:7` → `envelopes::REVIEW_ENVELOPE`
+  - `packages/atp-method/tests/test_envelopes.py:8` → `envelopes::build_prompt`
+  - `packages/atp-method/tests/test_envelopes.py:9` → `envelopes::get_envelope`
+  - `tests/unit/method_spawners/test_anthropic_api_shim.py:12` → `envelopes::build_prompt`
+  - `tests/unit/method_spawners/test_anthropic_api_shim.py:12` → `envelopes::get_envelope`
+  - `method/run_pipe_check.py:50` → `evaluators::AgentEvalCaseEvaluator`
+  - `packages/atp-method/atp_method/__init__.py:3` → `evaluators::AgentEvalCaseEvaluator`
+  - `packages/atp-method/atp_method/plugin.py:50` → `evaluators::AgentEvalCaseEvaluator`
+  - `packages/atp-method/tests/test_evaluator.py:12` → `evaluators::AgentEvalCaseEvaluator`
+  - `packages/atp-method/tests/test_plugin.py:18` → `evaluators::AgentEvalCaseEvaluator`
+  - `packages/atp-method/atp_method/evaluators/__init__.py:3` → `evaluators.case_evaluator::AgentEvalCaseEvaluator`
+  - `method/run_pipe_check.py:51` → `loader::METHOD_CRITICAL_CHECK`
+  - `method/run_pipe_check.py:51` → `loader::METHOD_RUBRIC`
+  - `method/run_pipe_check.py:51` → `loader::load_suite`
+  - `packages/atp-method/atp_method/__init__.py:5` → `loader::METHOD_CRITICAL_CHECK`
+  - `packages/atp-method/atp_method/__init__.py:6` → `loader::METHOD_RUBRIC`
+  - `packages/atp-method/atp_method/__init__.py:7` → `loader::case_to_test_definition`
+  - `packages/atp-method/atp_method/__init__.py:8` → `loader::load_case`
+  - `packages/atp-method/atp_method/evaluators/case_evaluator.py:23` → `loader::METHOD_CRITICAL_CHECK`
+  - `packages/atp-method/atp_method/evaluators/case_evaluator.py:23` → `loader::METHOD_RUBRIC`
+  - `packages/atp-method/atp_method/plugin.py:52` → `loader::METHOD_CRITICAL_CHECK`
+  - `packages/atp-method/atp_method/plugin.py:53` → `loader::METHOD_RUBRIC`
+  - `packages/atp-method/atp_method/plugin.py:54` → `loader::is_agent_eval_case`
+  - `packages/atp-method/atp_method/plugin.py:55` → `loader::load_suite`
+  - `packages/atp-method/tests/test_cases_load.py:9` → `loader::load_case`
+  - `packages/atp-method/tests/test_code_review_structured.py:5` → `loader::load_case`
+  - `packages/atp-method/tests/test_envelopes.py:59` → `loader::load_suite`
+  - `packages/atp-method/tests/test_envelopes.py:192` → `loader::load_case`
+  - `packages/atp-method/tests/test_evaluator.py:13` → `loader::METHOD_CRITICAL_CHECK`
+  - `packages/atp-method/tests/test_evaluator.py:13` → `loader::METHOD_RUBRIC`
+  - `packages/atp-method/tests/test_loader.py:8` → `loader::METHOD_CRITICAL_CHECK`
+  - `packages/atp-method/tests/test_loader.py:9` → `loader::METHOD_RUBRIC`
+  - `packages/atp-method/tests/test_loader.py:10` → `loader::case_to_test_definition`
+  - `packages/atp-method/tests/test_loader.py:11` → `loader::load_case`
+  - `packages/atp-method/tests/test_loader.py:276` → `loader::case_to_test_definition`
+  - `packages/atp-method/tests/test_loader.py:309` → `loader::case_to_test_definition`
+  - `packages/atp-method/tests/test_loader_artifact_corpus.py:82` → `loader::load_case`
+  - `packages/atp-method/tests/test_loader_artifact_corpus.py:97` → `loader::load_case`
+  - `packages/atp-method/tests/test_loader_artifact_corpus.py:176` → `loader::load_case`
+  - `packages/atp-method/tests/test_loader_output_contract.py:3` → `loader::METHOD_CRITICAL_CHECK`
+  - `packages/atp-method/tests/test_loader_output_contract.py:3` → `loader::case_to_test_definition`
+  - `packages/atp-method/tests/test_plugin.py:20` → `loader::METHOD_CRITICAL_CHECK`
+  - `packages/atp-method/tests/test_plugin.py:21` → `loader::METHOD_RUBRIC`
+  - `packages/atp-method/tests/test_plugin.py:22` → `loader::is_agent_eval_case`
+  - `packages/atp-method/tests/test_plugin.py:23` → `loader::load_suite`
+  - `tests/unit/evaluators/test_citation_grounding_checker.py:104` → `loader::load_case`
+  - `tests/unit/method_spawners/test_run_pipe_check.py:134` → `loader::load_case`
+  - `tests/unit/method_spawners/test_run_pipe_check.py:170` → `loader::load_case`
+  - `tests/unit/method_spawners/test_run_pipe_check.py:307` → `loader::load_case`
+  - `packages/atp-method/tests/test_plugin.py:25` → `plugin::register`
+  - `method/run_pipe_check.py:411` → `runtime::CorpusRunPreparer`
+  - `packages/atp-method/tests/test_loader_artifact_corpus.py:177` → `runtime::CorpusRunPreparer`
+  - `packages/atp-method/tests/test_runtime_corpus_preparer.py:15` → `runtime::CorpusRunPreparer`
+  - `packages/atp-method/tests/test_runtime_corpus_preparer.py:84` → `runtime::CorpusRunPreparer`
+  - `packages/atp-method/atp_method/__init__.py:10` → `schema::AgentEvalCase`
+  - `packages/atp-method/atp_method/corpus.py:13` → `schema::ArtifactCorpus`
+  - `packages/atp-method/atp_method/corpus.py:13` → `schema::CorpusMetadata`
+  - `packages/atp-method/atp_method/loader.py:26` → `schema::AgentEvalCase`
+  - `packages/atp-method/atp_method/runtime.py:22` → `schema::ArtifactCorpus`
+  - `packages/atp-method/tests/test_cases_load.py:10` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_code_review_structured.py:23` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_code_review_structured.py:53` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_corpus.py:12` → `schema::ArtifactCorpus`
+  - `packages/atp-method/tests/test_envelopes.py:193` → `schema::ArtifactCorpus`
+  - `packages/atp-method/tests/test_loader.py:13` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_loader.py:277` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_loader.py:310` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_loader_output_contract.py:4` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_p2_correctness_determinism.py:7` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_req_extraction_determinism.py:9` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_schema.py:9` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_schema.py:9` → `schema::Grader`
+  - `packages/atp-method/tests/test_schema.py:275` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_schema.py:283` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_schema.py:293` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_schema_artifact_corpus.py:74` → `schema::ArtifactCorpus`
+  - `packages/atp-method/tests/test_schema_artifact_corpus.py:74` → `schema::CorpusDigest`
+  - `packages/atp-method/tests/test_schema_artifact_corpus.py:91` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_schema_artifact_corpus.py:101` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_schema_artifact_corpus.py:111` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_schema_artifact_corpus.py:111` → `schema::WIRED_RUN_MODES`
+  - `packages/atp-method/tests/test_schema_artifact_corpus.py:139` → `schema::ArtifactCorpus`
+  - `packages/atp-method/tests/test_schema_artifact_corpus.py:156` → `schema::CorpusDigest`
+  - `packages/atp-method/tests/test_schema_artifact_corpus.py:166` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_schema_artifact_corpus.py:176` → `schema::Grader`
+  - `packages/atp-method/tests/test_schema_output_contract.py:6` → `schema::AgentEvalCase`
+  - `packages/atp-method/tests/test_schema_output_contract.py:6` → `schema::Grader`
+  - `packages/atp-method/tests/test_schema_output_contract.py:6` → `schema::OutputContract`
+  - `tests/unit/evaluators/test_citation_grounding_checker.py:105` → `schema::ArtifactCorpus`
+  - `method/run_pipe_check.py:52` → `taxonomy::benchmark_id_for`
+  - `packages/atp-method/tests/test_taxonomy.py:5` → `taxonomy::TASK_TYPE_TO_BENCHMARK_ID`
+  - `packages/atp-method/tests/test_taxonomy.py:5` → `taxonomy::benchmark_id_for`
 
 ## Outbound edges
 
+- ↔ [[https---github-com-andrei-shtanakov-maestro-benchmark-contract-report_benchmark-v1-schema-json]] · `contract_link` · `json_schema`
+- ↔ [[https---vkgeorgia-github-io-schemas-agent-eval-case-schema-json]] · `contract_link` · `json_schema`
 - → [[atp-dashboard]] · `mcp_call` · tool `make_move`
 - → [[atp-dashboard]] · `mcp_call` · tool `get_current_state`
 - → [[atp-adapters]] · `package_dep` · `atp-adapters`
+- → [[atp-core]] · `package_dep` · `atp-core`
 - → [[atp-dashboard]] · `package_dep` · `atp-dashboard`
 - → [[atp-games]] · `package_dep` · `atp-games`
+- → [[atp-method]] · `package_dep` · `atp-method`
 - → [[atp-sdk]] · `package_dep` · `atp-platform-sdk`
 - → [[game-environments]] · `package_dep` · `game-environments`
 - → [[spec-runner]] · `package_dep` · `spec-runner` `>=0.1.4`
@@ -5585,10 +6659,11 @@ _None._
 ## Inbound edges
 
 - ← [[atp-games]] · `package_dep` · `atp-platform`
+- ← [[atp-method]] · `package_dep` · `atp-platform`
 
 ## Recent changes (last 5)
 
-- snapshot 1 (2026-05-26T08:18:45Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 

@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: rust
 name: arbiter-core
 parent: arbiter
 prograph: project
 root: ./arbiter/arbiter-core
-snapshot: 48
+snapshot: 1
 ---
 
 # arbiter-core
@@ -24,10 +24,28 @@ _None._
 
 ### Contracts declared
 
-_None._
+- [[https---all_ai_orchestrators-observability-contract-v1]] (json_schema) — `tests/contract/log-schema.json` — `https://all_ai_orchestrators/observability-contract/v1`
 
 ### Public symbols
 
+- `CATALOG_ENV_VAR` (const) — `src/catalog/mod.rs:17`
+- `XDG_SUBPATH` (const) — `src/catalog/mod.rs:19`
+- `CatalogError` (enum) — `src/catalog/mod.rs:23`
+- `CatalogSource` (enum) — `src/catalog/mod.rs:47`
+- `ResolvedPath` (struct) — `src/catalog/mod.rs:58`
+- `resolve_path` (function) — `src/catalog/mod.rs:71`
+- `missing_file_error` (function) — `src/catalog/mod.rs:101`
+- `ModelStatus` (enum) — `src/catalog/mod.rs:114`
+- `HarnessKind` (enum) — `src/catalog/mod.rs:154`
+- `ModelEntry` (struct) — `src/catalog/mod.rs:182`
+- `HarnessEntry` (struct) — `src/catalog/mod.rs:194`
+- `AgentEntry` (struct) — `src/catalog/mod.rs:212`
+- `agent_id` (function) — `src/catalog/mod.rs:228`
+- `Catalog` (struct) — `src/catalog/mod.rs:235`
+- `parse_catalog` (function) — `src/catalog/mod.rs:250`
+- `Severity` (enum) — `src/catalog/mod.rs:260`
+- `Issue` (struct) — `src/catalog/mod.rs:269`
+- `validate` (function) — `src/catalog/mod.rs:299`
 - `ArbiterError` (enum) — `src/error.rs:7`
 - `Result` (type) — `src/error.rs:26`
 - `AgentContext` (struct) — `src/invariant/rules.rs:17`
@@ -77,8 +95,9 @@ _None._
 
 ## Modules
 
-_12 files, 46 public symbols, 9 internal imports._
+_14 files, 64 public symbols, 9 internal imports._
 
+- `src/catalog/mod.rs` (rust)
 - `src/error.rs` (rust)
 - `src/invariant/mod.rs` (rust)
 - `src/invariant/rules.rs` (rust)
@@ -89,6 +108,7 @@ _12 files, 46 public symbols, 9 internal imports._
 - `src/policy/mod.rs` (rust)
 - `src/traits.rs` (rust)
 - `src/types.rs` (rust)
+- `tests/catalog_validation.rs` (rust)
 - `tests/emit_contract.rs` (rust)
 - `tests/fixtures_contract.rs` (rust)
 
@@ -97,8 +117,11 @@ _12 files, 46 public symbols, 9 internal imports._
 - from [[arbiter-cli]]:
   - `benches/routing.rs:14` → `policy::decision_tree::DecisionTree`
   - `benches/routing.rs:15` → `types::*`
-  - `src/main.rs:17` → `policy::decision_tree::DecisionTree`
-  - `src/main.rs:18` → `types::*`
+  - `src/main.rs:19` → `catalog::Catalog`
+  - `src/main.rs:19` → `catalog::Severity`
+  - `src/main.rs:19` → `catalog::self`
+  - `src/main.rs:20` → `policy::decision_tree::DecisionTree`
+  - `src/main.rs:21` → `types::*`
 - from [[arbiter-mcp]]:
   - `src/features.rs:8` → `types::Constraints`
   - `src/features.rs:8` → `types::TaskInput`
@@ -124,9 +147,11 @@ _12 files, 46 public symbols, 9 internal imports._
   - `src/tools/route_task.rs:19` → `types::AgentState`
   - `src/tools/route_task.rs:19` → `types::Constraints`
   - `src/tools/route_task.rs:19` → `types::InvariantResult`
+  - `src/tools/route_task.rs:19` → `types::PredictionResult`
   - `src/tools/route_task.rs:19` → `types::TaskInput`
-  - `src/tools/route_task.rs:457` → `types::PredictionResult`
-  - `src/tools/route_task.rs:587` → `types::*`
+  - `src/tools/route_task.rs:19` → `types::TaskType`
+  - `src/tools/route_task.rs:533` → `types::PredictionResult`
+  - `src/tools/route_task.rs:663` → `types::*`
   - `src/watcher.rs:19` → `policy::decision_tree::DecisionTree`
   - `tests/golden_tests.rs:15` → `policy::decision_tree::DecisionTree`
   - `tests/integration.rs:11` → `policy::decision_tree::DecisionTree`
@@ -138,7 +163,7 @@ _None._
 
 ## Outbound edges
 
-_None._
+- ↔ [[https---all_ai_orchestrators-observability-contract-v1]] · `contract_link` · `json_schema`
 
 ## Inbound edges
 
@@ -147,8 +172,7 @@ _None._
 
 ## Recent changes (last 5)
 
-- snapshot 41 (2026-05-27T10:39:37Z): project attrs_changed (attrs_changed)
-- snapshot 39 (2026-05-27T10:18:26Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 

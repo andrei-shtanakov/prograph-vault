@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: rust
 name: arbiter-mcp
 parent: arbiter
 prograph: project
 root: ./arbiter/arbiter-mcp
-snapshot: 48
+snapshot: 1
 ---
 
 # arbiter-mcp
@@ -84,8 +84,9 @@ snapshot: 48
 - `get_cost_by_agent` (function) — `src/db.rs:703`
 - `reset_all_running_tasks` (function) — `src/db.rs:731`
 - `insert_benchmark_run` (function) — `src/db.rs:757`
-- `count_benchmark_runs` (function) — `src/db.rs:797`
-- `connection` (function) — `src/db.rs:812`
+- `count_benchmark_runs` (function) — `src/db.rs:798`
+- `get_benchmark_score` (function) — `src/db.rs:817`
+- `connection` (function) — `src/db.rs:845`
 - `FEATURE_DIM` (const) — `src/features.rs:17`
 - `AgentInfo` (struct) — `src/features.rs:58`
 - `SystemState` (struct) — `src/features.rs:79`
@@ -115,14 +116,14 @@ snapshot: 48
 - `execute` (function) — `src/tools/get_metrics.rs:14`
 - `ReportBenchmarkError` (enum) — `src/tools/report_benchmark.rs:15`
 - `jsonrpc_code` (function) — `src/tools/report_benchmark.rs:24`
-- `execute` (function) — `src/tools/report_benchmark.rs:65`
+- `execute` (function) — `src/tools/report_benchmark.rs:59`
 - `ReportResult` (struct) — `src/tools/report_outcome.rs:18`
 - `UpdatedStats` (struct) — `src/tools/report_outcome.rs:28`
 - `execute` (function) — `src/tools/report_outcome.rs:46`
 - `result_to_json` (function) — `src/tools/report_outcome.rs:205`
-- `RouteResult` (struct) — `src/tools/route_task.rs:37`
-- `execute` (function) — `src/tools/route_task.rs:136`
-- `result_to_json` (function) — `src/tools/route_task.rs:545`
+- `RouteResult` (struct) — `src/tools/route_task.rs:105`
+- `execute` (function) — `src/tools/route_task.rs:204`
+- `result_to_json` (function) — `src/tools/route_task.rs:621`
 - `WatchPaths` (struct) — `src/watcher.rs:30`
 - `ReloadableState` (struct) — `src/watcher.rs:38`
 - `path_matches_config` (function) — `src/watcher.rs:54`
@@ -131,7 +132,7 @@ snapshot: 48
 
 ## Modules
 
-_20 files, 95 public symbols, 41 internal imports._
+_20 files, 96 public symbols, 41 internal imports._
 
 - `src/agents.rs` (rust)
 - `src/config.rs` (rust)
@@ -162,12 +163,12 @@ _20 files, 95 public symbols, 41 internal imports._
   - `benches/routing.rs:19` → `db::Database`
   - `benches/routing.rs:20` → `metrics::Metrics`
   - `benches/routing.rs:21` → `tools::route_task`
-  - `src/main.rs:20` → `agents::AgentRegistry`
-  - `src/main.rs:21` → `config::*`
-  - `src/main.rs:22` → `db::Database`
-  - `src/main.rs:22` → `db::DecisionRecord`
-  - `src/main.rs:22` → `db::OutcomeRecord`
-  - `src/main.rs:23` → `tools::route_task`
+  - `src/main.rs:23` → `agents::AgentRegistry`
+  - `src/main.rs:24` → `config::*`
+  - `src/main.rs:25` → `db::Database`
+  - `src/main.rs:25` → `db::DecisionRecord`
+  - `src/main.rs:25` → `db::OutcomeRecord`
+  - `src/main.rs:26` → `tools::route_task`
 
 ## Outbound references
 
@@ -199,9 +200,11 @@ _20 files, 95 public symbols, 41 internal imports._
   - `src/tools/route_task.rs:19` → `types::AgentState`
   - `src/tools/route_task.rs:19` → `types::Constraints`
   - `src/tools/route_task.rs:19` → `types::InvariantResult`
+  - `src/tools/route_task.rs:19` → `types::PredictionResult`
   - `src/tools/route_task.rs:19` → `types::TaskInput`
-  - `src/tools/route_task.rs:457` → `types::PredictionResult`
-  - `src/tools/route_task.rs:587` → `types::*`
+  - `src/tools/route_task.rs:19` → `types::TaskType`
+  - `src/tools/route_task.rs:533` → `types::PredictionResult`
+  - `src/tools/route_task.rs:663` → `types::*`
   - `tests/integration.rs:12` → `types::*`
 
 ## Outbound edges
@@ -218,12 +221,12 @@ _20 files, 95 public symbols, 41 internal imports._
 - ← [[arbiter]] · `mcp_call` · tool `report_outcome`
 - ← [[arbiter]] · `mcp_call` · tool `get_agent_status`
 - ← [[arbiter]] · `mcp_call` · tool `route_task`
+- ← [[arbiter]] · `mcp_call` · tool `report_benchmark`
 - ← [[arbiter-cli]] · `package_dep` · `arbiter-mcp`
 
 ## Recent changes (last 5)
 
-- snapshot 41 (2026-05-27T10:39:37Z): project attrs_changed (attrs_changed)
-- snapshot 39 (2026-05-27T10:18:26Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 

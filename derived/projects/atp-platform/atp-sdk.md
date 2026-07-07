@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: python
 name: atp-sdk
 parent: atp-platform
 prograph: project
 root: ./atp-platform/packages/atp-sdk
-snapshot: 48
+snapshot: 1
 ---
 
 # atp-sdk
@@ -80,7 +80,7 @@ _None._
 
 ## Recent changes (last 5)
 
-- snapshot 43 (2026-05-27T10:51:48Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 

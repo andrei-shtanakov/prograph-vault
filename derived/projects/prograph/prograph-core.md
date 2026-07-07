@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-07T16:11:23Z"
 kind: rust
 name: prograph-core
 parent: prograph
 prograph: project
 root: ./prograph/prograph-core
-snapshot: 48
+snapshot: 1
 ---
 
 # prograph-core
@@ -238,8 +238,7 @@ _None._
 
 ## Recent changes (last 5)
 
-- snapshot 41 (2026-05-27T10:39:37Z): project attrs_changed (attrs_changed)
-- snapshot 39 (2026-05-27T10:18:26Z): project added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): project added (added)
 
 ## Drift findings
 
