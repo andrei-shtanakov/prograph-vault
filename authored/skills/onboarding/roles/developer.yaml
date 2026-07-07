@@ -1,0 +1,116 @@
+# Onboarding checklist — new developer/contributor to the AI-Orchestrators ecosystem.
+# Human-authored, PR-reviewed (authored/). Robin reads this; progress lives in the runtime DB.
+#
+# Per step:
+#   sources    — what to READ for the step (learning material).
+#   check      — a question whose grounded, cited answer proves the step is understood.
+#   answer_ref — the SPECIFIC source(s) that ground the check. A POINTER, not a frozen key:
+#                onboarding cites it when answering; the Phase-5 spec/ТЗ-interview duty scores
+#                a human's answer BY COMPARISON with it and links it in the verdict (§4, §7.2).
+#                Points at live truth, so it does not rot when the KB changes.
+#   answer_note — optional short canonical fact (verify against answer_ref; staleness applies).
+# Robin escalates "not in the KB" per §4 rather than inventing an answer.
+role: developer
+version: 2
+updated: 2026-07-07
+owner: Andrei
+
+steps:
+  - id: kb-constitution
+    title: The KB constitution
+    goal: Understand what the Ecosystem KB is and how to read it before touching anything.
+    sources:
+      - CLAUDE.md            # §0.0 orientation + golden rules
+      - index.md             # navigation + migration status
+    check: "What is the KB the source of truth for, and what does it NOT own?"
+    answer_ref:
+      - CLAUDE.md            # §0 Purpose; §4 SSOT boundary table
+
+  - id: authored-derived
+    title: The authored/ vs derived/ boundary
+    goal: Learn the #1 invariant — who writes what, and what is regenerable.
+    sources:
+      - CLAUDE.md            # §1 golden rules, §2 authored vs derived
+      - authored/README.md
+      - derived/README.md
+    check: "You edited a file under derived/ by hand. What happens, and why?"
+    answer_ref:
+      - CLAUDE.md            # §1 golden rule #1; §2 table ("editable by hand: no — will be overwritten")
+      - derived/README.md
+    answer_note: "derived/ is tool-written and regenerable — a hand edit is overwritten on the next run."
+
+  - id: ssot-boundaries
+    title: SSOT boundaries — which repo owns what
+    goal: Know where canonical facts live so you never duplicate or contradict a repo.
+    sources:
+      - CLAUDE.md            # §4 SSOT boundary table
+      - authored/decisions/2026-07-01-adr-eco-003-agent-catalog.md  # amendment 2026-07-03
+    check: "Which repo owns the agents-catalog SSOT, and what is its exact path?"
+    answer_ref:
+      - authored/decisions/2026-07-01-adr-eco-003-agent-catalog.md  # amendment 2026-07-03
+      - CLAUDE.md            # §4 SSOT boundary table
+    answer_note: "atp-platform/method/agents-catalog.toml (ADR-ECO-003, amendment 2026-07-03)."
+
+  - id: polyrepo-workflow
+    title: The polyrepo workflow
+    goal: Understand how work flows across the ecosystem repos and _cowork_output.
+    sources:
+      - authored/notes/2026-05-25-polyrepo-workflow-setup.md
+      - CLAUDE.md            # §6 lifecycle: graduation from _cowork_output
+    check: "Where is canon born, and how does it graduate into the KB?"
+    answer_ref:
+      - CLAUDE.md            # §1 golden rule #4; §6 lifecycle (graduation)
+      - authored/notes/2026-05-25-polyrepo-workflow-setup.md
+    answer_note: "Born in _cowork_output/ (dev-scratch); graduates into the KB under git-review. Runtime never reads _cowork_output."
+
+  - id: kb-skills
+    title: The kb-* skills
+    goal: Learn how to warm up, search, and log work against the KB from a sibling repo.
+    sources:
+      - authored/skills/kb-session/SKILL.md
+      - authored/skills/kb-load/SKILL.md
+      - authored/skills/kb-search/SKILL.md
+      - authored/skills/kb-save/SKILL.md
+    check: "You start work on Maestro. Which kb-* skill warms up the area, and which logs a change?"
+    answer_ref:
+      - authored/skills/kb-load/SKILL.md    # warm up a work area
+      - authored/skills/kb-save/SKILL.md    # log a change to the journal
+    answer_note: "kb-load warms up the work area; kb-save logs the change to derived/journal/<project>/."
+
+  - id: cross-cutting-rules
+    title: Cross-cutting rules
+    goal: Know the shared code-style / gui / tui / libraries rules that apply across repos.
+    sources:
+      - authored/rules/code-style.md
+      - authored/rules/libraries.md
+      - authored/rules/gui.md
+      - authored/rules/tui.md
+    check: "Where do repo-LOCAL rules live, and where do cross-cutting ones live?"
+    answer_ref:
+      - CLAUDE.md            # §1 golden rule #3; §4 SSOT table (Repo-local rules -> repo CLAUDE.md)
+    answer_note: "Repo-local rules -> that repo's CLAUDE.md. Cross-cutting rules -> authored/rules/."
+
+  - id: key-contracts
+    title: Key inter-repo contracts
+    goal: Recognize the contracts that bind the ecosystem together.
+    sources:
+      # NB: derived/contracts/obs-v1.md is a prograph TEST FIXTURE (owner prograph), NOT this — do not cite it.
+      - derived/contracts/https---all_ai_orchestrators-observability-contract-v1.md   # ecosystem obs contract (owner Maestro)
+      - derived/contracts/2026-06-19-agent-id-convention-change.md    # agent-id convention
+    check: "What does the observability contract standardize, and where is its authority (not the snapshot)?"
+    answer_ref:
+      - derived/contracts/https---all_ai_orchestrators-observability-contract-v1.md
+      - CLAUDE.md            # §4: contract authority lives in the producing repo; derived/ is a snapshot only
+    answer_note: "Authority is in the producing repo (Maestro); derived/contracts/ is a search snapshot, not the source of truth. Caveat: the snapshot records the source as _cowork_output/observability-contract/log-schema.json — an ephemeral path; the durable owner is Maestro."
+
+  - id: pick-a-repo
+    title: Pick your repo and read its spec
+    goal: Go deep on one repo — its entry file and specification.
+    sources:
+      - "../atp-platform/CLAUDE.md"      # or Maestro / arbiter / spec-runner / steward / deployer / dispatcher
+      - "../atp-platform/spec/"
+    check: "What is your repo's job in one sentence, and what does its spec say is out of scope?"
+    answer_ref:
+      - "../<repo>/CLAUDE.md"            # repo-specific: substitute the chosen repo
+      - "../<repo>/spec/"
+    # No answer_note: the answer is repo-specific and read live from the chosen repo's spec.
