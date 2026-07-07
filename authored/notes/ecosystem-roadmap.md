@@ -19,7 +19,7 @@ updated: 2026-07-05
 2. **Cross-project observability v1 shipped:** spec-runner reference impl, Maestro M1 (vendored obs.py + child_env propagation) + M2 (scheduler instrumentation), arbiter Rust impl (`arbiter-core::obs`). Contract in `Maestro/_cowork_output/observability-contract/`.
 3. **Maestro↔spec-runner contract frozen:** R-04 closed (JSON Schema, fixtures, `read_executor_state` with SQLite-first read).
 4. **Maestro↔ATP CLI shipped (R-06a)**, SDK integration (R-06b) — **reformulated** (see `_cowork_output/decisions/2026-04-25-r06b-design.md`): SDK = participant-client, not validator-client; R-06b is now "agent benchmarking via ATP", not "validation via SDK". Approve the formulation → M1 thin slice can start.
-5. **CI/CD everywhere:** ATP (7 workflows) + Maestro (`ci.yml`) + Arbiter (Rust+Python matrix + release binaries linux-x64/macos-arm64) + proctor-a (`ci.yml`).
+5. **CI/CD everywhere:** ATP (7 workflows) + Maestro (`ci.yml`) + Arbiter (Rust+Python matrix + release binaries linux-x64/macos-arm64) + proctor (`ci.yml`).
 
 ### What remained from the original formulation (historical context 2026-04-05)
 ~~Main blocker: documentation describes integrations as existing, but in code there are 0 lines.~~ → closed by R-03 (Maestro v0.2.0).

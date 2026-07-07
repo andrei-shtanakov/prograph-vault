@@ -13,6 +13,14 @@ updated: 2026-05-25
 > Mode: read-only, tooling artifacts in `_cowork_output/devtools/`
 > Chosen goal: **don't touch the structure, improve the daily workflow**
 
+> **Update 2026-07-07 (staleness flag, /robin-init onboarding dry-run):** the repo roster
+> below is a **2026-05 snapshot** and is stale. The current ecosystem the team names is
+> **atp-platform, Maestro, arbiter, spec-runner, deployer, dispatcher, steward** — `deployer`,
+> `dispatcher`, `steward` did not exist yet here; `proctor`, `open-prose`,
+> `atp-platform-testing-en` are no longer part of the named set. The polyrepo *mechanics*
+> (not submodules, iterate an explicit list, `--ff-only`, heterogeneous branches) still hold;
+> only the list is dated. Do not treat §1's table as the current roster. `last_reviewed` due.
+
 ---
 
 ## TL;DR
@@ -33,7 +41,7 @@ updated: 2026-05-25
 | arbiter | `docs/r-06b-m4-update` | 2 files | yes | `andrei-shtanakov/arbiter.git` |
 | atp-platform | `chore/sync-phase6-status` | 1 file | yes | `andrei-shtanakov/atp-platform.git` |
 | spec-runner | `master` | clean | yes | `andrei-shtanakov/spec-runner.git` |
-| proctor-a | `master` | 4 files | yes | `andrei-shtanakov/proctor.git` |
+| proctor | `master` | 4 files | yes | `andrei-shtanakov/proctor.git` |
 | open-prose | `main` | 3 files | yes | `andrei-shtanakov/open-prose.git` |
 | atp-platform-testing-en | `ru_version` | clean | **no** | `andrei-shtanakov/atp-platform-testing.git` |
 
@@ -42,7 +50,7 @@ Observations that dictated the tooling design:
 - **Not submodules.** The root's `git -C . config` contains no `.gitmodules`. So "one `git pull`" from the root of the repo nesting won't pull anything — you need an external loop over the list.
 - **Branches are inconsistent.** Three repos on feature branches, two on `master`, one on `main`, one on `ru_version`. The `pull` script doesn't do `git pull origin main`, it pulls the current upstream `--ff-only`.
 - **Dirty right now (5/7).** A morning review of "what's dirty / on which branch" is real value, not decoration.
-- **Folder name ≠ remote name** in two cases: `proctor-a → proctor.git`, `atp-platform-testing-en → atp-platform-testing.git` (and it sits on branch `ru_version` without an upstream). Not a bug for the tooling, but worth keeping in mind.
+- **Folder name ≠ remote name** in two cases: `proctor → proctor.git`, `atp-platform-testing-en → atp-platform-testing.git` (and it sits on branch `ru_version` without an upstream). Not a bug for the tooling, but worth keeping in mind.
 
 ---
 
@@ -53,7 +61,7 @@ You chose "don't touch the structure." That is a justified decision — I'm reco
 | Option | What it solves | Cost | Verdict for your ecosystem |
 |---|---|---|---|
 | **A. Polyrepo + ergonomics layer** (chosen) | the daily routine (status/pull/bootstrap across all at once) | ~0, no migration | ✅ Fast ROI. Does **not** remove the vendoring pain |
-| B. Full monorepo (merge all 9) | atomic cross-repo commits | high: merging histories, merging 7 CIs, breaks the independent release of `atp-platform-sdk` | ❌ Overkill: open-prose/proctor-a/agents-for-game are weakly coupled, dragging them into a monorepo is harmful |
+| B. Full monorepo (merge all 9) | atomic cross-repo commits | high: merging histories, merging 7 CIs, breaks the independent release of `atp-platform-sdk` | ❌ Overkill: open-prose/proctor/agents-for-game are weakly coupled, dragging them into a monorepo is harmful |
 | C. Polyrepo + 1 repo of shared contracts | a single source of truth for obs/MCP/executor-state schemas instead of vendoring | medium: a new contract release cycle | 🟡 This is the right **next** step if the drift keeps hurting. ATP already proved the pattern via `atp-platform-sdk` on PyPI |
 
 The key argument: the ATP boundary is already done "right" — it is consumed as a versioned package `atp-platform-sdk>=2.0.0` (`COWORK_CONTEXT.md:203,234`), and there is no vendoring pain there. The pain remains where files are copied: `obs.py` and `arbiter_client.py`. So option A closes the routine now, and we keep option C as a deliberate next step — without it the monorepo is redundant.

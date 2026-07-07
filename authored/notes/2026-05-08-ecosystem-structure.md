@@ -17,7 +17,7 @@ updated: 2026-05-08
 2. **ATP Platform 2.0.0 — an autonomous "receiver"**: framework-agnostic, it is invoked both by Maestro (via CLI and the benchmark API) and by agents-for-game (via MCP).
 3. **Arbiter — the only MCP server**: 5 tools (route_task, report_outcome, get_agent_status, get_metrics, get_budget_status), called by Maestro over JSON-RPC 2.0 over stdio.
 4. **Cross-project observability — a 4-way axis**: `log-schema.json` lives in `Maestro/_cowork_output/observability-contract/`, vendored into spec-runner (reference @ `fa6b106`), Maestro `_vendor/obs.py`, arbiter `orchestrator/_vendor/obs.py` + `arbiter-core/src/obs.rs` (Rust).
-5. **Periphery (proctor-a, open-prose, agents-for-game, spec-runner-tasks)** — no direct runtime links to the core; either paused, or sandboxes, or markdown tasks.
+5. **Periphery (proctor, open-prose, agents-for-game, spec-runner-tasks)** — no direct runtime links to the core; either paused, or sandboxes, or markdown tasks.
 
 ---
 
@@ -45,7 +45,7 @@ flowchart TB
     end
 
     subgraph PERI["Periphery / sandboxes"]
-        PA[proctor-a<br/>Phase 2, paused since 04-16]:::peripheral
+        PA[proctor<br/>Phase 2, paused since 04-16]:::peripheral
         OP[open-prose<br/>spec-only, no runtime]:::peripheral
         AFG[agents-for-game<br/>El Farol/Prisoner sandbox]:::peripheral
         SRT[spec-runner-tasks<br/>cowork tasks]:::peripheral
@@ -200,7 +200,7 @@ flowchart TB
 
     subgraph L6["L⊥ — Cross-cutting"]
         OBS[observability-contract<br/>log-schema + propagation + fixtures]:::l4
-        PA1[proctor-a (paused)]:::l5
+        PA1[proctor (paused)]:::l5
     end
 
     L1 --> L2
@@ -230,7 +230,7 @@ flowchart TB
 | agents-for-game | ATP | MCP | El Farol / Prisoner sandbox | 🧪 |
 | spec-runner-tasks | spec-runner | markdown content | Source of tasks | 📄 |
 | open-prose | spec-runner | conceptual | Idea of the spec language | 📄 |
-| proctor-a | — | — | Paused since 2026-04-16 | ⏸ |
+| proctor | — | — | Paused since 2026-04-16 | ⏸ |
 
 ---
 
@@ -238,6 +238,6 @@ flowchart TB
 
 1. **Maestro `M3` observability (🟡 pending)** — close per-tick metrics, the routing-decision span, and dashboards. Without this, arbiter and Maestro are formally compatible, but the routing reasoning cannot be traced in production.
 2. **R-06b M2..M5 (🟡 pending)** — especially the open design question M4: a new MCP tool `report_benchmark` vs. a channel in `report_outcome`. This is an important fork in the Maestro↔arbiter↔ATP contract; better to pin an ADR in `_cowork_output/decisions/` before implementation begins.
-3. **proctor-a** — 22 days of pause. Either explicitly close it in the registry (like pylon), or assign an owner and a resumption timeline.
+3. **proctor** — 22 days of pause. Either explicitly close it in the registry (like pylon), or assign an owner and a resumption timeline.
 4. **agents-for-game without VCS** — this is a documented decision, but it is worth at least periodically snapshotting the state (for example, in `_cowork_output/snapshots/`) so as not to lose the bot configs between sessions.
 5. **Cross-vendor pin spec-runner@fa6b106** — all 4 consumers are hard-pinned to a single revision of the reference impl. Before any update of `obs.py` in spec-runner, a synchronized rollout across the 4 projects is needed — it is worth pinning this invariant in `_cowork_output/contracts/observability.md`.
