@@ -6,7 +6,7 @@ atp-platform
 Maestro
 arbiter
 spec-runner
-proctor-a
+proctor
 open-prose
 prograph
 dispatcher

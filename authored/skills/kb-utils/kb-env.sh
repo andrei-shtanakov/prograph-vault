@@ -27,20 +27,25 @@ kb_root() {
 }
 
 # kb_project [explicit] — print the ecosystem project the session works on, or fail.
-# Resolution: explicit arg → $KB_PROJECT → basename of the git toplevel when it is a
-# sibling of prograph-vault (i.e. a real ecosystem repo, not the workspace root and
-# not the vault). Fails (empty) when ambiguous — the caller must ask the user.
+# Identity is the git-remote repo NAME (stable across clones / directory renames),
+# NOT the directory basename — e.g. a repo cloned into `proctor-a/` whose remote is
+# `…/proctor.git` resolves to `proctor`. Resolution: explicit arg → $KB_PROJECT →
+# remote repo name of the git toplevel → toplevel basename (fallback when no remote).
+# Fails (empty) when the toplevel is the vault or the workspace root (ambiguous) so
+# the caller asks the user.
 kb_project() {
   local explicit="${1:-${KB_PROJECT:-}}"
   if [ -n "$explicit" ]; then printf '%s\n' "$explicit"; return 0; fi
-  local top; top="$(git rev-parse --show-toplevel 2>/dev/null)"
-  if [ -n "$top" ]; then
-    local base; base="$(basename "$top")"
-    if [ "$base" != "prograph-vault" ] && [ ! -d "$top/prograph-vault" ]; then
-      printf '%s\n' "$base"; return 0
-    fi
-  fi
-  return 1
+  local top; top="$(git rev-parse --show-toplevel 2>/dev/null)" || return 1
+  [ -z "$top" ] && return 1
+  local base; base="$(basename "$top")"
+  # not the vault, not the workspace root (which contains the vault)
+  { [ "$base" = "prograph-vault" ] || [ -d "$top/prograph-vault" ]; } && return 1
+  # prefer the stable git remote repo name; fall back to the directory basename
+  local url name; url="$(git -C "$top" remote get-url origin 2>/dev/null)"
+  name="${url##*/}"; name="${name%.git}"
+  [ -n "$name" ] && { printf '%s\n' "$name"; return 0; }
+  printf '%s\n' "$base"
 }
 
 # kb_grep <query> [path…] — case-insensitive search under the KB (read-only).
