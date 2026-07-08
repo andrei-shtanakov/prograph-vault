@@ -1,1 +1,4 @@
 .DS_Store
+
+# Obsidian Local REST API — contains apiKey + TLS private key, never commit
+.obsidian/plugins/obsidian-local-rest-api/data.json
