@@ -3,466 +3,278 @@ title: Ecosystem roadmap
 type: note
 status: living
 owner: Andrei
-updated: 2026-07-05
+updated: 2026-07-08
 ---
 
 # AI Orchestrators ecosystem roadmap
 
-**Date:** 2026-04-05 · **Snapshot:** 2026-04-25
-
-> **This file is a strategic roadmap.** Current state and evidence live in the latest status file:
-> `../status/2026-04-24-status.md` (or later). Per-project tactics live in `<project>/TODO.md`.
-
-## TL;DR (updated 2026-04-25)
-
-1. **Critical path closed:** R-01..R-04 shipped (Maestro v0.2.0); R-09 + R-10 CI shipped; R-06a CLI quick win shipped (`docs/maestro-integration.md` in ATP); arbiter#9 (decision_id in response) fixed 2026-04-25 — paired commits `arbiter@d1a8ecd` + `Maestro@e5915f2/f1f7d26`. R-05 closed at the contract level.
-2. **Cross-project observability v1 shipped:** spec-runner reference impl, Maestro M1 (vendored obs.py + child_env propagation) + M2 (scheduler instrumentation), arbiter Rust impl (`arbiter-core::obs`). Contract in `Maestro/_cowork_output/observability-contract/`.
-3. **Maestro↔spec-runner contract frozen:** R-04 closed (JSON Schema, fixtures, `read_executor_state` with SQLite-first read).
-4. **Maestro↔ATP CLI shipped (R-06a)**, SDK integration (R-06b) — **reformulated** (see `_cowork_output/decisions/2026-04-25-r06b-design.md`): SDK = participant-client, not validator-client; R-06b is now "agent benchmarking via ATP", not "validation via SDK". Approve the formulation → M1 thin slice can start.
-5. **CI/CD everywhere:** ATP (7 workflows) + Maestro (`ci.yml`) + Arbiter (Rust+Python matrix + release binaries linux-x64/macos-arm64) + proctor (`ci.yml`).
-
-### What remained from the original formulation (historical context 2026-04-05)
-~~Main blocker: documentation describes integrations as existing, but in code there are 0 lines.~~ → closed by R-03 (Maestro v0.2.0).
-~~The only working link (Maestro→spec-runner) is an informal contract.~~ → closed by R-04.
-Dependencies are compatible (Python 3.12+, Pydantic v2). This is still current.
-
----
-
-## Critical path
-
-The execution order is determined by hard dependencies between tasks. Each next step is impossible without the previous one.
-
-```
-[R-01] Normalize agent IDs (codex↔codex_cli)
-    │
-    ├──▶ [R-02] Extend TaskConfig (task_type, language, complexity)
-    │        │
-    │        └──▶ [R-03] MCP client in Maestro (route_task, report_outcome)
-    │                 │
-    │                 ├──▶ [R-05] Integration tests Maestro↔Arbiter
-    │                 │
-    │                 └──▶ [R-06] ATP verification via validation_cmd
-    │                              │
-    │                              └──▶ [R-07] Eval-driven routing (Arbiter↔ATP)
-    │
-    └──▶ [R-04] Formalize spec-runner contract (in parallel with R-02/R-03)
-```
-
-**Why exactly this order:**
-
-- R-01 blocks R-03: if agent IDs are not normalized, Arbiter will return a routing error on the first call.
-- R-02 blocks R-03: Arbiter requires `task_type`, `language`, `complexity` as required fields. Without them — rejection.
-- R-03 blocks R-05 and R-06: no client — nothing to test, no data for the feedback loop.
-- R-04 can be done in parallel — it is the only working link, independent of Arbiter.
-
----
-
-## Tasks by priority
-
-### P0 — Ecosystem blockers
-
-Without these tasks the projects cannot work together.
-
----
-
-#### R-01. Normalize agent IDs
-
-| | |
-|---|---|
-| **Description** | Maestro uses `codex`, Arbiter uses `codex_cli`. On an integration attempt, Arbiter won't find the agent and will return fallback/reject. Also, Maestro has an `announce` agent that does not exist in Arbiter — need to decide whether to bypass it during routing. |
-| **Projects** | Maestro (`maestro/models.py:AgentType`), Arbiter (`config/agents.toml`) |
-| **Blocks** | R-03 (MCP client) |
-| **Effort** | **S** — change an enum in one of the projects + update config in the other |
-| **Impact** | 🔴 — without this, routing through Arbiter is impossible |
-
-**Solution options:**
-1. Maestro renames `codex` → `codex_cli` (minimal blast radius — Arbiter has been stable for 2 months)
-2. Arbiter renames `codex_cli` → `codex` (breaks existing data in SQLite)
-3. Mapping layer in the MCP client (adds complexity, but touches neither project)
-
-**Recommendation:** option 1 — change it in Maestro, since it is under active development.
-
----
-
-#### R-02. Extend Maestro TaskConfig for compatibility with Arbiter
-
-| | |
-|---|---|
-| **Description** | Arbiter requires `task_type` (7 enum), `language` (6 enum), `complexity` (5 enum) as required fields. Maestro TaskConfig does not have these fields. Also, `priority` is incompatible: Maestro — int(-100..100), Arbiter — enum(low/normal/high/urgent). |
-| **Projects** | Maestro (`maestro/models.py:81-154`), Arbiter (`arbiter-core/src/types.rs`) |
-| **Blocks** | R-03 (MCP client) |
-| **Effort** | **M** — add fields to the Pydantic model + priority mapping + optional auto-inference from prompt/scope |
-| **Impact** | 🔴 — without this, Arbiter will reject 100% of requests |
-
-**Priority mapping details:**
-- -100..−26 → `low`, −25..25 → `normal`, 26..75 → `high`, 76..100 → `urgent`
-
-**Auto-inference option:**
-- `language` can be determined from scope (*.py → python, *.rs → rust)
-- `task_type` can be determined from prompt (keywords: "fix" → bugfix, "test" → test)
-- `complexity` — heuristic based on scope_size / estimated_tokens
-
----
-
-#### R-03. Arbiter MCP client in Maestro
-
-| | |
-|---|---|
-| **Description** | Implement calls to `route_task` and `report_outcome` from Maestro. Arbiter already has a ready Python client (`orchestrator/arbiter_client.py`), which can be taken as a basis or imported. Decide the mode: advisory (with fallback to static routing) or authoritative. |
-| **Projects** | Maestro (`maestro/scheduler.py`, `maestro/coordination/`), Arbiter (`orchestrator/arbiter_client.py`) |
-| **Depends on** | R-01, R-02 |
-| **Blocks** | R-05 (tests), R-07 (eval-driven routing) |
-| **Effort** | **L** — new module in Maestro, change to scheduler.py, graceful fallback |
-| **Impact** | 🔴 — the key ecosystem integration; without it, Arbiter is an isolated project |
-
-**Architectural decision (from the existing analysis):**
-A `RoutingStrategy` ABC is proposed, with implementations `StaticRouting` (current behavior) and `ArbiterRouting` (via MCP). Graceful fallback: if Arbiter is unavailable, static routing is used.
-
----
-
-#### R-08. Fix the COWORK_CONTEXT.md documentation
-
-| | |
-|---|---|
-| **Description** | The integration map shows Maestro→Arbiter and Maestro→ATP as existing links (arrows without notes). This is misleading. All unimplemented links must be marked `🔴 NOT IMPLEMENTED`. |
-| **Projects** | Root `COWORK_CONTEXT.md:57-68` |
-| **Blocks** | Nothing technically, but it blocks correct planning |
-| **Effort** | **S** — text edit |
-| **Impact** | 🔴 — inaccurate documentation leads to wrong assumptions during onboarding |
-
----
-
-### P1 — Formalization
-
-The ecosystem works, but the contracts are not formally pinned down.
-
----
-
-#### R-04. Formalize the Maestro↔spec-runner contract
-
-| | |
-|---|---|
-| **Description** | The only working integration rests on ad-hoc parsing: `.executor-state.json` is parsed via `state.get("tasks", {})` without typing, `executor.config.yaml` is generated from a dict without a shared schema, and the spec-runner version is not pinned. |
-| **Projects** | Maestro (`maestro/orchestrator.py:406-438`, `maestro/models.py:716-763`), executor (`spec-runner`) |
-| **Depends on** | Nothing (can start immediately) |
-| **Blocks** | Stability of the only working integration |
-| **Effort** | **M** — ExecutorState Pydantic model + pinned version + integration tests |
-| **Impact** | 🟡 — works now, but may break with any spec-runner update |
-
-**Actions:**
-1. Create an `ExecutorState` Pydantic model in Maestro for `.executor-state.json`
-2. Pin the `spec-runner` version in `Maestro/pyproject.toml`
-3. Add contract tests: Maestro generates the config → spec-runner parses it (and vice versa)
-
----
-
-#### R-05. Integration tests Maestro↔Arbiter
-
-| | |
-|---|---|
-| **Description** | Neither project has tests for this link. Arbiter tests its client in isolation (PT-01..PT-07), but there are zero cross-project tests. |
-| **Projects** | Maestro (`tests/`), Arbiter (`tests/`) |
-| **Depends on** | R-03 (MCP client) |
-| **Blocks** | Confidence in the integration |
-| **Effort** | **M** — tests with a mock Arbiter + tests with a real Arbiter subprocess |
-| **Impact** | 🟡 — without tests the integration will break with each update |
-
----
-
-#### R-09. CI/CD for Maestro
-
-| | |
-|---|---|
-| **Description** | Maestro is the most active project (daily commits), but the only one without CI/CD. 29 tests are run only manually. |
-| **Projects** | Maestro (missing `.github/workflows/`) |
-| **Depends on** | Nothing |
-| **Blocks** | Refactoring safety for R-02, R-03 |
-| **Effort** | **S** — GitHub Actions: pytest + ruff + pyrefly |
-| **Impact** | 🟡 — without CI, regressions are found only during dogfooding |
-
----
-
-#### R-10. CI/CD for Arbiter
-
-| | |
-|---|---|
-| **Description** | 238 Rust tests + a Makefile with 150+ targets, but no automatic run. Although the project is stable, once integration starts (R-03) changes become inevitable. |
-| **Projects** | Arbiter (missing `.github/workflows/`) |
-| **Depends on** | Nothing |
-| **Blocks** | Safety of changes during integration |
-| **Effort** | **S** — GitHub Actions: cargo test + cargo clippy + ruff (Python) |
-| **Impact** | 🟡 — Arbiter is stable, but CI is mandatory before integration |
-
----
-
-### P2 — DX improvements
-
-They don't block work, but they significantly speed up development.
-
----
-
-#### R-11. Unified ecosystem onboarding guide
-
-| | |
-|---|---|
-| **Description** | Each project has its own README, CLAUDE.md, COWORK_CONTEXT.md — but there is no single entry point for a developer who wants to bring up the whole ecosystem and understand how the projects are connected. |
-| **Projects** | All |
-| **Depends on** | R-08 (correct documentation) |
-| **Effort** | **M** — a document with architecture, setup instructions, and a description of contracts |
-| **Impact** | 🟢 — speeds up onboarding, but does not block development |
-
----
-
-#### R-12. Setup script for the whole ecosystem
-
-| | |
-|---|---|
-| **Description** | Automate bringing up the environment: `uv sync` for Python projects, `cargo build` for Arbiter, dependency checks (git, gh, Claude CLI). All projects use `uv` — this can be unified. |
-| **Projects** | All |
-| **Depends on** | Nothing |
-| **Effort** | **S** — bash/Makefile script |
-| **Impact** | 🟢 — quality-of-life |
-
----
-
-#### R-13. Normalize guardrails: ATP ← Arbiter
-
-| | |
-|---|---|
-| **Description** | ATP guardrails (`atp/evaluators/guardrails.py`) are "inspired by arbiter's invariant rules" — 3 rules. Arbiter has 10 invariants. The code is not shared. A shared invariants library could be extracted, or at least the naming/semantics aligned. |
-| **Projects** | ATP (`atp/evaluators/guardrails.py`), Arbiter (`arbiter-core/src/invariant/`) |
-| **Depends on** | Nothing |
-| **Effort** | **M** — analysis + shared types or codegen |
-| **Impact** | 🟢 — reduces duplication, but not critical |
-
----
-
-### P3 — Strategic
-
-Long-term improvements to the ecosystem architecture.
-
----
-
-#### R-06a. ATP verification via validation_cmd (quick win)
-
-| | |
-|---|---|
-| **Description** | Add documentation and an example config `validation_cmd: "atp run suite.yaml"` in Maestro. Requires no code changes — only a YAML config and documentation. The ATP CLI is already ready. |
-| **Projects** | Maestro (examples/), ATP (CLI) |
-| **Depends on** | Nothing (the ATP CLI works autonomously) |
-| **Effort** | **S** — documentation + YAML example |
-| **Impact** | 🟡 — gives access to ATP evaluation without a single line of code |
-
-> **Note:** Moved from P3 to P1 based on verification results. The CLI path with 0 lines of code should not wait for R-03.
-
----
-
-#### R-06b. Agent benchmarking via ATP (reformulated 2026-04-25)
-
-> **Reformulated.** The original description — "ATP verification via SDK" — was inaccurate: the ATP SDK is a **participant** client of the benchmark, not a validator client. Three features had been conflated under the name R-06b (validation deepening / agent benchmarking / Maestro-as-participant); the design doc in `_cowork_output/decisions/2026-04-25-r06b-design.md` pins down the choice of F2 (agent benchmarking). Below is the new formulation.
-
-| | |
-|---|---|
-| **Description** | Maestro runs its spawned agents (claude_code/codex_cli/aider) through an external ATP benchmark. `BenchmarkResult` (agent_id, benchmark_id, score, per_task, cost) goes to Arbiter as a new routing signal. |
-| **Projects** | Maestro (new `maestro/benchmark/`), ATP (SDK is ready: `atp_sdk.ATPClient`) |
-| **Depends on** | R-03 ✅, design doc approved |
-| **Effort** | **M0** design ✅ done · **M1** thin slice (Mock + scaffold) S–M · **M2** spawner integration M · **M3** auth + live ATP S · **M4** Arbiter feedback wiring M · **M5** CLI S |
-| **Impact** | 🟡 — gives Arbiter a new per-agent-per-benchmark signal; unblocks R-07 (eval-driven routing uses BenchmarkResult as a weighting input) |
-
----
-
-#### R-07. Eval-driven routing validation (Arbiter↔ATP)
-
-| | |
-|---|---|
-| **Description** | A/B testing of the quality of Arbiter's decisions via ATP: DT routing vs random vs always-best-agent. ~200 LOC in `scripts/eval_routing.py`. Planned as ECO-3 in the Arbiter roadmap. |
-| **Projects** | Arbiter (`SUGGESTIONS.md:70-83`), ATP |
-| **Depends on** | R-06 (ATP verification), R-03 (MCP client) |
-| **Effort** | **L** — test suites + scripts + analysis |
-| **Impact** | 🟡 — allows objectively assessing the value of Arbiter for the ecosystem |
-
----
-
-#### R-14. Shared type library
-
-| | |
-|---|---|
-| **Description** | Extract common types (TaskInput, AgentStatus, OutcomeReport) into a shared Python package imported by Maestro and ATP. Arbiter (Rust) generates JSON Schema from serde — the shared package can validate against it. |
-| **Projects** | All |
-| **Depends on** | R-01, R-02 (schema stabilization) |
-| **Effort** | **XL** — new package, revision of all models, CI for shared types |
-| **Impact** | 🟡 — eliminates mismatches once and for all, but expensive |
-
----
-
-#### R-15. Declarative agent-infra.yaml
-
-| | |
-|---|---|
-| **Description** | A single file describing the entire ecosystem: which agents are available, their capabilities, routing policies, ATP test suites, observability endpoints. Right now this is smeared across `tasks.yaml`, `agents.toml`, `invariants.toml`, ATP configs. |
-| **Projects** | All |
-| **Depends on** | R-14 (shared types), R-03 (integration works) |
-| **Effort** | **XL** — format design, parsers in each project, config migration |
-| **Impact** | 🟢 — strategic goal, but premature before integrations stabilize |
-
----
-
-#### R-16. Monorepo vs multi-repo decision
-
-| | |
-|---|---|
-| **Description** | Right now the projects sit side by side but do not form a monorepo: no shared workspace, no cross-project CI, no shared dependency management. A decision is needed: formalize as a monorepo (uv workspace, unified CI) or keep multi-repo with contract tests at the boundaries. |
-| **Projects** | All |
-| **Depends on** | R-14 (shared types — if monorepo), R-05 (contract tests — if multi-repo) |
-| **Effort** | **XL** — architectural decision + migration |
-| **Impact** | 🟢 — determines the long-term strategy, but does not block current work |
-
----
-
-## Dependency diagram
-
-```
-                    ╔═══════════════════════════════════════════════════╗
-                    ║          CAN START IMMEDIATELY (in parallel)      ║
-                    ╚═══════════════════════════════════════════════════╝
-
-          ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐
-          │ R-08 Docs        │   │ R-09 CI Maestro │   │ R-10 CI Arbiter │
-          │ COWORK_CONTEXT  │   │ GitHub Actions   │   │ GitHub Actions   │
-          │ Effort: S       │   │ Effort: S ⚡     │   │ Effort: S        │
-          └────────┬────────┘   └─────────────────┘   └─────────────────┘
-                   │
-          ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐
-          │ R-11 Onboarding │   │ R-12 Setup script│   │R-06a ATP CLI    │
-          │ guide           │   │ Effort: S        │   │ quick win       │
-          │ Effort: M       │   └─────────────────┘   │ Effort: S       │
-          └─────────────────┘                          └─────────────────┘
-
-          ┌─────────────────┐
-          │ R-04 Formalize   │ ◄── can start immediately
-          │ spec-runner      │
-          │ Effort: M        │
-          └─────────────────┘
-
-                    ╔═══════════════════════════════════════════════════╗
-                    ║              CRITICAL PATH (sequential)           ║
-                    ╚═══════════════════════════════════════════════════╝
-
-          ┌─────────────────┐
-          │ R-01 Normalize   │ ◄── START HERE
-          │ agent IDs        │
-          │ Effort: S  🔴    │
-          └────────┬────────┘
-                   │
-                   ▼
-          ┌─────────────────┐
-          │ R-02 Extend      │
-          │ TaskConfig       │
-          │ Effort: M  🔴    │
-          └────────┬────────┘
-                   │
-                   ▼
-          ┌─────────────────┐
-          │ R-03 MCP client  │
-          │ Arbiter in Maestro│
-          │ Effort: L  🔴    │
-          └────────┬────────┘
-                   │
-            ┌──────┴──────┐
-            │             │
-            ▼             ▼
-   ┌────────────────┐  ┌─────────────────┐
-   │ R-05 Integration│  │ R-06b ATP SDK   │
-   │ tests M↔A      │  │ integration      │
-   │ Effort: M  🟡   │  │ Effort: M  🟡    │
-   └────────────────┘  └────────┬────────┘
-                                │
-                                ▼
-                       ┌─────────────────┐
-                       │ R-07 Eval-driven │
-                       │ routing A↔ATP    │
-                       │ Effort: L  🟡    │
-                       └─────────────────┘
-
-                    ╔═══════════════════════════════════════════════════╗
-                    ║              STRATEGIC (after stabilization)      ║
-                    ╚═══════════════════════════════════════════════════╝
-
-   R-01 + R-02 ──▶ ┌─────────────────┐
-                    │ R-14 Shared types│
-                    │ Effort: XL  🟡   │
-                    └────────┬────────┘
-                             │
-                  ┌──────────┴──────────┐
-                  │                     │
-                  ▼                     ▼
-         ┌────────────────┐   ┌─────────────────┐
-         │ R-15 agent-     │   │ R-16 Mono/Multi  │
-         │ infra.yaml      │   │ repo decision    │
-         │ Effort: XL 🟢   │   │ Effort: XL 🟢    │
-         └────────────────┘   └─────────────────┘
-
-   R-13 Guardrails ◄── can be done at any time (Effort: M, 🟢)
-```
-
----
-
-## Summary table
-
-| ID | Task | Projects | Depends on | Effort | Impact | Priority |
-|----|--------|---------|------------|--------|--------|-----------|
-| R-01 | Normalize agent IDs | Maestro, Arbiter | — | S | 🔴 | P0 |
-| R-02 | Extend TaskConfig | Maestro, Arbiter | R-01 | M | 🔴 | P0 |
-| R-03 | Arbiter MCP client in Maestro | Maestro, Arbiter | R-01, R-02 | L | 🔴 | P0 |
-| R-08 | Fix documentation | COWORK_CONTEXT.md | — | S | 🔴 | P0 |
-| R-04 | Formalize spec-runner contract | Maestro, executor | — | M | 🟡 | P1 |
-| R-05 | Integration tests M↔A | Maestro, Arbiter | R-03 | M | 🟡 | P1 |
-| R-09 | CI/CD for Maestro | Maestro | — | S | 🟡 | P1 |
-| R-10 | CI/CD for Arbiter | Arbiter | — | S | 🟡 | P1 |
-| R-06a | ATP verification (CLI quick win) | Maestro, ATP | — | S | 🟡 | P1 |
-| R-06b | ATP verification (SDK integration) | Maestro, ATP | R-03 | M–L | 🟡 | P3 |
-| R-07 | Eval-driven routing | Arbiter, ATP | R-06b, R-03 | L | 🟡 | P3 |
-| R-11 | Onboarding guide | All | R-08 | M | 🟢 | P2 |
-| R-12 | Setup script | All | — | S | 🟢 | P2 |
-| R-13 | Normalize guardrails | ATP, Arbiter | — | M | 🟢 | P2 |
-| R-14 | Shared type library | All | R-01, R-02 | XL | 🟡 | P3 |
-| R-15 | agent-infra.yaml | All | R-14, R-03 | XL | 🟢 | P3 |
-| R-16 | Monorepo vs multi-repo | All | R-14 / R-05 | XL | 🟢 | P3 |
-
----
-
-## Recommended execution plan
-
-### Sprint 1 (week 1–2): Unblocking
-
-In parallel:
-- **R-01** (S) — normalize agent IDs
-- **R-08** (S) — fix documentation
-- **R-09** (S) — CI/CD for Maestro *(higher priority than R-10: daily commits without CI)*
-- **R-10** (S) — CI/CD for Arbiter
-- **R-06a** (S) — ATP verification via CLI (quick win, 0 lines of code)
-- **R-04** (M) — start formalizing the spec-runner contract
-
-### Sprint 2 (week 3–4): Integration foundation
-
-Sequentially (R-09 already provides a safety net):
-- **R-02** (M) — extend TaskConfig
-- **R-04** (M) — finish formalizing spec-runner
-
-### Sprint 3 (week 5–8): Key integration
-
-- **R-03** (L) — Arbiter MCP client in Maestro
-
-### Sprint 4 (week 9–10): Validation
-
-In parallel:
-- **R-05** (M) — integration tests M↔A
-- **R-06b** (M) — ATP verification via SDK
-
-### Next: by priority and capacity
-
-- R-07 → R-14 → R-15/R-16 (strategic, as they become ready)
-
----
-
-*Generated from the reports: `_cowork_output/contracts/contract-analysis.md`, `_cowork_output/integration/integration-health.md`, `_cowork_output/status/2026-04-05-status.md`*
+**Date:** 2026-07-08 · **Horizon:** Q3 2026 + longer view
+**Based on:** the ecosystem status snapshot (`status/2026-07-08-1228-status.md`, 14 repos + prograph
+graph), the logging/observability audit (`status/2026-07-08-logging-audit.md`), and external factors
+(GitHub Models retirement, MCP protocol evolution).
+
+> **The previous roadmap** (`archive/2026-04-05-ecosystem-roadmap.md`, R-01..R-16 critical path) is
+> archived — its critical path shipped (Maestro↔Arbiter MCP client, agent-ID normalization,
+> spec-runner contract) and is confirmed live in the current status snapshot. This document replaces
+> it as the live strategic surface.
+
+> Confidence legend: ✅ confirmed by code/official source · ⚠️ from an external source, not
+> independently verified this session · ❓ needs clarification.
+
+## 0. GitHub Models: the fact is real, but our exposure ≈ zero
+
+**External fact (✅ confirmed via GitHub's changelog):** GitHub Models is being fully retired on
+**2026-07-30**, with brownouts on 07-16 and 07-23; the playground, model catalog, inference API, and
+GitHub Models' own BYOK all go away.
+
+**But checking the code shows ATP's exposure to this service is effectively zero (✅ verified):**
+
+- Zero direct calls to the GitHub Models inference API (`models.github.ai`,
+  `models.inference.ai.azure`, `inference/chat/completions`) found anywhere in the repos.
+- Every `spec-runner` model preset is a **CLI agent**: `claude`, `codex`, `copilot`, `qwen`, `ollama`,
+  `opencode`, `pi`, `llama-cli`. Model access goes through these CLIs, not an inference API.
+- The `copilot` preset is the **GitHub Copilot CLI** (`command: copilot`,
+  `gh auth`/`COPILOT_GITHUB_TOKEN`). **Copilot is not being retired** — the same changelog recommends
+  it as a migration path. The earlier match on the word "copilot" was a false signal.
+- `atp-platform`'s GitHub OAuth device flow is dashboard **auth**, not inference via Models.
+
+**Conclusion (correcting an earlier version of this analysis):** this is NOT P0. The original
+strategic point — "own a provider-abstraction layer so we don't depend on one hosted catalog" —
+remains **sound architecture for later**, but there's **no 07-16 deadline urgency**, because we don't
+actually use that catalog. What's left is a short *confirm* task (checklist in §6), not a migration.
+
+- **Where to build the abstraction later:** `arbiter` already has a catalog layer (`arbiter-cli`
+  catalog loader, ADR-ECO-003b; `route_task`) — the natural home for provider-independent routing.
+
+## 1. Five anchor directions (refined)
+
+### 1.1 ATP Platform — source of routing-grade data ✅
+Treat it as a data provider for routing: cost, usage class, pass-rate/reliability, evaluator-model
+provenance. The loop already exists: recent commits (`mean_run_pass_rate` in payload #234, reporter,
+grading in `method`), and `arbiter` has a `routable-flip benchmark-evidence gate` (ADR-ECO-003a) that
+consumes this data. The `report_benchmark-v1` contract has 5 owners (incl. ATP and arbiter), no drift.
+**Focus:** stabilize the benchmark-contract payload and version it as strictly as the MCP protocol.
+
+### 1.2 Maestro — recoverability + audit trail ✅
+This is what separates an enterprise orchestrator from a toy. Already on the right trajectory:
+`spawning sentinel` (#57), `runtime-decision instrumentation M3` (#55), portable `maestro init` (#56).
+**Focus:** stranded-workstream recovery, merge ordering, a full runtime-decision log. **Depends on §3
+(observability)** — an audit trail is only as reliable as the logs under it.
+
+### 1.3 spec-runner — the formal planning/spec backend ✅
+Maestro already treats it as a versioned backend: `SPEC_RUNNER_REQUIRED_VERSION` in
+`maestro/spec_runner.py` + contract tests against `plan --full`. The mechanism exists.
+**Risk (refining the earlier point):** version discipline is only enforced on Maestro's side. Other
+consumers still pin `spec-runner >=0.1.x` while the real version is **2.9.0** (two majors off). Align
+the pins and add a CI compatibility check (see `status/2026-07-08-1228-status.md` misalignment 1).
+
+### 1.4 Arbiter — keeping pace with MCP's evolution ✅/⚠️
+Arbiter as an MCP policy/gate engine is the right base for a governance proxy, approvals, and
+agent/tool-call audit. This is the most forward-looking item — details in §4 (MCP evolution), since
+arbiter is first to hit compatibility issues.
+
+### 1.5 External risk → an owned model layer ✅ (de-urgentized)
+See §0. The strategic conclusion of the original analysis holds — a provider-independent
+catalog/routing layer in arbiter is useful. But after checking the code: there's no urgency, exposure
+to the retiring GitHub Models catalog is ≈ zero (model access goes through CLI agents). This is
+"someday" work, not a fire drill.
+
+## 2. Gap in the earlier roadmap: where's proctor? ✅ (important)
+
+`proctor` wasn't mentioned in the original analysis at all, yet it's now the most active new repo (250
+commits, 87/30d). Per its README it "orchestrates LLM-powered agents that execute workflows (simple
+prompts, DAG pipelines), calls tools, communicates through an internal event bus" — a **direct overlap**
+with Maestro (DAG orchestration).
+
+**A decision on role boundaries is needed:**
+- Option A: proctor = a distributed execution substrate (NATS, Docker workers, registry) **under**
+  Maestro; Maestro plans and decides, proctor executes.
+- Option B: proctor = an independent event-driven agent runner for a different task class
+  (proactive/scheduled/Telegram-triggered).
+
+Until this is settled, there's a risk of duplicated DAG/workflow engines and competition for the
+orchestrator role. The roadmap needs to state proctor's positioning explicitly — this is an
+architectural decision, not a detail.
+
+## 3. Gap in the earlier roadmap: observability as a foundation (enabler) ✅
+
+Items 1.1 (routing-grade data), 1.2 (audit trail, runtime-decision logs), and 1.4 (tool-call audit) **all
+ride on the obs contract v1** — and it's currently uneven (full detail in
+`status/2026-07-08-logging-audit.md`):
+
+- A standard exists and works end-to-end: `observability-contract/v1` (OTel-compatible JSON) +
+  emitter `obs.py` (canon in spec-runner) / `obs.rs` (Rust) → `.jsonl` → read by `dispatcher`. ✅
+- **But the foundation has cracks:** three copies of `obs.py` with different md5s — the ones vendored
+  into Maestro/arbiter are ~50 lines behind canon; `proctor` (the most active service, already in the
+  enum as `proctor-a`) logs via bare stdlib and doesn't write to the contract; `atp-platform` logs
+  structurally but in its own format (`correlation_id/version/hostname`).
+
+**Conclusion:** logging unification belongs in the roadmap as an **enabler under 1.1/1.2/1.4**, not as
+separate hygiene. Concretely: (1) pull `obs.py` out of vendoring into an installable package; (2) move
+proctor onto the contract (also turns on its dispatcher monitoring); (3) bring atp-platform to contract
+fields; (4) CI check "copy == canon" + validate log samples against `log-schema.json`. `prograph`
+already detects contract drift — hang this check off its indexing.
+
+## 4. Longer view: MCP protocol evolution
+
+> ✅ **Checked against the official MCP roadmap** (modelcontextprotocol.io/development/roadmap,
+> updated 2026-03-05). Confirmed: the current spec revision is **2025-11-25** (so the cited date is a
+> real revision). The line-by-line 2025-06-18 / 2025-11-25 changelog wasn't diffed in full, but the
+> direction matches the official priorities below. The term **"MRTR" (❓)** doesn't appear in the
+> official roadmap — leaving it as an open question (closest real mechanics: Tasks primitive
+> SEP-1686, Result Type improvements, Triggers/Events).
+
+### 4.1 Official MCP priorities (✅ per the 2026-03-05 roadmap)
+Four priority areas, three directly relevant to ATP:
+
+1. **Transport Evolution & Scalability** — stateless operation behind load balancers/proxies;
+   scalable session handling (create/resume/migrate sessions transparently to the client); **MCP
+   Server Cards** (server metadata via a `.well-known` URL for discovery without connecting).
+   Important: **no new official transports this cycle** — the set is kept small for compatibility.
+2. **Agent Communication** — the **Tasks primitive (SEP-1686)**, call-now/fetch-later; refined
+   retry semantics and expiry policies.
+3. **Governance Maturation** — Linux Foundation, Working Groups, contributor ladder (project
+   governance, not our code).
+4. **Enterprise Readiness** — **audit trails and observability** (end-to-end visibility feeding
+   enterprise logging/compliance pipelines); enterprise-managed auth (moving off static client
+   secrets → SSO, Cross-App Access); **gateway/proxy patterns** (authorization propagation, session
+   semantics visible to a gateway); configuration portability. Roadmap caveat: "much of this will
+   ship as **extensions**, not core changes."
+
+**On the horizon:** Triggers/Event-Driven Updates (webhooks instead of polling —
+our "subscriptions/listen"), Result Type Improvements (streamed/reference-based results — our
+"resultType"), Security & Authorization (finer-grained scopes, DPoP SEP-1932, Workload Identity
+Federation SEP-1933).
+
+**Key takeaway:** MCP is maturing into an enterprise integration protocol (stateless, discoverable,
+gateway-friendly, OTel-observable). The read that this is "a painful normalization, not a
+catastrophe" **is confirmed by the official position**: transports are kept small for compatibility,
+and enterprise features mostly land as extensions → fewer core breaking changes than one might fear.
+
+### 4.1a How well this matches ATP's course (✅ good news)
+MCP's official priorities line up almost word-for-word with this roadmap's directions:
+- MCP "Enterprise: audit trails & observability, feed into existing logging pipelines" ↔ our §1.2
+  (Maestro audit trail), §1.4 (arbiter tool-call audit), §3 (obs unification on the OTel contract).
+  Our `observability-contract/v1` is already OTel-compatible — we're heading where MCP officially is.
+- MCP "Gateway & proxy patterns" ↔ arbiter as a governance proxy (§4 below). Official validation of
+  the direction.
+- MCP "stateless + scalable session handling" ↔ our finding about stateful `atp-dashboard` MCP
+  (see §4.2).
+- MCP "Tasks primitive" ↔ Maestro/proctor's task-oriented orchestration.
+
+So the bet on arbiter-as-governance-proxy + unified OTel observability isn't a guess — it matches
+MCP's official direction.
+
+### 4.2 Our actual exposure (✅ verified in code)
+The ecosystem runs **several live MCP servers**, not one:
+- `arbiter/arbiter-mcp` (Rust) — the policy engine;
+- `spec-runner/src/spec_runner/mcp_server.py`;
+- `prograph/prograph/mcp_server.py`;
+- `atp-platform`: `atp/mock_tools/server.py`, `atp-dashboard`'s MCP tools (with `session_id`
+  handling, handshake observability, PR #102), example servers.
+
+**Finding #1 (compatibility):** `arbiter-mcp`'s `initialize` returns `"protocolVersion": "1.1.0"`
+(`server.rs:418`). MCP uses **date-string** versions (`2025-06-18` etc.). This currently works only
+because Maestro is a "custom" client with its own version check. Against a standards-compliant
+client/gateway, this handshake is a failure risk — exactly the "version-aware" point the MCP
+changelogs raise.
+
+**Finding #2 (stateful):** `atp-dashboard`'s MCP carries state in `session_id` (first-tool-call per
+session). Moving to a stateless model makes this a candidate for explicit handles instead of a
+session.
+
+### 4.3 Compatibility checklist ahead of the draft (per our MCP servers)
+No need to panic (this is a draft, SDKs will give a transition period), but prepare a checklist per
+server:
+
+1. **protocolVersion:** bring `arbiter-mcp` to MCP's date-string format, with version negotiation
+   support (keep "1.1.0" as arbiter's own internal contract, separate from the MCP field). —
+   priority, ✅ found.
+2. **Session/stateful:** review dependence on `Mcp-Session-Id`/`session_id` (atp-dashboard); decide
+   what migrates to explicit handles.
+3. **Auth:** plan a move to OAuth Resource Server + Resource Indicators (RFC 8707); arbiter/gate
+   currently has no OAuth layer.
+4. **Discovery / Server Cards:** readiness for MCP Server Cards (`.well-known` metadata) — our
+   servers (arbiter-mcp, prograph, spec-runner) could publish capabilities without connecting.
+   Official priority #1.
+5. **JSON Schema:** confirm tool schemas are valid under 2020-12 (our contracts are already on
+   `draft/2020-12` — ✅ a good start).
+6. **Tasks / Triggers / Result types:** track adoption of the Tasks primitive (SEP-1686),
+   event-driven updates, and streamed/reference results; also where the unresolved "MRTR" ❓ fits —
+   clarify with the analysis's author.
+7. **Versioning:** a strategy for supporting old and new protocol in parallel during the transition.
+
+**Where this lives in the roadmap:** §4.x sits under §1.4 (Arbiter). Arbiter as a governance proxy
+benefits directly from the new model (OAuth resource server, policy hooks, tool-call audit) — worth
+tracking its roadmap in sync with MCP revisions rather than playing catch-up.
+
+## 5. Priorities (summary)
+
+| # | Action | Urgency | Rationale |
+|---|---|---|---|
+| P1 | Align `spec-runner` pins (0.1.x → 2.9.x) + CI | High | Direct risk to §1.3's "versioned contract" ✅ |
+| P2 | Position proctor vs. Maestro | High | Otherwise: duplicated orchestrators ✅ |
+| P3 | Unify observability (obs package, proctor→contract) | High | Enabler for §1.1/1.2/1.4 ✅ |
+| P4 | `arbiter-mcp` protocolVersion → MCP date-string | Medium | Compatibility with external MCP clients ✅ |
+| P5 | MCP compatibility checklist across all servers (§7) | Medium | Prep for protocol normalization ✅ |
+| P6 | Stabilize + version the ATP benchmark payload | Medium | Feeds arbiter routing ✅ |
+| P7 | Maestro: stranded recovery, merge ordering | Medium | Enterprise-grade orchestration ✅ |
+| P8 | Confirm no GitHub Models exposure (§6); provider-abstraction — later | Low | Exposure ≈ zero, no urgency ✅ |
+
+## 6. Checklist: GitHub Models (verify, don't migrate)
+
+Since code-level exposure is ≈ zero (§0), this is a short "confirm and close" task, not a fire drill.
+Can be done calmly, with no tie to 07-16.
+
+- [ ] **Confirm no inference calls.** Re-grep every repo for: `models.github.ai`,
+  `models.inference.ai.azure`, `inference/chat/completions`, `GITHUB_TOKEN` next to a model call.
+  Expected — empty. (✅ empty as of 2026-07-08.)
+- [ ] **Check env/secrets and CI.** No `GITHUB_TOKEN`/`AZURE_*` used as an inference key in GitHub
+  Actions, `.env.example`, docker-compose, or deploy scripts.
+- [ ] **Clarify the `copilot` preset.** Make sure users understand `--preset copilot` = GitHub
+  **Copilot CLI** (staying), not GitHub Models (retiring). Add a note to the preset docs.
+- [ ] **Check the arbiter catalog.** Confirm the catalog loader routes to **agents**, not to a
+  hosted-Models endpoint.
+- [ ] **Log the provider-abstraction decision** as a non-urgent backlog item: whether it's needed at
+  all, and if so, target providers (Azure AI Foundry / direct APIs / multi-provider via arbiter).
+- [ ] **(Optional) One smoke run** of each CLI preset in use, to catch any non-Models-related
+  regressions before end of July.
+
+## 7. Our MCP servers' readiness against MCP priorities (✅ per code)
+
+| Server | Transport | Stateful? | protocolVersion | Auth | Main gap vs. MCP roadmap |
+|---|---|---|---|---|---|
+| **arbiter-mcp** (Rust) | stdio (JSON-RPC 2.0) | yes (`initialized` flag) | **`"1.1.0"`** — not date-string ❗ | none (process trust) | P4: bring version to MCP format; OAuth Resource Server readiness for the governance-proxy role |
+| **spec-runner** `mcp_server.py` | stdio (FastMCP) | light (ExecutorState) | (FastMCP default) | none (inherits process trust) | Server Card/discovery; review write-tools (`run_task`,`stop`) under a gateway model |
+| **prograph** `mcp_server.py` | stdio | no (reads a snapshot) | none | none | Server Card; otherwise fits well (read-only) |
+| **atp-dashboard** MCP | (part of dashboard) | **yes — `session_id`** ❗ | dashboard-auth | none at the MCP level | Transport/session: candidate for explicit handles under a stateless model |
+| **atp mock_tools** `server.py` | local test server | n/a | n/a | n/a | test-only, outside the production perimeter |
+
+**Reading the table against MCP's official priorities (§4.1):**
+- *Transport Evolution / stateless / Server Cards:* all our servers are currently stdio (1:1 process
+  trust) — "stateless HTTP behind a gateway" isn't a pressure point today. But `arbiter-mcp` and
+  `atp-dashboard` already carry state — first candidates for session refactoring if/when we move to
+  an HTTP transport. Server Cards (`.well-known` metadata) are a cheap early win for
+  arbiter/prograph/spec-runner.
+- *Enterprise auth (OAuth Resource Server):* no auth at the MCP level anywhere yet (stdio inherits
+  process trust). For arbiter-as-governance-proxy this is future work item #1.
+- *Tool schemas / JSON Schema 2020-12:* our contracts are already on `draft/2020-12` — ✅ ready.
+- *Priority action:* P4 (`arbiter-mcp` → date-string protocolVersion) is the one clear compatibility
+  gap found in code.
+
+## Open questions (need an owner's decision)
+
+1. proctor: a substrate under Maestro, or an independent runner? (see §2)
+2. Target model provider after GitHub Models: Azure AI Foundry, direct APIs, or multi-provider via
+   the arbiter catalog? (§0)
+3. "MRTR" in the MCP context — what does it actually refer to? (§4, ❓)
+4. OAuth Resource Server for arbiter — an own IdP, or an external OIDC? (§4.3)
+
+## Sources
+- GitHub Models retirement: github.blog changelog, 2026-07-01 (✅ verified)
+- MCP official roadmap: modelcontextprotocol.io/development/roadmap (✅ verified, updated
+  2026-03-05; current spec 2025-11-25)
+- MCP changelog 2025-06-18, 2025-11-25 (⚠️ revision date confirmed; line-by-line build list not
+  diffed)
+- Code: `arbiter/arbiter-mcp/src/server.rs`, `Maestro/maestro/spec_runner.py`, `atp-platform` (#234,
+  dashboard MCP), `spec-runner` (presets, obs.py), `proctor/README.md`, `.prograph/graph.db`
