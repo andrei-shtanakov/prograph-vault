@@ -1,12 +1,25 @@
 ---
-title: Integration health
+title: Integration health (2026-04-05 snapshot)
 type: note
-status: living
+status: archived
 owner: Andrei
-updated: 2026-07-05
+updated: 2026-07-08
+archived: 2026-07-08
+reason: >
+  Point-in-time integration audit dated 2026-04-05; core claims are now stale. It states
+  "Maestro→Arbiter: NOT IMPLEMENTED, 0 lines" and "spec-runner version not pinned in Maestro",
+  but Maestro now has maestro/coordination/arbiter_client.py (MCP handshake + protocolVersion 1.1.0
+  negotiation) and pins spec-runner via SPEC_RUNNER_REQUIRED_VERSION + contract tests. It also uses
+  the old `executor/` name for spec-runner and covers only ~4 repos (now 14).
+superseded_by: >
+  authored/registry/registry.md (integration map), authored/notes/ecosystem-roadmap.md,
+  authored/notes/status/2026-07-08-1228-status.md; live structure in derived/graph/ (prograph).
 ---
 
 # Integration health: the real state of the links
+
+> **ARCHIVED 2026-07-08 — historical snapshot, do not treat as current.** See `superseded_by` in the
+> frontmatter. Kept for decision history (KB rule §1.5: nothing is deleted).
 
 **Date:** 2026-04-05
 
