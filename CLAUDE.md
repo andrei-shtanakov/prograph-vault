@@ -15,12 +15,13 @@
 - **The main invariant before any write:** `authored/**` is written ONLY by humans (via git-review);
   `derived/**` is written ONLY by tools (prograph/digest skills) and is **regenerable** — manual
   edits there will be lost. Details in §1–§2, `authored/README.md`, `derived/README.md`.
-- **The §3 map is partly aspirational (migration is unfinished).** What actually exists now:
-  `authored/{rules,skills,decisions}`, `derived/{contracts,projects,digests,journal}`. NOT yet
-  created: `authored/{templates,notes,registry}`, `derived/graph`. Legacy dirs at the root
-  (`contracts/`, `projects/`, `mcp_patterns/`, `claude-kb/`) are leftovers awaiting reclassification
-  (mostly empty). When creating a missing `authored/*` subfolder, follow §3/§8 — do not invent a new
-  structure. The migration checklist lives in `index.md` (all items still open).
+- **The §3 map is now largely realized (migration complete, 2026-07-08).** What exists now:
+  `authored/{rules,skills,decisions,notes,registry}`, `derived/{contracts,projects,digests,journal}`.
+  Still NOT created: `authored/templates`, `derived/graph` (the prograph→graph promoter skill exists
+  but graph output may be empty). Legacy dirs at the root (`contracts/`, `projects/`, `mcp_patterns/`,
+  `claude-kb/`) are leftovers awaiting reclassification (mostly empty). When creating a missing
+  `authored/*` subfolder, follow §3/§8 — do not invent a new structure. The migration checklist lives
+  in `index.md` (all items closed as of 2026-07-08).
 - **How work happens here:**
   - Curation/search/archival/graduation — the `kb-curator` skill
     (`authored/skills/kb-curator/SKILL.md`); it writes only to `authored/**`, other repos are read-only.

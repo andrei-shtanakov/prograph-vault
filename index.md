@@ -3,7 +3,7 @@ title: Ecosystem KB — index
 type: registry
 status: living
 owner: Andrei
-updated: 2026-07-05
+updated: 2026-07-08
 ---
 
 # Ecosystem KB
@@ -35,8 +35,10 @@ Unified knowledge base of the AI-orchestrators ecosystem. Maintenance rules — 
 
 ## Migration status
 
-- [ ] `git init`, authored/derived skeleton
-- [ ] Migrate from `_cowork_output/` (decisions, roadmap, status, contract snapshots)
-- [ ] Reclassify current contracts/projects/mcp_patterns → authored|derived
-- [ ] COWORK_CONTEXT → `authored/registry/`, pointer at the root
-- [ ] Register the KB in the registry
+- [x] `git init`, authored/derived skeleton
+- [x] Migrate from `_cowork_output/` (decisions, roadmap, status, contract snapshots)
+- [x] Reclassify current contracts/projects/mcp_patterns → authored|derived
+- [x] COWORK_CONTEXT → `authored/registry/` (`registry.md`, 2026-07-08); index.md is the root pointer
+- [x] Register the KB in the registry (`prograph-vault` listed in `authored/registry/registry.md`)
+
+Migration complete (2026-07-08). Ongoing upkeep is handled by the `kb-curator` freshness audit.
