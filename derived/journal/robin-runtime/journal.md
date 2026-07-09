@@ -43,3 +43,28 @@ updated: 2026-07-09
   exits 0 (masked a 403 as a "successful" TTS check); OpenAI `/v1/models` and
   the actual per-project model allowlist are both project-scoped — a 403
   `model_not_found` names the offending project id, which beats guessing.
+
+## 2026-07-09 22:14 — change: retrieval fix — pure-Russian questions returned zero sources
+
+- Production regression caught on day one via the interaction log (`n_sources=0`
+  rows in var/interactions.jsonl): «что можешь сказать о сегодняшних изменениях
+  в проектах?» and «есть что-то в KB?» both answered "SOURCES пуст".
+- Two root causes in the retrieval layer: (1) the term tokenizer only matched
+  Latin (`[A-Za-z0-9_.\-]+`) — all Cyrillic words were silently dropped, so
+  pure-RU questions produced zero search terms; (2) period patterns matched
+  «сегодня» only as a whole word, missing inflected forms («сегодняшних»), and
+  short acronyms like `KB` fell under the 3-char minimum.
+- Fix (robin-runtime@master, deployed via the new CI pipeline): Cyrillic
+  tokenization + RU stopword list in `src/robin/kb.py`; short-acronym keep-set
+  (kb/ci/api/adr/db/ui); inflected-form and vague-recency period patterns
+  («сегодняшних», «вчерашние», «что нового», «недавно» → past week) in
+  `src/robin/changes.py`, ordered after the specific windows so «за 3 дня»
+  still wins. Regression tests added (75 offline tests green).
+- Verified in production on the exact failing questions: both now return 8
+  sources; the "today" question answers from today's commits with `repo@sha`
+  citations.
+- Known limit stated openly: retrieval is lexical — RU questions match RU text
+  and Latin identifiers, but not EN translations of RU concepts; monitor
+  `n_sources=0` rows and consider an embedding index if they accumulate.
+- Links: robin-runtime/src/robin/kb.py, robin-runtime/src/robin/changes.py,
+  robin-runtime/tests/test_kb.py, robin-runtime/tests/test_changes.py
