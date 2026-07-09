@@ -4,7 +4,7 @@
 > Resolved: Upstream: ROBIN-SPEC.md @ git b5ad49e042ceaf4180612c1127dae91788d45627
 > Resolved: Upstream sha256: f8f49c732cda0df85c55ee89868a96093b74ebd7e726d908732033a60b046290
 > Resolved: Team: AI-Orchestrators ecosystem · Knowledge repo: prograph-vault (entry CLAUDE.md)
-> Resolved: Stack: Telegram · headless claude CLI on cron · always-on VPS
+> Resolved: Stack: Telegram · direct `anthropic` SDK (Python, Messages API) · always-on VPS with systemd timers
 > Resolved: Identity: ./soul.md · Duty roster: ./robin/duties.md
 > Resolved: All 22 registry slots are resolved or explicitly deferred (see the registry section).
 > Resolved: Normative MUST/SHOULD/MAY text is byte-identical to upstream; strip every
@@ -190,7 +190,7 @@ Every implementation-defined point in this spec, in one list. A configurator (e.
 
 1. Chat platform · 2. Agent runtime · 3. Hosting + scheduler · 4. Storage (flat files vs database) · 5. Knowledge repo location + entry file · 6. Read-only data sources + their bindings · 7. Chat identity registry (team channels, allowed DM users) · 8. Passive-capture scope · 9. Duty roster (per §6.3, declared in repo) · 10. Digest cadence + destination · 11. Staleness budget (default 14d) · 12. DM idle window (default 60min) · 13. Ambient context size N (reference 10) · 14. DM reseed turn count · 15. Context-isolation mechanism (§6.5) · 16. Feedback affordance + promotion affordance, incl. learning routing (§6.4) · 17. Secrets location (environment/manager, §6.5) · 18. Meeting-bot provider + auto-join scope (§6.6, optional) · 19. Meeting transcription provider (§6.6, optional) · 20. In-meeting invocation mechanism + transcript context window (§6.6, optional) · 21. Input modalities beyond text (§6.1) · 22. Team-skill consumption mechanism (§4: pointers over the synced mount vs native registry; sync cadence)
 > Resolved: Slot 1 (Chat platform): Telegram — from Telegram plugin MCP + /telegram:configure installed.
-> Resolved: Slot 2 (Agent runtime): headless `claude` CLI on cron (v2.1.202 on disk; no Agent SDK found) — §9 smallest viable stack.
+> Resolved: Slot 2 (Agent runtime): direct `anthropic` SDK (Python, Messages API) called from robin-runtime's single `ask()` pipeline — maintainer decision 2026-07-09 (robin-runtime@caca477): drops the Node/Claude-CLI dependency on the VPS; §6.5 isolation holds by construction (only soul.md + the answer rules enter the model context); cost for the §7 caps is priced from API `usage`. Supersedes the 2026-07-07 /robin-init resolution "headless `claude` CLI on cron (v2.1.202 on disk)" — kept here for the audit trail, per the no-deletion rule.
 > Resolved: Slot 3 (Hosting + scheduler): always-on VPS with cron — user choice; avoids the §7 laptop-sleep liveness trap.
 > Resolved: Slot 4 (Storage): flat files (Markdown/YAML); no database before M3.
 > Resolved: Slot 5 (Knowledge repo + entry file): prograph-vault, entry CLAUDE.md (+ index.md), read-only mount.
