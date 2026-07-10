@@ -58,6 +58,24 @@ them to the upstream spec (ROBIN-SPEC.md @ git b5ad49e).
    `2026-07-07-adr-contract-authority-not-in-cowork.md` — the onboarding `answer_note` follows
    the amendment (the latest word), but the ADR should be made internally consistent.
 
+## Incident log (production failures → spec/tooling bugs)
+
+### 2026-07-09 — «какие сегодняшние изменения в проекте?»
+
+- **Ответ Robin:** «изменений нет» (неверно: изменения были).
+- **Причина 1 (tooling gap):** темпоральный запрос обслужен единственным
+  инструментом — поиском по KB. Ответ на «что изменилось сегодня» не лежит
+  в документах — он вычисляется из git-метаданных (log/status/mtime).
+- **Причина 2 (spec bug, negative evidence):** ноль результатов поиска
+  интерпретирован как «изменений нет». Нарушение правила «escalate "not in
+  the KB" instead of hallucinating». Hardening «negative-evidence» из
+  ROBIN-SPEC Appendix предвидел этот failure mode — не реализован.
+- **Фикс:** инструмент recent_changes (обкатан: `devtools/recent_changes.py`,
+  `make today`; предложение — devtools/proposals/2026-07-10-robin-self-improvement.md)
+  + правило negative-evidence в промпт.
+- **Eval-кейс:** «сегодняшние изменения» → ожидаемый класс ответа: temporal,
+  источник git, либо честная эскалация.
+
 ## Implementer questions (append below)
 
 <!-- Each clarifying question you must ask goes here, dated. Do not edit ROBIN-SPEC.local.md
