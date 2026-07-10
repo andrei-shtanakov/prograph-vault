@@ -1,14 +1,14 @@
 ---
 title: "ADR: Contract authority must not live in _cowork_output/"
 type: adr
-status: proposed
+status: accepted
 owner: Andrei
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # ADR: Contract authority must not live in `_cowork_output/`
 
-**Status:** Proposed (2026-07-07) · **Surfaced by:** /robin-init onboarding dry-run (M0)
+**Status:** Accepted (2026-07-10) · **Surfaced by:** /robin-init onboarding dry-run (M0)
 
 ## Context
 
@@ -37,7 +37,7 @@ path dangles — the snapshot in the KB would outlive its own source of truth.
 `tests/fixtures/monorepo_mcp/…`, owner `[[prograph]]`, and must not be confused with the
 ecosystem contract. The onboarding checklist was corrected to stop citing it.)
 
-## Decision (proposed)
+## Decision (accepted 2026-07-10)
 
 The observability contract's authoritative schema MUST live in the **producing repo (Maestro)**
 — e.g. `Maestro/<path>/log-schema.json` under version control — and `derived/contracts/` MUST
@@ -58,5 +58,16 @@ drift defect and MUST be re-pointed at the graduated in-repo copy.
 
 ## Notes
 
-Status is **Proposed** — ratify or amend under human review before acting (do not auto-merge;
-KB constitution §1). Recorded now so the finding is not lost when `_cowork_output/` is cleaned.
+Ratified and executed 2026-07-10 (maintainer review):
+
+- Maestro PR `feature/graduate-contracts`: `_cowork_output/observability-contract/` →
+  `Maestro/contracts/observability/`; `_cowork_output/benchmark-contract/` →
+  `Maestro/contracts/benchmark/`; live references updated (test SCHEMA_PATH,
+  docs/debugging.md, benchmark README raw-URL).
+- obs.py docstring pointer fixed in sync across spec-runner (source), Maestro and
+  arbiter vendored copies (drift check stays clean).
+- devtools PR `fix/drift-checker-contract-path`: benchmark compare path updated.
+- `derived/contracts/…observability-contract-v1.md` source path updates on the next
+  `prograph index` run (derived/ is tool-written — not hand-edited here).
+- Outstanding from Consequences: the automated check flagging `derived/contracts/*`
+  sources resolving into `_cowork_output/` (prograph or gate-check) — not yet built.
