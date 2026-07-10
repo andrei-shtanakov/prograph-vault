@@ -12,8 +12,9 @@ Robin's recurring work is declared here and changed by **PR under human review**
 config (ROBIN-SPEC §6.3). Each duty specifies trigger, inputs, output, destination, owner.
 Machine-readable triggers only (cron with explicit TZ, or an explicit command/event).
 
-> **TZ note:** crons below use `<TZ>` — set the ecosystem's working timezone (e.g.
-> `Europe/Moscow`) before the scheduler reads this file.
+> **TZ:** all crons below are in **`Asia/Tbilisi`** (ecosystem working timezone —
+> QUESTIONS.md #3, resolved 2026-07-10). Runtime: `ROBIN_TZ=Asia/Tbilisi`; systemd
+> timers carry the explicit zone in `OnCalendar`.
 
 > **Runtime source-of-truth:** Robin reads **prograph-vault** (persistent) and the ecosystem
 > repos, all read-only. It MUST NOT read `_cowork_output/` at runtime (dev-scratch,
@@ -46,7 +47,7 @@ Machine-readable triggers only (cron with explicit TZ, or an explicit command/ev
   duties.
 
 ### 2. Ecosystem digest — *minimum roster (MUST, §6.3)*
-- **Trigger:** `0 9 * * MON` (`<TZ>`) — weekly, Monday 09:00.
+- **Trigger:** `0 9 * * MON` (`Asia/Tbilisi`) — weekly, Monday 09:00.
 - **Inputs:** ecosystem-repo git since the previous digest; `authored/notes/status/*`;
   `derived/journal/*`; `derived/projects/*`.
 - **Output:** what moved across the ecosystem since the last digest + open questions; collapse
