@@ -65,6 +65,9 @@ cross-cutting knowledge**; it does **not** duplicate what repos own (see §4).
 **For tools:** prograph writes **only** to `derived/`. Writing to `authored/` from automation is
 forbidden (the directory boundary is hard). A second automated writer is allowed under `derived/`:
 the `kb-save` skill owns `derived/journal/` (append-only, not regenerable — ADR 2026-07-06).
+A third writer is the fleet agent (`devtools/fleet_report.py`): it owns `derived/fleet/` —
+dated fleet-state reports (append-only, not regenerable, delivered by PR only, never direct
+commits — ADR 2026-07-10-fleet-agent-role, proposed).
 
 ## 3. Directory map (what goes where)
 
@@ -81,6 +84,7 @@ derived/
   contracts/    contract SNAPSHOTS for search (not authority)
   projects/     auto-facts per repo (prograph)
   journal/      <project>/journal.md — per-project activity log (kb-save; append-only)
+  fleet/        dated fleet-state reports (fleet agent via PR; append-only)
   digests/      claude-kb/digests (auto)
 ```
 
