@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: python
 name: robin-runtime
 prograph: project
 root: ./robin-runtime
-snapshot: 4
+snapshot: 6
 ---
 
 # robin-runtime

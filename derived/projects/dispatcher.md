@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: python
 name: dispatcher
 prograph: project
 root: ./dispatcher
-snapshot: 4
+snapshot: 6
 ---
 
 # dispatcher
@@ -221,7 +221,23 @@ _None._
 
 ## Outbound edges
 
-_None._
+- → [[Maestro]] · `declared` · read `Maestro/executor.config.yaml`
+- → [[Maestro]] · `declared` · read `Maestro/logs`
+- → [[arbiter]] · `declared` · read `arbiter/logs`
+- → [[arbiter]] · `declared` · read `arbiter/config/agents.toml`
+- → [[arbiter]] · `declared` · read `arbiter/arbiter.db`
+- → [[arbiter]] · `declared` · read `arbiter/config/invariants.toml`
+- → [[atp-platform]] · `declared` · read `atp-platform/_bench_output`
+- → [[atp-platform]] · `declared` · read `atp-platform/results/experiment/experiment_results.json`
+- → [[atp-platform]] · `declared` · read `atp-platform/atp.config.yaml`
+- → [[atp-platform]] · `declared` · read `atp-platform/.atp-dashboard.db`
+- → [[method]] · `declared` · read `atp-platform/method/agents-catalog.toml`
+- → [[proctor]] · `declared` · read `proctor/config/proctor.yaml`
+- → [[proctor]] · `declared` · read `proctor/logs`
+- → [[proctor]] · `declared` · read `proctor/data/state.db`
+- → [[spec-runner]] · `declared` · read `spec-runner/logs`
+- → [[spec-runner]] · `declared` · read `spec-runner/spec/.executor-state.db`
+- → [[spec-runner]] · `declared` · read `spec-runner/executor.config.yaml`
 
 ## Inbound edges
 

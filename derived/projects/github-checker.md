@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: python
 name: github-checker
 prograph: project
 root: ./github-checker
-snapshot: 4
+snapshot: 6
 ---
 
 # github-checker

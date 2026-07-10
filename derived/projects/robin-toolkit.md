@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: docs
 name: robin-toolkit
 prograph: project
 root: ./robin-toolkit
-snapshot: 4
+snapshot: 6
 ---
 
 # robin-toolkit

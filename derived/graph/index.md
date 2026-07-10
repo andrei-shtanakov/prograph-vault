@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 n_contracts: 16
-n_edges: 47
+n_edges: 65
 n_projects: 33
 prograph: index
-snapshot: 4
+snapshot: 6
 ---
 
 # Monorepo: /Users/Andrei_Shtanakov/labs/all_ai_orchestrators
@@ -68,13 +68,13 @@ snapshot: 4
 
 ## Recent activity (last 10)
 
-- snapshot 3 (2026-07-10T11:24:38Z): edge removed (removed)
-- snapshot 3 (2026-07-10T11:24:38Z): project removed (removed)
-- snapshot 3 (2026-07-10T11:24:38Z): project removed (removed)
-- snapshot 3 (2026-07-10T11:24:38Z): project removed (removed)
-- snapshot 3 (2026-07-10T11:24:38Z): project removed (removed)
-- snapshot 3 (2026-07-10T11:24:38Z): project removed (removed)
-- snapshot 3 (2026-07-10T11:24:38Z): project removed (removed)
-- snapshot 2 (2026-07-10T10:08:54Z): project added (added)
-- snapshot 2 (2026-07-10T10:08:54Z): project added (added)
-- snapshot 1 (2026-07-07T16:11:23Z): edge added (added)
+- snapshot 5 (2026-07-10T17:40:37Z): edge added (added)
+- snapshot 5 (2026-07-10T17:40:37Z): edge added (added)
+- snapshot 5 (2026-07-10T17:40:37Z): edge added (added)
+- snapshot 5 (2026-07-10T17:40:37Z): edge added (added)
+- snapshot 5 (2026-07-10T17:40:37Z): edge added (added)
+- snapshot 5 (2026-07-10T17:40:37Z): edge added (added)
+- snapshot 5 (2026-07-10T17:40:37Z): edge added (added)
+- snapshot 5 (2026-07-10T17:40:37Z): edge added (added)
+- snapshot 5 (2026-07-10T17:40:37Z): edge added (added)
+- snapshot 5 (2026-07-10T17:40:37Z): edge added (added)

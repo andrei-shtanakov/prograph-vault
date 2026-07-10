@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: docs
 name: prograph-vault
 prograph: project
 root: ./prograph-vault
-snapshot: 4
+snapshot: 6
 ---
 
 # prograph-vault
@@ -49,7 +49,7 @@ _None._
 
 ## Inbound edges
 
-_None._
+- ← [[prograph]] · `declared` · write `prograph-vault/derived`
 
 ## Recent changes (last 5)
 

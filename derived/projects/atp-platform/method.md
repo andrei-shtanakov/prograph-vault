@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: docs
 name: method
 parent: atp-platform
 prograph: project
 root: ./atp-platform/method
-snapshot: 4
+snapshot: 6
 ---
 
 # method
@@ -52,7 +52,7 @@ _None._
 
 ## Inbound edges
 
-_None._
+- ← [[dispatcher]] · `declared` · read `atp-platform/method/agents-catalog.toml`
 
 ## Recent changes (last 5)
 

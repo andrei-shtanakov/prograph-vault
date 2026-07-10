@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: python
 name: atp-adapters
 parent: atp-platform
 prograph: project
 root: ./atp-platform/packages/atp-adapters
-snapshot: 4
+snapshot: 6
 ---
 
 # atp-adapters

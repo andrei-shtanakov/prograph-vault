@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: python
 name: atp-games
 parent: atp-platform
 prograph: project
 root: ./atp-platform/atp-games
-snapshot: 4
+snapshot: 6
 ---
 
 # atp-games

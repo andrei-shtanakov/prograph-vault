@@ -3,7 +3,7 @@ title: Ecosystem project registry + integration map
 type: registry
 status: living
 owner: Andrei
-updated: 2026-07-08
+updated: 2026-07-10
 ---
 
 # Ecosystem registry — AI Orchestrators
@@ -53,11 +53,25 @@ this doc references it, it is not the authority for edges/contracts.
 
 **Shared contracts** (single content-hash each — no drift; authority in producing repo)
 - `report_benchmark-v1` — owners: Maestro, arbiter, arbiter-mcp, atp-platform, method.
-- `observability-contract/v1` (log-schema) — owners: Maestro, arbiter, arbiter-core; emitter `obs.py`/`obs.rs`; consumer: dispatcher.
+- `observability-contract/v1` (log-schema) — owners: Maestro, arbiter, arbiter-core; emitter `obs.py`/`obs.rs`.
 - spec-runner schemas (`costs`, `json-result`, `spec-frontmatter`, `status`) — spec-runner + spec-runner-vscode.
 - `agent-eval-case` — method + atp-platform.
 
-**Not yet connected (0 graph edges):** robin-runtime, robin-toolkit, prograph, prograph-vault, deployer, open-prose, steward. (Normal for the KB/tooling and read-only dispatcher; intent-only for steward; dormant for open-prose.)
+**File-based reads/writes** (declared in `[tool.prograph]` of the consuming repo's `pyproject.toml`,
+verified as real `declared` graph edges — prograph M12)
+- `dispatcher → proctor` — `config/proctor.yaml`, `data/state.db`, `logs/*.log`.
+- `dispatcher → arbiter` — `arbiter.db`, `config/agents.toml`, `config/invariants.toml`, `logs/` (OTel jsonl).
+  Consumes `observability-contract/v1` at the arbiter project root, not inside `arbiter-core`'s own tree.
+- `dispatcher → atp-platform` — `.atp-dashboard.db`, `results/experiment/experiment_results.json`, `_bench_output/`, `atp.config.yaml`.
+- `dispatcher → method` — `atp-platform/method/agents-catalog.toml` (nested sub-project of atp-platform).
+- `dispatcher → Maestro` — `executor.config.yaml`, `logs/` (OTel jsonl). (`~/.maestro/maestro.db` is outside the
+  monorepo — not declarable, still detected only by the reader.)
+- `dispatcher → spec-runner` — `spec/.executor-state.db`, `executor.config.yaml`, `logs/` (OTel jsonl).
+- `prograph → prograph-vault` — writes rendered Markdown export into `derived/` (`export-md` / vault refresh).
+
+**Not yet connected (0 graph edges):** robin-runtime, robin-toolkit, deployer, open-prose, steward.
+(Normal for the KB/tooling; intent-only for steward; dormant for open-prose. `prograph` and
+`prograph-vault` moved off this list — see the declared write above.)
 
 ## Known cross-cutting misalignments (pointers, not authority)
 

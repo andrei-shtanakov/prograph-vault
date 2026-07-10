@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: python
 name: atp-platform
 prograph: project
 root: ./atp-platform
-snapshot: 4
+snapshot: 6
 ---
 
 # atp-platform
@@ -6681,6 +6681,10 @@ _None._
 
 ## Inbound edges
 
+- ← [[dispatcher]] · `declared` · read `atp-platform/_bench_output`
+- ← [[dispatcher]] · `declared` · read `atp-platform/results/experiment/experiment_results.json`
+- ← [[dispatcher]] · `declared` · read `atp-platform/atp.config.yaml`
+- ← [[dispatcher]] · `declared` · read `atp-platform/.atp-dashboard.db`
 - ← [[atp-games]] · `package_dep` · `atp-platform`
 - ← [[atp-method]] · `package_dep` · `atp-platform`
 

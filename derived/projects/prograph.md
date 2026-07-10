@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: mixed
 name: prograph
 prograph: project
 root: ./prograph
-snapshot: 4
+snapshot: 6
 ---
 
 # prograph
@@ -96,13 +96,13 @@ prograph mcp                  # MCP…
 - `extract_intro` (function) — `prograph/export/intro.py:12`
 - `extract_readme_body` (function) — `prograph/export/intro.py:74`
 - `render_project` (function) — `prograph/export/render.py:23`
-- `render_contract` (function) — `prograph/export/render.py:228`
-- `render_index` (function) — `prograph/export/render.py:275`
+- `render_contract` (function) — `prograph/export/render.py:229`
+- `render_index` (function) — `prograph/export/render.py:276`
 - `slugify` (function) — `prograph/export/slug.py:6`
 - `contract_slug` (function) — `prograph/export/slug.py:16`
 - `build_server` (function) — `prograph/mcp_server.py:27`
-- `serve` (function) — `prograph/mcp_server.py:390`
-- `main` (function) — `prograph/mcp_server.py:397`
+- `serve` (function) — `prograph/mcp_server.py:392`
+- `main` (function) — `prograph/mcp_server.py:399`
 - `ProjectKind` (class) — `prograph/models.py:18`
 - `ProjectCandidate` (class) — `prograph/models.py:30`
 - `NodeKind` (class) — `prograph/models.py:50`
@@ -134,7 +134,7 @@ prograph mcp                  # MCP…
 - `EdgeEvidenceRow` (class) — `prograph/models.py:601`
 - `SearchHit` (class) — `prograph/models.py:623`
 - `DiffEdgeRow` (class) — `prograph/models.py:643`
-- `build_app` (function) — `prograph/web_app.py:21`
+- `build_app` (function) — `prograph/web_app.py:35`
 - `FIXTURES_DIR` (const) — `tests/conftest.py:10`
 - `assert_md_dir_matches_golden` (function) — `tests/conftest.py:40`
 - `CleanClass` (class) — `tests/fixtures/monorepo_drift/cleaner/cleaner/__init__.py:1`
@@ -170,6 +170,7 @@ prograph mcp                  # MCP…
 - `test_drift_command_json_empty` (function) — `tests/integration/test_cli_drift.py:36`
 - `test_drift_command_filter_by_kind` (function) — `tests/integration/test_cli_drift.py:43`
 - `test_drift_command_no_db` (function) — `tests/integration/test_cli_drift.py:48`
+- `test_drift_kind_stale_declaration_accepted` (function) — `tests/integration/test_cli_drift.py:56`
 - `runner` (const) — `tests/integration/test_cli_export_md.py:10`
 - `test_index_with_export_md_writes_files` (function) — `tests/integration/test_cli_export_md.py:23`
 - `test_export_md_standalone` (function) — `tests/integration/test_cli_export_md.py:39`
@@ -225,11 +226,12 @@ prograph mcp                  # MCP…
 - `test_mcp_list_projects_filter_by_kind` (function) — `tests/integration/test_cli_mcp.py:73`
 - `test_mcp_describe_project` (function) — `tests/integration/test_cli_mcp.py:83`
 - `test_mcp_find_edges_kind_filter` (function) — `tests/integration/test_cli_mcp.py:93`
-- `test_mcp_edge_evidence_for_mcp_call` (function) — `tests/integration/test_cli_mcp.py:103`
-- `test_mcp_changelog` (function) — `tests/integration/test_cli_mcp.py:120`
-- `test_mcp_search_finds_project` (function) — `tests/integration/test_cli_mcp.py:130`
-- `test_mcp_snapshot_info_latest` (function) — `tests/integration/test_cli_mcp.py:139`
-- `test_mcp_unknown_tool_returns_error` (function) — `tests/integration/test_cli_mcp.py:149`
+- `test_mcp_find_edges_kind_declared_accepted` (function) — `tests/integration/test_cli_mcp.py:103`
+- `test_mcp_edge_evidence_for_mcp_call` (function) — `tests/integration/test_cli_mcp.py:113`
+- `test_mcp_changelog` (function) — `tests/integration/test_cli_mcp.py:130`
+- `test_mcp_search_finds_project` (function) — `tests/integration/test_cli_mcp.py:140`
+- `test_mcp_snapshot_info_latest` (function) — `tests/integration/test_cli_mcp.py:149`
+- `test_mcp_unknown_tool_returns_error` (function) — `tests/integration/test_cli_mcp.py:159`
 - `cli_runner` (const) — `tests/integration/test_cli_serve.py:13`
 - `FIXTURE` (const) — `tests/integration/test_cli_serve.py:14`
 - `test_health` (function) — `tests/integration/test_cli_serve.py:31`
@@ -266,6 +268,10 @@ prograph mcp                  # MCP…
 - `runner` (const) — `tests/integration/test_cli_version.py:7`
 - `test_version_flag_prints_versions_and_exits_zero` (function) — `tests/integration/test_cli_version.py:10`
 - `test_no_args_shows_help` (function) — `tests/integration/test_cli_version.py:17`
+- `runner` (const) — `tests/integration/test_declared_edges.py:11`
+- `test_declared_edges_in_graph_api` (function) — `tests/integration/test_declared_edges.py:31`
+- `test_stale_declaration_in_drifts_api` (function) — `tests/integration/test_declared_edges.py:45`
+- `test_md_card_shows_declared_suffix` (function) — `tests/integration/test_declared_edges.py:56`
 - `cli_runner` (const) — `tests/integration/test_diff_view_rest.py:12`
 - `test_graph_without_since_returns_alive_edges` (function) — `tests/integration/test_diff_view_rest.py:48`
 - `test_graph_with_since_tags_diff` (function) — `tests/integration/test_diff_view_rest.py:60`
@@ -291,6 +297,7 @@ prograph mcp                  # MCP…
 - `test_find_drifts_by_project` (function) — `tests/integration/test_mcp_find_drifts.py:50`
 - `test_find_drifts_by_kind` (function) — `tests/integration/test_mcp_find_drifts.py:59`
 - `test_find_drifts_invalid_kind` (function) — `tests/integration/test_mcp_find_drifts.py:68`
+- `test_find_drifts_kind_stale_declaration_accepted` (function) — `tests/integration/test_mcp_find_drifts.py:79`
 - `runner` (const) — `tests/integration/test_mcp_find_symbol_references.py:15`
 - `FIXTURE` (const) — `tests/integration/test_mcp_find_symbol_references.py:16`
 - `test_find_symbol_references_inbound` (function) — `tests/integration/test_mcp_find_symbol_references.py:39`
@@ -355,16 +362,18 @@ prograph mcp                  # MCP…
 - `test_intro_truncates_long_text` (function) — `tests/unit/test_export_intro.py:45`
 - `test_intro_skips_blank_after_heading` (function) — `tests/unit/test_export_intro.py:54`
 - `test_intro_handles_no_heading` (function) — `tests/unit/test_export_intro.py:59`
-- `test_render_project_minimal` (function) — `tests/unit/test_export_render.py:40`
-- `test_render_project_frontmatter_alphabetical` (function) — `tests/unit/test_export_render.py:49`
-- `test_render_project_includes_intro_when_provided` (function) — `tests/unit/test_export_render.py:57`
-- `test_render_project_omits_intro_when_none` (function) — `tests/unit/test_export_render.py:63`
-- `test_render_outbound_edge_package_dep_with_version` (function) — `tests/unit/test_export_render.py:69`
-- `test_render_outbound_edge_mcp_call_includes_tool` (function) — `tests/unit/test_export_render.py:85`
-- `test_render_outbound_edge_contract_link_uses_double_arrow` (function) — `tests/unit/test_export_render.py:101`
-- `test_render_project_is_deterministic` (function) — `tests/unit/test_export_render.py:117`
-- `test_render_contract_minimal` (function) — `tests/unit/test_export_render.py:133`
-- `test_render_index_minimal` (function) — `tests/unit/test_export_render.py:153`
+- `test_render_project_minimal` (function) — `tests/unit/test_export_render.py:41`
+- `test_render_project_frontmatter_alphabetical` (function) — `tests/unit/test_export_render.py:50`
+- `test_render_project_includes_intro_when_provided` (function) — `tests/unit/test_export_render.py:58`
+- `test_render_project_omits_intro_when_none` (function) — `tests/unit/test_export_render.py:64`
+- `test_render_outbound_edge_package_dep_with_version` (function) — `tests/unit/test_export_render.py:70`
+- `test_render_outbound_edge_mcp_call_includes_tool` (function) — `tests/unit/test_export_render.py:86`
+- `test_render_outbound_edge_contract_link_uses_double_arrow` (function) — `tests/unit/test_export_render.py:102`
+- `test_declared_edge_suffix_shows_mode_and_path` (function) — `tests/unit/test_export_render.py:118`
+- `test_render_project_drift_section_shows_stale_declaration_group` (function) — `tests/unit/test_export_render.py:134`
+- `test_render_project_is_deterministic` (function) — `tests/unit/test_export_render.py:154`
+- `test_render_contract_minimal` (function) — `tests/unit/test_export_render.py:170`
+- `test_render_index_minimal` (function) — `tests/unit/test_export_render.py:190`
 - `test_public_symbols_render_when_present` (function) — `tests/unit/test_export_render_public_surface.py:35`
 - `test_modules_section_renders_summary` (function) — `tests/unit/test_export_render_public_surface.py:52`
 - `test_empty_sections_render_none` (function) — `tests/unit/test_export_render_public_surface.py:72`
@@ -424,10 +433,14 @@ prograph mcp                  # MCP…
 - `test_app_js_renders_public_symbols` (function) — `tests/unit/test_web_static.py:87`
 - `test_app_js_renders_inbound_outbound_refs` (function) — `tests/unit/test_web_static.py:95`
 - `test_app_js_renders_drift_findings` (function) — `tests/unit/test_web_static.py:103`
+- `test_contract_label_shortens_urls` (function) — `tests/unit/test_web_static.py:109`
+- `test_app_js_linkifies_only_http_urls` (function) — `tests/unit/test_web_static.py:128`
+- `test_graph_js_styles_declared_edges` (function) — `tests/unit/test_web_static.py:136`
+- `test_app_js_renders_stale_declaration_drift_group` (function) — `tests/unit/test_web_static.py:143`
 
 ## Modules
 
-_81 files, 364 public symbols, 179 internal imports._
+_82 files, 377 public symbols, 183 internal imports._
 
 - `Sourcetrail/bin/app/user/projects/tictactoe_py/src/tictactoe.py` (python)
 - `Sourcetrail/script/getSystemString.py` (python)
@@ -482,6 +495,7 @@ _81 files, 364 public symbols, 179 internal imports._
 - `tests/integration/test_cli_status.py` (python)
 - `tests/integration/test_cli_tracked.py` (python)
 - `tests/integration/test_cli_version.py` (python)
+- `tests/integration/test_declared_edges.py` (python)
 - `tests/integration/test_diff_view_rest.py` (python)
 - `tests/integration/test_discovery.py` (python)
 - `tests/integration/test_drift_persistence.py` (python)
@@ -521,7 +535,7 @@ _None._
 
 ## Outbound edges
 
-_None._
+- → [[prograph-vault]] · `declared` · write `prograph-vault/derived`
 
 ## Inbound edges
 

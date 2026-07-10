@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: python
 name: proctor
 prograph: project
 root: ./proctor
-snapshot: 4
+snapshot: 6
 ---
 
 # proctor
@@ -588,7 +588,9 @@ _None._
 
 ## Inbound edges
 
-_None._
+- ← [[dispatcher]] · `declared` · read `proctor/config/proctor.yaml`
+- ← [[dispatcher]] · `declared` · read `proctor/logs`
+- ← [[dispatcher]] · `declared` · read `proctor/data/state.db`
 
 ## Recent changes (last 5)
 

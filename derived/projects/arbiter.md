@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: mixed
 name: arbiter
 prograph: project
 root: ./arbiter
-snapshot: 4
+snapshot: 6
 ---
 
 # arbiter
@@ -364,7 +364,10 @@ _None._
 
 ## Inbound edges
 
-_None._
+- ← [[dispatcher]] · `declared` · read `arbiter/logs`
+- ← [[dispatcher]] · `declared` · read `arbiter/config/agents.toml`
+- ← [[dispatcher]] · `declared` · read `arbiter/arbiter.db`
+- ← [[dispatcher]] · `declared` · read `arbiter/config/invariants.toml`
 
 ## Recent changes (last 5)
 

@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: python
 name: spec-runner
 prograph: project
 root: ./spec-runner
-snapshot: 4
+snapshot: 6
 ---
 
 # spec-runner
@@ -870,6 +870,9 @@ _None._
 
 ## Inbound edges
 
+- ← [[dispatcher]] · `declared` · read `spec-runner/logs`
+- ← [[dispatcher]] · `declared` · read `spec-runner/spec/.executor-state.db`
+- ← [[dispatcher]] · `declared` · read `spec-runner/executor.config.yaml`
 - ← [[arbiter]] · `package_dep` · `spec-runner`
 - ← [[atp-platform]] · `package_dep` · `spec-runner`
 

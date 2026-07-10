@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-10T12:31:55Z"
+indexed_at: "2026-07-10T17:42:43Z"
 kind: python
 name: Maestro
 prograph: project
 root: ./Maestro
-snapshot: 4
+snapshot: 6
 ---
 
 # Maestro
@@ -884,7 +884,8 @@ _None._
 
 ## Inbound edges
 
-_None._
+- ← [[dispatcher]] · `declared` · read `Maestro/executor.config.yaml`
+- ← [[dispatcher]] · `declared` · read `Maestro/logs`
 
 ## Recent changes (last 5)
 
@@ -896,3 +897,7 @@ _None._
 
 - `**M3 — observability dashboards** (pending): separate project (backend/viz over the OTel JSONL or the existing `maestro/dashboard/` UI).` (todo) — `TODO.md:128` [low confidence]
   - open TODO matches recent change_log: maestro,project
+- `**R-03b** (LABS-TBD): Mode 2 (`maestro orchestrate`) workstream-level routing. Gate: ≥1 неделя стабильного Mode-1 dogfood после v0.2.0` (todo) — `TODO.md:83` [low confidence]
+  - open TODO matches recent change_log: mode,maestro
+- `XDG default catalog path ($XDG_CONFIG_HOME/<eco>/agents-catalog.toml) once the` (todo) — `TODO.md:166` [low confidence]
+  - open TODO matches recent change_log: agents-catalog,path,toml
