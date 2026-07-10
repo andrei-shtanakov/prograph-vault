@@ -3,10 +3,10 @@
 ---
 content_hash: b5957a9fa726b7c9eaf66dc0b9c879f2b818d3f35a3747914cd69470511b7ffd
 declared_id: contract-real
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-10T12:31:55Z"
 kind: json_schema
 prograph: contract
-snapshot: 48
+snapshot: 4
 ---
 
 # Contract: contract-real
@@ -21,4 +21,4 @@ snapshot: 48
 
 ## Recent changes (last 5)
 
-- snapshot 36 (2026-05-27T09:57:52Z): contract added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): contract added (added)

@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-07T16:11:23Z"
+indexed_at: "2026-07-10T12:31:55Z"
 kind: mixed
 name: prograph
 prograph: project
 root: ./prograph
-snapshot: 1
+snapshot: 4
 ---
 
 # prograph
@@ -82,13 +82,17 @@ prograph mcp                  # MCP…
 - `Foo` (class) — `Sourcetrail/testing/project_setup/python_empty/data/src/foo.py:3`
 - `test` (function) — `Sourcetrail/testing/project_setup/python_empty/data/src/main.py:4`
 - `core_version` (function) — `prograph/__init__.py:41`
-- `console` (const) — `prograph/cli.py:18`
-- `err_console` (const) — `prograph/cli.py:19`
-- `app` (const) — `prograph/cli.py:21`
-- `DEFAULT_CONFIG_TOML` (const) — `prograph/cli.py:48`
-- `DEFAULT_GITIGNORE` (const) — `prograph/cli.py:70`
+- `console` (const) — `prograph/cli.py:23`
+- `err_console` (const) — `prograph/cli.py:24`
+- `app` (const) — `prograph/cli.py:26`
+- `DEFAULT_CONFIG_TOML` (const) — `prograph/cli.py:53`
+- `DEFAULT_GITIGNORE` (const) — `prograph/cli.py:80`
+- `DEFAULT_TRACKED_TOML` (const) — `prograph/cli.py:95`
 - `read_auto_export` (function) — `prograph/config.py:13`
-- `export_snapshot` (function) — `prograph/export/__init__.py:81`
+- `read_export_root` (function) — `prograph/config.py:27`
+- `TrackedConfigError` (class) — `prograph/config.py:46`
+- `read_tracked_projects` (function) — `prograph/config.py:55`
+- `export_snapshot` (function) — `prograph/export/__init__.py:82`
 - `extract_intro` (function) — `prograph/export/intro.py:12`
 - `extract_readme_body` (function) — `prograph/export/intro.py:74`
 - `render_project` (function) — `prograph/export/render.py:23`
@@ -178,6 +182,12 @@ prograph mcp                  # MCP…
 - `test_golden_monorepo_multilang` (function) — `tests/integration/test_cli_export_md.py:125`
 - `test_golden_monorepo_mcp` (function) — `tests/integration/test_cli_export_md.py:131`
 - `test_reindex_md_stable_modulo_timestamps` (function) — `tests/integration/test_cli_export_md.py:137`
+- `runner` (const) — `tests/integration/test_cli_export_root.py:10`
+- `test_index_out_dir_writes_cards_to_staging` (function) — `tests/integration/test_cli_export_root.py:30`
+- `test_index_config_export_root_writes_to_staging` (function) — `tests/integration/test_cli_export_root.py:50`
+- `test_out_dir_overrides_config` (function) — `tests/integration/test_cli_export_root.py:66`
+- `test_export_md_standalone_respects_out_dir` (function) — `tests/integration/test_cli_export_root.py:83`
+- `test_default_still_writes_to_prograph` (function) — `tests/integration/test_cli_export_root.py:93`
 - `runner` (const) — `tests/integration/test_cli_index.py:10`
 - `test_index_requires_init` (function) — `tests/integration/test_cli_index.py:24`
 - `test_index_writes_snapshot_with_one_edge` (function) — `tests/integration/test_cli_index.py:31`
@@ -206,6 +216,8 @@ prograph mcp                  # MCP…
 - `test_init_creates_prograph_skeleton` (function) — `tests/integration/test_cli_init.py:13`
 - `test_init_is_idempotent` (function) — `tests/integration/test_cli_init.py:33`
 - `test_init_uses_cwd_when_no_monorepo_flag` (function) — `tests/integration/test_cli_init.py:46`
+- `test_init_creates_tracked_toml_template` (function) — `tests/integration/test_cli_init.py:53`
+- `test_init_does_not_overwrite_tracked_toml` (function) — `tests/integration/test_cli_init.py:61`
 - `runner` (const) — `tests/integration/test_cli_mcp.py:15`
 - `FIXTURE` (const) — `tests/integration/test_cli_mcp.py:16`
 - `test_mcp_list_tools_returns_ten` (function) — `tests/integration/test_cli_mcp.py:41`
@@ -240,6 +252,17 @@ prograph mcp                  # MCP…
 - `test_status_shows_snapshot_info_after_index` (function) — `tests/integration/test_cli_status.py:57`
 - `test_status_json_includes_snapshot_when_indexed` (function) — `tests/integration/test_cli_status.py:68`
 - `test_status_json_snapshot_null_when_not_indexed` (function) — `tests/integration/test_cli_status.py:79`
+- `runner` (const) — `tests/integration/test_cli_tracked.py:11`
+- `test_index_filters_to_allowlist_closure` (function) — `tests/integration/test_cli_tracked.py:43`
+- `test_index_without_tracked_toml_indexes_all` (function) — `tests/integration/test_cli_tracked.py:53`
+- `test_index_malformed_tracked_toml_exits_1` (function) — `tests/integration/test_cli_tracked.py:64`
+- `test_index_discover_json_embeds_audit` (function) — `tests/integration/test_cli_tracked.py:72`
+- `test_index_discover_text_goes_to_stderr` (function) — `tests/integration/test_cli_tracked.py:85`
+- `test_status_json_annotates_tracked` (function) — `tests/integration/test_cli_tracked.py:95`
+- `test_status_without_allowlist_all_tracked` (function) — `tests/integration/test_cli_tracked.py:106`
+- `test_status_malformed_tracked_toml_exits_1` (function) — `tests/integration/test_cli_tracked.py:114`
+- `test_serve_malformed_tracked_toml_exits_1` (function) — `tests/integration/test_cli_tracked.py:121`
+- `test_serve_logs_audit_before_start` (function) — `tests/integration/test_cli_tracked.py:130`
 - `runner` (const) — `tests/integration/test_cli_version.py:7`
 - `test_version_flag_prints_versions_and_exits_zero` (function) — `tests/integration/test_cli_version.py:10`
 - `test_no_args_shows_help` (function) — `tests/integration/test_cli_version.py:17`
@@ -302,6 +325,24 @@ prograph mcp                  # MCP…
 - `test_discovery_finds_python_workspace_members` (function) — `tests/integration/test_workspace_discovery.py:25`
 - `test_discovery_finds_rust_workspace_members` (function) — `tests/integration/test_workspace_discovery.py:35`
 - `test_index_finds_workspace_cross_deps` (function) — `tests/integration/test_workspace_discovery.py:44`
+- `test_read_export_root_returns_value` (function) — `tests/unit/test_config.py:20`
+- `test_read_export_root_missing_key_is_none` (function) — `tests/unit/test_config.py:28`
+- `test_read_export_root_missing_section_is_none` (function) — `tests/unit/test_config.py:33`
+- `test_read_export_root_missing_file_is_none` (function) — `tests/unit/test_config.py:38`
+- `test_read_export_root_broken_toml_is_none` (function) — `tests/unit/test_config.py:42`
+- `test_read_export_root_non_string_is_none` (function) — `tests/unit/test_config.py:47`
+- `test_auto_export_still_works` (function) — `tests/unit/test_config.py:52`
+- `test_read_tracked_missing_file_is_none` (function) — `tests/unit/test_config.py:58`
+- `test_read_tracked_valid_list` (function) — `tests/unit/test_config.py:62`
+- `test_read_tracked_empty_list_is_none` (function) — `tests/unit/test_config.py:67`
+- `test_read_tracked_missing_key_is_none` (function) — `tests/unit/test_config.py:72`
+- `test_read_tracked_malformed_toml_raises` (function) — `tests/unit/test_config.py:77`
+- `test_read_tracked_non_list_raises` (function) — `tests/unit/test_config.py:83`
+- `test_read_tracked_non_string_items_raise` (function) — `tests/unit/test_config.py:89`
+- `test_paths_tracked_path` (function) — `tests/unit/test_config.py:95`
+- `test_tracked_closure_subset_and_members` (function) — `tests/unit/test_core_tracked.py:10`
+- `test_missing_names_deduplicated` (function) — `tests/unit/test_core_tracked.py:19`
+- `test_index_monorepo_two_arg_call_still_works` (function) — `tests/unit/test_core_tracked.py:24`
 - `test_drift_finding_pydantic_round_trip` (function) — `tests/unit/test_drift_detection.py:6`
 - `test_drift_finding_kind_is_string_not_enum` (function) — `tests/unit/test_drift_detection.py:22`
 - `test_intro_from_readme` (function) — `tests/unit/test_export_intro.py:8`
@@ -358,6 +399,11 @@ prograph mcp                  # MCP…
 - `test_ensure_dirs_creates_missing` (function) — `tests/unit/test_paths.py:20`
 - `test_initialized_false_when_no_prograph_dir` (function) — `tests/unit/test_paths.py:29`
 - `test_initialized_true_after_ensure_dirs_and_config` (function) — `tests/unit/test_paths.py:34`
+- `test_export_root_none_identical_to_default` (function) — `tests/unit/test_paths.py:44`
+- `test_relative_export_root_resolves_from_monorepo_root` (function) — `tests/unit/test_paths.py:63`
+- `test_export_root_does_not_move_db_or_internals` (function) — `tests/unit/test_paths.py:70`
+- `test_absolute_export_root_used_verbatim` (function) — `tests/unit/test_paths.py:80`
+- `test_ensure_dirs_creates_export_root_md_dirs` (function) — `tests/unit/test_paths.py:87`
 - `cli_runner` (const) — `tests/unit/test_pep508_url_deps.py:11`
 - `test_url_dep_resolves_to_in_monorepo_publisher` (function) — `tests/unit/test_pep508_url_deps.py:32`
 - `test_python_package_version` (function) — `tests/unit/test_smoke.py:6`
@@ -381,7 +427,7 @@ prograph mcp                  # MCP…
 
 ## Modules
 
-_77 files, 318 public symbols, 166 internal imports._
+_81 files, 364 public symbols, 179 internal imports._
 
 - `Sourcetrail/bin/app/user/projects/tictactoe_py/src/tictactoe.py` (python)
 - `Sourcetrail/script/getSystemString.py` (python)
@@ -425,6 +471,7 @@ _77 files, 318 public symbols, 166 internal imports._
 - `tests/integration/test_bench_baseline.py` (python)
 - `tests/integration/test_cli_drift.py` (python)
 - `tests/integration/test_cli_export_md.py` (python)
+- `tests/integration/test_cli_export_root.py` (python)
 - `tests/integration/test_cli_index.py` (python)
 - `tests/integration/test_cli_index_full.py` (python)
 - `tests/integration/test_cli_index_mcp.py` (python)
@@ -433,6 +480,7 @@ _77 files, 318 public symbols, 166 internal imports._
 - `tests/integration/test_cli_mcp.py` (python)
 - `tests/integration/test_cli_serve.py` (python)
 - `tests/integration/test_cli_status.py` (python)
+- `tests/integration/test_cli_tracked.py` (python)
 - `tests/integration/test_cli_version.py` (python)
 - `tests/integration/test_diff_view_rest.py` (python)
 - `tests/integration/test_discovery.py` (python)
@@ -448,6 +496,8 @@ _77 files, 318 public symbols, 166 internal imports._
 - `tests/integration/test_symbol_refs_rust.py` (python)
 - `tests/integration/test_workspace_discovery.py` (python)
 - `tests/unit/__init__.py` (python)
+- `tests/unit/test_config.py` (python)
+- `tests/unit/test_core_tracked.py` (python)
 - `tests/unit/test_drift_detection.py` (python)
 - `tests/unit/test_export_intro.py` (python)
 - `tests/unit/test_export_render.py` (python)

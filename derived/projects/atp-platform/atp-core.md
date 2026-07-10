@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-07T16:11:23Z"
+indexed_at: "2026-07-10T12:31:55Z"
 kind: python
 name: atp-core
 parent: atp-platform
 prograph: project
 root: ./atp-platform/packages/atp-core
-snapshot: 1
+snapshot: 4
 ---
 
 # atp-core
@@ -168,9 +168,9 @@ _None._
 - `LLMSettings` (class) — `atp/core/settings.py:234`
 - `LoggingSettings` (class) — `atp/core/settings.py:271`
 - `ATPSettings` (class) — `atp/core/settings.py:302`
-- `get_settings` (function) — `atp/core/settings.py:533`
-- `generate_json_schema` (function) — `atp/core/settings.py:587`
-- `generate_example_config` (function) — `atp/core/settings.py:617`
+- `get_settings` (function) — `atp/core/settings.py:534`
+- `generate_json_schema` (function) — `atp/core/settings.py:588`
+- `generate_example_config` (function) — `atp/core/settings.py:618`
 - `logger` (const) — `atp/core/telemetry.py:64`
 - `P` (const) — `atp/core/telemetry.py:67`
 - `R` (const) — `atp/core/telemetry.py:68`
@@ -245,13 +245,16 @@ _None._
 - `CatalogNotConfiguredError` (class) — `atp/model_catalog/errors.py:14`
 - `CatalogTOMLError` (class) — `atp/model_catalog/errors.py:22`
 - `CatalogSchemaError` (class) — `atp/model_catalog/errors.py:26`
-- `resolve_catalog_path` (function) — `atp/model_catalog/loader.py:46`
-- `load_catalog` (function) — `atp/model_catalog/loader.py:75`
-- `read_template` (function) — `atp/model_catalog/loader.py:90`
+- `logger` (const) — `atp/model_catalog/loader.py:30`
+- `resolve_catalog_path` (function) — `atp/model_catalog/loader.py:49`
+- `load_catalog` (function) — `atp/model_catalog/loader.py:78`
+- `resolve_default_model` (function) — `atp/model_catalog/loader.py:93`
+- `read_template` (function) — `atp/model_catalog/loader.py:118`
 - `ModelEntry` (class) — `atp/model_catalog/schema.py:16`
 - `HarnessEntry` (class) — `atp/model_catalog/schema.py:26`
 - `AgentEntry` (class) — `atp/model_catalog/schema.py:38`
-- `ModelCatalog` (class) — `atp/model_catalog/schema.py:49`
+- `CatalogDefaults` (class) — `atp/model_catalog/schema.py:49`
+- `ModelCatalog` (class) — `atp/model_catalog/schema.py:57`
 - `PROTOCOL_VERSION` (const) — `atp/protocol/_version.py:3`
 - `SUPPORTED_VERSIONS` (const) — `atp/protocol/_version.py:5`
 - `MAX_TASK_ID_LENGTH` (const) — `atp/protocol/models.py:14`
@@ -313,7 +316,7 @@ _None._
 
 ## Modules
 
-_45 files, 282 public symbols, 14 internal imports._
+_45 files, 285 public symbols, 14 internal imports._
 
 - `atp/chaos/__init__.py` (python)
 - `atp/chaos/concurrency.py` (python)

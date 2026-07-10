@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-07T16:11:23Z"
+indexed_at: "2026-07-10T12:31:55Z"
 kind: rust
 name: prograph-core
 parent: prograph
 prograph: project
 root: ./prograph/prograph-core
-snapshot: 1
+snapshot: 4
 ---
 
 # prograph-core
@@ -25,18 +25,18 @@ snapshot: 1
 - `import_source` — `src/parsers/js.rs:206`
 - `import_symbol` — `src/parsers/python.rs:466`
 - `import_target` — `src/parsers/python.rs:462`
-- `import_use` — `src/parsers/rust.rs:455`
+- `import_use` — `src/parsers/rust.rs:457`
 - `symbol_class` — `src/parsers/python.rs:470`
 - `symbol_class_export` — `src/parsers/js.rs:204`
 - `symbol_const` — `src/parsers/python.rs:471`
 - `symbol_const_export` — `src/parsers/js.rs:205`
-- `symbol_enum` — `src/parsers/rust.rs:449`
+- `symbol_enum` — `src/parsers/rust.rs:451`
 - `symbol_function` — `src/parsers/python.rs:469`
 - `symbol_function_export` — `src/parsers/js.rs:203`
 - `symbol_name` — `src/parsers/python.rs:461`
-- `symbol_struct` — `src/parsers/rust.rs:448`
-- `symbol_trait` — `src/parsers/rust.rs:450`
-- `symbol_type` — `src/parsers/rust.rs:454`
+- `symbol_struct` — `src/parsers/rust.rs:450`
+- `symbol_trait` — `src/parsers/rust.rs:452`
+- `symbol_type` — `src/parsers/rust.rs:456`
 
 ### Contracts declared
 
@@ -58,7 +58,11 @@ _None._
 - `diff_by_identity` (function) — `src/diff.rs:34`
 - `classify_project` (function) — `src/discovery.rs:24`
 - `scan_monorepo` (function) — `src/discovery.rs:83`
-- `py_scan_monorepo` (function) — `src/discovery.rs:303`
+- `py_scan_monorepo` (function) — `src/discovery.rs:302`
+- `tracked_closure` (function) — `src/discovery.rs:319`
+- `missing_names` (function) — `src/discovery.rs:339`
+- `py_tracked_closure` (function) — `src/discovery.rs:361`
+- `py_missing_names` (function) — `src/discovery.rs:373`
 - `DriftFinding` (struct) — `src/drift.rs:7`
 - `DriftKind` (enum) — `src/drift.rs:18`
 - `EntityKind` (enum) — `src/drift.rs:35`
@@ -136,9 +140,9 @@ _None._
 - `workspace_members` (function) — `src/parsers/python.rs:83`
 - `declares_workspace` (function) — `src/parsers/python.rs:102`
 - `parse` (function) — `src/parsers/python.rs:111`
-- `declares_workspace` (function) — `src/parsers/rust.rs:73`
-- `workspace_members` (function) — `src/parsers/rust.rs:87`
-- `parse` (function) — `src/parsers/rust.rs:109`
+- `declares_workspace` (function) — `src/parsers/rust.rs:75`
+- `workspace_members` (function) — `src/parsers/rust.rs:89`
+- `parse` (function) — `src/parsers/rust.rs:111`
 - `ResolvedRef` (struct) — `src/resolvers/mod.rs:15`
 - `build_publisher_index` (function) — `src/resolvers/mod.rs:34`
 - `resolve` (function) — `src/resolvers/python.rs:11`
@@ -193,7 +197,7 @@ _None._
 
 ## Modules
 
-_24 files, 146 public symbols, 46 internal imports._
+_24 files, 150 public symbols, 46 internal imports._
 
 - `src/detectors/contracts.rs` (rust)
 - `src/detectors/deps.rs` (rust)

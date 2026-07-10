@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-07T16:11:23Z"
+indexed_at: "2026-07-10T12:31:55Z"
 kind: docs
 name: prograph-vault
 prograph: project
 root: ./prograph-vault
-snapshot: 1
+snapshot: 4
 ---
 
 # prograph-vault

@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-07T16:11:23Z"
+indexed_at: "2026-07-10T12:31:55Z"
 kind: python
 name: Maestro
 prograph: project
 root: ./Maestro
-snapshot: 1
+snapshot: 4
 ---
 
 # Maestro
@@ -244,7 +244,7 @@ snapshot: 1
 - `NotificationManager` (class) — `maestro/notifications/manager.py:17`
 - `create_notification_manager` (function) — `maestro/notifications/manager.py:75`
 - `OrchestratorError` (class) — `maestro/orchestrator.py:35`
-- `Orchestrator` (class) — `maestro/orchestrator.py:84`
+- `Orchestrator` (class) — `maestro/orchestrator.py:107`
 - `PRManagerError` (class) — `maestro/pr_manager.py:14`
 - `GHNotFoundError` (class) — `maestro/pr_manager.py:18`
 - `PRManager` (class) — `maestro/pr_manager.py:22`
@@ -259,7 +259,7 @@ snapshot: 1
 - `RetryManager` (class) — `maestro/retry.py:18`
 - `ScaffoldError` (class) — `maestro/scaffold.py:20`
 - `REPO_URL_PLACEHOLDER` (const) — `maestro/scaffold.py:24`
-- `generate_project_yaml` (function) — `maestro/scaffold.py:115`
+- `generate_project_yaml` (function) — `maestro/scaffold.py:133`
 - `logger` (const) — `maestro/scheduler.py:56`
 - `MAX_REATTEMPTS_PER_TICK` (const) — `maestro/scheduler.py:59`
 - `StatusChangeCallback` (const) — `maestro/scheduler.py:61`
@@ -268,7 +268,7 @@ snapshot: 1
 - `SchedulerError` (class) — `maestro/scheduler.py:174`
 - `TaskTimeoutError` (class) — `maestro/scheduler.py:178`
 - `Scheduler` (class) — `maestro/scheduler.py:189`
-- `create_scheduler_from_config` (function) — `maestro/scheduler.py:1563`
+- `create_scheduler_from_config` (function) — `maestro/scheduler.py:1571`
 - `SCHEMA_DIR` (const) — `maestro/schemas/generate.py:9`
 - `main` (function) — `maestro/schemas/generate.py:12`
 - `AiderSpawner` (class) — `maestro/spawners/aider.py:16`
@@ -506,6 +506,9 @@ snapshot: 1
 - `TestEventTypes` (class) — `tests/test_event_log.py:245`
 - `TestEventTypes` (class) — `tests/test_event_log_arbiter.py:11`
 - `TestHoldThrottle` (class) — `tests/test_event_log_arbiter.py:28`
+- `test_examples_dir_has_yaml_configs` (function) — `tests/test_examples_smoke.py:45`
+- `test_observed_models_json_parses` (function) — `tests/test_examples_smoke.py:71`
+- `test_smoke_rejects_a_broken_config` (function) — `tests/test_examples_smoke.py:76`
 - `TestGitManagerInit` (class) — `tests/test_git.py:26`
 - `TestBranchNameBuilding` (class) — `tests/test_git.py:68`
 - `TestGetCurrentBranch` (class) — `tests/test_git.py:98`
@@ -572,6 +575,8 @@ snapshot: 1
 - `TestSerialization` (class) — `tests/test_models.py:1169`
 - `TestFromConfigAutoValidation` (class) — `tests/test_models.py:1308`
 - `TestSpecRunnerConfig` (class) — `tests/test_models.py:1333`
+- `test_find_unreferenced_flags_only_no_importer_non_roots` (function) — `tests/test_no_unreferenced_modules.py:85`
+- `test_no_unreferenced_maestro_modules` (function) — `tests/test_no_unreferenced_modules.py:96`
 - `TestNotificationEvent` (class) — `tests/test_notifications.py:79`
 - `TestNotificationFormatting` (class) — `tests/test_notifications.py:101`
 - `TestNotificationChannelABC` (class) — `tests/test_notifications.py:190`
@@ -588,10 +593,11 @@ snapshot: 1
 - `TestBuildPrBody` (class) — `tests/test_orchestrator.py:648`
 - `TestShutdown` (class) — `tests/test_orchestrator.py:713`
 - `TestBackgroundGeneration` (class) — `tests/test_orchestrator.py:748`
-- `TestGenerationPidLifecycle` (class) — `tests/test_orchestrator.py:1033`
-- `TestStartupRecovery` (class) — `tests/test_orchestrator.py:1221`
-- `TestMergeIntoBase` (class) — `tests/test_orchestrator.py:1659`
-- `TestHandleSuccessMergeGating` (class) — `tests/test_orchestrator.py:1781`
+- `TestGenerationPidLifecycle` (class) — `tests/test_orchestrator.py:1038`
+- `TestSpawnWritesSentinel` (class) — `tests/test_orchestrator.py:1224`
+- `TestStartupRecovery` (class) — `tests/test_orchestrator.py:1307`
+- `TestMergeIntoBase` (class) — `tests/test_orchestrator.py:1907`
+- `TestHandleSuccessMergeGating` (class) — `tests/test_orchestrator.py:2029`
 - `TestVersion` (class) — `tests/test_package.py:12`
 - `TestSubpackages` (class) — `tests/test_package.py:31`
 - `TestMain` (class) — `tests/test_package.py:53`
@@ -646,6 +652,8 @@ snapshot: 1
 - `make_git_repo` (function) — `tests/test_scaffold.py:12`
 - `load_generated` (function) — `tests/test_scaffold.py:31`
 - `TestGenerateProjectYaml` (class) — `tests/test_scaffold.py:36`
+- `TestPortableRepoPath` (class) — `tests/test_scaffold.py:80`
+- `TestGenerateProjectYamlPortablePath` (class) — `tests/test_scaffold.py:112`
 - `MockSpawner` (class) — `tests/test_scheduler.py:33`
 - `FailingSpawner` (class) — `tests/test_scheduler.py:121`
 - `RaisingSpawner` (class) — `tests/test_scheduler.py:145`
@@ -672,6 +680,7 @@ snapshot: 1
 - `test_scheduler_span_carries_trace_id_for_subprocess` (function) — `tests/test_scheduler_observability.py:66`
 - `test_scheduler_emits_failure_with_retry_metadata` (function) — `tests/test_scheduler_observability.py:101`
 - `test_emit_tick_first_and_on_change_only` (function) — `tests/test_scheduler_observability_m3.py:64`
+- `test_emit_tick_oscillation_reemits` (function) — `tests/test_scheduler_observability_m3.py:82`
 - `MockSpawner` (class) — `tests/test_spawner_registry.py:30`
 - `AnotherMockSpawner` (class) — `tests/test_spawner_registry.py:56`
 - `TestRegistryInitialization` (class) — `tests/test_spawner_registry.py:102`
@@ -725,7 +734,7 @@ snapshot: 1
 
 ## Modules
 
-_125 files, 686 public symbols, 780 internal imports._
+_127 files, 695 public symbols, 796 internal imports._
 
 - `maestro/__init__.py` (python)
 - `maestro/_vendor/__init__.py` (python)
@@ -816,6 +825,7 @@ _125 files, 686 public symbols, 780 internal imports._
 - `tests/test_decomposer.py` (python)
 - `tests/test_event_log.py` (python)
 - `tests/test_event_log_arbiter.py` (python)
+- `tests/test_examples_smoke.py` (python)
 - `tests/test_git.py` (python)
 - `tests/test_git_worktree.py` (python)
 - `tests/test_make_routing_strategy.py` (python)
@@ -823,6 +833,7 @@ _125 files, 686 public symbols, 780 internal imports._
 - `tests/test_merge_logs.py` (python)
 - `tests/test_messages.py` (python)
 - `tests/test_models.py` (python)
+- `tests/test_no_unreferenced_modules.py` (python)
 - `tests/test_notifications.py` (python)
 - `tests/test_obs_integration.py` (python)
 - `tests/test_orchestrator.py` (python)
@@ -881,4 +892,7 @@ _None._
 
 ## Drift findings
 
-_None._
+### Stale TODOs (open TODOs that look done in recent change_log)
+
+- `**M3 — observability dashboards** (pending): separate project (backend/viz over the OTel JSONL or the existing `maestro/dashboard/` UI).` (todo) — `TODO.md:128` [low confidence]
+  - open TODO matches recent change_log: maestro,project

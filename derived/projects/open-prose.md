@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-07T16:11:23Z"
+indexed_at: "2026-07-10T12:31:55Z"
 kind: docs
 name: open-prose
 prograph: project
 root: ./open-prose
-snapshot: 1
+snapshot: 4
 ---
 
 # open-prose

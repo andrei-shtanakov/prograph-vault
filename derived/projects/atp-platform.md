@@ -1,12 +1,12 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-07T16:11:23Z"
+indexed_at: "2026-07-10T12:31:55Z"
 kind: python
 name: atp-platform
 prograph: project
 root: ./atp-platform
-snapshot: 1
+snapshot: 4
 ---
 
 # atp-platform
@@ -330,15 +330,6 @@ _(README truncated — see the full file)_
 - `get_benchmark` (function) — `atp/benchmarks/registry.py:419`
 - `list_benchmarks` (function) — `atp/benchmarks/registry.py:434`
 - `list_categories` (function) — `atp/benchmarks/registry.py:443`
-- `format_comparison_table` (function) — `atp/catalog/comparison.py:4`
-- `CatalogCategory` (class) — `atp/catalog/models.py:20`
-- `CatalogSuite` (class) — `atp/catalog/models.py:44`
-- `CatalogTest` (class) — `atp/catalog/models.py:78`
-- `CatalogSubmission` (class) — `atp/catalog/models.py:112`
-- `CatalogRepository` (class) — `atp/catalog/repository.py:19`
-- `BUILTIN_DIR` (const) — `atp/catalog/sync.py:10`
-- `parse_catalog_yaml` (function) — `atp/catalog/sync.py:13`
-- `sync_builtin_catalog` (function) — `atp/catalog/sync.py:29`
 - `EXIT_SUCCESS` (const) — `atp/cli/commands/benchmark.py:23`
 - `EXIT_FAILURE` (const) — `atp/cli/commands/benchmark.py:24`
 - `EXIT_ERROR` (const) — `atp/cli/commands/benchmark.py:25`
@@ -444,13 +435,13 @@ _(README truncated — see the full file)_
 - `json_path_check` (function) — `atp/evaluators/json_path/checker.py:42`
 - `InvalidPath` (class) — `atp/evaluators/json_path/resolver.py:16`
 - `resolve` (function) — `atp/evaluators/json_path/resolver.py:20`
-- `logger` (const) — `atp/evaluators/llm_judge.py:21`
-- `BUILTIN_CRITERIA` (const) — `atp/evaluators/llm_judge.py:25`
-- `LLMJudgeResponse` (class) — `atp/evaluators/llm_judge.py:65`
-- `LLMJudgeCost` (class) — `atp/evaluators/llm_judge.py:76`
-- `DEFAULT_BEDROCK_MODEL` (const) — `atp/evaluators/llm_judge.py:99`
-- `LLMJudgeConfig` (class) — `atp/evaluators/llm_judge.py:102`
-- `LLMJudgeEvaluator` (class) — `atp/evaluators/llm_judge.py:136`
+- `logger` (const) — `atp/evaluators/llm_judge.py:22`
+- `BUILTIN_CRITERIA` (const) — `atp/evaluators/llm_judge.py:26`
+- `LLMJudgeResponse` (class) — `atp/evaluators/llm_judge.py:66`
+- `LLMJudgeCost` (class) — `atp/evaluators/llm_judge.py:77`
+- `DEFAULT_BEDROCK_MODEL` (const) — `atp/evaluators/llm_judge.py:100`
+- `LLMJudgeConfig` (class) — `atp/evaluators/llm_judge.py:103`
+- `LLMJudgeEvaluator` (class) — `atp/evaluators/llm_judge.py:137`
 - `logger` (const) — `atp/evaluators/performance.py:28`
 - `PerformanceMetricType` (class) — `atp/evaluators/performance.py:31`
 - `RegressionStatus` (class) — `atp/evaluators/performance.py:44`
@@ -746,6 +737,15 @@ _(README truncated — see the full file)_
 - `compare` (function) — `atp/sdk/compare.py:129`
 - `format_comparison_table` (function) — `atp/sdk/compare.py:256`
 - `format_comparison_json` (function) — `atp/sdk/compare.py:308`
+- `format_comparison_table` (function) — `atp/test_catalog/comparison.py:4`
+- `CatalogCategory` (class) — `atp/test_catalog/models.py:20`
+- `CatalogSuite` (class) — `atp/test_catalog/models.py:44`
+- `CatalogTest` (class) — `atp/test_catalog/models.py:78`
+- `CatalogSubmission` (class) — `atp/test_catalog/models.py:112`
+- `CatalogRepository` (class) — `atp/test_catalog/repository.py:19`
+- `BUILTIN_DIR` (const) — `atp/test_catalog/sync.py:10`
+- `parse_catalog_yaml` (function) — `atp/test_catalog/sync.py:13`
+- `sync_builtin_catalog` (function) — `atp/test_catalog/sync.py:29`
 - `TraceStep` (class) — `atp/tracing/models.py:12`
 - `TraceMetadata` (class) — `atp/tracing/models.py:27`
 - `Trace` (class) — `atp/tracing/models.py:40`
@@ -1680,9 +1680,9 @@ _(README truncated — see the full file)_
 - `LLMSettings` (class) — `packages/atp-core/atp/core/settings.py:234`
 - `LoggingSettings` (class) — `packages/atp-core/atp/core/settings.py:271`
 - `ATPSettings` (class) — `packages/atp-core/atp/core/settings.py:302`
-- `get_settings` (function) — `packages/atp-core/atp/core/settings.py:533`
-- `generate_json_schema` (function) — `packages/atp-core/atp/core/settings.py:587`
-- `generate_example_config` (function) — `packages/atp-core/atp/core/settings.py:617`
+- `get_settings` (function) — `packages/atp-core/atp/core/settings.py:534`
+- `generate_json_schema` (function) — `packages/atp-core/atp/core/settings.py:588`
+- `generate_example_config` (function) — `packages/atp-core/atp/core/settings.py:618`
 - `logger` (const) — `packages/atp-core/atp/core/telemetry.py:64`
 - `P` (const) — `packages/atp-core/atp/core/telemetry.py:67`
 - `R` (const) — `packages/atp-core/atp/core/telemetry.py:68`
@@ -1757,13 +1757,16 @@ _(README truncated — see the full file)_
 - `CatalogNotConfiguredError` (class) — `packages/atp-core/atp/model_catalog/errors.py:14`
 - `CatalogTOMLError` (class) — `packages/atp-core/atp/model_catalog/errors.py:22`
 - `CatalogSchemaError` (class) — `packages/atp-core/atp/model_catalog/errors.py:26`
-- `resolve_catalog_path` (function) — `packages/atp-core/atp/model_catalog/loader.py:46`
-- `load_catalog` (function) — `packages/atp-core/atp/model_catalog/loader.py:75`
-- `read_template` (function) — `packages/atp-core/atp/model_catalog/loader.py:90`
+- `logger` (const) — `packages/atp-core/atp/model_catalog/loader.py:30`
+- `resolve_catalog_path` (function) — `packages/atp-core/atp/model_catalog/loader.py:49`
+- `load_catalog` (function) — `packages/atp-core/atp/model_catalog/loader.py:78`
+- `resolve_default_model` (function) — `packages/atp-core/atp/model_catalog/loader.py:93`
+- `read_template` (function) — `packages/atp-core/atp/model_catalog/loader.py:118`
 - `ModelEntry` (class) — `packages/atp-core/atp/model_catalog/schema.py:16`
 - `HarnessEntry` (class) — `packages/atp-core/atp/model_catalog/schema.py:26`
 - `AgentEntry` (class) — `packages/atp-core/atp/model_catalog/schema.py:38`
-- `ModelCatalog` (class) — `packages/atp-core/atp/model_catalog/schema.py:49`
+- `CatalogDefaults` (class) — `packages/atp-core/atp/model_catalog/schema.py:49`
+- `ModelCatalog` (class) — `packages/atp-core/atp/model_catalog/schema.py:57`
 - `PROTOCOL_VERSION` (const) — `packages/atp-core/atp/protocol/_version.py:3`
 - `SUPPORTED_VERSIONS` (const) — `packages/atp-core/atp/protocol/_version.py:5`
 - `MAX_TASK_ID_LENGTH` (const) — `packages/atp-core/atp/protocol/models.py:14`
@@ -3549,12 +3552,12 @@ _(README truncated — see the full file)_
 - `TestSecurityEventLogging` (class) — `tests/unit/core/test_security.py:1026`
 - `TestAdditionalSecretPatterns` (class) — `tests/unit/core/test_security.py:1053`
 - `TestATPSettings` (class) — `tests/unit/core/test_settings.py:26`
-- `TestEnvironmentVariables` (class) — `tests/unit/core/test_settings.py:214`
-- `TestConfigFileLoading` (class) — `tests/unit/core/test_settings.py:265`
-- `TestConfigHierarchy` (class) — `tests/unit/core/test_settings.py:343`
-- `TestNestedSettings` (class) — `tests/unit/core/test_settings.py:381`
-- `TestUtilityFunctions` (class) — `tests/unit/core/test_settings.py:447`
-- `TestSchemaGeneration` (class) — `tests/unit/core/test_settings.py:493`
+- `TestEnvironmentVariables` (class) — `tests/unit/core/test_settings.py:216`
+- `TestConfigFileLoading` (class) — `tests/unit/core/test_settings.py:267`
+- `TestConfigHierarchy` (class) — `tests/unit/core/test_settings.py:345`
+- `TestNestedSettings` (class) — `tests/unit/core/test_settings.py:383`
+- `TestUtilityFunctions` (class) — `tests/unit/core/test_settings.py:449`
+- `TestSchemaGeneration` (class) — `tests/unit/core/test_settings.py:495`
 - `TestTelemetrySettings` (class) — `tests/unit/core/test_telemetry.py:54`
 - `TestInMemorySpanExporter` (class) — `tests/unit/core/test_telemetry.py:102`
 - `TestConfigureTelemetry` (class) — `tests/unit/core/test_telemetry.py:264`
@@ -4329,21 +4332,26 @@ _(README truncated — see the full file)_
 - `test_missing_key_or_index_not_found` (function) — `tests/unit/evaluators/test_json_path_resolver.py:22`
 - `test_root_index` (function) — `tests/unit/evaluators/test_json_path_resolver.py:27`
 - `test_unsupported_syntax_raises` (function) — `tests/unit/evaluators/test_json_path_resolver.py:31`
-- `TestLLMJudgeConfig` (class) — `tests/unit/evaluators/test_llm_judge.py:103`
-- `TestLLMJudgeCost` (class) — `tests/unit/evaluators/test_llm_judge.py:134`
-- `TestLLMJudgeResponse` (class) — `tests/unit/evaluators/test_llm_judge.py:157`
-- `TestLLMJudgeEvaluatorProperties` (class) — `tests/unit/evaluators/test_llm_judge.py:187`
-- `TestBuiltinCriteria` (class) — `tests/unit/evaluators/test_llm_judge.py:221`
-- `TestBuildPrompt` (class) — `tests/unit/evaluators/test_llm_judge.py:243`
-- `TestParseResponse` (class) — `tests/unit/evaluators/test_llm_judge.py:319`
-- `TestGetArtifactContent` (class) — `tests/unit/evaluators/test_llm_judge.py:395`
-- `TestEvaluate` (class) — `tests/unit/evaluators/test_llm_judge.py:450`
-- `TestEvaluateWithAveraging` (class) — `tests/unit/evaluators/test_llm_judge.py:641`
-- `TestErrorHandling` (class) — `tests/unit/evaluators/test_llm_judge.py:724`
-- `TestRegistry` (class) — `tests/unit/evaluators/test_llm_judge.py:798`
-- `TestBedrockProvider` (class) — `tests/unit/evaluators/test_llm_judge.py:824`
-- `TestOpenAIBaseUrl` (class) — `tests/unit/evaluators/test_llm_judge.py:907`
-- `TestJudgeEnvConfig` (class) — `tests/unit/evaluators/test_llm_judge.py:959`
+- `TestLLMJudgeConfig` (class) — `tests/unit/evaluators/test_llm_judge.py:104`
+- `TestLLMJudgeCost` (class) — `tests/unit/evaluators/test_llm_judge.py:135`
+- `TestLLMJudgeResponse` (class) — `tests/unit/evaluators/test_llm_judge.py:158`
+- `TestLLMJudgeEvaluatorProperties` (class) — `tests/unit/evaluators/test_llm_judge.py:188`
+- `TestBuiltinCriteria` (class) — `tests/unit/evaluators/test_llm_judge.py:222`
+- `TestBuildPrompt` (class) — `tests/unit/evaluators/test_llm_judge.py:244`
+- `TestParseResponse` (class) — `tests/unit/evaluators/test_llm_judge.py:320`
+- `TestGetArtifactContent` (class) — `tests/unit/evaluators/test_llm_judge.py:396`
+- `TestEvaluate` (class) — `tests/unit/evaluators/test_llm_judge.py:451`
+- `TestEvaluateWithAveraging` (class) — `tests/unit/evaluators/test_llm_judge.py:642`
+- `TestErrorHandling` (class) — `tests/unit/evaluators/test_llm_judge.py:725`
+- `TestRegistry` (class) — `tests/unit/evaluators/test_llm_judge.py:799`
+- `TestBedrockProvider` (class) — `tests/unit/evaluators/test_llm_judge.py:825`
+- `TestOpenAIBaseUrl` (class) — `tests/unit/evaluators/test_llm_judge.py:908`
+- `TestJudgeEnvConfig` (class) — `tests/unit/evaluators/test_llm_judge.py:960`
+- `test_chain_no_env_no_catalog_anthropic_fallback` (function) — `tests/unit/evaluators/test_llm_judge.py:1031`
+- `test_chain_env_default_wins_over_catalog` (function) — `tests/unit/evaluators/test_llm_judge.py:1036`
+- `test_chain_catalog_used_when_settings_none` (function) — `tests/unit/evaluators/test_llm_judge.py:1042`
+- `test_chain_judge_model_wins_over_all` (function) — `tests/unit/evaluators/test_llm_judge.py:1047`
+- `test_chain_bedrock_skips_catalog_default` (function) — `tests/unit/evaluators/test_llm_judge.py:1053`
 - `TestPerformanceMetricType` (class) — `tests/unit/evaluators/test_performance.py:154`
 - `TestRegressionStatus` (class) — `tests/unit/evaluators/test_performance.py:167`
 - `TestPerformanceMetrics` (class) — `tests/unit/evaluators/test_performance.py:178`
@@ -4671,21 +4679,29 @@ _(README truncated — see the full file)_
 - `TestCallRecorder` (class) — `tests/unit/mock_tools/test_recorder.py:6`
 - `TestMockToolServer` (class) — `tests/unit/mock_tools/test_server.py:17`
 - `TestMockAppEndpoints` (class) — `tests/unit/mock_tools/test_server.py:256`
-- `test_atp_catalog_takes_precedence` (function) — `tests/unit/model_catalog/test_loader.py:22`
-- `test_xdg_used_when_atp_catalog_unset` (function) — `tests/unit/model_catalog/test_loader.py:31`
-- `test_empty_env_is_treated_as_unset` (function) — `tests/unit/model_catalog/test_loader.py:41`
-- `test_relative_atp_catalog_is_error` (function) — `tests/unit/model_catalog/test_loader.py:52`
-- `test_relative_xdg_config_home_is_error` (function) — `tests/unit/model_catalog/test_loader.py:59`
-- `test_empty_xdg_config_home_falls_back_to_home` (function) — `tests/unit/model_catalog/test_loader.py:66`
-- `test_nothing_configured_fails_loud` (function) — `tests/unit/model_catalog/test_loader.py:73`
-- `test_init_target_returned_even_when_absent` (function) — `tests/unit/model_catalog/test_loader.py:80`
-- `test_atp_catalog_pointing_at_directory_fails` (function) — `tests/unit/model_catalog/test_loader.py:87`
-- `test_xdg_config_home_pointing_at_file_fails` (function) — `tests/unit/model_catalog/test_loader.py:96`
-- `test_load_explicit_path` (function) — `tests/unit/model_catalog/test_loader.py:105`
-- `test_load_empty_models_ok` (function) — `tests/unit/model_catalog/test_loader.py:112`
-- `test_load_invalid_toml` (function) — `tests/unit/model_catalog/test_loader.py:118`
-- `test_load_bad_status_is_schema_error` (function) — `tests/unit/model_catalog/test_loader.py:125`
-- `test_load_referential_error_is_schema_error` (function) — `tests/unit/model_catalog/test_loader.py:132`
+- `test_atp_catalog_takes_precedence` (function) — `tests/unit/model_catalog/test_loader.py:26`
+- `test_xdg_used_when_atp_catalog_unset` (function) — `tests/unit/model_catalog/test_loader.py:35`
+- `test_empty_env_is_treated_as_unset` (function) — `tests/unit/model_catalog/test_loader.py:45`
+- `test_relative_atp_catalog_is_error` (function) — `tests/unit/model_catalog/test_loader.py:56`
+- `test_relative_xdg_config_home_is_error` (function) — `tests/unit/model_catalog/test_loader.py:63`
+- `test_empty_xdg_config_home_falls_back_to_home` (function) — `tests/unit/model_catalog/test_loader.py:70`
+- `test_nothing_configured_fails_loud` (function) — `tests/unit/model_catalog/test_loader.py:77`
+- `test_init_target_returned_even_when_absent` (function) — `tests/unit/model_catalog/test_loader.py:84`
+- `test_atp_catalog_pointing_at_directory_fails` (function) — `tests/unit/model_catalog/test_loader.py:91`
+- `test_xdg_config_home_pointing_at_file_fails` (function) — `tests/unit/model_catalog/test_loader.py:100`
+- `test_load_explicit_path` (function) — `tests/unit/model_catalog/test_loader.py:109`
+- `test_load_empty_models_ok` (function) — `tests/unit/model_catalog/test_loader.py:116`
+- `test_load_invalid_toml` (function) — `tests/unit/model_catalog/test_loader.py:122`
+- `test_load_bad_status_is_schema_error` (function) — `tests/unit/model_catalog/test_loader.py:129`
+- `test_load_referential_error_is_schema_error` (function) — `tests/unit/model_catalog/test_loader.py:136`
+- `test_resolve_explicit_stripped` (function) — `tests/unit/model_catalog/test_loader.py:157`
+- `test_resolve_empty_explicit_is_unset` (function) — `tests/unit/model_catalog/test_loader.py:162`
+- `test_resolve_from_catalog_defaults` (function) — `tests/unit/model_catalog/test_loader.py:169`
+- `test_resolve_explicit_wins_over_catalog` (function) — `tests/unit/model_catalog/test_loader.py:176`
+- `test_resolve_catalog_alias_returned_verbatim` (function) — `tests/unit/model_catalog/test_loader.py:183`
+- `test_resolve_no_catalog_silent_none` (function) — `tests/unit/model_catalog/test_loader.py:195`
+- `test_resolve_broken_catalog_warns_and_none` (function) — `tests/unit/model_catalog/test_loader.py:201`
+- `test_resolve_non_utf8_catalog_warns_and_none` (function) — `tests/unit/model_catalog/test_loader.py:211`
 - `test_init_writes_template` (function) — `tests/unit/model_catalog/test_models_cli.py:19`
 - `test_init_creates_parent_dirs` (function) — `tests/unit/model_catalog/test_models_cli.py:27`
 - `test_init_refuses_overwrite_without_force` (function) — `tests/unit/model_catalog/test_models_cli.py:36`
@@ -4710,6 +4726,13 @@ _(README truncated — see the full file)_
 - `test_referential_present_empty_both_ok` (function) — `tests/unit/model_catalog/test_schema.py:86`
 - `test_referential_present_empty_harnesses_with_agent_fails` (function) — `tests/unit/model_catalog/test_schema.py:91`
 - `test_referential_noop_when_one_plane_absent` (function) — `tests/unit/model_catalog/test_schema.py:96`
+- `test_catalog_defaults_default_none` (function) — `tests/unit/model_catalog/test_schema.py:114`
+- `test_default_model_matching_key_ok` (function) — `tests/unit/model_catalog/test_schema.py:120`
+- `test_default_model_matching_alias_ok` (function) — `tests/unit/model_catalog/test_schema.py:128`
+- `test_default_model_unknown_rejected` (function) — `tests/unit/model_catalog/test_schema.py:136`
+- `test_default_model_none_is_noop` (function) — `tests/unit/model_catalog/test_schema.py:144`
+- `test_default_model_with_empty_models_is_noop` (function) — `tests/unit/model_catalog/test_schema.py:149`
+- `test_no_defaults_plane_is_noop` (function) — `tests/unit/model_catalog/test_schema.py:155`
 - `test_read_template_returns_text` (function) — `tests/unit/model_catalog/test_template.py:9`
 - `test_packaged_template_is_reachable_as_resource` (function) — `tests/unit/model_catalog/test_template.py:14`
 - `test_template_is_valid_and_loads_without_error` (function) — `tests/unit/model_catalog/test_template.py:21`
@@ -5113,7 +5136,7 @@ _(README truncated — see the full file)_
 
 ## Modules
 
-_1098 files, 5036 public symbols, 117 internal imports._
+_1098 files, 5059 public symbols, 117 internal imports._
 
 - `art/generate_article_docx.py` (python)
 - `art/generate_quickstart_pdf.py` (python)
@@ -5186,11 +5209,6 @@ _1098 files, 5036 public symbols, 117 internal imports._
 - `atp/benchmarks/loaders/swebench.py` (python)
 - `atp/benchmarks/models.py` (python)
 - `atp/benchmarks/registry.py` (python)
-- `atp/catalog/__init__.py` (python)
-- `atp/catalog/comparison.py` (python)
-- `atp/catalog/models.py` (python)
-- `atp/catalog/repository.py` (python)
-- `atp/catalog/sync.py` (python)
 - `atp/cli/__init__.py` (python)
 - `atp/cli/commands/__init__.py` (python)
 - `atp/cli/commands/benchmark.py` (python)
@@ -5298,6 +5316,11 @@ _1098 files, 5036 public symbols, 117 internal imports._
 - `atp/runner/sandbox.py` (python)
 - `atp/sdk/__init__.py` (python)
 - `atp/sdk/compare.py` (python)
+- `atp/test_catalog/__init__.py` (python)
+- `atp/test_catalog/comparison.py` (python)
+- `atp/test_catalog/models.py` (python)
+- `atp/test_catalog/repository.py` (python)
+- `atp/test_catalog/sync.py` (python)
 - `atp/tracing/__init__.py` (python)
 - `atp/tracing/models.py` (python)
 - `atp/tracing/recorder.py` (python)

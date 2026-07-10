@@ -1,13 +1,13 @@
 <!-- prograph:generated -->
 
 ---
-indexed_at: "2026-07-07T16:11:23Z"
+indexed_at: "2026-07-10T12:31:55Z"
 kind: rust
 name: arbiter-core
 parent: arbiter
 prograph: project
 root: ./arbiter/arbiter-core
-snapshot: 1
+snapshot: 4
 ---
 
 # arbiter-core

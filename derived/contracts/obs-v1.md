@@ -3,10 +3,10 @@
 ---
 content_hash: 16dbb44689c304e7d245722bc8c1168d08c2a2113c7ce79b37bd248ba7f7d92e
 declared_id: obs-v1
-indexed_at: "2026-05-27T12:45:37Z"
+indexed_at: "2026-07-10T12:31:55Z"
 kind: json_schema
 prograph: contract
-snapshot: 48
+snapshot: 4
 ---
 
 # Contract: obs-v1
@@ -22,4 +22,4 @@ snapshot: 48
 
 ## Recent changes (last 5)
 
-- snapshot 15 (2026-05-26T10:18:47Z): contract added (added)
+- snapshot 1 (2026-07-07T16:11:23Z): contract added (added)
