@@ -3,7 +3,7 @@ title: Robin — duty roster
 type: note
 status: living
 owner: Andrei
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Robin duty roster — AI-Orchestrators ecosystem
@@ -55,20 +55,43 @@ Machine-readable triggers only (cron with explicit TZ, or an explicit command/ev
 - **Destination:** the team Telegram channel.
 - **Owner:** Andrei.
 
+### 3. Self-review — разбор провалов недели
+- **Trigger:** `0 18 * * FRI` (`<TZ>`) — weekly, Friday 18:00.
+- **Inputs:** stage-2 failure log `var/gaps.jsonl` (zero-retrieval, reformulation,
+  `/gap`, 👎 — robin-runtime `gaps.py`) за неделю; `interactions.jsonl` для контекста;
+  `QUESTIONS.md` (чтобы не дублировать уже заведённые находки).
+- **Behavior:** кластеризовать провалы (класс вопроса × причина); для каждого кластера
+  подготовить артефакт: KB-гэп → PR-кандидат в prograph-vault (staged-learning,
+  read-back verified §6.4); инструментальный гэп → черновик спеки для spec-runner;
+  неоднозначность формулировок → кандидаты в synonyms/rewrite-подсказки промпта
+  (тоже PR). Кластеры без человека не становятся изменениями.
+- **Output:** сводка «N провалов → M кластеров → K предложений» + ссылки на
+  PR-кандидаты/спеки. Persisted в runtime store (`var/selfreview/`), не в KB.
+- **Destination:** DM мейнтейнеру (`ROBIN_MAINTAINER_CHAT`); краткая сводка —
+  в team-канал.
+- **Инвариант:** Robin НЕ мержит и НЕ меняет себя сам — только предлагает
+  (соответствует «acts only via PR» из ADR fleet-agent-role).
+- **Owner:** Andrei.
+- **Implementation:** robin-runtime `python -m robin.selfreview` (systemd timer
+  `robin-selfreview.timer`); детекторы и лог — ступень 2 proposal
+  `devtools/proposals/2026-07-10-robin-self-improvement.md`.
+- **Closing the loop:** разобранные кейсы уходят eval-набором в atp-platform
+  (ступень 4) и гейтят следующие изменения Robin.
+
 ## Planned (later phases — do not build before onboarding + M1 are proven)
 
-### 3. Spec/ТЗ interview — *Phase 5*
+### 4. Spec/ТЗ interview — *Phase 5*
 - Generative interview that **generates questions from the actual repo `spec/` content** and
   scores answers **by comparison with a cited reference file**, never by model opinion. Output
   is a "knows / gap / diverges-from-spec" report with source citations — a **draft for a human**,
   not a final score (risk control, IMPLEMENTATION-PLAN §7.2). Reuses the onboarding
   grounded-Q&A + progress machinery.
 
-### 4. Candidate interview — *Phase 6*
+### 5. Candidate interview — *Phase 6*
 - Screening for role fit against requirements in the KB. **Destination follows sensitivity
   (§6.3):** private DM to the hiring maintainer, never a broadcast. Robin produces a
   structured fit summary **with sources, not a hire/no-hire verdict** — the decision stays
-  human. Goes last: highest risk (people, privacy, legal), needs the §3 interview mechanics
+  human. Goes last: highest risk (people, privacy, legal), needs the §4 interview mechanics
   debugged first.
 
 ## Backlog (nice-to-have, not in the MVP path)
