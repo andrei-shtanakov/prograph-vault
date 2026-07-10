@@ -21,7 +21,9 @@ them to the upstream spec (ROBIN-SPEC.md @ git b5ad49e).
 
 3. **Timezone for cron triggers.** `robin/duties.md` uses `<TZ>`; §6.3 requires an explicit
    timezone. Set the ecosystem's working timezone (e.g. `Europe/Moscow`) before the
-   scheduler reads the roster.
+   scheduler reads the roster. **Resolved 2026-07-10: `Asia/Tbilisi`** (maintainer decision) —
+   duties.md updated, `ROBIN_TZ=Asia/Tbilisi` in robin.env, explicit zone in systemd
+   `OnCalendar` (robin-runtime PR).
 
 4. **Digest persistence target.** Robin MUST NOT write the KB (§4), yet the KB already has a
    tool-owned `derived/digests/` pipeline. Resolved: Robin's digests persist to Robin's own
