@@ -15,7 +15,7 @@ Everything here is edited by humans via **git-review (PR)**. Writing here from t
 
 | Folder | What it holds | SSOT? |
 |---|---|---|
-| `rules/` | cross-cutting rules: `code-style.md`, `gui.md`, `tui.md`, `libraries.md` | ✅ KB owns |
+| `rules/` | cross-cutting rules: `code-style.md`, `gui.md`, `tui.md`, `libraries.md`, `repo-boundaries.md`, `git-workflow.md` | ✅ KB owns |
 | `decisions/` | ADRs (cross-repo), `YYYY-MM-DD-adr-<slug>.md` | ✅ cross-repo *why* |
 | `templates/` | spec templates, steward profiles (`lite`/`team`), scaffolds | ✅ SSOT of profiles |
 | `skills/` | project-specific skills: sources/docs OR pointers to Cowork skills | ⚠️ runtime — owned by the skills mechanism |
