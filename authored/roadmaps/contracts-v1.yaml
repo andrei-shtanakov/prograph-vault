@@ -1,0 +1,146 @@
+# AI Dark Factory — contracts roadmap v1 (machine-readable intent).
+#
+# Canon narrative: authored/notes/2026-07-11-ai-dark-factory-consolidated-roadmap.md
+# Rendered by: dispatcher GET /api/roadmap (computed status, never manual ticks).
+# Rules vocabulary (closed set): project_detected | file_exists | sqlite_has_row
+#   | contract_in_sync | work_item_chain.  kind: implementation | verification.
+# expected_evidence is prose documentation of intent — never machine-checked.
+# Items whose evidence is not yet expressible stay honest `unknown`.
+
+version: 1
+roadmap: contracts-v1
+title: AI Dark Factory — contracts v1
+
+items:
+  - id: RD-000
+    title: Agent-theater checklist as authored rule
+    phase: "0"
+    owner_project: prograph-vault
+    target_contract: null
+    expected_evidence:
+      - anti-pattern checklist exists as authored rule in ecosystem KB
+    evidence_rules:
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/rules/agent-theater-checklist.md
+
+  - id: RD-005
+    title: "Phase 0.5: read-side correlation prototype in dispatcher"
+    phase: "0.5"
+    owner_project: dispatcher
+    target_contract: WorkCorrelation
+    expected_evidence:
+      - dispatcher exposes /api/work-items over existing keys
+      - chain shown for a real run (recon note 2026-07-11)
+    evidence_rules:
+      - rule: file_exists
+        kind: implementation
+        project: dispatcher
+        path: dispatcher/core/correlation.py
+      - rule: work_item_chain
+        kind: verification
+        work_item_id: corr-demo-note-2
+        min_links: 3
+
+  - id: RD-001
+    title: "WorkCorrelation v1: canonize Maestro task.id + source_status"
+    phase: "1"
+    owner_project: Maestro
+    target_contract: WorkCorrelation
+    depends_on: [RD-005]
+    expected_evidence:
+      - WorkCorrelation v1 contract vendored/pinned by consumers
+      - spec-runner TASK-nnn <-> Maestro task.id bridge recorded
+    evidence_rules:
+      - rule: file_exists
+        kind: implementation
+        project: Maestro
+        path: contracts/work-correlation/schema.json
+
+  - id: RD-002
+    title: "Promote arbiter budget + decision_id -> Budget v1 / PolicyDecisionRef v1"
+    phase: "2"
+    owner_project: arbiter
+    target_contract: PolicyDecisionRef
+    depends_on: [RD-001]
+    expected_evidence:
+      - named contract files exported by arbiter
+      - Maestro consumes PolicyDecisionRef (persists decision_id)
+    evidence_rules:
+      - rule: file_exists
+        kind: implementation
+        project: arbiter
+        path: contracts/policy-decision-ref/schema.json
+      - rule: file_exists
+        kind: implementation
+        project: arbiter
+        path: contracts/budget/schema.json
+
+  - id: RD-003
+    title: "Evidence: evidence_ref on top of graduated observability contract"
+    phase: "3"
+    owner_project: Maestro
+    target_contract: Evidence
+    depends_on: [RD-001]
+    expected_evidence:
+      - evidence_ref field defined over trace_id/span_id/run_id
+      - WorkCorrelation carries evidence_refs[]
+    evidence_rules:
+      - rule: file_exists
+        kind: implementation
+        project: Maestro
+        path: contracts/observability/evidence-ref.md
+      # graduated obs contract itself (done 6795b26) is the base:
+      - rule: file_exists
+        kind: verification
+        project: Maestro
+        path: contracts/observability/log-schema.json
+
+  - id: RD-004
+    title: "Risk model + mandatory gates (gates-in-DAG evaluated)"
+    phase: "4"
+    owner_project: steward
+    target_contract: RiskModel
+    depends_on: [RD-002, RD-003]
+    expected_evidence:
+      - steward owns risk model extension of gate-check/profile
+      - gates-in-DAG skeleton evaluated for project.yaml
+    evidence_rules: []  # not expressible until steward WS-002 lands -> unknown
+
+  - id: RD-006
+    title: Split Capability (arbiter) / Authority (steward)
+    phase: "5"
+    owner_project: arbiter
+    target_contract: Authority
+    depends_on: [RD-004]
+    expected_evidence:
+      - role/phase-scoped allowlist enforcement
+    evidence_rules: []
+
+  - id: RD-007
+    title: LearningEvent via steward governance (no silent-write)
+    phase: "6"
+    owner_project: atp-platform
+    target_contract: LearningEvent
+    depends_on: [RD-004]
+    expected_evidence:
+      - learning events flow through PR/CODEOWNERS governance
+    evidence_rules: []
+
+  - id: RD-D01
+    title: "Roadmap dashboard MVP: /api/roadmap over typed evidence rules"
+    phase: "1"
+    owner_project: dispatcher
+    target_contract: null
+    depends_on: [RD-005]
+    expected_evidence:
+      - dispatcher renders computed status from this very file
+    evidence_rules:
+      - rule: file_exists
+        kind: implementation
+        project: dispatcher
+        path: dispatcher/core/roadmap.py
+      - rule: project_detected
+        kind: verification
+        project: dispatcher
