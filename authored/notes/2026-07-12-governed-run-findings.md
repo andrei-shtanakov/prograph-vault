@@ -1,10 +1,18 @@
+---
+title: Первый governed-прогон — находки и handoff'ы (H-1..H-5)
+type: note
+status: living
+owner: andrei-shtanakov
+updated: 2026-07-12
+---
+
 # Первый governed-прогон (gates live в orchestrate): находки и handoff'ы
 
 > **Контекст (2026-07-12, вечер):** первый `maestro orchestrate` с активными gates
 > (WS-006/RD-004) на реальной задаче (steward risk-model docs-rule, scope
 > `profiles/**` → tier high). Итог: **гейты отработали end-to-end и поймали пустую
-> имплементацию** — задача ушла обычным PR (steward #10), а прогон принёс четыре
-> находки. Verdict-トrail: Maestro `logs/01KXBGM26QYQX66WC1XM0ZZFQR/gate_verdicts.jsonl`
+> имплементацию** — задача ушла обычным PR (steward #10), а прогон принёс пять
+> находок. Verdict-trail: Maestro `logs/01KXBGM26QYQX66WC1XM0ZZFQR/gate_verdicts.jsonl`
 > (11 записей: ex-ante block → operator approval → ex-post scope_violation block).
 
 ## Что сработало как задумано

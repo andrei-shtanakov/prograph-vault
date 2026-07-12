@@ -41,7 +41,8 @@ updated: 2026-07-12
 ## 2026-07-12 19:37 — status: contracts-v1 COMPLETE — all RD items on live masters
 
 - M1a (atp #249) + M1b (robin-runtime #9) + M1c (vault #20) merged. Live
-  board with all five snapshots: RD-000..RD-007 implemented/verified,
+  board with all five project snapshots (Maestro/arbiter/steward/
+  spec-runner/atp-platform): RD-000..RD-007 implemented/verified,
   RD-007 verified. The contracts roadmap is fully closed, every status
   evidence-derived, zero manual ticks.
 - Remaining threads (not roadmap items): RD-007 M2 (conformance-CI,

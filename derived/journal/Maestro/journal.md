@@ -38,7 +38,7 @@ updated: 2026-07-12
   Maestro section of risk-model.yaml lacks a docs rule and name-based generic
   rules are excluded from ex-ante by design. Candidate data tweak in steward.
 
-## 2026-07-12 20:04 — result: first governed orchestrate run — gates blocked correctly, 4 findings
+## 2026-07-12 20:04 — result: first governed orchestrate run — gates blocked correctly, 5 findings
 
 - Live run (steward risk-model task, scope profiles/** = high): ex-ante block ->
   operator approval -> spawn -> ex-post scope_violation block. Gates caught an
