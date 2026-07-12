@@ -151,8 +151,9 @@ items:
       - learning events flow through PR/CODEOWNERS governance
     evidence_rules:
       # design merged atp#248; contract + governed-paths CODEOWNERS = atp#249
-      # (M1a); robin-runtime emits conformant events (M1b); this vault's
-      # authored/** CODEOWNERS = M1c.
+      # (M1a); robin-runtime emits conformant events (M1b); M1c adds this
+      # vault's own CODEOWNERS (pattern /authored/, recursive) — the rules
+      # below check the atp-platform artifacts only.
       - rule: file_exists
         kind: implementation
         project: atp-platform
