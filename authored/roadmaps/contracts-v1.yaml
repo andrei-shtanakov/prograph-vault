@@ -127,7 +127,19 @@ items:
     depends_on: [RD-004]
     expected_evidence:
       - role/phase-scoped allowlist enforcement
-    evidence_rules: []
+    evidence_rules:
+      # enforcement contract + engine shipped: arbiter #49 (design), #50/#51
+      # (M1 + review), Maestro #74 (M4 authority_context), steward #9 (M2 SSOT).
+      - rule: file_exists
+        kind: implementation
+        project: arbiter
+        path: contracts/authority/schema.json
+      # policy data SSOT (steward profiles/authority.yaml, OQ-4-style canon);
+      # arbiter vendors config/authority.toml with AUTHORITY_PINNED_SHA (M3).
+      - rule: file_exists
+        kind: verification
+        project: steward
+        path: profiles/authority.yaml
 
   - id: RD-007
     title: LearningEvent via steward governance (no silent-write)
