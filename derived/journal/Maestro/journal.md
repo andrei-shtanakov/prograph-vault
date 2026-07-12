@@ -37,3 +37,13 @@ updated: 2026-07-12
 - Observed: ex-ante docs/** classifies medium (unknown), not low — per-repo
   Maestro section of risk-model.yaml lacks a docs rule and name-based generic
   rules are excluded from ex-ante by design. Candidate data tweak in steward.
+
+## 2026-07-12 20:04 — result: first governed orchestrate run — gates blocked correctly, 4 findings
+
+- Live run (steward risk-model task, scope profiles/** = high): ex-ante block ->
+  operator approval -> spawn -> ex-post scope_violation block. Gates caught an
+  EMPTY implementation (spec-runner rc=0 on "No tasks found"). Task shipped as
+  steward #10 instead. Findings H-1..H-5 in
+  authored/notes/2026-07-12-governed-run-findings.md (spec-runner exit-0 bug,
+  plan<->run task-format drift, approval-marker overwrite, orchestrator
+  spec-commits vs scope gate, missing requeue CLI).

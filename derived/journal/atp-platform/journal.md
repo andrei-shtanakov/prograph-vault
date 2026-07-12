@@ -37,3 +37,14 @@ updated: 2026-07-12
   calendar-dependent test red on master.
 - M1c = vault PR (this one): CODEOWNERS for authored/** + RD-007
   evidence_rules -> board flips verified once atp #249 merges.
+
+## 2026-07-12 19:37 — status: contracts-v1 COMPLETE — all RD items on live masters
+
+- M1a (atp #249) + M1b (robin-runtime #9) + M1c (vault #20) merged. Live
+  board with all five snapshots: RD-000..RD-007 implemented/verified,
+  RD-007 verified. The contracts roadmap is fully closed, every status
+  evidence-derived, zero manual ticks.
+- Remaining threads (not roadmap items): RD-007 M2 (conformance-CI,
+  no-runtime-writes scanner), Maestro handoff M-1..M-3 live gates in
+  orchestrate, L2 routing-stats series, owner's in-flight litellm work in
+  atp (main does not typecheck without it).
