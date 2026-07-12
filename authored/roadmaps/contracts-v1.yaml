@@ -108,12 +108,16 @@ items:
       - gates-in-DAG skeleton evaluated for project.yaml
     evidence_rules:
       # design-stage deliverable: WS-006 spec bundle (steward PR #5, merged 2026-07-12).
-      # M1 rules (risk-model.yaml, risk-classify) follow once OQ-4 fixes the path —
-      # speculative paths would violate the honesty rule.
       - rule: file_exists
         kind: implementation
         project: steward
         path: workstreams/WS-006-risk-model/spec/design.md
+      # M1 deliverable: canonical risk model at the path fixed by OQ-4 (resolved
+      # 2026-07-12, steward PR #6). Flips RD-004 implemented -> verified when M1 ships.
+      - rule: file_exists
+        kind: verification
+        project: steward
+        path: profiles/risk-model.yaml
 
   - id: RD-006
     title: Split Capability (arbiter) / Authority (steward)
