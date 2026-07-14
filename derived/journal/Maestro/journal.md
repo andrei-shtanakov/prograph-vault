@@ -47,3 +47,17 @@ updated: 2026-07-12
   authored/notes/2026-07-12-governed-run-findings.md (spec-runner exit-0 bug,
   plan<->run task-format drift, approval-marker overwrite, orchestrator
   spec-commits vs scope gate, missing requeue CLI).
+
+## 2026-07-12 23:05 — result: governed run #2 — first agent-authored change through the gates (steward PR #11)
+
+- Arc: plan fail (H-2 honest exit) -> H-2b fix -> workstream-approve (H-5
+  debut) -> agent implemented docs/risk-classify.md BUT touched
+  .gitignore+tests outside docs/** -> ex-post scope_violation block (real
+  agent violation caught live) -> operator curation (out-of-scope stripped;
+  root cause H-7: orchestrator spec/ collides with steward's dogfood spec/)
+  -> final ex-post: tier low, no flags (the docs rule from run #1 classifies
+  it) -> branch pushed + PR operator-side (process was stopped mid-resume).
+- New findings: H-6 (resume-after-ex-post-approval respawns from DECOMPOSING,
+  regen mints a new sha and invalidates the approval — needs pipeline-position
+  preservation or idempotent spec regen), H-7 (spec/ dir collision).
+- Links: https://github.com/andrei-shtanakov/steward/pull/11
