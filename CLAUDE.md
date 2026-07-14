@@ -67,7 +67,7 @@ forbidden (the directory boundary is hard). A second automated writer is allowed
 the `kb-save` skill owns `derived/journal/` (append-only, not regenerable — ADR 2026-07-06).
 A third writer is the fleet agent (`devtools/fleet_report.py`): it owns `derived/fleet/` —
 dated fleet-state reports (append-only, not regenerable, delivered by PR only, never direct
-commits — ADR 2026-07-10-fleet-agent-role, proposed).
+commits — `authored/decisions/2026-07-10-adr-fleet-agent-role.md`, proposed).
 A fourth writer is the dispatcher publisher (`dispatcher publish-snapshot`): it owns
 `derived/snapshots/` — per-host workspace sync snapshots (`<host>.json`, github-checker
 snapshot contract v1), each overwritten in place (regenerable: latest state per host, no
