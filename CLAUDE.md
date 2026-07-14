@@ -68,6 +68,11 @@ the `kb-save` skill owns `derived/journal/` (append-only, not regenerable — AD
 A third writer is the fleet agent (`devtools/fleet_report.py`): it owns `derived/fleet/` —
 dated fleet-state reports (append-only, not regenerable, delivered by PR only, never direct
 commits — ADR 2026-07-10-fleet-agent-role, proposed).
+A fourth writer is the dispatcher publisher (`dispatcher publish-snapshot`): it owns
+`derived/snapshots/` — per-host workspace sync snapshots (`<host>.json`, github-checker
+snapshot contract v1), each overwritten in place (regenerable: latest state per host, no
+history), committed directly by the scheduled tool — dispatcher Gate 1 Design DESIGN-203,
+2026-07-14.
 
 ## 3. Directory map (what goes where)
 
@@ -85,6 +90,7 @@ derived/
   projects/     auto-facts per repo (prograph)
   journal/      <project>/journal.md — per-project activity log (kb-save; append-only)
   fleet/        dated fleet-state reports (fleet agent via PR; append-only)
+  snapshots/    <host>.json — per-host sync snapshots (dispatcher publisher; overwritten)
   digests/      claude-kb/digests (auto)
 ```
 
