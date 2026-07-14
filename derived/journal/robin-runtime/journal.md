@@ -3,7 +3,7 @@ title: robin-runtime — activity journal
 type: journal
 source: kb-save
 project: robin-runtime
-updated: 2026-07-09
+updated: 2026-07-13
 ---
 
 # robin-runtime — activity journal
@@ -68,3 +68,52 @@ updated: 2026-07-09
   `n_sources=0` rows and consider an embedding index if they accumulate.
 - Links: robin-runtime/src/robin/kb.py, robin-runtime/src/robin/changes.py,
   robin-runtime/tests/test_kb.py, robin-runtime/tests/test_changes.py
+
+## 2026-07-13 17:55 — change: M3 ambient context implemented (PR #10, awaiting merge)
+
+- ROBIN-SPEC M3 (§6.2): group @mentions are now answered with ambient context —
+  the asker's identity, the last N=10 channel messages, and the newest persisted
+  digests enter the prompt as explicitly-untrusted blocks, with the §6.2
+  conciseness rule (2–5 sentences).
+- Slot 8 passive capture is opt-in per chat via new env `ROBIN_CAPTURE_CHATS`
+  (ids or @names; empty = off — §6.5 disclosure enforced by configuration, and
+  /help discloses the behavior). Captured messages go to Robin's own store
+  (`var/channel/<chat>.jsonl`), bounded to a 200-line rolling window, flattened
+  to one line each so a multi-line message cannot fake other prompt blocks.
+  Unaddressed chatter never triggers a reply or an LLM call.
+- New env `ROBIN_AMBIENT_N` (slot 13, default 10); `digest.latest()` exposes
+  recent digests for the ambient block. All five Copilot review findings were
+  valid and fixed (rolling bound, newline flattening, n<=0 guard, utf-8 reads,
+  digests marked untrusted). 119 offline tests green.
+- Deployment note: M3 acceptance on the VPS requires `ROBIN_CAPTURE_CHATS` set
+  to the team group chat and BotFather privacy mode OFF (done for M1).
+- Links: robin-runtime/src/robin/adapters/telegram.py, robin-runtime/src/robin/memory.py,
+  robin-runtime/src/robin/agent.py, robin-runtime/src/robin/digest.py,
+  robin-runtime/deploy/env.example
+
+## 2026-07-13 19:30 — result: M3 accepted in production
+
+- PR #10 merged and auto-deployed; `ROBIN_CAPTURE_CHATS=-5301459591` (team group)
+  set on the VPS, bot restarted. Live acceptance: a vague group mention
+  («что думаешь по этому поводу?» after a two-message presentation draft) was
+  answered about the draft's theses with KB citations — ambient context works
+  end-to-end ($0.049, 12 sources, 23s latency). ROBIN-SPEC M0–M3 are now done;
+  remaining: M4 learning loop, M5 (optional, deferred).
+
+## 2026-07-13 20:15 — change: M4 learning loop implemented (PR #11, awaiting merge)
+
+- ROBIN-SPEC §5/§6.4: explicit negative feedback (👎 / /gap) now produces a
+  staged learning file under var/learnings/staged/ — one insight per file,
+  dated, read-back verified. Robin's write surface stays staged/-only.
+- Promotion is a human, out-of-band CLI action (§6.5: chat cannot promote):
+  `python -m robin.learnings list|show|promote <name> --route memory|skill|kb
+  |reject`. memory → promoted/ (distilled into the system prompt as
+  PROMOTED TEAM LEARNINGS, loaded into every session per §5 MUST); skill/kb →
+  routed/ (audit trail; human applies via PR — Robin never writes the KB);
+  reject → rejected/ (nothing deleted). Every action logged to
+  var/learnings/audit.jsonl.
+- Copilot review: 3 of 4 findings fixed (rule distillation without metadata
+  leakage, --route value guard, message_id carried into staged files), 1
+  declined with rationale (collision-suffix numbering). 130 offline tests.
+- Acceptance (human, after merge+deploy): 👎 → maintainer DM → promote on the
+  VPS → the same question answers differently.
