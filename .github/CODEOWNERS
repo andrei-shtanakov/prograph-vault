@@ -1,9 +1,2 @@
-# CODEOWNERS — RD-007 v1 acceptance (learning-through-governance).
-# The /authored/ tree (recursive) is the human-written canon (KB
-# constitution §1: humans via git-review only; tools write derived/).
-# CODEOWNERS turns that
-# constitution into enforced review — graduation of learning material into
-# the KB is a governed PR, never a runtime write.
-# Design: atp-platform docs/2026-07-12-rd-007-learning-event-design.md §4.
-
-/authored/  @andrei-shtanakov
+# CODEOWNERS
+* @andrei-shtanakov
