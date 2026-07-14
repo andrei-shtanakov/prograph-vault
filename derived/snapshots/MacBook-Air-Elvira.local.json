@@ -1,0 +1,738 @@
+{
+  "schema_version": 1,
+  "workspace": "/Users/andrei/labs/atp",
+  "host": "MacBook-Air-Elvira.local",
+  "generated_at": "2026-07-14T21:39:05.004044+04:00",
+  "gh_error": null,
+  "repos": [
+    {
+      "dir": "Maestro",
+      "remote": "andrei-shtanakov/Maestro",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/Maestro",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18225630,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:04.367503",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "arbiter",
+      "remote": "andrei-shtanakov/arbiter",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/arbiter",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18225639,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:03.307144",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "atp-platform",
+      "remote": "andrei-shtanakov/atp-platform",
+      "local": {
+        "branch": "main",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/atp-platform",
+        "pulls": [
+          {
+            "number": 244,
+            "title": "ci(deps): bump pip from 26.1 to 26.1.2",
+            "author": "dependabot[bot]",
+            "head_branch": "dependabot/uv/pip-26.1.2",
+            "is_dependabot": true,
+            "copilot_review": null
+          }
+        ],
+        "issues": [],
+        "branches": [
+          {
+            "name": "dependabot/uv/pip-26.1.2"
+          },
+          {
+            "name": "main"
+          }
+        ],
+        "alerts": 1,
+        "rulesets": [
+          {
+            "id": 14708017,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          },
+          {
+            "id": 12637526,
+            "name": "dei-protection",
+            "enforcement": "disabled",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:05.003533",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "deployer",
+      "remote": "andrei-shtanakov/deployer",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/deployer",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18565595,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:03.881216",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "devtools",
+      "remote": "andrei-shtanakov/devtools",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/devtools",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "feat/release-drift"
+          },
+          {
+            "name": "feature/graph-registry-drift-check"
+          },
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18760515,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:03.964429",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "discovery",
+      "remote": "andrei-shtanakov/discovery",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": true,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/discovery",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18941804,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:03.980942",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "discovery-test",
+      "remote": null,
+      "local": {
+        "branch": null,
+        "ahead": null,
+        "behind": null,
+        "dirty": false,
+        "error": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'"
+      },
+      "github": null
+    },
+    {
+      "dir": "discovery-toolkit",
+      "remote": "andrei-shtanakov/discovery-toolkit",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/discovery-toolkit",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18941807,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:03.899163",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "dispatcher",
+      "remote": "andrei-shtanakov/dispatcher",
+      "local": {
+        "branch": "feat/task-204-publish-snapshot",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/dispatcher",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18565596,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:03.888525",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "github-checker",
+      "remote": "andrei-shtanakov/github-checker",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/github-checker",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18565592,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:03.961339",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "open-prose",
+      "remote": "andrei-shtanakov/open-prose",
+      "local": {
+        "branch": "main",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/open-prose",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "agent/record-phase1-evaluation-20260714"
+          },
+          {
+            "name": "docs/repo-scope-git-workflow"
+          },
+          {
+            "name": "main"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18941812,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:04.417017",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "proctor",
+      "remote": "andrei-shtanakov/proctor",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/proctor",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 15137048,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:04.611038",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "prograph",
+      "remote": "andrei-shtanakov/prograph",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/prograph",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "docs/repo-scope-git-workflow"
+          },
+          {
+            "name": "fix/exporter-hygiene"
+          },
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18941817,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:04.435455",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "prograph-vault",
+      "remote": "andrei-shtanakov/prograph-vault",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/prograph-vault",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "agent/update-kb-journals-digests-20260714"
+          },
+          {
+            "name": "docs/cowork-output-convention"
+          },
+          {
+            "name": "docs/derived-snapshots-convention"
+          },
+          {
+            "name": "docs/repo-scope-git-workflow"
+          },
+          {
+            "name": "governance/rd-007-codeowners-evidence"
+          },
+          {
+            "name": "master"
+          },
+          {
+            "name": "note/governed-run-3-findings"
+          },
+          {
+            "name": "notes/governed-run-findings"
+          },
+          {
+            "name": "notes/rd-004-followups"
+          },
+          {
+            "name": "notes/roadmap-dashboard-pipeline"
+          },
+          {
+            "name": "roadmap/rd-004-verification-rule"
+          },
+          {
+            "name": "roadmap/rd-006-evidence-rules"
+          },
+          {
+            "name": "roadmaps/contracts-v1"
+          },
+          {
+            "name": "rules/agent-theater-checklist"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18759832,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:04.961233",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "robin-runtime",
+      "remote": "andrei-shtanakov/robin-runtime",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/robin-runtime",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "docs/repo-scope-git-workflow"
+          },
+          {
+            "name": "feat/m3-ambient-context"
+          },
+          {
+            "name": "feat/m4-learning-loop"
+          },
+          {
+            "name": "feat/mirror-robin-runtime"
+          },
+          {
+            "name": "feat/rd-007-m1b-learning-events"
+          },
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18941819,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:04.473009",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "robin-toolkit",
+      "remote": "andrei-shtanakov/robin-toolkit",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/robin-toolkit",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "agent/add-kb-skills-plan-20260714"
+          },
+          {
+            "name": "docs/repo-scope-git-workflow"
+          },
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18941822,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:04.672664",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "spec-runner",
+      "remote": "andrei-shtanakov/spec-runner",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/spec-runner",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18226075,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:04.490147",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "spec-runner-vscode",
+      "remote": "andrei-shtanakov/spec-runner-vscode",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/spec-runner-vscode",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "docs/repo-scope-git-workflow"
+          },
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18760553,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:04.936091",
+        "path": null,
+        "local": null
+      }
+    },
+    {
+      "dir": "steward",
+      "remote": "andrei-shtanakov/steward",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": {
+        "name": "andrei-shtanakov/steward",
+        "pulls": [],
+        "issues": [],
+        "branches": [
+          {
+            "name": "agent/add-governed-run-logs-20260714"
+          },
+          {
+            "name": "feat/gov3-risk-model-atp-coverage"
+          },
+          {
+            "name": "master"
+          }
+        ],
+        "alerts": 0,
+        "rulesets": [
+          {
+            "id": 18760464,
+            "name": "Default Branch Restriction",
+            "enforcement": "active",
+            "target": "branch"
+          }
+        ],
+        "error": null,
+        "updated_at": "2026-07-14T21:39:04.486522",
+        "path": null,
+        "local": null
+      }
+    }
+  ]
+}
