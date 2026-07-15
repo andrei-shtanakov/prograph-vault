@@ -3,7 +3,7 @@ title: steward — activity journal
 type: journal
 source: kb-save
 project: steward
-updated: 2026-07-12
+updated: 2026-07-15
 ---
 
 # steward — activity journal
@@ -57,3 +57,45 @@ updated: 2026-07-12
 - WS-006 closed end-to-end: TASK-601..607 done. RD-004 verified on the
   dashboard. steward side of the risk model is finished; remaining work is
   Maestro-side (handoff M-1..M-4).
+
+## 2026-07-15 15:57 — change: C2 steward-side done — upstream_hashes + stale-cascade gate (PR #14)
+
+- Frontmatter schema (REQ-002) extended with `upstream_hashes: {upstream node id -> git
+  blob hash}`, stamped into a downstream artifact at approval; parsed into ArtifactMeta
+  (steward/src/steward/meta.py). Stale-cascade gate REQ-206/DESIGN-207 implemented:
+  gatecheck GC-STALE error on pin mismatch, GC-STALE-UNPINNED / GC-STALE-KEY warns
+  (steward/src/steward/gatecheck/checks.py::check_stale_cascade). Suite 156 passed;
+  dogfood gate-check clean. PR #14 open, awaiting review/merge.
+- spec-runner half of C2 (owner_role + human approver in SpecMeta, SPEC_META_CONTRACT v2)
+  handed off — steward re-vendors after upstream ships; _vendor copy stays at v1.
+- Merged-branch cleanup on origin (feat/gov3-risk-model-atp-coverage,
+  agent/add-governed-run-logs-20260714 deleted).
+- Links: steward PR #14; authored/notes/2026-07-15-spec-runner-specmeta-v2-handoff.md;
+  steward/NEXT-STEPS.md (C2/C3), steward/spec/20-design.md (REQ-002).
+
+## 2026-07-15 16:39 — change: C5 compile-down emitters done — steward-compile (PR #15)
+
+- New `steward-compile` CLI (steward/src/steward/compile/): `project-yaml` renders Maestro
+  project.yaml and `delegation` renders the WS→spec-runner authoring manifest, both from a
+  normalized `yaml steward-compile` fenced block inside the decomposition artifact
+  (steward/spec/40-decomposition.md). Maestro deployment knobs pass through verbatim from
+  steward/spec/maestro-base.yaml; priorities derive from DAG depth unless pinned.
+- gate-check gained GC-COMPILE (checks.py::check_compile_block): dep-link integrity of the
+  block upstream of compilation — closes the verified trap that Maestro `validate --no-fs`
+  silently accepts a dangling depends_on (steward/emitter-contract-check.md).
+- Root steward/project.yaml is now emitter-generated (values identical to the hand-compiled
+  contract artifact) and pinned byte-equal by golden tests (steward/tests/contract/).
+  Suite 190 passed; dogfood gate-check clean. PR #15 open, awaiting review/merge.
+- Links: steward PR #15; steward/NEXT-STEPS.md (C5 ✅); steward/spec/20-design.md
+  (compile-down interfaces).
+
+## 2026-07-15 16:50 — status: C4/I1 verified already closed in Maestro; no handoff needed (PR #16)
+
+- Verified read-only against Maestro (2026-07-15): C4 done there 2026-07-06 (PR #46 + #50 —
+  decomposer delegates spec generation to `spec-runner plan --full`, no built-in tasks.md
+  prompt copy) and I1 fixed 2026-07-06 (PR #47 — preflight `dangling-dep` error, runs in
+  `validate --no-fs` too). The planned Maestro handoff was therefore stale; skipped.
+- steward PR #16 un-stales the docs: NEXT-STEPS C4/I1 ✅, CLAUDE.md trap note now historical,
+  emitter-contract-check.md addendum (finding closed on both sides). GC-COMPILE kept as
+  defense-in-depth at the governance layer.
+- Links: steward PR #16; Maestro PRs #46, #47, #50; steward/emitter-contract-check.md.
