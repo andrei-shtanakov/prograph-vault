@@ -3,7 +3,7 @@ title: robin-runtime — activity journal
 type: journal
 source: kb-save
 project: robin-runtime
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # robin-runtime — activity journal
@@ -117,3 +117,38 @@ updated: 2026-07-13
   declined with rationale (collision-suffix numbering). 130 offline tests.
 - Acceptance (human, after merge+deploy): 👎 → maintainer DM → promote on the
   VPS → the same question answers differently.
+
+## 2026-07-16 09:20 — change: digest format — bilingual, citation-free, plan-remainder section
+
+- Scheduled daily/weekly digests reworked (PR #13, feat/digest-bilingual-format):
+  output is now bilingual (English first, then Russian, '---' separator) and
+  citation-free — no path:line, commit hashes, or document names in digest prose.
+- New structure: 1) done per repo over the window, 2) remaining plan items,
+  3) unresolved questions. Section 2 is grounded by new plan_hits()
+  (src/robin/digest.py) — unchecked '- [ ]' items from TODO.md / ROADMAP.md /
+  docs/plans/*.md across mirrors only (vault + repo_paths; var/digests excluded
+  per Copilot review). Negative-evidence invariant preserved in _DIGEST_RULES.
+- Other surfaces (CLI, Telegram Q&A, web) keep the path:line citation contract:
+  _compose_answer/_system_prompt gained an optional rules param defaulting to
+  _ANSWER_RULES.
+- Links: robin-runtime PR #13; src/robin/digest.py; src/robin/agent.py
+
+## 2026-07-16 10:45 — change: digest coverage fixes + 4 new watched repos + Russian-only output
+
+- PR #14 (50408d9): fact-check of the first bilingual digest exposed two coverage
+  defects — plan list silently truncated at 15 hits (atp-platform's TODO crowded out
+  Maestro's 22 and spec-runner's 2 items) and unmirrored repos (proctor, prograph)
+  named as "quiet". Fixed: plan_hits() now interleaves repos round-robin (cap 30)
+  and appends a '(plan-items-truncated)' disclosure hit; compose() prepends a
+  '(watched-repos)' source; _DIGEST_RULES gained a COVERAGE RULE (name only repos
+  present in SOURCES).
+- PR #15 (24a374b): _ECOSYSTEM_REPOS and deploy/setup.sh now also watch proctor,
+  prograph, discovery, open-prose (all public, HTTPS mirrors); digest output is
+  Russian-only (bilingual EN+RU dropped same day it shipped in PR #13); Telegram
+  header localized («Robin — дневной/недельный дайджест»).
+- Both deployed via CI; four new mirrors cloned on the VPS by hand (CI deploy does
+  not create mirrors). Verified live: digest lists 13 watched repos, plan section
+  spans six repos with "30 of 221" partiality disclosure, open-prose activity
+  picked up from a freshly cloned mirror.
+- Links: robin-runtime PR #14, PR #15; src/robin/digest.py; src/robin/config.py:18;
+  deploy/setup.sh
