@@ -63,3 +63,19 @@ updated: 2026-07-16
   спрайсить через ATP → вендорить `contracts/{receipt.md,ir.md}` (+`canonical.py`),
   писать reader, тестировать на их corpus + битых фикстурах.
 - Links: `atp-platform/TODO.md` (новый backlog-пункт в «Активные кросс-проектные задачи»).
+
+## 2026-07-16 11:38 — decision: open-prose receipts/IR — пересмотр того же дня, DEFERRED → ACTIVE
+
+- Утреннее решение «ждать первого реального прогона» пересмотрено после разбора:
+  (1) у ATP отработана механика вендоренный-контракт + contract-тесты в CI
+  (learning-event-v1, EvidenceRef v1, RD-007) — закоммиченный corpus open-prose
+  и есть workload для reader, возражение «мёртвая копия» снято механикой, не риторикой;
+  (2) Rust-гейт 4.6 open-prose называет atp-platform поимённо («receipts-verify crate
+  used by atp-platform», их plan:82-84, verified) с ревизитом в конце их Phase 4 —
+  причинность: сначала задача здесь, потом легитимный триггер гейта.
+- Условие в задаче: reader обязан приземлиться на существующую потребляющую
+  поверхность ATP — checker `receipt_chain` (`atp/evaluators/checkers/`) и/или
+  маппинг receipts → EvalCheck/EvidenceRef; иначе заявка для гейта формальная.
+- arbiter — вторичный потребитель; proctor — ничего не заводить.
+- Links: `atp-platform/TODO.md` (пункт перевёрнут в ACTIVE, объём зафиксирован),
+  `authored/notes/2026-07-16-openprose-contracts-offer.md`.
