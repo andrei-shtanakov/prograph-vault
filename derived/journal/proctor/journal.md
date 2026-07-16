@@ -3,7 +3,7 @@ title: proctor — activity journal
 type: journal
 source: kb-save
 project: proctor
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # proctor — activity journal
@@ -75,3 +75,22 @@ updated: 2026-07-07
   732 tests pass. Integration behind the docker marker (collect+skip, no image here).
 - Links: proctor/docs/superpowers/specs/2026-07-07-remote-docker-worker-design.md,
   proctor/docs/remote-workers.md, PR #33 (andrei-shtanakov/proctor)
+
+## 2026-07-16 11:13 — decision: pass на оффер open-prose (receipts/IR); первый потребитель — atp-platform
+
+- open-prose опубликовал машинные контракты (`openprose.receipt.v1`,
+  `openprose.compile-ir.v1`) как evaluation-входы для соседей
+  (нота `authored/notes/2026-07-16-openprose-contracts-offer.md`).
+- proctor — pass: не исполняет `.prose`-программы, eval-контура в roadmap нет,
+  скоуп минимален (dogfooding Maestro, следующая фаза — mcp/). Вендорить
+  контракт без потребляющего кода — speculative.
+- Receipt-паттерн (append-only hash-chain + fingerprints + атрибуция usage)
+  зафиксирован как дизайн-референс для возможной будущей верифицируемости
+  episodes.db — читать как образец, не вендорить.
+- Первым потребителем назначен atp-platform (задача заводится в его репо);
+  arbiter отложен. Нюанс по гейтам: оффер сам по себе не открывает Rust-гейт
+  4.6 / Phase 6 open-prose — критерий «потребитель появился» требует факта
+  (вендоренный контракт + reader на master потребителя).
+- Links: authored/notes/2026-07-16-openprose-contracts-response.md,
+  authored/notes/2026-07-16-openprose-contracts-offer.md,
+  open-prose/docs/plans/2026-07-16-development-plan.md (задача 4.6, Phase 6)
