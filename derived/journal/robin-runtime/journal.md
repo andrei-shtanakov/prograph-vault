@@ -169,3 +169,22 @@ updated: 2026-07-16
   journal entries re-enter every digest window until midnight — visible only in
   manual re-runs, not the daily cadence.
 - Links: robin-runtime PR #16, PR #17; src/robin/digest.py
+
+## 2026-07-16 12:05 — decision: scheduled digest format is FINAL (user-confirmed)
+
+- After five same-day PRs (#13–#17) the digest format is settled; the maintainer
+  confirmed it as final. Future digest work should not revisit it unprompted.
+- The format: Russian-only, citation-free prose (no paths/hashes/doc names);
+  Telegram header «Robin — дневной/недельный дайджест»; structure = 1) done per
+  repo over the window, 2) remaining plan work as thematic plain-language
+  summaries per repo (AUDIENCE RULE: mixed team incl. non-engineers, internal
+  codes never used as work-item names), 3) unresolved questions.
+- Plan grounding: unchecked '- [ ]' from TODO.md/ROADMAP.md only, round-robin
+  across mirrors, cap 30, truncation disclosed; each item carries its enclosing
+  markdown heading. Honesty: COVERAGE RULE + '(watched-repos)' source +
+  negative-evidence invariant. Digest-only — Q&A surfaces keep path:line cites.
+- Watched set: prograph-vault + 12 repos (_ECOSYSTEM_REPOS) incl. proctor,
+  prograph, discovery, open-prose; list duplicated in deploy/setup.sh; VPS
+  mirrors for new repos are cloned by hand (CI deploy does not create mirrors).
+- Links: src/robin/digest.py (_DIGEST_QUESTION, _DIGEST_RULES, plan_hits);
+  src/robin/config.py:18; robin-runtime PRs #13–#17
