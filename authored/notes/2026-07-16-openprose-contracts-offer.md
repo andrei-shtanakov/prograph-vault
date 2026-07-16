@@ -1,3 +1,11 @@
+---
+title: Handoff — open-prose предлагает машинные контракты (receipts, IR) как evaluation-входы
+type: note
+status: accepted
+owner: open-prose
+updated: 2026-07-16
+---
+
 # Handoff: open-prose предлагает машинные контракты (receipts, IR) как evaluation-входы
 
 **Дата:** 2026-07-16
