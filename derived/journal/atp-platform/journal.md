@@ -3,7 +3,7 @@ title: atp-platform — activity journal
 type: journal
 source: kb-save
 project: atp-platform
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # atp-platform — activity journal
@@ -49,3 +49,17 @@ updated: 2026-07-12
   no-runtime-writes scanner), Maestro handoff M-1..M-3 live gates in
   orchestrate, L2 routing-stats series, owner's in-flight litellm work in
   atp (main does not typecheck without it).
+
+## 2026-07-16 11:07 — decision: open-prose contracts offer — deferred adoption, триггер зафиксирован
+
+- Прочитан оффер open-prose (`authored/notes/2026-07-16-openprose-contracts-offer.md`):
+  receipts.jsonl (`openprose.receipt.v1`) + `{program}.ir.json` (`openprose.compile-ir.v1`)
+  как готовые evaluation-входы для ATP.
+- Решение atp-platform: **не вендорить спекулятивно** — сегодня в репо нет workload,
+  потребляющего open-prose-прогоны; reader без потребителя = мёртвая пинованная копия.
+  Отмечен реальный резонанс с философией честного usage-учёта (003d `usage_contract` /
+  003e provenance): `usage.basis: exact|estimated|unavailable`.
+- Триггер адопции: первый реальный open-prose прогон, который нужно оценить или
+  спрайсить через ATP → вендорить `contracts/{receipt.md,ir.md}` (+`canonical.py`),
+  писать reader, тестировать на их corpus + битых фикстурах.
+- Links: `atp-platform/TODO.md` (новый backlog-пункт в «Активные кросс-проектные задачи»).
