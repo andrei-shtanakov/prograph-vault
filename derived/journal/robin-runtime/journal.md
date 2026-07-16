@@ -152,3 +152,20 @@ updated: 2026-07-16
   picked up from a freshly cloned mirror.
 - Links: robin-runtime PR #14, PR #15; src/robin/digest.py; src/robin/config.py:18;
   deploy/setup.sh
+
+## 2026-07-16 11:58 — change: plan section readable by non-engineers; docs/plans micro-steps dropped
+
+- PR #16 (8c14404): digest plan grounding narrowed to TODO.md/ROADMAP.md only —
+  docs/plans/*.md checklists are implementation micro-steps and inflated the open-item
+  count (221 → 63), crowding real plan items out of the 30-hit budget.
+- PR #17 (19fe863): team feedback — plan bullets like «P4 + prefill судьи» are
+  unreadable for non-engineers (they were verbatim TODO shorthand, not a model
+  problem; VPS runs Opus 4.8). Fixed grounded-side: AUDIENCE RULE in _DIGEST_RULES
+  (thematic plain-language summaries per repo; internal codes never used as work-item
+  names) + plan_hits() now carries each checkbox's enclosing markdown heading as
+  context ("open plan item (Судья (judge)): ...").
+- Verified live: digest plan section is code-free thematic prose per repo.
+- Known quirk (accepted): journal_entries() filters by date heading, so same-day
+  journal entries re-enter every digest window until midnight — visible only in
+  manual re-runs, not the daily cadence.
+- Links: robin-runtime PR #16, PR #17; src/robin/digest.py
