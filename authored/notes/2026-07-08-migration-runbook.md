@@ -45,7 +45,7 @@ cd spec-runner-tasks && gh repo create andrei-shtanakov/spec-runner-tasks --priv
 #   git push -u origin <branch>   # robin-runtime branch is master
 ```
 
-**A3. Push the rest** (remote already set): commit → `git -C <repo> push` (or `push -u origin <branch>` for `atp-platform-testing-en`, which has no upstream). Repos with a remote: `Maestro arbiter atp-platform deployer dispatcher open-prose proctor prograph robin-toolkit spec-runner spec-runner-vscode steward atp-platform-testing-en`. Note: `sdd-framework` is on **git.epam.com** under another owner — clone-only, do not push.
+**A3. Push the rest** (remote already set): commit → `git -C <repo> push` (or `push -u origin <branch>` for `atp-platform-testing-en`, which has no upstream). Repos with a remote: `Maestro arbiter atp-platform deployer dispatcher libretto proctor prograph robin-toolkit spec-runner spec-runner-vscode steward atp-platform-testing-en`. Note: `sdd-framework` is on **git.epam.com** under another owner — clone-only, do not push.
 
 **A4. (Optional) Prototypes without git** — `appgraph agents-for-game atp-platform-testing(ru) spec-runner-test spec-runner-test-vscode` are scratch/prototypes, not needed for a working KB+Robin+prograph. `git init` + remote only if you want to keep one.
 
@@ -53,7 +53,7 @@ cd spec-runner-tasks && gh repo create andrei-shtanakov/spec-runner-tasks --priv
 
 | Action | Repos |
 |---|---|
-| commit + push (remote exists) | Maestro, arbiter, atp-platform, deployer, dispatcher, open-prose, proctor, **prograph**, robin-toolkit, spec-runner, spec-runner-vscode, steward |
+| commit + push (remote exists) | Maestro, arbiter, atp-platform, deployer, dispatcher, libretto, proctor, **prograph**, robin-toolkit, spec-runner, spec-runner-vscode, steward |
 | push -u (remote exists, no upstream) | atp-platform-testing-en |
 | create remote + push -u | **prograph-vault**, **robin-runtime**, spec-runner-tasks |
 | clone-only (external) | sdd-framework (EPAM) |
@@ -70,7 +70,7 @@ mkdir -p ~/labs/all_ai_orchestrators && cd ~/labs/all_ai_orchestrators
 git clone git@github.com:andrei-shtanakov/prograph-vault.git   # KB — required
 git clone git@github.com:andrei-shtanakov/prograph.git          # graph tool
 git clone git@github.com:andrei-shtanakov/robin-runtime.git     # Robin runtime
-git clone git@github.com:andrei-shtanakov/Maestro.git
+git clone git@github.com:andrei-shtanakov/maestro.git
 git clone git@github.com:andrei-shtanakov/arbiter.git
 git clone git@github.com:andrei-shtanakov/atp-platform.git
 git clone git@github.com:andrei-shtanakov/spec-runner.git
@@ -80,7 +80,7 @@ git clone git@github.com:andrei-shtanakov/deployer.git
 git clone git@github.com:andrei-shtanakov/steward.git
 git clone git@github.com:andrei-shtanakov/spec-runner-vscode.git
 git clone git@github.com:andrei-shtanakov/robin-toolkit.git
-git clone git@github.com:andrei-shtanakov/open-prose.git
+git clone git@github.com:andrei-shtanakov/libretto.git
 git clone git@github.com:andrei-shtanakov/atp-platform-testing.git  # (-en repo)
 git clone git@git.epam.com:Dmytro_Honcharuk/sdd-framework.git
 ```

@@ -3,7 +3,7 @@ title: Ecosystem project registry + integration map
 type: registry
 status: living
 owner: Andrei
-updated: 2026-07-08
+updated: 2026-07-16
 ---
 
 # Ecosystem registry — AI Orchestrators
@@ -24,7 +24,7 @@ this doc references it, it is not the authority for edges/contracts.
 | **atp-platform** | python | Agent-evaluation platform (core, 11 sub-packages). Source of contracts: `report_benchmark-v1`, `observability-contract/v1`, `agent-eval-case`. | 🟢 dominant core |
 | **proctor** | python | Distributed autonomous agent runner (microkernel; NATS / Docker workers / DAG). Repo/dir `proctor`, obs service-id `proctor-a` (ADR 2026-07-07). | 🟢 most active new |
 | **spec-runner** | python | Task/spec execution backend (v2.9.0). Owns spec-runner schemas + the canonical `obs.py` emitter. | 🟢 active |
-| **Maestro** | python | DAG orchestrator (v0.4.0). MCP client to arbiter; CLI backend = spec-runner `plan --full`. | 🟢 active |
+| **maestro** | python | Maestro DAG orchestrator (v0.4.0). MCP client to arbiter; CLI backend = spec-runner `plan --full`. Repo/path lowercased 2026-07-16; product name remains `Maestro`. | 🟢 active |
 | **arbiter** | rust (mixed) | MCP policy/routing engine; agent catalog; benchmark-evidence gate. Announces MCP proto `1.1.0`. | 🟢 active |
 | **dispatcher** | python | Read-only monitoring dashboard; consumes obs `.jsonl`. | 🟢 stabilizing |
 | **deployer** | python | Deploy-authoring agent bench. | 🟡 young |
@@ -34,21 +34,21 @@ this doc references it, it is not the authority for edges/contracts.
 | **robin-toolkit** | docs | Team-knowledge toolkit (derivative of Team OS). | 🟡 new |
 | **steward** | python | Spec governance layer (DRAFT spec). Declared "above spec-runner/Maestro" but not yet wired. | 🟡 intent-only |
 | **robin-runtime** | python | Robin (AI chief of staff) runtime. M0 scaffold. | 🔴 nascent |
-| **open-prose** | docs | Prose language for AI sessions (no runtime). Last commit 2026-04-07. | 🔴 dormant |
+| **libretto** | docs/python | Language for AI sessions (spec-as-VM) plus deterministic verification tooling. Renamed from `open-prose` on 2026-07-16; canonical repo/path `libretto`, legacy `openprose.*` artifacts remain readable. | 🟢 active |
 
 > Removed since earlier snapshots: `github-checker` (role absorbed by prograph + dispatcher).
 
 ## Integration map (verified via prograph edges)
 
 **Package dependencies**
-- `Maestro → atp-platform-sdk (atp-sdk) >=2.0.0` (actual 2.0.0 — aligned).
+- `maestro → atp-platform-sdk (atp-sdk) >=2.0.0` (actual 2.0.0 — aligned).
 - `arbiter → spec-runner >=0.1.1` ⚠️ and `atp-platform → spec-runner >=0.1.4` ⚠️ — **stale pins** (real spec-runner is 2.9.0).
 - arbiter internal: `arbiter-cli → arbiter-core`, `arbiter-cli → arbiter-mcp`, `arbiter-mcp → arbiter-core`.
 - atp-platform internal sub-package graph (atp-core, atp-sdk, atp-adapters, atp-method, atp-dashboard, atp-games, game-environments).
 
 **Runtime / protocol**
-- `Maestro → spec-runner` via `plan --full` CLI — versioned (`SPEC_RUNNER_REQUIRED_VERSION` in `maestro/spec_runner.py`) + contract tests. ✅
-- `Maestro → arbiter` via MCP — handshake `protocolVersion 1.1.0`, `MIN_ARBITER_PROTOCOL (1,1)`. ✅
+- `maestro → spec-runner` via `plan --full` CLI — versioned (`SPEC_RUNNER_REQUIRED_VERSION` in `maestro/spec_runner.py`) + contract tests. ✅
+- `maestro → arbiter` via MCP — handshake `protocolVersion 1.1.0`, `MIN_ARBITER_PROTOCOL (1,1)`. ✅
 - `atp-platform → atp-dashboard` MCP calls (`make_move`, `get_current_state`).
 
 **Shared contracts** (single content-hash each — no drift; authority in producing repo)
@@ -57,7 +57,7 @@ this doc references it, it is not the authority for edges/contracts.
 - spec-runner schemas (`costs`, `json-result`, `spec-frontmatter`, `status`) — spec-runner + spec-runner-vscode.
 - `agent-eval-case` — method + atp-platform.
 
-**Not yet connected (0 graph edges):** robin-runtime, robin-toolkit, prograph, prograph-vault, deployer, open-prose, steward. (Normal for the KB/tooling and read-only dispatcher; intent-only for steward; dormant for open-prose.)
+**Not yet connected (0 graph edges):** robin-runtime, robin-toolkit, prograph, prograph-vault, deployer, libretto, steward. (Normal for the KB/tooling and read-only dispatcher; intent-only for steward; libretto is a spec/tooling repo whose downstream contract migration is tracked separately.)
 
 ## Known cross-cutting misalignments (pointers, not authority)
 

@@ -45,7 +45,7 @@
 
 - v1 обходится существующими kind'ами (`log` по `pipeline_id` — грубо, до всего run-каталога;
   `artifact` — для CI-вердиктов steward), контракт не трогается.
-- Предложение v2 в `Maestro/contracts/observability/`: kind `gate-verdict`,
+- Предложение v2 в `maestro/contracts/observability/`: kind `gate-verdict`,
   required keys `gate_id` + `sha` — адресация конкретной записи, а не каталога.
   Решение за Maestro как владельцем контракта; по правилам самого контракта новый kind
   post-adoption = version bump.

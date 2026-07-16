@@ -3,7 +3,7 @@ title: Ecosystem structure
 type: note
 status: living
 owner: Andrei
-updated: 2026-05-08
+updated: 2026-07-16
 ---
 
 # Structural diagram of project interactions
@@ -16,8 +16,8 @@ updated: 2026-05-08
 1. **Central hub — Maestro v0.2.0**: the only project that actively calls the others (Arbiter, ATP, spec-runner, spawner agents).
 2. **ATP Platform 2.0.0 — an autonomous "receiver"**: framework-agnostic, it is invoked both by Maestro (via CLI and the benchmark API) and by agents-for-game (via MCP).
 3. **Arbiter — the only MCP server**: 5 tools (route_task, report_outcome, get_agent_status, get_metrics, get_budget_status), called by Maestro over JSON-RPC 2.0 over stdio.
-4. **Cross-project observability — a 4-way axis**: `log-schema.json` lives in `Maestro/_cowork_output/observability-contract/`, vendored into spec-runner (reference @ `fa6b106`), Maestro `_vendor/obs.py`, arbiter `orchestrator/_vendor/obs.py` + `arbiter-core/src/obs.rs` (Rust).
-5. **Periphery (proctor, open-prose, agents-for-game, spec-runner-tasks)** — no direct runtime links to the core; either paused, or sandboxes, or markdown tasks.
+4. **Cross-project observability — a 4-way axis**: `log-schema.json` lives in `maestro/contracts/observability/`, vendored into spec-runner (reference @ `fa6b106`), Maestro `_vendor/obs.py`, arbiter `orchestrator/_vendor/obs.py` + `arbiter-core/src/obs.rs` (Rust).
+5. **Periphery (proctor, libretto, agents-for-game, spec-runner-tasks)** — no direct runtime links to the core; either paused, or sandboxes, or markdown/spec tasks.
 
 ---
 
@@ -46,7 +46,7 @@ flowchart TB
 
     subgraph PERI["Periphery / sandboxes"]
         PA[proctor<br/>Phase 2, paused since 04-16]:::peripheral
-        OP[open-prose<br/>spec-only, no runtime]:::peripheral
+        OP[libretto<br/>spec/tooling, no runtime]:::peripheral
         AFG[agents-for-game<br/>El Farol/Prisoner sandbox]:::peripheral
         SRT[spec-runner-tasks<br/>cowork tasks]:::peripheral
     end
@@ -66,7 +66,7 @@ flowchart TB
     %% --- spec-runner-tasks reads spec-runner ---
     SRT -.->|"markdown tasks<br/>(content, not runtime)"| SR
 
-    %% --- Other links: open-prose as an idea ---
+    %% --- Other links: libretto as an idea ---
     OP -.->|"inspires the format<br/>of spec-runner specs"| SR
 ```
 
@@ -123,7 +123,7 @@ flowchart TB
     classDef rust fill:#fce4ec,stroke:#a73357,color:#3a0d1c
     classDef ref fill:#fff5e6,stroke:#cc7a00,color:#3d2400
 
-    subgraph CONTRACT["📜 observability-contract<br/>(Maestro/_cowork_output/)"]
+    subgraph CONTRACT["📜 observability-contract<br/>(maestro/contracts/observability/)"]
         SCHEMA[log-schema.json<br/>JSON Schema Draft-07]:::contract
         PROP[propagation.md<br/>W3C TraceContext + OTel]:::contract
         FIX[fixtures/<br/>4 golden JSONL]:::contract
@@ -194,7 +194,7 @@ flowchart TB
     end
 
     subgraph L5["L5 — Specifications / content"]
-        OP1[open-prose<br/>spec language]:::l5
+        OP1[libretto<br/>spec language/tooling]:::l5
         SRT1[spec-runner-tasks<br/>markdown tasks]:::l5
     end
 
@@ -229,7 +229,7 @@ flowchart TB
 | Maestro | Aider | spawn + worktree | Launch of a coding agent | 🟢 |
 | agents-for-game | ATP | MCP | El Farol / Prisoner sandbox | 🧪 |
 | spec-runner-tasks | spec-runner | markdown content | Source of tasks | 📄 |
-| open-prose | spec-runner | conceptual | Idea of the spec language | 📄 |
+| libretto | spec-runner | conceptual | Idea of the spec language/tooling | 📄 |
 | proctor | — | — | Paused since 2026-04-16 | ⏸ |
 
 ---
