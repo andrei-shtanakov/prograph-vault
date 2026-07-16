@@ -3,11 +3,11 @@
 # Lines starting with # and blank lines are ignored.
 
 atp-platform
-Maestro
+maestro
 arbiter
 spec-runner
 proctor
-open-prose
+libretto
 prograph
 dispatcher
 steward

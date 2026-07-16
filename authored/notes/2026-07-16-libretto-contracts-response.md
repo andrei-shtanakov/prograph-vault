@@ -1,15 +1,15 @@
 ---
-title: Ответ на оффер open-prose (receipts, IR) — мяч принят, первый потребитель atp-platform
+title: Ответ на оффер Libretto (receipts, IR) — мяч принят, первый потребитель atp-platform
 type: note
 status: accepted
 owner: andrei-shtanakov
 updated: 2026-07-16
 ---
 
-# Ответ на оффер open-prose (receipts, IR): мяч принят, первый потребитель — atp-platform
+# Ответ на оффер Libretto (receipts, IR): мяч принят, первый потребитель — atp-platform
 
 **Дата:** 2026-07-16
-**В ответ на:** `2026-07-16-openprose-contracts-offer.md`
+**В ответ на:** `2026-07-16-libretto-contracts-offer.md`
 **От кого:** владелец соседних репо (оценка со стороны proctor; на стороне
 atp-platform задача в тот же день переведена в ACTIVE — см. «Статус адресатов»)
 
@@ -21,14 +21,14 @@ atp-platform задача в тот же день переведена в ACTIVE
   экосистемы, у неё уже отработана ровно эта механика: вендоренные
   пинованные схемы + contract-тесты (learning-event-v1, EvidenceRef v1,
   RD-007 закрыт 2026-07-12). Receipts ложатся в существующую
-  evidence-driven модель как новый evidence-source. Сам open-prose в
-  Rust-гейте (задача 4.6 плана `open-prose/docs/plans/2026-07-16-development-plan.md`)
+  evidence-driven модель как новый evidence-source. Сам Libretto в
+  Rust-гейте (задача 4.6 плана `libretto/docs/plans/2026-07-16-development-plan.md`)
   называет atp-platform поимённо («a `receipts-verify` crate used by
   atp-platform»). Объём задачи: вендорить `contracts/{receipt.md,ir.md}`
   (+ `canonical.py`), написать reader, тесты на корпусе
-  `open-prose/skills/prose/examples/runs/` и битых фикстурах
-  `open-prose/tests/fixtures/`.
-- **proctor — pass.** proctor не исполняет `.prose`-программы и не
+  `libretto/skills/libretto/examples/runs/` и битых фикстурах
+  `libretto/tests/fixtures/`.
+- **proctor — pass.** proctor не исполняет `.libretto`-программы и не
   оценивает чужие прогоны; eval-контура в его roadmap нет, скоуп
   сознательно минимален (роль — dogfooding Maestro, следующая фаза —
   `mcp/`). Вендорить контракт без потребляющего кода — speculative.
@@ -42,7 +42,7 @@ atp-platform задача в тот же день переведена в ACTIVE
 ## Про триггер гейтов (важный нюанс)
 
 Сама публикация оффера гейты **не** открывает: критерий и у Rust-гейта
-(4.6, ревизит в конце Phase 4 open-prose), и у Phase 6 (6.1) — «именованный
+(4.6, ревизит в конце Phase 4 Libretto), и у Phase 6 (6.1) — «именованный
 потребитель *появился*», т.е. факт: вендоренный контракт + работающий
 reader в репо потребителя. Причинность прямая: сначала задача в
 atp-platform доводится до reader'а, потом она легитимно триггерит
@@ -64,6 +64,6 @@ atp-platform доводится до reader'а, потом она легитим
 
 1. atp-platform: довести задачу до reader'а на master (вендоринг + reader
    + тесты на корпусе). Ссылаться на эту заметку и на оффер.
-2. К моменту ревизита 4.6 у open-prose должен существовать либо факт
+2. К моменту ревизита 4.6 у Libretto должен существовать либо факт
    потребления (atp reader на master), либо явный отказ — тогда 4.6
    пере-подтверждает Python-only.

@@ -34,7 +34,7 @@ For internal contract sharing the default stays **vendoring**, not PyPI.
 | **robin-runtime** | always-on service on a VPS | **container / systemd** (not a PyPI lib) | deployed, not imported; currently M0 | **too early** |
 | dispatcher | local dev, reads sibling artifacts | **source** (pipx for the TUI at most) | workspace-coupled, narrow niche | source |
 | steward / deployer | early governance / research-bench | **source** | moving fast; steward → pipx CLI later | source for now |
-| robin-toolkit / sdd-framework / open-prose | methodology / spec / skills | **git bundle / plugin** | content, not a package; already shipped as skills | as-is |
+| robin-toolkit / sdd-framework / libretto | methodology / spec / skills | **git bundle / plugin** | content, not a package; already shipped as skills | as-is |
 
 ## Top moves and traps
 

@@ -172,7 +172,7 @@ updated: YYYY-MM-DD
 ## Repo scope & boundaries
 
 - **Этот репо:** `prograph-vault` — git-корень `all_ai_orchestrators/prograph-vault/`, remote `git@github.com:andrei-shtanakov/prograph-vault.git`.
-- **Соседи (READ-ONLY reference):** `../arbiter/`, `../atp-platform/`, `../deployer/`, `../dispatcher/`, `../Maestro/`, `../open-prose/`, `../proctor/`, `../prograph/`, `../robin-runtime/`, `../robin-toolkit/`, `../spec-runner/`, `../spec-runner-vscode/`, `../steward/` — их код не редактировать.
+- **Соседи (READ-ONLY reference):** `../arbiter/`, `../atp-platform/`, `../deployer/`, `../dispatcher/`, `../maestro/`, `../libretto/`, `../proctor/`, `../prograph/`, `../robin-runtime/`, `../robin-toolkit/`, `../spec-runner/`, `../spec-runner-vscode/`, `../steward/` — их код не редактировать.
 - Нужна правка у соседа → **стоп**: запиши handoff в `authored/notes/`
   (кросс-проектное) или `../_cowork_output/` (черновик), не трогай его файлы.
 - Кросс-репные контракты — **вендорить пиненой копией внутрь**, не ссылаться наружу.
