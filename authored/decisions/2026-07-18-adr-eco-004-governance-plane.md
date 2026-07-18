@@ -36,7 +36,7 @@ check** tying the prose to reality. The split between "text canon" and "what is 
 enforced" is invisible and has to be reconstructed by hand.
 
 **These are not N independent gaps. They are one missing plane.** The fix is not another
-regolament — it is a single *governance plane*:
+regulation — it is a single *governance plane*:
 
 ```
 canon (rules text)  →  machine registry  →  checks / gates  →  status surface

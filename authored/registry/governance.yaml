@@ -97,7 +97,7 @@ rules:
     concern: repo-scope-fencing            # one agent — one repo; neighbours read-only
     canonical_source: authored/rules/repo-boundaries.md
     owner: kb
-    actor: coding-session
+    actor: [coding-session]
     scope: changed-paths-within-own-repo
     enforcement_point: vendored-boundary-ci-gate   # lever (c) of repo-boundaries §5
     evidence: changed-path-report
@@ -139,7 +139,7 @@ rules:
     concern: tool-pins-validated           # [tools.*] in the umbrella manifest are CI-checked
     canonical_source: workspace-manifest.toml
     owner: ai-orchestrators-workspace
-    actor: tool
+    actor: [tool]
     enforcement_point: manifest-drift-ci
     evidence: manifest-entry
     exception: recorded-waiver
@@ -171,7 +171,7 @@ rules:
     concern: authority-root-agent-immutable   # ADR-ECO-004 I2 — injection backstop
     canonical_source: authored/decisions/2026-07-18-adr-eco-004-governance-plane.md
     owner: steward
-    actor: runtime-agent
+    actor: [runtime-agent]
     protected_paths:
       - "authored/registry/governance.yaml"
       - "**/rulesets/**"
@@ -186,9 +186,9 @@ rules:
     concern: pre-dispatch-policy-invariants
     canonical_source: arbiter (config/invariants.toml + rules.rs)
     owner: arbiter
-    actor: runtime-agent
+    actor: [runtime-agent]
     enforcement_point: runtime-code
-    evidence: decision-logs-fallback
+    evidence: decision-logs-403-fallback
     exception: none                        # Critical -> cascading fallback
     maturity: {declared: runtime, observed: runtime}          # healthy
 
@@ -196,9 +196,9 @@ rules:
     concern: purpose-based-mcp-gating       # tournament vs benchmark tokens -> 403
     canonical_source: atp-platform (PR-3 d0f11e2, docs/security.md)
     owner: atp-platform
-    actor: runtime-agent
+    actor: [runtime-agent]
     enforcement_point: runtime-code
-    evidence: "403 / decision-logs"
+    evidence: decision-logs-403-fallback
     exception: none
     maturity: {declared: runtime, observed: runtime}          # healthy
 
@@ -206,7 +206,7 @@ rules:
     concern: routable-agent-gating
     canonical_source: agents-catalog (routable flag)
     owner: atp-platform            # SSOT method/agents-catalog.toml (ADR-ECO-003)
-    actor: runtime-agent
+    actor: [runtime-agent]
     enforcement_point: ci-gate     # check_routable_gate.py
     evidence: catalog-entry
     exception: manual-gate
