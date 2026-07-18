@@ -14,6 +14,9 @@ role/status, and how they connect. Human-authored, git-reviewed.
 ## Files
 
 - [`registry.md`](registry.md) — the project registry + integration map (this folder's main doc).
+- [`governance.yaml`](governance.yaml) — machine-readable **declaration** of the governance plane
+  (rules → owner/enforcement/evidence/exception, evidence types). Decided by ADR-ECO-004; declared
+  intent only — observed enforcement maturity is drift-CI's, written to `../../derived/governance/`.
 
 ## Boundaries
 

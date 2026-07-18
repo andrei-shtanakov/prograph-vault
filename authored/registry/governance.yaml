@@ -1,0 +1,257 @@
+# Ecosystem governance registry — machine-readable DECLARATION of intent.
+#
+# Decided by: authored/decisions/2026-07-18-adr-eco-004-governance-plane.md (ADR-ECO-004).
+# Owner: KB (human-authored, PR-gated) — this is the DECLARED target.
+#   The OBSERVED enforcement_maturity is written by drift-CI into ../../derived/governance/
+#   and dispatcher renders `declared vs observed`. Do not hand-edit observed status here.
+# Semantics of roles / gates / evidence are owned by STEWARD; this file references them.
+#
+# Every rule MUST answer the four questions (ADR-ECO-004 D2):
+#   owner · enforcement_point · evidence · exception (waiver) path.
+# A rule missing any field is `documented`-only debt by definition.
+
+version: 1
+registry: governance
+title: AI Orchestrators — governance plane registry
+updated: 2026-07-18
+
+# ---- Closed vocabularies -------------------------------------------------------
+
+enums:
+  enforcement_maturity:   # ADR-ECO-004 D3 — typed ladder
+    - documented          # canon exists as prose only
+    - advisory            # a check warns but does not block
+    - ci-blocking         # a required CI check fails the PR
+    - runtime             # enforced in running code (pre-dispatch / post-execution)
+  actor:                  # who can violate the rule (ADR-ECO-004 D1 / actor matrix)
+    - coding-session      # an agent/human editing a repo
+    - runtime-agent       # a dispatched executor at run time
+    - human-maintainer
+    - tool                # automation writing KB / manifests
+  mode:                   # approver-set shape (ADR-ECO-004 D4/D6) — config, not special-case
+    - solo                # 1 accountable member; self-approval permitted AND logged
+    - agent               # an agent has PR-authority by default; agent_merge only if I1–I4 hold
+    - team                # dormant today; lights up with a 2nd accountable party
+
+# ---- Ownership by plane (ADR-ECO-004 D1) --------------------------------------
+
+planes:
+  - plane: repo-set-pins-aliases
+    canonical_owner: ai-orchestrators-workspace
+    enforcement: manifest-drift-ci        # check-release-drift --strict
+    evidence: manifest-entry
+  - plane: git-workflow
+    canonical_owner: [kb, each-repo-digest]
+    enforcement: github-rulesets          # NOT required-owner-review (D4)
+    evidence: pr-metadata-merge-actor
+  - plane: repo-boundaries
+    canonical_owner: kb
+    enforcement: vendored-boundary-ci-gate
+    evidence: changed-path-report
+  - plane: cross-repo-contracts
+    canonical_owner: producing-repo
+    enforcement: vendored-contract-check
+    evidence: version-hash-schema
+  - plane: roles-gates-approvals-waivers
+    canonical_owner: steward
+    enforcement: steward-gate-check        # later: Maestro DAG
+    evidence: typed-evidence
+  - plane: runtime-safety
+    canonical_owner: [arbiter, atp-platform]
+    enforcement: runtime-code
+    evidence: decision-logs-403-fallback
+  - plane: read-control-plane
+    canonical_owner: dispatcher
+    enforcement: read-model-only-pr-only-actions
+    evidence: status-snapshot
+
+# ---- Modes (ADR-ECO-004 D4/D6/D7) ---------------------------------------------
+
+modes:
+  active: solo
+  solo:
+    self_approval: permitted
+    requires: {reason: true, logged_as_self_approval: true}
+    merge: human-only            # verified via pr-metadata / merge-actor
+  agent:
+    default_authority: pr-only   # open/update PRs, answer Copilot review — NOT merge
+    agent_merge: disabled        # enable only when evidence_types.agent_merge.invariants all hold
+  team:
+    status: dormant              # role matrix wired but not run as a daily gate
+
+# ---- Rules (the 4 questions each; honest maturity) ----------------------------
+# maturity.observed is a placeholder here — drift-CI overwrites it in derived/.
+
+rules:
+  - id: GOV-001
+    concern: no-direct-commits-to-default-branch
+    canonical_source: authored/rules/git-workflow.md
+    owner: kb
+    actor: [coding-session, human-maintainer]
+    enforcement_point: github-rulesets
+    evidence: pr-metadata-merge-actor
+    exception: recorded-waiver (steward)
+    maturity: {declared: ci-blocking, observed: advisory}
+
+  - id: GOV-002
+    concern: repo-scope-fencing            # one agent — one repo; neighbours read-only
+    canonical_source: authored/rules/repo-boundaries.md
+    owner: kb
+    actor: [coding-session]
+    scope: changed-paths-within-own-repo
+    enforcement_point: vendored-boundary-ci-gate   # lever (c) of repo-boundaries §5
+    evidence: changed-path-report
+    exception: recorded-waiver (steward)
+    maturity: {declared: ci-blocking, observed: documented}   # GAP-2
+
+  - id: GOV-003
+    concern: no-cowork-output-in-runtime   # shipped/runtime code never resolves _cowork_output/
+    canonical_source: CLAUDE.md
+    owner: kb
+    actor: [coding-session, tool]
+    protected_paths: ["_cowork_output/**"]
+    enforcement_point: vendored-boundary-ci-gate
+    evidence: changed-path-report
+    exception: none                        # hard invariant
+    maturity: {declared: ci-blocking, observed: documented}
+
+  - id: GOV-004
+    concern: name-alias-resolves           # manifest names -> real dirs/remotes; dispatcher hardcodes match
+    canonical_source: workspace-manifest.toml
+    owner: ai-orchestrators-workspace
+    actor: [coding-session, tool]
+    enforcement_point: manifest-drift-ci
+    evidence: manifest-entry
+    exception: none
+    maturity: {declared: ci-blocking, observed: documented}   # GAP-7 (green PR != working layout)
+
+  - id: GOV-005
+    concern: cross-repo-contracts-vendored-pinned
+    canonical_source: authored/rules/repo-boundaries.md
+    owner: producing-repo
+    actor: [coding-session, tool]
+    enforcement_point: vendored-contract-check   # version/hash/schema == pinned source
+    evidence: version-hash-schema
+    exception: recorded-waiver (steward)
+    maturity: {declared: ci-blocking, observed: advisory}
+
+  - id: GOV-006
+    concern: tool-pins-validated           # [tools.*] in the umbrella manifest are CI-checked
+    canonical_source: workspace-manifest.toml
+    owner: ai-orchestrators-workspace
+    actor: [tool]
+    enforcement_point: manifest-drift-ci
+    evidence: manifest-entry
+    exception: recorded-waiver
+    maturity: {declared: ci-blocking, observed: documented}   # GAP-5
+
+  - id: GOV-007
+    concern: cowork-output-no-duplicates   # graduation/duplicate gate (cowork Stage 3)
+    canonical_source: authored/rules/cowork-output.md
+    owner: kb
+    actor: [coding-session, tool]
+    enforcement_point: ci-gate
+    evidence: changed-path-report
+    exception: none
+    maturity: {declared: ci-blocking, observed: documented}   # GAP-6
+
+  - id: GOV-008
+    concern: authored-vs-derived-boundary  # authored/** humans-via-PR; derived/** tools only
+    canonical_source: CLAUDE.md (KB constitution)
+    owner: kb
+    actor: [tool, coding-session]
+    protected_paths: ["authored/**"]
+    allowed_mutation_surfaces: ["derived/** by tools"]
+    enforcement_point: ci-gate
+    evidence: changed-path-report
+    exception: none
+    maturity: {declared: ci-blocking, observed: documented}
+
+  - id: GOV-009
+    concern: authority-root-agent-immutable   # ADR-ECO-004 I2 — injection backstop
+    canonical_source: authored/decisions/2026-07-18-adr-eco-004-governance-plane.md
+    owner: steward
+    actor: [runtime-agent]
+    protected_paths:
+      - "authored/registry/governance.yaml"
+      - "**/rulesets/**"
+      - "**/required-check-defs/**"
+      - "agent identity/scope config"
+    enforcement_point: [ci-gate, github-rulesets]
+    evidence: changed-path-report
+    exception: human_merge-only
+    maturity: {declared: ci-blocking, observed: documented}
+
+  - id: GOV-010
+    concern: pre-dispatch-policy-invariants
+    canonical_source: arbiter (config/invariants.toml + rules.rs)
+    owner: arbiter
+    actor: [runtime-agent]
+    enforcement_point: runtime-code
+    evidence: decision-logs-403-fallback
+    exception: none                        # Critical -> cascading fallback
+    maturity: {declared: runtime, observed: runtime}          # healthy
+
+  - id: GOV-011
+    concern: purpose-based-mcp-gating       # tournament vs benchmark tokens -> 403
+    canonical_source: atp-platform (PR-3 d0f11e2, docs/security.md)
+    owner: atp-platform
+    actor: [runtime-agent]
+    enforcement_point: runtime-code
+    evidence: decision-logs-403-fallback
+    exception: none
+    maturity: {declared: runtime, observed: runtime}          # healthy
+
+  - id: GOV-012
+    concern: routable-agent-gating
+    canonical_source: agents-catalog (routable flag)
+    owner: atp-platform            # SSOT method/agents-catalog.toml (ADR-ECO-003)
+    actor: [runtime-agent]
+    enforcement_point: ci-gate     # check_routable_gate.py
+    evidence: catalog-entry
+    exception: manual-gate
+    maturity: {declared: ci-blocking, observed: ci-blocking}  # healthy
+
+# ---- Evidence types (semantics owned by steward) ------------------------------
+# ADR-ECO-004 D7 + I1–I4. `human_merge` closes the "human approval recorded not
+# machine-expressible" gap; `agent_merge` is designed-but-DISABLED until all
+# invariants hold.
+
+evidence_types:
+  human_merge:
+    kind: human-approval
+    machine_check: "a merge commit exists AND merge_actor ∈ humans AND required checks green"
+    source: github-api            # or captured into ATP receipt_chain at merge time (open question)
+    status: planned               # ADR-ECO-004 sequencing step 7
+    closes_gap: "human approval recorded not machine-expressible"
+
+  agent_merge:
+    kind: agent-authority
+    status: disabled              # default mode = agent has PR-authority only
+    routed_through: atp-receipt_chain     # never a raw git push
+    identity: separate-attestable-revocable-bot   # NOT the maintainer's identity
+    provenance_per_merge: [agent_id, authorizing_policy, run_or_receipt_id]
+    invariants:                   # ALL required to enable (ADR-ECO-004 I1–I4)
+      I1_change_class_scoped:
+        rule: "authority granted only within enumerated change-classes where green CI is sufficient"
+        classification_is_a_gate: true
+        examples_green_sufficient: [dependency-bump-tests-pass, doc-only-within-schema, regenerated-files]
+        else: route-to-human_merge
+      I2_authority_root_immutable:
+        rule: "agent may not modify artifacts defining its own authority (see GOV-009)"
+        changeable_only_via: human_merge
+      I3_review_is_gate_not_approval:
+        rule: "trades independent judgment for blast-radius control"
+        independence_only_if: adversarially-different-verifier   # different model, isolated, refute-framing
+        never: sole-authority
+      I4_revocation_needs_detection:
+        rule: "revocable only if monitored"
+        watcher: dispatcher            # surfaces agent_merge events + anomalies
+        auto_revoke_on: gate-anomaly
+        kill_switch: token-scoped
+
+# ---- Notes --------------------------------------------------------------------
+notes:
+  - "observed maturity here is a placeholder; drift-CI is the authority (derived/governance/)."
+  - "healthy runtime pillars (GOV-010..012) are the template; process pillars are being dragged up to it."
+  - "planes/roles reference steward semantics; dispatcher carries owner_role as pass-through only."
