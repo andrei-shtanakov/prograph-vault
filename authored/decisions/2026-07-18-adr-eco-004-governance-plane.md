@@ -1,9 +1,9 @@
 ---
 title: "ADR-ECO-004: Governance plane — one canon → machine registry → checks/gates → status surface"
 type: adr
-status: proposed
+status: accepted
 owner: Andrei
-updated: 2026-07-18
+updated: 2026-07-19
 ---
 
 # ADR-ECO-004: Governance plane
@@ -217,3 +217,61 @@ The full social apparatus stays dormant throughout.
 - Whether `human_merge` evidence is verified live against the GitHub API or captured at merge time
   into `receipt_chain`.
 - Where the adversarial verifier (I3) lives — a dispatched ATP/arbiter check vs a dedicated agent.
+
+---
+
+## Status & rollout log (addendum 2026-07-19)
+
+Status → **Accepted** (batch-1 shipped). This log is the record of record for "good enough vs
+continue" so the call is made from the doc, not memory.
+
+### Batch-1 — SHIPPED (advisory), enforcement pending
+
+Vendored governance gate (D5) deployed fleet-wide. One reusable `governance-gate.yml` in the
+umbrella (`ci/governance/` scripts) + a byte-identical thin caller in **13 runtime repos** and a
+KB-config caller in prograph-vault, all pinned to the protected tag **`governance-v1`**. Gates live:
+GOV-003 no-cowork-in-runtime, GAP-7 manifest name/alias resolve (umbrella `manifest-drift.yml`),
+GOV-009/I2 authority-root guard (prograph-vault, advisory).
+
+**advisory → required transition (the last mile).** The gate *runs* on every PR but does not *block*
+until `governance / gate` is added as a **required status check** in each repo's branch ruleset
+(GitHub UI). Enforcement rollout order: add required on ONE repo → land a deliberately-failing test
+PR → confirm it blocks → roll out to the remaining 13. **Verified safe to enforce now:** CI checks
+out only tracked files, `.claude/settings.local.json` is gitignored in every repo, and
+`governance / gate` already ran green on all 14 merged caller PRs — GOV-003 is 0-hit on every
+repo's tracked tree (checked 2026-07-19). The `.claude/` false positives are a *local working-tree*
+artifact only; they never reach the CI checkout, so the batch-2 `ls-files` fix is **not** a
+prerequisite for the required-check rollout.
+
+### Batch-2 — scope (ordered)
+
+1. **`ls-files` scan** — GOV-003 scans `git ls-files` instead of walking the working tree, so local
+   runs match CI exactly (drops `.claude/`, `.venv`, build-dir false positives). Local-DX + belt-and-
+   suspenders; independent of the required-check rollout.
+2. **`strict`-split** — split `authority-strict` from `strict` so `strict` also governs the runtime
+   path; retires the currently-dead `strict: true` on `authority-guard:false` callers (kept uniform
+   deliberately, forward-compatible with this change).
+3. **Meta-enforcer** — a `check-release-drift` companion that verifies every caller pins the
+   *current* governance tag. **MUST NOT hardcode a version** (else a vN→vN+1 rollout makes the
+   enforcer itself the source of false drift). It reads the current version from the SSOT below.
+   Deferred until the versioning policy is exercised by a real v2.
+
+### Tag versioning policy (governance-vN)
+
+- **Immutable, protected tags.** Each batch that changes `governance-gate.yml` or `ci/governance/`
+  scripts → a new `governance-vN` on the resulting umbrella `main` commit. Tags are never moved or
+  deleted (audit trail); the `governance-*` tag ruleset enforces this. Superseded tags stay valid
+  but unused.
+- **Callers pin `@governance-vN`** (both the `uses:` ref and `umbrella-ref:`). Since all 14 callers
+  are byte-identical (per config class), a version bump is a mechanical two-token change.
+- **SSOT for "current version":** the active `governance-vN` is recorded in one place (the umbrella
+  `workspace-manifest.toml` `[tools]` section is the intended home). Rollout and the future
+  meta-enforcer both read it; nothing hardcodes a version.
+- **Rollout shape (v2+):** the plumbing (`workflow_call` + cross-repo checkout) is proven, so no full
+  pilot. Instead: **dry-run the new scripts against all tracked trees → 1-repo canary (bump + confirm
+  green) → batch the remaining 13.** Green-by-construction because the dry-run precedes any bump.
+
+### Deferred (point 3 of the roadmap)
+
+Governance registry drift-CI + dispatcher declared-vs-observed view; `human_merge`/`agent_merge`
+evidence types (steward, I1–I4); WS-006 gates-in-DAG on Maestro. Revisit after batch-2.
