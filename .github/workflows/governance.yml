@@ -8,6 +8,8 @@
 #     "human_merge only" enforcement is a branch ruleset + CODEOWNERS, not a red CI check
 #     (else every legit human governance.yaml PR would be blocked). Maturity: advisory→ruleset.
 name: governance
+permissions:
+  contents: read          # gate only reads (2× checkout of public repos); least-privilege
 on:
   pull_request:
   workflow_dispatch:
