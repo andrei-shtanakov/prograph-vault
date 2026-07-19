@@ -1,7 +1,8 @@
-# Governance caller (ADR-ECO-004 D5). Thin caller: it holds a pinned reference to the reusable
-# gate workflow at ai-orchestrators-workspace/.github/workflows/governance-gate.yml@governance-v1
-# (the checks it runs live under ci/governance/). No code is copied here; the immutable tag is
-# the pin.
+# Governance caller (ADR-ECO-004 D5). Thin caller: a pinned reference to the reusable gate
+# workflow at ai-orchestrators-workspace/.github/workflows/governance-gate.yml@governance-v1
+# (the checks it runs live under ci/governance/). No code is copied here. The `governance-v1`
+# tag is the pin, kept immutable by the umbrella's `governance-*` tag ruleset (retag/delete
+# blocked) — not by git tag semantics, which allow moving a tag.
 #
 # prograph-vault is a KNOWLEDGE BASE, not a runtime-code repo:
 #   * runtime-scan OFF — a KB has no shipped runtime resolving _cowork_output paths;
