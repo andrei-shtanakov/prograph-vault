@@ -1,0 +1,22 @@
+# Vendored governance caller (ADR-ECO-004 D5). The @<sha> pin IS the vendored copy.
+# Canon: ai-orchestrators-workspace/ci/governance/ (governance-gate.yml).
+#
+# prograph-vault is a KNOWLEDGE BASE, not a runtime-code repo:
+#   * runtime-scan OFF — a KB has no shipped runtime resolving _cowork_output paths;
+#   * authority-guard ON — it holds authored/registry/governance.yaml (ADR-ECO-004 I2);
+#   * strict OFF — the guard is ADVISORY here (it surfaces authority-root changes); the real
+#     "human_merge only" enforcement is a branch ruleset + CODEOWNERS, not a red CI check
+#     (else every legit human governance.yaml PR would be blocked). Maturity: advisory→ruleset.
+name: governance
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  governance:
+    uses: andrei-shtanakov/ai-orchestrators-workspace/.github/workflows/governance-gate.yml@3058d377c7efdd1a41adbc13681bf94ca4d61b4d
+    with:
+      umbrella-ref: "3058d377c7efdd1a41adbc13681bf94ca4d61b4d"  # governance batch-1 (workspace PR #5)
+      strict: false
+      runtime-scan: false
+      authority-guard: true
