@@ -1,3 +1,11 @@
+---
+title: "Handoff → steward: SpecMeta contract v2 shipped in spec-runner v2.11.0"
+type: handoff
+status: ready
+owner: Andrei
+updated: 2026-07-26
+---
+
 # Handoff → steward: SpecMeta contract v2 отгружен, можно ре-вендорить
 
 > Дата: 2026-07-26 · Автор: сессия Claude Code в `spec-runner` · Статус: **готово к применению**
@@ -41,6 +49,19 @@
 стиль кавычек и исходный порядок ключей — нет.
 
 ## Расхождения с вашим ask — прочитайте, они меняют ваш код
+
+**0. ⚠️ Форма значения `owner_role` в этой заметке УСТАРЕЛА — см. DEC-007.**
+Пока шла реализация, владелец steward принял DEC-007
+(`2026-07-26-steward-owner-role-singular-handoff.md`): каноническая форма — **одна роль-slug
+без `@`** (`owner_role: product`), а не `"@role[,@role]"`. Тип поля не меняется, spec-runner
+значение не разбирает и не валидирует, так что **код правок не требует** — «мы только
+носитель» здесь сработало ровно как задумано. Но `docs/CONTRACTS.md`, golden-фикстура
+(`owner_role: '@platform,@sre'`) и комментарий в `spec.py` уехали в v2.11.0 со старой формой
+и будут исправлены отдельным doc-фиксом на стороне spec-runner. При ре-вендоринге ориентируйтесь
+на DEC-007, а не на примеры из фикстуры v2.11.0.
+
+`reviewer_roles` / `allowed_approver_roles` из DEC-007 дополнительных правок не требуют —
+они проходят через `extra` наравне с `upstream_hashes`, как и просили.
 
 **1. `owner_role` имеет тип `str | None = None`, а не `str = ""`.**
 Ваш `parse_owner_roles(meta_dict.get("owner_role"))` уже получает `None` при отсутствии

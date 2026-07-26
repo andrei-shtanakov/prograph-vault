@@ -1,3 +1,11 @@
+---
+title: "Handoff → spec-runner-vscode: frontmatter schema opened, re-vendor needed"
+type: handoff
+status: ready
+owner: Andrei
+updated: 2026-07-26
+---
+
 # Handoff → spec-runner-vscode: frontmatter-схема открыта, нужен ре-вендоринг
 
 > Дата: 2026-07-26 · Автор: сессия Claude Code в `spec-runner` · Статус: **готово к применению**
