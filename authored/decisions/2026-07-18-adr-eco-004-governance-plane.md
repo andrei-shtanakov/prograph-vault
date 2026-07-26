@@ -246,8 +246,8 @@ prerequisite for the required-check rollout.
 ### Batch-2 — scope (ordered)
 
 1. **`ls-files` scan** — GOV-003 scans `git ls-files` instead of walking the working tree, so local
-   runs match CI exactly (drops `.claude/`, `.venv`, build-dir false positives). Local-DX + belt-and-
-   suspenders; independent of the required-check rollout.
+   runs match CI exactly (drops `.claude/`, `.venv`, build-dir false positives). Local-DX + belt-and-suspenders;
+   independent of the required-check rollout.
 2. **`strict`-split** — split `authority-strict` from `strict` so `strict` also governs the runtime
    path; retires the currently-dead `strict: true` on `authority-guard:false` callers (kept uniform
    deliberately, forward-compatible with this change).
