@@ -38,7 +38,7 @@ updated: 2026-07-26
 - **Репо без remote** (`spec-runner-tasks`): только локальные коммиты, PR некуда — цикл
   выше неприменим.
 - **Корневая папка набора** (`all_ai_orchestrators`, remote
-  `github.com:andrei-shtanakov/atp.git` — проверено 2026-07-26): remote **есть**, но это
+  `git@github.com:andrei-shtanakov/atp.git` — проверено 2026-07-26): remote **есть**, но это
   бэкап-зеркало cowork-бухгалтерии (ADR, статусы, черновики), не продукт — **PR нет**,
   коммиты идут прямо в `master`. Расхождение с origin (правки с разных машин)
   разрешается **merge-ом**: в локальном конфиге этого репо выставлен `pull.rebase=false`;
