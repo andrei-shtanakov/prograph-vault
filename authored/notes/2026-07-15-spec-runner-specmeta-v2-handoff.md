@@ -1,5 +1,10 @@
 # Handoff → spec-runner: SpecMeta contract v2 — `owner_role` + человеческий approver (C2)
 
+> ⚠️ **Частично устарел (2026-07-26).** Форма значения `owner_role` изменена решением DEC-007:
+> **одна роль-slug без `@`**, а не `"@role[,@role]"`. Остальная часть ask'а (бамп
+> `SPEC_META_CONTRACT` → 2, `approved_by` = git-handle человека, pass-through `upstream_hashes`)
+> в силе. Актуальная версия: `2026-07-26-steward-owner-role-singular-handoff.md`.
+
 > **Контекст (2026-07-15):** steward закрыл свою часть C2 (роадмап
 > `steward/NEXT-STEPS.md`): frontmatter расширен `upstream_hashes` (пиновка блоб-хешей
 > upstream при аппруве downstream), на этом реализован stale-cascade check REQ-206
