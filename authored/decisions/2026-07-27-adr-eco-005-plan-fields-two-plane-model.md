@@ -318,6 +318,33 @@ Dispatcher aggregates observations without erasing declared-vs-proven.
 
 ---
 
+## Amendment to the KB constitution (`CLAUDE.md` §0.0/§3/§4/§7/§8)
+
+D11 puts the authority of a contract inside `authored/`, which the constitution did not cover:
+§3's map had no `authored/contracts/`, §4's SSOT table said contracts are owned by the producing
+repo and the KB carries only `derived/` snapshots, and §7's `type`/`status` enums had no value for
+such a document. Landing this ADR without saying so would silently widen `authored/` — the exact
+drift §0.0 warns against (and which `authored/roadmaps/`, added by [[2026-07-18-adr-eco-004-governance-plane]],
+already incurred). So this PR amends the constitution explicitly:
+
+- **§3 + §0.0** — the map gains `authored/roadmaps/` and `authored/contracts/<name>/v<N>/`.
+  *Descriptive*: both directories already exist on disk; the map was lagging.
+- **§4** — the "Inter-repo contract" row is split. A contract **with** a producing repo is
+  unchanged (authority there, snapshot in `derived/contracts/`). A cross-cutting contract that
+  **no repo produces** is owned by `authored/contracts/`, per §4's own mnemonic — *the KB owns
+  only what belongs to no repo*. `plan-fields` is that case by construction: its subject is the
+  `TODO.md` grammar of every repo in the polyrepo, so no single repo can hold its canon.
+- **§7** — `type` gains `contract` and `roadmap`. (`status` is unchanged: this contract's
+  placeholder README uses the existing `proposed`, tracking this ADR.)
+- **§8** — the "A contract" bullet documents the two cases and restates the vendoring rule.
+
+Scope of the amendment: it establishes *where* such a contract lives and *who* reviews it. It does
+not make the KB a runtime dependency — D11's prohibition stands, consumers vendor a pinned copy
+inward and no parser reads this vault at run time. While this ADR is `proposed`, the §4/§8 ownership
+rule is proposed with it; the §3/§7 entries are housekeeping and hold regardless of its outcome.
+
+---
+
 ## Consequences & non-goals
 
 - **Non-goal:** a single central `TODO.md`. Ownership stays per-repo; the graph is derived.

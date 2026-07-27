@@ -16,7 +16,8 @@
   `derived/**` is written ONLY by tools (prograph/digest skills) and is **regenerable** — manual
   edits there will be lost. Details in §1–§2, `authored/README.md`, `derived/README.md`.
 - **The §3 map is now largely realized (migration complete, 2026-07-08).** What exists now:
-  `authored/{rules,skills,decisions,notes,registry}`, `derived/{contracts,projects,digests,journal}`.
+  `authored/{rules,skills,decisions,notes,registry,roadmaps,contracts}`,
+  `derived/{contracts,projects,digests,journal}`.
   Still NOT created: `authored/templates`, `derived/graph` (the prograph→graph promoter skill exists
   but graph output may be empty). Legacy dirs at the root (`contracts/`, `projects/`, `mcp_patterns/`,
   `claude-kb/`) are leftovers awaiting reclassification (mostly empty). When creating a missing
@@ -84,6 +85,8 @@ authored/
   skills/       project-specific skills: sources/docs OR pointers to Cowork skills
   notes/        plans, intentions, cross-cutting TODOs
   registry/     COWORK_CONTEXT (registry + integration map)
+  roadmaps/     machine-readable governance intent (*.yaml; computed status, never manual ticks)
+  contracts/    AUTHORITY for cross-cutting contracts owned by no repo (<name>/v<N>/); see §4
 derived/
   graph/        prograph output (structure, deps, MCP calls)
   contracts/    contract SNAPSHOTS for search (not authority)
@@ -98,7 +101,9 @@ derived/
 
 | Knowledge | Owner (SSOT) | KB role |
 |---|---|---|
-| Inter-repo contract | producing repo | `derived/contracts/` — snapshot/index, NOT authority |
+| Inter-repo contract (has a producing repo) | producing repo | `derived/contracts/` — snapshot/index, NOT authority |
+| Cross-cutting contract (**no** producing repo) | **KB `authored/contracts/`** | owns; consumers vendor a pinned copy inward |
+| Governance roadmap (intent) | **KB `authored/roadmaps/`** | owns; status is computed from evidence, never ticked by hand |
 | Repo-local rules | the repo's CLAUDE.md | none; the repo references `authored/rules/` |
 | Cross-cutting rules | **KB `authored/rules/`** | owns |
 | Code history | the repo's git | none; `authored/decisions/` = cross-repo *why* |
@@ -132,7 +137,7 @@ belongs to no repo.**
 ```yaml
 ---
 title: <short>
-type: rule | adr | template | note | contract-snapshot | registry
+type: rule | adr | template | note | contract | contract-snapshot | registry | roadmap
 status: proposed | accepted | superseded | archived | living   # for authored
 owner: <who maintains it>     # for authored
 source: <derived tool>        # for derived
@@ -147,8 +152,11 @@ updated: YYYY-MM-DD
 - **An ADR:** `authored/decisions/YYYY-MM-DD-adr-<slug>.md`, `status: proposed`.
 - **A template/profile:** `authored/templates/`. Steward profiles `lite`/`team` go here (SSOT of
   profiles).
-- **A contract:** authority is in the producing repo; here — a snapshot in `derived/contracts/` (by a
-  tool).
+- **A contract:** if a repo produces it, authority stays there and the KB only carries a snapshot in
+  `derived/contracts/` (by a tool). If the contract spans the ecosystem and **no repo owns it**
+  (e.g. plan-fields), the KB is the authority: `authored/contracts/<name>/v<N>/`, `type: contract`,
+  PR + review; consumers vendor a pinned copy inward and never read this directory at run time
+  ([[2026-07-27-adr-eco-005-plan-fields-two-plane-model]], D11).
 
 ## 9. Tools and agents
 

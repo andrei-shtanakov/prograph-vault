@@ -1,7 +1,7 @@
 ---
 title: "plan-fields contract v1 (placeholder)"
 type: contract
-status: placeholder
+status: proposed
 owner: Andrei
 updated: 2026-07-27
 ---
