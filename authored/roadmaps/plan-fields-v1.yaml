@@ -192,10 +192,23 @@ items:
     target_contract: null
     depends_on: [PF-4]
     expected_evidence:
-      - the flag reaches EvidenceResult / roadmap view model, /api/roadmap, web, TUI, VSCode,
-        the KB snapshot, and Robin
-      - VERIFICATION (prose) — every surface renders implemented and implemented (attested)
-        as visibly distinct
+      - "SHIPPED + MERGED (dispatcher#74): one source of truth — `display_status()` +
+        `RoadmapItemView.status_label` computed field — carries the `(attested)` marker to
+        /api/roadmap* (pydantic), the web table (amber `.attested`), the TUI (amber Text),
+        and the VSCode tree (status_label + amber icon that keeps the base status shape)."
+      - "SCOPE (honest): the KB snapshot (WorkspaceSnapshotV1) is git-state only and carries
+        no roadmap status, so there is nothing to thread there; a future roadmap-KB export
+        must serialize status_label. Robin lives in robin-runtime (separate repo) — the API
+        now emits the flag + label; Robin's own render is a PF-7 migration follow-up."
+      - "VERIFICATION now real but kept in prose (no cross-surface machine rule): tests assert
+        each surface renders `implemented` vs `implemented (attested)` distinctly, and that
+        verified-over-attested-impl keeps its verified shape (py 86, vscode 103 in CI)."
+    evidence_rules:
+      # implementation = the PF-5-born provenance test is present on dispatcher master.
+      - rule: file_exists
+        kind: implementation
+        project: dispatcher
+        path: tests/test_pf5_provenance.py
 
   - id: PF-7
     title: "Migrate consumers onto the package (roadmap.py, devtools, ATP, Robin, umbrella)"
