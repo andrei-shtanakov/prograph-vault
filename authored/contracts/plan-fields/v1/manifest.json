@@ -1,6 +1,6 @@
 {
   "contract": "plan-fields",
-  "contract_version": "v1",
+  "contract_version": 1,
   "schema_id": "urn:ecosystem:plan-fields:v1:schema",
   "surface_note": "sha256 of every frozen contract file consumers vendor; excludes drift-control meta (manifest.json, drift-control.md) and vendor-only PINNED.txt. See drift-control.md.",
   "tree_sha256": "1392d8670aad23006a4150e702e7143a446aa3cf93918ab0289de111eaf93992",

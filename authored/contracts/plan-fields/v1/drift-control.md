@@ -1,3 +1,11 @@
+---
+title: "plan-fields v1 — drift control"
+type: contract
+status: proposed
+owner: Andrei
+updated: 2026-07-28
+---
+
 # plan-fields v1 — drift control (PF-6)
 
 Normative drift-control for the `plan-fields` contract. The vault owns the
