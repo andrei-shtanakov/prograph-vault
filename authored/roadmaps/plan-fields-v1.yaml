@@ -68,11 +68,50 @@ items:
     depends_on: [PF-1]
     expected_evidence:
       - accountable role (DEC-007) — architects
-      - "@id is unique-within-repo, stable across title renames, never reused, on the item's
-        first line; tombstone form for closed items with inbound edges"
-      - legacy repo#slug resolves to a concrete item's @id, never synthesises a URI from slug
-      - checks defined for duplicate / reused / missing / dangling @id
-      - VERIFICATION (prose) — invalid fixtures for each violation class fail as specified
+      - "SHIPPED WITH PF-1 (no separate contract PR): @id grammar (first-line,
+        unique-within-repo, stable across renames, never reused), tombstone semantics,
+        canonical + legacy resolution, and the duplicate/reused/missing/dangling checks all
+        live in authored/contracts/plan-fields/v1/"
+      - invalid fixtures exist for every violation class (duplicate, missing, dangling,
+        legacy-ambiguous, and a reuse history-bundle)
+      - "VERIFICATION deferred to PF-3: the fixtures start actually executing when the offline
+        validator lands. PF-2A is `implemented` (semantics defined), not yet `verified` — and
+        its verification is intentionally NOT wired to a machine rule here, to avoid a
+        PF-2A<->PF-3 evidence cycle (PF-3 needs PF-2A implemented, not verified)."
+    evidence_rules:
+      # implementation = the PF-2A semantics/checks are DEFINED (present), per PF-1 artifacts.
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/contracts/plan-fields/v1/README.md
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/contracts/plan-fields/v1/schema.json
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/contracts/plan-fields/v1/diagnostics.yaml
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/contracts/plan-fields/v1/fixtures/invalid/duplicate-id.expected.json
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/contracts/plan-fields/v1/fixtures/invalid/missing-id.expected.json
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/contracts/plan-fields/v1/fixtures/invalid/dangling-id.expected.json
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/contracts/plan-fields/v1/fixtures/invalid/ambiguous-legacy-ref.expected.json
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/contracts/plan-fields/v1/fixtures/invalid/reused-id/expected.json
 
   - id: PF-2B
     title: "Fleet @id backfill (migration)"
