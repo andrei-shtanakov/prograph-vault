@@ -167,10 +167,30 @@ items:
     depends_on: [PF-3]        # BEFORE migration: the guard must exist before consumers pin
     expected_evidence:
       - accountable role (DEC-007) — architects
-      - checks canonical contract SHA/version vs each pinned/vendored consumer copy
-      - checks fixtures byte/semantic compatibility
-      - warns, then errors, on sustained drift (mirrors the two-snapshot escalation)
-      - VERIFICATION (prose) — contract_in_sync is the eventual rule once the drift check runs
+      - "SHIPPED (normative half, vault): manifest.json = canonical surface fingerprint
+        (per-file sha256 + tree_sha256 rollup, sorted); drift-control.md = surface definition,
+        SHA/version compatibility policy (additive vs breaking → v2), fixtures-are-breaking
+        rule, warn→error two-snapshot escalation, and the consumer/pin registry."
+      - "WHY vault-side (KB not code, CLAUDE.md): the fingerprint travels with each vendored
+        copy alongside PINNED.txt, so a consumer verifies its copy matches the pin OFFLINE
+        (content, not just a commit ref). The executable checkers are code-repo companions,
+        not part of this knowledge base."
+      - "OPEN (executable half, dispatcher companion — separate PR): extend
+        dispatcher/core/contracts.py _catalog_drift to compare the vendored plan-fields
+        surface against manifest.json, emitting one contract_in_sync verdict for plan-fields."
+      - "VERIFICATION (prose until the companion lands) — contract_in_sync becomes the machine
+        rule once the dispatcher drift check reads manifest.json; kept prose here so PF-6 is
+        not falsely `verified` on the strength of a policy doc alone."
+    evidence_rules:
+      # implementation = the normative drift-control artifacts are present in canon.
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/contracts/plan-fields/v1/manifest.json
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/contracts/plan-fields/v1/drift-control.md
 
   - id: PF-4
     title: "Dispatcher rule: plan_item_declared_closed + attested-only projection"
@@ -192,10 +212,23 @@ items:
     target_contract: null
     depends_on: [PF-4]
     expected_evidence:
-      - the flag reaches EvidenceResult / roadmap view model, /api/roadmap, web, TUI, VSCode,
-        the KB snapshot, and Robin
-      - VERIFICATION (prose) — every surface renders implemented and implemented (attested)
-        as visibly distinct
+      - "SHIPPED + MERGED (dispatcher#74): one source of truth — `display_status()` +
+        `RoadmapItemView.status_label` computed field — carries the `(attested)` marker to
+        /api/roadmap* (pydantic), the web table (amber `.attested`), the TUI (amber Text),
+        and the VSCode tree (status_label + amber icon that keeps the base status shape)."
+      - "SCOPE (honest): the KB snapshot (WorkspaceSnapshotV1) is git-state only and carries
+        no roadmap status, so there is nothing to thread there; a future roadmap-KB export
+        must serialize status_label. Robin lives in robin-runtime (separate repo) — the API
+        now emits the flag + label; Robin's own render is a PF-7 migration follow-up."
+      - "VERIFICATION now real but kept in prose (no cross-surface machine rule): tests assert
+        each surface renders `implemented` vs `implemented (attested)` distinctly, and that
+        verified-over-attested-impl keeps its verified shape (py 86, vscode 103 in CI)."
+    evidence_rules:
+      # implementation = the PF-5-born provenance test is present on dispatcher master.
+      - rule: file_exists
+        kind: implementation
+        project: dispatcher
+        path: tests/test_pf5_provenance.py
 
   - id: PF-7
     title: "Migrate consumers onto the package (roadmap.py, devtools, ATP, Robin, umbrella)"
