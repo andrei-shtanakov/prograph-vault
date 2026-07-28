@@ -175,12 +175,13 @@ items:
         copy alongside PINNED.txt, so a consumer verifies its copy matches the pin OFFLINE
         (content, not just a commit ref). The executable checkers are code-repo companions,
         not part of this knowledge base."
-      - "OPEN (executable half, dispatcher companion — separate PR): extend
-        dispatcher/core/contracts.py _catalog_drift to compare the vendored plan-fields
-        surface against manifest.json, emitting one contract_in_sync verdict for plan-fields."
-      - "VERIFICATION (prose until the companion lands) — contract_in_sync becomes the machine
-        rule once the dispatcher drift check reads manifest.json; kept prose here so PF-6 is
-        not falsely `verified` on the strength of a policy doc alone."
+      - "SHIPPED (executable half, dispatcher#75): dispatcher/core/contracts.py
+        _plan_fields_drift compares the vendored surface against manifest.json (with a
+        stale-manifest guard) and emits one contract_in_sync verdict named plan-fields-v1.
+        The vendored copy was re-vendored to current canon so the guard starts green."
+      - "VERIFICATION is now MACHINE: contract_in_sync on plan-fields-v1 (the rule PF-6's
+        verification was always going to become). It graduated from prose only after the
+        checker actually existed — never `verified` on a policy doc alone."
     evidence_rules:
       # implementation = the normative drift-control artifacts are present in canon.
       - rule: file_exists
@@ -191,6 +192,10 @@ items:
         kind: implementation
         project: prograph-vault
         path: authored/contracts/plan-fields/v1/drift-control.md
+      # verification = the executable drift checker reports the contract in sync.
+      - rule: contract_in_sync
+        kind: verification
+        name: plan-fields-v1
 
   - id: PF-4
     title: "Dispatcher rule: plan_item_declared_closed + attested-only projection"
