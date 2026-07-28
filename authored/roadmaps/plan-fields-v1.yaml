@@ -1,0 +1,168 @@
+# plan-fields — contract + engine rollout (machine-readable intent).
+#
+# Canon narrative: authored/decisions/2026-07-27-adr-eco-005-plan-fields-two-plane-model.md
+# Rendered by: dispatcher GET /api/roadmap (computed status, never manual ticks).
+# Rules vocabulary (closed set): project_detected | file_exists | sqlite_has_row
+#   | contract_in_sync | work_item_chain.  kind: implementation | verification.
+# expected_evidence is prose documentation of intent — never machine-checked.
+#
+# Two deliberate constraints (per the ADR review, 2026-07-28):
+#   * Role-accountability (DEC-007 role-slug) is recorded in expected_evidence as prose,
+#     NOT as a machine field. owner_project stays the canonical machine owner. Adding an
+#     owner_role column is a separate contract change, not smuggled in here.
+#   * No file_exists is used as *verification*: a file proves presence, not that the thing
+#     works. Where no rule can prove function yet, verification stays in expected_evidence
+#     (honest `unknown`) rather than producing a false `verified`.
+#
+# This is the operational backbone of ADR-ECO-005: rollout is capability-granularity
+# (D1 -> governance plane), and cross-phase edges need @id, which PF-2 introduces — so the
+# dependency graph lives here, not in per-repo TODO.md. Operational TODO items appear in
+# owner repos only when a repo enters an executable slice.
+
+version: 1
+roadmap: plan-fields-v1
+title: plan-fields — contract + engine rollout (ADR-ECO-005)
+
+items:
+  - id: PF-0B
+    title: "Phase 0b: diagnostic lifecycle (issues, first_seen, warn->error)"
+    phase: "0b"
+    owner_project: ai-orchestrators-workspace
+    target_contract: null
+    depends_on: []            # Phase 0a sensor already merged (aow #9)
+    expected_evidence:
+      - accountable role (DEC-007) — tech-lead
+      - stable fingerprint = diagnostic_code + subject_uri + related_uri + rule_id
+      - label-scoped issues opened / last_seen-updated / auto-closed / reopened by reconciler
+      - suppression requires a ref + expiry; expired suppression becomes an error
+      - a divergence promotes warning to error only on the next *independent* snapshot
+        (new scan_id, new observation time, >=1 completed fleet-scan between; not a rerun)
+      - VERIFICATION (kept in prose until a rule fits) — a real divergence is observed to
+        cycle open, close, reopen across snapshots without duplicate issues
+
+  - id: PF-1
+    title: "Contract v1: schema.json + rule registry (evidence_grade) + fixtures"
+    phase: "1"
+    owner_project: prograph-vault
+    target_contract: plan-fields-v1
+    depends_on: []
+    expected_evidence:
+      - accountable role (DEC-007) — architects
+      - checkbox grammar, namespaced identity (todo://, roadmap://), tag placement,
+        freshness quartet, canonical JSON node/edge representation
+      - rule registry carries evidence_grade (attestation or machine); plan_item_declared_closed
+        is graded attestation
+      - VERIFICATION (prose) — valid/ and invalid/ fixtures exist and every consumer validates
+        them identically
+    evidence_rules:
+      - rule: file_exists
+        kind: implementation
+        project: prograph-vault
+        path: authored/contracts/plan-fields/v1/schema.json
+
+  - id: PF-2A
+    title: "Identity rules + dup/reuse/missing/dangling checks (semantics)"
+    phase: "2a"
+    owner_project: prograph-vault
+    target_contract: plan-fields-v1
+    depends_on: [PF-1]
+    expected_evidence:
+      - accountable role (DEC-007) — architects
+      - "@id is unique-within-repo, stable across title renames, never reused, on the item's
+        first line; tombstone form for closed items with inbound edges"
+      - legacy repo#slug resolves to a concrete item's @id, never synthesises a URI from slug
+      - checks defined for duplicate / reused / missing / dangling @id
+      - VERIFICATION (prose) — invalid fixtures for each violation class fail as specified
+
+  - id: PF-2B
+    title: "Fleet @id backfill (migration)"
+    phase: "2b"
+    owner_project: ai-orchestrators-workspace
+    target_contract: null
+    depends_on: [PF-2A, PF-3]
+    expected_evidence:
+      - accountable role (DEC-007) tech-lead — accountable for FLEET completeness; each
+        repo-owner lands a local PR, but coverage across the fleet is the tech-lead's call
+      - every actionable item carries a unique first-line @id in every repo's TODO.md
+      - tombstones in place for closed items that still have inbound references
+      - VERIFICATION (prose) — the PF-2A checks pass fleet-wide under the Phase-0a sensor
+
+  - id: PF-3
+    title: "Offline plan-fields package (dispatcher/packages/plan-fields)"
+    phase: "3"
+    owner_project: dispatcher
+    target_contract: plan-fields-v1
+    depends_on: [PF-1]
+    expected_evidence:
+      - independent version + changelog; CLI; parser API; JSON node/edge/diagnostics model;
+        contract fixtures; offline tests; provenance fields; NO import of dispatcher app code
+      - VERIFICATION (kept in prose — file_exists proves the package exists, not that it
+        works) — offline test suite green, and a consumer imports the package without pulling
+        in dispatcher application code
+    evidence_rules:
+      - rule: file_exists
+        kind: implementation
+        project: dispatcher
+        path: packages/plan-fields/pyproject.toml
+
+  - id: PF-6
+    title: "Contract drift-control (canonical vs pinned + fixtures compat)"
+    phase: "6"
+    owner_project: prograph-vault
+    target_contract: plan-fields-v1
+    depends_on: [PF-3]        # BEFORE migration: the guard must exist before consumers pin
+    expected_evidence:
+      - accountable role (DEC-007) — architects
+      - checks canonical contract SHA/version vs each pinned/vendored consumer copy
+      - checks fixtures byte/semantic compatibility
+      - warns, then errors, on sustained drift (mirrors the two-snapshot escalation)
+      - VERIFICATION (prose) — contract_in_sync is the eventual rule once the drift check runs
+
+  - id: PF-4
+    title: "Dispatcher rule: plan_item_declared_closed + attested-only projection"
+    phase: "4"
+    owner_project: dispatcher
+    target_contract: plan-fields-v1
+    depends_on: [PF-1, PF-3]
+    expected_evidence:
+      - register plan_item_declared_closed with evidence_grade = attestation
+      - implement the todo://repo/id resolver
+      - compute implementation_is_attested_only; keep _status_from_evidence unchanged
+      - VERIFICATION (prose) — tests cover mixed machine+attestation evidence, missing @id,
+        open/closed tombstone, and invalid reference
+
+  - id: PF-5
+    title: "Provenance through all surfaces (api/web/tui/vscode/KB/Robin)"
+    phase: "5"
+    owner_project: dispatcher
+    target_contract: null
+    depends_on: [PF-4]
+    expected_evidence:
+      - the flag reaches EvidenceResult / roadmap view model, /api/roadmap, web, TUI, VSCode,
+        the KB snapshot, and Robin
+      - VERIFICATION (prose) — every surface renders implemented and implemented (attested)
+        as visibly distinct
+
+  - id: PF-7
+    title: "Migrate consumers onto the package (roadmap.py, devtools, ATP, Robin, umbrella)"
+    phase: "7"
+    owner_project: dispatcher
+    target_contract: plan-fields-v1
+    depends_on: [PF-6]        # drift-control (PF-6, hence PF-3) must be in place first
+    expected_evidence:
+      - dispatcher/core/roadmap.py is the first dogfood consumer
+      - devtools/check-plan-fields.py, atp-platform check_plan_citations.py,
+        robin-runtime plan_state.py, and the umbrella sensor consume the pinned package
+      - old parsers deleted or reduced to thin adapters
+      - VERIFICATION (prose) — each migrated consumer's own tests pass on the shared package
+
+  - id: PF-8
+    title: "Stabilization + package-home decision"
+    phase: "8"
+    owner_project: dispatcher
+    target_contract: null
+    depends_on: [PF-0B, PF-2B, PF-5, PF-7]   # all terminal streams converge here
+    expected_evidence:
+      - at least three external CI consumers pin the package
+      - decision recorded — in-dispatcher package suffices, OR the app's release cadence
+        blocks pre-commit/CI consumers and the package moves to its own repo
