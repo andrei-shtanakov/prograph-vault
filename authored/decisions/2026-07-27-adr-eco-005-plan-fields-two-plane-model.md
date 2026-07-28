@@ -1,14 +1,14 @@
 ---
 title: "ADR-ECO-005: Plan-fields — two plan planes, one graph, evidence flows governance→operational"
 type: adr
-status: proposed
+status: accepted
 owner: Andrei
-updated: 2026-07-27
+updated: 2026-07-28
 ---
 
 # ADR-ECO-005: Plan-fields two-plane model
 
-**Status:** Proposed (2026-07-27, Andrei) · **Date:** 2026-07-27
+**Status:** Accepted (2026-07-28, Andrei) · **Date:** 2026-07-27
 **Deciders:** Andrei (sole owner of the ecosystem today)
 **Scope:** how per-repo operational plans (`TODO.md`) and the governance roadmap
 (`authored/roadmaps/*.yaml`) relate — identity, evidence direction, the derived graph
@@ -352,9 +352,14 @@ rule is proposed with it; the §3/§7 entries are housekeeping and hold regardle
 - **Non-goal:** owner-declared upward evidence edges; owners cannot self-promote roadmap status.
 - **Cost:** `plan-fields` needs its own CI/versioning; devtools needs CI it lacks today
   (only `CODEOWNERS` under `.github/`); a new evidence-rule kind is a governance change.
-- **Open questions** (re-snapshotted 2026-07-27 against the live fleet — **coverage is no
-  longer one of them**: all 11 core repos now carry a `TODO.md`, incl. deployer 27 / steward
-  29 / dispatcher 11 / discovery 11 / robin 7 open items). Remaining owner calls: `@owner`
-  handle grammar (one human + a set of agents — already partly ratified in ATP's canonical
-  form); who owns the ATP/Maestro bulk `@id`+owner markup (the real labor); and, for low-work
-  KB-like repos, thin `TODO.md` vs a `@source-ref`+TTL index.
+- **Resolved / owner calls** (2026-07-28): the operational `@owner` form is settled — one
+  accountable **role-slug, no `@`**, per DEC-007 (catalog SSOT `steward/profiles/roles.yaml`,
+  pattern `^[a-z][a-z0-9-]{1,31}$`); it is a machine role name, not a GitHub handle. Fleet
+  `@id` markup is owned by the **tech-lead** role (fleet-wide coordination), while identity
+  *semantics* (the rules and dup/reuse/missing/dangling checks) are owned by **architects** —
+  tracked in roadmap `plan-fields-v1` (PF-2A/PF-2B). Coverage is closed (all 11 core repos
+  carry a `TODO.md`). Still open: for low-work KB-like repos, thin `TODO.md` vs a
+  `@source-ref`+TTL index.
+- **Rollout** is tracked as a governance roadmap, not scattered operational TODO items (these
+  are capability-granularity, D1, and cross-phase edges need `@id` which PF-2 introduces):
+  `authored/roadmaps/plan-fields-v1.yaml` (PF-0B, PF-1..PF-8).
