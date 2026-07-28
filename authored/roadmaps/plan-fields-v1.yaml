@@ -134,16 +134,30 @@ items:
     depends_on: [PF-2A]       # PF-2A carries PF-1 transitively; the package implements
                               # PF-2A's identity checks, so it needs those settled first
     expected_evidence:
-      - independent version + changelog; CLI; parser API; JSON node/edge/diagnostics model;
-        contract fixtures; offline tests; provenance fields; NO import of dispatcher app code
-      - VERIFICATION (kept in prose — file_exists proves the package exists, not that it
-        works) — offline test suite green, and a consumer imports the package without pulling
-        in dispatcher application code
+      - "SHIPPED + MERGED (dispatcher#72): packages/plan-fields — standalone `plan-fields`
+        0.1.0 with parser API, canonical JSON node/edge/diagnostics model, CLI, vendored
+        pinned contract, offline tests, and no import of dispatcher app code"
+      - "VERIFICATION now real but kept in prose (no machine rule for `CI green`, to avoid a
+        false `verified`): `plan-fields conformance` reproduces all 7 vendored PF-1 fixtures,
+        and the package's own tests/ruff/pyrefly run in the dispatcher `plan-fields` CI job"
     evidence_rules:
+      # implementation = the package artifacts are present on dispatcher master.
       - rule: file_exists
         kind: implementation
         project: dispatcher
         path: packages/plan-fields/pyproject.toml
+      - rule: file_exists
+        kind: implementation
+        project: dispatcher
+        path: packages/plan-fields/src/plan_fields/parser.py
+      - rule: file_exists
+        kind: implementation
+        project: dispatcher
+        path: packages/plan-fields/src/plan_fields/validator.py
+      - rule: file_exists
+        kind: implementation
+        project: dispatcher
+        path: packages/plan-fields/src/plan_fields/cli.py
 
   - id: PF-6
     title: "Contract drift-control (canonical vs pinned + fixtures compat)"
