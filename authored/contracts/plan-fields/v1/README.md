@@ -80,9 +80,12 @@ nodes, references, edges, diagnostics}`:
 - **`git_dir` is a declared locator alias, never an identity.** It states where a repo is
   checked out, and is normalised to the section key at the boundary: a checkout is resolved
   through the manifest first and only falls back to `remote_origin` when the repo is absent
-  from the manifest entirely. A legacy `<repo>#<slug>` reference written with a `git_dir`
-  spelling therefore resolves, but it resolves *as* the key — and, per the `edges` rule above,
-  a legacy reference still never becomes an edge.
+  from the manifest entirely.
+  A legacy `<repo>#<slug>` reference written with a `git_dir` spelling therefore has its
+  repo component normalised to the key: `legacy_blocker_ref` carries the key, while
+  `raw_ref` and the diagnostic message keep the spelling as written. It gains no
+  `resolved_target` — per the `edges` rule above, it stays in `references` and never
+  becomes an edge.
 - `node_id = todo://<repo>/<id>`; `roadmap://<roadmap>/<id>` is reserved for governance nodes.
 - `@id` grammar: `^[a-z0-9][a-z0-9._-]{0,63}$`, on the item's first line, unique-within-repo,
   stable across title renames, never reused (see PF-2A).
