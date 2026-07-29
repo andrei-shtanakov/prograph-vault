@@ -34,12 +34,21 @@ list_candidates() {
 }
 
 # Ensure installed skills are ignored by the target repo (keeps it clean).
+# Add an ignore entry only when the skill is not ignored ALREADY — by a literal
+# line here or by a pattern anywhere up the .gitignore chain. The literal-only
+# check appended `kb-load/`…`kb-session/` to a file that already carried a
+# `kb-*/` glob, so every install rewrote a tracked file and left the target repo
+# dirty for a change that ignored nothing new (seen in arbiter, 2026-07-29).
 ensure_gitignore() {
   local skills_dir="$1" gi="$1/.gitignore" line
-  [ -f "$gi" ] || printf '# kb-* skills installed by prograph-vault/authored/skills/install-skills.sh\n' > "$gi"
+  [ -f "$gi" ] || printf '# Skills installed by prograph-vault/authored/skills/install-skills.sh\n' > "$gi"
   for s in "${SKILLS[@]}"; do
     line="$s/"
-    grep -qxF "$line" "$gi" 2>/dev/null || printf '%s\n' "$line" >> "$gi"
+    grep -qxF "$line" "$gi" 2>/dev/null && continue
+    # `git check-ignore` answers the question the grep was approximating: is
+    # this path ignored at all? It understands globs and inherited rules.
+    ( cd "$skills_dir" && git check-ignore -q "$s" ) 2>/dev/null && continue
+    printf '%s\n' "$line" >> "$gi"
   done
 }
 
