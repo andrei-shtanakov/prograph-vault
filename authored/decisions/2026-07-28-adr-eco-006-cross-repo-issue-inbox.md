@@ -188,12 +188,29 @@ the `kb-*` skills, and it is distributed by the **already existing**
 `prograph-vault/authored/skills/install-skills.sh` — adding `repo-inbox` to its `SKILLS`
 array is the whole integration. No new distribution infrastructure is built.
 
-The skill resolves the current repo from `git remote get-url origin`. Two operations:
+The skill resolves the current repo with `gh repo view --json nameWithOwner`. Two
+operations:
 
-- **check** — `gh issue list -R <origin> --label inbox --state open`, then grep each
-  `slug:` against the local `TODO.md`; report *not accepted* and *accepted, in progress*
-  separately.
+- **check** — `gh issue list -R <owner/repo> --label inbox --state open`, then grep each
+  `slug:` against the local `TODO.md`, matching **checkbox lines only**; report *not
+  accepted* and *accepted, in progress* separately.
 - **file** — assemble the D3 body and `gh issue create -R <target> --label inbox`.
+
+**This is a GitHub coordinate, not plan identity — the distinction is load-bearing.**
+The plan-fields contract is explicit that a *canonical repo name* is the
+workspace-manifest key and that `remote_origin` is diagnostic only, so that a rename or
+case change cannot mint a new identity (`authored/contracts/plan-fields/v1/README.md`,
+*Identity & provenance*). Nothing in this decision touches that: an `inbox` issue is never
+a plan node, produces no `todo://` URI, and contributes no `node_id`. What `gh -R` needs
+is the GitHub API's own addressing, which a manifest key cannot express.
+
+The one place the two planes meet is `inbox.py` mapping a repo GitHub just named to a
+checkout on this disk. That lookup goes through the shared `plan_fields.fleet.canonical_name`
+— the same function `check-plan-fields.py:117` already uses to build its on-disk index
+before reconciling against the manifest — so the inbox view follows the package's
+established pattern rather than inventing a second one. A rename that desynchronises the
+two degrades **visibly**: the issue renders as *«не проверить — репо не склонирован
+здесь»* rather than silently reading as not accepted.
 
 What lands **in** each repo is a **rule, not code** — one byte-identical block appended to
 its `CLAUDE.md` (the fleet-uniformity rule of 2026-07-19: fleet-wide callers are amended
