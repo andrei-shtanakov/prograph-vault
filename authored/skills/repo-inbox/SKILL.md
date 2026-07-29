@@ -13,10 +13,15 @@ Issue с лейблом `inbox` — **запрос**, адресованный �
 ## Операция 1 — проверить входящие
 
 ```bash
-REPO="$(git remote get-url origin | sed -E 's#.*[:/]([^/]+/[^/]+?)(\.git)?$#\1#')"
+REPO="$(gh repo view --json nameWithOwner -q .nameWithOwner)" || {
+  echo "gh недоступен или не авторизован — выполни: gh auth login" >&2; exit 1; }
 gh issue list -R "$REPO" --label inbox --state open \
   --json number,title,body --jq '.[] | "\(.number)\t\(.title)\t\(.body)"'
 ```
+
+`gh repo view` выводит `owner/repo` само — URL не парсим. Разбор `git remote get-url`
+регуляркой был бы не просто лишним, а нерабочим: `sed -E` на macOS это POSIX ERE, и
+нежадный квантификатор `+?` из PCRE он отвергает с `repetition-operator operand invalid`.
 
 Для каждого issue:
 
