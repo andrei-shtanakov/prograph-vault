@@ -16,7 +16,7 @@ Issue с лейблом `inbox` — **запрос**, адресованный �
 REPO="$(gh repo view --json nameWithOwner -q .nameWithOwner)" || {
   echo "gh недоступен или не авторизован — выполни: gh auth login" >&2; exit 1; }
 gh issue list -R "$REPO" --label inbox --state open \
-  --json number,title,body --jq '.[] | "\(.number)\t\(.title)\t\(.body)"'
+  --json number,title,body --jq '.[] | "=== #\(.number) \(.title)\n\(.body)"'
 ```
 
 `gh repo view` выводит `owner/repo` само — URL не парсим. Разбор `git remote get-url`
@@ -26,7 +26,8 @@ gh issue list -R "$REPO" --label inbox --state open \
 Для каждого issue:
 
 1. Прочитать `slug:` из тела (это строка целиком, не упоминание в прозе).
-2. `grep -n "<slug>" TODO.md` — искать **только по строкам-чекбоксам** (`- [ ]` / `- [x]`).
+2. `grep -nE '^[[:space:]]*[-*] \[[ xX]\].*<slug>' TODO.md` — искать **только по
+   строкам-чекбоксам** (`- [ ]` / `- [x]`), не по прозе.
 3. Слаг найден → запрос **принят**, работа идёт. Не найден → **не принят**, нужно решение владельца.
 
 Показать пользователю две группы отдельно; непринятые — первыми. Не принимать
