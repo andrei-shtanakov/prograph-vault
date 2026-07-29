@@ -19,7 +19,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"   # …/prograph-v
 KB_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd -P)"                    # …/prograph-vault
 WORKSPACE="$(cd "$KB_ROOT/.." && pwd -P)"                        # …/all_ai_orchestrators
 CONFIG="$SCRIPT_DIR/targets.txt"
-SKILLS=(kb-load kb-save kb-search kb-session)
+SKILLS=(kb-load kb-save kb-search kb-session repo-inbox)
 TRACK=0
 
 usage() { sed -n '2,20p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'; }
