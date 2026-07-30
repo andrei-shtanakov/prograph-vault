@@ -1,14 +1,14 @@
 ---
 title: "ADR-ECO-004a: Dispatcher may originate task-authoring proposals — human-initiated, PR/issue-only, never a task SSOT"
 type: adr
-status: proposed
+status: accepted
 owner: Andrei
 updated: 2026-07-30
 ---
 
 # ADR-ECO-004a: Dispatcher's authoring authority
 
-**Status:** Proposed (2026-07-30, Andrei) · **Date:** 2026-07-30
+**Status:** Accepted (2026-07-30, Andrei) · **Date:** 2026-07-30
 **Deciders:** Andrei (sole owner of the ecosystem today)
 **Scope:** the read/control plane row of ADR-ECO-004 D1 — dispatcher only
 **Type:** Amendment to `decisions/2026-07-18-adr-eco-004-governance-plane.md` (ADR-ECO-004)

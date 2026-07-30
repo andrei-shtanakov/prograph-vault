@@ -18,6 +18,9 @@ this ADR decides how existing canon is *owned, enforced, evidenced, and kept hon
 (`../../CLAUDE.md`), [[2026-07-05-adr-spec-governance-layer]] (steward gate layer),
 [[2026-07-01-adr-eco-003-agent-catalog]] (contract-authority canon), the umbrella
 `workspace-manifest.toml` (repo set + pins), and dispatcher (read/control plane).
+**Amended by:** ADR-ECO-004a (dispatcher task authoring — widens D1's read/control-plane
+clause so dispatcher may *originate* task-authoring proposals; D1's "never a second SSOT"
+is unchanged)
 
 > **Companion artifact:** `authored/registry/governance.yaml` — the machine-readable
 > *declaration* this ADR governs. Declared intent lives in `authored/` (human, PR-gated);
