@@ -146,16 +146,19 @@ SSOT by accident (mitigation: D1a-3 requires read-back, not caching).
 ## Recommended actions
 
 **prograph-vault**
-- Ratify this amendment; on acceptance — add
-  `**Amended by:** ADR-ECO-004a (dispatcher task authoring)`
-  to ADR-ECO-004's header, matching the pattern ADR-ECO-003 already carries.
-- Close `prograph-vault#54` (the request) with a reference to the merged ADR.
+- [x] Ratify this amendment. ✅ 2026-07-30 (owner, #56 — status flipped in the frontmatter
+  and the body line together).
+- [x] Add `**Amended by:** ADR-ECO-004a (dispatcher task authoring)` to ADR-ECO-004's
+  header, matching the pattern ADR-ECO-003 already carries. ✅ 2026-07-30 (#56).
+- [ ] Close `prograph-vault#54` (the request) with a reference to this ratified ADR and to
+  #56.
 
 **dispatcher**
-- Do not begin S2 implementation until this amendment is accepted. If it is rejected, S2 as
-  designed does not proceed and the console stays at S1 — a complete, shipped slice, not a
+- [x] Do not begin S2 implementation until this amendment is accepted. ✅ resolved
+  2026-07-30 — accepted, so S2 is unblocked. Had it been rejected, S2 as designed would not
+  have proceeded and the console would have stayed at S1: a complete, shipped slice, not a
   stub.
-- On acceptance: the S2 design doc links the **merged** ADR, not the request issue.
+- [ ] The S2 design doc links **this ratified ADR**, not the request issue.
 - Keep `@id:merge-gate-pr-listing` in scope for S2 rather than S1 — the design's own flow
   ("operator opens dispatcher → list of open PRs across all repos") begins there, and S1
   ships a manual PR-number entry point instead.
