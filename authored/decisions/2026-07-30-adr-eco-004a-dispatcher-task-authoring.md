@@ -146,9 +146,9 @@ SSOT by accident (mitigation: D1a-3 requires read-back, not caching).
 ## Recommended actions
 
 **prograph-vault**
-- Ratify this amendment; on acceptance — add `**Amended by:** ADR-ECO-004a
-  (dispatcher task authoring)` to ADR-ECO-004's header, matching the pattern ADR-ECO-003
-  already carries.
+- Ratify this amendment; on acceptance — add
+  `**Amended by:** ADR-ECO-004a (dispatcher task authoring)`
+  to ADR-ECO-004's header, matching the pattern ADR-ECO-003 already carries.
 - Close `prograph-vault#54` (the request) with a reference to the merged ADR.
 
 **dispatcher**
