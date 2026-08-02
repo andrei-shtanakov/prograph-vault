@@ -56,3 +56,12 @@
       инвариантами I1–I4 (scoped change-class, agent-immutable authority root,
       adversarial verifier, ревокация) заблокирован статусом ADR.
       Канон — `authored/decisions/2026-07-18-adr-eco-004-governance-plane.md`.
+
+- [ ] Развести в прозе PF-6 гарантию целостности и наблюдение за дрейфом канона @owner:github:andrei-shtanakov @id:plan-fields-verification-semantics
+      Запрос `dispatcher` (issue #57, потребитель — `dispatcher#99` / `dispatcher@e2ba580`):
+      байты контракта не разошлись, разошлось **описание того, что доказывает проверка**.
+      `authored/roadmaps/plan-fields-v1.yaml` описывал одну верификацию там, где их теперь
+      две: обязательный офлайн-гейт `vendored_integrity` (копия совпадает с едущим рядом
+      манифестом) и совещательное наблюдение `upstream_drift` (канон уехал?), у которого
+      `null` означает «канон был недоступен», а не «в синхроне». Работа — только правка
+      прозы; статус вычисляется, руками не трогаем.
