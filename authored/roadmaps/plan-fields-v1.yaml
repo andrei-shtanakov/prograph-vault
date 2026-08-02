@@ -189,7 +189,7 @@ items:
         and PINNED.txt stating a provenance a reviewer can follow. Deterministic and
         reproducible anywhere — and NOT evidence that upstream has stayed still."
       - "OBSERVATION, guarantee B — UPSTREAM DRIFT (deliberately not evidence): a scheduled
-        advisory workflow (dispatcher .github/workflows/upstream-drift.yml) emits
+        advisory workflow (dispatcher/.github/workflows/upstream-drift.yml) emits
         `upstream_drift`. It is not a required check and never runs on a dispatcher pull
         request — a commit here must not redden a neighbour's PRs. Each run records remote,
         requested ref, resolved commit and both recomputed tree hashes, so a green run says
@@ -215,8 +215,9 @@ items:
         path: authored/contracts/plan-fields/v1/drift-control.md
       # verification = guarantee A only: the vendored copy matches the manifest that
       # travels with it (offline, required gate). The guarantee-B `upstream_drift`
-      # observation is intentionally absent — it is not evidence, and its `unknown`
-      # would read as `not comparable` on every ordinary run.
+      # observation is intentionally absent — it is not evidence, and its `null`
+      # (no canon checkout: unknown) would read as `not comparable` on every
+      # ordinary run.
       - rule: contract_in_sync
         kind: verification
         name: plan-fields-v1
