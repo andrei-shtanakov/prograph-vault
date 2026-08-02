@@ -175,13 +175,34 @@ items:
         copy alongside PINNED.txt, so a consumer verifies its copy matches the pin OFFLINE
         (content, not just a commit ref). The executable checkers are code-repo companions,
         not part of this knowledge base."
-      - "SHIPPED (executable half, dispatcher#75): dispatcher/core/contracts.py
-        _plan_fields_drift compares the vendored surface against manifest.json (with a
-        stale-manifest guard) and emits one contract_in_sync verdict named plan-fields-v1.
-        The vendored copy was re-vendored to current canon so the guard starts green."
-      - "VERIFICATION is now MACHINE: contract_in_sync on plan-fields-v1 (the rule PF-6's
-        verification was always going to become). It graduated from prose only after the
-        checker actually existed — never `verified` on a policy doc alone."
+      - "SHIPPED (executable half, dispatcher#75), then SPLIT (dispatcher#99, merged as
+        dispatcher@e2ba580): the single contract_in_sync verdict carried two claims one
+        field cannot hold — `is our copy intact?` and `has canon moved?` — and answered
+        them against whichever repositories happened to be cloned next to the checker.
+        The two now travel separately: `vendored_integrity` and `upstream_drift`, both
+        named plan-fields-v1, distinguished by kind."
+      - "VERIFICATION is MACHINE, and it is guarantee A ONLY — INTEGRITY: contract_in_sync
+        on plan-fields-v1 resolves the `vendored_integrity` verdict, i.e. dispatcher's
+        vendored copy still matches the manifest that travels with it. Required PR gate,
+        fully offline, never skipped: per-file sha256, the file set and the manifest
+        covering each other in both directions, tree_sha256 fingerprinting its own surface,
+        and PINNED.txt stating a provenance a reviewer can follow. Deterministic and
+        reproducible anywhere — and NOT evidence that upstream has stayed still."
+      - "OBSERVATION, guarantee B — UPSTREAM DRIFT (deliberately not evidence): a scheduled
+        advisory workflow (dispatcher/.github/workflows/upstream-drift.yml) emits
+        `upstream_drift`. It is not a required check and never runs on a dispatcher pull
+        request — a commit here must not redden a neighbour's PRs. Each run records remote,
+        requested ref, resolved commit and both recomputed tree hashes, so a green run says
+        no drift *from what*. It stays out of evidence_rules because its `null` means `no
+        canon checkout was available` — unknown, not in sync — and folding an observation
+        into evidence would report less than the checker knows. Observed at filing time
+        (2026-08-01): resolved 03affef42ddee1bea2e5c6dc0687f71a7e8e74e7, both trees
+        5d606dbd3a610e471e40b54a0edbccb84e9e84b081d451853e8dcaae12779770."
+      - "LIMIT of guarantee A, stated rather than left to be discovered: integrity proves
+        the vendored surface is internally consistent with its manifest. The link from that
+        manifest to the vault commit named in PINNED.txt is reviewable provenance, not a
+        cryptographic attestation — proving it would need a signature or a checkout of that
+        commit."
     evidence_rules:
       # implementation = the normative drift-control artifacts are present in canon.
       - rule: file_exists
@@ -192,7 +213,11 @@ items:
         kind: implementation
         project: prograph-vault
         path: authored/contracts/plan-fields/v1/drift-control.md
-      # verification = the executable drift checker reports the contract in sync.
+      # verification = guarantee A only: the vendored copy matches the manifest that
+      # travels with it (offline, required gate). The guarantee-B `upstream_drift`
+      # observation is intentionally absent — it is not evidence, and its `null`
+      # (no canon checkout: unknown) would read as `not comparable` on every
+      # ordinary run.
       - rule: contract_in_sync
         kind: verification
         name: plan-fields-v1
