@@ -57,7 +57,7 @@
       adversarial verifier, ревокация) заблокирован статусом ADR.
       Канон — `authored/decisions/2026-07-18-adr-eco-004-governance-plane.md`.
 
-- [ ] Развести в прозе PF-6 гарантию целостности и наблюдение за дрейфом канона @owner:github:andrei-shtanakov @id:plan-fields-verification-semantics
+- [x] Развести в прозе PF-6 гарантию целостности и наблюдение за дрейфом канона (PR #58) @owner:github:andrei-shtanakov @id:plan-fields-verification-semantics
       Запрос `dispatcher` (issue #57, потребитель — `dispatcher#99` / `dispatcher@e2ba580`):
       байты контракта не разошлись, разошлось **описание того, что доказывает проверка**.
       `authored/roadmaps/plan-fields-v1.yaml` описывал одну верификацию там, где их теперь
