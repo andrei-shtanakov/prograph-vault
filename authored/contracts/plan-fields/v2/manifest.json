@@ -3,7 +3,7 @@
   "contract_version": 2,
   "schema_id": "urn:ecosystem:plan-fields:v2:schema",
   "surface_note": "sha256 of every frozen contract file consumers vendor; excludes drift-control meta (manifest.json, drift-control.md) and vendor-only PINNED.txt. See drift-control.md.",
-  "tree_sha256": "9777637268a1c6d4bf73033e921ef76a2ad22893a2cde8cd6852e0125e97e43d",
+  "tree_sha256": "e98073e14e1de5000981550013396d5f66208301841eb659b4ebff624a871b6f",
   "surface": [
     {
       "path": "README.md",
@@ -11,7 +11,7 @@
     },
     {
       "path": "diagnostics.yaml",
-      "sha256": "d722b9b96b33622fecda78a87f67d6a314ac0ce89382376c9602392d22b1503f"
+      "sha256": "360e8a7cea6eaf3550cfd2da663da751e5590126496747cee4fffbe884853e60"
     },
     {
       "path": "fixtures/README.md",
@@ -91,7 +91,7 @@
     },
     {
       "path": "rules.yaml",
-      "sha256": "3455fc0a80f50d7e69ddb944252a63be2c628fc90761ef5c79222f1d0652cde7"
+      "sha256": "8665a64b0dd2164566b9ba2c64031b894c11613e5d7d74181d3d5cde3a8b0127"
     },
     {
       "path": "schema.json",
