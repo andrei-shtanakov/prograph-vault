@@ -70,12 +70,12 @@ A surface change is classified before it lands:
 
 - **Additive (minor).** Backward-compatible: a new **optional** schema property,
   a new diagnostic **code**, a new fixture, additional prose. Existing consumers
-  keep validating. Bump `manifest.json`; `contract_version` stays `v1`.
+  keep validating. Bump `manifest.json`; `contract_version` stays `v2`.
 - **Breaking (major).** Removing or renaming a schema property or diagnostic
   code, tightening a previously optional field to required, changing canonical
   JSON node/edge ordering, or altering an existing fixture's `expected.json`.
-  Breaking changes require a **new contract version** (`v2`), never an in-place
-  `v1` edit — consumers migrate deliberately.
+  Breaking changes require a **new contract version** (`v3`), never an in-place
+  `v2` edit — consumers migrate deliberately.
 
 Fixtures are the executable spec: any change to an `*.expected.json` is treated
 as **breaking** unless it only *adds* a fixture pair, because a changed
