@@ -1,0 +1,115 @@
+{
+  "contract_version": 2,
+  "diagnostics": [
+    {
+      "code": "PF-OWNER-LEGACY-ROLE",
+      "message": "@owner tech-lead is a transitional DEC-007 role-slug",
+      "provenance": {
+        "commit": null,
+        "line": 4,
+        "path": "TODO.md",
+        "remote_origin": null,
+        "repo": "demo"
+      },
+      "related_uri": null,
+      "rule_id": null,
+      "severity": "info",
+      "subject_uri": "todo://demo/benchmark"
+    },
+    {
+      "code": "PF-OWNER-LEGACY-ROLE",
+      "message": "@owner tech-lead is a transitional DEC-007 role-slug",
+      "provenance": {
+        "commit": null,
+        "line": 3,
+        "path": "TODO.md",
+        "remote_origin": null,
+        "repo": "demo"
+      },
+      "related_uri": null,
+      "rule_id": null,
+      "severity": "info",
+      "subject_uri": "todo://demo/setup"
+    }
+  ],
+  "edges": [
+    {
+      "kind": "blocked_by",
+      "source_node_id": "todo://demo/benchmark",
+      "target_node_id": "todo://demo/setup"
+    }
+  ],
+  "generated_at": "2026-07-28T00:00:00Z",
+  "nodes": [
+    {
+      "declared_status": "open",
+      "freshness": {
+        "observed_at": "2026-07-27",
+        "recheck_by": "2026-10-27",
+        "source_ref": "demo@abc123"
+      },
+      "id": "benchmark",
+      "kind": "operational_item",
+      "node_id": "todo://demo/benchmark",
+      "owner_ref": null,
+      "owner_role": "tech-lead",
+      "provenance": {
+        "commit": null,
+        "line": 4,
+        "path": "TODO.md",
+        "remote_origin": null,
+        "repo": "demo"
+      },
+      "raw": {
+        "blocked_by": "todo://demo/setup",
+        "id": "benchmark",
+        "observed-at": "2026-07-27",
+        "owner": "tech-lead",
+        "recheck-by": "2026-10-27",
+        "source-ref": "demo@abc123",
+        "trigger": "nightly is green"
+      },
+      "repo": "demo",
+      "title": "Run the benchmark",
+      "tombstone": false,
+      "trigger": "nightly is green"
+    },
+    {
+      "declared_status": "open",
+      "freshness": null,
+      "id": "setup",
+      "kind": "operational_item",
+      "node_id": "todo://demo/setup",
+      "owner_ref": null,
+      "owner_role": "tech-lead",
+      "provenance": {
+        "commit": null,
+        "line": 3,
+        "path": "TODO.md",
+        "remote_origin": null,
+        "repo": "demo"
+      },
+      "repo": "demo",
+      "title": "Set up the harness",
+      "tombstone": false,
+      "trigger": null
+    }
+  ],
+  "references": [
+    {
+      "kind": "blocked_by",
+      "legacy_blocker_ref": null,
+      "provenance": {
+        "commit": null,
+        "line": 4,
+        "path": "TODO.md",
+        "remote_origin": null,
+        "repo": "demo"
+      },
+      "raw_ref": "todo://demo/setup",
+      "resolved_target": "todo://demo/setup",
+      "source_node_id": "todo://demo/benchmark"
+    }
+  ],
+  "schema_version": 2
+}
