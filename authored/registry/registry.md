@@ -72,7 +72,9 @@ direction is one-way and read-only, and the producing repo owns the format.
 - `dispatcher → method` — the agents-catalog SSOT `atp-platform/method/agents-catalog.toml` (ADR-ECO-003).
 - `dispatcher → steward` — `.steward/gate_verdicts.jsonl` (payload schema below).
 
-**Shared contracts** (single content-hash each — no drift; authority in producing repo)
+**Shared contracts** (single content-hash each — no drift). Authority lives in the producing repo,
+except where **no repo produces the contract**: then the KB owns it (CLAUDE.md §4) — the last entry
+below is such a case. Either way this map only references authority, it never holds it.
 - `report_benchmark-v1` — owners: Maestro, arbiter, arbiter-mcp, atp-platform, method.
 - `observability-contract/v1` (log-schema) — owners: Maestro, arbiter, arbiter-core; emitter `obs.py`/`obs.rs`. Dispatcher consumes it as log **files** (read-model above), not as a vendored schema copy — so the consumption shows up as `dispatcher → maestro`/`arbiter`, never as an edge to `arbiter-core`.
 - spec-runner schemas (`costs`, `json-result`, `spec-frontmatter`, `status`) — spec-runner + spec-runner-vscode.
