@@ -8,6 +8,17 @@ updated: 2026-08-07
 
 # ADR-ECO-005a: typed operational owner principals
 
+**Status:** Proposed (2026-08-07, Andrei) · **Date:** 2026-08-07
+**Deciders:** Andrei (sole owner of the ecosystem today)
+**Scope:** operational `TODO.md` ownership grammar, canonical plan-fields
+projection, and fleet/digest reporting; governance `owner_role` remains DEC-007
+**Type:** Amendment to
+`authored/decisions/2026-07-27-adr-eco-005-plan-fields-two-plane-model.md`
+(ADR-ECO-005)
+**Related:** `authored/contracts/plan-fields/v1/`,
+`ai-orchestrators-workspace/workspace-manifest.toml`,
+`devtools/check-plan-fields.py`, `robin-runtime/src/robin/plan_state.py`
+
 ## Контекст
 
 ADR-ECO-005 закрепил `@owner` операционного `TODO.md` как DEC-007 role-slug и
