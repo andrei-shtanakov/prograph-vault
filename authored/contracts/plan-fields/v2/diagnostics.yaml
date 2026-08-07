@@ -1,4 +1,4 @@
-# plan-fields v1 — diagnostic code registry.
+# plan-fields v2 — diagnostic code registry.
 #
 # This registry describes POLICY, not per-instance outcome:
 #   * default_severity — the severity a fresh occurrence starts at.
@@ -14,8 +14,8 @@
 # A Diagnostic instance (schema.json) carries the already-COMPUTED severity. Phase 0b owns
 # the history that applies escalation; the contract only states the policy.
 
-contract_version: 1
-version: 1
+contract_version: 2
+version: 2
 
 codes:
   PF-BLOCKER-DANGLING:
