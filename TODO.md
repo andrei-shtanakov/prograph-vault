@@ -57,6 +57,16 @@
       adversarial verifier, ревокация) заблокирован статусом ADR.
       Канон — `authored/decisions/2026-07-18-adr-eco-004-governance-plane.md`.
 
+- [x] Свести карту интеграций с графом prograph (снимок 10) @owner:github:andrei-shtanakov @id:registry-integration-map-refresh
+      Запрос `devtools` (issue #62): `check-graph-registry-drift.py` давал 8 находок против
+      `authored/registry/registry.md` §Integration map. Шесть из семи недокументированных дуг —
+      про `dispatcher`: слой наблюдения дорос до чтения артефактов половины флота, а карта
+      молчала. Плюс два вендоринга схем (`prograph → steward`, `prograph-vault → dispatcher`)
+      и один разрыв: `arbiter-core ↔ dispatcher` жил в карте не как факт, а как побочный
+      эффект прозы — «consumer: dispatcher» в строке obs-контракта склеивал клику с
+      подпакетом, тогда как dispatcher читает логи репо целиком. Ни allowlist-записи, ни
+      declared-edge не понадобилось: все восемь оказались правдой о карте, а не о графе.
+
 - [x] Развести в прозе PF-6 гарантию целостности и наблюдение за дрейфом канона (PR #58) @owner:github:andrei-shtanakov @id:plan-fields-verification-semantics
       Запрос `dispatcher` (issue #57, потребитель — `dispatcher#99` / `dispatcher@e2ba580`):
       байты контракта не разошлись, разошлось **описание того, что доказывает проверка**.

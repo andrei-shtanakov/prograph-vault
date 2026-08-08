@@ -3,7 +3,7 @@ title: Ecosystem project registry + integration map
 type: registry
 status: living
 owner: Andrei
-updated: 2026-07-18
+updated: 2026-08-07
 ---
 
 # Ecosystem registry — AI Orchestrators
@@ -12,7 +12,9 @@ The project registry (COWORK_CONTEXT) and cross-repo integration map. **Human-cu
 machine-detected structure is owned by prograph (`../../derived/graph/`, `../../derived/projects/`) —
 this doc references it, it is not the authority for edges/contracts.
 
-> Snapshot basis: workspace docs refresh 2026-07-18 after the Libretto/Maestro rename pass,
+> Snapshot basis: Integration map reconciled 2026-08-07 against prograph snapshot 10 — the
+> dispatcher read-model and four shared contracts were in the graph but not in this map.
+> Projects table basis: workspace docs refresh 2026-07-18 after the Libretto/Maestro rename pass,
 > github-checker `propose-pr`, dispatcher config-editor slices, and prograph M12 declared edges.
 > Older narrative remains in
 > [`../notes/status/2026-07-08-1228-status.md`](../notes/status/2026-07-08-1228-status.md),
@@ -59,16 +61,33 @@ this doc references it, it is not the authority for edges/contracts.
 - `dispatcher → github-checker` via `snapshot`, `pull`, `open-pr`, and `propose-pr --edit` subprocess contracts. ✅
 - `prograph → prograph-vault/derived` via declared write/export path. ✅
 
-**Shared contracts** (single content-hash each — no drift; authority in producing repo)
+**Dispatcher read-model** — the control plane observes half the fleet by *reading its artefacts*
+(files/DBs, not APIs). Each line is a declared read edge in `dispatcher/pyproject.toml`; the
+direction is one-way and read-only, and the producing repo owns the format.
+- `dispatcher → arbiter` — `logs/`, `arbiter.db`, `config/` (`agents.toml`, `invariants.toml`).
+- `dispatcher → maestro` — `logs/`, `executor.config.yaml`.
+- `dispatcher → spec-runner` — `logs/`, `executor.config.yaml`, `spec/.executor-state.db`.
+- `dispatcher → proctor` — `logs/`, `config/proctor.yaml`, `data/state.db`.
+- `dispatcher → atp-platform` — `logs/`, `atp.config.yaml`, `.atp-dashboard.db`, `_bench_output/`, experiment results.
+- `dispatcher → method` — the agents-catalog SSOT `atp-platform/method/agents-catalog.toml` (ADR-ECO-003).
+- `dispatcher → steward` — `.steward/gate_verdicts.jsonl` (payload schema below).
+
+**Shared contracts** (single content-hash each — no drift). Authority lives in the producing repo,
+except where **no repo produces the contract**: then the KB owns it (CLAUDE.md §4) — the last entry
+below is such a case. Either way this map only references authority, it never holds it.
 - `report_benchmark-v1` — owners: Maestro, arbiter, arbiter-mcp, atp-platform, method.
-- `observability-contract/v1` (log-schema) — owners: Maestro, arbiter, arbiter-core; emitter `obs.py`/`obs.rs`; consumer: dispatcher.
+- `observability-contract/v1` (log-schema) — owners: Maestro, arbiter, arbiter-core; emitter `obs.py`/`obs.rs`. Dispatcher consumes it as log **files** (read-model above), not as a vendored schema copy — so the consumption shows up as `dispatcher → maestro`/`arbiter`, never as an edge to `arbiter-core`.
 - spec-runner schemas (`costs`, `json-result`, `spec-frontmatter`, `status`) — spec-runner + spec-runner-vscode.
 - `agent-eval-case` — method + atp-platform.
+- `steward:contracts/gate-verdicts/v1` — owners: steward, dispatcher. Authority `steward/contracts/gate-verdicts/v1/SCHEMA.json`; dispatcher reads the verdict stream against a pinned copy at `contracts/steward-gate-verdicts/v1/SCHEMA.json`.
+- `conformance-report/v1`, `intended-graph/v1` (prograph schemas) — owners: prograph, steward. Steward vendors pinned copies under `contracts/prograph-*/v1/`; their freshness is guarded by `devtools/check-arch-evidence-freshness.py`.
+- `urn:ecosystem:plan-fields:v1:schema` — owners: prograph-vault; consumer: dispatcher. The KB is the authority (`authored/contracts/plan-fields/v1/`, ADR-ECO-005) because no repo produces it; dispatcher vendors a pinned copy in `packages/plan-fields/`.
 
 **Likely sparse/intent-only graph coverage until the next full prograph export:**
-robin-runtime, robin-toolkit, deployer, libretto, steward, discovery. Some are
+robin-runtime, robin-toolkit, deployer, libretto, discovery. Some are
 methodology/spec/tooling repos by design; file-based edges should now be declared
-in manifests instead of maintained only in this registry.
+in manifests instead of maintained only in this registry. Steward left this list on
+2026-08-07: it now carries contract edges to prograph and dispatcher (above).
 
 ## Known cross-cutting misalignments (pointers, not authority)
 
@@ -78,10 +97,16 @@ These are tracked in the status/roadmap notes; listed here so the registry stays
 2. **`obs.py` vendoring drift** — 3 divergent copies; proctor & atp-platform not on the obs contract. → [logging-audit](../notes/status/2026-07-08-logging-audit.md).
 3. **proctor ↔ Maestro role overlap** — both do DAG orchestration; boundary undecided. → roadmap P2.
 4. **`arbiter-mcp` protocolVersion `"1.1.0"`** is not MCP's date-string format. → roadmap P4.
-5. **steward** has shipped local governance tooling; Maestro/spec-runner delegation edges still need graph/contract evidence.
+5. **steward** has shipped local governance tooling and now has contract evidence towards prograph (vendored schemas) and dispatcher (gate verdicts); the Maestro/spec-runner *delegation* edges it was meant to sit above are still undetected.
 
 ## Maintenance
 
 Refresh on the kb-curator freshness audit (or when repos change). Structure/edges: re-run prograph
 (`derived/graph/`). This file records the human-facing map + status; it defers to derived/ for
 machine facts and to producing repos for contract authority.
+
+The Integration map is machine-checked against the latest prograph snapshot by
+`devtools/check-graph-registry-drift.py` (0 findings as of snapshot 10, 2026-08-07). It parses this
+section as prose, so keep the shapes it reads intact: `A → B` arrows, and `owners:`/`consumer:`
+lists that hold **only** comma-separated project names, terminated by `;` or `.` before any prose —
+a parenthetical inside such a list becomes a phantom project and shows up as false drift.
