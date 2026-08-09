@@ -3,7 +3,7 @@ title: steward — activity journal
 type: journal
 source: kb-save
 project: steward
-updated: 2026-07-15
+updated: 2026-08-09
 ---
 
 # steward — activity journal
@@ -99,3 +99,28 @@ updated: 2026-07-15
   emitter-contract-check.md addendum (finding closed on both sides). GC-COMPILE kept as
   defense-in-depth at the governance layer.
 - Links: steward PR #16; Maestro PRs #46, #47, #50; steward/emitter-contract-check.md.
+
+## 2026-08-09 — V1 live gated run: PASS, authoring seams measured (steward PR #58)
+
+- V1 (steward TODO §4, `@id:v1-live-gated-run`) executed 2026-08-08/09 per the
+  owner-approved design: real task = gate-break-glass-path runbook; profile `lite`
+  both sides; spec-runner pinned at a fresh clean clone of tag v2.21.0 (`13e7667b`),
+  steward @ `c2414f7`, claude CLI 2.1.226 / sonnet. Canonical evidence:
+  steward/docs/evidence/2026-08-08-v1-live-run/ (manifest with pins, steps.md with
+  verbatim commands + exits + per-step classification, emitted gate_verdicts.jsonl).
+- Result: **PASS**. Negative slices: pre-commit gate-check → expected GC-GIT-BRANCH;
+  pre-approval `run --strict` → correct refusal but exit 0 (spec-runner defect,
+  recorded not worked around). Positive: 12/12 tasks (branch→tests→review→merge);
+  the deliverable's verify_break_glass.sh passed against live steward (valid
+  SHA-bound waiver accepted; stale-SHA and critical-tier waivers rejected
+  fail-closed, messages distinguishable). Final gate: 0 err / 3 warn, correlation
+  held (gate_id ⊆ catalog active, owner_roles ⊆ roles.yaml via profile side,
+  identity ↔ bundle, source_commit == HEAD, dirty=false).
+- Measured seams (deliberately not fixed pre-run): stage `tasks` vs lite node
+  `task` (pre-registered hypothesis, confirmed — tasks.md verdicts carry
+  node_id null / owner_roles []); gated approve writes no traces_to; pins no
+  upstream_hashes. New steward TODO item `authoring-seam-ruling` (owner decision).
+- Side discovery: SPEC_META_CONTRACT = 2 shipped in spec-runner v2.21.0 with
+  first-class owner_role — steward §2 re-vendor trigger fired, items unblocked.
+- Links: steward PR #58 (merged `4c41ef4`); steward/docs/evidence/2026-08-08-v1-live-run/;
+  spec-runner inbox issue with run frictions (filed alongside this entry).
