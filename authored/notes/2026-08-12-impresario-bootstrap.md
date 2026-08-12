@@ -1,7 +1,18 @@
 # impresario: product-governance реализация в экосистеме
 
 **Дата:** 2026-08-12
-**Статус:** решение принято, репо создан
+**Статус:** решение принято, репо создан; **к концу дня — полный круг
+закрыт**: M0 (контракты+валидатор) → M1 (rank+QG-4, человек выбрал
+IDEA-101) → M2 (reference runner, честный needs_human → typed resume) →
+QG-5 (Gate A/B решениями человека, PP-101 approved) → стадия 6
+(robin-runtime PR #45: fail-loud на непрорезолвившихся зеркалах,
+канонический пустой `_PLAN_EXEMPT`, постоянное раскрытие exemptions).
+Первая инициатива прошла Idea → approved → работающий код с immutable
+evidence на каждом переходе; 16 находок в
+`impresario/pilot/friction-log.md` (ключевые: №9 double-apply при
+resume, №15 плейсхолдер в evidence, №16 approved-решение на устаревшем
+evidence). Открыто: M4-хвосты (steward входной контракт, dispatcher
+gate_waiting), M3 Kapelle.
 
 ## Решение о границе
 
