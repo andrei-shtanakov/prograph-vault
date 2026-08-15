@@ -12,9 +12,10 @@ updated: 2026-08-15
 ecosystem today)
 
 **Scope:** what the agent fleet is allowed to change, and under which of two operating
-modes; the minimal lifecycle protocol every checkpoint must satisfy — not a fleet-wide
-decision enum, which stays with each gate's owner; who merges in each mode. **Not in scope:** the commit / PR / issue granularity table (a separate rule
-in `authored/rules/`, split off deliberately — see *Non-goals*), the triage engine, the
+modes; the minimal lifecycle protocol every *workflow* must satisfy — not a fleet-wide
+decision enum, which stays with each gate's owner; who merges in each mode.
+**Not in scope:** the commit / PR / issue granularity table (a separate rule in
+`authored/rules/`, split off deliberately — see *Non-goals*), the triage engine, the
 `AgentJob` contract, Dependabot risk policy, and the product-delivery lifecycle stages.
 Each of those is its own change.
 
@@ -146,8 +147,10 @@ The base layer holds in **both** modes and is not negotiable per profile:
 What varies by mode is the **subject** of the merge, not its conditions:
 
 - `ecosystem-development` — a human merges. Unchanged from `git-workflow.md:26`.
-- `product-delivery` — **the agent merges**, with a human checkpoint available as an
-  enableable policy rather than the default.
+- `product-delivery` — **today a human merges.** The target policy may grant `agent_merge`
+  only within explicitly enabled change classes, and only once the conditions below and
+  OQ-2 are resolved; a human checkpoint then remains available as an enableable policy
+  rather than the default.
 
 **This records a target, not a switch that is now on.** ADR-ECO-004 D7 already decided
 the shape of agent merging: it is a category shift, it requires a distinct `agent_merge`
@@ -193,19 +196,28 @@ records (`docs/semantics.md:123` — «Исправление/перекрыти
 blocking assumptions in a ConceptDraft (`:140`). Treating either as a ninth decision
 value would have contradicted the record model they belong to.
 
-**The minimal lifecycle protocol** — the only thing this ADR requires of a gate — is that
-its enum can express all four of these classes, and that each outcome maps to exactly one:
+**The minimal lifecycle protocol binds the workflow, not the individual gate.** The
+checkpoints of one workflow must, *taken together*, express all four classes below; each
+gate declares the subset that applies to it; and every outcome maps to exactly one class.
 
-| Class | Meaning | impresario's instances |
+| Class | Meaning | impresario's outcomes |
 |---|---|---|
-| `proceed` | continue on the current path | `approve`, `select` |
-| `hold` | stop without changing direction; a paired outcome resumes | `hold` → `resume`, `park`, `defer` |
+| `proceed` | continue on the current path | `approve`, `select`, `resume` |
+| `hold` | stop without changing direction | `hold`, `park`, `defer` |
 | `return` | go back to a named earlier stage with required changes | `recycle` (+ `return_to`, `required_changes[]`) |
 | `terminate` | end this initiative | `kill`, `reject` |
 
-A gate that cannot express `return` is the failure this protocol exists to catch: without
-it, "wait" and "go back" collapse into one state, and the recycle rate per stage — the one
-number revealing that an upstream stage is broken — becomes uncountable.
+Binding it per-gate would be the wrong altitude, and impresario falsifies that reading
+immediately: QG-4's outcomes are exactly `select` / `defer` / `park` / `reject`
+(`docs/semantics.md:84`, enforced by a per-`gate_id` conditional at
+`contracts/gate-decision/v1/schema.json:85`). A ranking gate has nothing to return *to*.
+Demanding `return` of it would mint a decision value for the protocol's sake — the exact
+fork this decision exists to prevent. `return` is supplied elsewhere in the same
+lifecycle, by the ProductProposal gates' `recycle`.
+
+The defect the protocol catches is therefore a **lifecycle** with no `return` anywhere in
+it: then "wait" and "go back" collapse into one state, and the recycle rate per stage —
+the one number revealing that an upstream stage is broken — becomes uncountable.
 
 **Correction to an earlier draft of this ADR.** A prior revision listed eight values as a
 single enum and justified preferring `kill` over `reject` on the claim that `reject`
@@ -329,7 +341,8 @@ claims, in the order they should be tested:
    outside the workspace directory — must be expressible in `write_scope`. Today's rule
    cannot express it at all, which is the failure that motivated this ADR.
 3. **No second enum is created.** Every one of impresario's nine outcomes must map to
-   exactly one of D4's four protocol classes, and impresario must need no new decision
-   value, status, or record type to satisfy the protocol. If it does, the protocol was
-   designed against the wrong model — and the same test applies to the next gate owner
-   that adopts it.
+   exactly one of D4's four classes, and its *lifecycle as a whole* — not each gate
+   separately — must cover all four without impresario needing a new decision value,
+   status, or record type. QG-4 legitimately covering only three is the case that makes
+   the altitude of this check load-bearing: applied per-gate it would fail against
+   correct canon. The same test applies to the next gate owner that adopts the protocol.
