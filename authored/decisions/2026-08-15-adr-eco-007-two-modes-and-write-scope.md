@@ -131,8 +131,8 @@ a flag day; see OQ-3.
 **Naming.** A repo in `ai-orchestrators-workspace/workspace-manifest.toml` is named
 by its canonical manifest key (the identity rule of ADR-ECO-005, restated in
 ADR-ECO-006 D7). A repo outside the manifest — `kapelle`, any customer repo — is named
-by its remote `owner/name`. A `write_scope` entry is **never a filesystem path**: a path is precisely the topological
-coupling this ADR removes.
+by its remote `owner/name`. A `write_scope` entry is **never a filesystem path**: a
+path is precisely the topological coupling this ADR removes.
 
 ### D3 — Merge authority is a mode parameter; the base layer is evidence, not identity
 
