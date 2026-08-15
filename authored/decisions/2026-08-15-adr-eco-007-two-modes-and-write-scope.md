@@ -12,8 +12,8 @@ updated: 2026-08-15
 ecosystem today)
 
 **Scope:** what the agent fleet is allowed to change, and under which of two operating
-modes; the shared vocabulary every checkpoint decision is expressed in; who merges in
-each mode. **Not in scope:** the commit / PR / issue granularity table (a separate rule
+modes; the minimal lifecycle protocol every checkpoint must satisfy — not a fleet-wide
+decision enum, which stays with each gate's owner; who merges in each mode. **Not in scope:** the commit / PR / issue granularity table (a separate rule
 in `authored/rules/`, split off deliberately — see *Non-goals*), the triage engine, the
 `AgentJob` contract, Dependabot risk policy, and the product-delivery lifecycle stages.
 Each of those is its own change.
@@ -23,8 +23,10 @@ its invariants I1–I4; its *Deferred* list is what gates D3 below),
 [[2026-07-28-adr-eco-006-cross-repo-issue-inbox]] (D5 — the sanctioned cross-repo
 request channel that D2 here generalises),
 [[2026-07-27-adr-eco-005-plan-fields-two-plane-model]] (canonical repo identity),
-[[repo-boundaries]], `authored/rules/git-workflow.md`, `impresario/docs/semantics.md`
-(the FSM D4 aligns with), `steward/TODO.md:235` (the open `agent_merge` item).
+[[repo-boundaries]], `authored/rules/git-workflow.md`,
+`impresario/contracts/gate-decision/v1/schema.json` and `impresario/docs/semantics.md`
+(the decision enum and record model D4 defers to), `steward/TODO.md:235` (the open
+`agent_merge` item).
 
 ---
 
@@ -40,28 +42,30 @@ repository is the current run authorised to change.**
 - `git-workflow.md:37-52` — the exception list enumerates repos **by name**
   (`spec-runner-tasks`, the root repo, `sdd-framework`, folders without `.git`).
 
-Topology has already failed twice, and both failures are recorded rather than
-hypothetical:
+There is **one observed failure and one structural contradiction** — the distinction
+matters, because only the first is evidence:
 
-1. **It lost an active repository.** `kapelle` is a live product repo with its own
-   remote, checked out at `~/labs/kapelle` — *outside* the workspace directory.
-   `COWORK_CONTEXT.md:106` states it plainly: «Лежит вне этой папки… поэтому и выпадал
-   из реестра». A rule keyed on "under `all_ai_orchestrators/`" has nothing to say about
-   it in either direction: it neither protects it nor authorises work in it.
+1. **Observed: topology lost an active repository.** `kapelle` is a live product repo
+   with its own remote, checked out at `~/labs/kapelle` — *outside* the workspace
+   directory. `COWORK_CONTEXT.md:106` states it plainly: «Лежит вне этой папки… поэтому
+   и выпадал из реестра». A rule keyed on "under `all_ai_orchestrators/`" has nothing to
+   say about it in either direction: it neither protects it nor authorises work in it.
 
-2. **The same fleet, pointed at a product, reads its own rule as a prohibition.** When
-   agents are launched to build an application, that application's repository is neither
-   "the repo the agent runs in" in the ecosystem sense, nor a sibling to be left alone —
-   it is the *target of the work*. Read literally, the rule forbids the task the run
-   exists to perform. This is the conflation this ADR is written to end.
+2. **Structural: the same fleet, pointed at a product, reads its own rule as a
+   prohibition.** When agents are launched to build an application, that application's
+   repository is neither "the repo the agent runs in" in the ecosystem sense, nor a
+   sibling to be left alone — it is the *target of the work*. Read literally, the rule
+   forbids the task the run exists to perform. No run has yet failed this way, because
+   product-delivery has not been operated under a declared mode; the contradiction is in
+   the rules as written, not yet in a recorded incident.
 
 ```
 today                                    the missing predicate
 ─────                                    ─────────────────────
 "is it under all_ai_orchestrators/?"     "is it in this run's write_scope?"
    ├─ yes, and it's cwd  → write            ├─ yes → write
-   ├─ yes, sibling       → read-only        └─ no  → read-only, request via inbox issue
-   └─ no  (kapelle, …)   → undefined
+   ├─ yes, sibling       → read-only        └─ no  → read-only, request via the
+   └─ no  (kapelle, …)   → undefined                 channel declared for it
 ```
 
 The gap is not strictness. It is that **authority is a property of the run, while the
@@ -79,7 +83,8 @@ rules encode the filesystem.**
 | Where change is authorised | the target product/research repo(s) | the repo that owns the capability being changed |
 | What an **issue** means | scope change, defect, follow-up, return to an earlier stage | a request to a neighbouring repo's owner; or a backlog item not yet ready to implement |
 | What a **PR** means | an artifact or increment of a stage of the delivery plan | the implementation of an accepted change inside the current repo |
-| Who merges | the agent (see D3) | a human (unchanged) |
+| Who merges **today** | a human — agent merge is **not** enabled (D3) | a human |
+| Who merges **as target** | the agent, within explicitly enabled change classes, once D3's gate opens | a human (unchanged) |
 
 The mode is **declared by the run**, never inferred from the working directory. An
 undeclared run is `ecosystem-development`: that is the only mode in operation today, and
@@ -93,12 +98,25 @@ it. Anything that would have to be built twice is a sign the split is drawn wron
 
 > An agent may modify only the repositories explicitly listed in the current workflow's
 > `write_scope`. Every other repository is read-only; a request to change one is
-> delivered as an `inbox` issue in the owning repo.
+> delivered to its owner through the channel declared for that target.
 
 ADR-ECO-006 D5 already established that filing an issue in another repo is not a breach
-of boundaries but the *sanctioned* form of "stop, do not edit, record a handoff". D2
-generalises it: the channel is the same whether the other repo is an ecosystem sibling,
-a repo outside the workspace directory, or a product repo owned by someone else.
+of boundaries but the *sanctioned* form of "stop, do not edit, record a handoff". What
+D2 generalises is the **predicate** (read-only unless in scope), **not the transport**:
+
+- **target is an ecosystem repo** → the ADR-ECO-006 `inbox` channel, unchanged: the
+  `inbox` label, the `slug:`/`from:` body contract, acceptance derived against the
+  target's `TODO.md`.
+- **target is external** (a customer repo, or any repo outside the fleet) → a **handoff
+  adapter declared by the workflow**. A GitHub issue is the preferred default where the
+  target supports it, but nothing here assumes it: an external repo may have no `inbox`
+  label, no distributed skill or `CLAUDE.md` rule, no `TODO.md` to derive acceptance
+  from, and may not grant issue-creation rights at all.
+
+Stating this as one channel would have quietly extended ADR-ECO-006's fleet-scoped
+contract to repos where none of its machinery exists — and would have contradicted this
+ADR's own non-goal of leaving inbox semantics untouched. Extending ADR-ECO-006 beyond
+the fleet, if it is ever wanted, is its own decision.
 
 **`repo-boundaries` becomes a derivation rather than an axiom.** In
 `ecosystem-development` mode, `write_scope` = { the repo being developed } — which is
@@ -148,57 +166,86 @@ I1–I4 alone**; it needs an additional sufficiency argument. Candidate, recorde
 rather than decided here: sufficiency shifts from *green CI* to *green CI plus
 demonstrated conformance to an approved upper-level spec*.
 
-### D4 — One decision vocabulary for every checkpoint
+### D4 — A minimal lifecycle protocol over three orthogonal axes; gate owners keep their own enums
 
-Every human or policy checkpoint — in either mode, at any stage — emits exactly one of:
+**This ADR does not define a decision enum.** Checkpoint outcomes are already owned, and
+the owner's enum is richer than a governance-level list would be:
+`impresario/contracts/gate-decision/v1/schema.json:33` enumerates nine —
+`approve, recycle, hold, kill, resume, select, defer, park, reject` — where `select` and
+`defer` serve backlog ranking (`qg4_backlog`) and have no meaning at a delivery gate.
+Declaring a single fleet-wide enum would either drop those or force every gate to carry
+outcomes that are meaningless for it.
 
-| Decision | Meaning | Changes direction | Needs authority | Recorded as | Origin |
-|---|---|---|---|---|---|
-| `approve` | proceed as proposed | no | yes | gate decision | impresario |
-| `hold` | stop, direction unchanged | no | yes | gate decision | impresario |
-| `resume` | leave hold and continue at a named stage | no | yes | gate decision + `return_to` | impresario |
-| `recycle` | return to a named earlier stage with required changes | **yes** | yes | gate decision + `return_to` | impresario |
-| `kill` | terminate this initiative | **yes** | yes | gate decision | impresario |
-| `amend` | change an already-approved scope or artifact | **yes** | yes | new version of the artifact | new |
-| `supersede` | replace an approved artifact with a successor, keeping the original readable | **yes** | yes | successor + back-reference | new |
-| `waiver` | proceed despite a known, named violation | no | yes, higher | audit record with reason and expiry | new |
+What this ADR fixes instead is that three different things were being conflated into one
+list. They are orthogonal and have different carriers:
 
-**Five of the eight are impresario's existing outcomes, adopted under its own names.**
-`impresario/docs/semantics.md:109` already defines `recycle` / `hold` / `kill` /
-`resume` as *outcomes of decisions, not statuses*, with `recycle` and `resume` carrying
-`return_to` — exactly the shape needed here. This vocabulary therefore **extends that
-set rather than forking it**, and the naming follows: `kill`, not `reject`, because a
-governance vocabulary that renames an existing outcome creates precisely the second,
-parallel state ontology it exists to prevent. The three new entries name transitions
-impresario has no reason to model, since they concern approved artifacts downstream of
-its gates.
+| Axis | What it expresses | Carrier | Owner |
+|---|---|---|---|
+| **decision** | the typed outcome of a checkpoint | that gate's own enum | the gate's owner |
+| **artifact transition** | what happens to an already-approved artifact | `amend` (new version, same identity) · `supersede` (successor record + back-reference) | the artifact's contract |
+| **exception evidence** | proceeding despite a known, named violation | a waiver record with reason, authority and expiry | governance |
 
-Why eight rather than "pause / continue": a single pause conflates *wait* with *go
-back*, and a system that cannot tell them apart cannot count recycles — and the recycle
-rate per stage is the one number that reveals whether an upstream stage is broken.
-`waiver` is separated from `approve` for the same reason: a violation that is knowingly
-accepted must remain countable.
+The last two are **not** alternatives to `approve` / `hold` / `recycle`; they can
+accompany a decision or occur without one. Both already have carriers in impresario:
+`GateDecision.supersedes` is an append-only supersession relation between immutable
+records (`docs/semantics.md:123` — «Исправление/перекрытие — только **новой** записью со
+ссылкой `supersedes`… старая запись не правится»), and `human_waiver` already closes
+blocking assumptions in a ConceptDraft (`:140`). Treating either as a ninth decision
+value would have contradicted the record model they belong to.
+
+**The minimal lifecycle protocol** — the only thing this ADR requires of a gate — is that
+its enum can express all four of these classes, and that each outcome maps to exactly one:
+
+| Class | Meaning | impresario's instances |
+|---|---|---|
+| `proceed` | continue on the current path | `approve`, `select` |
+| `hold` | stop without changing direction; a paired outcome resumes | `hold` → `resume`, `park`, `defer` |
+| `return` | go back to a named earlier stage with required changes | `recycle` (+ `return_to`, `required_changes[]`) |
+| `terminate` | end this initiative | `kill`, `reject` |
+
+A gate that cannot express `return` is the failure this protocol exists to catch: without
+it, "wait" and "go back" collapse into one state, and the recycle rate per stage — the one
+number revealing that an upstream stage is broken — becomes uncountable.
+
+**Correction to an earlier draft of this ADR.** A prior revision listed eight values as a
+single enum and justified preferring `kill` over `reject` on the claim that `reject`
+would rename an existing outcome. That claim was false: the schema carries `kill` **and**
+`reject` as distinct values. The record is corrected here rather than quietly rewritten,
+because the earlier text rested on a fact that does not hold.
 
 ### D5 — Enforcement is a ladder, and this ADR is layer 1
 
 `repo-boundaries.md:24` is already honest about this and the honesty is preserved: rule
-text lowers risk, it does not enforce. The levers, in increasing strength:
+text lowers risk, it does not enforce.
 
-1. the run's working directory;
-2. the declared `write_scope`, carried in the run record and readable after the fact;
-3. a CI gate-check that fails a PR touching paths outside the declared scope;
-4. `.claude/settings.local.json` deny rules for writes outside the scope.
+**The decisive constraint is that repo CI cannot enforce a cross-repo scope.** A PR in
+one GitHub repository contains only that repository's changes; its CI has no way to
+observe that the same run also wrote to a sibling. ADR-ECO-004's Batch-1 boundary gate is
+correspondingly scoped — *«PR touches only its own repo»* (line 181), a path check
+**inside one checkout**. Cross-repo `write_scope` is therefore enforced by the control
+plane and by correlating the run's GitHub side effects, never by a repo's own CI:
 
-`write_scope` enters ADR-ECO-004 D3's typed maturity ladder at `declared`. It must not
-claim `ci-blocking` before the check in (3) exists — a rule asserting an enforcement
-level it does not have is the specific defect that ladder was introduced to make
-visible.
+| # | Lever | Enforces | Exists today |
+|---|---|---|---|
+| 1 | rule prose | nothing; it informs | yes |
+| 2 | `write_scope` declared in the run record | auditability after the fact | no |
+| 3 | runtime write/tool sandbox (e.g. `.claude/settings.local.json` deny) | writes on this machine | partially |
+| 4 | credential / repository allowlist for the run's token | which repos are reachable at all | no |
+| 5 | reconciler: PRs and commits attributable to the run ⊆ `write_scope` | the cross-repo predicate itself | no |
+| 6 | per-repo CI: protected paths, evidence receipt | the within-repo half | yes (ADR-ECO-004 Batch 1) |
+
+Layers 3–5 belong to the executor and control plane; layer 6 is the only one a repository
+can enforce about itself. `write_scope` enters ADR-ECO-004 D3's typed maturity ladder at
+`declared`, and must not claim `ci-blocking` — no CI check for it exists, and for the
+cross-repo half none can. A rule asserting an enforcement level it does not have is the
+specific defect that ladder was introduced to make visible.
 
 ### D6 — Ownership
 
 | Artifact | Semantic owner | Physical home |
 |---|---|---|
-| This decision; the D4 vocabulary | governance | `prograph-vault/authored/decisions/` |
+| This decision; the D4 lifecycle protocol | governance | `prograph-vault/authored/decisions/` |
+| Checkpoint decision enums | **the owner of each gate** (impresario for its gates) | that repo's contracts |
 | commit / PR / issue granularity table | governance | `prograph-vault/authored/rules/` (separate change) |
 | Machine-readable policy profiles | **open — see OQ-1** | open |
 | `write_scope` of a run | the orchestrator that launched the run | the run record |
@@ -237,11 +284,21 @@ visible.
   copies. Not decided here because it determines a contract surface that deserves its
   own review.
 - **OQ-2 — what makes agent merge safe for spec-authored feature code**, the class I1
-  excludes (see D3). Must be answered before product-delivery merge authority is
-  enabled, not after.
+  excludes (see D3). Sufficiency evidence is only one of four parts the answer must
+  cover; I3 is explicit that an automated verifier buys provenance and revocability, not
+  a second independent judgment, so an evidence rule alone cannot carry the argument. The
+  answer must also fix **the admissible change classes**, **the blast radius** of a wrong
+  merge in each, and **the revocation loop** that watches agent merges (I4). Must be
+  answered before product-delivery merge authority is enabled, not after.
 - **OQ-3 — whether an undeclared run should eventually fail closed** rather than
   defaulting to the cwd repo. Defaulting is chosen now to avoid a flag day; revisit once
   `write_scope` is actually carried by the orchestrators.
+- **OQ-4 — how a `write_scope` entry resolves to a verified checkout.** D2 deliberately
+  stores logical identity rather than a path, which leaves a resolver to be specified,
+  and it must fail closed rather than guess. Undefined today: a repo with no remote;
+  several checkouts or worktrees of the same repo on one machine; a remote renamed since
+  the scope was declared; an `origin` that does not match the declared `owner/name`. Each
+  of these must resolve to a refusal with a stated reason, never to a silent pick.
 
 ## Consequences
 
@@ -253,9 +310,12 @@ visible.
   `COWORK_CONTEXT.md` although it owns the `Idea → RankedBacklog → ProductProposal →
   human gates → approved` path — half of the product-delivery contour. Verified by grep
   on 2026-08-15. Reconciling the registry is its own change.
-- **Cost of this ADR alone: zero code and zero behaviour change.** It renames the
-  predicate and fixes the vocabulary; every mechanism it mentions already exists or is
-  already tracked as an open item elsewhere.
+- **Cost of this ADR alone: zero implementation and zero runtime behaviour change.**
+  Every mechanism it mentions already exists or is already tracked as an open item
+  elsewhere. **Governance behaviour does change**, and that is the point: once accepted,
+  `repo-boundaries` and `git-workflow` are to be read through D1/D2 — the fence is the
+  declared `write_scope`, and their topological wording is a legacy expression of it
+  until the amending PRs land.
 
 ## Verification — planned, not executed
 
@@ -268,7 +328,8 @@ claims, in the order they should be tested:
 2. **Topology-independence is real.** A product-delivery run against `kapelle` — a repo
    outside the workspace directory — must be expressible in `write_scope`. Today's rule
    cannot express it at all, which is the failure that motivated this ADR.
-3. **The vocabulary does not fork.** D4's five adopted decisions must round-trip through
-   impresario's existing FSM without introducing a new *status* there, and the three new
-   ones must be expressible without one. A required new status means the vocabulary was
-   designed against the wrong model.
+3. **No second enum is created.** Every one of impresario's nine outcomes must map to
+   exactly one of D4's four protocol classes, and impresario must need no new decision
+   value, status, or record type to satisfy the protocol. If it does, the protocol was
+   designed against the wrong model — and the same test applies to the next gate owner
+   that adopts it.
