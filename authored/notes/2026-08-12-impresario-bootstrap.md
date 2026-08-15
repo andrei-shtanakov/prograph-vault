@@ -1,3 +1,11 @@
+---
+title: impresario bootstrap — граница методология/реализация, полный круг Idea→approved
+type: note
+status: living
+owner: andrei-shtanakov
+updated: 2026-08-12
+---
+
 # impresario: product-governance реализация в экосистеме
 
 **Дата:** 2026-08-12
