@@ -83,8 +83,8 @@ per file, and a PR carrying a whole stage of unrelated work.
 
 **Branch naming.**
 
-- *ecosystem-development* — `<type>/<slug>` per `git-workflow.md` (`feat/`, `fix/`,
-  `docs/`, `chore/`, `rules/`, `notes/`).
+- *ecosystem-development* — `<kind>/<slug>`, owned by `git-workflow.md`. Not restated
+  here: two lists of branch kinds is one more than can stay in agreement.
 - *product-delivery* — the PR corresponds to a **stage of the delivery plan**, and the
   branch carries a stable identifier rather than prose alone:
 
