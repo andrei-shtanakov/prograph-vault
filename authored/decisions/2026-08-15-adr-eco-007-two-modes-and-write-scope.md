@@ -37,19 +37,20 @@ Both governing rules draw their fence by **topology** — where a directory sits
 disk — and neither names the thing that actually decides the question: **which
 repository is the current run authorised to change.**
 
-- `repo-boundaries.md:14` — «Правь только тот репо, в котором запущен (его git-корень).
-  Все соседние репо под `all_ai_orchestrators/` — READ-ONLY reference.» The fence is
-  directory adjacency.
-- `git-workflow.md:37-52` — the exception list enumerates repos **by name**
-  (`spec-runner-tasks`, the root repo, `sdd-framework`, folders without `.git`).
+- `authored/rules/repo-boundaries.md:14` — «Правь только тот репо, в котором запущен
+  (его git-корень). Все соседние репо под `all_ai_orchestrators/` — READ-ONLY
+  reference.» The fence is directory adjacency.
+- `authored/rules/git-workflow.md:37-52` — the exception list enumerates repos **by
+  name** (`spec-runner-tasks`, the root repo, `sdd-framework`, folders without `.git`).
 
 There is **one observed failure and one structural contradiction** — the distinction
 matters, because only the first is evidence:
 
 1. **Observed: topology lost an active repository.** `kapelle` is a live product repo
    with its own remote, checked out at `~/labs/kapelle` — *outside* the workspace
-   directory. `COWORK_CONTEXT.md:106` states it plainly: «Лежит вне этой папки… поэтому
-   и выпадал из реестра». A rule keyed on "under `all_ai_orchestrators/`" has nothing to
+   directory. `all_ai_orchestrators/COWORK_CONTEXT.md:106` (the workspace root repo,
+   remote `andrei-shtanakov/atp`) states it plainly: «Лежит вне этой папки… поэтому и
+   выпадал из реестра». A rule keyed on "under `all_ai_orchestrators/`" has nothing to
    say about it in either direction: it neither protects it nor authorises work in it.
 
 2. **Structural: the same fleet, pointed at a product, reads its own rule as a
@@ -127,10 +128,10 @@ byte-identical in effect to today's rule. Nothing about current sessions changes
 de-facto behaviour. This is chosen over failing closed so the decision can land without
 a flag day; see OQ-3.
 
-**Naming.** A repo in `workspace-manifest.toml` is named by its canonical manifest key
-(the identity rule of ADR-ECO-005, restated in ADR-ECO-006 D7). A repo outside the
-manifest — `kapelle`, any customer repo — is named by its remote `owner/name`. A
-`write_scope` entry is **never a filesystem path**: a path is precisely the topological
+**Naming.** A repo in `ai-orchestrators-workspace/workspace-manifest.toml` is named
+by its canonical manifest key (the identity rule of ADR-ECO-005, restated in
+ADR-ECO-006 D7). A repo outside the manifest — `kapelle`, any customer repo — is named
+by its remote `owner/name`. A `write_scope` entry is **never a filesystem path**: a path is precisely the topological
 coupling this ADR removes.
 
 ### D3 — Merge authority is a mode parameter; the base layer is evidence, not identity
@@ -146,7 +147,8 @@ The base layer holds in **both** modes and is not negotiable per profile:
 
 What varies by mode is the **subject** of the merge, not its conditions:
 
-- `ecosystem-development` — a human merges. Unchanged from `git-workflow.md:26`.
+- `ecosystem-development` — a human merges. Unchanged from
+  `authored/rules/git-workflow.md:26`.
 - `product-delivery` — **today a human merges.** The target policy may grant `agent_merge`
   only within explicitly enabled change classes, and only once the conditions below and
   OQ-2 are resolved; a human checkpoint then remains available as an enableable policy
@@ -169,7 +171,7 @@ I1–I4 alone**; it needs an additional sufficiency argument. Candidate, recorde
 rather than decided here: sufficiency shifts from *green CI* to *green CI plus
 demonstrated conformance to an approved upper-level spec*.
 
-### D4 — A minimal lifecycle protocol over three orthogonal axes; gate owners keep their own enums
+### D4 — A minimal lifecycle protocol over three orthogonal axes
 
 **This ADR does not define a decision enum.** Checkpoint outcomes are already owned, and
 the owner's enum is richer than a governance-level list would be:
@@ -191,9 +193,10 @@ list. They are orthogonal and have different carriers:
 The last two are **not** alternatives to `approve` / `hold` / `recycle`; they can
 accompany a decision or occur without one. Both already have carriers in impresario:
 `GateDecision.supersedes` is an append-only supersession relation between immutable
-records (`docs/semantics.md:123` — «Исправление/перекрытие — только **новой** записью со
-ссылкой `supersedes`… старая запись не правится»), and `human_waiver` already closes
-blocking assumptions in a ConceptDraft (`:140`). Treating either as a ninth decision
+records (`impresario/docs/semantics.md:123` — «Исправление/перекрытие — только
+**новой** записью со ссылкой `supersedes`… старая запись не правится»), and
+`human_waiver` already closes blocking assumptions in a ConceptDraft
+(`impresario/docs/semantics.md:140`). Treating either as a ninth decision
 value would have contradicted the record model they belong to.
 
 **The minimal lifecycle protocol binds the workflow, not the individual gate.** The
@@ -209,9 +212,10 @@ gate declares the subset that applies to it; and every outcome maps to exactly o
 
 Binding it per-gate would be the wrong altitude, and impresario falsifies that reading
 immediately: QG-4's outcomes are exactly `select` / `defer` / `park` / `reject`
-(`docs/semantics.md:84`, enforced by a per-`gate_id` conditional at
-`contracts/gate-decision/v1/schema.json:85`). A ranking gate has nothing to return *to*.
-Demanding `return` of it would mint a decision value for the protocol's sake — the exact
+(`impresario/docs/semantics.md:84`, enforced by a per-`gate_id` conditional at
+`impresario/contracts/gate-decision/v1/schema.json:85`). A ranking gate has nothing
+to return *to*. Demanding `return` of it would mint a decision value for the
+protocol's sake — the exact
 fork this decision exists to prevent. `return` is supplied elsewhere in the same
 lifecycle, by the ProductProposal gates' `recycle`.
 
@@ -227,8 +231,8 @@ because the earlier text rested on a fact that does not hold.
 
 ### D5 — Enforcement is a ladder, and this ADR is layer 1
 
-`repo-boundaries.md:24` is already honest about this and the honesty is preserved: rule
-text lowers risk, it does not enforce.
+`authored/rules/repo-boundaries.md:24` is already honest about this and the honesty
+is preserved: rule text lowers risk, it does not enforce.
 
 **The decisive constraint is that repo CI cannot enforce a cross-repo scope.** A PR in
 one GitHub repository contains only that repository's changes; its CI has no way to
@@ -319,8 +323,9 @@ specific defect that ladder was introduced to make visible.
 - `git-workflow.md`'s per-repo exception list survives intact: those exceptions are facts
   about *remotes* (no remote; backup mirror; external upstream), not about topology.
 - **Surfaced, not fixed:** `impresario` is absent from the project registry in
-  `COWORK_CONTEXT.md` although it owns the `Idea → RankedBacklog → ProductProposal →
-  human gates → approved` path — half of the product-delivery contour. Verified by grep
+  `all_ai_orchestrators/COWORK_CONTEXT.md` although it owns the
+  `Idea → RankedBacklog → ProductProposal → human gates → approved` path — half of
+  the product-delivery contour. Verified by grep
   on 2026-08-15. Reconciling the registry is its own change.
 - **Cost of this ADR alone: zero implementation and zero runtime behaviour change.**
   Every mechanism it mentions already exists or is already tracked as an open item
