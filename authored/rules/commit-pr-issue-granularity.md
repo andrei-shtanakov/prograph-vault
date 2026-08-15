@@ -14,8 +14,8 @@ size**. Both operating modes of [[2026-08-15-adr-eco-007-two-modes-and-write-sco
 share the criteria; per-mode differences are marked *product-delivery* below.
 
 Out of scope, deliberately: what to *do* with things other people opened — inbound
-triage, Dependabot classes, Copilot findings, stale PRs. That is a separate rule about
-the inbound direction; this one covers only what you create.
+triage, Dependabot classes, Copilot findings, stale PRs. That is `inbound-triage.md`;
+this one covers only what you create.
 
 ---
 
