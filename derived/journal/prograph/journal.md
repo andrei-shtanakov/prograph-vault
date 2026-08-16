@@ -20,4 +20,4 @@ updated: 2026-08-16
   (st_dev, st_ino) identity check in _cleanup_stale_project_mds; regression test
   test_export_md_survives_case_only_project_rename.
 - Links: prograph/export/__init__.py, tests/integration/test_cli_export_md.py, TODO.md;
-  PR https://github.com/andrei-shtanakov/prograph/pull/32 (awaiting review, closes #30).
+  PR https://github.com/andrei-shtanakov/prograph/pull/32 (merged 2026-08-16, closed #30).
