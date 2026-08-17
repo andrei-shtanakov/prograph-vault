@@ -64,9 +64,14 @@ finding is the payload, not the noise.
   Tracked as devtools inbox `blocker-issue-state-resolution`. Until it lands, an
   inbox-issue wait needs the canonical `todo://` edge on the receiver's side
   when one exists — or an honest manual check when it does not.
-- The signal currently surfaces in a red scheduled run; the daily human read is
-  Robin's digest. An "unblocked since yesterday" digest section is tracked as
-  robin-runtime inbox `digest-unblocked-section`.
+- ~~The signal currently surfaces in a red scheduled run; the daily human read is
+  Robin's digest.~~ Closed 2026-08-17: Robin's digest now carries an "unblocked
+  since the previous digest" section (robin-runtime#49, `digest-unblocked-section`) —
+  delivered blockers whose item still awaits action, with an explicit UNKNOWN when
+  the comparison baseline is missing. Deliberately narrow: a wait already reacted
+  to raises no alarm, and issue-form blockers stay partially covered until
+  `blocker-issue-state-resolution` (the gap above). The red scheduled run remains
+  the machine evidence; the digest is the human read of the same verdict.
 
 ## 5. Adoption
 
