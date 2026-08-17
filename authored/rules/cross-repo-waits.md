@@ -59,11 +59,14 @@ finding is the payload, not the noise.
 
 ## 4. Known gaps — named, not hidden
 
-- Blockers in the transitional `<repo>#<number>` form are matched textually;
-  their *state* (issue closed = delivered) is not yet resolved by the sensor.
-  Tracked as devtools inbox `blocker-issue-state-resolution`. Until it lands, an
-  inbox-issue wait needs the canonical `todo://` edge on the receiver's side
-  when one exists — or an honest manual check when it does not.
+- ~~Blockers in the transitional `<repo>#<number>` form are matched textually; their *state* (issue closed = delivered) is not yet resolved by the sensor.~~
+  Closed 2026-08-17: the sensor now resolves issue state (devtools#40 →
+  PR #41, `blocker-issue-state-resolution`) — a closed inbox issue behind an
+  open item raises the same stale-blocker finding as a delivered `todo://`
+  edge, and unresolvable state (API unavailable) reports as explicitly
+  unknown, never as clean. The transitional form is thereby a full citizen of
+  the return leg; the canonical `todo://` edge remains preferred where the
+  receiver keeps a todo id.
 - ~~The signal currently surfaces only in a red scheduled run.~~
   Closed 2026-08-17: Robin's digest now carries an "unblocked
   since the previous digest" section (robin-runtime#49, `digest-unblocked-section`) —
