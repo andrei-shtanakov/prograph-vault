@@ -3,7 +3,7 @@ title: Git workflow (PR-only, Copilot-review, human-merge)
 type: rule
 status: living
 owner: Andrei
-updated: 2026-07-26
+updated: 2026-08-17
 ---
 
 # Git workflow
@@ -28,7 +28,12 @@ updated: 2026-07-26
    `roadmap`/`roadmaps`, `contract`/`contracts`. Берите существующую форму, а не
    заводите её вариант.
 2. Push ветки → открыть PR (`gh pr create`). В описании: что, зачем, какие контракты затронуты.
+   Локальный мерж ветки в дефолтную в обход PR — та же ошибка, что прямой коммит.
 3. **После открытия PR — ревью GitHub Copilot:**
+   - ревью не всегда запрашивается само — если его нет на PR, запросить явно:
+     `gh api -X POST repos/<owner>/<repo>/pulls/<n>/requested_reviewers -f 'reviewers[]=copilot-pull-request-reviewer[bot]'`
+     (замер 2026-08-16/17: `gh pr edit --add-reviewer` молча не срабатывает, а снапшот
+     `reviewRequests` первые ~2 минуты пуст и выглядит как отказ — подождать и перечитать);
    - забрать замечания (`gh pr view <n> --comments`, при необходимости `gh api
      repos/<owner>/<repo>/pulls/<n>/comments`);
    - каждое **проанализировать**: валидное → фикс-коммит в ту же ветку; невалидное/
@@ -37,8 +42,13 @@ updated: 2026-07-26
      обоснованием).
 4. **Не мержить.** PR передаётся человеку — мерж делает пользователь.
 5. **После мержа пользователем:** `git switch <default> && git pull --ff-only`; удалить
-   влитую локальную ветку (`git branch -d <branch>`); `git fetch --prune`; убрать прочие
-   влитые ветки.
+   влитую ветку в **обеих половинах** — локально и на origin: `git branch -d <branch>`
+   (после **squash-мержа** `-d` откажется как «not fully merged» и `--merged` ветку не
+   покажет — сверить, что `git diff <default> <branch>` пуст, и удалить `-D`; предикат
+   «remote-ветка ancestor дефолтной» для удаления небезопасен — проверять локальный tip);
+   `git push origin --delete <branch>`, если GitHub не удалил сам (замер 2026-08-17:
+   auto-delete включён не во всех репо флота — 4 из 6 задействованных веток остались);
+   затем `git fetch --prune`; убрать прочие влитые ветки.
 
 ## Ограничения
 - Никогда не force-push в общие ветки.
