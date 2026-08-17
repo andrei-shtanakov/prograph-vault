@@ -31,10 +31,9 @@ updated: 2026-08-17
    Локальный мерж ветки в дефолтную в обход PR — та же ошибка, что прямой коммит.
 3. **После открытия PR — ревью GitHub Copilot:**
    - ревью не всегда запрашивается само — если его нет на PR, запросить явно:
-     `gh api -X POST repos/<owner>/<repo>/pulls/<n>/requested_reviewers -f
-     'reviewers[]=copilot-pull-request-reviewer[bot]'` (замер 2026-08-16/17: `gh pr edit
-     --add-reviewer` молча не срабатывает, а снапшот `reviewRequests` первые ~2 минуты
-     пуст и выглядит как отказ — подождать и перечитать);
+     `gh api -X POST repos/<owner>/<repo>/pulls/<n>/requested_reviewers -f 'reviewers[]=copilot-pull-request-reviewer[bot]'`
+     (замер 2026-08-16/17: `gh pr edit --add-reviewer` молча не срабатывает, а снапшот
+     `reviewRequests` первые ~2 минуты пуст и выглядит как отказ — подождать и перечитать);
    - забрать замечания (`gh pr view <n> --comments`, при необходимости `gh api
      repos/<owner>/<repo>/pulls/<n>/comments`);
    - каждое **проанализировать**: валидное → фикс-коммит в ту же ветку; невалидное/
