@@ -8,7 +8,7 @@ updated: 2026-08-17
 
 # Cross-repo waits
 
-[[inbound-triage]] governs what arrives from others; `commit-pr-issue-granularity`
+`inbound-triage.md` governs what arrives from others; `commit-pr-issue-granularity.md`
 governs what you create. This rule covers the third leg: **what you are waiting
 for** — the moment repo A hands work to repo B (an inbox issue per ADR-ECO-006, a
 contract pending upstream, an acceptance run on the other side) and something in A
@@ -71,6 +71,6 @@ finding is the payload, not the noise.
 ## 5. Adoption
 
 The rule is cross-cutting and lives here (SSOT). Repo `CLAUDE.md` files
-reference it the way they reference `repo-boundaries` and `git-workflow`; the
+reference it the way they reference `repo-boundaries.md` and `git-workflow.md`; the
 fleet-wide reference line rolls out with the next CLAUDE.md normalization pass,
 not as twenty simultaneous PRs.
