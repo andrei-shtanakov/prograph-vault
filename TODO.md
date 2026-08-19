@@ -55,12 +55,19 @@
       Без этого гейт заблокирует то, что ADR-ECO-008 разрешил: `approval.py:227` держит
       запрет константой. Форма `<repo>#<slug>` здесь переходная — у соседа нет todo-id
       под этот пункт; заменить на `todo://` каноническую, когда он его заведёт.
-- [ ] Дождаться наблюдаемости в dispatcher: actor-aware `agent_merge` / `human_merge` и поверхность I4 @owner:github:andrei-shtanakov @blocked_by:dispatcher#159 @id:adr-eco-008-dispatcher-observability
+- [ ] Дождаться наблюдаемости в dispatcher: actor-aware `agent_merge` / `human_merge` и поверхность I4 @owner:github:andrei-shtanakov @blocked_by:todo://dispatcher/agent-merge-observability @id:adr-eco-008-dispatcher-observability
       D6 делает это предусловием включения D1, а не улучшением: нет наблюдаемости —
-      прогон обязан вести себя как `merge_authority: human`.
-- [ ] Ратифицировать ADR-ECO-008 (сейчас `status: proposed`) @owner:github:andrei-shtanakov @id:adr-eco-008-ratification
-      Условие, независимое от техники: мерж документа в базу знаний не равен ратификации
-      решения. Включать D1 можно только когда закрыты оба — и это, и I4.
+      прогон обязан вести себя как `merge_authority: human`. Блокер переведён в
+      каноническую форму 2026-08-19: `dispatcher#159` закрыт как принятый в план, сосед
+      завёл `@id:agent-merge-observability` — теперь ребро в графе есть и сенсор
+      разбудит. Их пункт сам заблокирован `steward#69`: актора мержа не несёт ни один
+      контракт-источник, так что цепочка steward → dispatcher, а не параллель.
+- [x] Ратифицировать ADR-ECO-008 @owner:github:andrei-shtanakov @id:adr-eco-008-ratification
+      **Сделано (PR #80):** `status: accepted`. Условие волевое и независимое от техники —
+      мерж документа в базу знаний ратификацией не является. **D1 при этом в действие не
+      введено:** второе условие, I4, не выполнено, действует оговорка D6 (прогон ведёт
+      себя как `merge_authority: human`). Состояние ADR намеренно не пересказано здесь
+      второй раз — оно живёт в самом решении и протухало бы в копии.
 - [ ] Раскатать ADR-ECO-008 по флоту: `CLAUDE.md` репозиториев, `merge_authority` в конфиге оркестратора @owner:github:andrei-shtanakov @blocked_by:todo://ecosystem-kb/adr-eco-008-ratification @id:adr-eco-008-rollout
       Механическая часть; осознанно после ратификации, чтобы тексты во флоте не
       опережали решение.
