@@ -51,6 +51,19 @@
       руками, а завести путь и писателя (drift-CI), после чего `maturity.observed` в
       authored перестаёт быть плейсхолдером.
 
+- [ ] Дождаться готовности steward: `agent_merge` разрешается политикой, App-личность в закрытой классификации @owner:github:andrei-shtanakov @blocked_by:steward#69 @id:adr-eco-008-steward-readiness
+      Без этого гейт заблокирует то, что ADR-ECO-008 разрешил: `approval.py:227` держит
+      запрет константой. Форма `<repo>#<slug>` здесь переходная — у соседа нет todo-id
+      под этот пункт; заменить на `todo://` каноническую, когда он его заведёт.
+- [ ] Дождаться наблюдаемости в dispatcher: actor-aware `agent_merge` / `human_merge` и поверхность I4 @owner:github:andrei-shtanakov @blocked_by:dispatcher#159 @id:adr-eco-008-dispatcher-observability
+      D6 делает это предусловием включения D1, а не улучшением: нет наблюдаемости —
+      прогон обязан вести себя как `merge_authority: human`.
+- [ ] Ратифицировать ADR-ECO-008 (сейчас `status: proposed`) @owner:github:andrei-shtanakov @id:adr-eco-008-ratification
+      Условие, независимое от техники: мерж документа в базу знаний не равен ратификации
+      решения. Включать D1 можно только когда закрыты оба — и это, и I4.
+- [ ] Раскатать ADR-ECO-008 по флоту: `CLAUDE.md` репозиториев, `merge_authority` в конфиге оркестратора @owner:github:andrei-shtanakov @blocked_by:todo://ecosystem-kb/adr-eco-008-ratification @id:adr-eco-008-rollout
+      Механическая часть; осознанно после ратификации, чтобы тексты во флоте не
+      опережали решение.
 - [ ] Снять `deferred` с ADR-ECO-004 после batch-2 @owner:github:andrei-shtanakov @id:adr-eco-004-deferred
       Ждёт `steward` (`todo://steward/agent-merge-evidence`): evidence `agent_merge` с
       инвариантами I1–I4 (scoped change-class, agent-immutable authority root,
