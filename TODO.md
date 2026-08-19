@@ -51,10 +51,13 @@
       руками, а завести путь и писателя (drift-CI), после чего `maturity.observed` в
       authored перестаёт быть плейсхолдером.
 
-- [ ] Дождаться готовности steward: `agent_merge` разрешается политикой, App-личность в закрытой классификации @owner:github:andrei-shtanakov @blocked_by:steward#69 @id:adr-eco-008-steward-readiness
-      Без этого гейт заблокирует то, что ADR-ECO-008 разрешил: `approval.py:227` держит
-      запрет константой. Форма `<repo>#<slug>` здесь переходная — у соседа нет todo-id
-      под этот пункт; заменить на `todo://` каноническую, когда он его заведёт.
+- [ ] Дождаться готовности steward: `agent_merge` разрешается политикой, App-личность в закрытой классификации @owner:github:andrei-shtanakov @blocked_by:todo://steward/agent-merge-app-identity @id:adr-eco-008-steward-readiness
+      Половина запроса закрыта steward#71 (влит): `agent_merge_allowed` — поле политики,
+      а не константа; строгий `bool`; `unknown` остаётся fail-closed. Осталась вторая —
+      различимая личность, и блокер перецелен на неё канонической формой
+      `todo://steward/agent-merge-app-identity` (id проверен на их `master`).
+      Их пункт ждёт триггера «App заведён»: до создания самого GitHub App вписывать в
+      `agent_identities` нечего, и это действие человека, а не кода.
 - [ ] Дождаться наблюдаемости в dispatcher: actor-aware `agent_merge` / `human_merge` и поверхность I4 @owner:github:andrei-shtanakov @blocked_by:todo://dispatcher/agent-merge-observability @id:adr-eco-008-dispatcher-observability
       D6 делает это предусловием включения D1, а не улучшением: нет наблюдаемости —
       прогон обязан вести себя как `merge_authority: human`. Блокер переведён в
