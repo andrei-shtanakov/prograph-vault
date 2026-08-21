@@ -52,30 +52,55 @@
       hand-edit observed status here». Значит обязательство здесь — не заполнить файл
       руками, а завести путь и писателя (drift-CI), после чего `maturity.observed` в
       authored перестаёт быть плейсхолдером.
+      **Взаимное ожидание, замер 2026-08-21.** Их пункт несёт
+      `@blocked_by:todo://prograph-vault/governance-observed-derived`, то есть ждёт нас;
+      первая строка выше говорит, что ждём мы их. В графе ребро одно (наше ожидание — в
+      прозе, не в теге), поэтому сенсор не видит кольца и молчит. Развязка — во втором
+      абзаце: писатель наш, рендерер их, и первый ход за нами. Держим это здесь явно,
+      иначе пункт выглядит заблокированным соседом, которым он не заблокирован.
 
-- [ ] Дождаться готовности steward: `agent_merge` разрешается политикой, App-личность в закрытой классификации @owner:github:andrei-shtanakov @blocked_by:todo://steward/agent-merge-app-identity @id:adr-eco-008-steward-readiness
-      Половина запроса закрыта steward#71 (влит): `agent_merge_allowed` — поле политики,
-      а не константа; строгий `bool`; `unknown` остаётся fail-closed. Осталась вторая —
-      различимая личность, и блокер перецелен на неё канонической формой
-      `todo://steward/agent-merge-app-identity` (id проверен на их `master`).
-      Их пункт ждёт триггера «App заведён»: до создания самого GitHub App вписывать в
-      `agent_identities` нечего, и это действие человека, а не кода.
+- [x] Дождаться готовности steward: `agent_merge` разрешается политикой, App-личность в закрытой классификации @owner:github:andrei-shtanakov @id:adr-eco-008-steward-readiness
+      **Обе половины закрыты (замер 2026-08-21 по их `master`).** Первая — steward#71:
+      `agent_merge_allowed` стало полем политики, строгий `bool`, `unknown` остаётся
+      fail-closed. Вторая — их `agent-merge-app-identity` закрыт: в `agent_identities`
+      внесён `github:merge-broker`, **без суффикса `[bot]`** — форма из живых фактов
+      GraphQL, не из REST, и на это отличие у них стоит регрессионный тест.
+      Готовность доказана прогоном, а не кодом: живая приёмка I4 на steward#75
+      (2026-08-20) дала `PullRequest.mergedBy = merge-broker[bot]`, `__typename: Bot`.
+      Канонический профиль при этом остаётся запрещающим (`agent_merge_allowed: false`):
+      это готовность, не включение — D1 держит второе условие, наблюдаемость.
 - [ ] Дождаться наблюдаемости в dispatcher: actor-aware `agent_merge` / `human_merge` и поверхность I4 @owner:github:andrei-shtanakov @blocked_by:todo://dispatcher/agent-merge-observability @id:adr-eco-008-dispatcher-observability
       D6 делает это предусловием включения D1, а не улучшением: нет наблюдаемости —
       прогон обязан вести себя как `merge_authority: human`. Блокер переведён в
       каноническую форму 2026-08-19: `dispatcher#159` закрыт как принятый в план, сосед
       завёл `@id:agent-merge-observability` — теперь ребро в графе есть и сенсор
-      разбудит. Их пункт сам заблокирован `steward#69`: актора мержа не несёт ни один
-      контракт-источник, так что цепочка steward → dispatcher, а не параллель.
+      разбудит. Их пункт сам заблокирован не `steward#69` (тот закрыт обеими половинами),
+      а `steward#72` — approval-facts как внешний контракт с `actor_class` и
+      материализацией в `.steward/`; цепочка steward → dispatcher, а не параллель.
+      Замер 2026-08-21: у steward `contracts/approval-facts/v2/` уже существует
+      (`actor_class: human | agent | unknown` в SCHEMA), продюсер и публикация в бандл
+      написаны, но живут на неслитой ветке `feat/approval-facts-v2-design` без PR —
+      контракт **не опубликован**, вендорить соседу нечего. Единственное настоящее
+      звено до включения D1.
 - [x] Ратифицировать ADR-ECO-008 @owner:github:andrei-shtanakov @id:adr-eco-008-ratification
       **Сделано (PR #80):** `status: accepted`. Условие волевое и независимое от техники —
       мерж документа в базу знаний ратификацией не является. **D1 при этом в действие не
-      введено:** второе условие, I4, не выполнено, действует оговорка D6 (прогон ведёт
-      себя как `merge_authority: human`). Состояние ADR намеренно не пересказано здесь
+      введено:** действует оговорка D6 — прогон ведёт себя как `merge_authority: human`.
+      Формулировка «второе условие, I4, не выполнено» верна на дату мержа и с тех пор
+      разошлась с фактом: различимость агентского мержа доказана живой приёмкой
+      2026-08-20 (steward#75, `mergedBy = merge-broker[bot]`). Не выполнено не свойство,
+      а его наблюдение — detection loop в `dispatcher`; см. пункт выше. Состояние ADR намеренно не пересказано здесь
       второй раз — оно живёт в самом решении и протухало бы в копии.
-- [ ] Раскатать ADR-ECO-008 по флоту: `CLAUDE.md` репозиториев, `merge_authority` в конфиге оркестратора @owner:github:andrei-shtanakov @blocked_by:todo://ecosystem-kb/adr-eco-008-ratification @id:adr-eco-008-rollout
+- [ ] Раскатать ADR-ECO-008 по флоту: `CLAUDE.md` репозиториев, `merge_authority` в конфиге оркестратора @owner:github:andrei-shtanakov @id:adr-eco-008-rollout
       Механическая часть; осознанно после ратификации, чтобы тексты во флоте не
-      опережали решение.
+      опережали решение. **Блокер снят** — ратификация выполнена (PR #80), пункт
+      разблокирован и ждёт только исполнения.
+      Замер 2026-08-21: **не начата**. Ни один `CLAUDE.md` во флоте не упоминает
+      ADR-ECO-008 или `merge_authority`; в `maestro` и `spec-runner` поля
+      `merge_authority` нет. Перепин `governance-v2` по флоту (2026-08-20) — **другая**
+      работа и этот пункт не двигает; их легко спутать, потому что обе «раскатка по
+      флоту». Раскатывать можно уже сейчас: тексты описывают, кто мержит в каком типе
+      сессии, и от невключённого D1 не зависят — D6 задаёт поведение до включения.
 - [ ] Снять `deferred` с ADR-ECO-004 после batch-2 @owner:github:andrei-shtanakov @id:adr-eco-004-deferred
       Ждёт `steward` (`todo://steward/agent-merge-evidence`): evidence `agent_merge` с
       инвариантами I1–I4 (scoped change-class, agent-immutable authority root,
