@@ -3,7 +3,7 @@ title: Ecosystem roadmap
 type: note
 status: living
 owner: Andrei
-updated: 2026-07-08
+updated: 2026-08-23
 ---
 
 # AI Orchestrators ecosystem roadmap
@@ -95,6 +95,17 @@ with Maestro (DAG orchestration).
 Until this is settled, there's a risk of duplicated DAG/workflow engines and competition for the
 orchestrator role. The roadmap needs to state proctor's positioning explicitly — this is an
 architectural decision, not a detail.
+
+> **Resolved de facto (2026-08-23, owner's call, no ADR).** The code converged on Option A.
+> proctor's own `TODO.md` opens by declaring its role: "первый реальный Mode-2 потребитель
+> Maestro", a live dogfooding stand; its shipped Phase 2–3 work (worker registry with
+> liveness/fencing, capability scoring, remote dispatch with loss policy, Docker fleet,
+> admission invariants) is fleet-runtime machinery, not planning. Boundary as ratified:
+> **Maestro = plan-plane** (spec→DAG→delegation, "what and why"); **proctor = fleet runtime
+> and Mode-2 consumer** (workers, resources, retries, "by whom and where"); the contract
+> between them is Mode-2 runs. This records fact-of-code, not a fresh choice — hence no ADR.
+> **Pending:** one end-to-end Mode-2 acceptance run (proctor's `notes/maestro-feedback.md`
+> has 0 entries since 2026-07-17 — the real gap is a stale consumer, not an unclear boundary).
 
 ## 3. Gap in the earlier roadmap: observability as a foundation (enabler) ✅
 
@@ -213,7 +224,7 @@ tracking its roadmap in sync with MCP revisions rather than playing catch-up.
 | # | Action | Urgency | Rationale |
 |---|---|---|---|
 | P1 | Align `spec-runner` pins (0.1.x → 2.9.x) + CI | High | Direct risk to §1.3's "versioned contract" ✅ |
-| P2 | Position proctor vs. Maestro | High | Otherwise: duplicated orchestrators ✅ |
+| P2 | Position proctor vs. Maestro — **resolved de facto 2026-08-23** (§2) | — | Maestro = plan-plane; proctor = fleet runtime + Mode-2 consumer; acceptance run pending |
 | P3 | Unify observability (obs package, proctor→contract) | High | Enabler for §1.1/1.2/1.4 ✅ |
 | P4 | `arbiter-mcp` protocolVersion → MCP date-string | Medium | Compatibility with external MCP clients ✅ |
 | P5 | MCP compatibility checklist across all servers (§7) | Medium | Prep for protocol normalization ✅ |
@@ -264,7 +275,8 @@ Can be done calmly, with no tie to 07-16.
 
 ## Open questions (need an owner's decision)
 
-1. proctor: a substrate under Maestro, or an independent runner? (see §2)
+1. ~~proctor: a substrate under Maestro, or an independent runner?~~ Answered 2026-08-23:
+   Option A de facto — Maestro plans, proctor is the fleet runtime / Mode-2 consumer (§2).
 2. Target model provider after GitHub Models: Azure AI Foundry, direct APIs, or multi-provider via
    the arbiter catalog? (§0)
 3. "MRTR" in the MCP context — what does it actually refer to? (§4, ❓)
