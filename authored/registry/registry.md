@@ -95,7 +95,7 @@ These are tracked in the status/roadmap notes; listed here so the registry stays
 
 1. **spec-runner version-pin skew** — consumers pin `>=0.1.x` vs real 2.10.0. → roadmap P1.
 2. **`obs.py` vendoring drift** — 3 divergent copies; proctor & atp-platform not on the obs contract. → [logging-audit](../notes/status/2026-07-08-logging-audit.md).
-3. **proctor ↔ Maestro role overlap** — resolved de facto 2026-08-23: Maestro = plan-level orchestration, proctor = fleet runtime and first real Mode-2 consumer (declared in `proctor/TODO.md`, realized in its Phase 2–3 code); one end-to-end Mode-2 acceptance run still pending. → roadmap P2 (resolved).
+3. **proctor ↔ Maestro role overlap** — resolved de facto 2026-08-23: Maestro = plan-plane, proctor = fleet runtime / Mode-2 consumer; acceptance run pending. → roadmap §2 (evidence) / P2 (resolved).
 4. **`arbiter-mcp` protocolVersion `"1.1.0"`** is not MCP's date-string format. → roadmap P4.
 5. **steward** has shipped local governance tooling and now has contract evidence towards prograph (vendored schemas) and dispatcher (gate verdicts); the Maestro/spec-runner *delegation* edges it was meant to sit above are still undetected.
 

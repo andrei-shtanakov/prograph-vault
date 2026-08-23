@@ -224,7 +224,7 @@ tracking its roadmap in sync with MCP revisions rather than playing catch-up.
 | # | Action | Urgency | Rationale |
 |---|---|---|---|
 | P1 | Align `spec-runner` pins (0.1.x → 2.9.x) + CI | High | Direct risk to §1.3's "versioned contract" ✅ |
-| P2 | Position proctor vs. Maestro — **resolved de facto 2026-08-23** (§2) | — | Maestro = plan-plane; proctor = fleet runtime + Mode-2 consumer; acceptance run pending |
+| P2 | Position proctor vs. Maestro — **resolved de facto 2026-08-23** (§2) | Resolved | Maestro = plan-plane; proctor = fleet runtime + Mode-2 consumer; acceptance run pending |
 | P3 | Unify observability (obs package, proctor→contract) | High | Enabler for §1.1/1.2/1.4 ✅ |
 | P4 | `arbiter-mcp` protocolVersion → MCP date-string | Medium | Compatibility with external MCP clients ✅ |
 | P5 | MCP compatibility checklist across all servers (§7) | Medium | Prep for protocol normalization ✅ |
