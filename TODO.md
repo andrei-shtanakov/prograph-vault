@@ -41,7 +41,7 @@
 
 ## Принятые обязательства перед соседними репо
 
-- [ ] Публиковать `derived/governance/` с **observed** enforcement-зрелостью правил @owner:github:andrei-shtanakov @id:governance-observed-derived
+- [ ] Публиковать `derived/governance/` с **observed** enforcement-зрелостью правил @owner:github:andrei-shtanakov @id:governance-observed-derived @epic:eco.governance-plane
       Первый ход наш, и `@blocked_by` здесь намеренно нет.
       `dispatcher` (`todo://dispatcher/governance-declared-vs-observed`) — рендерер
       `declared vs observed`, а не производитель: сравнивать ему нечего, пока каталога
@@ -58,7 +58,7 @@
       нельзя: в графе возникло бы настоящее кольцо и оба пункта стали бы вечно ждать друг
       друга. Неверна была проза, а не отсутствие тега.
 
-- [ ] Подключить мета-энфорсер governance-плоскости: репо манифеста без каллера и каллер на устаревшем пине должны быть находкой @owner:github:andrei-shtanakov @id:governance-meta-enforcer
+- [ ] Подключить мета-энфорсер governance-плоскости: репо манифеста без каллера и каллер на устаревшем пине должны быть находкой @owner:github:andrei-shtanakov @id:governance-meta-enforcer @epic:eco.governance-plane
       Раскатка `governance-v2` 2026-08-20 вскрыла, что **ввод во флот и подключение к
       гейту — два разных ручных действия**: семь репо (devtools, kapelle, research-bench,
       impresario, disputatio, discovery-toolkit, robin-toolkit) числились в манифесте, но
@@ -86,7 +86,7 @@
       (2026-08-20) дала `PullRequest.mergedBy = merge-broker[bot]`, `__typename: Bot`.
       Канонический профиль при этом остаётся запрещающим (`agent_merge_allowed: false`):
       это готовность, не включение — D1 держит второе условие, наблюдаемость.
-- [ ] Дождаться наблюдаемости в dispatcher: actor-aware `agent_merge` / `human_merge` и поверхность I4 @owner:github:andrei-shtanakov @blocked_by:todo://dispatcher/agent-merge-observability @id:adr-eco-008-dispatcher-observability
+- [ ] Дождаться наблюдаемости в dispatcher: actor-aware `agent_merge` / `human_merge` и поверхность I4 @owner:github:andrei-shtanakov @blocked_by:todo://dispatcher/agent-merge-observability @id:adr-eco-008-dispatcher-observability @epic:eco.governance-plane
       D6 делает это предусловием включения D1, а не улучшением: нет наблюдаемости —
       прогон обязан вести себя как `merge_authority: human`. Блокер переведён в
       каноническую форму 2026-08-19: `dispatcher#159` закрыт как принятый в план, сосед
@@ -115,7 +115,7 @@
       а его наблюдение — detection loop в `dispatcher`; см. пункт выше.
       Состояние ADR намеренно не пересказано здесь второй раз — оно живёт в самом
       решении и протухало бы в копии.
-- [ ] Раскатать ADR-ECO-008 по флоту: `CLAUDE.md` репозиториев, `merge_authority` в конфиге оркестратора @owner:github:andrei-shtanakov @id:adr-eco-008-rollout
+- [ ] Раскатать ADR-ECO-008 по флоту: `CLAUDE.md` репозиториев, `merge_authority` в конфиге оркестратора @owner:github:andrei-shtanakov @id:adr-eco-008-rollout @epic:eco.governance-plane
       Механическая часть; осознанно после ратификации, чтобы тексты во флоте не
       опережали решение. **Блокер снят** — ратификация выполнена (PR #80), пункт
       разблокирован и ждёт только исполнения.
@@ -125,7 +125,7 @@
       работа и этот пункт не двигает; их легко спутать, потому что обе «раскатка по
       флоту». Раскатывать можно уже сейчас: тексты описывают, кто мержит в каком типе
       сессии, и от невключённого D1 не зависят — D6 задаёт поведение до включения.
-- [ ] Снять `deferred` с ADR-ECO-004 после batch-2 @owner:github:andrei-shtanakov @id:adr-eco-004-deferred
+- [ ] Снять `deferred` с ADR-ECO-004 после batch-2 @owner:github:andrei-shtanakov @id:adr-eco-004-deferred @epic:eco.governance-plane
       Ждёт `steward` (`todo://steward/agent-merge-evidence`): evidence `agent_merge` с
       инвариантами I1–I4 (scoped change-class, agent-immutable authority root,
       adversarial verifier, ревокация) заблокирован статусом ADR.
