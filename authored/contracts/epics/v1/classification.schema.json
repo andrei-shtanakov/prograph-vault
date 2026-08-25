@@ -42,7 +42,7 @@
       "items": {
         "$ref": "#/$defs/Diagnostic"
       },
-      "description": "ordered by (code, subject_uri, related_uri) over raw Unicode code points"
+      "description": "ordered by (code, subject_key, subject_uri, related_uri) over raw Unicode code points, null sorting before any string — see the contract README's Canonicalization section"
     },
     "subject_uri": {
       "oneOf": [

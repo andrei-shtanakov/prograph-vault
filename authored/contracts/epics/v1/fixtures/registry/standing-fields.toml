@@ -14,7 +14,8 @@ kind  = "ecosystem"
 [defect_classes.pipeline]
 title = "Pipeline failures"
 
-[epics."ghost.stream"]
-title  = "the key prefix does not name a declared program"
-status = "active"
-opened = "2026-08-01"
+[epics."eco.ops"]
+title  = "Ecosystem operations and tails"
+status = "standing"
+goal   = "a standing bucket cannot have a finish criterion"
+closed = "2026-08-01"

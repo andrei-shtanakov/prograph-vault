@@ -269,6 +269,35 @@
               "closed"
             ]
           }
+        },
+        {
+          "if": {
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "const": "standing"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "goal"
+                  ]
+                },
+                {
+                  "required": [
+                    "closed"
+                  ]
+                }
+              ]
+            },
+            "description": "a standing epic has no finish criterion and no end date by construction; a standing epic that ended is a status change, not a closed date"
+          }
         }
       ]
     },

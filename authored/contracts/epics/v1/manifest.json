@@ -3,7 +3,7 @@
   "contract_version": 1,
   "schema_id": "urn:ecosystem:epics:v1:classification",
   "surface_note": "sha256 of every frozen contract file consumers vendor; excludes drift-control meta (manifest.json, drift-control.md) and vendor-only PINNED.txt. Construction is byte-identical to plan-fields v2 so one checker serves both. The registry data model is urn:ecosystem:epics:v1:registry; VALUES live in the umbrella epics.toml and are read live, never vendored. See drift-control.md.",
-  "tree_sha256": "f9051d4ab83a3309043a70837ecd8c44dee5abc9558d908c6a6d56f65625592f",
+  "tree_sha256": "f97851698fab048e1582997e1939f31b4d00bc0d08f354ceea3307709d4f3a5c",
   "surface": [
     {
       "path": "README.md",
@@ -11,15 +11,15 @@
     },
     {
       "path": "classification.schema.json",
-      "sha256": "c16cabb9bf737929b902bdc8abd237cdd2670e4d50e81154d93ffd39e7616128"
+      "sha256": "01b8c2375b18227019db39b7af2bb82f24f51f00fbf07254514dac94feb45e50"
     },
     {
       "path": "diagnostics.yaml",
-      "sha256": "220f2632fb6329b998db856ad67be1c8b711af4cc0f74a8d83cb9321ab444321"
+      "sha256": "62b0046c3939a2af9e0951eb1b9a71ed46203023461cc7731ab18309627c83eb"
     },
     {
       "path": "fixtures/README.md",
-      "sha256": "dcef07d30f3615fef0bdbb8ab87e32ea91e94c9c67a272b7f53a5bad51fed5d8"
+      "sha256": "b4f566004ca685a90f02bf0003c4d0ae470faa5babad21b484af5275c1aed046"
     },
     {
       "path": "fixtures/invalid/conflict/context.json",
@@ -187,7 +187,15 @@
     },
     {
       "path": "fixtures/registry/program-unknown.toml",
-      "sha256": "101e7d9fd9919b00f43735a1bee8431ad9b061bdcf1e4eb7ff324d7e6c12d8e4"
+      "sha256": "9ea90920c0a8b686684c837ac1167fa13596fb2d61a36f6894751c03ac58b010"
+    },
+    {
+      "path": "fixtures/registry/standing-fields.expected.json",
+      "sha256": "e73e8a5810ed7c8b4f8276cefee72220b844e1663f2704350e0ab3a8f89ba39b"
+    },
+    {
+      "path": "fixtures/registry/standing-fields.toml",
+      "sha256": "3270430e7a713ca68dc7884881713088a36aed96ca0b234138a43e665d91aba6"
     },
     {
       "path": "fixtures/registry/valid.expected.json",
@@ -259,7 +267,7 @@
     },
     {
       "path": "registry.schema.json",
-      "sha256": "becb2ff696fc8973249f6ac29c45bb0d440bffd4881b44a32da0cd87cdbecd6f"
+      "sha256": "75949da7f429b9e900f253d9c03b6284679ec74c2d2aa01b18edc93a513b5dc4"
     }
   ]
 }

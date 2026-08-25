@@ -125,6 +125,12 @@ codes:
     escalation: immediate
     summary: "an epic with status done/abandoned carries no closed date"
 
+  EP-REG-STANDING-FIELDS:
+    default_severity: error
+    scope: registry
+    escalation: immediate
+    summary: "a standing epic carries goal or closed — it has no finish criterion and no end date by construction; a standing epic that ended is a status change, not a closed date"
+
   EP-REG-POLICY-INVALID:
     default_severity: error
     scope: registry
