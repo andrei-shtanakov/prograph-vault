@@ -63,7 +63,7 @@ codes:
     default_severity: error
     scope: intra_artifact
     escalation: immediate
-    summary: "more than one defect tag or trailer on one artifact, INCLUDING two identical values — same rule as EP-MULTIPLE, and found the same way: implementing the parser needed a code for it and the registry had none"
+    summary: "more than one defect tag or trailer on one artifact, INCLUDING two identical values — the defect axis carries the same multiplicity rule as the epic"
 
   EP-DEFECT-UNKNOWN:
     default_severity: error

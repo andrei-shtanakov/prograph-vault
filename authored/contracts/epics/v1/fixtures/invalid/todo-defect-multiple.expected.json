@@ -6,7 +6,7 @@
     {
       "code": "EP-DEFECT-MULTIPLE",
       "severity": "error",
-      "message": "item carries 2 @defect tags",
+      "message": "more than one defect on one artifact",
       "subject_uri": "todo://demo/twice-defect",
       "raw": "pipeline, pipeline"
     }
