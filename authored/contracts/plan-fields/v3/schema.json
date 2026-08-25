@@ -339,8 +339,8 @@
       "properties": {
         "code": {
           "type": "string",
-          "pattern": "^(PF|EP)-[A-Z0-9-]+$",
-          "description": "PF-* codes are declared in this contract's diagnostics.yaml; EP-* codes are declared by epics/v1 and emitted verbatim — this contract does not redeclare them"
+          "pattern": "^(PF-[A-Z0-9-]+|EP-[A-Z][A-Z0-9-]*)$",
+          "description": "PF-* codes are declared in this contract's diagnostics.yaml; EP-* codes are declared by epics/v1 and emitted verbatim — this contract does not redeclare them; the EP branch mirrors epics/v1's own code grammar so a malformed code (EP-1) fails at schema time. This is the code NAME shape, not the epic grammar — and depends.json is what forces a re-look if epics/v1 changes it"
         },
         "severity": {
           "enum": [
