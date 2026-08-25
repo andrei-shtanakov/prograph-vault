@@ -3,7 +3,7 @@
   "contract_version": 3,
   "schema_id": "urn:ecosystem:plan-fields:v3:schema",
   "surface_note": "sha256 of every frozen contract file consumers vendor; excludes drift-control meta (manifest.json, drift-control.md) and vendor-only PINNED.txt. depends.json is part of the surface: it pins the epics/v1 delegation. See drift-control.md.",
-  "tree_sha256": "c8f15a1898131da028bcb9b87508e911d315126bdd85ac0b01e7579fd2ee1a03",
+  "tree_sha256": "69281f160d7773d2db5b66f977f08e8d6a863bbfbc122207c9cfd02cca818975",
   "surface": [
     {
       "path": "README.md",
@@ -11,7 +11,7 @@
     },
     {
       "path": "depends.json",
-      "sha256": "0066c61c045c78bca5d19b3a523153766e9ec550dc2c6a0bc497043d466bf0bb"
+      "sha256": "00f0f1bdefa3184e3b467f98291c61a153244cdf610514f92da369cdc3e659b1"
     },
     {
       "path": "diagnostics.yaml",
