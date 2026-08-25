@@ -188,3 +188,18 @@ updated: 2026-07-16
   mirrors for new repos are cloned by hand (CI deploy does not create mirrors).
 - Links: src/robin/digest.py (_DIGEST_QUESTION, _DIGEST_RULES, plan_hits);
   src/robin/config.py:18; robin-runtime PRs #13–#17
+
+## 2026-08-08 11:35 — change: независимый читатель arch-evidence-freshness из steward (issue #42 → PR #43)
+
+- Принят inbox-issue #42 (steward#arch-evidence-freshness-schedule) под слагом
+  arch-freshness-run-reader (ADR-ECO-006) и реализован в том же PR: каждый дайджест
+  читает последний run cron-workflow arch-evidence-freshness.yml в steward через
+  публичный GitHub API (stdlib urllib, без gh/токена — на VPS нет gh, репо публичный).
+- Вердикты: последний завершённый run не success → non-clean (детали — артефакт
+  arch-evidence-freshness-status); нет success за 30 ч → «schedule молчит», UNKNOWN;
+  свежий success → clean. Сбой чтения — явная строка UNKNOWN, не тишина. Robin не
+  пересчитывает семантику сенсора (то же правило, что fleet plan-check).
+- ROBIN_FRESHNESS_REPO (default andrei-shtanakov/steward, пустое — выкл); включено по
+  умолчанию, доехало до VPS обычным CD (deploy run success, merge 11c3141).
+- Links: src/robin/freshness.py; src/robin/digest.py (compose, _DIGEST_RULES);
+  src/robin/config.py (freshness_repo); robin-runtime PR #43, issue #42

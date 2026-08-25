@@ -79,3 +79,16 @@ updated: 2026-07-16
 - arbiter — вторичный потребитель; proctor — ничего не заводить.
 - Links: `atp-platform/TODO.md` (пункт перевёрнут в ACTIVE, объём зафиксирован),
   `authored/notes/2026-07-16-openprose-contracts-offer.md`.
+
+## 2026-08-16 17:31 — result: second-task-type-sweep — req-extraction данные для crossover-гейта arbiter
+
+- Платный свип req-extraction (golden SUITE.lock b2b8a055, 17 кейсов, runs=3) по трём
+  routable-агентам: claude_code@claude-sonnet-4-6, codex_cli@gpt-5.5, opencode@glm-5.1.
+  Все case-runs честные (runs_graded=3, run_pass_count=3), infra_error_rate=0.0 у всех.
+- Ingest в arbiter benchmark_runs через scripts/ingest_benchmark_payloads.py: 3 created.
+  Done-критерий issue atp-platform#279 выполнен — rank_score для второго benchmark_id.
+- Находка: все три на потолке (score=1.0, rank_score=1.0) — ничья против разброса
+  0.705/0.781/0.915 на code-review; на req-extraction re-rank вырождается в no-op,
+  отсутствие разброса — точка данных task-dependence для гейта.
+- Links: atp-platform#279 (closed completed), atp-platform PR #290 (TODO checkbox),
+  atp-platform/_bench_output/r07-pipecheck/second-task-type-2026-08-16-runs3/
