@@ -19,9 +19,9 @@ on:
 
 jobs:
   governance:
-    uses: andrei-shtanakov/ai-orchestrators-workspace/.github/workflows/governance-gate.yml@governance-v2
+    uses: andrei-shtanakov/ai-orchestrators-workspace/.github/workflows/governance-gate.yml@51513e8aa0935e76b3327d6298409a683960a6fb
     with:
-      umbrella-ref: "governance-v2"   # same tag as the uses: pin above
+      umbrella-ref: "51513e8aa0935e76b3327d6298409a683960a6fb"   # same tag as the uses: pin above
       strict: false
       runtime-scan: false
       authority-guard: true
