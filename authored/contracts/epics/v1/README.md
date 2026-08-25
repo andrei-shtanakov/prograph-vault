@@ -140,9 +140,17 @@ commit reader — emits the **same** normalized object (`classification.schema.j
   "epic": "eco.ops",
   "defect": "pipeline",
   "classification": "tagged",
-  "diagnostics": []
+  "diagnostics": [],
+  "subject_uri": "todo://demo/pipe-resume",
+  "carrier": "todo",
+  "observed_at": "2026-08-25T00:00:00Z"
 }
 ```
+
+All seven fields are required; `epic`, `defect`, `subject_uri` and `observed_at` are nullable,
+`carrier` and `classification` are not. `resolved_from` and `inherited_from` appear only where
+they apply. An optional `carrier` would make per-plane completeness unassemblable — the object
+would validate and still be unusable for the one aggregate this contract exists to support.
 
 `classification` is a closed four-state:
 

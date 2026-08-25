@@ -9,7 +9,10 @@
     "epic",
     "defect",
     "classification",
-    "diagnostics"
+    "diagnostics",
+    "subject_uri",
+    "carrier",
+    "observed_at"
   ],
   "properties": {
     "epic": {
@@ -57,7 +60,7 @@
     },
     "carrier": {
       "$ref": "#/$defs/Carrier",
-      "description": "which plane produced this classification — required for per-plane completeness"
+      "description": "which plane produced this classification — required, because per-plane completeness cannot be assembled from objects that may omit it"
     },
     "inherited_from": {
       "oneOf": [
@@ -75,7 +78,7 @@
         "string",
         "null"
       ],
-      "description": "when the artifact was read (observation time, NOT activity time — see ADR-ECO-010 D11)"
+      "description": "when the artifact was read (observation time, NOT activity time — see ADR-ECO-010 D11); required and nullable: a producer that does not stamp it must say so, not stay silent"
     },
     "resolved_from": {
       "oneOf": [

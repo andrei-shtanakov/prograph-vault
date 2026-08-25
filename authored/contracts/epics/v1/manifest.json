@@ -3,15 +3,15 @@
   "contract_version": 1,
   "schema_id": "urn:ecosystem:epics:v1:classification",
   "surface_note": "sha256 of every frozen contract file consumers vendor; excludes drift-control meta (manifest.json, drift-control.md) and vendor-only PINNED.txt. Construction is byte-identical to plan-fields v2 so one checker serves both. The registry data model is urn:ecosystem:epics:v1:registry; VALUES live in the umbrella epics.toml and are read live, never vendored. See drift-control.md.",
-  "tree_sha256": "f97851698fab048e1582997e1939f31b4d00bc0d08f354ceea3307709d4f3a5c",
+  "tree_sha256": "5a77175d4caf016a3c93c301d327d1bedcf7bc1c3e87d828c93359f39b9fe7ac",
   "surface": [
     {
       "path": "README.md",
-      "sha256": "e67e7c7ab9038283d0b8471975ed87063e701b2f362b1c040e49fc5d9e4438d9"
+      "sha256": "9638cc6070fa24dd212f3508a34a471eb2abc5f7de955d92e9fc59290c6a9c5d"
     },
     {
       "path": "classification.schema.json",
-      "sha256": "01b8c2375b18227019db39b7af2bb82f24f51f00fbf07254514dac94feb45e50"
+      "sha256": "bd59fd6d8fd30fdc9cb46b71e311419a8b32495af5513ceb065ad02858334cd2"
     },
     {
       "path": "diagnostics.yaml",
