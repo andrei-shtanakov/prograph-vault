@@ -1,0 +1,129 @@
+{
+  "contract": "plan-fields",
+  "contract_version": 3,
+  "schema_id": "urn:ecosystem:plan-fields:v3:schema",
+  "surface_note": "sha256 of every frozen contract file consumers vendor; excludes drift-control meta (manifest.json, drift-control.md) and vendor-only PINNED.txt. depends.json is part of the surface: it pins the epics/v1 delegation. See drift-control.md.",
+  "tree_sha256": "c8f15a1898131da028bcb9b87508e911d315126bdd85ac0b01e7579fd2ee1a03",
+  "surface": [
+    {
+      "path": "README.md",
+      "sha256": "d1dd5f0ee817234602f49274cc228eeca3e633920bf1c35ce4e4625bb9ec656e"
+    },
+    {
+      "path": "depends.json",
+      "sha256": "0066c61c045c78bca5d19b3a523153766e9ec550dc2c6a0bc497043d466bf0bb"
+    },
+    {
+      "path": "diagnostics.yaml",
+      "sha256": "04f6cc732058fa9a3692a1a77b8cf8014732242506eb38318a1e85bab636ef96"
+    },
+    {
+      "path": "fixtures/README.md",
+      "sha256": "090ec47d0acf141ced86a54ded87935a26b8227c96a60319757c0eb48c3b332f"
+    },
+    {
+      "path": "fixtures/invalid/ambiguous-legacy-ref.expected.json",
+      "sha256": "5a9a687193626a421c8ee43d76ae047a76b57bfaee46a165020eb37b98acf624"
+    },
+    {
+      "path": "fixtures/invalid/ambiguous-legacy-ref.md",
+      "sha256": "7242d452124abf07ec658be0ef87eae61f3c40ebdb67d1b98ed5907dbe292470"
+    },
+    {
+      "path": "fixtures/invalid/dangling-id.expected.json",
+      "sha256": "15db48c8b7cb71607fe6e2d7a159f4f44b288a586f32a25670178853f235b175"
+    },
+    {
+      "path": "fixtures/invalid/dangling-id.md",
+      "sha256": "8a960d2b6602a16efad3ab3846836bb9f17a667c098a3c50316ffcfd3aac43a2"
+    },
+    {
+      "path": "fixtures/invalid/duplicate-id.expected.json",
+      "sha256": "861b26497d5f227c3be7f845fc9db99c64cdecd21ca3d3fa67dad385536f8f5e"
+    },
+    {
+      "path": "fixtures/invalid/duplicate-id.md",
+      "sha256": "90d39ba3e73ebe56e6e84219e08936062d5c0ec3cb39e8f2314806a09d152cbb"
+    },
+    {
+      "path": "fixtures/invalid/epic-grammar.expected.json",
+      "sha256": "9ed06dbab44127d56245028e82216d8057b14e490b6dd2e1c3bb58885dbe49ae"
+    },
+    {
+      "path": "fixtures/invalid/epic-grammar.md",
+      "sha256": "9d72d5429aecc965f356b7aa0ef0343765c5012f8d198ab3c6bb85dc376143d5"
+    },
+    {
+      "path": "fixtures/invalid/epic-multiple.expected.json",
+      "sha256": "1c6fafa38f9df86e963f35ebf208ab97f8f7b82a2d1986801ac189ed74a5a011"
+    },
+    {
+      "path": "fixtures/invalid/epic-multiple.md",
+      "sha256": "bbcb3d1a0abdb66719dc2ed039eb02b1253e8ff21fd8e2f4ca83947259580a0d"
+    },
+    {
+      "path": "fixtures/invalid/missing-id.expected.json",
+      "sha256": "1915b085c5617c61de66f7a82150d3fa3f7d0b3639e1709866fefab435708f11"
+    },
+    {
+      "path": "fixtures/invalid/missing-id.md",
+      "sha256": "a9aff2b8e816745380f2f997c56928cb9373ed8a5a21ae971de6449cb3769a59"
+    },
+    {
+      "path": "fixtures/invalid/reused-id/context.json",
+      "sha256": "c41f454554c02b3123b47b6887af38ea7cd5a5ab39abf3bcd98db6f0f260b99e"
+    },
+    {
+      "path": "fixtures/invalid/reused-id/current.md",
+      "sha256": "fa36248f63f42db262f8976861d1caea5bc5b52c89606f77c6ba84f1a0b270af"
+    },
+    {
+      "path": "fixtures/invalid/reused-id/expected.json",
+      "sha256": "ce385e23f7a43d4fb259e3d97f4863ad2ef17bac6ebc613b9ecc21264fb7e7c5"
+    },
+    {
+      "path": "fixtures/invalid/reused-id/previous.md",
+      "sha256": "c2a8a47b83d523f0deb015ad0de239ea2f8edc38a8bb618745debd768e9e3251"
+    },
+    {
+      "path": "fixtures/valid/basic.expected.json",
+      "sha256": "19575ade8d99ccb183401beab96dcdc0b8ba9f1d2bbe92e035215fa35746220d"
+    },
+    {
+      "path": "fixtures/valid/basic.md",
+      "sha256": "bf559c99100a6e734c815e2c3ae822acc6855cbe9719b8dc8edb71890c1501e8"
+    },
+    {
+      "path": "fixtures/valid/epic-tagged.expected.json",
+      "sha256": "2480325a28963faf2546f4e84da13f1bf74f508d4eee20a0f11782ad0ffa86a2"
+    },
+    {
+      "path": "fixtures/valid/epic-tagged.md",
+      "sha256": "f2776f0541c3d982499720df800d2c9948582e4db51bc9347640ecf8126955b3"
+    },
+    {
+      "path": "fixtures/valid/tombstone.expected.json",
+      "sha256": "8062e4fbbf043e6d7486667f1850c1e5cbe21e8515df8f920577d77b52381db5"
+    },
+    {
+      "path": "fixtures/valid/tombstone.md",
+      "sha256": "92712f8a106284923893c76d344c03ab1ce49c25090d1a95c6c7bfd0f5ed5dae"
+    },
+    {
+      "path": "fixtures/valid/typed-owner.expected.json",
+      "sha256": "b2fd17796357e217f295b0d448b41a4894e77403da1ea3122e51ce487276c2d7"
+    },
+    {
+      "path": "fixtures/valid/typed-owner.md",
+      "sha256": "4b394cfe1d6b08f9b967beba5cc7c4a7c8c8f37365d8a7bfe06ec67c3a662915"
+    },
+    {
+      "path": "rules.yaml",
+      "sha256": "22ca23ae54129a40292695a9e79939474103368b1b6e8e7b736a71ac96a506bd"
+    },
+    {
+      "path": "schema.json",
+      "sha256": "f9bf7d93cacbd696dd9e786c011952605353c2408057ea70f2cecad2c2e39725"
+    }
+  ]
+}
