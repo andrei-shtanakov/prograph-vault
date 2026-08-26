@@ -41,6 +41,21 @@
 
 ## Принятые обязательства перед соседними репо
 
+- [ ] Доставка `derived/snapshots` через ветку `derived-snapshots` вместо `master` @owner:github:andrei-shtanakov @blocked_by:dispatcher#199 @id:derived-snapshots-vs-master-protection
+      Запрос `dispatcher` (inbox #98): прямой пуш снапшотов в `master` отбит required
+      check `governance / gate` — кросс-машинный синк доставлялся наполовину. Решение
+      владельца vault 2026-08-26: `derived/snapshots` — регенерируемая проекция, не
+      authority, поэтому её publisher **не** получает bypass защищённого `master` (GitHub
+      не ограничит bypass каталогом — скомпрометированный job смог бы менять `authored/`
+      и governance-файлы). Наша сторона сделана: ветка создана и засижена (`b01f390`,
+      последний снапшот EPGETBIW050F), CLAUDE.md §2/§3 и `derived/README.md`
+      документируют, что checkout `master` намеренно не содержит живой read-model.
+      Остаток — сторона dispatcher (publisher в ветку с fetch→rebase на non-fast-forward
+      и только свой `<host>.json`; чтение через `git show origin/derived-snapshots:…`
+      или служебный worktree, не переключение основного чекаута; деградация в
+      `unknown`/`stale`): dispatcher#199. Регулярные коллизии машин на одной ветке →
+      следующий шаг per-host refs или отдельный snapshot-репо, не bypass `master`.
+
 - [ ] Публиковать `derived/governance/` с **observed** enforcement-зрелостью правил @owner:github:andrei-shtanakov @id:governance-observed-derived @epic:eco.governance-plane
       Первый ход наш, и `@blocked_by` здесь намеренно нет.
       `dispatcher` (`todo://dispatcher/governance-declared-vs-observed`) — рендерер

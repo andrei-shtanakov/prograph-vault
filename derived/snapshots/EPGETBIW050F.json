@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
+  "host": "EPGETBIW050F",
+  "generated_at": "2026-08-26T14:20:01.938038+04:00",
+  "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
+  "repos": [
+    {
+      "dir": "ai-orchestrators-workspace",
+      "remote": "andrei-shtanakov/ai-orchestrators-workspace",
+      "local": {
+        "branch": "feat/epics-capability-catalog-cost",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "arbiter",
+      "remote": "andrei-shtanakov/arbiter",
+      "local": {
+        "branch": "chore/review-caller-sync-3",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "atp-platform",
+      "remote": "andrei-shtanakov/atp-platform",
+      "local": {
+        "branch": "main",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "atp-platform-testing-en",
+      "remote": "andrei-shtanakov/atp-platform-testing",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": true,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "deployer",
+      "remote": "andrei-shtanakov/deployer",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "devtools",
+      "remote": "andrei-shtanakov/devtools",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "discovery",
+      "remote": "andrei-shtanakov/discovery",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "discovery-test",
+      "remote": null,
+      "local": {
+        "branch": "main",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "discovery-toolkit",
+      "remote": "andrei-shtanakov/discovery-toolkit",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "dispatcher",
+      "remote": "andrei-shtanakov/dispatcher",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "disputatio",
+      "remote": "andrei-shtanakov/disputatio",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "github-checker",
+      "remote": "andrei-shtanakov/github-checker",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "impresario",
+      "remote": "andrei-shtanakov/impresario",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "kapelle",
+      "remote": "andrei-shtanakov/kapelle",
+      "local": {
+        "branch": "chore/review-caller-sync-3",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "libretto",
+      "remote": "andrei-shtanakov/libretto",
+      "local": {
+        "branch": "main",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "maestro",
+      "remote": "andrei-shtanakov/maestro",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "proctor",
+      "remote": "andrei-shtanakov/proctor",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "prograph",
+      "remote": "andrei-shtanakov/prograph",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "prograph-vault",
+      "remote": "andrei-shtanakov/prograph-vault",
+      "local": {
+        "branch": "docs/derived-snapshots-branch",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "prose",
+      "remote": "openprose/prose",
+      "local": {
+        "branch": "main",
+        "ahead": 0,
+        "behind": 9,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "research-bench",
+      "remote": "andrei-shtanakov/research-bench",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "robin-runtime",
+      "remote": "andrei-shtanakov/robin-runtime",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "robin-toolkit",
+      "remote": "andrei-shtanakov/robin-toolkit",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "sdd-framework",
+      "remote": null,
+      "local": {
+        "branch": "main",
+        "ahead": 0,
+        "behind": 5,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "spec-runner",
+      "remote": "andrei-shtanakov/spec-runner",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "spec-runner-tasks",
+      "remote": null,
+      "local": {
+        "branch": "main",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "spec-runner-vscode",
+      "remote": "andrei-shtanakov/spec-runner-vscode",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "steward",
+      "remote": "andrei-shtanakov/steward",
+      "local": {
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    }
+  ]
+}
