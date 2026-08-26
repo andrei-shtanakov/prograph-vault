@@ -41,7 +41,7 @@
 
 ## Принятые обязательства перед соседними репо
 
-- [ ] Доставка `derived/snapshots` через ветку `derived-snapshots` вместо `master` @owner:github:andrei-shtanakov @blocked_by:dispatcher#199 @id:derived-snapshots-vs-master-protection
+- [ ] Доставка `derived/snapshots` через ветку `derived-snapshots` вместо `master` @owner:github:andrei-shtanakov @blocked_by:dispatcher#199 @id:derived-snapshots-vs-master-protection @epic:eco.knowledge-graph
       Запрос `dispatcher` (inbox #98): прямой пуш снапшотов в `master` отбит required
       check `governance / gate` — кросс-машинный синк доставлялся наполовину. Решение
       владельца vault 2026-08-26: `derived/snapshots` — регенерируемая проекция, не
