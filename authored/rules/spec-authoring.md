@@ -99,5 +99,5 @@ author ↔ spec-plan reviewer
        one PR
 ```
 
-До этого правило исполняется вручную. Запрос продюсеру — inbox-issue в
-disputatio (ADR-ECO-006).
+До этого правило исполняется вручную. Запрос продюсеру подан:
+disputatio#44 (inbox-issue по ADR-ECO-006).
