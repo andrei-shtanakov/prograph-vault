@@ -3,7 +3,7 @@ title: "epics v1 — drift control"
 type: contract
 status: proposed
 owner: Andrei
-updated: 2026-08-25
+updated: 2026-08-26
 ---
 
 # epics v1 — drift control
@@ -87,9 +87,15 @@ canon change affects:
 | Consumer | Vendors | Status |
 |---|---|---|
 | `dispatcher/packages/plan-fields` | grammar + diagnostics, via plan-fields v3 | planned (Ф1a) |
-| `github-checker` | grammar + classification schema (`snapshot/v2`) | planned (Ф2) |
+| `github-checker` | grammar + classification schema (`snapshot/v2`) | landed 2026-08-25 (github-checker#25) |
 | `ai-orchestrators-workspace` (CI sensor) | diagnostics + registry schema | planned (Ф1b) |
 | `robin-runtime` | classification schema (read-only consumer of published snapshots) | planned (Ф5) |
 
 An entry is added when the vendored copy lands, not when the phase is planned — a registry of
 intentions would report drift against consumers that do not exist.
+
+Pins recorded for guarantee B:
+
+- `github-checker` — vendored copy at `github_checker/contract_epics/` (`PINNED.txt`),
+  source commit `15cd338e01176fd126a7e8b8925c88ada8bface6`,
+  `tree_sha256` `4bf65a4d4526e24b58f85d21a6c1eaaaca6dcff28803cb8f0306917c344c289e`.
