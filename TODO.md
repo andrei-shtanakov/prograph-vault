@@ -149,3 +149,11 @@
       манифестом) и совещательное наблюдение `upstream_drift` (канон уехал?), у которого
       `null` означает «канон был недоступен», а не «в синхроне». Работа — только правка
       прозы; статус вычисляется, руками не трогаем.
+
+- [x] Обновить consumer registry `epics/v1`: github-checker завендорил контракт (`snapshot/v2`) — PR #99 @owner:github:andrei-shtanakov @id:epics-v1-consumer-github-checker
+      Запрос `github-checker` (inbox #94, from github-checker#snapshot-v2-epics). Пин
+      проверен по факту, не со слов issue: коммит `15cd338e` существует в этом репо,
+      `tree_sha256` из issue совпадает с `manifest.json` на этом коммите байт-в-байт,
+      github-checker#25 смержен 2026-08-25. Строка registry в
+      `authored/contracts/epics/v1/drift-control.md` переведена `planned (Ф2)` → landed,
+      пин для guarantee B (commit + tree_sha256 + путь вендоринга) записан под таблицей.
