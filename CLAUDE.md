@@ -73,7 +73,14 @@ A fourth writer is the dispatcher publisher (`dispatcher publish-snapshot`): it 
 `derived/snapshots/` — per-host workspace sync snapshots (`<host>.json`, github-checker
 snapshot contract v1), each overwritten in place (regenerable: latest state per host, no
 history), committed directly by the scheduled tool — dispatcher Gate 1 Design DESIGN-203,
-2026-07-14.
+2026-07-14. Since 2026-08-26 (inbox #98) the publisher delivers to the unprotected
+`derived-snapshots` **branch**, never to `master`: `derived/snapshots/` is a regenerable
+read-model, not authority, so its machine writer gets no bypass of the `master` rulesets.
+Consequently a local `master` checkout deliberately does **not** contain the live machine
+read-model — readers fetch the branch explicitly
+(`git show origin/derived-snapshots:derived/snapshots/<host>.json` or a dedicated service
+worktree, never by switching the main KB checkout) and degrade to `unknown`/`stale` when
+the branch is absent. Consumer-side adaptation is tracked in dispatcher#199.
 
 ## 3. Directory map (what goes where)
 
@@ -93,7 +100,8 @@ derived/
   projects/     auto-facts per repo (prograph)
   journal/      <project>/journal.md — per-project activity log (kb-save; append-only)
   fleet/        dated fleet-state reports (fleet agent via PR; append-only)
-  snapshots/    <host>.json — per-host sync snapshots (dispatcher publisher; overwritten)
+  snapshots/    <host>.json — per-host sync snapshots (dispatcher publisher; overwritten;
+                live copy on the derived-snapshots branch, not master — see §2)
   digests/      claude-kb/digests (auto)
 ```
 
