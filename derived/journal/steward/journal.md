@@ -153,3 +153,8 @@ updated: 2026-08-28
 - Тем же PR: 19 DT-TAG-ON-CONTINUATION в TODO.md сняты механическим переносом тегов на строки чекбоксов (детектор 19 → 0); среди невидимых был живой @blocked_by у review-kit-model-selection. Остался PF-BLOCKER-STALE (:178) — решение владельца.
 - Боевой курьёз: #135 сперва был закрыт вместо мержа; ветка уже была удалена в обеих половинах — восстановлена из локального объекта, PR переоткрыт (approve пережил close/reopen, head не менялся) и влит со второй попытки. Попутный аргумент за дедуп: close/reopen не меняет отпечаток.
 - Links: steward PR #135, devtools#75, devtools PR #76, TODO.md §10a/§10
+
+## 2026-08-28 — status: план машинно-чист — закрыт последний PF-BLOCKER-STALE (PR #136)
+
+- Ожидание prev-hash-ре-вендора dispatcher закрыто «действием»: byte-equal вендор-копии сверен по форджу (SCHEMA.json git-sha 2d3c7d3a, manifest пинует producer_commit). @blocked_by с закрытого чекбокса снят в прозу по конвенции план-дока gate-id-catalog (итерация гейта). check-plan-fields по steward: 0 находок.
+- Links: steward PR #136, TODO.md (gate-verdicts-prev-hash-dispatcher-revendor)
