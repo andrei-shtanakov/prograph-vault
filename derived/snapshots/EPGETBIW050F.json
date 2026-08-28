@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-28T11:48:35.600150+04:00",
+  "generated_at": "2026-08-28T12:18:37.316825+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,9 +69,9 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "fix/review-pr-fp-slurp-compat",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": true,
         "error": null
       },
@@ -226,9 +226,9 @@
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
         "branch": "master",
-        "ahead": 91,
+        "ahead": 1,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -333,7 +333,7 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "docs/fp-wait-delivered",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
