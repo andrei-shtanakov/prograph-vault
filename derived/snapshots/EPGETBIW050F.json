@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-28T22:31:04.707451+04:00",
+  "generated_at": "2026-08-28T23:01:12.777887+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -130,9 +130,9 @@
       "remote": "andrei-shtanakov/disputatio",
       "local": {
         "branch": "docs/spec-pair-polish-pipeline",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
