@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-26T13:49:53.207492+04:00",
+  "generated_at": "2026-08-28T11:48:35.600150+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -21,9 +21,9 @@
       "dir": "arbiter",
       "remote": "andrei-shtanakov/arbiter",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "chore/review-caller-sync-3",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -69,10 +69,10 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "fix/review-pr-fp-slurp-compat",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -117,9 +117,9 @@
       "dir": "dispatcher",
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
-        "branch": "chore/review-caller-sync-3",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -165,7 +165,7 @@
       "dir": "kapelle",
       "remote": "andrei-shtanakov/kapelle",
       "local": {
-        "branch": "chore/review-caller-sync-3",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -225,10 +225,10 @@
       "dir": "prograph-vault",
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
-        "branch": "chore/epics-v1-consumer-github-checker",
-        "ahead": 0,
+        "branch": "master",
+        "ahead": 91,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -239,7 +239,7 @@
       "local": {
         "branch": "main",
         "ahead": 0,
-        "behind": 9,
+        "behind": 11,
         "dirty": false,
         "error": null
       },
@@ -333,7 +333,7 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "master",
+        "branch": "docs/fp-wait-delivered",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
