@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-28T13:49:00.185188+04:00",
+  "generated_at": "2026-08-28T16:19:36.175518+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -21,9 +21,9 @@
       "dir": "arbiter",
       "remote": "andrei-shtanakov/arbiter",
       "local": {
-        "branch": "chore/review-caller-sync-3",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -117,9 +117,9 @@
       "dir": "dispatcher",
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "feat/snapshot-publish-branch",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -155,7 +155,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -201,7 +201,7 @@
       "dir": "proctor",
       "remote": "andrei-shtanakov/proctor",
       "local": {
-        "branch": "master",
+        "branch": "feat/mcp-result-guard",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -226,7 +226,7 @@
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
         "branch": "master",
-        "ahead": 0,
+        "ahead": 4,
         "behind": 0,
         "dirty": false,
         "error": null
