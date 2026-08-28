@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-28T12:18:37.316825+04:00",
+  "generated_at": "2026-08-28T12:48:45.445800+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -226,7 +226,7 @@
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
         "branch": "master",
-        "ahead": 1,
+        "ahead": 0,
         "behind": 0,
         "dirty": false,
         "error": null
