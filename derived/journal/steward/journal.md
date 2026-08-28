@@ -158,3 +158,10 @@ updated: 2026-08-28
 
 - Ожидание prev-hash-ре-вендора dispatcher закрыто «действием»: byte-equal вендор-копии сверен по форджу (SCHEMA.json git-sha 2d3c7d3a, manifest пинует producer_commit). @blocked_by с закрытого чекбокса снят в прозу по конвенции план-дока gate-id-catalog (итерация гейта). check-plan-fields по steward: 0 находок.
 - Links: steward PR #136, TODO.md (gate-verdicts-prev-hash-dispatcher-revendor)
+
+## 2026-08-28 — status: дедуп ревью разблокирован, baseline-замер снят, волна fp-кита заведена (PR #138)
+
+- Блокер review-pr-fp-slurp-compat доставлен (devtools#75 выполнен, фикс devtools PR #76 merge 87b7e76); живой инцидент наследования подтверждён на steward#135 — повторный dry-run на неизменном head ответил «вердикт унаследован» за 10.3 сек без вызова codex.
+- Baseline-замер по маркерам fp= (скан всего флота): маркеры только в steward — 6 платных прогонов, 0 опубликованных наследований, 1 same-head (приёмочный). Методологическая оговорка записана в TODO: same-head наследование не публикуется — замер по маркерам есть нижняя оценка экономии.
+- Заведена волна re-vendor fp-кита devtools#79 (slug review-kit-fp-wave, по образцу devtools#69): local.sh --fingerprint-only есть только в steward, review-pr.sh feature-detect'ит по-репно — до волны дедуп на флоте молча выключен. Ожидание — чекбоксом @blocked_by:todo://devtools/review-kit-fp-wave.
+- Links: steward PR #138, TODO.md (review-dedup-diff-hash, review-kit-fp-wave), devtools#75, devtools#79
