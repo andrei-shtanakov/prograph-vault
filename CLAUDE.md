@@ -66,6 +66,14 @@ cross-cutting knowledge**; it does **not** duplicate what repos own (see §4).
 **For tools:** prograph writes **only** to `derived/`. Writing to `authored/` from automation is
 forbidden (the directory boundary is hard). A second automated writer is allowed under `derived/`:
 the `kb-save` skill owns `derived/journal/` (append-only, not regenerable — ADR 2026-07-06).
+Since 2026-08-28 kb-save delivers through the rolling **`journal/pending` branch + PR** (via a
+detached worktree, never switching or committing in the main checkout): the PR accumulates entries
+until a human merges it, GitHub deletes the branch, the next entry recreates it from fresh
+`master` — so at most one unmerged batch exists and tail-append conflicts cannot chain. Commits to
+a local `master` checkout are forbidden for machines outright: `master` is PR-only with no machine
+bypass, such commits can never be pushed and strand the entries (incident of 93 stranded commits,
+rescue PRs #108/#109). The local checkout's journal copy is thus behind until the pending PR
+merges; the freshest entries live on `origin/journal/pending`.
 A third writer is the fleet agent (`devtools/fleet_report.py`): it owns `derived/fleet/` —
 dated fleet-state reports (append-only, not regenerable, delivered by PR only, never direct
 commits — `authored/decisions/2026-07-10-adr-fleet-agent-role.md`, proposed).
@@ -98,7 +106,8 @@ derived/
   graph/        prograph output (structure, deps, MCP calls)
   contracts/    contract SNAPSHOTS for search (not authority)
   projects/     auto-facts per repo (prograph)
-  journal/      <project>/journal.md — per-project activity log (kb-save; append-only)
+  journal/      <project>/journal.md — per-project activity log (kb-save; append-only;
+                delivered via the rolling journal/pending branch + PR — see §2)
   fleet/        dated fleet-state reports (fleet agent via PR; append-only)
   snapshots/    <host>.json — per-host sync snapshots (dispatcher publisher; overwritten;
                 live copy on the derived-snapshots branch, not master — see §2)
