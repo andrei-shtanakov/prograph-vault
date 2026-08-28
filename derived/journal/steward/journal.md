@@ -3,7 +3,7 @@ title: steward — activity journal
 type: journal
 source: kb-save
 project: steward
-updated: 2026-08-09
+updated: 2026-08-27
 ---
 
 # steward — activity journal
@@ -124,3 +124,17 @@ updated: 2026-08-09
   first-class owner_role — steward §2 re-vendor trigger fired, items unblocked.
 - Links: steward PR #58 (merged `4c41ef4`); steward/docs/evidence/2026-08-08-v1-live-run/;
   spec-runner inbox issue with run frictions (filed alongside this entry).
+
+## 2026-08-27 21:10 — decision: приём inbox #126/#127, #124 с понижением (PR #128)
+
+- Приняты в TODO.md три inbox-запроса: #126 → `review-dedup-diff-hash` (§10a, дедуп ревью по sha256-отпечатку входа; @trigger — эксперимент после закрепления терминального дефолта vault#106), #127 → `review-lens-test-tampering` (§10a, линза ослабления тестов в review-prompt.md, размер S), #124 → `review-kit-ceiling-vs-actions-outage` (§10, **принят с понижением** до док-абзаца: потолок timeout-minutes — не гарантия во время аварии Actions; выбор «понизить, не отказать» — урок измерен боевым днём dispatcher 2026-08-26, цена — абзац README).
+- Слаги совпадают с телами issues — правка slug: не потребовалась; вывод принятия у make inbox работает (is_accepted матчит по raw-тексту айтема, включая continuation-строки — проверено по devtools/inbox.py).
+- Терминальный цикл нового дефолта пройден целиком: local.sh чисто → драфт → review-pr.sh --dry-run → публикация approve от ai-prosto → ready. Мерж за владельцем.
+- Links: steward TODO.md §10a/§10, steward PR #128, issues steward#126/#127/#124
+
+## 2026-08-27 21:55 — change: реализация review-lens-test-tampering + ceiling-outage (PR #129)
+
+- Реализованы два принятых пункта батчем (одна волна синка): линза ослабления тестов в §4 review-prompt.md (#127) и абзац «потолок ≠ гарантия в аварию Actions» к доводу timeout-minutes в codex-review.yml (#124). #126 (дедуп) не тронут — держит @trigger.
+- Линза потребовала 4 итерации гейта, все находки валидны и о самосогласованности промпта: (1) противоречие §3 — определено, как файл/строка/вход/результат применяются к утрате покрытия; (2) чистое удаление невыразимо в схеме — конвенция «строка ближайшего контекста, line: 0 для удалённого файла», схема не менялась; (3) безусловная линза блокировала бы удаление тестов вместе с функциональностью — скоуп «охраняемое поведение остаётся в дереве»; (4) major по определению §4 не включал утрату покрытия — определение расширено.
+- Зафиксирован недетерминизм ревьюера: dry-run на head d541e86 дал approve, боевой прогон на ТОМ ЖЕ head — request-changes (итерация 4 и была его находкой). Прямое свидетельство в пользу review-dedup-diff-hash (#126): дедуп по отпечатку унаследовал бы вердикт вместо второго платного прогона. Также один прогон review-pr.sh завис >10 мин без вердикта (норма 1–4) и был убит — в норму вернулся ретрай.
+- Links: steward PR #129, .github/codex/review-prompt.md §4, .github/workflows/codex-review.yml (довод потолка), issues steward#127/#124/#126
