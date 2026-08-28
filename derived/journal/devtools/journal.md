@@ -3,7 +3,7 @@ title: devtools — activity journal
 type: journal
 source: kb-save
 project: devtools
-updated: 2026-08-18
+updated: 2026-08-28
 ---
 
 # devtools — activity journal
@@ -55,3 +55,25 @@ updated: 2026-08-18
 - Детекторы окупились до мержа: 2 протухших ожидания maestro (arbiter#R-07 давно завершён) и 5 невидимых @id (disputatio ×3, kapelle ×2); находки доставлены — maestro#196, disputatio#21, kapelle#29 (в disputatio/kapelle создан лейбл inbox). Ревью Copilot PR #59 — без замечаний.
 - Флот сейчас: 1 канонический ERROR (maestro ждёт доставленный vocabulary — их сигнал) + 7 честных warnings у соседей; ложные warnings impresario ушли. Тик закрытия — PR #60.
 - Links: devtools#56, devtools#57, devtools#58, devtools PR #59, PR #60, check-plan-fields.py, tests/test_plan_check_detectors.py, maestro#196, disputatio#21, kapelle#29
+
+## 2026-08-27 20:48 — change: salvage-скан флота принят и реализован (devtools#67, PR #68)
+
+- Принят inbox #67 (инициатор — ecosystem-kb, harvesting-волна №2; @id:fleet-salvage-scan). Новый сенсор salvage_scan.py + make salvage: детерминированный read-only скан набора манифеста по четырём классам обломков — orphan-worktree, branch-no-pr, unpushed-default, stale-lock. Таблица «репо · класс · объект · возраст» + host; пустой результат молчит (exit 0).
+- WAIVERS (repo, класс, префикс объекта) помечают осознанные исключения [waived], не чинят и не скрывают; только waived → exit 0. Записаны ОБА лица исключения волта: unpushed master (снапшот-коммиты, ждёт dispatcher#199) и delivery-ветка derived-snapshots без PR by design (ecosystem-kb#98). Fail-honest: gh недоступен → «PR state unknown», не молчание.
+- Живой прогон окупился сразу: orphan worktree research-bench (32d, /private/tmp/maestro-ws), 6 веток-кандидатов в disputatio/kapelle/maestro/research-bench. 23 синтетических теста, сети в тестах нет. devtools#67 закрыть после мержа PR #68.
+- Links: devtools#67, devtools PR #68, salvage_scan.py, tests/test_salvage_scan.py, dispatcher#199, ecosystem-kb#98
+
+## 2026-08-28 09:15 — change: догоняющая волна re-vendor промпта review-kit (devtools#69, PR-ы по 22 репо)
+
+- Принят inbox #69 (инициатор — steward, @id:review-kit-prompt-lens-wave, встречное ожидание steward#130): волна 2026-08-27 разнесла кит @ e4c43cc ДО мержа steward#129; drift-вахта разъезд не видит — сверяет только 6 файлов PIN, промпт и caller-yml вне перечня по конструкции.
+- Разнесено со steward @ ee6d85a побайтово: review-prompt.md (линза ослабления тестов в §4 — ослабление проверки без равноценной замены = минимум major; скоуп «охраняемое поведение остаётся в дереве»; line:0 для чистого удаления; утрата покрытия живого поведения в определении major) → 22 репо; codex-review.yml (довод steward#124 «потолок ≠ гарантия в аварию Actions», только комментарий) → 6 caller-репо. PIN/схема не тронуты — между e4c43cc и ee6d85a не менялись.
+- 22 PR: deployer#46, atp-platform-testing#2, discovery-toolkit#9, discovery#26, disputatio#46, github-checker#28, impresario#41, libretto#33, proctor#57, prograph-vault#107, prograph#39, research-bench#28, robin-runtime#57, robin-toolkit#8, spec-runner-vscode#31, devtools#70 (+ приём в TODO.md), arbiter#95, atp-platform#310, dispatcher#212, kapelle#40, maestro#230, spec-runner#323.
+- CI: у 6 caller-репо джобы review/report codex-review красные по среде — «You have no credits remaining» у OpenAI-аккаунта (не волна: yml-дельта — комментарий; review-kit-integrity везде зелёный). impresario governance/gate красный pre-existing с 2026-08-20 (pilot/briefs ссылаются на _cowork_output). Copilot-ревьюер через POST requested_reviewers молча не регистрируется ни в одном репо (то же на до-волновых PR).
+- Закрыть пункт и devtools#69 после посадки волны на default-ветки (признак — байт-совпадение копий со steward HEAD, prompt sha256 27792de2…eba98).
+- Links: devtools#69, devtools PR #70, steward#129, steward#130, TODO.md (@id:review-kit-prompt-lens-wave)
+
+## 2026-08-28 09:55 — result: волна review-kit-prompt-lens-wave посажена, devtools#69 закрыт
+
+- Все 22 PR вмержены пользователем 2026-08-28. Сверка по origin/<default>: prompt 22/22 и caller-yml 6/6 байт-совпадают со steward HEAD (ee6d85a, на момент сверки не уехал). Ветки волны удалены на origin; локальные клоны обновлены ff-only (prograph-vault master — waived-расхождение, не тронуто; arbiter — fetch only, оставлен на рабочей ветке).
+- devtools#69 закрыт completed (сигнал steward#130 → PF-BLOCKER-STALE у них). Закрытие пункта TODO — PR devtools#71 (ждёт мержа).
+- Links: devtools#69, devtools PR #70, PR #71, steward#129, steward#130
