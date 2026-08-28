@@ -3,7 +3,7 @@ title: proctor — activity journal
 type: journal
 source: kb-save
 project: proctor
-updated: 2026-07-16
+updated: 2026-08-28
 ---
 
 # proctor — activity journal
@@ -94,3 +94,19 @@ updated: 2026-07-16
 - Links: authored/notes/2026-07-16-openprose-contracts-response.md,
   authored/notes/2026-07-16-openprose-contracts-offer.md,
   open-prose/docs/plans/2026-07-16-development-plan.md (задача 4.6, Phase 6)
+
+## 2026-08-28 17:24 — change: mcp/result_guard — первый компонент модуля mcp/
+
+- Смержен PR #59: детерминированный guard результатов MCP-инструментов
+  (`src/proctor/mcp/result_guard.py`) — scan_tool_result() детектирует
+  prompt-injection (включая скрытые HTML-комментарии и role-маркеры) и
+  креденшелы (AWS/GitHub/Anthropic/OpenAI/Slack/private key); сниппеты
+  отчёта маскируются. Политика block/redact/log — за будущим mcp/proxy.
+- Закрыт inbox-issue proctor#52 (slug mcp-tool-result-guard, from:
+  ai-repos-research#proposal-v3-harvest); TODO-пункт помечен выполненным.
+  Паттерны написаны свои — текст списков mcptoon не заимствован.
+- Ревью ai-prosto: 3 итерации, 3 major-находки исправлены (лимит 400 симв.
+  на скрытый комментарий; утечка секрета через injection-сниппет;
+  role-marker в комментарии), «пустая строка = clean» отклонена как
+  admission-политика proxy. Итог --approve.
+- Links: proctor/src/proctor/mcp/result_guard.py, proctor PR #59, proctor#52
