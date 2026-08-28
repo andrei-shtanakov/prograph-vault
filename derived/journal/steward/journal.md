@@ -3,7 +3,7 @@ title: steward — activity journal
 type: journal
 source: kb-save
 project: steward
-updated: 2026-08-09
+updated: 2026-08-28
 ---
 
 # steward — activity journal
@@ -124,3 +124,32 @@ updated: 2026-08-09
   first-class owner_role — steward §2 re-vendor trigger fired, items unblocked.
 - Links: steward PR #58 (merged `4c41ef4`); steward/docs/evidence/2026-08-08-v1-live-run/;
   spec-runner inbox issue with run frictions (filed alongside this entry).
+
+## 2026-08-27 21:10 — decision: приём inbox #126/#127, #124 с понижением (PR #128)
+
+- Приняты в TODO.md три inbox-запроса: #126 → `review-dedup-diff-hash` (§10a, дедуп ревью по sha256-отпечатку входа; @trigger — эксперимент после закрепления терминального дефолта vault#106), #127 → `review-lens-test-tampering` (§10a, линза ослабления тестов в review-prompt.md, размер S), #124 → `review-kit-ceiling-vs-actions-outage` (§10, **принят с понижением** до док-абзаца: потолок timeout-minutes — не гарантия во время аварии Actions; выбор «понизить, не отказать» — урок измерен боевым днём dispatcher 2026-08-26, цена — абзац README).
+- Слаги совпадают с телами issues — правка slug: не потребовалась; вывод принятия у make inbox работает (is_accepted матчит по raw-тексту айтема, включая continuation-строки — проверено по devtools/inbox.py).
+- Терминальный цикл нового дефолта пройден целиком: local.sh чисто → драфт → review-pr.sh --dry-run → публикация approve от ai-prosto → ready. Мерж за владельцем.
+- Links: steward TODO.md §10a/§10, steward PR #128, issues steward#126/#127/#124
+
+## 2026-08-27 21:55 — change: реализация review-lens-test-tampering + ceiling-outage (PR #129)
+
+- Реализованы два принятых пункта батчем (одна волна синка): линза ослабления тестов в §4 review-prompt.md (#127) и абзац «потолок ≠ гарантия в аварию Actions» к доводу timeout-minutes в codex-review.yml (#124). #126 (дедуп) не тронут — держит @trigger.
+- Линза потребовала 4 итерации гейта, все находки валидны и о самосогласованности промпта: (1) противоречие §3 — определено, как файл/строка/вход/результат применяются к утрате покрытия; (2) чистое удаление невыразимо в схеме — конвенция «строка ближайшего контекста, line: 0 для удалённого файла», схема не менялась; (3) безусловная линза блокировала бы удаление тестов вместе с функциональностью — скоуп «охраняемое поведение остаётся в дереве»; (4) major по определению §4 не включал утрату покрытия — определение расширено.
+- Зафиксирован недетерминизм ревьюера: dry-run на head d541e86 дал approve, боевой прогон на ТОМ ЖЕ head — request-changes (итерация 4 и была его находкой). Прямое свидетельство в пользу review-dedup-diff-hash (#126): дедуп по отпечатку унаследовал бы вердикт вместо второго платного прогона. Также один прогон review-pr.sh завис >10 мин без вердикта (норма 1–4) и был убит — в норму вернулся ретрай.
+- Links: steward PR #129, .github/codex/review-prompt.md §4, .github/workflows/codex-review.yml (довод потолка), issues steward#127/#124/#126
+
+## 2026-08-28 — change: эксперимент #126 запущен — кит-половина дедупа ревью влита (PR #132, #133)
+
+- Триггер review-dedup-diff-hash сработал (владелец), дизайн утверждён с поправками: оффлайн-гарантия явная, framed-хеширование с версией протокола codex-terminal-review-fingerprint-v1, наследование только из строго распарсенного ревью, пустой дифф — исход без отпечатка, --fresh в review-pr.sh.
+- PR #132 (влит): `local.sh --fingerprint-only` — 12 TDD-тестов красными до кода; собственный гейт нашёл два валидных minor жанра fail-honest (порог-каталог сквозь -r + пайплайн, глотающий cat; битый вывод хешера с кодом 0) — оба закрыты через красный тест. Итог: 1182 passed.
+- PR #133 (влит): ожидание интеграции — @blocked_by:todo://devtools/review-pr-fp-inherit (devtools#72, контракт из 7 пунктов). Находка гейта: теги читаются ТОЛЬКО с физической строки чекбокса (devtools#57) — @blocked_by перенесён на неё; иначе невидимое ожидание.
+- Побочно вскрыто прогоном check-plan-fields: 19 унаследованных DT-TAG-ON-CONTINUATION в §10a TODO.md (теги роадмапа 2026-08-23 невидимы Robin) + 1 PF-BLOCKER-STALE (TODO.md:178, dispatcher закрыл gate-verdicts-v1-prev-hash-revendor). Ждут решения владельца.
+- Links: steward PR #132/#133, scripts/review/local.sh (--fingerprint-only), devtools#72, issues steward#126
+
+## 2026-08-28 — result: первый живой инцидент наследования вердикта + чистка невидимых тегов (PR #135)
+
+- Дедуп ревью (эксперимент #126) впервые сработал вживую: после полного прогона на steward#135 повторный dry-run на неизменном head ответил «вердикт унаследован (--approve), отпечаток совпал» за 10.3 сек без вызова codex. Свидетельство — комментарием в devtools#75; до этого той же проверкой был вскрыт и заведён дефект devtools#75 (gh 2.83.1 отвергает --slurp+--jq — кэш был мёртв, fail-open в полный прогон), исправлен devtools PR #76.
+- Тем же PR: 19 DT-TAG-ON-CONTINUATION в TODO.md сняты механическим переносом тегов на строки чекбоксов (детектор 19 → 0); среди невидимых был живой @blocked_by у review-kit-model-selection. Остался PF-BLOCKER-STALE (:178) — решение владельца.
+- Боевой курьёз: #135 сперва был закрыт вместо мержа; ветка уже была удалена в обеих половинах — восстановлена из локального объекта, PR переоткрыт (approve пережил close/reopen, head не менялся) и влит со второй попытки. Попутный аргумент за дедуп: close/reopen не меняет отпечаток.
+- Links: steward PR #135, devtools#75, devtools PR #76, TODO.md §10a/§10
