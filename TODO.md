@@ -41,7 +41,7 @@
 
 ## Принятые обязательства перед соседними репо
 
-- [ ] Доставка `derived/snapshots` через ветку `derived-snapshots` вместо `master` @owner:github:andrei-shtanakov @blocked_by:dispatcher#199 @id:derived-snapshots-vs-master-protection @epic:eco.knowledge-graph
+- [ ] Доставка `derived/snapshots` через ветку `derived-snapshots` вместо `master` @owner:github:andrei-shtanakov @blocked_by:dispatcher#199 @blocked_by:dispatcher#213 @id:derived-snapshots-vs-master-protection @epic:eco.knowledge-graph
       Запрос `dispatcher` (inbox #98): прямой пуш снапшотов в `master` отбит required
       check `governance / gate` — кросс-машинный синк доставлялся наполовину. Решение
       владельца vault 2026-08-26: `derived/snapshots` — регенерируемая проекция, не
@@ -55,6 +55,11 @@
       или служебный worktree, не переключение основного чекаута; деградация в
       `unknown`/`stale`): dispatcher#199. Регулярные коллизии машин на одной ветке →
       следующий шаг per-host refs или отдельный snapshot-репо, не bypass `master`.
+      2026-08-28: publisher-половина остатка вынесена в отдельный запрос
+      dispatcher#213 — паблишер на EPGETBIW050F так и не был перенаправлен и за
+      26–28.08 накопил в локальном `master` 93 незапушиваемых коммита (спасение —
+      PR #108/#109, снапшот доставлен в ветку вручную). До закрытия #213 каждый
+      его прогон возобновляет расхождение локального `master`.
 
 - [ ] Публиковать `derived/governance/` с **observed** enforcement-зрелостью правил @owner:github:andrei-shtanakov @id:governance-observed-derived @epic:eco.governance-plane
       Первый ход наш, и `@blocked_by` здесь намеренно нет.
