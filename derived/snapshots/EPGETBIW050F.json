@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-29T20:09:24.735836+04:00",
+  "generated_at": "2026-08-29T20:39:33.038106+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -118,7 +118,7 @@
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
         "branch": "feat/tabbed-ui",
-        "ahead": 2,
+        "ahead": 0,
         "behind": 0,
         "dirty": false,
         "error": null
@@ -132,7 +132,7 @@
         "branch": "feat/spec-pair-pipeline",
         "ahead": null,
         "behind": null,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
