@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-30T11:21:40.395839+04:00",
+  "generated_at": "2026-08-30T11:51:48.117846+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -70,8 +70,8 @@
       "remote": "andrei-shtanakov/devtools",
       "local": {
         "branch": "feat/fleet-issue-console",
-        "ahead": null,
-        "behind": null,
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
