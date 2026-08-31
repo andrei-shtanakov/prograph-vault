@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-31T21:09:14.732410+04:00",
+  "generated_at": "2026-08-31T21:39:22.832964+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
+        "branch": "feat/s4-candidate-cli-migration",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -129,7 +129,7 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "fix/merge-profile-ai-prosto",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -141,7 +141,7 @@
       "dir": "github-checker",
       "remote": "andrei-shtanakov/github-checker",
       "local": {
-        "branch": "fix/merge-profile-ai-prosto",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -153,7 +153,7 @@
       "dir": "impresario",
       "remote": "andrei-shtanakov/impresario",
       "local": {
-        "branch": "fix/merge-profile-ai-prosto",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -165,9 +165,9 @@
       "dir": "kapelle",
       "remote": "andrei-shtanakov/kapelle",
       "local": {
-        "branch": "task/task-001-discovery-fail-closed-provenan",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 3,
         "dirty": true,
         "error": null
       },
@@ -249,9 +249,9 @@
       "dir": "research-bench",
       "remote": "andrei-shtanakov/research-bench",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "fix/merge-profile-ai-prosto",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -264,7 +264,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -276,7 +276,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
