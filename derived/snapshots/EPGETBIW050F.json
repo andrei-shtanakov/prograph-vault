@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-31T19:36:52.929951+04:00",
+  "generated_at": "2026-08-31T20:07:01.962834+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -129,7 +129,7 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -141,9 +141,9 @@
       "dir": "github-checker",
       "remote": "andrei-shtanakov/github-checker",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -153,7 +153,7 @@
       "dir": "impresario",
       "remote": "andrei-shtanakov/impresario",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
