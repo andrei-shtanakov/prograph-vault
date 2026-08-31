@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-31T22:09:31.305182+04:00",
+  "generated_at": "2026-08-31T22:39:39.705592+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,10 +69,10 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "feat/s4-candidate-cli-migration",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "spec-runner/run-20260831-221117",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -225,9 +225,9 @@
       "dir": "prograph-vault",
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
-        "branch": "master",
+        "branch": "fix/merge-profile-ai-prosto",
         "ahead": 1,
-        "behind": 4,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -249,9 +249,9 @@
       "dir": "research-bench",
       "remote": "andrei-shtanakov/research-bench",
       "local": {
-        "branch": "fix/merge-profile-ai-prosto",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -261,7 +261,7 @@
       "dir": "robin-runtime",
       "remote": "andrei-shtanakov/robin-runtime",
       "local": {
-        "branch": "fix/merge-profile-ai-prosto",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -273,7 +273,7 @@
       "dir": "robin-toolkit",
       "remote": "andrei-shtanakov/robin-toolkit",
       "local": {
-        "branch": "fix/merge-profile-ai-prosto",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
