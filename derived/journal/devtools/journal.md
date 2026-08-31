@@ -170,3 +170,37 @@ updated: 2026-08-31
   devtools#92 закрыт с evidence. Консоль показывает пару
   merged_unverified→completed(v1) корректно.
 - Links: devtools PR #91/#93, devtools#92, out/governance-runs/
+
+## 2026-08-31 — change: развитие конвейера 1→2→3 — вход из issues, установка во флот, мост к spec-runner
+
+- Перепин actor-policy @ steward 6a70d15 (PR #94, мерж человеком): steward#142
+  доставил все три заявки (#139/#140/#141) и включил agent_merge_allowed —
+  Safety(True, agent), S7 мержит document-PR сам. Теги ожиданий S4/S6 сняты,
+  пункты actionable. PF-BLOCKER-STALE подтверждён живым прогоном чекера.
+- Шаг 1 (PR #95, agent-merge): клавиша `b` в issue-console — мост
+  «issue → behaviour-run»: subject из заголовка + repo#N, ws-id WS-<repo>-<N>,
+  target — локальный клон; только internal-инициатор.
+- Шаг 3 (PR #96, agent-merge, две major-находки приёмки исправлены):
+  governance/task_bridge.py — draft tasks.md-спека из вмерженного бандла
+  PR-ом в репо-владелец (make behaviour-tasks --run-id; CLI требует
+  completed; чтение бандла после чекаута базы; approve — человек).
+- Шаг 2: волна profiles/ (team-exp урезанный + roles + gate-catalog +
+  risk-model @ 4a1c7c44) + лейбл codex-review по флоту — 20 PR, мерж
+  человеком (authority-root): spec-runner#326 atp-platform#314 maestro#233
+  arbiter#100 dispatcher#222 proctor#61 deployer#49 prograph#42
+  robin-runtime#60 github-checker#31 libretto#36 disputatio#55
+  research-bench#31 impresario#46 discovery#29 discovery-toolkit#12
+  prograph-vault#116 robin-toolkit#11 spec-runner-vscode#34 kapelle#44;
+  steward пропущен (профили родные). Последние 8 — через git trees API без
+  клонов (SSH-клоны упирались в 10-мин потолок фоновых команд).
+- Links: devtools PR #94/#95/#96, governance/task_bridge.py, issue_console.py
+
+## 2026-08-31 — status: волна профилей села — 19/20 смержено владельцем, флот готов к конвейеру
+
+- Владелец смержил 19 PR волны profiles/; открыт остался disputatio#55.
+  Влитые ветки chore/behaviour-profiles удалены на origin (11 руками, 9
+  удалил GitHub), локальные чекауты флота обновлены ff-only до мержей.
+- Гигиена: снята россыпь stale index.lock (0 байт, 29.08 16:02, упавшая
+  сессия) в 12 репо; подвисшие ssh git-upload-pack процессы убиты — fetch
+  переключён разово на HTTPS (ssh к GitHub сегодня виснет).
+- Конвейер теперь запускаем в любом репо флота, кроме disputatio (ждёт #55).
