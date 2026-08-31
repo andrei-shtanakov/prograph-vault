@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-31T14:35:23.593309+04:00",
+  "generated_at": "2026-08-31T15:05:33.214002+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -23,7 +23,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -59,7 +59,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -83,7 +83,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -107,7 +107,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -119,7 +119,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -143,7 +143,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -155,7 +155,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -167,7 +167,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -179,7 +179,7 @@
       "local": {
         "branch": "main",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -203,7 +203,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -215,7 +215,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 1,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -226,9 +226,9 @@
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
         "branch": "master",
-        "ahead": 1,
+        "ahead": 2,
         "behind": 2,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -251,7 +251,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -263,7 +263,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -275,7 +275,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -323,7 +323,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
