@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-31T16:35:58.353517+04:00",
+  "generated_at": "2026-08-31T17:06:07.150116+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -33,7 +33,7 @@
       "dir": "atp-platform",
       "remote": "andrei-shtanakov/atp-platform",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "main",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -57,7 +57,7 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
+        "branch": "docs/adr-eco-011-run-level",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -118,8 +118,8 @@
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
         "branch": "docs/adr-eco-011-merge-policy",
-        "ahead": 0,
-        "behind": 0,
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -142,8 +142,8 @@
       "remote": "andrei-shtanakov/github-checker",
       "local": {
         "branch": "docs/adr-eco-011-merge-policy",
-        "ahead": 0,
-        "behind": 0,
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -202,7 +202,7 @@
       "remote": "andrei-shtanakov/proctor",
       "local": {
         "branch": "docs/adr-eco-011-merge-policy",
-        "ahead": 1,
+        "ahead": 0,
         "behind": 0,
         "dirty": false,
         "error": null
@@ -216,7 +216,7 @@
         "branch": "docs/adr-eco-011-merge-policy",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -228,7 +228,7 @@
         "branch": "docs/adr-eco-011-merge-policy",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -252,7 +252,7 @@
         "branch": "docs/adr-eco-011-merge-policy",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -264,7 +264,7 @@
         "branch": "docs/adr-eco-011-merge-policy",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -276,7 +276,7 @@
         "branch": "docs/adr-eco-011-merge-policy",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -298,9 +298,9 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "docs/adr-eco-011-merge-policy",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": true,
+        "ahead": null,
+        "behind": null,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -324,7 +324,7 @@
         "branch": "docs/adr-eco-011-merge-policy",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -333,7 +333,7 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "master",
+        "branch": "docs/adr-eco-011-run-level",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
