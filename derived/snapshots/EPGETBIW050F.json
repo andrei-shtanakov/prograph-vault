@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-31T21:39:22.832964+04:00",
+  "generated_at": "2026-08-31T22:09:31.305182+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -167,8 +167,8 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 3,
-        "dirty": true,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -261,10 +261,10 @@
       "dir": "robin-runtime",
       "remote": "andrei-shtanakov/robin-runtime",
       "local": {
-        "branch": "master",
+        "branch": "fix/merge-profile-ai-prosto",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -273,10 +273,10 @@
       "dir": "robin-toolkit",
       "remote": "andrei-shtanakov/robin-toolkit",
       "local": {
-        "branch": "master",
+        "branch": "fix/merge-profile-ai-prosto",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
