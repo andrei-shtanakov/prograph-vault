@@ -3,7 +3,7 @@ title: devtools — activity journal
 type: journal
 source: kb-save
 project: devtools
-updated: 2026-08-28
+updated: 2026-08-31
 ---
 
 # devtools — activity journal
@@ -97,3 +97,110 @@ updated: 2026-08-28
 - steward#135 стал тест-носителем: полный прогон опубликовал approve с fp-маркером, повторный dry-run на неизменном head → «вердикт унаследован» за 10.3 сек без вызова codex (против минут полного прогона). Критерий «сделано» devtools#75 выполнен дословно, issue закрыт, пункт [x] (тик — PR #77, отревьюирован самим инструментом: approve от ai-prosto).
 - Цепочка devtools#72 → #75 полностью в бою: контракт наследования, живое крещение с двумя само-находками, оживший кэш после slurp-фикса, подтверждённая экономия. Закрытие пункта дало очередной PF-BLOCKER-STALE у steward — их сигнал на замер.
 - Links: devtools#75, devtools PR #76, PR #77, steward#135
+
+## 2026-08-30 11:59 — change: fleet issue console (PR-1) доставлен PR #85
+
+- Спека + план + реализация: TUI (curses/stdlib) открытых issues флота — фильтр до локальных клонов по owner/repo-slug, acceptance-enum через plan-fields, эвристика типов + опция --classify-ai (codex, кэш, порог 0.75), группировка date/repo/author, запуск izolированных tmux-worker-ов (policy-гейт internal→accept/external→reject до Codex, без publish-фаз). 233 теста зелёные.
+- Процесс: subagent-driven (9 задач + финальное ревью + фикс-волна); приёмка терминальным codex-ревью — 2 major-находки (усечение gh search 1000, подмена форком по короткому имени) исправлены фикс-коммитами; approve опубликован ai-prosto через verdict-handoff (devtools#80 контур, без второго вызова codex).
+- Решение владельца (для конституции, отдельный таск): курс DarkFactory — авто-мерж агентом по умолчанию, human-merge как opt-in; экосистемный конфиг — пререквизит подпроекта issue-runner.
+- Links: PR #85; docs/superpowers/specs/2026-08-30-fleet-issue-console-design.md; docs/superpowers/plans/2026-08-30-fleet-issue-console.md
+
+## 2026-08-30 16:07 — change: behaviour governance core (этап A) влит PR #87
+
+- Ядро конвейера behaviour-spec: пин steward@4a1c7c4 (uv-группа governance) с characterization-тестами трёх публичных символов (открытия: profile-ключ artifacts, roles version/slug_pattern, DSL тела, SpecGraph.nodes=dict+topo_order); fail-closed merge_gate по осям ADR-ECO-011; prospective stale-адаптер; bundle_state (blocked/delegated/required_absent/GC-UNPINNED — тишина гейтов не читается как зелёное). 284 теста, CI-шаг группы.
+- Первый живой прогон DarkFactory-мержа: approve ai-prosto опубликован, PUT /merge от ai-prosto → 405 (write-прав нет) → передано человеку по fail-closed. Пререквизит владельца прежний: права ai-prosto.
+- Этап B (runner S0–S8 + textual-консоль) — @id:behaviour-runner, blocked_by этап A; план после мержа A (условие наступило).
+- Links: PR #87; docs/superpowers/specs/2026-08-30-behaviour-spec-pipeline-design.md; docs/superpowers/plans/2026-08-30-behaviour-governance-core.md
+
+## 2026-08-30 20:19 — result: behaviour runner core (B1) влит PR #88 — ПЕРВЫЙ агентский мерж DarkFactory
+
+- Runner S0–S8 конвейера behaviour-spec: policy-оси из вендоренной steward-политики (fail-closed вплоть до пустого PIN и path-traversal run_id), write-ahead журнал с reconciliation всех внешних эффектов (PR/issue/комментарии не дублируются после kill), merged_unverified навсегда + verification-потомок, WS-lock, CLI + make behaviour-run. 380 тестов.
+- Приёмка: 8 раундов codex-ревью (final review SDD дал 2 Critical+6 Important; codex добил ещё 8 major по окнам падения/staleness/traversal — все исправлены фикс-коммитами) → «minor only» → approve ai-prosto через verdict-handoff.
+- ВЕХА: PR #88 смержен агентом — merged_by=ai-prosto, PUT с sha, mergeStateStatus CLEAN после переработки рулсета (update-правило снято, PR-only + 1 approve сохранены). ADR-ECO-011 работает вживую end-to-end.
+- S7 самого runner'а пока waiting_human_merge по данным (agent_merge_allowed=false, ai-prosto не в agent_identities steward) — включение = решение steward + pin-bump.
+- Links: PR #88; план docs/superpowers/plans/2026-08-30-behaviour-runner-core.md
+
+## 2026-08-30 23:08 — result: behaviour console (B2) влит PR #89 — второй агентский мерж
+
+- Textual-консоль поверх runner'а (read-only view-model, plain/--json без textual и без группы), verify с сериализацией по состоянию потомков, disp-бэкенд opt-in (факт: --mode document из спеки у disp нет — @id:disp-document-mode-issue), follow-ups B1. 432 теста.
+- Приёмка: финал SDD дал 2 Critical + 5 Important (README описывал другую программу; verify инвертировал parent/child), codex — ещё 5 major за 7 раундов (вечная tmux-сессия глушила resume; дубль remediation-issue; цикло-скоупный slug; TOCTOU verify; трупы резервов). Все закрыты; merged_by=ai-prosto, CLEAN.
+- Пункт @id:behaviour-runner закрыт (B1 #88 + B2 #89). Конвейер behaviour-spec доставлен целиком: осталась включаемость S7 (steward identities + флаг + pin-bump) и живой смоук.
+- Links: PR #89; план docs/superpowers/plans/2026-08-30-behaviour-console.md
+
+## 2026-08-31 — change: хвосты behaviour-конвейера — steward-issues и волна rulesets
+
+- Заведены inbox-issues (ADR-ECO-006): steward#139 agent-identities-ai-prosto,
+  steward#140 gate-check-candidate-mode, steward#141
+  review-kit-file-missing-finding-type; disputatio#52 single-document-polish-mode.
+  Ожидания закреплены @blocked_by-чекбоксами в TODO.md (PR #90, agent-merge
+  ai-prosto, merge 82dd91e).
+- Волна rulesets по флоту: во всех 21 репо манифеста переработан рулсет
+  «Default Branch Restriction» по эталону devtools — убрано голое `update`,
+  выключены require_code_owner_review и
+  require_extra_approval_for_unattributed_changes, required_approving_review_count=1
+  (в spec-runner-vscode был 0 — ужесточение), bypass admin(5)+Integrations
+  сохранён. ai-prosto: write подтверждён в 20 репо; в robin-runtime pending-инвайт
+  от 2026-08-22 истёк — выдан заново и принят от ai-prosto, теперь write.
+- Links: devtools TODO.md (@id:behaviour-s7-actor-policy-pin-bump и соседние),
+  ADR-ECO-011.
+
+## 2026-08-31 — result: живой смоук behaviour-конвейера — S0–S7 целиком, waiting_human_merge по authority-root
+
+- Прогон WS-SMOKE-001-a1 (target — смоук-клон devtools): codex-авторинг дал
+  DSL-корректный бандл, prospective-гейт S4 зелёный с первого раза
+  (error_count=0, required_absent=[]), PR devtools#91, терминальное ревью
+  --approve от ai-prosto, S7 → waiting_human_merge (reason: дифф затрагивает
+  authority-root пути — profiles/). Терминальный статус ровно по спеке.
+- Профиль — урезанный team-exp @ steward 4a1c7c44 (только узлы, которые
+  авторит runner + delegate tasks), закоммичен на ветке спеки; master не
+  тронут. Попутно: создан лейбл codex-review в devtools (S5b падал без него).
+- Links: devtools PR #91, out/governance-runs/WS-SMOKE-001-a1/,
+  docs/superpowers/specs/2026-08-30-behaviour-spec-pipeline-design.md
+
+## 2026-08-31 — result: смоук behaviour-конвейера закрыт полным циклом, включая remediation и verify
+
+- PR #91 (бандл + team-exp) смержен владельцем; resume зафиксировал мерж и
+  прогнал S8 — config error exit=2 (нет profiles/gate-catalog.yaml) →
+  merged_unverified + auto remediation-issue devtools#92: аварийная ветка
+  спеки отработала вживую. Причина: S4 (content-check API) каталог гейтов не
+  грузит, полный CLI gate-check S8 — грузит.
+- Ремедиация: PR #93 — пинованные gate-catalog.yaml + risk-model.yaml
+  (@ steward 4a1c7c44), authority-root → мерж человеком (f53914a).
+  Verification-run WS-SMOKE-001-a1-v1: gate-authoritative exit=0, completed;
+  devtools#92 закрыт с evidence. Консоль показывает пару
+  merged_unverified→completed(v1) корректно.
+- Links: devtools PR #91/#93, devtools#92, out/governance-runs/
+
+## 2026-08-31 — change: развитие конвейера 1→2→3 — вход из issues, установка во флот, мост к spec-runner
+
+- Перепин actor-policy @ steward 6a70d15 (PR #94, мерж человеком): steward#142
+  доставил все три заявки (#139/#140/#141) и включил agent_merge_allowed —
+  Safety(True, agent), S7 мержит document-PR сам. Теги ожиданий S4/S6 сняты,
+  пункты actionable. PF-BLOCKER-STALE подтверждён живым прогоном чекера.
+- Шаг 1 (PR #95, agent-merge): клавиша `b` в issue-console — мост
+  «issue → behaviour-run»: subject из заголовка + repo#N, ws-id WS-<repo>-<N>,
+  target — локальный клон; только internal-инициатор.
+- Шаг 3 (PR #96, agent-merge, две major-находки приёмки исправлены):
+  governance/task_bridge.py — draft tasks.md-спека из вмерженного бандла
+  PR-ом в репо-владелец (make behaviour-tasks --run-id; CLI требует
+  completed; чтение бандла после чекаута базы; approve — человек).
+- Шаг 2: волна profiles/ (team-exp урезанный + roles + gate-catalog +
+  risk-model @ 4a1c7c44) + лейбл codex-review по флоту — 20 PR, мерж
+  человеком (authority-root): spec-runner#326 atp-platform#314 maestro#233
+  arbiter#100 dispatcher#222 proctor#61 deployer#49 prograph#42
+  robin-runtime#60 github-checker#31 libretto#36 disputatio#55
+  research-bench#31 impresario#46 discovery#29 discovery-toolkit#12
+  prograph-vault#116 robin-toolkit#11 spec-runner-vscode#34 kapelle#44;
+  steward пропущен (профили родные). Последние 8 — через git trees API без
+  клонов (SSH-клоны упирались в 10-мин потолок фоновых команд).
+- Links: devtools PR #94/#95/#96, governance/task_bridge.py, issue_console.py
+
+## 2026-08-31 — status: волна профилей села — 19/20 смержено владельцем, флот готов к конвейеру
+
+- Владелец смержил 19 PR волны profiles/; открыт остался disputatio#55.
+  Влитые ветки chore/behaviour-profiles удалены на origin (11 руками, 9
+  удалил GitHub), локальные чекауты флота обновлены ff-only до мержей.
+- Гигиена: снята россыпь stale index.lock (0 байт, 29.08 16:02, упавшая
+  сессия) в 12 репо; подвисшие ssh git-upload-pack процессы убиты — fetch
+  переключён разово на HTTPS (ssh к GitHub сегодня виснет).
+- Конвейер теперь запускаем в любом репо флота, кроме disputatio (ждёт #55).
