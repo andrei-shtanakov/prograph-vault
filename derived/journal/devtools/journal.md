@@ -204,3 +204,15 @@ updated: 2026-08-31
   сессия) в 12 репо; подвисшие ssh git-upload-pack процессы убиты — fetch
   переключён разово на HTTPS (ssh к GitHub сегодня виснет).
 - Конвейер теперь запускаем в любом репо флота, кроме disputatio (ждёт #55).
+
+## 2026-08-31 — change: цикл kapelle замкнут (PR #53 draft-спека) + фиксы боевых находок (devtools#99)
+
+- task_bridge сгенерировал draft tasks.md-спеку из бандла WS-kapelle-47 —
+  kapelle#53 (19 задач с провенансом #BEH-NN; исполнение после approve
+  человека). Первый полный цикл «issue → бандл → мерж → спека задач».
+- devtools#99 (agent-merge): DSL-промпт авторинга (имена 00-/10-/15-,
+  FR/BEH/traces/checked_by/upstream_hashes), гард GC-DSL-EMPTY в S4,
+  reconciliation refuse→merged. Четвёртый фикс (поблажка UNSTABLE) ОТКАЧЕН
+  приёмкой: в rulesets флота нет required-чеков, UNSTABLE = «упало что
+  угодно» — поблажка мержила бы красный test; мотивация умерла со снятием
+  codex-review. Закреплено fail-closed характеризацией.
