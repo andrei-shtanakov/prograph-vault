@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-31T18:36:33.954629+04:00",
+  "generated_at": "2026-08-31T19:06:44.086374+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -226,7 +226,7 @@
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
         "branch": "docs/adr-eco-011-merge-policy",
-        "ahead": 0,
+        "ahead": 1,
         "behind": 0,
         "dirty": false,
         "error": null
