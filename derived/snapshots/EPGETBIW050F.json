@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-31T13:35:04.997130+04:00",
+  "generated_at": "2026-08-31T14:05:14.265930+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -23,7 +23,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -35,7 +35,7 @@
       "local": {
         "branch": "main",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -59,7 +59,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -119,7 +119,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -191,7 +191,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -203,7 +203,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -215,7 +215,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 1,
         "dirty": false,
         "error": null
       },
@@ -299,7 +299,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
