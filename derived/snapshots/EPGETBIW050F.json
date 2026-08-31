@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-31T15:05:33.214002+04:00",
+  "generated_at": "2026-08-31T15:35:41.578504+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -24,7 +24,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -36,7 +36,7 @@
         "branch": "main",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -60,7 +60,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -84,7 +84,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -108,7 +108,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -120,7 +120,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -129,10 +129,10 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "docs/document-pipeline-kind",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -144,7 +144,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -156,7 +156,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -168,7 +168,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -180,7 +180,7 @@
         "branch": "main",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -192,7 +192,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -204,7 +204,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -216,7 +216,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -228,7 +228,7 @@
         "branch": "master",
         "ahead": 2,
         "behind": 2,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -252,7 +252,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -264,7 +264,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -276,7 +276,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -300,7 +300,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -324,7 +324,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
