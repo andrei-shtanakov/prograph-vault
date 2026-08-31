@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-08-31T20:07:01.962834+04:00",
+  "generated_at": "2026-08-31T21:09:14.732410+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "fix/behaviour-run-findings",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -129,7 +129,7 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "master",
+        "branch": "fix/merge-profile-ai-prosto",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -141,7 +141,7 @@
       "dir": "github-checker",
       "remote": "andrei-shtanakov/github-checker",
       "local": {
-        "branch": "master",
+        "branch": "fix/merge-profile-ai-prosto",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -153,7 +153,7 @@
       "dir": "impresario",
       "remote": "andrei-shtanakov/impresario",
       "local": {
-        "branch": "master",
+        "branch": "fix/merge-profile-ai-prosto",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -165,10 +165,10 @@
       "dir": "kapelle",
       "remote": "andrei-shtanakov/kapelle",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "task/task-001-discovery-fail-closed-provenan",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -177,7 +177,7 @@
       "dir": "libretto",
       "remote": "andrei-shtanakov/libretto",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "main",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -189,7 +189,7 @@
       "dir": "maestro",
       "remote": "andrei-shtanakov/maestro",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -201,7 +201,7 @@
       "dir": "proctor",
       "remote": "andrei-shtanakov/proctor",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -213,7 +213,7 @@
       "dir": "prograph",
       "remote": "andrei-shtanakov/prograph",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -225,9 +225,9 @@
       "dir": "prograph-vault",
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "master",
         "ahead": 1,
-        "behind": 0,
+        "behind": 4,
         "dirty": false,
         "error": null
       },
@@ -249,7 +249,7 @@
       "dir": "research-bench",
       "remote": "andrei-shtanakov/research-bench",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -261,7 +261,7 @@
       "dir": "robin-runtime",
       "remote": "andrei-shtanakov/robin-runtime",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -273,7 +273,7 @@
       "dir": "robin-toolkit",
       "remote": "andrei-shtanakov/robin-toolkit",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -321,7 +321,7 @@
       "dir": "spec-runner-vscode",
       "remote": "andrei-shtanakov/spec-runner-vscode",
       "local": {
-        "branch": "docs/adr-eco-011-merge-policy",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
