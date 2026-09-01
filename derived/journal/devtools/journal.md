@@ -216,3 +216,14 @@ updated: 2026-08-31
   приёмкой: в rulesets флота нет required-чеков, UNSTABLE = «упало что
   угодно» — поблажка мержила бы красный test; мотивация умерла со снятием
   codex-review. Закреплено fail-closed характеризацией.
+
+## 2026-09-01 — result: цикл WS-kapelle-47 закрыт целиком — от issue до кода на master
+
+- kapelle#59 (TASK-004, финальный) — approve без находок, agent-merge с полным
+  ожиданием чеков; master a56af35, 502 tests, 0 failures, все 4 задачи DONE.
+- Полный путь прожит впервые: issue kapelle#47 → мост b → behaviour-бандл
+  (8 FR + 19 BEH) через PR → draft tasks-спека (task_bridge, ужатие по
+  Feature) → approve владельца → spec-runner (4 задачи TDD) → 4 integration-PR
+  через терминальное ревью (2 блокера и 1 major пойманы и закрыты по ходу) →
+  agent-мержи. Проверка PROVENANCE-целостности golden-фикстур живёт в mix test.
+- Links: kapelle#47 (закрыть), PR #51/#53/#56–#59, todo://kapelle/golden-provenance-self-integrity
