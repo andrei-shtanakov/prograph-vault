@@ -243,3 +243,21 @@ updated: 2026-08-31
   выбор контекста за владельцем.
 - Теперь мерж поверх красного/недоехавшего test блокирует сам GitHub
   (bypass — только admin), а не дисциплина агента.
+
+## 2026-09-01 — change: волна CI на 6 репо без тестового CI + required-чеки до 18/22
+
+- ci.yml (job test: uv sync --frozen + pytest, пины SHA, permissions
+  contents:read — валидная находка Copilot, отработана во всех ветках)
+  заведён в deployer/prograph/github-checker/impresario/discovery-toolkit/
+  disputatio. API-путь упёрся в отсутствие workflow-скоупа у gh-токена —
+  ушли на клоны + ssh-push. 4 PR смержены владельцем (deployer#56,
+  discovery-toolkit#15, disputatio#63, impresario#49), master-прогоны
+  зелёные, required-чек test поставлен. Плюс arbiter/proctor/libretto —
+  required с их именами джобов (Rust (stable) / Unit (py3.12) / tools
+  (pytest + ruff + pyrefly)). Итого required-чеки в 18 репо.
+- Первый же CI-прогон нашёл два скрытых дефекта тестов: prograph#45
+  (перенос строки режет tracked.toml на длинных CI-путях) и
+  github-checker#35 (фикстура полагается на git-окружение раннера) —
+  inbox-issues заведены; их PR (prograph#44, github-checker#34) ждут
+  починки, required-чек туда — после зелёного.
+- Вне контура осознанно: prograph-vault, robin-toolkit (нет кода/тестов).
