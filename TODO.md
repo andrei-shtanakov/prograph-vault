@@ -155,7 +155,7 @@
       работа и этот пункт не двигает; их легко спутать, потому что обе «раскатка по
       флоту». Раскатывать можно уже сейчас: тексты описывают, кто мержит в каком типе
       сессии, и от невключённого D1 не зависят — D6 задаёт поведение до включения.
-- [ ] Снять `deferred` с ADR-ECO-004 после batch-2 @owner:github:andrei-shtanakov @blocked_by:todo://prograph-vault/governance-observed-derived @id:adr-eco-004-deferred @epic:eco.governance-plane
+- [ ] Снять `deferred` с ADR-ECO-004 после batch-2 @owner:github:andrei-shtanakov @blocked_by:todo://prograph-vault/governance-observed-derived @trigger:"batch-2 §5: check-release-drift валидирует пины [tools.*]" @id:adr-eco-004-deferred @epic:eco.governance-plane
       Канон — `authored/decisions/2026-07-18-adr-eco-004-governance-plane.md`.
       **Направление ожидания исправлено 2026-09-01.** Прежняя редакция писала
       «Ждёт `steward` (`todo://steward/agent-merge-evidence`)» — ровно наоборот:
@@ -175,8 +175,18 @@
         пункт-производитель — `todo://prograph-vault/governance-observed-derived`,
         он наш, без блокеров, и на него же ждёт панель
         `todo://dispatcher/governance-declared-vs-observed`.
-      Тег указывает на §6 как на ближайшую предпосылку в этом репо; §5 живёт в
-      зонтике и своего `@id` пока не имеет — завести при следующем касании.
+      **Почему §5 — триггер, а не второе ребро** (находка ревью PR #121, принята):
+      одного ребра на §6 мало — закрылся бы §6, и пункт стал бы машинно
+      разблокированным при живом §5, то есть fail-open. Ребром §5 сейчас не
+      выражается: гейт бежит в зонтике, а `todo://ai-orchestrators-workspace/…`
+      не резолвится — зонтик не запись манифеста, проверено, ответ
+      `PF-BLOCKER-REPO-UNKNOWN`. Поэтому §5 держит `@trigger`: пункт остаётся
+      в waiting и после закрытия §6, а не притворяется готовым.
+      Дом инструмента — `devtools/check-release-drift.py` (копия зонтика
+      разошлась с ним, обе пропускают `tools`). Заведён inbox в devtools, чтобы
+      у §5 появился `@id`; как появится — триггер меняется на настоящее ребро
+      `@blocked_by:todo://devtools/<id>`, и предпосылка начнёт будить, а не
+      просто числиться.
 
 - [x] Свести карту интеграций с графом prograph (снимок 10) @owner:github:andrei-shtanakov @id:registry-integration-map-refresh
       Запрос `devtools` (issue #62): `check-graph-registry-drift.py` давал 8 находок против
