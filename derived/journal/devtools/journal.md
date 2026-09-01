@@ -227,3 +227,19 @@ updated: 2026-08-31
   через терминальное ревью (2 блокера и 1 major пойманы и закрыты по ходу) →
   agent-мержи. Проверка PROVENANCE-целостности golden-фикстур живёт в mix test.
 - Links: kapelle#47 (закрыть), PR #51/#53/#56–#59, todo://kapelle/golden-provenance-self-integrity
+
+## 2026-09-01 — change: required-чек test в rulesets (волна по следам инцидента kapelle#57)
+
+- В 11 репо в ruleset «Default Branch Restriction» добавлено правило
+  required_status_checks (integration_id=15368, strict=false): ровно `test` —
+  devtools, steward, robin-runtime, research-bench, discovery,
+  spec-runner-vscode, kapelle; матричные — один якорь `test (3.12)` —
+  spec-runner, atp-platform, maestro, dispatcher (вся матрица в required
+  замуровала бы репо при смене версий).
+- Пропущены с докладом владельцу: без CI-чеков — deployer, prograph,
+  github-checker, impresario, discovery-toolkit, disputatio, prograph-vault,
+  robin-toolkit; другие имена тест-джобов — arbiter (Rust (stable)?),
+  proctor (Unit (py3.12)?), libretto (tools (pytest + ruff + pyrefly)?) —
+  выбор контекста за владельцем.
+- Теперь мерж поверх красного/недоехавшего test блокирует сам GitHub
+  (bypass — только admin), а не дисциплина агента.
