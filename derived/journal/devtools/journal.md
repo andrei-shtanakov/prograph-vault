@@ -261,3 +261,13 @@ updated: 2026-08-31
   inbox-issues заведены; их PR (prograph#44, github-checker#34) ждут
   починки, required-чек туда — после зелёного.
 - Вне контура осознанно: prograph-vault, robin-toolkit (нет кода/тестов).
+
+## 2026-09-01 — status: kapelle#47 закрыт во всех плоскостях; required-чеки 19/22
+
+- Issue kapelle#47 закрыт с evidence (4 критерия + путь PR #51—#59); пункт
+  @id:golden-provenance-self-integrity отмечен [x] PR-ом kapelle#60
+  (замечание Copilot про перегруженный чекбокс отработано — evidence
+  строками-продолжениями; agent-merge с required-чеком test, который kapelle
+  проверил уже сам). prograph починил перенос путей (4e3163f) — CI зелёный,
+  required поставлен, prograph#45 закрыт. Осталось: github-checker#35
+  (сьют красный, required ждёт), vault/robin-toolkit — вне контура осознанно.
