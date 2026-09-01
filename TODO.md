@@ -155,11 +155,38 @@
       работа и этот пункт не двигает; их легко спутать, потому что обе «раскатка по
       флоту». Раскатывать можно уже сейчас: тексты описывают, кто мержит в каком типе
       сессии, и от невключённого D1 не зависят — D6 задаёт поведение до включения.
-- [ ] Снять `deferred` с ADR-ECO-004 после batch-2 @owner:github:andrei-shtanakov @id:adr-eco-004-deferred @epic:eco.governance-plane
-      Ждёт `steward` (`todo://steward/agent-merge-evidence`): evidence `agent_merge` с
-      инвариантами I1–I4 (scoped change-class, agent-immutable authority root,
-      adversarial verifier, ревокация) заблокирован статусом ADR.
+- [ ] Снять `deferred` с ADR-ECO-004 после batch-2 @owner:github:andrei-shtanakov @blocked_by:todo://prograph-vault/governance-observed-derived @trigger:"batch-2 §5: check-release-drift валидирует пины [tools.*]" @id:adr-eco-004-deferred @epic:eco.governance-plane
       Канон — `authored/decisions/2026-07-18-adr-eco-004-governance-plane.md`.
+      **Направление ожидания исправлено 2026-09-01.** Прежняя редакция писала
+      «Ждёт `steward` (`todo://steward/agent-merge-evidence`)» — ровно наоборот:
+      это steward ждёт нас (`@blocked_by:todo://prograph-vault/adr-eco-004-deferred`),
+      потому что evidence `agent_merge` с инвариантами I1–I4 нельзя строить, пока
+      ADR в статусе `deferred`. Две прозы, указывающие друг на друга, читались как
+      взаимная блокировка, и разобрать её было нечем: тега `@blocked_by` здесь не
+      было вовсе, поэтому в машинном графе кольца не существовало и `plan-check`
+      молчал совершенно правильно. Класс находки: **ожидание, живущее только в
+      прозе, не проверяется ничем.**
+      Условие снятия — batch-2 ADR-ECO-004, а не чужой пункт. Обе его половины
+      открыты (замер 2026-09-01):
+      — §5 валидация пинов `[tools.*]` в `check-release-drift`: не сделана —
+        `ai-orchestrators-workspace/ci/check-release-drift.py:188` обходит только
+        `cores` и `apps`, секции `tools` не касается;
+      — §6 `derived/governance/` с observed-зрелостью: не сделан, каталога нет;
+        пункт-производитель — `todo://prograph-vault/governance-observed-derived`,
+        он наш, без блокеров, и на него же ждёт панель
+        `todo://dispatcher/governance-declared-vs-observed`.
+      **Почему §5 — триггер, а не второе ребро** (находка ревью PR #121, принята):
+      одного ребра на §6 мало — закрылся бы §6, и пункт стал бы машинно
+      разблокированным при живом §5, то есть fail-open. Ребром §5 сейчас не
+      выражается: гейт бежит в зонтике, а `todo://ai-orchestrators-workspace/…`
+      не резолвится — зонтик не запись манифеста, проверено, ответ
+      `PF-BLOCKER-REPO-UNKNOWN`. Поэтому §5 держит `@trigger`: пункт остаётся
+      в waiting и после закрытия §6, а не притворяется готовым.
+      Дом инструмента — `devtools/check-release-drift.py` (копия зонтика
+      разошлась с ним, обе пропускают `tools`). Заведён inbox в devtools, чтобы
+      у §5 появился `@id`; как появится — триггер меняется на настоящее ребро
+      `@blocked_by:todo://devtools/<id>`, и предпосылка начнёт будить, а не
+      просто числиться.
 
 - [x] Свести карту интеграций с графом prograph (снимок 10) @owner:github:andrei-shtanakov @id:registry-integration-map-refresh
       Запрос `devtools` (issue #62): `check-graph-registry-drift.py` давал 8 находок против
