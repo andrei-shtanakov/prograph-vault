@@ -60,6 +60,16 @@
       26–28.08 накопил в локальном `master` 93 незапушиваемых коммита (спасение —
       PR #108/#109, снапшот доставлен в ветку вручную). До закрытия #213 каждый
       его прогон возобновляет расхождение локального `master`.
+      **2026-09-01: остаток доставлен, ожидание снято.** `dispatcher#199` и
+      `dispatcher#213` закрыты как COMPLETED 2026-08-28; канал работает —
+      `derived-snapshots` несёт `derived/snapshots/EPGETBIW050F.json` с коммитом
+      `chore(snapshots): EPGETBIW050F sync snapshot` от 2026-09-01T07:45Z, то есть
+      паблишер пишет в ветку, а не в `master`. Теги `@blocked_by` сняты по правилу
+      `cross-repo-waits.md` («доставленное ожидание — действуй или переставь тег»);
+      переставить некуда — канонического пункта-носителя в TODO dispatcher нет.
+      Открытым пункт остаётся не из-за ожидания, а до решения владельца: закрывать
+      ли его целиком или оставить под следующий шаг (per-host refs / отдельный
+      snapshot-репо).
 
 - [ ] Публиковать `derived/governance/` с **observed** enforcement-зрелостью правил @owner:github:andrei-shtanakov @id:governance-observed-derived @epic:eco.governance-plane
       Первый ход наш, и `@blocked_by` здесь намеренно нет.
