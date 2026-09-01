@@ -204,3 +204,70 @@ updated: 2026-08-31
   сессия) в 12 репо; подвисшие ssh git-upload-pack процессы убиты — fetch
   переключён разово на HTTPS (ssh к GitHub сегодня виснет).
 - Конвейер теперь запускаем в любом репо флота, кроме disputatio (ждёт #55).
+
+## 2026-08-31 — change: цикл kapelle замкнут (PR #53 draft-спека) + фиксы боевых находок (devtools#99)
+
+- task_bridge сгенерировал draft tasks.md-спеку из бандла WS-kapelle-47 —
+  kapelle#53 (19 задач с провенансом #BEH-NN; исполнение после approve
+  человека). Первый полный цикл «issue → бандл → мерж → спека задач».
+- devtools#99 (agent-merge): DSL-промпт авторинга (имена 00-/10-/15-,
+  FR/BEH/traces/checked_by/upstream_hashes), гард GC-DSL-EMPTY в S4,
+  reconciliation refuse→merged. Четвёртый фикс (поблажка UNSTABLE) ОТКАЧЕН
+  приёмкой: в rulesets флота нет required-чеков, UNSTABLE = «упало что
+  угодно» — поблажка мержила бы красный test; мотивация умерла со снятием
+  codex-review. Закреплено fail-closed характеризацией.
+
+## 2026-09-01 — result: цикл WS-kapelle-47 закрыт целиком — от issue до кода на master
+
+- kapelle#59 (TASK-004, финальный) — approve без находок, agent-merge с полным
+  ожиданием чеков; master a56af35, 502 tests, 0 failures, все 4 задачи DONE.
+- Полный путь прожит впервые: issue kapelle#47 → мост b → behaviour-бандл
+  (8 FR + 19 BEH) через PR → draft tasks-спека (task_bridge, ужатие по
+  Feature) → approve владельца → spec-runner (4 задачи TDD) → 4 integration-PR
+  через терминальное ревью (2 блокера и 1 major пойманы и закрыты по ходу) →
+  agent-мержи. Проверка PROVENANCE-целостности golden-фикстур живёт в mix test.
+- Links: kapelle#47 (закрыть), PR #51/#53/#56–#59, todo://kapelle/golden-provenance-self-integrity
+
+## 2026-09-01 — change: required-чек test в rulesets (волна по следам инцидента kapelle#57)
+
+- В 11 репо в ruleset «Default Branch Restriction» добавлено правило
+  required_status_checks (integration_id=15368, strict=false): ровно `test` —
+  devtools, steward, robin-runtime, research-bench, discovery,
+  spec-runner-vscode, kapelle; матричные — один якорь `test (3.12)` —
+  spec-runner, atp-platform, maestro, dispatcher (вся матрица в required
+  замуровала бы репо при смене версий).
+- Пропущены с докладом владельцу: без CI-чеков — deployer, prograph,
+  github-checker, impresario, discovery-toolkit, disputatio, prograph-vault,
+  robin-toolkit; другие имена тест-джобов — arbiter (Rust (stable)?),
+  proctor (Unit (py3.12)?), libretto (tools (pytest + ruff + pyrefly)?) —
+  выбор контекста за владельцем.
+- Теперь мерж поверх красного/недоехавшего test блокирует сам GitHub
+  (bypass — только admin), а не дисциплина агента.
+
+## 2026-09-01 — change: волна CI на 6 репо без тестового CI + required-чеки до 18/22
+
+- ci.yml (job test: uv sync --frozen + pytest, пины SHA, permissions
+  contents:read — валидная находка Copilot, отработана во всех ветках)
+  заведён в deployer/prograph/github-checker/impresario/discovery-toolkit/
+  disputatio. API-путь упёрся в отсутствие workflow-скоупа у gh-токена —
+  ушли на клоны + ssh-push. 4 PR смержены владельцем (deployer#56,
+  discovery-toolkit#15, disputatio#63, impresario#49), master-прогоны
+  зелёные, required-чек test поставлен. Плюс arbiter/proctor/libretto —
+  required с их именами джобов (Rust (stable) / Unit (py3.12) / tools
+  (pytest + ruff + pyrefly)). Итого required-чеки в 18 репо.
+- Первый же CI-прогон нашёл два скрытых дефекта тестов: prograph#45
+  (перенос строки режет tracked.toml на длинных CI-путях) и
+  github-checker#35 (фикстура полагается на git-окружение раннера) —
+  inbox-issues заведены; их PR (prograph#44, github-checker#34) ждут
+  починки, required-чек туда — после зелёного.
+- Вне контура осознанно: prograph-vault, robin-toolkit (нет кода/тестов).
+
+## 2026-09-01 — status: kapelle#47 закрыт во всех плоскостях; required-чеки 19/22
+
+- Issue kapelle#47 закрыт с evidence (4 критерия + путь PR #51—#59); пункт
+  @id:golden-provenance-self-integrity отмечен [x] PR-ом kapelle#60
+  (замечание Copilot про перегруженный чекбокс отработано — evidence
+  строками-продолжениями; agent-merge с required-чеком test, который kapelle
+  проверил уже сам). prograph починил перенос путей (4e3163f) — CI зелёный,
+  required поставлен, prograph#45 закрыт. Осталось: github-checker#35
+  (сьют красный, required ждёт), vault/robin-toolkit — вне контура осознанно.
