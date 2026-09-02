@@ -355,3 +355,20 @@ updated: 2026-09-02
 - dispatcher WS-dispatcher-229 идёт: 9/13 (PR #236-#246 приняты), агент
   стабильно забывает ruff format (2 фикс-коммита) — конфигу нужен lint-хук.
 - Links: disputatio#57 (closed), PR disputatio#72-#83, dispatcher#236-#246
+
+## 2026-09-02 22:00 — result: dispatcher#229 закрыт 13/13 — третий полный цикл конвейера; оба прогона дня завершены целиком
+
+- WS-dispatcher-229 доведён: PR #236-#250 приняты accept-pr (ревью-находки —
+  2× забытый ruff format, недокрытый BEH-11 → двухскановый архитектурный гард
+  «одна классификация repo-owner»: коды только в views/fleet_api, owner_ref
+  только в parser/fleet_api/views). Issue закрыт с evidence; conformance-
+  фикстура — ход инициатора (vault), заявлено в комментарии закрытия.
+- Инфраструктурные фиксы дня: 2ч-зависание раннера на ssh-пуше (git-receive-
+  pack держал pipe; ветка доставлена HTTPS, процесс снят) → локальный
+  insteadOf https в dispatcher/disputatio закрыл класс; беспрефиксный
+  .executor-state.db (пустой) ломал tdd-evidence — удалён; sync-гард требует
+  закоммиченный spec/.gitignore (PR #239).
+- Ритм конвейера подтверждён: >20 integration/waiver/микро-PR за день, почти
+  все приняты accept-pr без ручного вмешательства в мерж; стопы — только
+  содержательные (валидные находки ревью, waiver-класс, порядок задач).
+- Links: dispatcher#229 (closed), PR dispatcher#236-#250, уроки devtools#110
