@@ -3,7 +3,7 @@ title: devtools — activity journal
 type: journal
 source: kb-save
 project: devtools
-updated: 2026-08-31
+updated: 2026-09-02
 ---
 
 # devtools — activity journal
@@ -298,3 +298,20 @@ updated: 2026-08-31
   (UNKNOWN ждётся, мерж только на MERGEABLE), гард «ревью и мерж в один
   репо» (origin чекаута vs слаг). Два минора запаркованы. Agent-merge
   32ac3f4; 479 тестов. Ручной шов после каждого цикла spec-runner закрыт.
+
+## 2026-09-02 07:10 — result: два прогона behaviour-конвейера — dispatcher#229 и disputatio#57 (документная фаза закрыта)
+
+- Прогон 1 (WS-dispatcher-229-7ed609, PF-OWNER-REPO-SELF в plan_fields): 3 круга ревью
+  (находки валидные — выдуманные manifest-aliases, поле owner_ref.type→kind), approve,
+  бандл влит dispatcher#230 (мерж ai-prosto: S7 отказал по транзитному unknown-rollup,
+  после позеленения чеков условия DarkFactory выполнены вручную), S8 зелёный, run
+  completed; tasks-спека — draft PR dispatcher#231.
+- Прогон 2 (WS-disputatio-57-b6a10d, _changed_lines state-парсер + UnicodeDecodeError):
+  2 круга (находка: FR-06 vs NFR-05 — противоречие со старыми безханковыми fixtures;
+  решение — миграция fixtures на валидный unified diff разрешена явно), approve,
+  S7 смержил САМ (decision=agent, все оси зелёные) — первый полностью агентский мерж
+  документ-PR в чужом репо; tasks-спека — draft PR disputatio#70.
+- Шероховатости: (1) S8 оставляет .steward/gate_verdicts.jsonl в target-репо → dirty-гард
+  task_bridge; (2) пин upstream_hashes бывает в инлайн-YAML-форме {requirements: "…"} —
+  sed по двухстрочной форме молча промахнулся, ушёл коммит со stale-пином (пойман, дослан).
+- Links: dispatcher#230, dispatcher#231, disputatio#69, disputatio#70; governance/runner.py
