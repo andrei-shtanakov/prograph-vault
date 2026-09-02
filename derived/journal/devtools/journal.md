@@ -372,3 +372,19 @@ updated: 2026-09-02
   все приняты accept-pr без ручного вмешательства в мерж; стопы — только
   содержательные (валидные находки ревью, waiver-класс, порядок задач).
 - Links: dispatcher#229 (closed), PR dispatcher#236-#250, уроки devtools#110
+
+## 2026-09-02 23:30 — decision: ретроспектива дня → шесть пунктов скриптового лейна (в)
+
+- Разбор ошибок/находок трёх циклов по классам: мои (пайп глотает красноту,
+  sed по YAML, конфиг по аналогии, CLI наугад), агентские (правка вендоренной
+  копии, 2× забытый формат, markdown-маркер), инструментальные (lite-профиль
+  approve, draft-статусы бандла, ревью против полной спеки/локального дерева,
+  red-unverifiable нарезка, gate_verdicts в чекауте, беспрефиксная state-DB).
+- Кодом лейна (в) — TODO PR #112 (merge 3e22675): accept-pr-materialize-head,
+  spec-bridge-approve-conformance, spec-run-preflight, task-bridge-beh-grouping,
+  runner-s8-verdicts-cleanup, review-context-increment-wave. Upstream —
+  spec-runner#337 (новый); соседям — inbox dispatcher#251 (lint-хук).
+  Процессом (без кода): waiver-ритуал, byte-lock порядок задач,
+  канон→перевендор, --fresh при повторном ревью.
+- Links: devtools#110 (комментарий-итог), devtools PR #112, spec-runner#337,
+  dispatcher#251
