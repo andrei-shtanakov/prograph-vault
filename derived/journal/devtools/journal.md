@@ -315,3 +315,22 @@ updated: 2026-09-02
   task_bridge; (2) пин upstream_hashes бывает в инлайн-YAML-форме {requirements: "…"} —
   sed по двухстрочной форме молча промахнулся, ушёл коммит со stale-пином (пойман, дослан).
 - Links: dispatcher#230, dispatcher#231, disputatio#69, disputatio#70; governance/runner.py
+
+## 2026-09-02 12:40 — result: кросс-репный контрактный цикл PF-OWNER-REPO-SELF (канон → перевендор) + снятие долларовых потолков
+
+- TASK-001 (WS-dispatcher-229) дважды падала не по своей вине: (1) локально
+  отсутствовали пинованные бинари live-smoke (github-checker/steward/impresario —
+  CI ставит их отдельными шагами; поставлены локально), (2) агент корректно
+  добавил код в diagnostics.yaml, но это вендоренная копия — integrity поймала
+  правку мимо канона. Хореография инициатора issue отработана: «скажите» в
+  dispatcher#229 → канонная запись vault#125 (additive minor, manifest 2 хэша) →
+  перевендор dispatcher#235 (r3, PINNED c13ed78) + пин tree_sha256 в тесте.
+- Долларовые потолки spec-runner сняты (dispatcher#235, disputatio локально):
+  работа по подписке, total_cost_usd — нотация API-листпрайса; тормоза от
+  runaway — max_retries/timeout/consecutive-failures. Урок budget authorize:
+  --task-limit пер-тасковый (позиционный task_id).
+- Уроки лейна: review-kit читает локальный чекаут — грязное дерево даёт ревью
+  ложную фактуру (чистить перед прогоном); вердикт наследуется по отпечатку
+  head+diff — обход `--fresh`. Бухгалтерские PR spec-runner сорванных кругов
+  (#233, #234) закрыты как шум.
+- Links: dispatcher#229/#235, vault#125, devtools#110 (уроки 4-5)
