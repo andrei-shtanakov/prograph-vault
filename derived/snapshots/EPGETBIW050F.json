@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-02T19:26:53.252150+04:00",
+  "generated_at": "2026-09-02T19:57:05.694257+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -129,7 +129,7 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "fix/seal-tail-convention",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -226,7 +226,7 @@
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
         "branch": "master",
-        "ahead": 3,
+        "ahead": 4,
         "behind": 0,
         "dirty": false,
         "error": null
