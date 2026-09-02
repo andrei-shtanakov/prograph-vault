@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-02T20:27:17.506840+04:00",
+  "generated_at": "2026-09-02T20:57:26.322781+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -117,7 +117,7 @@
       "dir": "dispatcher",
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
-        "branch": "task/task-011",
+        "branch": "task/task-012-self-owner-warning-governance",
         "ahead": null,
         "behind": null,
         "dirty": true,
