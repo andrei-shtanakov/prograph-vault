@@ -411,3 +411,23 @@ updated: 2026-09-02
   недетерминизм закрыт flow --write-verdict/--use-verdict.
 - Links: devtools PR #113, #114, #115; TODO @id:accept-pr-materialize-head,
   runner-s8-verdicts-cleanup, spec-run-preflight
+
+## 2026-09-03 05:30 — result: лейн (в) закрыт целиком — все 6 пунктов ретроспективы реализованы
+
+- Оставшиеся три пункта: волна review-context (шаблон согласован владельцем с
+  двумя правками: later-TASK — не находка, только необязательное примечание;
+  красный *_red.py — лишь при трёх условиях атрибуции; манифесты несут
+  tasks-файл WS как якорь привязки) — devtools#116 / disputatio#84 /
+  dispatcher#252 / kapelle#61, approve опубликованы, мерж человеком;
+  spec-bridge-approve-conformance (PR #117: конформный frontmatter при
+  рождении — spec approve мержит traces и сохраняет пин, штамп статусов
+  бандла = mergedBy/mergedAt бандл-PR с перепиновкой цепочки после штампа,
+  режим --conform-approve; upstream spec-runner#338 — репо-локальные
+  stage-профили); task-bridge-beh-grouping (PR #118: смежные бес-Feature BEH
+  одного файла checked_by-цели — одна задача; симуляция на живом WS-57:
+  4 задачи вместо 15, все 7 red-unverifiable внутри слитой TASK-001).
+- Ревью-лейн дня: находки кругов валидны и укрепляли код (TOCTOU find_pr→
+  доставка в открытый PR; повторный approve-штамп) — один транзиент
+  «model at capacity» ушёл ретраем.
+- Links: devtools PR #116–#118, disputatio#84, dispatcher#252, kapelle#61,
+  spec-runner#338, devtools#110 (итоговый комментарий)
