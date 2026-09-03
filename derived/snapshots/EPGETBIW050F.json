@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-03T09:31:45.823186+04:00",
+  "generated_at": "2026-09-03T10:01:55.760392+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -70,8 +70,8 @@
       "remote": "andrei-shtanakov/devtools",
       "local": {
         "branch": "feat/review-harness-claude",
-        "ahead": null,
-        "behind": null,
+        "ahead": 0,
+        "behind": 0,
         "dirty": true,
         "error": null
       },
