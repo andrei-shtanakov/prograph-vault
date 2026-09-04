@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-04T14:12:12.499935+04:00",
+  "generated_at": "2026-09-04T14:42:21.332625+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -72,7 +72,7 @@
         "branch": "feat/todo-context-pack",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -297,7 +297,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "HEAD",
+        "branch": "task/task-003",
         "ahead": null,
         "behind": null,
         "dirty": false,
