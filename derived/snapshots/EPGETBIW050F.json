@@ -2,14 +2,14 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-05T02:16:15.071994+04:00",
+  "generated_at": "2026-09-05T02:46:24.196045+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
       "dir": "ai-orchestrators-workspace",
       "remote": "andrei-shtanakov/ai-orchestrators-workspace",
       "local": {
-        "branch": "feat/drift-tools-pins",
+        "branch": "main",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
+        "branch": "docs/close-release-drift-tools-pins",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -297,9 +297,9 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "task/task-014-341-pytest",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
