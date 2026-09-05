@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-05T20:24:35.411252+04:00",
+  "generated_at": "2026-09-05T20:54:45.665142+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -72,6 +72,18 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "devtools-decomposition-node",
+      "remote": "andrei-shtanakov/devtools",
+      "local": {
+        "branch": "feat/decomposition-node",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -167,7 +179,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 4,
         "dirty": false,
         "error": null
       },
