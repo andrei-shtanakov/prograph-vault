@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-06T14:00:28.703760+04:00",
+  "generated_at": "2026-09-06T14:30:37.293439+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -57,9 +57,9 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "feat/atp-smoke-seam",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -130,9 +130,9 @@
       "remote": "andrei-shtanakov/disputatio",
       "local": {
         "branch": "fix/aggregate-no-vacuous-pass",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -297,10 +297,10 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "HEAD",
+        "branch": "task/task-015-beh-24-green-only",
         "ahead": null,
         "behind": null,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -310,8 +310,8 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "fix378",
-        "ahead": 0,
-        "behind": 0,
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
