@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-06T13:00:05.528643+04:00",
+  "generated_at": "2026-09-06T13:30:14.435250+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -58,9 +58,9 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "docs/seam-audit",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -297,9 +297,21 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "task/task-007-evidence-durable-5-beh",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "spec-runner-fix378",
+      "remote": "andrei-shtanakov/spec-runner",
+      "local": {
+        "branch": "fix378",
+        "ahead": 0,
+        "behind": 0,
         "dirty": true,
         "error": null
       },
