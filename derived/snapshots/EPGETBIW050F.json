@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-06T17:01:32.790378+04:00",
+  "generated_at": "2026-09-06T17:31:41.859390+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -58,7 +58,7 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "feat/atp-smoke-seam",
-        "ahead": 10,
+        "ahead": 15,
         "behind": 0,
         "dirty": true,
         "error": null
@@ -129,7 +129,7 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "fix/aggregate-no-vacuous-pass",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
