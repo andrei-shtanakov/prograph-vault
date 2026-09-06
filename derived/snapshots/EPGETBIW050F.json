@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-06T17:31:41.859390+04:00",
+  "generated_at": "2026-09-06T18:01:50.197742+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -33,7 +33,7 @@
       "dir": "atp-platform",
       "remote": "andrei-shtanakov/atp-platform",
       "local": {
-        "branch": "fix/pypi-broken-deps",
+        "branch": "main",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -58,7 +58,7 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "feat/atp-smoke-seam",
-        "ahead": 15,
+        "ahead": 18,
         "behind": 0,
         "dirty": true,
         "error": null
@@ -132,7 +132,7 @@
         "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -297,10 +297,10 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "task/task-008-green-done-2-beh",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -322,9 +322,9 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "fix380",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": true,
+        "ahead": null,
+        "behind": null,
+        "dirty": false,
         "error": null
       },
       "github": null
