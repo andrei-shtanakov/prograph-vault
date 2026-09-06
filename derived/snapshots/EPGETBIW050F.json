@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-06T16:31:20.386773+04:00",
+  "generated_at": "2026-09-06T17:01:32.790378+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -34,9 +34,9 @@
       "remote": "andrei-shtanakov/atp-platform",
       "local": {
         "branch": "fix/pypi-broken-deps",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -58,7 +58,7 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "feat/atp-smoke-seam",
-        "ahead": 6,
+        "ahead": 10,
         "behind": 0,
         "dirty": true,
         "error": null
@@ -297,9 +297,9 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "HEAD",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -324,7 +324,7 @@
         "branch": "fix380",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
