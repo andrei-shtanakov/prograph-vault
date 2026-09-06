@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-06T18:01:50.197742+04:00",
+  "generated_at": "2026-09-06T18:31:58.481271+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -33,7 +33,7 @@
       "dir": "atp-platform",
       "remote": "andrei-shtanakov/atp-platform",
       "local": {
-        "branch": "main",
+        "branch": "docs/todo-inbox-320",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -58,9 +58,9 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "feat/atp-smoke-seam",
-        "ahead": 18,
+        "ahead": 21,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -129,7 +129,7 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "master",
+        "branch": "feat/verified-phase-readonly-command",
         "ahead": 0,
         "behind": 0,
         "dirty": true,
