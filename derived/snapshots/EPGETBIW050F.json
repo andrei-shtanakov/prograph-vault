@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-06T06:58:19.548727+04:00",
+  "generated_at": "2026-09-06T07:28:27.796190+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -165,7 +165,7 @@
       "dir": "kapelle",
       "remote": "andrei-shtanakov/kapelle",
       "local": {
-        "branch": "master",
+        "branch": "docs/m3-acceptance",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -297,9 +297,9 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "HEAD",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -312,7 +312,7 @@
         "branch": "spec-runner/run-20260906-053825",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
