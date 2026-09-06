@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-07T00:06:17.864598+04:00",
+  "generated_at": "2026-09-07T00:36:26.434014+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -297,9 +297,9 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "task/task-012",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -310,8 +310,8 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "fix384",
-        "ahead": 2,
-        "behind": 0,
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
