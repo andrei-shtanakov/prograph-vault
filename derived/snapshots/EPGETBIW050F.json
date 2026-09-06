@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-06T18:31:58.481271+04:00",
+  "generated_at": "2026-09-06T19:02:07.305257+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -58,7 +58,7 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "feat/atp-smoke-seam",
-        "ahead": 21,
+        "ahead": 0,
         "behind": 0,
         "dirty": false,
         "error": null
@@ -132,7 +132,7 @@
         "branch": "feat/verified-phase-readonly-command",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -297,10 +297,10 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "task/task-008-green-done-2-beh",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -318,13 +318,13 @@
       "github": null
     },
     {
-      "dir": "spec-runner-fix380",
+      "dir": "spec-runner-fix381",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "fix380",
-        "ahead": null,
-        "behind": null,
-        "dirty": false,
+        "branch": "fix381",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": true,
         "error": null
       },
       "github": null
