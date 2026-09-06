@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-06T23:36:08.314965+04:00",
+  "generated_at": "2026-09-07T00:06:17.864598+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -297,45 +297,21 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "task/task-011-1-beh",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
-        "error": null
-      },
-      "github": null
-    },
-    {
-      "dir": "spec-runner-fix378",
-      "remote": "andrei-shtanakov/spec-runner",
-      "local": {
-        "branch": "fix378",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
       "github": null
     },
     {
-      "dir": "spec-runner-fix381",
+      "dir": "spec-runner-fix384",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "fix381",
-        "ahead": null,
-        "behind": null,
-        "dirty": false,
-        "error": null
-      },
-      "github": null
-    },
-    {
-      "dir": "spec-runner-fix383",
-      "remote": "andrei-shtanakov/spec-runner",
-      "local": {
-        "branch": "fix383",
-        "ahead": null,
-        "behind": null,
+        "branch": "fix384",
+        "ahead": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
