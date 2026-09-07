@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-07T15:11:26.067300+04:00",
+  "generated_at": "2026-09-07T15:41:33.977301+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -165,7 +165,7 @@
       "dir": "kapelle",
       "remote": "andrei-shtanakov/kapelle",
       "local": {
-        "branch": "task/task-002-stageshell-durable-usage",
+        "branch": "HEAD",
         "ahead": null,
         "behind": null,
         "dirty": false,
