@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-07T08:09:12.053438+04:00",
+  "generated_at": "2026-09-07T08:39:24.205293+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,10 +69,22 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "docs/acceptance-node-plan",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "devtools-acceptance-node",
+      "remote": "andrei-shtanakov/devtools",
+      "local": {
+        "branch": "feat/acceptance-node",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
