@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-08T23:22:45.974689+04:00",
+  "generated_at": "2026-09-08T23:52:54.774907+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -73,6 +73,18 @@
         "ahead": 0,
         "behind": 0,
         "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "devtools-verifies-supersede",
+      "remote": "andrei-shtanakov/devtools",
+      "local": {
+        "branch": "feat/verifies-field-and-supersede",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
