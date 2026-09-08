@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-08T04:45:20.578599+04:00",
+  "generated_at": "2026-09-08T05:15:28.914907+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -70,18 +70,6 @@
       "remote": "andrei-shtanakov/devtools",
       "local": {
         "branch": "master",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
-        "error": null
-      },
-      "github": null
-    },
-    {
-      "dir": "devtools-bridge-hardening",
-      "remote": "andrei-shtanakov/devtools",
-      "local": {
-        "branch": "fix/bridge-hardening-157-158",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -310,6 +298,18 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "spec-runner-profile-6node",
+      "remote": "andrei-shtanakov/spec-runner",
+      "local": {
+        "branch": "chore/profile-6-node-conveyor",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
