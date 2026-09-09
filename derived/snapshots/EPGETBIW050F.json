@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-09T09:26:38.608616+04:00",
+  "generated_at": "2026-09-09T09:56:48.528397+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -78,13 +78,13 @@
       "github": null
     },
     {
-      "dir": "devtools-supersede-spec",
+      "dir": "devtools-supersede-code",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "docs/supersede-contract-spec",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "feat/supersede-code",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "fix/decomposition-verify-tasks-correction",
+        "branch": "fix/dt14-beh06-alignment",
         "ahead": null,
         "behind": null,
         "dirty": false,
