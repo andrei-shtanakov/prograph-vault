@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-11T08:04:04.349497+04:00",
+  "generated_at": "2026-09-11T08:34:12.564136+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,9 +69,9 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "feat/i12-cutover",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "fix/i12-cutover-texts",
+        "ahead": null,
+        "behind": null,
         "dirty": true,
         "error": null
       },
