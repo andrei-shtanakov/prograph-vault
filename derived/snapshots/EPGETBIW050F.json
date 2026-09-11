@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-11T20:08:18.275873+04:00",
+  "generated_at": "2026-09-11T20:38:28.063088+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -298,9 +298,9 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "feat/waived-standard-mechanics",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
