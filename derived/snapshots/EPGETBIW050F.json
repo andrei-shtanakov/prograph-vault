@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-13T13:51:54.306662+04:00",
+  "generated_at": "2026-09-13T14:22:04.534607+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "fix/replacement-cleanup-diagnostics-175",
+        "branch": "docs/pipeline-plan-e1-e06",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -227,7 +227,7 @@
       "local": {
         "branch": "master",
         "ahead": 9,
-        "behind": 0,
+        "behind": 4,
         "dirty": true,
         "error": null
       },
