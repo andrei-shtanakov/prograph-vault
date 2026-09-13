@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-13T15:52:31.976633+04:00",
+  "generated_at": "2026-09-13T16:22:39.802274+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
+        "branch": "fix/review-head-fidelity",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -81,7 +81,7 @@
       "dir": "discovery",
       "remote": "andrei-shtanakov/discovery",
       "local": {
-        "branch": "master",
+        "branch": "docs/solo-mode-decision",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -225,10 +225,10 @@
       "dir": "prograph-vault",
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
-        "branch": "master",
-        "ahead": 9,
-        "behind": 4,
-        "dirty": true,
+        "branch": "journal/pending",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -297,10 +297,10 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "fix/mcp-stop-shared-marker-481",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
