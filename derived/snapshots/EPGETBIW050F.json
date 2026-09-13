@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-13T14:52:13.471414+04:00",
+  "generated_at": "2026-09-13T15:22:22.134417+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
+        "branch": "feat/durable-governance-state-ledger",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -297,9 +297,9 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "fix/prefixless-empty-state-db-337",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "docs/runtime-state-inventory-478",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
