@@ -3,7 +3,7 @@ title: devtools — activity journal
 type: journal
 source: kb-save
 project: devtools
-updated: 2026-09-02
+updated: 2026-09-13
 ---
 
 # devtools — activity journal
@@ -456,3 +456,130 @@ updated: 2026-09-02
   spec-runner). Гонка push→pull-ref трижды ловилась head-гардом accept-pr.
 - Links: disputatio#65 (closed), disputatio PR #85–#95, spec-runner#339/#340/#341,
   devtools PR #119–#122
+
+## 2026-09-05 18:48 — result: design-узел конвейера доставлен в PR #145; бандл WS-spec-runner-367 APPROVED
+
+- Дорожка A: реализация спеки design-узла (влита #142, план #143) завершена SDD-циклом:
+  9 задач + финальное ревью ветки (FIX: 2 major) + фикс-волна + scoped re-review (SHIP).
+  Терминальное ревью PR #145 — 3 прогона: ложный blocker из-за чтения дерева master-чекаута
+  (новая грань devtools#136, задокументирована), настоящий major (fallback абзаца гасил
+  deferred-без-reason), затем APPROVED от ai-prosto; 3 minor'а закрыты закалкой design_guard
+  без нового круга. 745 passed. Мерж — человек (profiles/ — authority-root).
+- Дорожка B: бандл verify-first (spec-runner#367, PR spec-runner#368) прошёл 8 раундов
+  терминального ревью (главные дыры: свой класс слов исполнения vs _EXECUTED_WORDS,
+  три оси RunOutcome×SelectionProof×ExecutionProof, по-селекторная форма прогона),
+  APPROVED на 74e9c61; Copilot-thread про waiver-файлы закрыт фиксом 5d8a854;
+  run в waiting_human_merge.
+- Links: devtools PR #145, spec-runner PR #368, devtools#136, .superpowers/sdd/2026-09-05-design-node/progress.md
+
+## 2026-09-05 23:37 — result: decomposition-узел реализован — PR #147 (APPROVED, ждёт человеческого мержа)
+
+- План #146: 5 кругов терминального ревью до мержа владельцем; реализация — SDD
+  9 задач в worktree devtools-decomposition-node, пер-тасковые ревью с
+  мутационными проверками, финальное ревью ветки (opus) SHIP + фикс-волна
+  (тесты legacy=4/conform-mismatch, гард forward-рёбер, DSL-предупреждение) +
+  re-review CLEAN. Терминальное ревью PR: 1 minor (DSL vs гард порядка
+  объявления — синхронизировано фикс-коммитом b78a3d9), APPROVED от ai-prosto.
+- 791 passed. verify-DT fail-closed до доставки spec-runner#367
+  (@blocked_by-чекбокс в TODO.md). Follow-ups в теле PR (5 шт.).
+- Links: devtools PR #147, план docs/superpowers/plans/2026-09-05-decomposition-node.md
+
+## 2026-09-06 04:50 — result: tasks-спека WS-367 (verify-first) — PR spec-runner#369 APPROVED, ждёт человеческого approve
+
+- Конвейер: run e03a72 → completed; мост доставил tasks-спеку (--legacy-bundle 3).
+- 8 кругов терминального ревью; по пути закрыты 3 генераторных бага devtools
+  (класс #123, PR #148/#149/#150, все агентски смержены ai-prosto): BEH-id с
+  буквенным суффиксом (BEH-18a молча выпадал), Traces to/Depends on одной
+  скобкой (парсер терял трассируемость 10/14 задач), голый ISO в generated_at.
+- Секция «Решения открытых вопросов (уровень design)» написана и выдержала
+  4 круга ревью: Q-04 detached-worktree; Q-07 — оси по потребителям
+  (пред-прогонное решение: происхождение+config+состав+tree-hash; red-гейт:
+  только происхождение); Q-09 — таблица пост-прогонной тройки + шесть
+  пред-прогонных случаев; потолки: 900 с/селектор + бюджет группы 1800 с;
+  порядок: BEH-24 выделен в TASK-015 перед green-only (008), BEH-25/28/29
+  после; записи режима (литерал в _judge_red_commit) — в объёме TASK-015;
+  окно claims объявлено.
+- Links: spec-runner PR #369 (head 07c1b16), devtools PR #148 #149 #150
+
+## 2026-09-07 04:05 — result: WS-spec-runner-367 (verify-first) ДОСТАВЛЕН ЦЕЛИКОМ; verify-DT разблокированы в мосте
+
+- Исполнение workstream'а: 15/15 задач через конвейер run→accept→merge→sync
+  (PR spec-runner#371–#387, 15 циклов). Стопы и лечение: 2 red-стопа (retry
+  со свежим агентом), 1 review-not_run ×2 (третий retry), max_consecutive
+  (spec-runner retry), конфликт статуса при merge (ручной резолв), красный
+  CI-lint на red-артефактах ×2 (format-коммиты).
+- Фикс-раунды приёмки по существу: #372 парсер Verifies (6 кругов, терминальный
+  дизайн: блок до структурной границы, verbatim-элементы); #375 ядро live_verify
+  (4 круга: словарь адаптера, FR-14, флаг-политика, групповой бюджет 1800с);
+  #378 evidence (запись в исполнительный путь, green-only reuse); #380 гейты
+  (5 кругов: re-verify кандидата, парность claims#214, терминальность,
+  verify_first+auto_commit:false = несовместимость до трат); #381 claims release
+  state-derived; #383 freeze (дверь release для verify-freeze, reuse не
+  rebaseline); #384 (green-only метка при confirmed red, enum схемы +verify);
+  #386 честность доков (2-3 replay, не «ровно один»); #387 честный замер
+  (RED-дельта, не структурный 0.0).
+- Закрытие: issue spec-runner#367 закрыт; devtools PR #152 (2 круга, APPROVED,
+  мерж ai-prosto): мост рендерит verify-DT с Mode: verify_first + Verifies
+  (формат запинован регексами парсера), отказ на verify без целей; чекбокс
+  @id:decomposition-verify-first-unblock закрыт.
+- Links: spec-runner PR #371–#387, devtools PR #152, issue spec-runner#367
+
+## 2026-09-07 10:26 — change: acceptance-узел конвейера реализован (SDD, PR #155)
+
+- SDD-прогон плана 2026-09-07-acceptance-node (9 задач): узел acceptance (qa) в profiles/team-exp.yaml, DSL авторинга + Priority у NFR, новый governance/acceptance_guard.py (AC-грамматика + Must-покрытие FR/NFR), шаг author-acceptance + S4-гарды (3 ребра, GC-AC-COVERAGE), 6-узловой _BUNDLE_DAG + _BUNDLE_DAG_LEGACY5 + --legacy-bundle=3|4|5, DT-путь по составу DAG, секция AC в tasks-спеке, сквозной смоук. 833 passed.
+- Финальное ревью (opus) поймало Important: _parse_requirements без границ блока всасывал Priority из чужой секции — обход Must-гейта; исправлено фикс-волной с регрессионным тестом.
+- PR #155 открыт; profiles/ — authority-root ⇒ мерж человеком. Терминальное ревью — в процессе.
+- Links: docs/superpowers/plans/2026-09-07-acceptance-node.md, governance/acceptance_guard.py
+
+## 2026-09-07 11:33 — change: операторская кнопка spec-loop (PR #156)
+
+- Пункт 3 роадмапа: make spec-loop SUBJECT='…' REPO=… — одна идемпотентная команда ведёт workstream через 6-узловой конвейер с остановкой на человеческих границах (мерж бандл-PR, approve tasks-спеки). merge-authority жёстко human; повтор ищет прогон по (repo, subject); неоднозначности fail-closed.
+- task_bridge.deliver_for_run: durable reconciliation доставки (write-ahead op tasks-deliver + поиск PR по ветке; повтор не создаёт PR заново).
+- Дизайн утверждён владельцем с 4 поправками (bounded-путь, без спеки). Терминальное ревью: approve + 1 major (medium) и 2 minor — закрыты фикс-коммитами (find_pr any_state: вмерженный tasks-PR принимается реконсиляцией, закрытый без мержа — отказ); 4 минора Copilot закрыты. PR #156 влит агентски от ai-prosto (разрешение владельца), master 3e6ba6f, 869 passed.
+- Links: governance/spec_loop.py, governance/task_bridge.py, Makefile
+
+## 2026-09-07 14:04 — result: первый живой прогон spec-loop — полный цикл на kapelle
+
+- make spec-loop прогнал workstream real-llm-provider-adapters-20260907 (kapelle#50) через весь 6-узловой конвейер: start → авторинг → S4-гейты → 4 круга встроенного ревью (2+3+1 major исправлены правками бандла с репином) → мерж бандла человеком (kapelle#76) → resume+S8 → идемпотентный deliver → tasks-спека PR-ом (kapelle#77). Стоп на approve спеки — последняя человеческая граница.
+- Предусловие: профиль kapelle поднят 4→6 узлов (kapelle#75). Кнопка вела себя строго по дизайну: fail-closed стопы, никаких авто-мержей, повтор одной команды на каждом шаге.
+- Links: kapelle#75, kapelle#76, kapelle#77, governance/spec_loop.py
+
+## 2026-09-07 14:30 — result: цикл spec-loop на kapelle закрыт полностью
+
+- Владелец смержил бандл (kapelle#76) и tasks-PR (kapelle#77), выполнил spec approve; conform-approve доставлен PR-ом kapelle#78 (approve опубликован, влит агентски от ai-prosto), ветки вычищены. Workstream real-llm-provider-adapters-20260907 approved и готов к исполнению spec-runner'ом.
+- Ревью #78 нашло 2 генераторных минора моста — заведены devtools#157 (approved_at из approve бандла) и devtools#158 (обрезка тела резолюций).
+- Links: kapelle#76, kapelle#77, kapelle#78, devtools#157, devtools#158
+
+## 2026-09-08 03:04 — result: workstream real-llm-provider-adapters исполнен spec-runner'ом целиком (10/10)
+
+- Полный цикл «кнопка → бандл → tasks-спека → исполнение»: 10 TDD/verify-задач success, integration-PR kapelle#81–#92 (+#88 селекторный фикс спеки) влиты через accept-pr (терминальное ревью + DarkFactory). Первый боевой verify-DT (TASK-007) исполнен после селекторного фикса.
+- 6 инцидентов, все закрыты в корне или обходом с issue: composite lint (kapelle#79), INTERRUPTED-recovery (retry), Verifies-селекторы (kapelle#88, devtools#159, spec-runner#389), офлайн-страж ломал opt-in smoke (#90 фикс-волна), авто-чекер BEH-28 вопреки MUST NOT дизайна (удалён, #92), id вне вендоренной схемы в доке и smoke-тесте (#92 круг 2).
+- Стоимость: agent_calls ≈$26.2 (кап поднят владельцем 30→60 после стопа $30.69 на 5 задачах по счётчику runner'а). spec-runner tool стоит dev-версией из локального master (verify_first не зарелижен — нужен ≥2.36).
+- Links: kapelle#81..#92, devtools#157/#158/#159, spec-runner#388/#389, docs/live-provider-run.md (kapelle)
+
+## 2026-09-08 04:53 — change: hardening-волна 1 моста влита (PR #160, закрыты #157/#158)
+
+- generated_at теперь с явным офсетом (боевой случай несравнимости с approved_at); секция резолюций tasks-спеки несёт тело Q-блока целиком (parse_design_resolution_bodies + рендер verbatim — таблицы/списки больше не теряются). TDD, 876 passed, агентский мерж от ai-prosto.
+- План оздоровления (порядок владельца): дальше spec-runner#389 (file-scope target, НЕ расширение Selector) → релиз ≥2.36 → devtools#159 → spec-runner#388 → спека 2.
+- Links: devtools#160, devtools#157, devtools#158
+
+## 2026-09-08 08:58 — result: цикл кнопки №2 закрыт — spec-runner#389 доведён до approved tasks-спеки
+
+- make spec-loop на spec-runner (шаг 2 плана оздоровления): профиль 4→6 (PR #390, human-мерж), бандл verify-first-file-scope-group-targets-20260908 (PR #391, 2 круга встроенного ревью — вдвое меньше kapelle), tasks-спека (PR #392 + approve владельца v2), conform (PR #393, агентский мерж). Ruling владельца закреплён: file-scope target — отдельный тип, НЕ расширение Selector.
+- Секция резолюций спеки уже с полными телами Q-блоков (hardening #158 в деле). Инцидент: удалил ветку #392 до сверки мержа — GitHub закрыл PR; восстановлено из sha без потерь, чистка теперь только после подтверждённого MERGED.
+- Links: spec-runner#390..#393, spec-runner#389, devtools#160
+
+## 2026-09-09 08:14 — change: поле verifies доставлено (PR #161), supersede вынесен отдельным заходом
+
+- Структурное поле verifies у type: verify DT — группа наблюдения отдельно от владения (checked_by остаётся редактирующим владением): парсер обеих блочных форм и инлайна, находки формы, граф-инвариант «владелец наблюдаемого файла в замыкании depends_on», рендер **Verifies:** объединением checked_by+verifies, промпт авторинга согласован. 905 passed.
+- Цена: ~15 кругов терминального ревью. Урок: половина находок — следствие моих поспешных ruling'ов (дедуп по пути схлопывал селекторы; проверка существования verifies-путей в deliver противоречила порядку создания файлов; строгая форма списка с обязательным отступом и обрывом на пустой строке). Формулировать грамматику полей строго и сразу, проверяя против фактических форм авторинга.
+- supersede (переиздание tasks-спеки после correction'а) вынесен отдельным заходом: не сошёлся с моделью «одна ветка/один PR/штамп в PR» за три круга.
+- Остаточные миноры парсера — devtools#162. Смежное: spec-runner#402.
+- Links: devtools#161, devtools#162, spec-runner#402
+
+## 2026-09-13 14:37 — decision: план развития пайплайна «интервью → реализация» принят; пункты E0.6/E1 заведены
+
+- Заметка `authored/notes/2026-09-13-pipeline-interview-to-implementation-plan.md` (vault#126, мерж владельцем 67cdfcf) прошла три ревизии по ревью владельца: разведены runtime-компоненты R1–R5 (два маршрута) и roadmap-этапы E0–E4; инвариант «результат, нужный для продолжения/проверки/воспроизведения прогона, не существует только на машине оператора»; снапшот PP content-addressed; транскрипт необязателен после проверенного брифа (окно до брифа — принятое исключение); дефолт однорепозиторного продукта; матрица артефактов. Шесть решений §4 у владельца.
+- devtools PR #210 (agent-merge ai-prosto, master 0d679ec): пункты `durable-governance-state-ledger`, `s8-verdict-in-tasks-pr` (после #201), `spec-loop-brief-input` (после fidelity-волны и #201). Три круга терминального ревью — четыре minor'а по фактическим путям и механизмам приняты (s8-gate-verdicts.jsonl в леджере, ws-id с датой восстанавливается по префиксу ветки, gate_check вендорится кодом, т.к. discovery-toolkit package=false). Первый plan-check поймал PF-BLOCKER-STALE: fail-honest supersede уже закрыт #209.
+- Inbox spec-runner#478 (slug executor-state-inventory): инвентаризация runtime-state исполнителя.
+- Links: vault#126, devtools#210, spec-runner#478, devtools/TODO.md (раздел «План развития пайплайна»)
