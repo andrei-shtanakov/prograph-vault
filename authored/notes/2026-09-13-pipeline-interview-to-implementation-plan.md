@@ -1,7 +1,7 @@
 ---
-title: План развития пайплайна «интервью → реализация» (ревизия 3)
+title: План развития пайплайна «интервью → реализация» (ревизия 4, принят)
 type: note
-status: proposed
+status: accepted
 owner: andrei-shtanakov
 updated: 2026-09-13
 ---
@@ -11,10 +11,12 @@ updated: 2026-09-13
 **Дата:** 2026-09-13 (ревизия 2 — по ревью владельца: разведены две
 нумерации, усилена модель runtime-state, снапшот PP, матрица артефактов;
 ревизия 3 — два маршрута прогона, транскрипт согласован с инвариантом,
-E0.6 сужен до governance-state, терминальный механизм S8, путь снапшота PP)
-**Статус:** proposed — план предложен fleet-агентом (devtools) по итогам
-замера состояния; принимает владелец. До принятия пункты в `TODO.md`
-репо-владельцев не заводятся.
+E0.6 сужен до governance-state, терминальный механизм S8, путь снапшота PP;
+ревизия 4 — **принят владельцем**: шесть решений §4 внесены (vault#127),
+факт S8 и три человеческие границы R3 исправлены)
+**Статус:** accepted — принят владельцем 2026-09-13 (vault#127). Пункты с
+владельцем изменений devtools заведены (devtools#210); инвентаризация state
+spec-runner — inbox spec-runner#478.
 
 Порядок и границы наследуют решение владельца 2026-08-31 (спека
 behaviour-конвейера devtools, §1): пайплайнов **два** — внутренний (развитие
@@ -44,7 +46,7 @@ discovery-интервью в customer-фрейме. Развилок под в�
 |---|---|---|
 | R1. Интервью → discovery-brief | discovery-toolkit (методика), discovery (runtime) | Готова как автономная стадия: живая приёмка 2026-08-19, бриф доставлен PR-ом dispatcher#162. **Конвейером не вызывается.** |
 | R2. Idea → RankedBacklog → QG-4/QG-5 → approved ProductProposal | impresario | M0–M4 закрыты, PP-101 и PP-103 прошли полный круг ([[2026-08-12-impresario-bootstrap]]). Intake-контракт вендорен в steward (`proposal-intake`). **К конвейеру не подключена** (осознанно). |
-| R3. Governance-конвейер | devtools (`make spec-loop`) | 6 узлов charter → requirements → behaviour-spec → design → acceptance → decomposition → tasks. Две человеческие границы: мерж бандла, approve tasks-спеки. Два полных цикла кнопки (kapelle, spec-runner). Авторинг behaviour-узла переведён на document-пайплайн disputatio (devtools#203). |
+| R3. Governance-конвейер | devtools (`make spec-loop`) | 6 узлов charter → requirements → behaviour-spec → design → acceptance → decomposition → tasks. Три человеческие границы (после §I12): мерж бандл-PR, одобрение DAG-узлов (`--approve-node`), approve tasks-спеки. Два полных цикла кнопки (kapelle, spec-runner). Авторинг behaviour-узла переведён на document-пайплайн disputatio (devtools#203). |
 | R4. Исполнение | spec-runner `run --strict` + devtools `accept-pr` + `merge-pr.sh` ([[2026-08-30-adr-eco-011-darkfactory-default-agent-merge]]) | Прожита целиком несколько раз (kapelle 10/10, WS-367 15/15, WS-341 18/18, supersede-воркстрим 15/15). Раннер работает с dev-версии master: релиза ≥2.36 с verify_first нет. |
 | R5. Обратная связь | S8 verify, переиздание tasks (§I12), dispatcher observation | §I12 доставлен и прожит 2026-09-11. |
 
@@ -89,7 +91,7 @@ waivers, замеры, evidence-документы). Отдельное хран
 |---|---|---|---|
 | `devtools/out/governance-runs/<run-id>/run.json` | нужен для продолжения | частично: tasks-PR находится по ветке, бандл-PR — по ветке `spec/<ws-id>-behaviour`; статусы узлов — в frontmatter бандла | E0.6: повтор `spec-loop` восстанавливает леджер из фактов GitHub; проверка — удалить `out/` и продолжить прогон |
 | `~/.discovery/sessions/<id>/journal.jsonl` | нужен для продолжения **до выпуска брифа**; после публикации проверенного брифа — необязателен | нет | политика §2.4: проверенный бриф — единственный durable-результат R1; окно интервью — принятое ограниченное исключение из инварианта |
-| `.steward/gate_verdicts.jsonl` (S8), копия в run_dir | доказательство прохождения гейта | да, детерминированный перезапуск гейта на default branch | E0.6: вердикт S8 едет **внутри tasks-PR** того же цикла (`workstreams/<ws-id>/evidence/`), отдельный evidence-PR не создаётся |
+| `out/governance-runs/<run-id>/s8-gate-verdicts.jsonl` (S8; `.steward/gate_verdicts.jsonl` в корне репо-цели — транзиентный источник steward, прибирается после переноса) | доказательство прохождения гейта | да, детерминированный перезапуск гейта на default branch | E0.6: вердикт S8 едет **внутри tasks-PR** того же цикла (`workstreams/<ws-id>/evidence/`), отдельный evidence-PR не создаётся |
 | `spec/.executor-*state.db`, `spec/.executor-*logs/`, claims | нужен для продолжения | статусы задач — в tasks-спеке (tracked), `reset` безопасен; логи и claims — нет | вне E0.6: inbox-issue владельцу spec-runner на инвентаризацию; логи неудачных попыток — кандидат в evidence |
 | кеши, locks, `.pyc`, worktrees | временное | не требуется | без изменений |
 
@@ -116,10 +118,10 @@ waivers, замеры, evidence-документы). Отдельное хран
   выпустило бриф, журнал нужен для продолжения и существует только в
   `$DISCOVERY_HOME`. Потеря машины в этом окне = перезапуск интервью.
   Смягчение: ответы приходят файлами (`answer --file`) и остаются у
-  отвечающего. Переносимое хранилище журнала не вводится (§4).
+  отвечающего. Переносимое хранилище журнала сейчас не вводится (решение §4).
 - Хранение транскрипта после брифа — вопрос приватности, не durability:
-  до закрытия workstream'а плюс срок владельца (§4); доступ — оператор
-  интервью; удаление — явной командой с записью в журнал. Транскрипт
+  **90 дней после закрытия workstream'а** (решение §4), затем удаление
+  явной командой с записью в журнал; доступ — оператор интервью. Транскрипт
   содержит персональные данные и случайные обещания.
 - В репо продукта транскрипт попадает **только по явному основанию** (решение
   владельца, зафиксированное в charter).
@@ -132,6 +134,8 @@ waivers, замеры, evidence-документы). Отдельное хран
 > [[2026-07-28-adr-eco-006-cross-repo-issue-inbox]]).
 
 «Отложили Mode-2» означает этот дефолт, а не неопределённое поведение.
+Решение владельца (§4): Mode-2 откладывается до первого фактического случая
+второго репо у одного продукта.
 
 ## 3. Roadmap-этапы
 
@@ -183,7 +187,9 @@ discovery получил runtime («вызываемость стадии про
 - **Приёмка.** Живой прогон: интервью engineer-фрейма → бриф → spec-loop →
   approved tasks-спека → исполнение spec-runner; evidence в журнале.
 
-Зависимость: E0, пункты 1–3 (та же поверхность task_bridge/S2).
+Зависимость (решение §4): E1 стартует после fidelity (E0.1) и file-target
+(E0.3) пунктов и параллельно с ними не идёт — та же поверхность
+task_bridge/S2. Fail-honest supersede (E0.2) уже закрыт devtools#209.
 Владелец изменений: devtools.
 
 ### E2. Вызываемость стадии Need из прогона
@@ -193,11 +199,11 @@ discovery получил runtime («вызываемость стадии про
   `brief --out`. Пауза — тот же паттерн, что `waiting_human_merge`: повтор
   одной команды продолжает прогон.
 - **Транскрипт** — по политике §2.4.
-- **Предусловие — решение владельца: соло-режим.** Без реальных
+- **Режим Need запускается только при наличии реального стейкхолдера**
+  (решение §4); иначе используется вход из готового брифа (`--brief`, E1).
+  Мини-форма фрейма для одного человека не вводится: без реальных
   стейкхолдеров интервью вырождается в самоопрос (открытый вопрос
-  `discovery/TODO.md`). Либо мини-форма фрейма для одного человека, либо
-  правило «стадия Need только при наличии стейкхолдера, иначе вход из брифа
-  E1».
+  `discovery/TODO.md`).
 - Фаза 3 grounding discovery имеет собственный триггер и сюда не входит.
 - **Приёмка.** Прогон, где ни один артефакт не создан руками: от
   `spec-loop --need` до integration-PR.
@@ -211,8 +217,9 @@ discovery получил runtime («вызываемость стадии про
   снапшота PP, `pp_id` входит в frontmatter charter, интервью идёт в
   customer-фрейме, evidence QG-4/QG-5 ссылается из charter.
 - **Дефолт** — однорепозиторный продукт (§2.5).
-- **Открытое решение владельца** (до старта): целевой репо первого внешнего
-  продукта.
+- **Репо продукта** (решение §4): первый внешний продукт получает **новый
+  выделенный репо только после QG-5 принятого PP**; пустой репо заранее не
+  создаётся, имя выводится при bootstrap из принятого продукта.
 - **Приёмка.** Одна идея из pilot-бэклога доведена до влитого
   integration-PR с непрерывной цепочкой evidence: Idea → PP → снапшот → бриф
   → бандл → tasks → PR.
@@ -228,14 +235,16 @@ discovery получил runtime («вызываемость стадии про
 
 ## 4. Развилки и решения владельца
 
-| Решение | Нужно к | Рекомендация |
+Решения приняты владельцем 2026-09-13 (vault#127) и внесены в основной текст.
+
+| Решение | Нужно к | Решение владельца (2026-09-13) |
 |---|---|---|
-| E1 параллельно E0 или после | старт E1 | После пунктов 1–3 E0: обе работы правят task_bridge и S2 |
-| Срок хранения транскрипта после закрытия workstream'а (приватность, §2.4) | E1 | 90 дней, затем удаление с записью в журнал |
-| Окно интервью до брифа — локальное исключение из инварианта или переносимое хранилище журнала | E2 | Принять исключение: окно ограничено, ответы остаются у отвечающего, отдельного хранилища в экосистеме нет |
-| Соло-режим интервью | старт E2 | Правило «Need только со стейкхолдером», иначе вход из брифа |
-| Целевой репо первого внешнего продукта | шаг 0 E3 | Новый репо через bootstrap |
-| Mode-2 для кросс-репного продукта | только при втором репо у продукта (§2.5) | Отложить до первого такого продукта |
+| E1 параллельно E0 или после | старт E1 | E1 стартует после fidelity и file-target пунктов E0; параллельно с ними не идёт |
+| Срок хранения транскрипта после закрытия workstream'а (приватность, §2.4) | E1 | 90 дней после закрытия workstream, затем удаление с записью в журнал |
+| Окно интервью до брифа — локальное исключение из инварианта или переносимое хранилище журнала | E2 | Принимается как ограниченное локальное исключение; переносимое хранилище сейчас не вводится |
+| Соло-режим интервью | старт E2 | Режим Need запускается только при наличии реального стейкхолдера; иначе вход из готового брифа |
+| Целевой репо первого внешнего продукта | шаг 0 E3 | Новый выделенный репо после QG-5 принятого PP; пустой репо заранее не создаётся, имя выводится при bootstrap из принятого продукта |
+| Mode-2 для кросс-репного продукта | только при втором репо у продукта (§2.5) | Откладывается до первого фактического случая второго репо у одного продукта |
 
 ## 5. Матрица артефактов
 
@@ -244,7 +253,7 @@ discovery получил runtime («вызываемость стадии про
 | Объект | Canonical owner | Путь | Формат | Producer | Consumer | Доставка | Версия / hash | Retention | Gate |
 |---|---|---|---|---|---|---|---|---|---|
 | Методика и банк вопросов | discovery-toolkit | `frames/*.md`, `DISCOVERY-BRIEF-CONTRACT.md` | md | человек | discovery (пин) | вендоринг пиненой копии | коммит пина, copy-integrity | бессрочно | drift-check |
-| Журнал интервью | discovery (runtime) | `$DISCOVERY_HOME/sessions/<id>/journal.jsonl` | jsonl, append-only | discovery | discovery (`brief`) | не доставляется; необязателен после брифа | event-id | §2.4: до закрытия workstream + срок владельца | — |
+| Журнал интервью | discovery (runtime) | `$DISCOVERY_HOME/sessions/<id>/journal.jsonl` | jsonl, append-only | discovery | discovery (`brief`) | не доставляется; необязателен после брифа | event-id | §2.4: 90 дней после закрытия workstream | — |
 | discovery-brief | репо продукта | `workstreams/<ws-id>/spec/` (E1); сейчас `spec/discovery-brief-*.md` | md + frontmatter | discovery | конвейер S2 | PR тем, кто ведёт прогон | `git hash-object` → upstream charter | бессрочно | gate_check pass |
 | Idea, оценки, бэклог, решения QG | impresario | `pilot/{ideas,assessments,briefs,runs,decisions}/`, `backlog.yaml` | yaml | impresario CLI + человек | rank engine, QG | PR | CAS: input_hash + version | бессрочно | валидатор impresario |
 | ProductProposal (оригинал) | impresario | `pilot/forconcept/pp-NNN/` | yaml | цикл researcher/creator | steward intake, снапшот | PR | version + hash | бессрочно | QG-5 |
@@ -253,7 +262,7 @@ discovery получил runtime («вызываемость стадии про
 | Бандл (charter … decomposition) | репо продукта | `workstreams/<ws-id>/spec/NN-*.md` | md + frontmatter | spec-loop S2–S3 | гейты S4/S8, task_bridge | бандл-PR; узлы — `--approve-node` | `upstream_hashes`, content_anchor | бессрочно | steward gate-check, DAG-одобрение |
 | Леджер прогона | devtools (оператор) | `devtools/out/governance-runs/<run-id>/run.json` | json, write-ahead | spec-loop/runner | spec-loop resume | не доставляется; E0.6 — восстановление из GitHub | run-id | до закрытия workstream | — |
 | Вердикт ревью | GitHub (PR review от ai-prosto) | PR review; локально `--write-verdict <file>` | verdict/v1 json | review-pr.sh | merge_gate, accept-pr | публикация PR review | head sha + fp | бессрочно | approve/request-changes |
-| S8-вердикты гейта | репо продукта (E0.6); сейчас локально | `.steward/gate_verdicts.jsonl`; E0.6 — `workstreams/<ws-id>/evidence/` | jsonl | steward `--emit-verdicts` | runner S8, dispatcher | E0.6 — внутри tasks-PR того же цикла, без отдельного evidence-PR | sha default branch | бессрочно | fail-closed без файла |
+| S8-вердикты гейта | репо продукта (E0.6); сейчас локально | `out/governance-runs/<run-id>/s8-gate-verdicts.jsonl` (транзиентный источник — `.steward/gate_verdicts.jsonl` в репо-цели); E0.6 — `workstreams/<ws-id>/evidence/` | jsonl | steward `--emit-verdicts` | runner S8, dispatcher | E0.6 — внутри tasks-PR того же цикла, без отдельного evidence-PR | sha default branch | бессрочно | fail-closed без файла |
 | Tasks-спека | репо продукта | `spec/<ws-id>-tasks.md` | md, spec-runner грамматика | task_bridge | spec-runner | tasks-PR + conform-PR | approve-штамп, §I12 | бессрочно | spec approve (человек) |
 | State-DB, логи, claims spec-runner | spec-runner (оператор) | `spec/.executor-*state.db`, `spec/.executor-*logs/`, `.*task-history.log` | sqlite, jsonl | spec-runner | spec-runner resume | не доставляется; статусы — в спеке | ULID попытки | E0.6 инвентаризация | sync-гард |
 | Waivers и замеры | репо продукта | `spec/.tdd-evidence/{waivers,measurements}/` | json | человек + исполнитель | гейты spec-runner, ревью | PR | baseline_sha | бессрочно | approved_by: human |
@@ -264,8 +273,8 @@ discovery получил runtime («вызываемость стадии про
 
 ## 6. После принятия
 
-- Пункты E1 и E0.6 → `devtools/TODO.md` (владелец изменений — devtools);
-  инвентаризация state spec-runner → inbox-issue в spec-runner.
+- Пункты E1 и E0.6 заведены в `devtools/TODO.md` (devtools#210);
+  инвентаризация state spec-runner — inbox spec-runner#478.
 - Bootstrap репо продукта (шаг 0 E3) → кандидат в скрипт devtools после
   первого ручного прохода.
-- Решения из §4 фиксируются в этой заметке правкой статуса на `accepted`.
+- Решения §4 зафиксированы, статус `accepted` (vault#127, ревизия 4).
