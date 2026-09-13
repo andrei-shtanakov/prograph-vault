@@ -12,9 +12,9 @@ updated: 2026-09-13
 нумерации, усилена модель runtime-state, снапшот PP, матрица артефактов;
 ревизия 3 — два маршрута прогона, транскрипт согласован с инвариантом,
 E0.6 сужен до governance-state, терминальный механизм S8, путь снапшота PP;
-ревизия 4 — **принят владельцем**: шесть решений §4 внесены (vault#127),
+ревизия 4 — **принят владельцем**: шесть решений §4 внесены (prograph-vault#127),
 факт S8 и три человеческие границы R3 исправлены)
-**Статус:** accepted — принят владельцем 2026-09-13 (vault#127). Пункты с
+**Статус:** accepted — принят владельцем 2026-09-13 (prograph-vault#127). Пункты с
 владельцем изменений devtools заведены (devtools#210); инвентаризация state
 spec-runner — inbox spec-runner#478.
 
@@ -91,7 +91,7 @@ waivers, замеры, evidence-документы). Отдельное хран
 |---|---|---|---|
 | `devtools/out/governance-runs/<run-id>/run.json` | нужен для продолжения | частично: tasks-PR находится по ветке, бандл-PR — по ветке `spec/<ws-id>-behaviour`; статусы узлов — в frontmatter бандла | E0.6: повтор `spec-loop` восстанавливает леджер из фактов GitHub; проверка — удалить `out/` и продолжить прогон |
 | `~/.discovery/sessions/<id>/journal.jsonl` | нужен для продолжения **до выпуска брифа**; после публикации проверенного брифа — необязателен | нет | политика §2.4: проверенный бриф — единственный durable-результат R1; окно интервью — принятое ограниченное исключение из инварианта |
-| `out/governance-runs/<run-id>/s8-gate-verdicts.jsonl` (S8; `.steward/gate_verdicts.jsonl` в корне репо-цели — транзиентный источник steward, прибирается после переноса) | доказательство прохождения гейта | да, детерминированный перезапуск гейта на default branch | E0.6: вердикт S8 едет **внутри tasks-PR** того же цикла (`workstreams/<ws-id>/evidence/`), отдельный evidence-PR не создаётся |
+| `devtools/out/governance-runs/<run-id>/s8-gate-verdicts.jsonl` (S8; `.steward/gate_verdicts.jsonl` в корне репо-цели — транзиентный источник steward, прибирается после переноса) | доказательство прохождения гейта | да, детерминированный перезапуск гейта на default branch | E0.6: вердикт S8 едет **внутри tasks-PR** того же цикла (`workstreams/<ws-id>/evidence/`), отдельный evidence-PR не создаётся |
 | `spec/.executor-*state.db`, `spec/.executor-*logs/`, claims | нужен для продолжения | статусы задач — в tasks-спеке (tracked), `reset` безопасен; логи и claims — нет | вне E0.6: inbox-issue владельцу spec-runner на инвентаризацию; логи неудачных попыток — кандидат в evidence |
 | кеши, locks, `.pyc`, worktrees | временное | не требуется | без изменений |
 
@@ -148,7 +148,8 @@ waivers, замеры, evidence-документы). Отдельное хран
 «Триаж открытого governance-долга»); пункт 6 добавлен этим планом.
 
 1. Fidelity ревью (devtools#136, #166).
-2. Fail-honest supersede (devtools#177, #168, #181, #175).
+2. Fail-honest supersede (devtools#177, #168, #181, #175) — **закрыт**
+   devtools#209 (2026-09-13).
 3. Контракт файловой цели verify-first (devtools#201, inbox из spec-runner),
    следом остаточный долг task_bridge (#123, #162, #198, #200).
 4. Остатки document-runner (devtools#204) до следующего behaviour-авторинга.
@@ -235,7 +236,7 @@ task_bridge/S2. Fail-honest supersede (E0.2) уже закрыт devtools#209.
 
 ## 4. Развилки и решения владельца
 
-Решения приняты владельцем 2026-09-13 (vault#127) и внесены в основной текст.
+Решения приняты владельцем 2026-09-13 (prograph-vault#127) и внесены в основной текст.
 
 | Решение | Нужно к | Решение владельца (2026-09-13) |
 |---|---|---|
@@ -262,7 +263,7 @@ task_bridge/S2. Fail-honest supersede (E0.2) уже закрыт devtools#209.
 | Бандл (charter … decomposition) | репо продукта | `workstreams/<ws-id>/spec/NN-*.md` | md + frontmatter | spec-loop S2–S3 | гейты S4/S8, task_bridge | бандл-PR; узлы — `--approve-node` | `upstream_hashes`, content_anchor | бессрочно | steward gate-check, DAG-одобрение |
 | Леджер прогона | devtools (оператор) | `devtools/out/governance-runs/<run-id>/run.json` | json, write-ahead | spec-loop/runner | spec-loop resume | не доставляется; E0.6 — восстановление из GitHub | run-id | до закрытия workstream | — |
 | Вердикт ревью | GitHub (PR review от ai-prosto) | PR review; локально `--write-verdict <file>` | verdict/v1 json | review-pr.sh | merge_gate, accept-pr | публикация PR review | head sha + fp | бессрочно | approve/request-changes |
-| S8-вердикты гейта | репо продукта (E0.6); сейчас локально | `out/governance-runs/<run-id>/s8-gate-verdicts.jsonl` (транзиентный источник — `.steward/gate_verdicts.jsonl` в репо-цели); E0.6 — `workstreams/<ws-id>/evidence/` | jsonl | steward `--emit-verdicts` | runner S8, dispatcher | E0.6 — внутри tasks-PR того же цикла, без отдельного evidence-PR | sha default branch | бессрочно | fail-closed без файла |
+| S8-вердикты гейта | репо продукта (E0.6); сейчас локально | `devtools/out/governance-runs/<run-id>/s8-gate-verdicts.jsonl` (транзиентный источник — `.steward/gate_verdicts.jsonl` в репо-цели); E0.6 — `workstreams/<ws-id>/evidence/` | jsonl | steward `--emit-verdicts` | runner S8, dispatcher | E0.6 — внутри tasks-PR того же цикла, без отдельного evidence-PR | sha default branch | бессрочно | fail-closed без файла |
 | Tasks-спека | репо продукта | `spec/<ws-id>-tasks.md` | md, spec-runner грамматика | task_bridge | spec-runner | tasks-PR + conform-PR | approve-штамп, §I12 | бессрочно | spec approve (человек) |
 | State-DB, логи, claims spec-runner | spec-runner (оператор) | `spec/.executor-*state.db`, `spec/.executor-*logs/`, `.*task-history.log` | sqlite, jsonl | spec-runner | spec-runner resume | не доставляется; статусы — в спеке | ULID попытки | E0.6 инвентаризация | sync-гард |
 | Waivers и замеры | репо продукта | `spec/.tdd-evidence/{waivers,measurements}/` | json | человек + исполнитель | гейты spec-runner, ревью | PR | baseline_sha | бессрочно | approved_by: human |
@@ -277,4 +278,4 @@ task_bridge/S2. Fail-honest supersede (E0.2) уже закрыт devtools#209.
   инвентаризация state spec-runner — inbox spec-runner#478.
 - Bootstrap репо продукта (шаг 0 E3) → кандидат в скрипт devtools после
   первого ручного прохода.
-- Решения §4 зафиксированы, статус `accepted` (vault#127, ревизия 4).
+- Решения §4 зафиксированы, статус `accepted` (prograph-vault#127, ревизия 4).
