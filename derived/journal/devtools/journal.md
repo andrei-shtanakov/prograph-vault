@@ -395,12 +395,12 @@ updated: 2026-09-13
   чистого дерева; ревью-эскалации закрыли реальные дыры — исполнение
   scripts/review/ и корневого review-pr.sh из недоверенного PR (harness-гард
   по ЛОКАЛЬНОМУ диффу материализованного head0, не по API — TOCTOU), пин
-  base-ветки перед мержем, FETCH_HEAD вместо origin/<base>,
+  base-ветки перед мержем, FETCH_HEAD вместо `origin/<base>`,
   --no-overwrite-ignore на switch.
 - runner S8 (PR #114, 3 круга): gate_verdicts.jsonl переезжает в run_dir
   (dirty-гард task_bridge больше не спотыкается); зелёный exit без verdicts —
   fail-closed стоп; pre-clean stale-файла прошлой попытки до запуска гейта.
-- spec_run_preflight (PR #115, 10 кругов): make preflight ARGS='--repo <r>' —
+- spec_run_preflight (PR #115, 10 кругов): `make preflight ARGS='--repo <r>'` —
   конфиг-по-эталону (YAML-парсер, путь = часть требования; круги 2–7 показали,
   что regex = пере-изобретение парсера), insteadOf https, беспрефиксная
   state-DB, live-smoke-env, dirty-tree. pyyaml — прямая зависимость.
