@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-14T21:32:21.191545+04:00",
+  "generated_at": "2026-09-14T22:02:29.070122+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -23,7 +23,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "chore/review-kit-harness-wave",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -143,7 +143,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -191,7 +191,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -203,7 +203,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -215,7 +215,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 1,
         "dirty": false,
         "error": null
       },
@@ -227,7 +227,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": true,
         "error": null
       },
@@ -275,7 +275,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -297,9 +297,9 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
+        "branch": "docs/inbox-triage-2026-09-14",
         "ahead": 0,
-        "behind": 47,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
