@@ -217,3 +217,27 @@ updated: 2026-07-14
   github:<handle>; every `@owner:andrei` in this TODO is outside it
   (reported, never failing) — a file-wide rename is a separate decision.
 - Links: https://github.com/andrei-shtanakov/spec-runner/pull/120
+
+## 2026-09-14 09:40 — change: terminal review gets repo-local base context (#474 closed)
+
+- Inbox #474 (from devtools#124) delivered: `.github/codex/review-context.txt`
+  attaches, from the merge-base, a vendored reading of the devtools behaviour
+  bundle → tasks artifact contract (`docs/review-context/behaviour-bundle-tasks-contract.md`,
+  pinned to devtools `c7794c5` with SHA-256 of six sources, all recomputed)
+  plus `spec/FORMAT.md`. FORMAT.md's reference-syntax paragraph was brought in
+  line with the parser on the way (each id in its own brackets; `Traces to`
+  and `Depends on`/`Blocks` accept different id shapes).
+- Blocker steward#150 (kit lost the manifest when run from a subdirectory,
+  fail-open to diff-only) closed by steward PR #151 (`9d5f8e7`); re-vendored
+  only `collect-context.sh` + `local.sh` in PR #491 — context pack from root
+  and from `src/` now byte-identical. `apply-threshold.sh` and
+  `review-schema.json` deliberately left @ `761285f`: upstream schema v2
+  (`kind`) needs our `review-prompt.md` changed too — take it with the
+  steward#147 harness-layer wave.
+- PR #476 human-merged (`2e54e7a`, touches `.github/`); the wait marker on
+  master (PR #489) retired with it. Side finding filed as steward#154 (inbox):
+  a manifest entry `dir/` passes the kit's path filter and lands a directory
+  listing in the pack as a "file".
+- Links: https://github.com/andrei-shtanakov/spec-runner/pull/476,
+  https://github.com/andrei-shtanakov/spec-runner/pull/491,
+  https://github.com/andrei-shtanakov/steward/issues/154
