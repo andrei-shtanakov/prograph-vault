@@ -181,3 +181,10 @@ updated: 2026-09-14
 - Handoff в devtools: devtools#222 (`review-pr-harness-env`) — `review-pr.sh` на `REVIEW_HARNESS`, удаление переходника; строка отпечатка для claude меняется (`harness-claude --model X`), опубликованные claude-вердикты перегоняются один раз. Открытые ожидания steward: `review-kit-harness-fleet-wave`, `review-kit-harness-member-promotion`.
 - Попутно ранее в тот же день: inbox #149 закрыт (PR #152, conformance-report WS-005 snapshot #14), заведён `approval-facts-policy-digest-refresh` (release-стадия WS-005 красная по `GC-APPROVAL-MISSING`).
 - Links: steward#147, PR #153, PR #155, devtools#222, `docs/superpowers/specs/2026-09-14-review-kit-harness-layer-design.md`, `docs/plans/2026-09-14-review-kit-harness-layer.md`
+
+## 2026-09-14 21:17 — change: inbox steward#154 закрыт — запись манифеста `dir/` проходила как файл (PR #157)
+
+- `collect-context.sh`: сторож формы пути (у `--manifest` и у записей) отвергает хвостовой `/` и pathspec-магию `:`; структурная проверка — `ls-tree` обязан вернуть ровно одну запись с путём, буквально равным запрошенному; сырые пути через `ls-tree -z | tr '\0' '\n'` (человекочитаемый вывод C-квотирует не-ASCII всегда, а `"`/`\` — даже при `core.quotePath=false`); LF в имени манифеста — именованный отказ. Регресс-тесты sh + dash.
+- Терминальное ревью ветки: два major (C-квотирование не-ASCII; затем `"`/`\`) и один minor (LF) — закрыты в ветке; приёмка ai-prosto approve; мерж `57170da` (ai-prosto).
+- Попутно в тот же день: devtools#222 шаг 1 доставлен, волна ре-вендора харнесс-кита заведена как devtools#228 (двухшаговый рецепт), пункт `review-kit-harness-fleet-wave` перетегирован (PR #156).
+- Links: steward#154, PR #157, devtools#228, `scripts/review/collect-context.sh`
