@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-15T03:03:47.812946+04:00",
+  "generated_at": "2026-09-15T03:34:00.204215+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -333,9 +333,9 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "feat/review-kit-eval-sidecars",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
