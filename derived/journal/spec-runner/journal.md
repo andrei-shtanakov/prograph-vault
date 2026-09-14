@@ -3,7 +3,7 @@ title: spec-runner — activity journal
 type: journal
 source: kb-save
 project: spec-runner
-updated: 2026-07-14
+updated: 2026-09-14
 ---
 
 # spec-runner — activity journal
