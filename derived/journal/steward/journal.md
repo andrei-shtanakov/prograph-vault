@@ -188,3 +188,10 @@ updated: 2026-09-14
 - Терминальное ревью ветки: два major (C-квотирование не-ASCII; затем `"`/`\`) и один minor (LF) — закрыты в ветке; приёмка ai-prosto approve; мерж `57170da` (ai-prosto).
 - Попутно в тот же день: devtools#222 шаг 1 доставлен, волна ре-вендора харнесс-кита заведена как devtools#228 (двухшаговый рецепт), пункт `review-kit-harness-fleet-wave` перетегирован (PR #156).
 - Links: steward#154, PR #157, devtools#228, `scripts/review/collect-context.sh`
+
+## 2026-09-14 22:36 — status: волна ре-вендора харнесс-кита закрыта; harness-claude — обязательный член (PR #159)
+
+- Волна devtools#228 (PR-1 + PR-2) сверена продюсером по default-веткам через API и живыми shallow-клонами dispatcher/spec-runner: все 22 копии кита — `SOURCE @ a2d7e71`, 7 строк PIN, `harness-claude` байт-в-байт с master и `100755`, `checksum.sh --pin` → 0, `REVIEW_HARNESS=claude … --print-review-cmd` → `harness-claude --model claude-opus-5`. `atp-platform-testing-en` — локальная папка без remote, вне флота. Пункт `review-kit-harness-fleet-wave` закрыт; devtools уведомлён (#222/#228) — их `review-harness-shim-removal` разблокирован.
+- Промоция (`review-kit-harness-member-promotion`, PR #159 → master `9cfcb3c`, мерж ai-prosto): `?` снят в `required_kit_default` — отсутствие адаптера у потребителя = код 2; TDD (стенд потребителя на 7 файлов, glob-свойство `?`-маркера на generic-члене). Разъезжается следующей волной; до неё копии `checksum.sh @ a2d7e71` при 7 строках PIN дают тот же результат.
+- Заведён `review-kit-next-wave`: `collect-context.sh` #154 не разъехался у 21 копии (волна взяла `a2d7e71`, spec-runner взял свежий) + промоция — одношаговая волна по запросу владельца.
+- Links: steward PR #155/#156/#158/#159, devtools#222, devtools#228, `TODO.md` §10
