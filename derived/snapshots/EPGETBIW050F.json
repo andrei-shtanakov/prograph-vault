@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-14T09:28:42.583744+04:00",
+  "generated_at": "2026-09-14T09:58:50.626008+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
+        "branch": "fix/e1-commit-source-layer",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -81,7 +81,7 @@
       "dir": "discovery",
       "remote": "andrei-shtanakov/discovery",
       "local": {
-        "branch": "master",
+        "branch": "docs/refresh-baseline-grounding-decision",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -297,7 +297,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
+        "branch": "chore/revendor-review-kit-9d5f8e7",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -333,7 +333,7 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "master",
+        "branch": "docs/review-kit-harness-layer-design",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
