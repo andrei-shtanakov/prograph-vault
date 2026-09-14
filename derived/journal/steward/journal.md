@@ -173,3 +173,11 @@ updated: 2026-09-14
 - Заведён хвост `review-kit-generated-filter-cwd` (находка ревью #151, дважды): `check-attr --stdin` в generated-фильтре приклеивает cwd-префикс — деградирует в сторону ревью, не fail-open.
 - Re-vendor surface для spec-runner: `scripts/review/collect-context.sh` + `scripts/review/local.sh` @ `9d5f8e7`.
 - Links: steward#150, steward PR #151, `scripts/review/collect-context.sh`, `scripts/review/local.sh`, `TODO.md` §10
+
+## 2026-09-14 12:36 — change: review-kit харнесс-слой claude|codex в самом ките (steward#147 закрыт, PR #155)
+
+- Кит ревьюит claude по одному env (`REVIEW_HARNESS=claude`, `REVIEW_MODEL`), включая pre-push хук, без внешних переходников: новый член `scripts/review/harness-claude` (codex-диалект снаружи, `claude -p` внутри, `jq`, атомарная запись, явный `is_error=false`); `local.sh` резолвит `REVIEW_CMD` > `REVIEW_MODEL` > `REVIEW_HARNESS`, умолчание codex и строка `codex exec` в отпечатке не меняются; адаптер зовётся по абсолютному пути без правки PATH; `local.sh --print-review-cmd` — источник reviewer_label для devtools. `checksum.sh`: переходный `?scripts/review/harness-claude` с ужесточённой семантикой (присутствует — обязан быть запинован) и `set -f`.
+- Процесс: спека + план (PR #153), subagent-driven исполнение 7 задач; терминальное ревью кита нашло три major (PATH-подмена посторонним `scripts/review/codex`, конверт без `is_error`, незапинованный переходный член) и один minor (glob-раскрытие `?path`) — все закрыты в ветке; приёмка ai-prosto approve; мерж `a2d7e71` (ai-prosto).
+- Handoff в devtools: devtools#222 (`review-pr-harness-env`) — `review-pr.sh` на `REVIEW_HARNESS`, удаление переходника; строка отпечатка для claude меняется (`harness-claude --model X`), опубликованные claude-вердикты перегоняются один раз. Открытые ожидания steward: `review-kit-harness-fleet-wave`, `review-kit-harness-member-promotion`.
+- Попутно ранее в тот же день: inbox #149 закрыт (PR #152, conformance-report WS-005 snapshot #14), заведён `approval-facts-policy-digest-refresh` (release-стадия WS-005 красная по `GC-APPROVAL-MISSING`).
+- Links: steward#147, PR #153, PR #155, devtools#222, `docs/superpowers/specs/2026-09-14-review-kit-harness-layer-design.md`, `docs/plans/2026-09-14-review-kit-harness-layer.md`
