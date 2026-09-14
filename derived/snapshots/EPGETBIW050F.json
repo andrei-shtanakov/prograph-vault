@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-14T12:29:42.615152+04:00",
+  "generated_at": "2026-09-14T12:59:51.373954+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -333,7 +333,7 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "feat/review-kit-harness-layer",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
