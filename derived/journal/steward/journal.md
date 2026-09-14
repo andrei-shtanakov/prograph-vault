@@ -3,7 +3,7 @@ title: steward — activity journal
 type: journal
 source: kb-save
 project: steward
-updated: 2026-08-28
+updated: 2026-09-14
 ---
 
 # steward — activity journal
@@ -165,3 +165,11 @@ updated: 2026-08-28
 - Baseline-замер по маркерам fp= (скан всего флота): маркеры только в steward — 6 платных прогонов, 0 опубликованных наследований, 1 same-head (приёмочный). Методологическая оговорка записана в TODO: same-head наследование не публикуется — замер по маркерам есть нижняя оценка экономии.
 - Заведена волна re-vendor fp-кита devtools#79 (slug review-kit-fp-wave, по образцу devtools#69): local.sh --fingerprint-only есть только в steward, review-pr.sh feature-detect'ит по-репно — до волны дедуп на флоте молча выключен. Ожидание — чекбоксом @blocked_by:todo://devtools/review-kit-fp-wave.
 - Links: steward PR #138, TODO.md (review-dedup-diff-hash, review-kit-fp-wave), devtools#75, devtools#79
+
+## 2026-09-14 09:24 — change: inbox steward#150 принят и закрыт — review-kit терял base-контекст из подкаталога
+
+- Fail-open продюсера (from spec-runner#474): `collect-context.sh` отдавал путь манифеста в `git ls-tree`, который трактует его от cwd-префикса (в отличие от `git show <base>:<путь>`); из подкаталога манифест «не находился», пусто читалось как штатный код 3, обязательный контекст молча выпадал из промпта при зелёном `local.sh`.
+- Фикс в самом сборщике (PR #151 → master `9d5f8e7`, мерж ai-prosto): `git ls-tree --full-tree` для манифеста и его записей; абсолютный путь, `..` и `.`-сегменты отвергаются кодом 2 (ls-tree и git show разошлись бы по объекту); отсутствующий манифест — по-прежнему код 3; `local.sh` не утверждает «манифест есть» при отказе сборщика. Регресс-тесты доказывают содержимое пакета/промпта, не код выхода. Принято под слагом `review-context-root-relative-manifest` (TODO §10).
+- Заведён хвост `review-kit-generated-filter-cwd` (находка ревью #151, дважды): `check-attr --stdin` в generated-фильтре приклеивает cwd-префикс — деградирует в сторону ревью, не fail-open.
+- Re-vendor surface для spec-runner: `scripts/review/collect-context.sh` + `scripts/review/local.sh` @ `9d5f8e7`.
+- Links: steward#150, steward PR #151, `scripts/review/collect-context.sh`, `scripts/review/local.sh`, `TODO.md` §10
