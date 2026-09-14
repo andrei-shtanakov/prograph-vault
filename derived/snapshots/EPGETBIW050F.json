@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-14T10:28:59.444472+04:00",
+  "generated_at": "2026-09-14T10:59:13.456329+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -333,10 +333,10 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "docs/review-kit-harness-layer-design",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "feat/review-kit-harness-layer",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
