@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-14T22:02:29.070122+04:00",
+  "generated_at": "2026-09-14T22:32:36.649868+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -23,7 +23,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 4,
         "dirty": false,
         "error": null
       },
@@ -47,7 +47,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 6,
         "dirty": true,
         "error": null
       },
@@ -69,10 +69,10 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "feat/review-harness-shim-removal",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -143,7 +143,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 4,
         "dirty": false,
         "error": null
       },
@@ -191,7 +191,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 4,
         "dirty": false,
         "error": null
       },
@@ -203,7 +203,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 4,
         "dirty": false,
         "error": null
       },
@@ -215,7 +215,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 1,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -227,7 +227,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 4,
         "dirty": true,
         "error": null
       },
@@ -275,7 +275,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
+        "behind": 4,
         "dirty": false,
         "error": null
       },
@@ -298,8 +298,8 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "docs/inbox-triage-2026-09-14",
-        "ahead": 0,
-        "behind": 0,
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -333,9 +333,9 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "feat/review-kit-harness-member-promotion",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
