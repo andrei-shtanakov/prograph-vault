@@ -3,7 +3,7 @@ title: spec-runner — activity journal
 type: journal
 source: kb-save
 project: spec-runner
-updated: 2026-09-14
+updated: 2026-09-15
 ---
 
 # spec-runner — activity journal
@@ -241,3 +241,28 @@ updated: 2026-09-14
 - Links: https://github.com/andrei-shtanakov/spec-runner/pull/476,
   https://github.com/andrei-shtanakov/spec-runner/pull/491,
   https://github.com/andrei-shtanakov/steward/issues/154
+
+## 2026-09-15 07:30 — change: RED pass formats the file it freezes (#507, PR #518)
+
+- Inbox #507 (from devtools): `commands.format_check` (#351) judged the whole
+  tree after GREEN, when the red file was already byte-locked — a red the gate
+  rejected failed every GREEN attempt by construction (live run: 3 paid calls,
+  $12.99). New config key `commands.format` (write-mode formatter; fail-closed,
+  no default, never inferred) and `tdd._format_claimed` after the lint step:
+  narrowed check, declared formatter, re-check, absorbed into the checkpoint by
+  the same delta-judged amend as the lint fix. BEH-28 adoption now counts a
+  declared formatter as a repair path. The repo's own config declares it, so
+  devtools' live runs get it.
+- Boundaries that survived eight acceptance rounds: pre-freeze refuses only what
+  is attributed to the claimed file; an out-of-contract exit from the narrowed
+  check (wrapper without file args, crashed tool, unparsable red — ruff returns
+  2 for all, measured) makes the step stand aside, exactly pre-#507. One review
+  proposal (not adopting a residue without a formatter) was measured wrong:
+  re-authoring hits #252 D, so adoption is the cheaper identical wedge.
+- Also: inbox triage 2026-09-14 (PR #515) accepted #388/#338/#402-remainder,
+  closed #335 as completed (`verify_first` + `TDD-waiver`); dependabot #404
+  merged; kit re-vendored to steward master; flaky
+  `test_verify_file_target_cost` filed as #519.
+- Links: https://github.com/andrei-shtanakov/spec-runner/pull/518,
+  https://github.com/andrei-shtanakov/spec-runner/pull/515,
+  https://github.com/andrei-shtanakov/spec-runner/issues/519
