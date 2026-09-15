@@ -266,3 +266,22 @@ updated: 2026-09-15
 - Links: https://github.com/andrei-shtanakov/spec-runner/pull/518,
   https://github.com/andrei-shtanakov/spec-runner/pull/515,
   https://github.com/andrei-shtanakov/spec-runner/issues/519
+
+## 2026-09-15 09:10 — status: v2.36.0 released and rehearsed
+
+- Minor release (PR #520; tag on the release commit `7681a07`). Additive
+  contract moves since v2.35.0: `--json-result` +`verify_outcome`
+  /+`verify_composition`, state DB +`verify_evidence`/+`waivers_applied` and
+  `error_stage: verify`, config +`commands.format`, execution modes
+  `verify_first` and `TDD-waiver`. No existing key, column or exit code
+  changes meaning — a consumer holding the v2.35.0 schema reads every row.
+- Four surfaces verified: publish.yml success, PyPI per-version 200 with
+  `info.version` 2.36.0, GitHub Release from the CHANGELOG section, red
+  tag-guard re-run green. Rehearsal against the PyPI wheel (import origin
+  checked): 52 passed; control against 2.35.0 fails at collection.
+- Found by the release PR's own acceptance review: a delivered workstream test
+  (TASK-013, #367) scoped its CHANGELOG assertions to `[Unreleased]` and went
+  red on the cut itself — now anchored on its own entry. Consumers vendoring
+  our schemas (Maestro) may re-pin; every previously valid row stays valid.
+- Links: https://github.com/andrei-shtanakov/spec-runner/releases/tag/v2.36.0,
+  https://github.com/andrei-shtanakov/spec-runner/pull/520
