@@ -3,7 +3,7 @@ title: devtools — activity journal
 type: journal
 source: kb-save
 project: devtools
-updated: 2026-09-13
+updated: 2026-09-15
 ---
 
 # devtools — activity journal
@@ -583,3 +583,9 @@ updated: 2026-09-13
 - devtools PR #210 (agent-merge ai-prosto, master 0d679ec): пункты `durable-governance-state-ledger`, `s8-verdict-in-tasks-pr` (после #201), `spec-loop-brief-input` (после fidelity-волны и #201). Три круга терминального ревью — четыре minor'а по фактическим путям и механизмам приняты (s8-gate-verdicts.jsonl в леджере, ws-id с датой восстанавливается по префиксу ветки, gate_check вендорится кодом, т.к. discovery-toolkit package=false). Первый plan-check поймал PF-BLOCKER-STALE: fail-honest supersede уже закрыт #209.
 - Inbox spec-runner#478 (slug executor-state-inventory): инвентаризация runtime-state исполнителя.
 - Links: vault PR #126/#128, vault#127, devtools#210, spec-runner#478, devtools/TODO.md (раздел «План развития пайплайна»)
+
+## 2026-09-13 16:40 — result: PR #206 (fidelity ревью: exact head PR) — терминальное ревью из доверенного дерева, мерж человеком
+
+- Харнесс-PR (правит review-pr.sh, `_HARNESS_PREFIXES`): ревью выполнено драйвером из worktree origin/master (23bba42) с FLEET_ROOT на worktree head 859b5a1 — код из проверяемого дерева не исполнялся (scripts/review/ в PR не тронуты). Вердикт approve + 2 minor (конфиги харнесса из cwd PR-head; пин prompt/schema через env у старых вендоренных китов), опубликован от ai-prosto. Мерж — владелец (0d7078f), merged_by человеческий по правилу. Закрыты devtools#136, #166; пункт review-evidence-fidelity-wave.
+- Побочно: prograph-vault#127 обработан (PR #128 влит, ревизия 4 плана accepted), inbox discovery#43 — решение по соло-режиму; PR #212 закрыл E0.6a.
+- Links: devtools#206, prograph-vault#128, discovery#43
