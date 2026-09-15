@@ -3,7 +3,7 @@ title: spec-runner — activity journal
 type: journal
 source: kb-save
 project: spec-runner
-updated: 2026-07-14
+updated: 2026-09-15
 ---
 
 # spec-runner — activity journal
@@ -217,3 +217,52 @@ updated: 2026-07-14
   github:<handle>; every `@owner:andrei` in this TODO is outside it
   (reported, never failing) — a file-wide rename is a separate decision.
 - Links: https://github.com/andrei-shtanakov/spec-runner/pull/120
+
+## 2026-09-14 09:40 — change: terminal review gets repo-local base context (#474 closed)
+
+- Inbox #474 (from devtools#124) delivered: `.github/codex/review-context.txt`
+  attaches, from the merge-base, a vendored reading of the devtools behaviour
+  bundle → tasks artifact contract (`docs/review-context/behaviour-bundle-tasks-contract.md`,
+  pinned to devtools `c7794c5` with SHA-256 of six sources, all recomputed)
+  plus `spec/FORMAT.md`. FORMAT.md's reference-syntax paragraph was brought in
+  line with the parser on the way (each id in its own brackets; `Traces to`
+  and `Depends on`/`Blocks` accept different id shapes).
+- Blocker steward#150 (kit lost the manifest when run from a subdirectory,
+  fail-open to diff-only) closed by steward PR #151 (`9d5f8e7`); re-vendored
+  only `collect-context.sh` + `local.sh` in PR #491 — context pack from root
+  and from `src/` now byte-identical. `apply-threshold.sh` and
+  `review-schema.json` deliberately left @ `761285f`: upstream schema v2
+  (`kind`) needs our `review-prompt.md` changed too — take it with the
+  steward#147 harness-layer wave.
+- PR #476 human-merged (`2e54e7a`, touches `.github/`); the wait marker on
+  master (PR #489) retired with it. Side finding filed as steward#154 (inbox):
+  a manifest entry `dir/` passes the kit's path filter and lands a directory
+  listing in the pack as a "file".
+- Links: https://github.com/andrei-shtanakov/spec-runner/pull/476,
+  https://github.com/andrei-shtanakov/spec-runner/pull/491,
+  https://github.com/andrei-shtanakov/steward/issues/154
+
+## 2026-09-15 07:30 — change: RED pass formats the file it freezes (#507, PR #518)
+
+- Inbox #507 (from devtools): `commands.format_check` (#351) judged the whole
+  tree after GREEN, when the red file was already byte-locked — a red the gate
+  rejected failed every GREEN attempt by construction (live run: 3 paid calls,
+  $12.99). New config key `commands.format` (write-mode formatter; fail-closed,
+  no default, never inferred) and `tdd._format_claimed` after the lint step:
+  narrowed check, declared formatter, re-check, absorbed into the checkpoint by
+  the same delta-judged amend as the lint fix. BEH-28 adoption now counts a
+  declared formatter as a repair path. The repo's own config declares it, so
+  devtools' live runs get it.
+- Boundaries that survived eight acceptance rounds: pre-freeze refuses only what
+  is attributed to the claimed file; an out-of-contract exit from the narrowed
+  check (wrapper without file args, crashed tool, unparsable red — ruff returns
+  2 for all, measured) makes the step stand aside, exactly pre-#507. One review
+  proposal (not adopting a residue without a formatter) was measured wrong:
+  re-authoring hits #252 D, so adoption is the cheaper identical wedge.
+- Also: inbox triage 2026-09-14 (PR #515) accepted #388/#338/#402-remainder,
+  closed #335 as completed (`verify_first` + `TDD-waiver`); dependabot #404
+  merged; kit re-vendored to steward master; flaky
+  `test_verify_file_target_cost` filed as #519.
+- Links: https://github.com/andrei-shtanakov/spec-runner/pull/518,
+  https://github.com/andrei-shtanakov/spec-runner/pull/515,
+  https://github.com/andrei-shtanakov/spec-runner/issues/519

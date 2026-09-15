@@ -3,7 +3,7 @@ title: steward — activity journal
 type: journal
 source: kb-save
 project: steward
-updated: 2026-08-28
+updated: 2026-09-14
 ---
 
 # steward — activity journal
@@ -165,3 +165,33 @@ updated: 2026-08-28
 - Baseline-замер по маркерам fp= (скан всего флота): маркеры только в steward — 6 платных прогонов, 0 опубликованных наследований, 1 same-head (приёмочный). Методологическая оговорка записана в TODO: same-head наследование не публикуется — замер по маркерам есть нижняя оценка экономии.
 - Заведена волна re-vendor fp-кита devtools#79 (slug review-kit-fp-wave, по образцу devtools#69): local.sh --fingerprint-only есть только в steward, review-pr.sh feature-detect'ит по-репно — до волны дедуп на флоте молча выключен. Ожидание — чекбоксом @blocked_by:todo://devtools/review-kit-fp-wave.
 - Links: steward PR #138, TODO.md (review-dedup-diff-hash, review-kit-fp-wave), devtools#75, devtools#79
+
+## 2026-09-14 09:24 — change: inbox steward#150 принят и закрыт — review-kit терял base-контекст из подкаталога
+
+- Fail-open продюсера (from spec-runner#474): `collect-context.sh` отдавал путь манифеста в `git ls-tree`, который трактует его от cwd-префикса (в отличие от `git show <base>:<путь>`); из подкаталога манифест «не находился», пусто читалось как штатный код 3, обязательный контекст молча выпадал из промпта при зелёном `local.sh`.
+- Фикс в самом сборщике (PR #151 → master `9d5f8e7`, мерж ai-prosto): `git ls-tree --full-tree` для манифеста и его записей; абсолютный путь, `..` и `.`-сегменты отвергаются кодом 2 (ls-tree и git show разошлись бы по объекту); отсутствующий манифест — по-прежнему код 3; `local.sh` не утверждает «манифест есть» при отказе сборщика. Регресс-тесты доказывают содержимое пакета/промпта, не код выхода. Принято под слагом `review-context-root-relative-manifest` (TODO §10).
+- Заведён хвост `review-kit-generated-filter-cwd` (находка ревью #151, дважды): `check-attr --stdin` в generated-фильтре приклеивает cwd-префикс — деградирует в сторону ревью, не fail-open.
+- Re-vendor surface для spec-runner: `scripts/review/collect-context.sh` + `scripts/review/local.sh` @ `9d5f8e7`.
+- Links: steward#150, steward PR #151, `scripts/review/collect-context.sh`, `scripts/review/local.sh`, `TODO.md` §10
+
+## 2026-09-14 12:36 — change: review-kit харнесс-слой claude|codex в самом ките (steward#147 закрыт, PR #155)
+
+- Кит ревьюит claude по одному env (`REVIEW_HARNESS=claude`, `REVIEW_MODEL`), включая pre-push хук, без внешних переходников: новый член `scripts/review/harness-claude` (codex-диалект снаружи, `claude -p` внутри, `jq`, атомарная запись, явный `is_error=false`); `local.sh` резолвит `REVIEW_CMD` > `REVIEW_MODEL` > `REVIEW_HARNESS`, умолчание codex и строка `codex exec` в отпечатке не меняются; адаптер зовётся по абсолютному пути без правки PATH; `local.sh --print-review-cmd` — источник reviewer_label для devtools. `checksum.sh`: переходный `?scripts/review/harness-claude` с ужесточённой семантикой (присутствует — обязан быть запинован) и `set -f`.
+- Процесс: спека + план (PR #153), subagent-driven исполнение 7 задач; терминальное ревью кита нашло три major (PATH-подмена посторонним `scripts/review/codex`, конверт без `is_error`, незапинованный переходный член) и один minor (glob-раскрытие `?path`) — все закрыты в ветке; приёмка ai-prosto approve; мерж `a2d7e71` (ai-prosto).
+- Handoff в devtools: devtools#222 (`review-pr-harness-env`) — `review-pr.sh` на `REVIEW_HARNESS`, удаление переходника; строка отпечатка для claude меняется (`harness-claude --model X`), опубликованные claude-вердикты перегоняются один раз. Открытые ожидания steward: `review-kit-harness-fleet-wave`, `review-kit-harness-member-promotion`.
+- Попутно ранее в тот же день: inbox #149 закрыт (PR #152, conformance-report WS-005 snapshot #14), заведён `approval-facts-policy-digest-refresh` (release-стадия WS-005 красная по `GC-APPROVAL-MISSING`).
+- Links: steward#147, PR #153, PR #155, devtools#222, `docs/superpowers/specs/2026-09-14-review-kit-harness-layer-design.md`, `docs/plans/2026-09-14-review-kit-harness-layer.md`
+
+## 2026-09-14 21:17 — change: inbox steward#154 закрыт — запись манифеста `dir/` проходила как файл (PR #157)
+
+- `collect-context.sh`: сторож формы пути (у `--manifest` и у записей) отвергает хвостовой `/` и pathspec-магию `:`; структурная проверка — `ls-tree` обязан вернуть ровно одну запись с путём, буквально равным запрошенному; сырые пути через `ls-tree -z | tr '\0' '\n'` (человекочитаемый вывод C-квотирует не-ASCII всегда, а `"`/`\` — даже при `core.quotePath=false`); LF в имени манифеста — именованный отказ. Регресс-тесты sh + dash.
+- Терминальное ревью ветки: два major (C-квотирование не-ASCII; затем `"`/`\`) и один minor (LF) — закрыты в ветке; приёмка ai-prosto approve; мерж `57170da` (ai-prosto).
+- Попутно в тот же день: devtools#222 шаг 1 доставлен, волна ре-вендора харнесс-кита заведена как devtools#228 (двухшаговый рецепт), пункт `review-kit-harness-fleet-wave` перетегирован (PR #156).
+- Links: steward#154, PR #157, devtools#228, `scripts/review/collect-context.sh`
+
+## 2026-09-14 22:36 — status: волна ре-вендора харнесс-кита закрыта; harness-claude — обязательный член (PR #159)
+
+- Волна devtools#228 (PR-1 + PR-2) сверена продюсером по default-веткам через API и живыми shallow-клонами dispatcher/spec-runner: все 22 копии кита — `SOURCE @ a2d7e71`, 7 строк PIN, `harness-claude` байт-в-байт с master и `100755`, `checksum.sh --pin` → 0, `REVIEW_HARNESS=claude … --print-review-cmd` → `harness-claude --model claude-opus-5`. `atp-platform-testing-en` — локальная папка без remote, вне флота. Пункт `review-kit-harness-fleet-wave` закрыт; devtools уведомлён (#222/#228) — их `review-harness-shim-removal` разблокирован.
+- Промоция (`review-kit-harness-member-promotion`, PR #159 → master `9cfcb3c`, мерж ai-prosto): `?` снят в `required_kit_default` — отсутствие адаптера у потребителя = код 2; TDD (стенд потребителя на 7 файлов, glob-свойство `?`-маркера на generic-члене). Разъезжается следующей волной; до неё копии `checksum.sh @ a2d7e71` при 7 строках PIN дают тот же результат.
+- Заведён `review-kit-next-wave`: `collect-context.sh` #154 не разъехался у 21 копии (волна взяла `a2d7e71`, spec-runner взял свежий) + промоция — одношаговая волна по запросу владельца.
+- Links: steward PR #155/#156/#158/#159, devtools#222, devtools#228, `TODO.md` §10
