@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-17T22:57:51.554116+04:00",
+  "generated_at": "2026-09-17T23:28:00.869443+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "docs/need-stage-completed-evidence",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -334,7 +334,7 @@
       "remote": "andrei-shtanakov/steward",
       "local": {
         "branch": "feat/review-eval-3-cli",
-        "ahead": 10,
+        "ahead": 11,
         "behind": 0,
         "dirty": false,
         "error": null
