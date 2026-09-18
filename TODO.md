@@ -41,7 +41,7 @@
 
 ## Принятые обязательства перед соседними репо
 
-- [ ] Stop rule ревью в каноне: новый круг открывает только блокирующая находка @owner:github:andrei-shtanakov @id:review-stop-rule-risk-proportional
+- [x] Stop rule ревью в каноне: новый круг открывает только блокирующая находка — PR #136 @owner:github:andrei-shtanakov @id:review-stop-rule-risk-proportional
       Запрос `steward` (inbox #135, from steward#170). Решение владельца 2026-09-18:
       заменить в `authored/rules/git-workflow.md` открытую итерацию («пока не
       останется actionable-замечаний», «локально до чистого вердикта», «находки
@@ -60,6 +60,13 @@
       Потребители синхронизируются отдельно и **не нашими руками**: `steward/CLAUDE.md`
       (цитата канона, PR после принятия) и `devtools` (исполнение лимита в вызывающем
       контуре, `slug: review-loop-limit-enforcement`).
+      Сделано PR #136 (мерж 2026-09-18, `616111c`): подраздел «Stop rule» в шаге 3
+      канона. Ревью — Copilot по явному решению владельца в сессии (терминальный кит
+      был недоступен: `devtools/review-pr.sh` читался в момент активной правки на
+      ветке `feat/review-budget-barrier` и падал синтаксической ошибкой, выходя при
+      этом с кодом 0). Две находки, обе minor/редактура, исправлены фикс-коммитом
+      `15d3b70` без повторного круга — по вводимому же правилу. Мерж человеком:
+      PR менял условие, при котором агенту разрешён мерж (дух ADR-ECO-004 I2).
 
 - [ ] Доставка `derived/snapshots` через ветку `derived-snapshots` вместо `master` @owner:github:andrei-shtanakov @id:derived-snapshots-vs-master-protection @epic:eco.knowledge-graph
       Запрос `dispatcher` (inbox #98): прямой пуш снапшотов в `master` отбит required
