@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-18T09:01:20.442416+04:00",
+  "generated_at": "2026-09-18T09:31:38.843172+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "docs/round8-residuals-closed",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -81,7 +81,7 @@
       "dir": "discovery",
       "remote": "andrei-shtanakov/discovery",
       "local": {
-        "branch": "docs/refresh-baseline-grounding-decision",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
