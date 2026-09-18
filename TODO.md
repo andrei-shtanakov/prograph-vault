@@ -41,6 +41,26 @@
 
 ## Принятые обязательства перед соседними репо
 
+- [ ] Stop rule ревью в каноне: новый круг открывает только блокирующая находка @owner:github:andrei-shtanakov @id:review-stop-rule-risk-proportional
+      Запрос `steward` (inbox #135, from steward#170). Решение владельца 2026-09-18:
+      заменить в `authored/rules/git-workflow.md` открытую итерацию («пока не
+      останется actionable-замечаний», «локально до чистого вердикта», «находки
+      отрабатываются как обычно») риск-пропорциональным лимитом — один полный review
+      плюс один targeted recheck, и recheck открывает ТОЛЬКО находка, блокирующая по
+      порогу `apply-threshold.sh`. Локальной правкой `steward/CLAUDE.md` это сделать
+      нельзя: он объявляет канон полным SSOT, расхождение появилось бы сразу.
+      Основание проверено по коду, не со слов issue: порог
+      (`steward/scripts/review/apply-threshold.sh:7-13` — `blocker|major` +
+      `confidence: high` + непустые `scenario`/`observed_result` + `evidence`) корректен, а
+      risk tier уже есть (`steward/profiles/risk-model.yaml:8`,
+      `tiers: [low, medium, high, critical]`) — новых review-профилей не заводим.
+      Замер, из которого выросло решение (steward#170): 6 локальных кругов + 3
+      приёмочных, 9 коммитов, ~15 находок, блокирующих по порогу — ноль, ценных — две;
+      42% итогового диффа создал сам цикл ревью.
+      Потребители синхронизируются отдельно и **не нашими руками**: `steward/CLAUDE.md`
+      (цитата канона, PR после принятия) и `devtools` (исполнение лимита в вызывающем
+      контуре, `slug: review-loop-limit-enforcement`).
+
 - [ ] Доставка `derived/snapshots` через ветку `derived-snapshots` вместо `master` @owner:github:andrei-shtanakov @id:derived-snapshots-vs-master-protection @epic:eco.knowledge-graph
       Запрос `dispatcher` (inbox #98): прямой пуш снапшотов в `master` отбит required
       check `governance / gate` — кросс-машинный синк доставлялся наполовину. Решение
