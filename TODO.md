@@ -51,7 +51,7 @@
       нельзя: он объявляет канон полным SSOT, расхождение появилось бы сразу.
       Основание проверено по коду, не со слов issue: порог
       (`steward/scripts/review/apply-threshold.sh:7-13` — `blocker|major` +
-      `confidence: high` + непустые scenario/observed + evidence) корректен, а
+      `confidence: high` + непустые `scenario`/`observed_result` + `evidence`) корректен, а
       risk tier уже есть (`steward/profiles/risk-model.yaml:8`,
       `tiers: [low, medium, high, critical]`) — новых review-профилей не заводим.
       Замер, из которого выросло решение (steward#170): 6 локальных кругов + 3
