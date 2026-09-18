@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-18T12:03:17.454231+04:00",
+  "generated_at": "2026-09-18T12:33:27.437591+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -300,7 +300,7 @@
         "branch": "docs/bundle-480-doctor-scope-and-ack-window",
         "ahead": null,
         "behind": null,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
