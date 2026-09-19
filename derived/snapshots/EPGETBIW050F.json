@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-19T16:14:50.736877+04:00",
+  "generated_at": "2026-09-19T16:45:03.849992+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -33,7 +33,7 @@
       "dir": "atp-platform",
       "remote": "andrei-shtanakov/atp-platform",
       "local": {
-        "branch": "chore/review-kit-revendor-scope",
+        "branch": "docs/todo-review-kit-catchup-done",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
