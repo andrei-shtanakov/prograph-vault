@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-19T15:14:33.123883+04:00",
+  "generated_at": "2026-09-19T15:44:42.375332+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -21,7 +21,7 @@
       "dir": "arbiter",
       "remote": "andrei-shtanakov/arbiter",
       "local": {
-        "branch": "chore/review-kit-revendor-scope",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -33,7 +33,7 @@
       "dir": "atp-platform",
       "remote": "andrei-shtanakov/atp-platform",
       "local": {
-        "branch": "chore/review-kit-inventory-scope",
+        "branch": "chore/review-kit-revendor-scope",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -226,8 +226,8 @@
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
         "branch": "notes/governance-debt-found-by-scope-wave",
-        "ahead": 0,
-        "behind": 0,
+        "ahead": null,
+        "behind": null,
         "dirty": true,
         "error": null
       },
