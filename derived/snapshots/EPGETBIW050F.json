@@ -2,15 +2,15 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-19T21:16:25.940311+04:00",
+  "generated_at": "2026-09-19T21:46:34.507004+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
       "dir": "ai-orchestrators-workspace",
       "remote": "andrei-shtanakov/ai-orchestrators-workspace",
       "local": {
-        "branch": "feat/gov003-data-artifacts",
-        "ahead": 3,
+        "branch": "fix/gov003-skip-governance-checkout",
+        "ahead": 0,
         "behind": 0,
         "dirty": false,
         "error": null
