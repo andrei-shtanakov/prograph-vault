@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-19T14:44:23.870648+04:00",
+  "generated_at": "2026-09-19T15:14:33.123883+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -21,7 +21,7 @@
       "dir": "arbiter",
       "remote": "andrei-shtanakov/arbiter",
       "local": {
-        "branch": "chore/review-kit-inventory-scope",
+        "branch": "chore/review-kit-revendor-scope",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -141,7 +141,7 @@
       "dir": "github-checker",
       "remote": "andrei-shtanakov/github-checker",
       "local": {
-        "branch": "chore/review-kit-catchup-scope",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -189,9 +189,9 @@
       "dir": "maestro",
       "remote": "andrei-shtanakov/maestro",
       "local": {
-        "branch": "chore/review-kit-catchup-scope",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -201,10 +201,10 @@
       "dir": "proctor",
       "remote": "andrei-shtanakov/proctor",
       "local": {
-        "branch": "docs/todo-review-kit-catchup-scope",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -213,7 +213,7 @@
       "dir": "prograph",
       "remote": "andrei-shtanakov/prograph",
       "local": {
-        "branch": "chore/review-kit-catchup-scope",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
