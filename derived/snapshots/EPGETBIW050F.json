@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-19T13:13:52.540446+04:00",
+  "generated_at": "2026-09-19T13:44:03.296619+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -57,7 +57,7 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "chore/review-kit-revendor-scope",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -81,7 +81,7 @@
       "dir": "discovery",
       "remote": "andrei-shtanakov/discovery",
       "local": {
-        "branch": "chore/review-kit-revendor-scope",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -117,7 +117,7 @@
       "dir": "dispatcher",
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
-        "branch": "master",
+        "branch": "chore/review-kit-revendor-scope",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -153,7 +153,7 @@
       "dir": "impresario",
       "remote": "andrei-shtanakov/impresario",
       "local": {
-        "branch": "master",
+        "branch": "chore/review-kit-revendor-scope",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -165,7 +165,7 @@
       "dir": "kapelle",
       "remote": "andrei-shtanakov/kapelle",
       "local": {
-        "branch": "master",
+        "branch": "chore/review-kit-revendor-scope",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -249,7 +249,7 @@
       "dir": "research-bench",
       "remote": "andrei-shtanakov/research-bench",
       "local": {
-        "branch": "chore/review-kit-revendor-scope",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -262,9 +262,9 @@
       "remote": "andrei-shtanakov/robin-runtime",
       "local": {
         "branch": "master",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -297,7 +297,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
+        "branch": "chore/review-kit-revendor-scope",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
