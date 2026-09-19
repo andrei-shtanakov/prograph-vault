@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-19T14:14:12.803691+04:00",
+  "generated_at": "2026-09-19T14:44:23.870648+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -21,9 +21,9 @@
       "dir": "arbiter",
       "remote": "andrei-shtanakov/arbiter",
       "local": {
-        "branch": "master",
+        "branch": "chore/review-kit-inventory-scope",
         "ahead": 0,
-        "behind": 4,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -33,7 +33,7 @@
       "dir": "atp-platform",
       "remote": "andrei-shtanakov/atp-platform",
       "local": {
-        "branch": "docs/todo-inbox-320",
+        "branch": "chore/review-kit-inventory-scope",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -117,7 +117,7 @@
       "dir": "dispatcher",
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
-        "branch": "chore/review-kit-revendor-scope",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -141,9 +141,9 @@
       "dir": "github-checker",
       "remote": "andrei-shtanakov/github-checker",
       "local": {
-        "branch": "master",
+        "branch": "chore/review-kit-catchup-scope",
         "ahead": 0,
-        "behind": 4,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -165,7 +165,7 @@
       "dir": "kapelle",
       "remote": "andrei-shtanakov/kapelle",
       "local": {
-        "branch": "chore/review-kit-revendor-scope",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -189,9 +189,9 @@
       "dir": "maestro",
       "remote": "andrei-shtanakov/maestro",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 4,
+        "branch": "chore/review-kit-catchup-scope",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -201,10 +201,10 @@
       "dir": "proctor",
       "remote": "andrei-shtanakov/proctor",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 4,
-        "dirty": false,
+        "branch": "docs/todo-review-kit-catchup-scope",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -213,9 +213,9 @@
       "dir": "prograph",
       "remote": "andrei-shtanakov/prograph",
       "local": {
-        "branch": "master",
+        "branch": "chore/review-kit-catchup-scope",
         "ahead": 0,
-        "behind": 2,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -275,7 +275,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 4,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -297,7 +297,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "chore/review-kit-revendor-scope",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
