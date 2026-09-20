@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-20T21:25:27.346323+04:00",
+  "generated_at": "2026-09-20T21:55:40.487775+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -310,8 +310,8 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "docs/todo-480-execution-blocked",
-        "ahead": null,
-        "behind": null,
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
