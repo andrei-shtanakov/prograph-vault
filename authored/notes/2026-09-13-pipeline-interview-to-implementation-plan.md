@@ -3,7 +3,7 @@ title: План развития пайплайна «интервью → ре�
 type: note
 status: accepted
 owner: andrei-shtanakov
-updated: 2026-09-13
+updated: 2026-09-20
 ---
 
 # Пайплайн «интервью → реализация»: состояние и план развития
@@ -41,6 +41,11 @@ discovery-интервью в customer-фрейме. Развилок под в�
   E3 внешний контур → E4 замыкание петли. Здесь номера — порядок.
 
 ## 1. Состояние runtime-компонентов на 2026-09-13
+
+> Снимок дня принятия; что изменилось с тех пор — §7. Живая плоскость
+> исполнения, а не этот снимок, — `devtools/TODO.md`, раздел «План развития
+> пайплайна «интервью → реализация»».
+
 
 | Компонент | Владелец | Состояние |
 |---|---|---|
@@ -271,6 +276,42 @@ task_bridge/S2. Fail-honest supersede (E0.2) уже закрыт devtools#209.
 | Evidence живых прогонов | репо продукта | `docs/evidence/<дата>-*.md` | md | оператор | ревью, аудит | PR | ссылки на sha | бессрочно | — |
 | Журнал экосистемы, отчёты флота | prograph-vault | `derived/journal/<repo>/journal.md`, `derived/fleet/` | md | kb-save, fleet_report | Robin, люди | PR (`journal/pending`) | дата записи | бессрочно | — |
 | Учётки и харнесс оператора | машина оператора | `~/.config/review/`, `~/.config/ai-prosto/harness.env` | yaml, env | человек | review-pr, merge-pr | не доставляется | — | свойство машины | сверка логина ai-prosto |
+
+## 7. Прогресс на 2026-09-20 (указатели, не второй источник)
+
+Сверено по коду и TODO владельцев; чекбоксы живут в `devtools/TODO.md`.
+
+| Этап | Состояние | Чем доказано |
+|---|---|---|
+| E0.1–E0.5 | закрыты | слаги в `devtools/TODO.md`: `review-evidence-fidelity-wave` (PR #206), `tasks-supersede-fail-honest-wave` (#209), `accept-file-target-contract` + `task-bridge-residual-debt-wave` (#214), `behaviour-document-runner-residuals` (#242/#243); релиз spec-runner **v2.36.0** (15.09) |
+| E0.6a леджер | закрыт | devtools#211; живая приёмка 13.09 — R3 восстановлен из фактов GitHub в изолированном клоне с пустым `RUNS_ROOT` |
+| E0.6b S8-вердикт | закрыт | вердикт едет внутри tasks-PR того же цикла |
+| **E1 вход из брифа** | **закрыт, живая приёмка 14.09** | devtools#219; `docs/evidence/2026-09-14-discovery-brief-spec-loop-run.md`: интервью (customer → engineer) → бриф → бандл spec-runner#490 → §I12 → tasks #505 → approve #506 → `run --all --strict` 4/4, четыре integration-PR влиты |
+| E2 customer-маршрут | код влит (#246), **приёмка не завершена** | `docs/evidence/2026-09-15-need-stage-live-run.md`: стадия Need отработала без ручных вмешательств, run доведён до `completed`; по букве §9 не пройдено — `waiting_human_merge` раннером не пройден (PR смержен человеком в обход S7), tasks-/approval-PR не заведены |
+| E2 engineer-маршрут | **разблокирован 18.09**, не реализован | discovery#50 (`49dbc2a`) — `start --upstream` и caller-assigned `--session-id` |
+| E3 внешний контур | не начат | пунктов нет ни у devtools, ни у impresario |
+| E4 замыкание петли | не начат | — |
+
+Что план не предусмотрел и что вскрылось исполнением:
+
+- **Акт approval брифа не существует как механизм.** `--need` выпускает бриф
+  со `status: draft`, а `start --upstream` соседа принимает только
+  `approved` — на живой приёмке E1 подпись `approved_by` дописал агент.
+  Контур заведён 2026-09-20: `devtools/TODO.md`
+  `@id:discovery-brief-approval-act`; чей это акт и откуда подпись —
+  решение владельца.
+- **Размер бандла вышел за пределы, которые подтверждает ревью.** Behaviour-узел
+  в 6.3k строк за один проход: восемь кругов терминального ревью, потолки кита
+  поднимались трижды (400k → 800k), доработка остатков стоила ещё 14 платных
+  кругов. Предложенный порог (warning 250 KiB / stop 350 KiB перед платным S6)
+  решения владельца пока не получил.
+- **Стоимость ревью стала ограничением планирования**, а не фоном: правка
+  нормативного текста стоит кругов пропорционально числу мест, где норма
+  пересказана (requirements ↔ design ↔ behaviour ↔ acceptance ↔ decomposition).
+- **Арка не размечена на оси эпиков.** Пункты плана в `devtools/TODO.md` идут
+  без `@epic`; в `ai-orchestrators-workspace/epics.toml` эпика под пайплайн
+  нет, ближайшие по смыслу — `eco.dark-factory` и `eco.governance-plane`.
+  После `missing_error_after = 2026-11-01` это станет ошибкой сенсора.
 
 ## 6. После принятия
 
