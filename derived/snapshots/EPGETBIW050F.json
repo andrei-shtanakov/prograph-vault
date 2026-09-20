@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-20T19:54:38.685288+04:00",
+  "generated_at": "2026-09-20T20:25:01.427121+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,9 +69,9 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "fix/harness-inputs-authority-root",
-        "ahead": null,
-        "behind": null,
+        "branch": "fix/attest-vendor-authority-root",
+        "ahead": 0,
+        "behind": 0,
         "dirty": true,
         "error": null
       },
@@ -309,10 +309,10 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "spec/durable-continuation-checkpoint-evidence-20260915-tasks",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "task/task-001-store-localvolumestore-durabil",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
