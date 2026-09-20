@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-20T17:23:24.134452+04:00",
+  "generated_at": "2026-09-20T17:53:39.895653+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,9 +69,9 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "fix/review-scope-contract-is-harness-path",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "fix/spec-loop-need-diagnostics-remnants",
+        "ahead": null,
+        "behind": null,
         "dirty": true,
         "error": null
       },
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "docs/bundle-480-beh09-flip-publication",
+        "branch": "docs/bundle-480-q05-property",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
