@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-20T18:23:52.285706+04:00",
+  "generated_at": "2026-09-20T18:54:03.336227+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
+        "branch": "fix/review-budget-exit-code",
         "ahead": 0,
         "behind": 0,
         "dirty": true,
@@ -237,7 +237,7 @@
       "dir": "prograph-vault",
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
-        "branch": "notes/pipeline-progress-2026-09-20",
+        "branch": "rules/approver-policy",
         "ahead": 0,
         "behind": 0,
         "dirty": true,
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "docs/bundle-480-q05-property",
+        "branch": "spec/durable-continuation-checkpoint-evidence-20260915-approve-1-0-2-final",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
