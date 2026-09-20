@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-20T15:52:48.088840+04:00",
+  "generated_at": "2026-09-20T16:23:01.426229+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "fix/review-scope-code-override-agent-instructions",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": true,
