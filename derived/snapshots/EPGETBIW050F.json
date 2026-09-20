@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-20T13:21:47.822007+04:00",
+  "generated_at": "2026-09-20T13:51:58.968866+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,9 +69,9 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "docs/pipeline-decisions-2026-09-20",
+        "ahead": null,
+        "behind": null,
         "dirty": true,
         "error": null
       },
@@ -297,10 +297,10 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "fix/watch-red-validation-exit-code",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "docs/bundle-480-q05-property",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
