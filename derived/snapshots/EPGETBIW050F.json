@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-20T13:51:58.968866+04:00",
+  "generated_at": "2026-09-20T14:22:08.214408+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,9 +69,9 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "docs/pipeline-decisions-2026-09-20",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": true,
         "error": null
       },
@@ -198,6 +198,18 @@
       "github": null
     },
     {
+      "dir": "polygon",
+      "remote": "DarkFactory-polygon/polygon",
+      "local": {
+        "branch": "main",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
       "dir": "proctor",
       "remote": "andrei-shtanakov/proctor",
       "local": {
@@ -300,7 +312,7 @@
         "branch": "docs/bundle-480-q05-property",
         "ahead": null,
         "behind": null,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
