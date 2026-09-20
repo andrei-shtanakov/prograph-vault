@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-20T10:50:44.439179+04:00",
+  "generated_at": "2026-09-20T11:20:55.568932+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -225,9 +225,9 @@
       "dir": "prograph-vault",
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
-        "branch": "notes/governance-debt-found-by-scope-wave",
-        "ahead": null,
-        "behind": null,
+        "branch": "notes/pipeline-progress-2026-09-20",
+        "ahead": 0,
+        "behind": 0,
         "dirty": true,
         "error": null
       },
@@ -300,7 +300,7 @@
         "branch": "fix/watch-red-validation-exit-code",
         "ahead": null,
         "behind": null,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
