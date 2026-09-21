@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-21T17:08:51.703894+04:00",
+  "generated_at": "2026-09-21T17:39:02.737912+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,10 +69,10 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "docs/s7-control-run-evidence",
+        "branch": "fix/i12-finalize-approving-review-gate",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -309,9 +309,9 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "docs/428-negative-control-bundle",
-        "ahead": null,
-        "behind": null,
+        "branch": "docs/428-bundle-brief",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
