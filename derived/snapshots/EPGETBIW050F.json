@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-22T00:11:38.144910+04:00",
+  "generated_at": "2026-09-22T00:41:48.161367+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -57,7 +57,7 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "docs/ci-failure-diagnosis-spec",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -310,7 +310,7 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "task/dt-01-negative-control-declaration",
-        "ahead": 6,
+        "ahead": 7,
         "behind": 0,
         "dirty": false,
         "error": null
