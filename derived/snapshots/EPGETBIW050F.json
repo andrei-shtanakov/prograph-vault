@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-22T01:42:10.493963+04:00",
+  "generated_at": "2026-09-22T02:12:19.811760+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -310,7 +310,7 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "task/dt-01-negative-control-declaration",
-        "ahead": 10,
+        "ahead": 11,
         "behind": 0,
         "dirty": false,
         "error": null
