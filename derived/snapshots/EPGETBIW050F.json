@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-21T15:38:07.152151+04:00",
+  "generated_at": "2026-09-21T16:08:30.117274+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -71,7 +71,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 7,
+        "behind": 11,
         "dirty": false,
         "error": null
       },
@@ -309,9 +309,9 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "docs/428-negative-control-bundle",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
