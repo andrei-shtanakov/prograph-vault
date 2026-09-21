@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-21T12:36:04.186181+04:00",
+  "generated_at": "2026-09-21T13:07:16.621060+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
+        "branch": "docs/live-acceptance-282",
         "ahead": 0,
         "behind": 0,
         "dirty": true,
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "task/task-001-store-localvolumestore-durabil",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
