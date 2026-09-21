@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-21T22:10:48.369029+04:00",
+  "generated_at": "2026-09-21T22:40:57.665544+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -57,7 +57,7 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "docs/close-dispatcher-ci-doc-wait",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -310,9 +310,9 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "task/dt-01-negative-control-declaration",
-        "ahead": null,
-        "behind": null,
-        "dirty": false,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": true,
         "error": null
       },
       "github": null
