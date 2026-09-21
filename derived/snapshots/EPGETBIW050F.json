@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-21T10:35:11.242944+04:00",
+  "generated_at": "2026-09-21T11:05:25.234252+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -309,10 +309,10 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "fix/536-structlog-config-leaks-between-tests",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "task/task-001-store-localvolumestore-durabil",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
