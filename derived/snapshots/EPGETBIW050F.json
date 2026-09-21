@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-21T09:34:49.637354+04:00",
+  "generated_at": "2026-09-21T10:05:00.263929+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "feat/dt-delivers-projection",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": true,
@@ -237,7 +237,7 @@
       "dir": "prograph-vault",
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
-        "branch": "rules/approver-policy",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": true,
@@ -309,10 +309,10 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "docs/todo-480-execution-blocked",
+        "branch": "fix/536-structlog-config-leaks-between-tests",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
