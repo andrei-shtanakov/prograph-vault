@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-21T06:03:31.326376+04:00",
+  "generated_at": "2026-09-21T06:33:41.421053+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "docs/accept-task-bridge-subject-deliverables",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": true,
