@@ -41,6 +41,20 @@
 
 ## Принятые обязательства перед соседними репо
 
+- [x] `approver-policy.md`: пустая политика на фазе установления факта — отказ с сохранением заявки, не `invalidated` — PR #148 @owner:github:andrei-shtanakov @id:approver-policy-empty-env-refuses-not-invalidates @epic:eco.dark-factory
+      Запрос `devtools` (inbox #147, from devtools#338). Правило описывало
+      исход до devtools#338: «заявка будет аннулирована» при пустом
+      `AUTHORIZED_APPROVER_ACCOUNTS` у вызова, устанавливающего факт. Основание
+      проверено по коду, не со слов issue: `governance/approve_node.py` при
+      `Outcome.UNAVAILABLE` подписи поднимает `_unresolved` (заявка жива, факт не
+      записан), `invalidated` остаётся за `FORBIDDEN` — мерж учёткой не из
+      allowlist; регрессия
+      `test_finalize_without_policy_refuses_and_keeps_the_request`; строка
+      таблицы исходов §I12 в спеке `tasks-supersede-contract-design.md`
+      переписана в ту же сторону. Правка двух абзацев правила; прошедший случай
+      2026-09-20 остаётся историей, allowlist и требование выставлять
+      переменную не меняются.
+
 - [x] Stop rule ревью в каноне: новый круг открывает только блокирующая находка — PR #136 @owner:github:andrei-shtanakov @id:review-stop-rule-risk-proportional
       Запрос `steward` (inbox #135, from steward#170). Решение владельца 2026-09-18:
       заменить в `authored/rules/git-workflow.md` открытую итерацию («пока не
