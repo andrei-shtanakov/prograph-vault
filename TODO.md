@@ -41,7 +41,7 @@
 
 ## Принятые обязательства перед соседними репо
 
-- [ ] `approver-policy.md`: пустая политика на фазе установления факта — отказ с сохранением заявки, не `invalidated` @owner:github:andrei-shtanakov @id:approver-policy-empty-env-refuses-not-invalidates @epic:eco.dark-factory
+- [x] `approver-policy.md`: пустая политика на фазе установления факта — отказ с сохранением заявки, не `invalidated` — PR #148 @owner:github:andrei-shtanakov @id:approver-policy-empty-env-refuses-not-invalidates @epic:eco.dark-factory
       Запрос `devtools` (inbox #147, from devtools#338). Правило описывало
       исход до devtools#338: «заявка будет аннулирована» при пустом
       `AUTHORIZED_APPROVER_ACCOUNTS` у вызова, устанавливающего факт. Основание
