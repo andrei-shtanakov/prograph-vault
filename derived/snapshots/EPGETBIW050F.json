@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-22T12:16:18.439943+04:00",
+  "generated_at": "2026-09-22T12:46:52.581744+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -11,7 +11,7 @@
       "local": {
         "branch": "main",
         "ahead": 0,
-        "behind": 1,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -33,7 +33,7 @@
       "dir": "atp-platform",
       "remote": "andrei-shtanakov/atp-platform",
       "local": {
-        "branch": "main",
+        "branch": "chore/accept-publish-installable-container-cli",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -70,9 +70,9 @@
       "remote": "andrei-shtanakov/devtools",
       "local": {
         "branch": "feat/sequential-node-approval",
-        "ahead": 4,
+        "ahead": 10,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
