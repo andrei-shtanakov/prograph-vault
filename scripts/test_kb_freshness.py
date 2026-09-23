@@ -436,15 +436,30 @@ def test_failed_fetch_is_unverified_not_stale(published: Path) -> None:
     run(local, "remote", "set-url", "origin", str(published / "nowhere.git"))
     v = check(claim(base), published, "published")
     assert v.status == "unverified"
-    assert "fetch" in v.detail
+    assert "stale ref" in v.detail
 
 
 def test_unknown_default_branch_is_unverified(published: Path) -> None:
     base = baseline(published)
-    run(published / "steward", "remote", "set-head", "origin", "-d")
+    run(published.parent / "origin.git", "symbolic-ref", "HEAD", "refs/heads/ghost")
     v = check(claim(base), published, "published")
     assert v.status == "unverified"
     assert "default branch" in v.detail
+
+
+def test_default_branch_is_asked_from_origin(published: Path) -> None:
+    """A stale local origin/HEAD must not pick the old default branch."""
+    base = baseline(published)
+    seed = published.parent / "seed"
+    run(seed, "switch", "-q", "-c", "main")
+    (seed / "gate.sh").write_text(CODE + "on main\n")
+    run(seed, "commit", "-qam", "main moves on")
+    run(seed, "push", "-q", "origin", "main")
+    run(published.parent / "origin.git", "symbolic-ref", "HEAD", "refs/heads/main")
+    local_head = run(published / "steward", "symbolic-ref", "refs/remotes/origin/HEAD")
+    assert local_head == "refs/remotes/origin/master"  # stale on purpose
+    v = check(claim(base), published, "published")
+    assert (v.status, v.target) == ("changed", "origin/main")
 
 
 def test_verdict_names_full_revision_and_target(published: Path) -> None:

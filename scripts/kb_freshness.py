@@ -29,7 +29,8 @@ exactly once — it pins where the claim lives, the file is what gets compared.
 Target — which revision of each repo is read (`--target`):
   local       HEAD of the sibling checkout, whatever branch it is on (default,
               offline; the branch is printed so a feature branch is visible)
-  published   `git fetch` of origin's default branch first, then that commit; a
+  published   asks origin for its default branch (`ls-remote`, not the possibly
+              stale local origin/HEAD), fetches it, then reads that commit; a
               failed fetch or an unknown default branch makes every claim of the
               repo `unverified` instead of reading a stale ref
 Each repo is resolved to one full SHA per run; the SHAs are printed as
@@ -374,12 +375,28 @@ def resolve(repo: Path, target: str) -> Revision:
         branch = git(repo, "rev-parse", "--abbrev-ref", "HEAD")
         label = f"HEAD ({'detached' if branch in (None, 'HEAD') else branch})"
         return Revision(label, git(repo, "rev-parse", "HEAD"))
-    ref = git(repo, "symbolic-ref", "--short", "refs/remotes/origin/HEAD")
-    if ref is None:
-        return Revision("published", None, "unknown default branch: no origin/HEAD")
-    if git(repo, "fetch", "--quiet", "origin", ref.removeprefix("origin/")) is None:
+    listing = git(repo, "ls-remote", "--symref", "origin", "HEAD")
+    if listing is None:
+        return Revision(
+            "published", None, "origin unreachable; not reading a stale ref"
+        )
+    branch = default_branch(listing)
+    if branch is None:
+        return Revision("published", None, "origin did not name its default branch")
+    ref = f"origin/{branch}"
+    if git(repo, "fetch", "--quiet", "origin", branch) is None:
         return Revision(ref, None, f"fetch of {ref} failed; not reading a stale ref")
     return Revision(ref, git(repo, "rev-parse", ref))
+
+
+def default_branch(listing: str) -> str | None:
+    """Branch named by `ls-remote --symref origin HEAD` (not the local origin/HEAD,
+    which can be stale)."""
+    for line in listing.splitlines():
+        target, _, name = line.partition("\t")
+        if name == "HEAD" and target.startswith("ref: refs/heads/"):
+            return target.removeprefix("ref: refs/heads/")
+    return None
 
 
 def window(text: str, anchor: str | None) -> str | None:
