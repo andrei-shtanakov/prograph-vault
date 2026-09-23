@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-23T13:44:11.977878+04:00",
+  "generated_at": "2026-09-23T14:14:43.120226+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "docs/human-merge-limits-277",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
