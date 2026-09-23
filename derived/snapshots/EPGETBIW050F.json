@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-24T02:49:16.544816+04:00",
+  "generated_at": "2026-09-24T03:19:25.686232+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -58,8 +58,8 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "feat/ci-failure-reproduction",
-        "ahead": null,
-        "behind": null,
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
