@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-23T16:46:04.842307+04:00",
+  "generated_at": "2026-09-23T17:16:17.579283+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -33,7 +33,7 @@
       "dir": "atp-platform",
       "remote": "andrei-shtanakov/atp-platform",
       "local": {
-        "branch": "main",
+        "branch": "chore/mcp-sdk-v2-fastmcp-4",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "fix/runner-cleans-wave-branches",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -309,10 +309,10 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "feat/576-tdd-complete",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
