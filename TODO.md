@@ -339,7 +339,7 @@
       а тест намеренно игнорирует правки вне окна — для критичных утверждений
       нужен режим целого файла.
 
-- [ ] Регулярный отчёт с владельцем разбора и сигналом пропущенного запуска @owner:github:andrei-shtanakov @blocked_by:todo://prograph-vault/kb-freshness-pinned-revision @id:kb-freshness-scheduled-report @epic:eco.knowledge-graph
+- [x] Регулярный отчёт с владельцем разбора и сигналом пропущенного запуска — зонтик 33187e1 (`_cowork_output/cadence/r16/`) @owner:github:andrei-shtanakov @blocked_by:todo://prograph-vault/kb-freshness-pinned-revision @id:kb-freshness-scheduled-report @epic:eco.knowledge-graph
       Устаревшее утверждение по определению никто не ищет, а запуск по запросу
       kb-curator его не поймает. Нужен регулярный прогон (сначала advisory) в
       режиме `published` плюс три вещи: владелец разбора и срок реакции;
@@ -348,6 +348,13 @@
       отдельно. Смысл имеет только после честных ошибок
       (`kb-freshness-honest-errors`): `--strict` без проверки покрытия ничего не
       доказывает.
+      **Сделано 2026-09-23** (решения владельца): отдельный этап вторника ADR-009,
+      launchd `dev.atp.r16-kb-freshness` 09:30, не часть R-2 (полномочия sweep не
+      расширены). Одно открытое issue `kb-freshness` здесь, от ai-prosto, только при
+      проблемах; срок первичного разбора — неделя от первого обнаружения, повторы его
+      не сдвигают; чистый прогон закрывает. Квитанции — dev-only в каденсе; сторож
+      вт 12:07 требует квитанцию текущего цикла с `ok: true`. Приёмка доставки —
+      #157–#161 (синтетика; поймано отставание индекса `gh issue list`).
 
 - [ ] Расширить пилот на утверждения, устаревание которых дорого; приёмка — заранее внесённые изменения @owner:github:andrei-shtanakov @blocked_by:todo://prograph-vault/kb-freshness-claim-binding @id:kb-freshness-pilot-expansion @epic:eco.knowledge-graph
       Вместо «20 правил» — утверждения с порогами, путями и пинами из `rules/`
