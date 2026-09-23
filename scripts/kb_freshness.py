@@ -13,6 +13,12 @@ A note opts in by listing the code its statements rest on:
         path: scripts/review/apply-threshold.sh
         anchor: "severity blocker|major"  # optional verbatim quote
         baseline: 4170bc6               # commit the claim was checked against
+        claim: review-threshold         # block id of the statement in the body
+
+The statement itself lives once, in the note body, marked as an Obsidian block:
+a paragraph or list item ending in ` ^review-threshold`. Several entries may point
+at the same block. The block text is carried into the verdict so a `changed`
+claim says which sentence to re-read.
 
 Status per claim:
   unchanged   path (or the anchor window) is identical at baseline and HEAD
@@ -22,7 +28,8 @@ Status per claim:
               not unique at HEAD or not unique at baseline
   invalid     the markup itself is broken: unparsable frontmatter in a note that
               declares `evidence`, a non-list or non-mapping entry, empty repo or
-              path, a path that is not a file, a non-string anchor, a duplicate id
+              path, a path that is not a file, a non-string anchor, a duplicate id,
+              a missing `claim`, or a claim block that is absent or not unique
 
 `unchanged` means the quoted text and its surroundings did not move since the
 baseline. It does not mean the claim is true.
@@ -49,6 +56,9 @@ VAULT = Path(__file__).resolve().parents[1]
 ANCHOR_CONTEXT = 3  # lines above and below the anchor that must stay identical
 STATUSES = ("unchanged", "changed", "missing", "unverified", "invalid")
 DECLARES_EVIDENCE = re.compile(r"^evidence\s*:", re.MULTILINE)
+BLOCK_MARKER = re.compile(r"\s\^([A-Za-z0-9-]+)\s*$")
+BLOCK_START = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s")
+FENCE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
 
 
 @dataclass(frozen=True)
@@ -61,6 +71,8 @@ class Claim:
     path: str
     anchor: str | None
     baseline: str | None
+    block: str | None = None
+    statement: str | None = None
 
 
 @dataclass(frozen=True)
@@ -74,6 +86,8 @@ class Verdict:
     status: str
     detail: str
     head: str | None
+    block: str | None = None
+    statement: str | None = None
 
 
 @dataclass(frozen=True)
@@ -84,11 +98,12 @@ class NoteScan:
     claims: list[Claim]
     problems: list[Verdict]
     unparsed: bool
+    declared: bool = False
 
     @property
     def has_evidence(self) -> bool:
-        """The note declares evidence, well-formed or not."""
-        return bool(self.claims or self.problems)
+        """The note declares evidence, well-formed or not (an empty list counts)."""
+        return self.declared or bool(self.claims or self.problems)
 
 
 def main() -> int:
@@ -121,7 +136,8 @@ def markdown_files(root: Path) -> list[Path]:
 def scan_note(path: Path) -> NoteScan:
     """Parse one note's `evidence:` list, keeping broken markup as `invalid`."""
     doc = display_path(path)
-    raw, meta, error = frontmatter(path.read_text(encoding="utf-8"))
+    text = path.read_text(encoding="utf-8")
+    raw, meta, error = frontmatter(text)
     if error:
         declared = DECLARES_EVIDENCE.search(raw) is not None
         problems = [problem(doc, "<frontmatter>", error)] if declared else []
@@ -132,20 +148,24 @@ def scan_note(path: Path) -> NoteScan:
     if not isinstance(entries, list):
         detail = f"evidence must be a list, got {type(entries).__name__}"
         return NoteScan(doc, [], [problem(doc, "<evidence>", detail)], False)
+    closing_fence_onward = text[4 + len(raw) + 1 :]  # "---\n<body>"
+    blocks = body_blocks(closing_fence_onward.partition("\n")[2])
     claims: list[Claim] = []
     problems: list[Verdict] = []
     for index, entry in enumerate(entries):
-        parsed = parse_entry(doc, index, entry)
+        parsed = parse_entry(doc, index, entry, blocks)
         if isinstance(parsed, Verdict):
             problems.append(parsed)
         elif parsed.id in {c.id for c in claims}:
             problems.append(problem(doc, parsed.id, "duplicate id in this note"))
         else:
             claims.append(parsed)
-    return NoteScan(doc, claims, problems, unparsed=False)
+    return NoteScan(doc, claims, problems, unparsed=False, declared=True)
 
 
-def parse_entry(doc: str, index: int, entry: object) -> Claim | Verdict:
+def parse_entry(
+    doc: str, index: int, entry: object, blocks: dict[str, list[str]]
+) -> Claim | Verdict:
     """One evidence entry as a Claim, or an `invalid` verdict saying why not."""
     if not isinstance(entry, dict):
         return problem(doc, f"#{index}", "entry must be a mapping")
@@ -159,8 +179,67 @@ def parse_entry(doc: str, index: int, entry: object) -> Claim | Verdict:
         return problem(doc, claim_id, f"path {path!r} must name a file in the repo")
     if anchor is not None and not isinstance(anchor, str):
         return problem(doc, claim_id, "anchor must be a string")
+    block = str(entry.get("claim") or "").removeprefix("^")
+    if not block:
+        return problem(doc, claim_id, "entry needs `claim`: a block id in the body")
+    found = blocks.get(block, [])
+    if len(found) != 1:
+        where = "not found" if not found else f"occurs {len(found)} times"
+        return problem(doc, claim_id, f"claim block ^{block} {where} in the body")
     baseline = entry.get("baseline")
-    return Claim(doc, claim_id, repo, path, anchor, str(baseline) if baseline else None)
+    base = str(baseline) if baseline else None
+    return Claim(doc, claim_id, repo, path, anchor, base, block, found[0])
+
+
+def body_blocks(body: str) -> dict[str, list[str]]:
+    """Text of every `^id`-marked paragraph or list item, keyed by block id.
+
+    Fenced code is skipped. A block runs up from its marker line to the nearest
+    blank line, heading or code line (exclusive) or list-item start (inclusive).
+    """
+    lines = body.splitlines()
+    code = code_lines(lines)
+    blocks: dict[str, list[str]] = {}
+    for index, line in enumerate(lines):
+        marker = None if code[index] else BLOCK_MARKER.search(line)
+        if marker:
+            text = block_text(lines, code, index, marker.start())
+            blocks.setdefault(marker.group(1), []).append(text)
+    return blocks
+
+
+def code_lines(lines: list[str]) -> list[bool]:
+    """Which lines belong to fenced code, fences included (CommonMark rules).
+
+    A fence closes only with the same character, at least as long, and no info
+    string; an unclosed fence runs to the end of the note.
+    """
+    flags: list[bool] = []
+    opener: str | None = None
+    for line in lines:
+        fence = FENCE.match(line)
+        if opener is None:
+            if fence and not (fence[1][0] == "`" and "`" in fence[2]):
+                opener = fence[1]
+            flags.append(opener is not None)
+            continue
+        flags.append(True)
+        closes = fence and fence[1][0] == opener[0] and len(fence[1]) >= len(opener)
+        if closes and fence and not fence[2].strip():
+            opener = None
+    return flags
+
+
+def block_text(lines: list[str], code: list[bool], end: int, cut: int) -> str:
+    """The block ending at line `end` (marker at column `cut`), on one line."""
+    start = end
+    while start > 0 and not BLOCK_START.match(lines[start]):
+        above = lines[start - 1]
+        if code[start - 1] or not above.strip() or above.lstrip().startswith("#"):
+            break
+        start -= 1
+    parts = [*lines[start:end], lines[end][:cut]]
+    return " ".join(part.strip() for part in parts).strip()
 
 
 def frontmatter(text: str) -> tuple[str, dict, str | None]:
@@ -247,7 +326,17 @@ def git(repo: Path, *args: str) -> str | None:
 
 def verdict(claim: Claim, status: str, detail: str, head: str | None) -> Verdict:
     """Build a verdict carrying the claim's identity."""
-    return Verdict(claim.doc, claim.id, claim.repo, claim.path, status, detail, head)
+    return Verdict(
+        claim.doc,
+        claim.id,
+        claim.repo,
+        claim.path,
+        status,
+        detail,
+        head,
+        claim.block,
+        claim.statement,
+    )
 
 
 def problem(doc: str, claim_id: str, detail: str) -> Verdict:
@@ -261,8 +350,11 @@ def one_line(exc: Exception) -> str:
 
 
 def render(v: Verdict) -> str:
-    """One pipe-separated line per claim."""
-    return f"{v.status}|{v.doc}|{v.id}|{v.repo}/{v.path}|{v.detail}"
+    """One pipe-separated line per claim, plus the statement when it needs a look."""
+    line = f"{v.status}|{v.doc}|{v.id}|{v.repo}/{v.path}|{v.detail}"
+    if v.status == "unchanged" or not v.block:
+        return line
+    return f"{line}\n    ^{v.block}: {v.statement}"
 
 
 def summary_counts(scans: list[NoteScan], verdicts: list[Verdict]) -> dict[str, int]:

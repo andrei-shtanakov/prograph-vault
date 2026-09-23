@@ -110,17 +110,19 @@ def test_claims_parsed_from_frontmatter(tmp_path: Path) -> None:
     note.write_text(
         "---\ntitle: t\nevidence:\n"
         "  - id: gate\n    repo: steward\n    path: gate.sh\n"
-        "    anchor: 'blocker|major'\n    baseline: 4170bc6\n"
-        "---\n\nbody\n"
+        "    anchor: 'blocker|major'\n    baseline: 4170bc6\n    claim: gate\n"
+        "---\n\nbody\n\nOnly blocker and major block. ^gate\n"
     )
     scan = kf.scan_note(note)
     [c] = scan.claims
-    assert (c.id, c.repo, c.path, c.anchor, c.baseline) == (
+    assert (c.id, c.repo, c.path, c.anchor, c.baseline, c.block, c.statement) == (
         "gate",
         "steward",
         "gate.sh",
         "blocker|major",
         "4170bc6",
+        "gate",
+        "Only blocker and major block.",
     )
     assert (scan.problems, scan.unparsed) == ([], False)
 
@@ -142,7 +144,10 @@ def test_broken_frontmatter_without_evidence_is_counted_not_failed(
     assert (scan.claims, scan.problems, scan.unparsed) == ([], [], True)
 
 
-GOOD = "  - id: ok\n    repo: steward\n    path: gate.sh\n    baseline: abc\n"
+GOOD = (
+    "  - id: ok\n    repo: steward\n    path: gate.sh\n    baseline: abc\n"
+    "    claim: ok\n"
+)
 
 
 @pytest.mark.parametrize(
@@ -161,7 +166,7 @@ GOOD = "  - id: ok\n    repo: steward\n    path: gate.sh\n    baseline: abc\n"
 )
 def test_malformed_evidence_is_invalid(tmp_path: Path, frontmatter: str) -> None:
     note = tmp_path / "n.md"
-    note.write_text(f"---\n{frontmatter}---\n")
+    note.write_text(f"---\n{frontmatter}---\nRule. ^ok\n")
     problems = kf.scan_note(note).problems
     assert problems
     assert all(v.status == "invalid" and v.detail for v in problems)
@@ -169,7 +174,7 @@ def test_malformed_evidence_is_invalid(tmp_path: Path, frontmatter: str) -> None
 
 def test_valid_entries_survive_a_bad_sibling(tmp_path: Path) -> None:
     note = tmp_path / "n.md"
-    note.write_text("---\nevidence:\n  - broken\n" + GOOD + "---\n")
+    note.write_text("---\nevidence:\n  - broken\n" + GOOD + "---\nRule. ^ok\n")
     scan = kf.scan_note(note)
     assert [c.id for c in scan.claims] == ["ok"]
     assert [v.status for v in scan.problems] == ["invalid"]
@@ -247,8 +252,11 @@ def test_strict_fails_on_broken_evidence_yaml(tmp_path: Path) -> None:
 
 def test_summary_counts_coverage(workspace: Path) -> None:
     base = baseline(workspace)
-    entry = f"  - id: g\n    repo: steward\n    path: gate.sh\n    baseline: {base}\n"
-    write_note(workspace, "a.md", f"---\nevidence:\n{entry}---\n")
+    entry = (
+        f"  - id: g\n    repo: steward\n    path: gate.sh\n    baseline: {base}\n"
+        "    claim: g\n"
+    )
+    write_note(workspace, "a.md", f"---\nevidence:\n{entry}---\nRule. ^g\n")
     write_note(workspace, "b.md", "---\n: [bad\n---\n")
     notes = write_note(workspace, "c.md", "plain\n")
     out = audit("--strict", "--workspace", str(workspace), str(notes))
@@ -265,3 +273,107 @@ def test_json_ends_with_summary_record(workspace: Path) -> None:
     last = json.loads(out.stdout.splitlines()[-1])
     assert last["summary"]["notes"] == 1
     assert last["summary"]["with_evidence"] == 0
+
+
+def note_with(tmp_path: Path, body: str, claim_ref: str = "gate") -> Path:
+    """A note with one well-formed entry pointing at claim_ref, plus body."""
+    note = tmp_path / "n.md"
+    entry = (
+        f"  - id: e\n    repo: steward\n    path: gate.sh\n    claim: '{claim_ref}'\n"
+    )
+    note.write_text(f"---\nevidence:\n{entry}---\n{body}")
+    return note
+
+
+def test_claim_block_is_the_whole_list_item(tmp_path: Path) -> None:
+    body = (
+        "# Rules\n\n- first item\n"
+        "- **Blocking** findings are\n  blocker or major only. ^gate\n"
+        "- next item\n"
+    )
+    [c] = kf.scan_note(note_with(tmp_path, body)).claims
+    assert c.statement == "- **Blocking** findings are blocker or major only."
+
+
+def test_claim_block_is_the_whole_paragraph(tmp_path: Path) -> None:
+    body = "Intro.\n\nThe gate blocks\non major. ^gate\n\nAfter.\n"
+    [c] = kf.scan_note(note_with(tmp_path, body)).claims
+    assert c.statement == "The gate blocks on major."
+
+
+def test_caret_prefix_in_reference_is_accepted(tmp_path: Path) -> None:
+    [c] = kf.scan_note(note_with(tmp_path, "Rule. ^gate\n", "^gate")).claims
+    assert c.block == "gate"
+
+
+@pytest.mark.parametrize(
+    ("body", "claim_ref", "why"),
+    [
+        ("Rule without marker.\n", "gate", "not found"),
+        ("A. ^gate\n\nB. ^gate\n", "gate", "2 times"),
+        ("```\ncode ^gate\n```\n", "gate", "not found"),  # fenced: not a block
+        ("Rule. ^gate\n", "", "claim"),
+    ],
+)
+def test_unbound_claim_is_invalid(
+    tmp_path: Path, body: str, claim_ref: str, why: str
+) -> None:
+    scan = kf.scan_note(note_with(tmp_path, body, claim_ref))
+    [v] = scan.problems
+    assert (v.status, scan.claims) == ("invalid", [])
+    assert why in v.detail
+
+
+def test_empty_evidence_list_counts_as_declared(tmp_path: Path) -> None:
+    note = tmp_path / "n.md"
+    note.write_text("---\nevidence: []\n---\n")
+    assert kf.scan_note(note).has_evidence
+
+
+def test_verdict_carries_the_statement(workspace: Path) -> None:
+    base = baseline(workspace)
+    c = kf.Claim("n.md", "c", "steward", "gate.sh", None, base, "g", "Rule text.")
+    commit(workspace, CODE + "extra\n")
+    v = kf.check_claim(c, workspace)
+    assert (v.status, v.block, v.statement) == ("changed", "g", "Rule text.")
+    assert kf.render(v).endswith("\n    ^g: Rule text.")
+
+
+def test_unchanged_render_stays_one_line(workspace: Path) -> None:
+    c = kf.Claim("n.md", "c", "steward", "gate.sh", None, baseline(workspace), "g", "R")
+    assert "\n" not in kf.render(kf.check_claim(c, workspace))
+
+
+FENCED_MARKERS = {
+    "other fence char inside": "```text\n~~~\nExample. ^gate\n```\n",
+    "backticks inside tildes": "~~~\n```\nExample. ^gate\n~~~\n",
+    "shorter fence inside": "````\n```\nExample. ^gate\n````\n",
+    "closer with info string": "```\n```text\nExample. ^gate\n```\n",
+    "unclosed fence": "```\nExample. ^gate\n",
+    "fence inside a list item": "- item\n     ```\n     Example. ^gate\n     ```\n",
+}
+
+
+@pytest.mark.parametrize("body", FENCED_MARKERS.values(), ids=FENCED_MARKERS.keys())
+def test_marker_inside_code_is_not_a_claim(tmp_path: Path, body: str) -> None:
+    [v] = kf.scan_note(note_with(tmp_path, body)).problems
+    assert "not found" in v.detail
+
+
+OUTSIDE_CODE = {
+    "after a closed fence": ("```\ncode\n```\n\nRule. ^gate\n", "Rule."),
+    "longer closer closes": ("~~~\ncode\n~~~~\n\nRule. ^gate\n", "Rule."),
+    "right under a fence": ("```\ncode\n```\nRule. ^gate\n", "Rule."),
+    "trailing spaces": ("Rule. ^gate  \n", "Rule."),
+    "trailing tab": ("Rule. ^gate\t\n", "Rule."),
+}
+
+
+@pytest.mark.parametrize(
+    ("body", "statement"), OUTSIDE_CODE.values(), ids=OUTSIDE_CODE.keys()
+)
+def test_marker_outside_code_is_a_claim(
+    tmp_path: Path, body: str, statement: str
+) -> None:
+    [c] = kf.scan_note(note_with(tmp_path, body)).claims
+    assert c.statement == statement
