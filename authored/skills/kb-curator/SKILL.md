@@ -61,15 +61,22 @@ Goal — catch divergence of the KB from reality.
     the normative document for a claim about policy, code — not a comment — for a
     claim about behaviour;
   - an anchor guards only its ±3-line window; when the conditions the claim names
-    span more than that, or the claim is critical, drop the anchor and compare the
-    whole file (more noise, no blind spot);
+    span more than that, or the claim is critical, set `scope: file` — the whole
+    file is compared (more noise, no blind spot) and the anchor still has to be
+    there;
   - even an executable anchor does not see changes in the functions it calls — that
     stays a known limit.
   A file can be fresh by `updated:` while a statement in it rests on code that moved:
   ```bash
   uv run "$KB_ROOT/scripts/kb_freshness.py"            # all of authored/
   uv run "$KB_ROOT/scripts/kb_freshness.py" --json <note.md>
+  uv run "$KB_ROOT/scripts/kb_freshness.py" --target published   # fetch + origin default
   ```
+  The default `--target local` reads whatever each sibling checkout has at HEAD —
+  check the `revision|…` lines: a feature branch there means the verdict is about
+  that branch. For anything reported or scheduled use `--target published`: it
+  fetches origin's default branch and pins one full SHA per repo; a failed fetch
+  gives `unverified`, never a stale read.
   `changed` → re-read the code and re-confirm the claim; `missing` → the path or the
   anchor is gone, the claim is likely wrong; `unverified` → no/unknown baseline, or an
   anchor that is not unique at HEAD or at baseline; `invalid` → the markup is broken

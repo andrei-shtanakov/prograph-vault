@@ -49,60 +49,65 @@ def baseline(workspace: Path) -> str:
     return run(workspace / "steward", "rev-parse", "--short", "HEAD")
 
 
+def check(c: kf.Claim, workspace: Path, target: str = "local") -> kf.Verdict:
+    """Check one claim with a fresh revision resolver."""
+    return kf.check_claim(c, kf.Revisions(workspace, target))
+
+
 def claim(base: str | None, anchor: str | None = None, path: str = "gate.sh"):
     """A claim about steward/<path>."""
     return kf.Claim("note.md", "c", "steward", path, anchor, base)
 
 
 def test_unchanged_when_file_is_identical(workspace: Path) -> None:
-    v = kf.check_claim(claim(baseline(workspace)), workspace)
+    v = check(claim(baseline(workspace)), workspace)
     assert v.status == "unchanged"
 
 
 def test_changed_when_file_differs(workspace: Path) -> None:
     base = baseline(workspace)
     commit(workspace, CODE + "extra\n")
-    assert kf.check_claim(claim(base), workspace).status == "changed"
+    assert check(claim(base), workspace).status == "changed"
 
 
 def test_anchor_window_ignores_edits_elsewhere(workspace: Path) -> None:
     base = baseline(workspace)
     commit(workspace, CODE.replace("line 1\n", "line one\n"))
-    v = kf.check_claim(claim(base, anchor="blocker|major"), workspace)
+    v = check(claim(base, anchor="blocker|major"), workspace)
     assert v.status == "unchanged"
 
 
 def test_anchor_window_catches_edits_near_anchor(workspace: Path) -> None:
     base = baseline(workspace)
     commit(workspace, CODE.replace("line 20\n", "line twenty\n"))
-    v = kf.check_claim(claim(base, anchor="blocker|major"), workspace)
+    v = check(claim(base, anchor="blocker|major"), workspace)
     assert v.status == "changed"
 
 
 def test_missing_when_anchor_is_gone(workspace: Path) -> None:
     base = baseline(workspace)
     commit(workspace, CODE.replace("blocker|major", "blocker"))
-    v = kf.check_claim(claim(base, anchor="blocker|major"), workspace)
+    v = check(claim(base, anchor="blocker|major"), workspace)
     assert v.status == "missing"
 
 
 def test_missing_when_path_is_gone(workspace: Path) -> None:
-    v = kf.check_claim(claim(baseline(workspace), path="nope.sh"), workspace)
+    v = check(claim(baseline(workspace), path="nope.sh"), workspace)
     assert v.status == "missing"
 
 
 def test_ambiguous_anchor_is_unverified(workspace: Path) -> None:
-    v = kf.check_claim(claim(baseline(workspace), anchor="line 1"), workspace)
+    v = check(claim(baseline(workspace), anchor="line 1"), workspace)
     assert v.status == "unverified"
 
 
 @pytest.mark.parametrize("base", [None, "deadbeef"])
 def test_no_or_unknown_baseline_is_unverified(workspace: Path, base) -> None:
-    assert kf.check_claim(claim(base), workspace).status == "unverified"
+    assert check(claim(base), workspace).status == "unverified"
 
 
 def test_no_checkout_is_unverified(tmp_path: Path) -> None:
-    assert kf.check_claim(claim("abc"), tmp_path).status == "unverified"
+    assert check(claim("abc"), tmp_path).status == "unverified"
 
 
 def test_claims_parsed_from_frontmatter(tmp_path: Path) -> None:
@@ -186,7 +191,7 @@ def test_path_to_directory_is_invalid(workspace: Path) -> None:
     (repo / "sub" / "f").write_text("x\n")
     run(repo, "add", ".")
     run(repo, "commit", "-qm", "dir")
-    v = kf.check_claim(claim(baseline(workspace), path="sub"), workspace)
+    v = check(claim(baseline(workspace), path="sub"), workspace)
     assert v.status == "invalid"
 
 
@@ -202,7 +207,7 @@ def test_path_outside_a_repo_file_is_invalid(tmp_path: Path, path: str) -> None:
 def test_anchor_absent_at_baseline_is_unverified(workspace: Path) -> None:
     base = baseline(workspace)
     commit(workspace, CODE + "NEW RULE\n")
-    v = kf.check_claim(claim(base, anchor="NEW RULE"), workspace)
+    v = check(claim(base, anchor="NEW RULE"), workspace)
     assert v.status == "unverified"
     assert "baseline" in v.detail
 
@@ -211,7 +216,7 @@ def test_anchor_ambiguous_at_baseline_is_unverified(workspace: Path) -> None:
     commit(workspace, CODE + "blocker|major\n")
     base = baseline(workspace)
     commit(workspace, CODE)
-    v = kf.check_claim(claim(base, anchor="blocker|major"), workspace)
+    v = check(claim(base, anchor="blocker|major"), workspace)
     assert v.status == "unverified"
     assert "baseline" in v.detail
 
@@ -334,14 +339,14 @@ def test_verdict_carries_the_statement(workspace: Path) -> None:
     base = baseline(workspace)
     c = kf.Claim("n.md", "c", "steward", "gate.sh", None, base, "g", "Rule text.")
     commit(workspace, CODE + "extra\n")
-    v = kf.check_claim(c, workspace)
+    v = check(c, workspace)
     assert (v.status, v.block, v.statement) == ("changed", "g", "Rule text.")
     assert kf.render(v).endswith("\n    ^g: Rule text.")
 
 
 def test_unchanged_render_stays_one_line(workspace: Path) -> None:
     c = kf.Claim("n.md", "c", "steward", "gate.sh", None, baseline(workspace), "g", "R")
-    assert "\n" not in kf.render(kf.check_claim(c, workspace))
+    assert "\n" not in kf.render(check(c, workspace))
 
 
 FENCED_MARKERS = {
@@ -377,3 +382,151 @@ def test_marker_outside_code_is_a_claim(
 ) -> None:
     [c] = kf.scan_note(note_with(tmp_path, body)).claims
     assert c.statement == statement
+
+
+@pytest.fixture
+def published(tmp_path: Path) -> Path:
+    """Workspace whose `steward` is a clone of a bare origin fed by `seed`."""
+    seed = tmp_path / "seed"
+    seed.mkdir()
+    run(seed, "init", "-q", "-b", "master")
+    run(seed, "config", "user.email", "t@t")
+    run(seed, "config", "user.name", "t")
+    (seed / "gate.sh").write_text(CODE)
+    run(seed, "add", ".")
+    run(seed, "commit", "-qm", "init")
+    origin = tmp_path / "origin.git"
+    run(tmp_path, "clone", "-q", "--bare", str(seed), str(origin))
+    run(seed, "remote", "add", "origin", str(origin))
+    workspace = tmp_path / "ws"
+    workspace.mkdir()
+    run(workspace, "clone", "-q", str(origin), "steward")
+    run(workspace / "steward", "config", "user.email", "t@t")
+    run(workspace / "steward", "config", "user.name", "t")
+    return workspace
+
+
+def push_from_seed(workspace: Path, text: str) -> None:
+    """Publish a new gate.sh to origin without touching the local checkout."""
+    seed = workspace.parent / "seed"
+    (seed / "gate.sh").write_text(text)
+    run(seed, "commit", "-qam", "published edit")
+    run(seed, "push", "-q", "origin", "master")
+
+
+def test_published_ignores_the_local_branch(published: Path) -> None:
+    base = baseline(published)
+    local = published / "steward"
+    run(local, "switch", "-q", "-c", "feature")
+    commit(published, CODE + "local only\n")
+    assert check(claim(base), published, "local").status == "changed"
+    assert check(claim(base), published, "published").status == "unchanged"
+
+
+def test_published_fetches_before_reading(published: Path) -> None:
+    base = baseline(published)
+    push_from_seed(published, CODE + "published\n")
+    assert check(claim(base), published, "local").status == "unchanged"
+    assert check(claim(base), published, "published").status == "changed"
+
+
+def test_failed_fetch_is_unverified_not_stale(published: Path) -> None:
+    base = baseline(published)
+    local = published / "steward"
+    run(local, "remote", "set-url", "origin", str(published / "nowhere.git"))
+    v = check(claim(base), published, "published")
+    assert v.status == "unverified"
+    assert "stale ref" in v.detail
+
+
+def test_unknown_default_branch_is_unverified(published: Path) -> None:
+    base = baseline(published)
+    run(published.parent / "origin.git", "symbolic-ref", "HEAD", "refs/heads/ghost")
+    v = check(claim(base), published, "published")
+    assert v.status == "unverified"
+    assert "default branch" in v.detail
+
+
+def test_default_branch_is_asked_from_origin(published: Path) -> None:
+    """A stale local origin/HEAD must not pick the old default branch."""
+    base = baseline(published)
+    seed = published.parent / "seed"
+    run(seed, "switch", "-q", "-c", "main")
+    (seed / "gate.sh").write_text(CODE + "on main\n")
+    run(seed, "commit", "-qam", "main moves on")
+    run(seed, "push", "-q", "origin", "main")
+    run(published.parent / "origin.git", "symbolic-ref", "HEAD", "refs/heads/main")
+    local_head = run(published / "steward", "symbolic-ref", "refs/remotes/origin/HEAD")
+    assert local_head == "refs/remotes/origin/master"  # stale on purpose
+    v = check(claim(base), published, "published")
+    assert (v.status, v.target) == ("changed", "origin/main")
+
+
+def test_verdict_names_full_revision_and_target(published: Path) -> None:
+    base = baseline(published)
+    run(published / "steward", "switch", "-q", "-c", "feature")
+    local = check(claim(base), published, "local")
+    remote = check(claim(base), published, "published")
+    sha = run(published / "steward", "rev-parse", "HEAD")
+    assert (local.head, local.target) == (sha, "HEAD (feature)")
+    assert (remote.head, remote.target) == (sha, "origin/master")
+
+
+def test_revision_is_resolved_once_per_run(published: Path) -> None:
+    revisions = kf.Revisions(published, "published")
+    first = revisions.get("steward")
+    push_from_seed(published, CODE + "later\n")
+    assert revisions.get("steward") is first
+
+
+def test_scope_file_sees_edits_outside_the_window(workspace: Path) -> None:
+    base = baseline(workspace)
+    commit(workspace, CODE.replace("line 1\n", "line one\n"))
+    c = kf.Claim("n.md", "c", "steward", "gate.sh", "blocker|major", base, scope="file")
+    v = check(c, workspace)
+    assert (v.status, v.detail.split()[0]) == ("changed", "file")
+
+
+def test_scope_file_still_requires_the_anchor(workspace: Path) -> None:
+    base = baseline(workspace)
+    commit(workspace, CODE.replace("blocker|major", "blocker"))
+    c = kf.Claim("n.md", "c", "steward", "gate.sh", "blocker|major", base, scope="file")
+    assert check(c, workspace).status == "missing"
+
+
+@pytest.mark.parametrize(
+    ("value", "ok"), [("file", True), ("anchor", True), ("x", False)]
+)
+def test_scope_values(tmp_path: Path, value: str, ok: bool) -> None:
+    note = tmp_path / "n.md"
+    entry = (
+        "  - id: e\n    repo: steward\n    path: gate.sh\n    anchor: a\n"
+        f"    claim: g\n    scope: {value}\n"
+    )
+    note.write_text(f"---\nevidence:\n{entry}---\nRule. ^g\n")
+    scan = kf.scan_note(note)
+    assert bool(scan.claims) is ok
+    if ok:
+        assert scan.claims[0].scope == value
+
+
+def test_scope_anchor_without_anchor_is_invalid(tmp_path: Path) -> None:
+    note = tmp_path / "n.md"
+    entry = (
+        "  - id: e\n    repo: steward\n    path: g\n    claim: g\n    scope: anchor\n"
+    )
+    note.write_text(f"---\nevidence:\n{entry}---\nRule. ^g\n")
+    [v] = kf.scan_note(note).problems
+    assert "anchor" in v.detail
+
+
+def test_cli_prints_the_revision_of_each_repo(published: Path) -> None:
+    base = baseline(published)
+    entry = (
+        f"  - id: g\n    repo: steward\n    path: gate.sh\n    baseline: {base}\n"
+        "    claim: g\n"
+    )
+    notes = write_note(published, "a.md", f"---\nevidence:\n{entry}---\nRule. ^g\n")
+    out = audit("--target", "published", "--workspace", str(published), str(notes))
+    sha = run(published / "steward", "rev-parse", "origin/master")
+    assert f"revision|steward|origin/master|{sha}" in out.stdout.splitlines()
