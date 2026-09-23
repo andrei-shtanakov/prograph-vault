@@ -5,21 +5,24 @@ status: living
 owner: Andrei
 updated: 2026-09-18
 evidence:  # claim-level freshness, scripts/kb_freshness.py (pilot 2026-09-23)
+  # whole file, no anchor: the confidence condition sits outside any ±3-line window
   - id: review-blocking-threshold
     repo: steward
     path: scripts/review/apply-threshold.sh
-    anchor: 'def blocking: (.severity | IN("blocker", "major")) and (missing | length == 0);'
     baseline: 4170bc6
+    claim: review-blocking-threshold
   - id: risk-tiers
     repo: steward
     path: profiles/risk-model.yaml
     anchor: "tiers: [low, medium, high, critical]"
     baseline: 5abcd29
+    claim: risk-tiers
   - id: review-pr-wraps-only-publishing
     repo: devtools
     path: review-pr.sh
-    anchor: "# (GH_CONFIG_DIR, по умолчанию ~/.config/review, аккаунт ai-prosto):"
-    baseline: 27120bb
+    anchor: 'GH_CONFIG_DIR="$REVIEW_GH_CONFIG_DIR" gh "$@"'
+    baseline: 2a1cda3
+    claim: merge-profile
 ---
 
 # Git workflow
@@ -101,7 +104,7 @@ evidence:  # claim-level freshness, scripts/kb_freshness.py (pilot 2026-09-23)
      гейта** — `blocker`/`major` + `confidence: high` + непустые `scenario` и
      `observed_result` + хотя бы один `evidence`
      (`steward/scripts/review/apply-threshold.sh`). Находка, не добравшая до порога,
-     нового круга не открывает.
+     нового круга не открывает. ^review-blocking-threshold
    - **`minor`, редактура и уточнения формулировок не блокируют**: исправляются без
      повторного ревью либо уходят в debt отдельным пунктом `TODO.md`.
    - **Recheck адресный**: проверяются исправленная находка и изменённые строки, а не
@@ -111,7 +114,7 @@ evidence:  # claim-level freshness, scripts/kb_freshness.py (pilot 2026-09-23)
      повторный запуск того же ревьюера. Отдельные review-профили НЕ вводятся: risk
      tier уже есть (`steward/profiles/risk-model.yaml`, `tiers: [low, medium, high,
      critical]`) и навешивают на высокий риск **гейты и одобрение человека**, а не
-     круги ревью.
+     круги ревью. ^risk-tiers
 
    Одной формулой: машина подтверждает повторяемые факты; один независимый review ищет
    семантические дыры; человек принимает остаточный риск. **«Чистый от любых замечаний
@@ -147,7 +150,7 @@ evidence:  # claim-level freshness, scripts/kb_freshness.py (pilot 2026-09-23)
      только публикацию ревью (см. его шапку); команда мержа вызывается напрямую и
      защиты не наследует. Пропуск этого абзаца стоил догоняющей волны из 18 PR
      2026-08-31: перевыводка текста правила в CLAUDE.md флота воспроизвела дефект
-     ровно потому, что правило называло учётку, но не профиль.
+     ровно потому, что правило называло учётку, но не профиль. ^merge-profile
    - **человеческий мерж — настраиваемая опция**: уровень экосистемы —
      `merge_policy` в общем конфиге флота (SSOT `ai-orchestrators-workspace`;
      схема — в арке issue-runner); уровень репо — строка `Мерж: человек` в секции

@@ -53,7 +53,18 @@ Goal — catch divergence of the KB from reality.
   git -C "$KB_ROOT" log -1 --format='%ci' -- <path>
   ```
 - Claim-level check for notes that declare `evidence:` in frontmatter (repo, path,
-  optional verbatim `anchor`, `baseline` commit — format in the script's docstring).
+  optional verbatim `anchor`, `baseline` commit, `claim` — format in the script's
+  docstring). `claim` names an Obsidian block in the note body (a paragraph or list
+  item ending in ` ^<id>`): the statement is written once, in the text, and the
+  verdict quotes it. Choosing the evidence:
+  - it must be of the same kind as the statement: config for a claim about config,
+    the normative document for a claim about policy, code — not a comment — for a
+    claim about behaviour;
+  - an anchor guards only its ±3-line window; when the conditions the claim names
+    span more than that, or the claim is critical, drop the anchor and compare the
+    whole file (more noise, no blind spot);
+  - even an executable anchor does not see changes in the functions it calls — that
+    stays a known limit.
   A file can be fresh by `updated:` while a statement in it rests on code that moved:
   ```bash
   uv run "$KB_ROOT/scripts/kb_freshness.py"            # all of authored/
