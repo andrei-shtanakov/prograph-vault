@@ -4,6 +4,13 @@ type: rule
 status: living
 owner: Andrei
 updated: 2026-09-22
+evidence:  # claim-level freshness (R16 pilot, 2026-09-23)
+  - id: empty-policy-keeps-request
+    repo: devtools
+    path: governance/approve_node.py
+    anchor: '        raise _unresolved(f"политика подписи для {what}: {policy.detail}")'
+    baseline: 85342b8
+    claim: empty-policy-refuses
 ---
 
 # Политика подписи узлов governance-бандла
@@ -35,7 +42,7 @@ updated: 2026-09-22
 же candidate. Основание: с devtools#278 candidate под пустой политикой не
 создаётся вовсе, значит пустота на этой фазе — потеря значения между
 процессами, а не решение о мержере. В `invalidated` по-прежнему ведёт только
-установленный факт — мерж учёткой **не** из allowlist.
+установленный факт — мерж учёткой **не** из allowlist. ^empty-policy-refuses
 
 Правило закрывает то, чего механика закрыть не может: **значение объявлено
 здесь**, а не живёт в памяти той оболочки, где его однажды выставили. Без
