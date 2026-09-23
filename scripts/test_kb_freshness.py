@@ -342,3 +342,38 @@ def test_verdict_carries_the_statement(workspace: Path) -> None:
 def test_unchanged_render_stays_one_line(workspace: Path) -> None:
     c = kf.Claim("n.md", "c", "steward", "gate.sh", None, baseline(workspace), "g", "R")
     assert "\n" not in kf.render(kf.check_claim(c, workspace))
+
+
+FENCED_MARKERS = {
+    "other fence char inside": "```text\n~~~\nExample. ^gate\n```\n",
+    "backticks inside tildes": "~~~\n```\nExample. ^gate\n~~~\n",
+    "shorter fence inside": "````\n```\nExample. ^gate\n````\n",
+    "closer with info string": "```\n```text\nExample. ^gate\n```\n",
+    "unclosed fence": "```\nExample. ^gate\n",
+    "fence inside a list item": "- item\n     ```\n     Example. ^gate\n     ```\n",
+}
+
+
+@pytest.mark.parametrize("body", FENCED_MARKERS.values(), ids=FENCED_MARKERS.keys())
+def test_marker_inside_code_is_not_a_claim(tmp_path: Path, body: str) -> None:
+    [v] = kf.scan_note(note_with(tmp_path, body)).problems
+    assert "not found" in v.detail
+
+
+OUTSIDE_CODE = {
+    "after a closed fence": ("```\ncode\n```\n\nRule. ^gate\n", "Rule."),
+    "longer closer closes": ("~~~\ncode\n~~~~\n\nRule. ^gate\n", "Rule."),
+    "right under a fence": ("```\ncode\n```\nRule. ^gate\n", "Rule."),
+    "trailing spaces": ("Rule. ^gate  \n", "Rule."),
+    "trailing tab": ("Rule. ^gate\t\n", "Rule."),
+}
+
+
+@pytest.mark.parametrize(
+    ("body", "statement"), OUTSIDE_CODE.values(), ids=OUTSIDE_CODE.keys()
+)
+def test_marker_outside_code_is_a_claim(
+    tmp_path: Path, body: str, statement: str
+) -> None:
+    [c] = kf.scan_note(note_with(tmp_path, body)).claims
+    assert c.statement == statement

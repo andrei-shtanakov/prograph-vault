@@ -58,7 +58,7 @@ STATUSES = ("unchanged", "changed", "missing", "unverified", "invalid")
 DECLARES_EVIDENCE = re.compile(r"^evidence\s*:", re.MULTILINE)
 BLOCK_MARKER = re.compile(r"\s\^([A-Za-z0-9-]+)\s*$")
 BLOCK_START = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s")
-FENCE = re.compile(r"^\s*(```|~~~)")
+FENCE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
 
 
 @dataclass(frozen=True)
@@ -195,28 +195,51 @@ def body_blocks(body: str) -> dict[str, list[str]]:
     """Text of every `^id`-marked paragraph or list item, keyed by block id.
 
     Fenced code is skipped. A block runs up from its marker line to the nearest
-    blank line or heading (exclusive) or list-item start (inclusive).
+    blank line, heading or code line (exclusive) or list-item start (inclusive).
     """
-    lines, blocks, fenced = body.splitlines(), {}, False
+    lines = body.splitlines()
+    code = code_lines(lines)
+    blocks: dict[str, list[str]] = {}
     for index, line in enumerate(lines):
-        if FENCE.match(line):
-            fenced = not fenced
-        marker = None if fenced else BLOCK_MARKER.search(line)
+        marker = None if code[index] else BLOCK_MARKER.search(line)
         if marker:
-            text = block_text(lines, index)[: -len(marker.group(0))].strip()
+            text = block_text(lines, code, index, marker.start())
             blocks.setdefault(marker.group(1), []).append(text)
     return blocks
 
 
-def block_text(lines: list[str], end: int) -> str:
-    """Lines of the block ending at `end`, joined into one line."""
+def code_lines(lines: list[str]) -> list[bool]:
+    """Which lines belong to fenced code, fences included (CommonMark rules).
+
+    A fence closes only with the same character, at least as long, and no info
+    string; an unclosed fence runs to the end of the note.
+    """
+    flags: list[bool] = []
+    opener: str | None = None
+    for line in lines:
+        fence = FENCE.match(line)
+        if opener is None:
+            if fence and not (fence[1][0] == "`" and "`" in fence[2]):
+                opener = fence[1]
+            flags.append(opener is not None)
+            continue
+        flags.append(True)
+        closes = fence and fence[1][0] == opener[0] and len(fence[1]) >= len(opener)
+        if closes and fence and not fence[2].strip():
+            opener = None
+    return flags
+
+
+def block_text(lines: list[str], code: list[bool], end: int, cut: int) -> str:
+    """The block ending at line `end` (marker at column `cut`), on one line."""
     start = end
     while start > 0 and not BLOCK_START.match(lines[start]):
         above = lines[start - 1]
-        if not above.strip() or above.lstrip().startswith("#"):
+        if code[start - 1] or not above.strip() or above.lstrip().startswith("#"):
             break
         start -= 1
-    return " ".join(line.strip() for line in lines[start : end + 1])
+    parts = [*lines[start:end], lines[end][:cut]]
+    return " ".join(part.strip() for part in parts).strip()
 
 
 def frontmatter(text: str) -> tuple[str, dict, str | None]:
