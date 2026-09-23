@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-23T14:45:11.568656+04:00",
+  "generated_at": "2026-09-23T15:15:34.209166+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
+        "branch": "fix/salvage-sees-remote-branches",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -238,7 +238,7 @@
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
         "branch": "feat/kb-freshness-claims",
-        "ahead": 1,
+        "ahead": 0,
         "behind": 0,
         "dirty": false,
         "error": null
@@ -309,9 +309,9 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "feat/576-tdd-complete",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -333,7 +333,7 @@
       "dir": "spec-runner-vscode",
       "remote": "andrei-shtanakov/spec-runner-vscode",
       "local": {
-        "branch": "feat/generate-from-editor",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
