@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-23T15:45:45.253545+04:00",
+  "generated_at": "2026-09-23T16:15:54.502662+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -70,9 +70,9 @@
       "remote": "andrei-shtanakov/devtools",
       "local": {
         "branch": "fix/runner-cleans-wave-branches",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -237,7 +237,7 @@
       "dir": "prograph-vault",
       "remote": "andrei-shtanakov/prograph-vault",
       "local": {
-        "branch": "docs/r16-kb-freshness-plan",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -310,9 +310,9 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "feat/576-tdd-complete",
-        "ahead": 1,
+        "ahead": 2,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
