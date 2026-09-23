@@ -544,3 +544,40 @@ def test_scope_file_sees_blank_lines_at_the_edges(workspace: Path, edit: str) ->
     base = baseline(workspace)
     commit(workspace, edit)
     assert check(claim(base), workspace).status == "changed"
+
+
+ACCEPTANCE = Path(kf.__file__).with_name("kb_freshness_acceptance.py")
+
+
+def acceptance(*args: str) -> subprocess.CompletedProcess[str]:
+    """Run the mutation acceptance as a CLI."""
+    return subprocess.run(
+        [sys.executable, str(ACCEPTANCE), *args],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+
+@pytest.mark.parametrize(
+    "text",
+    ["---\nevidence: [broken\n---\n", "---\ntitle: t\n---\n"],
+    ids=["broken markup", "nothing to check"],
+)
+def test_acceptance_fails_when_it_checks_nothing_or_markup_is_broken(
+    tmp_path: Path, text: str
+) -> None:
+    notes = write_note(tmp_path, "a.md", text)
+    out = acceptance("--workspace", str(tmp_path), str(notes))
+    assert out.returncode == 1, out.stdout
+
+
+def test_shift_expectation_depends_on_anchor_position() -> None:
+    import kb_freshness_acceptance as ka
+
+    def shift_expectation(text: str) -> str:
+        c = kf.Claim("n.md", "c", "r", "f", "ANCHOR", "b")
+        return {n: e for n, _, e in ka.plan(c, "unchanged", text)}["shift lines"]
+
+    assert shift_expectation("ANCHOR\n" + "x\n" * 10) == "changed"
+    assert shift_expectation("x\n" * 3 + "ANCHOR\n" + "x\n" * 10) == "unchanged"

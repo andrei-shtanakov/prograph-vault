@@ -28,8 +28,15 @@ The control row is the published status, so a claim that is already stale (the
 point of the audit) stays in the run: its mutations are still expected to move
 it the same way, except where `changed` absorbs them — noted per row.
 
+A shifted anchor keeps its window only if at least 3 lines sat above it; an
+anchor in the first 3 lines is expected to report `changed` on a shift.
+
+The run fails closed: a note whose markup is broken is a failed row, not a
+skipped note, and a run that checked no claim at all exits 1. A mutation that
+does not apply (a file too short for a far edit) is printed as `skip`.
+
 Usage: uv run scripts/kb_freshness_acceptance.py [PATH ...]   (default authored/)
-Exits 1 on any mismatch.
+Exits 1 on any mismatch, any markup problem, or when no claim was checked.
 """
 
 import argparse
@@ -46,6 +53,7 @@ import kb_freshness as kf  # noqa: E402
 FAR = 4  # a line this far from the anchor is outside its ±3 window
 Mutation = Callable[[str, kf.Claim], str | None]  # new text; None = not applicable
 DELETE = None  # in a plan row: the mutation removes the file
+SKIPPED = "not applicable"
 
 
 def main() -> int:
@@ -55,24 +63,38 @@ def main() -> int:
     parser.add_argument("--workspace", type=Path, default=kf.VAULT.parent)
     args = parser.parse_args()
     notes = [f for p in args.paths for f in kf.markdown_files(p)]
-    scans = [s for s in map(kf.scan_note, notes) if s.claims]
+    scans = [s for s in map(kf.scan_note, notes) if s.has_evidence]
     published = kf.Revisions(args.workspace, "published")
-    rows: list[tuple[str, str, str, str]] = []
+    rows: list[tuple[str, str, str, str]] = [
+        (v.doc, f"markup {v.id}", "no problem", f"invalid: {v.detail}")
+        for s in scans
+        for v in s.problems
+    ]
     with tempfile.TemporaryDirectory() as tmp:
         sandbox = Path(tmp)
         for scan in scans:
             for claim in scan.claims:
                 rows += claim_rows(claim, published, sandbox)
-            rows += note_rows(scan, args.workspace / "prograph-vault", sandbox)
+            if scan.claims:
+                rows += note_rows(scan, args.workspace / "prograph-vault", sandbox)
     for claim_id, mutation, expected, actual in rows:
-        mark = "ok" if expected == actual else "MISMATCH"
+        mark = row_mark(expected, actual)
         print(f"{mark}|{claim_id}|{mutation}|expected={expected}|actual={actual}")
-    failed = sum(expected != actual for _, _, expected, actual in rows)
+    marks = [row_mark(expected, actual) for _, _, expected, actual in rows]
+    claims = sum(len(s.claims) for s in scans)
+    failed, skipped = marks.count("MISMATCH"), marks.count("skip")
     print(
-        f"summary|claims={sum(len(s.claims) for s in scans)} rows={len(rows)} "
-        f"mismatches={failed}"
+        f"summary|claims={claims} rows={len(rows)} mismatches={failed} "
+        f"skipped={skipped}"
     )
-    return 1 if failed else 0
+    return 1 if failed or claims == 0 else 0
+
+
+def row_mark(expected: str, actual: str) -> str:
+    """ok, skip (mutation not applicable) or MISMATCH."""
+    if actual == SKIPPED:
+        return "skip"
+    return "ok" if expected == actual else "MISMATCH"
 
 
 def claim_rows(
@@ -94,6 +116,7 @@ def claim_rows(
     for name, mutate, expected in plan(claim, control, text):
         new = None if mutate is DELETE else mutate(text, claim)
         if mutate is not DELETE and new is None:  # not applicable to this file
+            rows.append((claim.id, name, expected, SKIPPED))
             continue
         head = kf.git(repo, "rev-parse", "HEAD") or ""
         write_commit(repo, claim.path, new, name)
@@ -121,8 +144,10 @@ def plan(
             ("delete anchor", delete_anchor, "missing"),
             ("duplicate anchor", duplicate_anchor, "unverified"),
         ]
+    # Lines inserted on top enter the window of an anchor with < 3 lines above it.
+    near_top = bool(claim.anchor) and text[: text.find(claim.anchor)].count("\n") < 3
     rows += [
-        ("shift lines", shift_lines, "changed" if whole_file else quiet),
+        ("shift lines", shift_lines, "changed" if whole_file or near_top else quiet),
         ("edit far line", edit_far_line, "changed" if whole_file else quiet),
         ("delete file", DELETE, "missing"),
     ]
