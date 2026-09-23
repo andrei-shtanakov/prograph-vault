@@ -60,9 +60,16 @@ Goal — catch divergence of the KB from reality.
   uv run "$KB_ROOT/scripts/kb_freshness.py" --json <note.md>
   ```
   `changed` → re-read the code and re-confirm the claim; `missing` → the path or the
-  anchor is gone, the claim is likely wrong; `unverified` → no/unknown baseline or an
-  ambiguous anchor. With an anchor only its ±3-line window is compared, so edits
-  elsewhere in the file stay quiet — re-read the claim when a large rewrite is known.
+  anchor is gone, the claim is likely wrong; `unverified` → no/unknown baseline, or an
+  anchor that is not unique at HEAD or at baseline; `invalid` → the markup is broken
+  (unparsable frontmatter in a note with `evidence`, bad entry, path that is not a
+  file, duplicate id) — fix the note, nothing was checked. With an anchor only its
+  ±3-line window is compared, so edits elsewhere in the file stay quiet — re-read the
+  claim when a large rewrite is known. `unchanged` means the quoted text did not move,
+  not that the claim is true.
+  Read the coverage on the summary line (`notes`, `with_evidence`,
+  `unparsed_frontmatter`): an empty audit is not a clean one. `--strict` fails when no
+  claim was checked.
   The script is read-only; bumping `baseline` after re-confirming is a human edit.
 - Report: what diverged, with the file named and the proposed action. **Do not** edit silently.
 
