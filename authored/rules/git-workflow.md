@@ -4,6 +4,22 @@ type: rule
 status: living
 owner: Andrei
 updated: 2026-09-18
+evidence:  # claim-level freshness, scripts/kb_freshness.py (pilot 2026-09-23)
+  - id: review-blocking-threshold
+    repo: steward
+    path: scripts/review/apply-threshold.sh
+    anchor: 'def blocking: (.severity | IN("blocker", "major")) and (missing | length == 0);'
+    baseline: 4170bc6
+  - id: risk-tiers
+    repo: steward
+    path: profiles/risk-model.yaml
+    anchor: "tiers: [low, medium, high, critical]"
+    baseline: 5abcd29
+  - id: review-pr-wraps-only-publishing
+    repo: devtools
+    path: review-pr.sh
+    anchor: "# (GH_CONFIG_DIR, по умолчанию ~/.config/review, аккаунт ai-prosto):"
+    baseline: 27120bb
 ---
 
 # Git workflow

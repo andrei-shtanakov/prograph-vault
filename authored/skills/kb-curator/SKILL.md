@@ -52,6 +52,18 @@ Goal — catch divergence of the KB from reality.
   # or last git touch of a file
   git -C "$KB_ROOT" log -1 --format='%ci' -- <path>
   ```
+- Claim-level check for notes that declare `evidence:` in frontmatter (repo, path,
+  optional verbatim `anchor`, `baseline` commit — format in the script's docstring).
+  A file can be fresh by `updated:` while a statement in it rests on code that moved:
+  ```bash
+  uv run "$KB_ROOT/scripts/kb_freshness.py"            # all of authored/
+  uv run "$KB_ROOT/scripts/kb_freshness.py" --json <note.md>
+  ```
+  `changed` → re-read the code and re-confirm the claim; `missing` → the path or the
+  anchor is gone, the claim is likely wrong; `unverified` → no/unknown baseline or an
+  ambiguous anchor. With an anchor only its ±3-line window is compared, so edits
+  elsewhere in the file stay quiet — re-read the claim when a large rewrite is known.
+  The script is read-only; bumping `baseline` after re-confirming is a human edit.
 - Report: what diverged, with the file named and the proposed action. **Do not** edit silently.
 
 ### 2. Archiving the obsolete
