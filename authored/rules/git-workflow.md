@@ -5,10 +5,12 @@ status: living
 owner: Andrei
 updated: 2026-09-18
 evidence:  # claim-level freshness, scripts/kb_freshness.py (pilot 2026-09-23)
-  # whole file, no anchor: the confidence condition sits outside any ±3-line window
+  # scope file: the confidence condition sits outside the anchor's ±3-line window
   - id: review-blocking-threshold
     repo: steward
     path: scripts/review/apply-threshold.sh
+    anchor: 'def blocking: (.severity | IN("blocker", "major")) and (missing | length == 0);'
+    scope: file
     baseline: 4170bc6
     claim: review-blocking-threshold
   - id: risk-tiers

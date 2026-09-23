@@ -14,14 +14,29 @@ A note opts in by listing the code its statements rest on:
         anchor: "severity blocker|major"  # optional verbatim quote
         baseline: 4170bc6               # commit the claim was checked against
         claim: review-threshold         # block id of the statement in the body
+        scope: file                     # optional: file | anchor (see below)
 
 The statement itself lives once, in the note body, marked as an Obsidian block:
 a paragraph or list item ending in ` ^review-threshold`. Several entries may point
 at the same block. The block text is carried into the verdict so a `changed`
 claim says which sentence to re-read.
 
+`scope` says what must stay identical: `anchor` (the default when an anchor is
+given) compares the anchor and 3 lines around it, `file` (the default without
+one) compares the whole file. With `scope: file` an anchor still has to occur
+exactly once — it pins where the claim lives, the file is what gets compared.
+
+Target — which revision of each repo is read (`--target`):
+  local       HEAD of the sibling checkout, whatever branch it is on (default,
+              offline; the branch is printed so a feature branch is visible)
+  published   `git fetch` of origin's default branch first, then that commit; a
+              failed fetch or an unknown default branch makes every claim of the
+              repo `unverified` instead of reading a stale ref
+Each repo is resolved to one full SHA per run; the SHAs are printed as
+`revision|<repo>|<target>|<sha>` lines so a report can be reproduced.
+
 Status per claim:
-  unchanged   path (or the anchor window) is identical at baseline and HEAD
+  unchanged   path (or the anchor window) is identical at baseline and target
   changed     it differs: re-read the code and re-confirm the claim
   missing     path is gone at HEAD, or the anchor no longer occurs
   unverified  no baseline, unknown commit, no checkout, or an anchor that is
@@ -29,12 +44,14 @@ Status per claim:
   invalid     the markup itself is broken: unparsable frontmatter in a note that
               declares `evidence`, a non-list or non-mapping entry, empty repo or
               path, a path that is not a file, a non-string anchor, a duplicate id,
-              a missing `claim`, or a claim block that is absent or not unique
+              a missing `claim`, a claim block that is absent or not unique, an
+              unknown `scope`, or `scope: anchor` without an anchor
 
 `unchanged` means the quoted text and its surroundings did not move since the
 baseline. It does not mean the claim is true.
 
-Usage: uv run scripts/kb_freshness.py [--json] [--strict] [PATH ...]
+Usage: uv run scripts/kb_freshness.py [--json] [--strict]
+           [--target local|published] [PATH ...]
 PATH defaults to authored/. The summary also reports coverage: notes scanned,
 notes with evidence, notes whose frontmatter did not parse (those without an
 `evidence` key are counted, not failed). --strict exits 1 unless at least one
@@ -55,6 +72,8 @@ import yaml
 VAULT = Path(__file__).resolve().parents[1]
 ANCHOR_CONTEXT = 3  # lines above and below the anchor that must stay identical
 STATUSES = ("unchanged", "changed", "missing", "unverified", "invalid")
+SCOPES = ("anchor", "file")
+TARGETS = ("local", "published")
 DECLARES_EVIDENCE = re.compile(r"^evidence\s*:", re.MULTILINE)
 BLOCK_MARKER = re.compile(r"\s\^([A-Za-z0-9-]+)\s*$")
 BLOCK_START = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s")
@@ -73,6 +92,12 @@ class Claim:
     baseline: str | None
     block: str | None = None
     statement: str | None = None
+    scope: str | None = None
+
+    @property
+    def effective_scope(self) -> str:
+        """`scope` as given, else `anchor` when there is one, else `file`."""
+        return self.scope or ("anchor" if self.anchor else "file")
 
 
 @dataclass(frozen=True)
@@ -88,6 +113,31 @@ class Verdict:
     head: str | None
     block: str | None = None
     statement: str | None = None
+    target: str | None = None
+
+
+@dataclass(frozen=True)
+class Revision:
+    """The one commit of a repo that this run reads, or why there is none."""
+
+    label: str
+    sha: str | None
+    error: str | None = None
+
+
+class Revisions:
+    """Resolves each sibling repo to one full SHA, once per run."""
+
+    def __init__(self, workspace: Path, target: str) -> None:
+        self.workspace = workspace
+        self.target = target
+        self.resolved: dict[str, Revision] = {}
+
+    def get(self, repo: str) -> Revision:
+        """The revision of `repo`, resolving (and fetching) it on first use."""
+        if repo not in self.resolved:
+            self.resolved[repo] = resolve(self.workspace / repo, self.target)
+        return self.resolved[repo]
 
 
 @dataclass(frozen=True)
@@ -113,14 +163,20 @@ def main() -> int:
     parser.add_argument("--workspace", type=Path, default=VAULT.parent)
     parser.add_argument("--json", action="store_true", help="one JSON object per line")
     parser.add_argument("--strict", action="store_true")
+    parser.add_argument("--target", choices=TARGETS, default="local")
     args = parser.parse_args()
     scans = [scan_note(f) for p in args.paths for f in markdown_files(p)]
+    revisions = Revisions(args.workspace, args.target)
     verdicts = [v for s in scans for v in s.problems] + [
-        check_claim(c, args.workspace) for s in scans for c in s.claims
+        check_claim(c, revisions) for s in scans for c in s.claims
     ]
     counts = summary_counts(scans, verdicts)
     for v in verdicts:
         print(json.dumps(asdict(v), ensure_ascii=False) if args.json else render(v))
+    for repo, rev in sorted(revisions.resolved.items()):
+        record = {"repo": repo, **asdict(rev)}
+        line = f"revision|{repo}|{rev.label}|{rev.sha or rev.error}"
+        print(json.dumps({"revision": record}) if args.json else line)
     print(json.dumps({"summary": counts}) if args.json else render_summary(counts))
     if not args.strict:
         return 0
@@ -179,6 +235,11 @@ def parse_entry(
         return problem(doc, claim_id, f"path {path!r} must name a file in the repo")
     if anchor is not None and not isinstance(anchor, str):
         return problem(doc, claim_id, "anchor must be a string")
+    scope = entry.get("scope")
+    if scope is not None and scope not in SCOPES:
+        return problem(doc, claim_id, f"scope must be one of {', '.join(SCOPES)}")
+    if scope == "anchor" and not anchor:
+        return problem(doc, claim_id, "scope: anchor needs an anchor")
     block = str(entry.get("claim") or "").removeprefix("^")
     if not block:
         return problem(doc, claim_id, "entry needs `claim`: a block id in the body")
@@ -188,7 +249,7 @@ def parse_entry(
         return problem(doc, claim_id, f"claim block ^{block} {where} in the body")
     baseline = entry.get("baseline")
     base = str(baseline) if baseline else None
-    return Claim(doc, claim_id, repo, path, anchor, base, block, found[0])
+    return Claim(doc, claim_id, repo, path, anchor, base, block, found[0], scope)
 
 
 def body_blocks(body: str) -> dict[str, list[str]]:
@@ -264,45 +325,61 @@ def frontmatter(text: str) -> tuple[str, dict, str | None]:
     return raw, meta, None
 
 
-def check_claim(claim: Claim, workspace: Path) -> Verdict:
-    """Compare the claim's evidence at its baseline commit and at HEAD."""
-    repo = workspace / claim.repo
-    if not (repo / ".git").exists():
-        return verdict(claim, "unverified", f"no checkout at {repo}", None)
-    head = git(repo, "rev-parse", "--short", "HEAD")
-    kind = git(repo, "cat-file", "-t", f"HEAD:{claim.path}")
+def check_claim(claim: Claim, revisions: Revisions) -> Verdict:
+    """Compare the claim's evidence at its baseline and at the target revision."""
+    rev = revisions.get(claim.repo)
+    if rev.sha is None:
+        return verdict(claim, "unverified", rev.error or "no revision", rev)
+    repo, at = revisions.workspace / claim.repo, rev.label
+    kind = git(repo, "cat-file", "-t", f"{rev.sha}:{claim.path}")
     if kind is None:
-        return verdict(claim, "missing", "path absent at HEAD", head)
+        return verdict(claim, "missing", f"path absent at {at}", rev)
     if kind != "blob":
-        return verdict(claim, "invalid", f"path is a {kind} at HEAD, not a file", head)
-    now = git(repo, "show", f"HEAD:{claim.path}") or ""
+        return verdict(claim, "invalid", f"path is a {kind} at {at}, not a file", rev)
+    now = git(repo, "show", f"{rev.sha}:{claim.path}") or ""
     if claim.anchor and now.count(claim.anchor) != 1:
         found = now.count(claim.anchor)
         status = "missing" if found == 0 else "unverified"
-        return verdict(claim, status, f"anchor occurs {found} times at HEAD", head)
+        return verdict(claim, status, f"anchor occurs {found} times at {at}", rev)
     if not claim.baseline:
-        return verdict(
-            claim, "unverified", f"no baseline; current HEAD is {head}", head
-        )
+        detail = f"no baseline; {at} is {rev.sha[:7]}"
+        return verdict(claim, "unverified", detail, rev)
     then = None
     if git(repo, "cat-file", "-t", f"{claim.baseline}:{claim.path}") == "blob":
         then = git(repo, "show", f"{claim.baseline}:{claim.path}")
     if then is None:
         detail = f"baseline {claim.baseline} unknown or no such file there"
-        return verdict(claim, "unverified", detail, head)
+        return verdict(claim, "unverified", detail, rev)
     if claim.anchor and then.count(claim.anchor) != 1:
         found = then.count(claim.anchor)
         detail = f"anchor occurs {found} times at baseline {claim.baseline}"
-        return verdict(claim, "unverified", detail, head)
-    same = (
-        window(then, claim.anchor) == window(now, claim.anchor)
-        if claim.anchor
-        else then == now
-    )
-    scope = "anchor window" if claim.anchor else "file"
+        return verdict(claim, "unverified", detail, rev)
+    by_window = claim.effective_scope == "anchor"
+    if by_window:
+        same = window(then, claim.anchor) == window(now, claim.anchor)
+    else:
+        same = then == now
+    scope = "anchor window" if by_window else "file"
     if same:
-        return verdict(claim, "unchanged", f"{scope} same since {claim.baseline}", head)
-    return verdict(claim, "changed", f"{scope} differs {claim.baseline}..{head}", head)
+        return verdict(claim, "unchanged", f"{scope} same since {claim.baseline}", rev)
+    span = f"{claim.baseline}..{rev.sha[:7]}"
+    return verdict(claim, "changed", f"{scope} differs {span}", rev)
+
+
+def resolve(repo: Path, target: str) -> Revision:
+    """Pin `repo` to one full SHA for this run (fetching first when published)."""
+    if not (repo / ".git").exists():
+        return Revision(target, None, f"no checkout at {repo}")
+    if target == "local":
+        branch = git(repo, "rev-parse", "--abbrev-ref", "HEAD")
+        label = f"HEAD ({'detached' if branch in (None, 'HEAD') else branch})"
+        return Revision(label, git(repo, "rev-parse", "HEAD"))
+    ref = git(repo, "symbolic-ref", "--short", "refs/remotes/origin/HEAD")
+    if ref is None:
+        return Revision("published", None, "unknown default branch: no origin/HEAD")
+    if git(repo, "fetch", "--quiet", "origin", ref.removeprefix("origin/")) is None:
+        return Revision(ref, None, f"fetch of {ref} failed; not reading a stale ref")
+    return Revision(ref, git(repo, "rev-parse", ref))
 
 
 def window(text: str, anchor: str | None) -> str | None:
@@ -324,8 +401,8 @@ def git(repo: Path, *args: str) -> str | None:
     return out.stdout.strip("\n") if out.returncode == 0 else None
 
 
-def verdict(claim: Claim, status: str, detail: str, head: str | None) -> Verdict:
-    """Build a verdict carrying the claim's identity."""
+def verdict(claim: Claim, status: str, detail: str, rev: Revision) -> Verdict:
+    """Build a verdict carrying the claim's identity and the revision read."""
     return Verdict(
         claim.doc,
         claim.id,
@@ -333,9 +410,10 @@ def verdict(claim: Claim, status: str, detail: str, head: str | None) -> Verdict
         claim.path,
         status,
         detail,
-        head,
+        rev.sha,
         claim.block,
         claim.statement,
+        rev.label,
     )
 
 
