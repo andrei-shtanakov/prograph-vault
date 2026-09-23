@@ -3,7 +3,7 @@ title: "Plan owner — пустое поле честнее выдуманног
 type: rule
 status: living
 owner: Andrei
-updated: 2026-09-01
+updated: 2026-09-23
 evidence:  # claim-level freshness (R16 pilot, 2026-09-23)
   - id: owner-missing-escalates
     repo: prograph-vault
@@ -11,15 +11,39 @@ evidence:  # claim-level freshness (R16 pilot, 2026-09-23)
     anchor: "  PF-OWNER-MISSING:"
     baseline: 15f5516
     claim: pf-owner-missing-escalation
-  # baseline is the state the claim was written against (before 4ccbec3 registered
-  # PF-OWNER-REPO-SELF); scope file: the claim is about an absence, no line shows it
-  - id: no-self-owner-diagnostic
+  # norm: what the diagnostic means (canon) and that the package emits it
+  - id: self-owner-diagnostic-canon
     repo: prograph-vault
     path: authored/contracts/plan-fields/v3/diagnostics.yaml
-    anchor: "  PF-OWNER-REPO-UNKNOWN:"
-    scope: file
-    baseline: ac41602
-    claim: owner-repo-self-unchecked
+    anchor: "  PF-OWNER-REPO-SELF:"
+    baseline: cb43e1d
+    claim: owner-repo-self-norm
+  - id: self-owner-diagnostic-package
+    repo: dispatcher
+    path: packages/plan-fields/src/plan_fields/fleet_api.py
+    anchor: '"PF-OWNER-REPO-SELF",'
+    baseline: 7512992
+    claim: owner-repo-self-norm
+  # rollout: the three devtools lines that keep it out of the fleet report
+  # (devtools#381); when they change, the dated block below needs a rewrite
+  - id: devtools-pins-old-package
+    repo: devtools
+    path: pyproject.toml
+    anchor: 'rev = "65f03ea9e5964e4488bcd254e491fc42abb1bd96"'
+    baseline: cf79b28
+    claim: owner-repo-self-rollout
+  - id: devtools-hides-owner-diagnostics
+    repo: devtools
+    path: check-plan-fields.py
+    anchor: '    if code.startswith("PF-OWNER-"):'
+    baseline: cf79b28
+    claim: owner-repo-self-rollout
+  - id: devtools-summary-counts-self-as-repo-owned
+    repo: devtools
+    path: check-plan-fields.py
+    anchor: '            if owner_ref["id"] in index.canonical_keys'
+    baseline: cf79b28
+    claim: owner-repo-self-rollout
 ---
 
 # Владелец пункта плана
@@ -60,15 +84,19 @@ evidence:  # claim-level freshness (R16 pilot, 2026-09-23)
 `repo:<свой собственный>` ставить не следует: «этот репо владеет своим бэклогом» — ровно
 то, что уже означает пустое поле, и такая подстановка ломает правило 1 в другой одежде.
 
-> **Этот пункт машиной не проверяется** (находка ревью PR #123, принята). Действующий
-> `plan-fields v3` принимает любой ключ манифеста как repository owner; диагностики на
-> совпадение владельца с `OperationalNode.repo` нет — есть только `PF-OWNER-REPO-UNKNOWN`
-> про несуществующий ключ. Значит `@owner:repo:<свой>` спроецируется как валидный
-> `repo-owned` и не будет замечен. Запрос на диагностику `PF-OWNER-REPO-SELF` заведён
-> реализатору пакета (`dispatcher`, `packages/plan-fields`); до её появления пункт —
-> норма для автора, а не гейт, и правило говорит об этом прямо, вместо того чтобы
-> изображать проверяемость. Обратное — объявить запрет и промолчать о том, что он
-> ничем не покрыт — сделало бы fail-open само правило. ^owner-repo-self-unchecked
+> **Запрет поддержан диагностикой `PF-OWNER-REPO-SELF`**: проверка флота выявляет
+> совпадение канонической identity владельца с исходным репозиторием пункта. Severity —
+> warning, эскалации нет: это сигнал автору, а не блокирующий гейт. Будет ли она видна
+> в отчёте, зависит от версии пакета `plan-fields` у потребителя и от того, как
+> потребитель её показывает. ^owner-repo-self-norm
+
+> **Состояние внедрения на 2026-09-23** (меняется, в отличие от нормы выше; до 23.09
+> здесь было написано, что диагностики нет, — это устарело с канона v3 `4ccbec3`,
+> см. #164). В ежедневном отчёте флота диагностика пока **не видна**: devtools
+> закрепляет пакет dispatcher `65f03ea`, в котором классификации self-owner ещё нет;
+> обёртка `check-plan-fields.py` отбрасывает все `PF-OWNER-*` из вывода; ownership-сводка
+> считает self-owner обычным `repo-owned`. Работа — у devtools (devtools#381); до её
+> завершения пункт на деле держится на авторе. ^owner-repo-self-rollout
 
 **3. Внешний апстрим владельцем не бывает.** Пункт, ждущий релиза чужого проекта
 (`fastmcp`, GitHub Actions, npm-пакет), не получает ни `repo:` — значение проверяется
