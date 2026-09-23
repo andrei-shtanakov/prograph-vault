@@ -1,9 +1,25 @@
 ---
-title: Plan owner — пустое поле честнее выдуманного, repo: только про чужую ответственность
+title: "Plan owner — пустое поле честнее выдуманного, repo: только про чужую ответственность"
 type: rule
 status: living
 owner: Andrei
 updated: 2026-09-01
+evidence:  # claim-level freshness (R16 pilot, 2026-09-23)
+  - id: owner-missing-escalates
+    repo: prograph-vault
+    path: authored/contracts/plan-fields/v3/diagnostics.yaml
+    anchor: "  PF-OWNER-MISSING:"
+    baseline: 15f5516
+    claim: pf-owner-missing-escalation
+  # baseline is the state the claim was written against (before 4ccbec3 registered
+  # PF-OWNER-REPO-SELF); scope file: the claim is about an absence, no line shows it
+  - id: no-self-owner-diagnostic
+    repo: prograph-vault
+    path: authored/contracts/plan-fields/v3/diagnostics.yaml
+    anchor: "  PF-OWNER-REPO-UNKNOWN:"
+    scope: file
+    baseline: ac41602
+    claim: owner-repo-self-unchecked
 ---
 
 # Владелец пункта плана
@@ -34,7 +50,7 @@ updated: 2026-09-01
 не «решили не назначать», а «назначение не заявлено» — и контракт трактует это как долг:
 `PF-OWNER-MISSING` несёт `escalation: second_independent_snapshot`, то есть warning сейчас
 и **error при повторном независимом снимке**. Поэтому пустое поле честно ровно до триажа.
-После триажа см. правило 4.
+После триажа см. правило 4. ^pf-owner-missing-escalation
 
 **2. `repo:<key>` — только про ЧУЖУЮ ответственность.** Значение осмысленно, когда пункт
 лежит в репо A, а отвечающая сторона — репо B: работа наша, предпосылка и ответственность
@@ -52,7 +68,7 @@ updated: 2026-09-01
 > реализатору пакета (`dispatcher`, `packages/plan-fields`); до её появления пункт —
 > норма для автора, а не гейт, и правило говорит об этом прямо, вместо того чтобы
 > изображать проверяемость. Обратное — объявить запрет и промолчать о том, что он
-> ничем не покрыт — сделало бы fail-open само правило.
+> ничем не покрыт — сделало бы fail-open само правило. ^owner-repo-self-unchecked
 
 **3. Внешний апстрим владельцем не бывает.** Пункт, ждущий релиза чужого проекта
 (`fastmcp`, GitHub Actions, npm-пакет), не получает ни `repo:` — значение проверяется

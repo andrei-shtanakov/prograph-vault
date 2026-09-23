@@ -4,6 +4,19 @@ type: rule
 status: living
 owner: Andrei
 updated: 2026-08-17
+evidence:  # claim-level freshness (R16 pilot, 2026-09-23)
+  - id: plan-check-runs-daily
+    repo: devtools
+    path: .github/workflows/fleet-plan-check.yml
+    anchor: '- cron: "20 6 * * *"'
+    baseline: 85342b8
+    claim: daily-plan-check
+  - id: blocker-stale-diagnostic
+    repo: prograph-vault
+    path: authored/contracts/plan-fields/v3/diagnostics.yaml
+    anchor: "  PF-BLOCKER-STALE:"
+    baseline: 15f5516
+    claim: daily-plan-check
 ---
 
 # Cross-repo waits
@@ -45,7 +58,7 @@ manifest) computes the waiting-by-blocker bucket and raises `PF-BLOCKER-STALE`
 the morning after a blocker closes. Today that signal is the **entire return
 leg** of ADR-ECO-006: the requester repo learns its inbox request was delivered
 only through this edge. A wait written anywhere else has opted out of the only
-alarm clock the ecosystem has.
+alarm clock the ecosystem has. ^daily-plan-check
 
 ## 3. Session ritual — both directions
 

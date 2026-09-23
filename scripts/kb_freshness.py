@@ -78,6 +78,7 @@ TARGETS = ("local", "published")
 DECLARES_EVIDENCE = re.compile(r"^evidence\s*:", re.MULTILINE)
 BLOCK_MARKER = re.compile(r"\s\^([A-Za-z0-9-]+)\s*$")
 BLOCK_START = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s")
+QUOTE_PREFIX = re.compile(r"^\s*(?:>\s?)+")
 FENCE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
 
 
@@ -301,7 +302,7 @@ def block_text(lines: list[str], code: list[bool], end: int, cut: int) -> str:
             break
         start -= 1
     parts = [*lines[start:end], lines[end][:cut]]
-    return " ".join(part.strip() for part in parts).strip()
+    return " ".join(QUOTE_PREFIX.sub("", part).strip() for part in parts).strip()
 
 
 def frontmatter(text: str) -> tuple[str, dict, str | None]:
@@ -337,7 +338,7 @@ def check_claim(claim: Claim, revisions: Revisions) -> Verdict:
         return verdict(claim, "missing", f"path absent at {at}", rev)
     if kind != "blob":
         return verdict(claim, "invalid", f"path is a {kind} at {at}, not a file", rev)
-    now = git(repo, "show", f"{rev.sha}:{claim.path}") or ""
+    now = blob(repo, rev.sha, claim.path) or ""
     if claim.anchor and now.count(claim.anchor) != 1:
         found = now.count(claim.anchor)
         status = "missing" if found == 0 else "unverified"
@@ -347,7 +348,7 @@ def check_claim(claim: Claim, revisions: Revisions) -> Verdict:
         return verdict(claim, "unverified", detail, rev)
     then = None
     if git(repo, "cat-file", "-t", f"{claim.baseline}:{claim.path}") == "blob":
-        then = git(repo, "show", f"{claim.baseline}:{claim.path}")
+        then = blob(repo, claim.baseline, claim.path)
     if then is None:
         detail = f"baseline {claim.baseline} unknown or no such file there"
         return verdict(claim, "unverified", detail, rev)
@@ -416,6 +417,17 @@ def git(repo: Path, *args: str) -> str | None:
         ["git", "-C", str(repo), *args], capture_output=True, text=True, check=False
     )
     return out.stdout.strip("\n") if out.returncode == 0 else None
+
+
+def blob(repo: Path, rev: str, path: str) -> str | None:
+    """File content at a revision, byte-exact: `git()` trims output, content must not."""
+    out = subprocess.run(
+        ["git", "-C", str(repo), "show", f"{rev}:{path}"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return out.stdout if out.returncode == 0 else None
 
 
 def verdict(claim: Claim, status: str, detail: str, rev: Revision) -> Verdict:

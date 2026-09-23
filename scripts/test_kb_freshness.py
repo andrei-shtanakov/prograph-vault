@@ -530,3 +530,17 @@ def test_cli_prints_the_revision_of_each_repo(published: Path) -> None:
     out = audit("--target", "published", "--workspace", str(published), str(notes))
     sha = run(published / "steward", "rev-parse", "origin/master")
     assert f"revision|steward|origin/master|{sha}" in out.stdout.splitlines()
+
+
+def test_blockquote_markers_are_dropped_from_the_statement(tmp_path: Path) -> None:
+    body = "> **Not checked** by\n> any machine. ^gate\n"
+    [c] = kf.scan_note(note_with(tmp_path, body)).claims
+    assert c.statement == "**Not checked** by any machine."
+
+
+@pytest.mark.parametrize("edit", ["\n\n" + CODE, CODE + "\n\n"], ids=["head", "tail"])
+def test_scope_file_sees_blank_lines_at_the_edges(workspace: Path, edit: str) -> None:
+    """Found by the mutation acceptance: content must not be stripped."""
+    base = baseline(workspace)
+    commit(workspace, edit)
+    assert check(claim(base), workspace).status == "changed"

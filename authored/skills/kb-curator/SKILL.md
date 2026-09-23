@@ -77,6 +77,11 @@ Goal — catch divergence of the KB from reality.
   that branch. For anything reported or scheduled use `--target published`: it
   fetches origin's default branch and pins one full SHA per repo; a failed fetch
   gives `unverified`, never a stale read.
+  After adding or rebinding claims, run the mutation acceptance: every claim is
+  copied into a throwaway clone and prepared edits (anchor line, anchor removed or
+  duplicated, lines shifted, a far edit, file deleted, unknown baseline, broken
+  frontmatter, dropped block marker) must produce the expected status:
+  `uv run "$KB_ROOT/scripts/kb_freshness_acceptance.py"` — exit 1 on any mismatch.
   `changed` → re-read the code and re-confirm the claim; `missing` → the path or the
   anchor is gone, the claim is likely wrong; `unverified` → no/unknown baseline, or an
   anchor that is not unique at HEAD or at baseline; `invalid` → the markup is broken
