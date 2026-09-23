@@ -312,7 +312,7 @@
       заметок проверено и сколько с evidence; `--strict` падает при нуле утверждений;
       проблемы якоря в baseline → `unverified`; регрессионные тесты на каждый случай.
 
-- [ ] Привязать утверждение к тексту заметки: поле `claim` + ссылка на блок @owner:github:andrei-shtanakov @id:kb-freshness-claim-binding @epic:eco.knowledge-graph
+- [x] Привязать утверждение к тексту заметки: поле `claim` + ссылка на блок — PR #155 @owner:github:andrei-shtanakov @id:kb-freshness-claim-binding @epic:eco.knowledge-graph
       Во frontmatter записана опора (repo/path/anchor/baseline), но не само
       утверждение: при `changed` неизвестно, какую фразу перепроверять. Одного
       текстового поля мало — получатся две формулировки, которые устаревают
