@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-23T22:48:05.305080+04:00",
+  "generated_at": "2026-09-23T23:18:13.689801+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -70,8 +70,8 @@
       "remote": "andrei-shtanakov/devtools",
       "local": {
         "branch": "test/waves-drive-surviving-guards",
-        "ahead": null,
-        "behind": null,
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "docs/specs-338-402",
+        "branch": "feat/338-repo-local-profiles",
         "ahead": null,
         "behind": null,
         "dirty": false,
