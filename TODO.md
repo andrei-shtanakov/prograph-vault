@@ -327,7 +327,7 @@
       круг): `evidence: []` не засчитывается в `with_evidence` — объявление надо
       хранить в `NoteScan` отдельно от числа claims и problems, плюс тест.
 
-- [ ] Воспроизводимая ревизия: fetch, полный SHA каждого репо, явный режим цели @owner:github:andrei-shtanakov @id:kb-freshness-pinned-revision @epic:eco.knowledge-graph
+- [x] Воспроизводимая ревизия: fetch, полный SHA каждого репо, явный режим цели — PR #156 @owner:github:andrei-shtanakov @id:kb-freshness-pinned-revision @epic:eco.knowledge-graph
       Сейчас HEAD берётся из локального чекаута соседа, то есть вердикт зависит от
       машины и ветки. Одной замены на `origin/<default>` мало: без обновления refs
       получится тот же устаревший результат под более убедительным названием. Нужно:
