@@ -18,24 +18,37 @@ Status per claim:
   unchanged   path (or the anchor window) is identical at baseline and HEAD
   changed     it differs: re-read the code and re-confirm the claim
   missing     path is gone at HEAD, or the anchor no longer occurs
-  unverified  no baseline, unknown commit, no checkout, or ambiguous anchor
+  unverified  no baseline, unknown commit, no checkout, or an anchor that is
+              not unique at HEAD or not unique at baseline
+  invalid     the markup itself is broken: unparsable frontmatter in a note that
+              declares `evidence`, a non-list or non-mapping entry, empty repo or
+              path, a path that is not a file, a non-string anchor, a duplicate id
+
+`unchanged` means the quoted text and its surroundings did not move since the
+baseline. It does not mean the claim is true.
 
 Usage: uv run scripts/kb_freshness.py [--json] [--strict] [PATH ...]
-PATH defaults to authored/. --strict exits 1 unless every claim is unchanged.
+PATH defaults to authored/. The summary also reports coverage: notes scanned,
+notes with evidence, notes whose frontmatter did not parse (those without an
+`evidence` key are counted, not failed). --strict exits 1 unless at least one
+claim was checked and every claim is unchanged.
 The script never writes: bumping `baseline` is a human edit under review.
 """
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 from dataclasses import asdict, dataclass
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 import yaml
 
 VAULT = Path(__file__).resolve().parents[1]
 ANCHOR_CONTEXT = 3  # lines above and below the anchor that must stay identical
+STATUSES = ("unchanged", "changed", "missing", "unverified", "invalid")
+DECLARES_EVIDENCE = re.compile(r"^evidence\s*:", re.MULTILINE)
 
 
 @dataclass(frozen=True)
@@ -63,6 +76,21 @@ class Verdict:
     head: str | None
 
 
+@dataclass(frozen=True)
+class NoteScan:
+    """What one note contributes: well-formed claims and markup problems."""
+
+    doc: str
+    claims: list[Claim]
+    problems: list[Verdict]
+    unparsed: bool
+
+    @property
+    def has_evidence(self) -> bool:
+        """The note declares evidence, well-formed or not."""
+        return bool(self.claims or self.problems)
+
+
 def main() -> int:
     """Audit every claim under the given paths and print the verdicts."""
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
@@ -71,64 +99,104 @@ def main() -> int:
     parser.add_argument("--json", action="store_true", help="one JSON object per line")
     parser.add_argument("--strict", action="store_true")
     args = parser.parse_args()
-    claims = [c for p in args.paths for c in collect_claims(p)]
-    verdicts = [check_claim(c, args.workspace) for c in claims]
+    scans = [scan_note(f) for p in args.paths for f in markdown_files(p)]
+    verdicts = [v for s in scans for v in s.problems] + [
+        check_claim(c, args.workspace) for s in scans for c in s.claims
+    ]
+    counts = summary_counts(scans, verdicts)
     for v in verdicts:
         print(json.dumps(asdict(v), ensure_ascii=False) if args.json else render(v))
-    if not args.json:
-        print(summary(verdicts))
-    stale = any(v.status != "unchanged" for v in verdicts)
-    return 1 if args.strict and stale else 0
+    print(json.dumps({"summary": counts}) if args.json else render_summary(counts))
+    if not args.strict:
+        return 0
+    all_fresh = all(v.status == "unchanged" for v in verdicts)
+    return 0 if verdicts and all_fresh else 1
 
 
-def collect_claims(root: Path) -> list[Claim]:
-    """Claims from every markdown file under root (or root itself)."""
-    files = [root] if root.is_file() else sorted(root.rglob("*.md"))
-    return [c for f in files for c in claims_in(f)]
+def markdown_files(root: Path) -> list[Path]:
+    """Every markdown file under root (or root itself)."""
+    return [root] if root.is_file() else sorted(root.rglob("*.md"))
 
 
-def claims_in(path: Path) -> list[Claim]:
-    """Parse the `evidence:` list of one note; notes without it yield nothing."""
-    meta = frontmatter(path.read_text(encoding="utf-8"))
-    entries = meta.get("evidence") or []
+def scan_note(path: Path) -> NoteScan:
+    """Parse one note's `evidence:` list, keeping broken markup as `invalid`."""
     doc = display_path(path)
-    return [
-        Claim(
-            doc=doc,
-            id=str(e.get("id") or f"{e.get('repo')}:{e.get('path')}"),
-            repo=str(e.get("repo", "")),
-            path=str(e.get("path", "")),
-            anchor=e.get("anchor"),
-            baseline=str(e["baseline"]) if e.get("baseline") else None,
-        )
-        for e in entries
-        if isinstance(e, dict)
-    ]
+    raw, meta, error = frontmatter(path.read_text(encoding="utf-8"))
+    if error:
+        declared = DECLARES_EVIDENCE.search(raw) is not None
+        problems = [problem(doc, "<frontmatter>", error)] if declared else []
+        return NoteScan(doc, [], problems, unparsed=True)
+    entries = meta.get("evidence")
+    if entries is None:
+        return NoteScan(doc, [], [], unparsed=False)
+    if not isinstance(entries, list):
+        detail = f"evidence must be a list, got {type(entries).__name__}"
+        return NoteScan(doc, [], [problem(doc, "<evidence>", detail)], False)
+    claims: list[Claim] = []
+    problems: list[Verdict] = []
+    for index, entry in enumerate(entries):
+        parsed = parse_entry(doc, index, entry)
+        if isinstance(parsed, Verdict):
+            problems.append(parsed)
+        elif parsed.id in {c.id for c in claims}:
+            problems.append(problem(doc, parsed.id, "duplicate id in this note"))
+        else:
+            claims.append(parsed)
+    return NoteScan(doc, claims, problems, unparsed=False)
 
 
-def frontmatter(text: str) -> dict:
-    """YAML between the leading `---` fences; {} when absent or invalid."""
+def parse_entry(doc: str, index: int, entry: object) -> Claim | Verdict:
+    """One evidence entry as a Claim, or an `invalid` verdict saying why not."""
+    if not isinstance(entry, dict):
+        return problem(doc, f"#{index}", "entry must be a mapping")
+    repo, path = str(entry.get("repo") or ""), str(entry.get("path") or "")
+    claim_id = str(entry.get("id") or f"{repo}:{path}")
+    anchor = entry.get("anchor")
+    if not repo or not path:
+        return problem(doc, claim_id, "entry needs both repo and path")
+    parts = PurePosixPath(path).parts
+    if path.startswith("/") or parts in ((), (".",)) or ".." in parts:
+        return problem(doc, claim_id, f"path {path!r} must name a file in the repo")
+    if anchor is not None and not isinstance(anchor, str):
+        return problem(doc, claim_id, "anchor must be a string")
+    baseline = entry.get("baseline")
+    return Claim(doc, claim_id, repo, path, anchor, str(baseline) if baseline else None)
+
+
+def frontmatter(text: str) -> tuple[str, dict, str | None]:
+    """(raw block, parsed mapping, error) for the leading `---` fences.
+
+    A note without frontmatter is not an error: it simply declares nothing.
+    """
     if not text.startswith("---\n"):
-        return {}
+        return "", {}, None
     end = text.find("\n---", 4)
     if end == -1:
-        return {}
+        return text[4:], {}, "frontmatter fence is not closed"
+    raw = text[4:end]
     try:
-        meta = yaml.safe_load(text[4:end])
-    except yaml.YAMLError:
-        return {}
-    return meta if isinstance(meta, dict) else {}
+        meta = yaml.safe_load(raw)
+    except yaml.YAMLError as exc:
+        return raw, {}, f"frontmatter is not valid YAML: {one_line(exc)}"
+    if meta is None:
+        return raw, {}, None
+    if not isinstance(meta, dict):
+        return raw, {}, f"frontmatter is a {type(meta).__name__}, not a mapping"
+    return raw, meta, None
 
 
 def check_claim(claim: Claim, workspace: Path) -> Verdict:
     """Compare the claim's evidence at its baseline commit and at HEAD."""
     repo = workspace / claim.repo
-    if not claim.repo or not (repo / ".git").exists():
+    if not (repo / ".git").exists():
         return verdict(claim, "unverified", f"no checkout at {repo}", None)
     head = git(repo, "rev-parse", "--short", "HEAD")
-    now = git(repo, "show", f"HEAD:{claim.path}")
-    if now is None:
+    kind = git(repo, "cat-file", "-t", f"HEAD:{claim.path}")
+    if kind is None:
         return verdict(claim, "missing", "path absent at HEAD", head)
+    if kind != "blob":
+        return verdict(claim, "invalid", f"path is a {kind} at HEAD, not a file", head)
+    now = git(repo, "show", f"HEAD:{claim.path}") or ""
     if claim.anchor and now.count(claim.anchor) != 1:
         found = now.count(claim.anchor)
         status = "missing" if found == 0 else "unverified"
@@ -137,9 +205,15 @@ def check_claim(claim: Claim, workspace: Path) -> Verdict:
         return verdict(
             claim, "unverified", f"no baseline; current HEAD is {head}", head
         )
-    then = git(repo, "show", f"{claim.baseline}:{claim.path}")
+    then = None
+    if git(repo, "cat-file", "-t", f"{claim.baseline}:{claim.path}") == "blob":
+        then = git(repo, "show", f"{claim.baseline}:{claim.path}")
     if then is None:
-        detail = f"baseline {claim.baseline} unknown or path absent there"
+        detail = f"baseline {claim.baseline} unknown or no such file there"
+        return verdict(claim, "unverified", detail, head)
+    if claim.anchor and then.count(claim.anchor) != 1:
+        found = then.count(claim.anchor)
+        detail = f"anchor occurs {found} times at baseline {claim.baseline}"
         return verdict(claim, "unverified", detail, head)
     same = (
         window(then, claim.anchor) == window(now, claim.anchor)
@@ -176,16 +250,33 @@ def verdict(claim: Claim, status: str, detail: str, head: str | None) -> Verdict
     return Verdict(claim.doc, claim.id, claim.repo, claim.path, status, detail, head)
 
 
+def problem(doc: str, claim_id: str, detail: str) -> Verdict:
+    """An `invalid` verdict for markup that could not become a claim."""
+    return Verdict(doc, claim_id, "", "", "invalid", detail, None)
+
+
+def one_line(exc: Exception) -> str:
+    """An exception message squeezed onto one line."""
+    return " ".join(str(exc).split())
+
+
 def render(v: Verdict) -> str:
     """One pipe-separated line per claim."""
     return f"{v.status}|{v.doc}|{v.id}|{v.repo}/{v.path}|{v.detail}"
 
 
-def summary(verdicts: list[Verdict]) -> str:
-    """Counts per status, stable order."""
-    order = ("unchanged", "changed", "missing", "unverified")
-    counts = {s: sum(v.status == s for v in verdicts) for s in order}
-    return "summary|" + " ".join(f"{s}={n}" for s, n in counts.items())
+def summary_counts(scans: list[NoteScan], verdicts: list[Verdict]) -> dict[str, int]:
+    """Counts per status (stable order) followed by coverage counts."""
+    counts = {s: sum(v.status == s for v in verdicts) for s in STATUSES}
+    counts["notes"] = len(scans)
+    counts["with_evidence"] = sum(s.has_evidence for s in scans)
+    counts["unparsed_frontmatter"] = sum(s.unparsed for s in scans)
+    return counts
+
+
+def render_summary(counts: dict[str, int]) -> str:
+    """The pipe-separated summary line."""
+    return "summary|" + " ".join(f"{k}={n}" for k, n in counts.items())
 
 
 def display_path(path: Path) -> str:
