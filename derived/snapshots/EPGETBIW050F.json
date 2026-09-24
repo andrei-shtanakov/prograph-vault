@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-24T22:27:37.049796+04:00",
+  "generated_at": "2026-09-24T22:57:47.279275+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -58,7 +58,7 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "feat/admission-2-authoring",
-        "ahead": 1,
+        "ahead": 0,
         "behind": 0,
         "dirty": false,
         "error": null
