@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-24T19:25:57.785537+04:00",
+  "generated_at": "2026-09-24T19:56:19.375941+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -57,7 +57,7 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "master",
+        "branch": "docs/ci-failure-admission-spec",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -130,9 +130,9 @@
       "remote": "andrei-shtanakov/disputatio",
       "local": {
         "branch": "feat/wiring-gate",
-        "ahead": 2,
+        "ahead": 8,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
