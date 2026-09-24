@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-24T20:56:51.422591+04:00",
+  "generated_at": "2026-09-24T21:27:06.483810+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -58,9 +58,9 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "feat/admission-1-provenance",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -129,9 +129,9 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "feat/wiring-gate",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "docs/wiring-gate-followups",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
