@@ -2,14 +2,14 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-25T18:36:04.301815+04:00",
+  "generated_at": "2026-09-25T19:06:48.764969+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
-      "dir": ".wt-dt-382p",
+      "dir": ".wt-dt-382c",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "plan/r16-runner-graduation",
+        "branch": "feat/r16-runner-graduation",
         "ahead": null,
         "behind": null,
         "dirty": false,
@@ -70,9 +70,9 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "feat/fix-7-c-recordings",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -153,7 +153,7 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "docs/spec002-five-decisions",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
