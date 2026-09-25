@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-25T09:30:56.894425+04:00",
+  "generated_at": "2026-09-25T10:01:07.032989+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -57,9 +57,9 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "docs/ci-fix-authoring-spec",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "feat/fix-2-proposal",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
