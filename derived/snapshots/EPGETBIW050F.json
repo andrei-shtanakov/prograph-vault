@@ -2,9 +2,21 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-25T17:05:06.644501+04:00",
+  "generated_at": "2026-09-25T17:35:32.565614+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
+    {
+      "dir": ".wt-dt-386",
+      "remote": "andrei-shtanakov/devtools",
+      "local": {
+        "branch": "feat/workstream-stage-profile-386",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
+        "error": null
+      },
+      "github": null
+    },
     {
       "dir": "ai-orchestrators-workspace",
       "remote": "andrei-shtanakov/ai-orchestrators-workspace",
@@ -70,8 +82,8 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "feat/fix-5-confirm",
-        "ahead": null,
-        "behind": null,
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -141,7 +153,7 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "docs/p9-perimeter-all-revisions",
+        "branch": "feat/p9-perimeter-all-revisions",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
