@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-25T07:00:10.440848+04:00",
+  "generated_at": "2026-09-25T07:30:18.951992+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -58,8 +58,8 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "feat/admission-3-verify",
-        "ahead": null,
-        "behind": null,
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -129,10 +129,10 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "docs/spec001-budget-prediction",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "feat/budget-prediction",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
