@@ -2,9 +2,21 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-25T10:31:25.818394+04:00",
+  "generated_at": "2026-09-25T11:01:47.452071+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
+    {
+      "dir": ".wt-dt-381",
+      "remote": "andrei-shtanakov/devtools",
+      "local": {
+        "branch": "feat/plan-fields-self-owner-381",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
+        "error": null
+      },
+      "github": null
+    },
     {
       "dir": "ai-orchestrators-workspace",
       "remote": "andrei-shtanakov/ai-orchestrators-workspace",
@@ -60,7 +72,7 @@
         "branch": "feat/fix-2-proposal",
         "ahead": null,
         "behind": null,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -129,10 +141,10 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "fix/session-driver-exception-discriminator",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
