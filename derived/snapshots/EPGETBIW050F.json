@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-25T04:59:34.526814+04:00",
+  "generated_at": "2026-09-25T05:29:43.980129+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -57,9 +57,9 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "feat/admission-2-authoring",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "feat/admission-3-verify",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -129,7 +129,7 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "master",
+        "branch": "docs/spec001-indeterminate-stop",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
