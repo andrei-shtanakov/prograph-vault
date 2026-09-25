@@ -2,21 +2,9 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-25T11:32:02.457964+04:00",
+  "generated_at": "2026-09-25T12:02:18.645230+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
-    {
-      "dir": ".wt-dt-381",
-      "remote": "andrei-shtanakov/devtools",
-      "local": {
-        "branch": "feat/plan-fields-self-owner-381",
-        "ahead": null,
-        "behind": null,
-        "dirty": false,
-        "error": null
-      },
-      "github": null
-    },
     {
       "dir": "ai-orchestrators-workspace",
       "remote": "andrei-shtanakov/ai-orchestrators-workspace",
@@ -141,7 +129,7 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "fix/session-driver-exception-discriminator",
+        "branch": "docs/p9-perimeter-all-revisions",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
