@@ -3,7 +3,7 @@ title: arbiter — activity journal
 type: journal
 source: kb-save
 project: arbiter
-updated: 2026-09-19
+updated: 2026-09-22
 ---
 
 # arbiter — activity journal
@@ -151,3 +151,25 @@ updated: 2026-09-19
 - Links: scripts/review/{prose-paths.env,local.sh,checksum.sh,PIN},
   .github/codex/review-scope.env, .github/workflows/review-kit-drift.yml,
   TODO.md (slug review-kit-catchup-scope — закрыт)
+
+## 2026-09-22 12:09 — decision: inbox #104 (deployer) принят как пункт-ожидание `deploy-action-decision-tool`
+
+- deployer спросил, есть ли в arbiter allow/deny-решение для деплой-действий, на
+  которое рассчитывает их CLAUDE.md. Премиса подтверждена, а не принята на слово:
+  шесть MCP-инструментов — роутинг и телеметрия; grep по трём крейтам даёт
+  единственное «deploy» — тестовую фикстуру невалидной phase; RD-006 authority
+  plane (`check_authority`) отвечает на «какие агенты допущены в role×phase», а её
+  дизайн (§1) сознательно вынес runtime admission в v2+.
+- Решение: пункт-ожидание, не работа — гейтить у deployer нечего (L2 — песочница),
+  тул без потребителя был бы контрактом, угаданным за него. Триггер — событие ИХ
+  стороны («появилось мутирующее действие»); без `@blocked_by` (круговая
+  блокировка с `todo://deployer/arbiter-policy-gate-seam`). Форма зафиксирована:
+  седьмой MCP-tool (bump protocolVersion, DTO route_task не трогается), плоскость
+  MAY по паттерну RD-006 (SSOT у steward → пиненая копия, fail-closed, audited
+  decision с policy_sha), ответ allow/deny/needs-approval; человеческий аппрув на
+  проде — вне arbiter. Оговорка «6 инструментов заморожены» получила первый запрос
+  потребителя. Issue остаётся открытым как запись ожидания.
+- Доставка: PR #115 → master `849eb0a` (прозаический PR — scope-аттестация
+  ai-prosto, агентский мерж).
+- Links: TODO.md (slug deploy-action-decision-tool), arbiter#104,
+  docs/2026-07-12-authority-split-design.md, arbiter-core/src/authority.rs
