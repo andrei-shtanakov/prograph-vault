@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-26T21:16:03.335413+04:00",
+  "generated_at": "2026-09-26T21:46:13.177584+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -66,24 +66,12 @@
       "github": null
     },
     {
-      "dir": "deployer-debt",
-      "remote": "andrei-shtanakov/deployer",
-      "local": {
-        "branch": "chore/fix-techdebt",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": true,
-        "error": null
-      },
-      "github": null
-    },
-    {
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "docs/selfcheck-s2",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
