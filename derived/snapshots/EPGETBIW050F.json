@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-27T07:49:44.916001+04:00",
+  "generated_at": "2026-09-27T08:19:58.886734+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "docs/selfcheck-zone-narrow",
+        "branch": "feat/selfcheck-zone-narrow",
         "ahead": null,
         "behind": null,
         "dirty": false,
