@@ -2,17 +2,17 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-27T10:51:10.281667+04:00",
+  "generated_at": "2026-09-27T11:43:42.687649+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
-      "dir": ".wt-dt-gat",
+      "dir": ".wt-devtools-operator",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "chore/gen-agents-toml-operator",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": true,
+        "branch": "chore/selfcheck-operator-stale",
+        "ahead": null,
+        "behind": null,
+        "dirty": false,
         "error": null
       },
       "github": null
