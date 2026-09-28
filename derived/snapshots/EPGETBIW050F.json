@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-28T15:25:25.727652+04:00",
+  "generated_at": "2026-09-28T15:55:49.734921+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -57,7 +57,7 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "ci/ruff-check",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -72,7 +72,7 @@
         "branch": "feat/selfcheck-lint-coverage",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -105,7 +105,7 @@
       "dir": "discovery-toolkit",
       "remote": "andrei-shtanakov/discovery-toolkit",
       "local": {
-        "branch": "ci/ruff-check",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -129,7 +129,7 @@
       "dir": "disputatio",
       "remote": "andrei-shtanakov/disputatio",
       "local": {
-        "branch": "ci/ruff-check",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -141,7 +141,7 @@
       "dir": "github-checker",
       "remote": "andrei-shtanakov/github-checker",
       "local": {
-        "branch": "ci/ruff-check",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -153,7 +153,7 @@
       "dir": "impresario",
       "remote": "andrei-shtanakov/impresario",
       "local": {
-        "branch": "ci/ruff-check",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -225,7 +225,7 @@
       "dir": "prograph",
       "remote": "andrei-shtanakov/prograph",
       "local": {
-        "branch": "ci/ruff-check",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
