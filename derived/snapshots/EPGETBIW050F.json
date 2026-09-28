@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-28T17:26:52.145013+04:00",
+  "generated_at": "2026-09-28T17:57:13.549208+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,9 +69,9 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 1,
+        "branch": "spec/bundle-criteria-oracle",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -309,9 +309,9 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "fix/593-executable-of-flag-values",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
