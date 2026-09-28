@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-29T01:00:08.113757+04:00",
+  "generated_at": "2026-09-29T01:30:18.136230+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "docs/600-executor-write-boundary-design",
+        "branch": "feat/600-executor-sandbox",
         "ahead": null,
         "behind": null,
         "dirty": false,
