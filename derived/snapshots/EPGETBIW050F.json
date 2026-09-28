@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-28T14:55:05.999249+04:00",
+  "generated_at": "2026-09-28T15:25:25.727652+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -58,9 +58,9 @@
       "remote": "andrei-shtanakov/deployer",
       "local": {
         "branch": "ci/ruff-check",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -70,9 +70,9 @@
       "remote": "andrei-shtanakov/devtools",
       "local": {
         "branch": "feat/selfcheck-lint-coverage",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -106,9 +106,9 @@
       "remote": "andrei-shtanakov/discovery-toolkit",
       "local": {
         "branch": "ci/ruff-check",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -130,9 +130,9 @@
       "remote": "andrei-shtanakov/disputatio",
       "local": {
         "branch": "ci/ruff-check",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -142,9 +142,9 @@
       "remote": "andrei-shtanakov/github-checker",
       "local": {
         "branch": "ci/ruff-check",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -154,9 +154,9 @@
       "remote": "andrei-shtanakov/impresario",
       "local": {
         "branch": "ci/ruff-check",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -226,9 +226,9 @@
       "remote": "andrei-shtanakov/prograph",
       "local": {
         "branch": "ci/ruff-check",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
