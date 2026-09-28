@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-28T19:28:14.155903+04:00",
+  "generated_at": "2026-09-28T19:58:28.663292+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "fix/harness-guard-config-control-plane",
+        "branch": "fix/402-validate-scenario-warnings",
         "ahead": null,
         "behind": null,
         "dirty": false,
