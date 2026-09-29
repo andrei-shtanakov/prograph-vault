@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-29T10:04:47.435626+04:00",
+  "generated_at": "2026-09-29T10:34:57.135016+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -71,18 +71,6 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 2,
-        "dirty": false,
-        "error": null
-      },
-      "github": null
-    },
-    {
-      "dir": "devtools-oracle-slice1",
-      "remote": "andrei-shtanakov/devtools",
-      "local": {
-        "branch": "feat/bundle-oracle-slice1",
-        "ahead": 0,
         "behind": 0,
         "dirty": false,
         "error": null
@@ -129,10 +117,10 @@
       "dir": "dispatcher",
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "docs/human-control-plane",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
