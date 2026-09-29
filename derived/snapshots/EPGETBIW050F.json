@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-29T14:36:16.333610+04:00",
+  "generated_at": "2026-09-29T15:06:26.351454+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "docs/603-design-revision",
+        "branch": "docs/603-slice-a-plan",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -345,9 +345,9 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "feat/bundle-oracle-orphans",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
