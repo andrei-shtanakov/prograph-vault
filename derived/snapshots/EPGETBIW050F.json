@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-29T15:36:36.351205+04:00",
+  "generated_at": "2026-09-29T16:06:47.248638+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -309,9 +309,9 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "feat/603-slice-a-token-ownership",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -345,9 +345,9 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "feat/bundle-oracle-orphans",
-        "ahead": null,
-        "behind": null,
+        "branch": "master",
+        "ahead": 0,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
