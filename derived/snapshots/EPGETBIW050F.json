@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-29T17:37:17.280053+04:00",
+  "generated_at": "2026-09-29T18:07:27.105825+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -71,7 +71,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 1,
         "dirty": false,
         "error": null
       },
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "feat/603-b1-ownership-fixtures",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -345,7 +345,7 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "master",
+        "branch": "feat/charter-schema2-check",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
