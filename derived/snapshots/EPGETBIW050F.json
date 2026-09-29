@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-29T21:08:31.732485+04:00",
+  "generated_at": "2026-09-29T21:38:40.150693+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,9 +69,9 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "ci/ruff-baseline",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -117,7 +117,7 @@
       "dir": "dispatcher",
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
-        "branch": "master",
+        "branch": "docs/human-queue-a1",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "docs/603-b2-unblock-case22",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
