@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-29T17:07:06.003804+04:00",
+  "generated_at": "2026-09-29T17:37:17.280053+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "test/waves-e2e-realgit",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
+        "branch": "feat/603-b1-ownership-fixtures",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -345,7 +345,7 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "fix/bundle-oracle-debt",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
