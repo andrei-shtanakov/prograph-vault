@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-30T19:24:41.540108+04:00",
+  "generated_at": "2026-09-30T19:54:49.888305+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,10 +69,10 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "spec/selfcheck-findings-20260930-stamp-v3",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "task/task-001-ops",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
@@ -312,7 +312,7 @@
         "branch": "feat/603-b2a-contract-inventory",
         "ahead": null,
         "behind": null,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
