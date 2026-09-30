@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-30T10:12:50.278281+04:00",
+  "generated_at": "2026-09-30T10:43:07.142522+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,9 +69,9 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "ci/ruff-wave-mechanical",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
@@ -141,7 +141,7 @@
       "dir": "github-checker",
       "remote": "andrei-shtanakov/github-checker",
       "local": {
-        "branch": "master",
+        "branch": "feat/pr-search",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
