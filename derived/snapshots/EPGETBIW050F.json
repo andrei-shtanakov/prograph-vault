@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-30T14:52:48.263634+04:00",
+  "generated_at": "2026-09-30T15:23:01.957644+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -117,7 +117,7 @@
       "dir": "dispatcher",
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
-        "branch": "feat/my-turn-b2",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
