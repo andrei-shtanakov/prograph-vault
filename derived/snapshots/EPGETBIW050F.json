@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-30T19:54:49.888305+04:00",
+  "generated_at": "2026-09-30T20:24:58.358597+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -312,7 +312,7 @@
         "branch": "feat/603-b2a-contract-inventory",
         "ahead": null,
         "behind": null,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
