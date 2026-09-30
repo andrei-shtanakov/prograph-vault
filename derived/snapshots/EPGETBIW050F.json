@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-09-30T22:55:42.116927+04:00",
+  "generated_at": "2026-09-30T23:25:53.680191+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "task/task-003-ruff-zip-strict-raise-from",
+        "branch": "task/task-001-ops",
         "ahead": null,
         "behind": null,
         "dirty": true,
