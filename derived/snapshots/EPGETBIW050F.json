@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-01T19:31:37.269030+04:00",
+  "generated_at": "2026-10-01T20:01:46.781248+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -273,7 +273,7 @@
       "dir": "robin-runtime",
       "remote": "andrei-shtanakov/robin-runtime",
       "local": {
-        "branch": "fix/external-checks-url-clip",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -309,7 +309,7 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
+        "branch": "docs/operator-checklist-480-600",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
