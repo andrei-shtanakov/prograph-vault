@@ -3,8 +3,8 @@ title: Add-new-agent runbook
 type: contract-snapshot
 status: living
 source: _cowork_output/contracts/add-new-agent-runbook.md
-sha256: 9a1b43bbba63800d56491d1aa89bd4ba62b532f32b8f328da74ce9fa080fa8e8
-updated: 2026-07-06
+sha256: fe8b130395b327c37a556c6094208caa50d2ebfe05ede17371315175beb42d21
+updated: 2026-10-01
 ---
 
 # Runbook: добавление нового агента / CLI-инструмента в петлю ATP → arbiter → Maestro
@@ -93,7 +93,7 @@ avg_duration_min = 9.0                  # засеять из benchmark_runs (du
 ```
 
 - `supports_languages` / `supports_types` — **гейт**, а не метаданные: агент попадает в кандидаты (и к re-rank) только если они содержат тип задачи и язык (`route_task.rs:250`). Из бенчмарка не выводятся — это решение по политике.
-- `cost_per_hour` / `avg_duration_min` — засеиваются из реальных данных: **`devtools/gen_agents_toml.py`** генерит готовый блок (cost/duration из `benchmark_runs`, policy сохраняет/помечает TODO). ⚠ **Интерим:** этот генератор читает `benchmark_runs` (Variant C, отвергнут ADR-ECO-003 §Options) — подлежит замене на catalog-driven scaffold (ADR-003 a.i.#5). До замены используем его только для **cost/duration-seed**; список routable-ключей берём из каталога.
+- `cost_per_hour` / `avg_duration_min` — **ведутся руками** (ADR-ECO-003: числа policy — ручные). Засев из `benchmark_runs` (Variant C, отвергнут ADR-ECO-003 §Options) больше не используется: генератор `devtools/gen_agents_toml.py` удалён 2026-09-27 (ADR-003 a.i.#5 закрыт 01.07, находка devtools selfcheck). Ключи секций — `arbiter/scripts/gen_agents_scaffold.py` из вендоренного каталога.
 
 ---
 
@@ -104,7 +104,7 @@ avg_duration_min = 9.0                  # засеять из benchmark_runs (du
    - каждый `routable=true` `agent_id` ↔ секция в arbiter `agents.toml` (байт-в-байт) — прямая защита от silent-None;
    - каждый `routable=true` harness ↔ `AgentType` Maestro (иначе HOLD);
    - нет `safe_agent_id`-коллизий; нет ссылок на `retired`-модели.
-2. Запустить `python3 _cowork_output/devtools/gen_agents_toml.py` (интерим) — cost/duration-seed + routable-ключи **без** строк в `benchmark_runs` (→ silent-None, re-rank no-op).
+2. Scaffold ключей секций: `arbiter/scripts/gen_agents_scaffold.py` (читает вендоренный `config/agents-catalog.toml`, ADR-ECO-003 a.i.#5); policy-поля (cost/duration/supports_*) заполнить руками. Прежний `gen_agents_toml.py` удалён 2026-09-27.
 3. Если бенчмарк по типу задачи ≠ `review` — нужна пара в `benchmark_id_for` (`arbiter route_task.rs:42`) **И** `TASK_TYPE_TO_BENCHMARK_ID` (`ATP taxonomy.py`); иначе данные лягут, но в роутинге не используются.
 
 ---
@@ -122,5 +122,5 @@ avg_duration_min = 9.0                  # засеять из benchmark_runs (du
 
 - **Maestro (предусловие для любого нового harness):** добавить спаунер + `AgentType` **до** регистрации агента в arbiter.
 - **Maestro (P1, разблокирует случай A2):** научить спаунер принимать модель из `routed_agent_type` и прокидывать в CLI — иначе мульти-модельный роутинг одного harness не исполним (ADR-ECO-002 D1).
-- **arbiter:** routable-набор ведётся из **SSOT-каталога** (ADR-ECO-003), не из `benchmark_runs`. Ключи scaffold'ятся из `routable=true`; policy-поля (cost/duration/supports_*) руками. `gen_agents_toml.py` (из `benchmark_runs`) — интерим Variant C, подлежит замене (a.i.#5).
+- **arbiter:** routable-набор ведётся из **SSOT-каталога** (ADR-ECO-003), не из `benchmark_runs`. Ключи scaffold'ятся из `routable=true` (`arbiter/scripts/gen_agents_scaffold.py`); policy-поля (cost/duration/supports_*) руками. Интерим `gen_agents_toml.py` удалён 2026-09-27 (a.i.#5 закрыт).
 - **Кросс-реп (когда выйдем за code-review):** синхронно добавлять пару `task_type ↔ benchmark_id` в обоих репах.
