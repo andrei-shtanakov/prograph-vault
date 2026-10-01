@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-01T17:00:45.480573+04:00",
+  "generated_at": "2026-10-01T17:30:56.057321+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -117,7 +117,7 @@
       "dir": "dispatcher",
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
-        "branch": "master",
+        "branch": "chore/reapprove-e1-briefs",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -273,7 +273,7 @@
       "dir": "robin-runtime",
       "remote": "andrei-shtanakov/robin-runtime",
       "local": {
-        "branch": "master",
+        "branch": "feat/external-check-liveness",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -309,10 +309,10 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "docs/close-criteria-closure-verify",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
+        "branch": "fix/603-b2b-tails",
+        "ahead": null,
+        "behind": null,
+        "dirty": true,
         "error": null
       },
       "github": null
