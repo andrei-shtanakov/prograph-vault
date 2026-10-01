@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-01T17:30:56.057321+04:00",
+  "generated_at": "2026-10-01T18:01:07.544557+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -117,7 +117,7 @@
       "dir": "dispatcher",
       "remote": "andrei-shtanakov/dispatcher",
       "local": {
-        "branch": "chore/reapprove-e1-briefs",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -251,7 +251,7 @@
       "local": {
         "branch": "main",
         "ahead": 0,
-        "behind": 13,
+        "behind": 15,
         "dirty": false,
         "error": null
       },
@@ -312,7 +312,7 @@
         "branch": "fix/603-b2b-tails",
         "ahead": null,
         "behind": null,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
