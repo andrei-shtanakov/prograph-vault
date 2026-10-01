@@ -41,7 +41,7 @@
 
 ## Принятые обязательства перед соседними репо
 
-- [x] Пересъёмка снимка `derived/contracts/add-new-agent-runbook.md` из обновлённого источника (`gen_agents_toml.py` удалён) — PR #TBD @owner:github:andrei-shtanakov @id:add-new-agent-runbook-resnapshot
+- [x] Пересъёмка снимка `derived/contracts/add-new-agent-runbook.md` из обновлённого источника (`gen_agents_toml.py` удалён) — PR #170 @owner:github:andrei-shtanakov @id:add-new-agent-runbook-resnapshot
       Запрос `devtools` (inbox #168, selfcheck 2026-09-27). Проверено по факту, не со
       слов issue: источник `_cowork_output/contracts/add-new-agent-runbook.md` обновлён
       корневым коммитом `7585fb0`, его sha256 = `fe8b1303…2d21` (как в issue); старый
