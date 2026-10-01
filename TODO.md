@@ -41,6 +41,17 @@
 
 ## Принятые обязательства перед соседними репо
 
+- [x] Пересъёмка снимка `derived/contracts/add-new-agent-runbook.md` из обновлённого источника (`gen_agents_toml.py` удалён) — PR #TBD @owner:github:andrei-shtanakov @id:add-new-agent-runbook-resnapshot
+      Запрос `devtools` (inbox #168, selfcheck 2026-09-27). Проверено по факту, не со
+      слов issue: источник `_cowork_output/contracts/add-new-agent-runbook.md` обновлён
+      корневым коммитом `7585fb0`, его sha256 = `fe8b1303…2d21` (как в issue); старый
+      `sha256` снимка совпадал с источником до `7585fb0` — снимок был verbatim, поэтому
+      пересъёмка = копия источника + `sha256`/`updated`, без ручной правки текста.
+      devtools#417 (удаление генератора) и #418 (снятие `[[operator]]`) смержены.
+      Встречный inbox #167 (`slug: add-new-agent-runbook-gen-path`, исправить путь на
+      живой `devtools/gen_agents_toml.py`) закрыт `not planned`: он исходил из
+      решения devtools#416 «скрипт — operator», которое отменил devtools#417.
+
 - [x] `approver-policy.md`: пустая политика на фазе установления факта — отказ с сохранением заявки, не `invalidated` — PR #148 @owner:github:andrei-shtanakov @id:approver-policy-empty-env-refuses-not-invalidates @epic:eco.dark-factory
       Запрос `devtools` (inbox #147, from devtools#338). Правило описывало
       исход до devtools#338: «заявка будет аннулирована» при пустом
