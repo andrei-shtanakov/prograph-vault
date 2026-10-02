@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-02T20:49:43.747294+04:00",
+  "generated_at": "2026-10-02T21:19:51.495236+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -71,7 +71,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 19,
+        "behind": 0,
         "dirty": false,
         "error": null
       },
@@ -201,7 +201,7 @@
       "dir": "polygon",
       "remote": "DarkFactory-polygon/polygon",
       "local": {
-        "branch": "main",
+        "branch": "oracle-2a-bundles",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
