@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-02T19:39:49.986479+04:00",
+  "generated_at": "2026-10-02T20:49:43.747294+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -71,7 +71,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 19,
         "dirty": false,
         "error": null
       },
@@ -93,11 +93,11 @@
       "dir": "discovery-test",
       "remote": null,
       "local": {
-        "branch": null,
+        "branch": "main",
         "ahead": null,
         "behind": null,
-        "dirty": false,
-        "error": "Command '['git', '-C', '/Users/Andrei_Shtanakov/labs/all_ai_orchestrators/discovery-test', 'status', '--porcelain']' timed out after 30 seconds"
+        "dirty": true,
+        "error": null
       },
       "github": null
     },
@@ -310,9 +310,9 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "fix/review-sees-the-whole-task",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
