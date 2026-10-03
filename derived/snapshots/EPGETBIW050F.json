@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-03T21:26:33.038745+04:00",
+  "generated_at": "2026-10-03T21:56:41.627730+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -57,8 +57,8 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "docs/forge-archive-step-binding-spec",
-        "ahead": 0,
+        "branch": "feat/forge-archive-step-binding",
+        "ahead": 2,
         "behind": 0,
         "dirty": false,
         "error": null
