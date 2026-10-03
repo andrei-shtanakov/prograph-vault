@@ -2,14 +2,14 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-03T08:53:00.933451+04:00",
+  "generated_at": "2026-10-03T09:23:08.355885+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
       "dir": "ai-orchestrators-workspace",
       "remote": "andrei-shtanakov/ai-orchestrators-workspace",
       "local": {
-        "branch": "roadmap/goal-conductor-slice-1",
+        "branch": "main",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
