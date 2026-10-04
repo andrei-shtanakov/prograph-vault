@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-04T13:00:48.384653+04:00",
+  "generated_at": "2026-10-04T13:30:57.721112+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -23,7 +23,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -35,7 +35,7 @@
       "local": {
         "branch": "main",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -57,10 +57,10 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "fix/gh-bare-http-status",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "branch": "data/steps-2-recording",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "feat/fleet-config-policy",
+        "branch": "feat/fleet-config-policy-maestro-version",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -119,7 +119,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -215,7 +215,7 @@
       "local": {
         "branch": "master",
         "ahead": 0,
-        "behind": 0,
+        "behind": 2,
         "dirty": false,
         "error": null
       },
@@ -312,7 +312,7 @@
         "branch": "docs/harness-guard-gaps",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
