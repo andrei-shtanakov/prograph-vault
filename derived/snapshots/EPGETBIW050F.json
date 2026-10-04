@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-04T11:30:22.718477+04:00",
+  "generated_at": "2026-10-04T12:00:31.564261+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -57,7 +57,7 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "feat/forge-archive-step-binding",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -312,7 +312,7 @@
         "branch": "docs/harness-guard-gaps",
         "ahead": 0,
         "behind": 0,
-        "dirty": true,
+        "dirty": false,
         "error": null
       },
       "github": null
