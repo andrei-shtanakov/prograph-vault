@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-04T22:03:39.883372+04:00",
+  "generated_at": "2026-10-04T22:33:49.332654+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -57,7 +57,7 @@
       "dir": "deployer",
       "remote": "andrei-shtanakov/deployer",
       "local": {
-        "branch": "feat/forge-none-read-state",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
