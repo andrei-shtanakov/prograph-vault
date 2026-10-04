@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-04T11:00:13.192917+04:00",
+  "generated_at": "2026-10-04T11:30:22.718477+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,7 +69,7 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "master",
+        "branch": "feat/fleet-config-policy",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
@@ -309,10 +309,10 @@
       "dir": "spec-runner",
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
-        "branch": "master",
+        "branch": "docs/harness-guard-gaps",
         "ahead": 0,
         "behind": 0,
-        "dirty": false,
+        "dirty": true,
         "error": null
       },
       "github": null
