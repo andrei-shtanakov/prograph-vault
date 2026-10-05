@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-05T06:36:08.745022+04:00",
+  "generated_at": "2026-10-05T07:06:16.458489+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -310,7 +310,7 @@
       "remote": "andrei-shtanakov/spec-runner",
       "local": {
         "branch": "feat/retry-continues-from-wip",
-        "ahead": 0,
+        "ahead": 5,
         "behind": 0,
         "dirty": false,
         "error": null
