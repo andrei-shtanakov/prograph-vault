@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-06T18:47:39.580706+04:00",
+  "generated_at": "2026-10-06T19:17:47.860962+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -357,7 +357,7 @@
       "dir": "steward",
       "remote": "andrei-shtanakov/steward",
       "local": {
-        "branch": "master",
+        "branch": "docs/epic-tag-spec-mode-wait",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
