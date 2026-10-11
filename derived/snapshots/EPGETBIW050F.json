@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-11T18:51:29.190730+04:00",
+  "generated_at": "2026-10-11T19:21:38.930651+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -69,9 +69,9 @@
       "dir": "devtools",
       "remote": "andrei-shtanakov/devtools",
       "local": {
-        "branch": "spec/author-agent-sandbox-rev3",
-        "ahead": 0,
-        "behind": 0,
+        "branch": "spec/author-agent-sandbox-tasks-v2",
+        "ahead": null,
+        "behind": null,
         "dirty": false,
         "error": null
       },
