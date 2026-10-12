@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-10-12T20:58:51.634634+04:00",
+  "generated_at": "2026-10-12T21:29:00.331200+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -72,7 +72,19 @@
         "branch": "spec/approval-act-review",
         "ahead": null,
         "behind": null,
-        "dirty": true,
+        "dirty": false,
+        "error": null
+      },
+      "github": null
+    },
+    {
+      "dir": "devtools-sbx",
+      "remote": "andrei-shtanakov/devtools",
+      "local": {
+        "branch": "HEAD",
+        "ahead": null,
+        "behind": null,
+        "dirty": false,
         "error": null
       },
       "github": null
