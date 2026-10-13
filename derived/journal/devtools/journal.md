@@ -3,7 +3,7 @@ title: devtools — activity journal
 type: journal
 source: kb-save
 project: devtools
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # devtools — activity journal
@@ -589,3 +589,34 @@ updated: 2026-09-15
 - Харнесс-PR (правит review-pr.sh, `_HARNESS_PREFIXES`): ревью выполнено драйвером из worktree origin/master (23bba42) с FLEET_ROOT на worktree head 859b5a1 — код из проверяемого дерева не исполнялся (scripts/review/ в PR не тронуты). Вердикт approve + 2 minor (конфиги харнесса из cwd PR-head; пин prompt/schema через env у старых вендоренных китов), опубликован от ai-prosto. Мерж — владелец (0d7078f), merged_by человеческий по правилу. Закрыты devtools#136, #166; пункт review-evidence-fidelity-wave.
 - Побочно: prograph-vault#127 обработан (PR #128 влит, ревизия 4 плана accepted), inbox discovery#43 — решение по соло-режиму; PR #212 закрыл E0.6a.
 - Links: devtools#206, prograph-vault#128, discovery#43
+
+## 2026-09-15 — result: devtools#223 закрыт — пин базы вердикта по живой верхушке (D1), спека accepted
+
+- Дизайн (PR #234, 4 круга ревью: две ложные посылки сняты — вход ревьюера якорен на merge-base; повтор приёмки уже наследует вердикт по head+fp бесплатно, платным круг делал update-branch) → решения владельца (PR #235: D1 сейчас, D2 не делать до наблюдаемой гонки, D3 без auto-update-branch, D4 не вводить; объём терминального ревью зафиксирован в CLAUDE.md) → код D1 (PR #236, мерж человеком 9b58582: merge-pr.sh сверяет --expect-base, compare гварда 4 и журнал с git/ref/heads/<base>, fail-closed; accept_pr диагностика кода 5 по remote_branch_head_fact; RED→GREEN 7 тестов, 1613 passed, negative control на compare).
+- Харнесс-PR ревьюился драйвером из worktree origin/master с FLEET_ROOT на head-worktree. Остаток — ABSENT верхушки в диагностике (issue заведён). Урок: three-dot compare — диф деревьев, «надмножество от старого снимка» ложно.
+- Links: devtools#223, devtools#234, devtools#235, devtools#236
+
+## 2026-09-15 — change: батч правдивости governance-контракта — #182/#185/#195/#237 влиты (PR #239), #184 ждёт человеческого мержа (PR #240)
+
+- PR #239 (agent-merge 61e1e2f): гвард слепых зон §I5 судит каждое совпадение и прощает по группе счёта/зоны (мутанты «первое совпадение» и «весь спан» краснят; второй мутант выживал на первой фикстуре — свойство ненаблюдаемо на снятой основе, фикстура переведена на действующую); accept_pr говорит ровно известное (коды 2/3/4 — «не проверялось», ABSENT — «ветки нет», совпавшие пины — «совпадают с проверенными»); §I2 — граница сверки блоба терминального узла. 1618 passed.
+- PR #240 (approve ai-prosto из доверенного дерева, харнесс; мерж человеком 592393b): merge-pr.sh — правило и defense-in-depth, не security boundary, записано в шапке, CLAUDE.md и Ops.merge. #184 закрыт; пункт governance-contract-truth-batch закрыт (PR #241).
+- Links: devtools#239, devtools#240, devtools#182, #185, #195, #237, #184
+
+## 2026-09-15 — change: остатки document-pipeline авторинга behaviour-узла — devtools#204 закрыт (PR #242)
+
+- Чеклист doc: B0 из `_AUTHOR_DSL["behaviour-spec"]` (одно место с промптом; S4 — единственный судья DSL). Self-target анкер: XDG_STATE_HOME/devtools/disp-anchors/<run_id>, пин в RunState.disp_anchor_dir. Слаг пинуется в RunState.disp_slug; retry ровно один путь — `disp pipeline resume` только для начатого этим прогоном пайплайна (по `_check_pipeline_dir_absent` соседа); чужой каталог — стоп; ручной выход из пина — файл без каталога принимается как есть; `resume` на терминальном пайплайне у соседа отказывает (PipelineNotResumable).
+- Пять кругов ревью (все minor, все приняты кроме последнего — вынесен follow-up PR канонизации анкера), 9 тестов, 6 мутантов. Чекбокс TODO открыт до живого прогона (E2).
+- Links: devtools#242, devtools#204
+
+## 2026-09-15 — result: E2 — стадия Need вызывается прогоном (spec-loop --need, customer) — реализована (PR #246)
+
+- Дизайн по секциям с владельцем (D1–D6), спека #244 (accepted после 3 ревизий, ревизия 5 с кодом), план #245 (11 задач, 4 круга ревью плана). Исполнение — SDD: свежий субагент на задачу (haiku для транскрипции, sonnet для раннера/spec-loop), ревью каждой задачи, финальное ревью ветки на opus, одна фикс-волна (README/Makefile, UnicodeDecodeError, мёртвая ветка, 88 колонок, smoke-код answer). 1704 passed; opt-in smoke с настоящим discovery: 19 итераций банка, код 0, рендер детерминирован. Терминальное ревью #246 — approve, два minor → issue-остаток.
+- Уроки процесса: venv worktree без группы governance молча пропускает 152 теста раннера (сверять collected); субагенты уходят в фоновый pytest и ждут уведомление, которого нет — запрещать фон в диспатче; из worktree `DEVTOOLS_ROOT.parent/discovery` не резолвится — симлинк на стенде; фоновое ревью убито системой по памяти — foreground.
+- Открыто: живая приёмка §9 с реальным стейкхолдером (чекбокс spec-loop-need-stage); engineer-маршрут ждёт discovery#49.
+- Links: devtools#244, #245, #246, discovery#49
+
+## 2026-09-16 05:10 — result: живая приёмка E2 (spec-loop --need) на spec-runner#480 — стадия Need прошла, S6 остановлен владельцем
+
+- Прогон `durable-continuation-checkpoint-evidence-20260915-4c2a3e`: интервью 19 ответов (код 0), бриф, E1-путь, disp-авторинг behaviour-узла (2 раунда), S4, bundle-PR spec-runner#522. Три дефекта devtools найдены живьём и влиты: #248 (конфиг disp adapter/model/limits), #249 (коммит бандла до первого `run` disp), #250 (потолки дифа кита `--max-diff-bytes`/env, харнесс — мерж владельца).
+- S6: семь кругов терминального ревью бандла (6.3k строк), major-зоны сменялись (сайты/lock → closure → open calls); остановка по решению владельца 2026-09-16, `waiting_human_merge` не достигнут. Evidence — devtools #251; чекбокс `behaviour-document-runner-residuals` закрыт, `spec-loop-need-stage` — решение владельца.
+- Links: devtools `docs/evidence/2026-09-15-need-stage-live-run.md`, спека `docs/superpowers/specs/2026-09-15-need-stage-design.md` §9, spec-runner#522, devtools#248/#249/#250/#251
