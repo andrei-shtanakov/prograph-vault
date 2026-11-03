@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-11-03T13:18:43.552043+04:00",
+  "generated_at": "2026-11-03T13:48:53.447101+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
