@@ -2,21 +2,9 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-11-13T01:15:07.285412+04:00",
+  "generated_at": "2026-11-13T01:45:17.828138+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
-    {
-      "dir": ".wt-devtools-interview",
-      "remote": "andrei-shtanakov/devtools",
-      "local": {
-        "branch": "spec/dfl-interview-chat",
-        "ahead": 0,
-        "behind": 0,
-        "dirty": false,
-        "error": null
-      },
-      "github": null
-    },
     {
       "dir": "ai-orchestrators-workspace",
       "remote": "andrei-shtanakov/ai-orchestrators-workspace",
