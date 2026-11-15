@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-11-15T20:08:52.777466+04:00",
+  "generated_at": "2026-11-15T20:39:02.706049+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -81,7 +81,7 @@
       "dir": "discovery",
       "remote": "andrei-shtanakov/discovery",
       "local": {
-        "branch": "chore/repin-contract-v1.3",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
