@@ -2,7 +2,7 @@
   "schema_version": 1,
   "workspace": "/Users/Andrei_Shtanakov/labs/all_ai_orchestrators",
   "host": "EPGETBIW050F",
-  "generated_at": "2026-11-19T12:04:25.597976+04:00",
+  "generated_at": "2026-11-19T12:34:36.215317+04:00",
   "gh_error": "gh CLI не найден. Установите его: https://cli.github.com",
   "repos": [
     {
@@ -81,10 +81,10 @@
       "dir": "discovery",
       "remote": "andrei-shtanakov/discovery",
       "local": {
-        "branch": "feat/customer-feature-profile",
-        "ahead": null,
-        "behind": null,
-        "dirty": true,
+        "branch": "refactor/drop-approve-lint-fence",
+        "ahead": 0,
+        "behind": 0,
+        "dirty": false,
         "error": null
       },
       "github": null
@@ -105,7 +105,7 @@
       "dir": "discovery-toolkit",
       "remote": "andrei-shtanakov/discovery-toolkit",
       "local": {
-        "branch": "fix/gc05-upstream-read-total",
+        "branch": "master",
         "ahead": 0,
         "behind": 0,
         "dirty": false,
